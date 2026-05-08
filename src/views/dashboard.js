@@ -3,6 +3,7 @@
  */
 import { getAll, getByIndex } from '../db.js';
 import { rpeE1RM, setVolume } from '../lib/e1rm.js';
+import { openProgressionChart } from './workout.js';
 
 export async function renderDashboard(app) {
   const sessions = await getAll('sessions');
@@ -66,19 +67,48 @@ export async function renderDashboard(app) {
     </div>
 
     <h2>Top e1RM</h2>
-    ${sortedE1rm.length ? sortedE1rm.map(([name, info]) => `
-      <div class="list-item">
+    <div class="muted" style="font-size:12px;margin-bottom:8px">Tap any exercise to see progression chart</div>
+    ${sortedE1rm.length ? `<div id="e1rm-list">` + sortedE1rm.map(([name, info]) => `
+      <div class="list-item" style="cursor:pointer" data-ex="${name.replace(/"/g, '&quot;')}">
         <div style="flex:1">
           <div class="list-item-title">${name}</div>
           <div class="list-item-meta">${info.weight} lb × ${info.reps} reps · ${info.date}</div>
         </div>
         <div style="text-align:right">
           <div style="font-weight:700;font-size:18px">${info.e1rm}</div>
-          <div class="muted" style="font-size:11px">est. 1RM</div>
+          <div class="muted" style="font-size:11px">est. 1RM  📈</div>
         </div>
       </div>
-    `).join('') : `<div class="muted">Log some sets with weight + reps to see e1RM</div>`}
+    `).join('') + `</div>` : `<div class="muted">Log some sets with weight + reps to see e1RM</div>`}
+
+    <h2 style="margin-top:20px">Exercise history</h2>
+    <div class="search-bar"><input type="text" id="ex-search" placeholder="Search any exercise…" autocomplete="off"></div>
+    <div id="ex-search-results"></div>
   `;
+
+  // Top e1RM list — tap to open chart
+  app.querySelectorAll('#e1rm-list [data-ex]').forEach(el => {
+    el.onclick = () => openProgressionChart(el.dataset.ex);
+  });
+
+  // Exercise history search
+  const allExNames = [...new Set(
+    sessions.flatMap(s => (s.exercises || []).map(e => e.name))
+  )].sort();
+
+  const $search = app.querySelector('#ex-search');
+  const $results = app.querySelector('#ex-search-results');
+  $search.oninput = () => {
+    const q = $search.value.trim().toLowerCase();
+    if (!q) { $results.innerHTML = ''; return; }
+    const matches = allExNames.filter(n => n.toLowerCase().includes(q)).slice(0, 10);
+    $results.innerHTML = matches.map(n =>
+      `<div class="list-item" style="cursor:pointer" data-ex="${n.replace(/"/g, '&quot;')}">${n}</div>`
+    ).join('') || `<div class="muted" style="padding:8px 0">No results</div>`;
+    $results.querySelectorAll('[data-ex]').forEach(el => {
+      el.onclick = () => { $search.value = ''; $results.innerHTML = ''; openProgressionChart(el.dataset.ex); };
+    });
+  };
 }
 
 function daysAgoStr(n) {

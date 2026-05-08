@@ -587,7 +587,7 @@ function progressionSparkline(points) {
   </svg>`;
 }
 
-async function openProgressionChart(exName) {
+export async function openProgressionChart(exName) {
   const all = await getAll('sessions');
   const weekBests = {};
   for (const s of all) {
