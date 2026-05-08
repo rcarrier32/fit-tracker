@@ -80,4 +80,6 @@ export function openSheet(contentBuilder) {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW register failed', err));
+  // When a new service worker takes over, reload to get fresh files
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
 }
