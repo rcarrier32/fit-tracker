@@ -407,9 +407,8 @@ function openPlanCustomizer(template, allExercises, onSave) {
         };
         const existing = (await pref('custom_programs')) || [];
         await pref('custom_programs', [...existing, program]);
-        toast(`"${name}" saved!`);
         close();
-        onSave();
+        openStartCustomPlanSheet(program, onSave);
       };
     }
 
