@@ -99,3 +99,25 @@ export async function pref(key, value) {
   await put('prefs', { key, value });
   return value;
 }
+
+export async function exportAllData() {
+  const storeNames = Object.keys(STORES);
+  const out = { version: DB_VER, exported_at: new Date().toISOString() };
+  for (const name of storeNames) {
+    out[name] = await getAll(name);
+  }
+  return out;
+}
+
+export async function importAllData(data) {
+  const storeNames = Object.keys(STORES);
+  for (const name of storeNames) {
+    if (!data[name]) continue;
+    const s = await tx(name, 'readwrite');
+    await new Promise((res, rej) => { const r = s.clear(); r.onsuccess = res; r.onerror = rej; });
+    for (const item of data[name]) {
+      const s2 = await tx(name, 'readwrite');
+      await new Promise((res, rej) => { const r = s2.put(item); r.onsuccess = res; r.onerror = rej; });
+    }
+  }
+}

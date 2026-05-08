@@ -1,7 +1,7 @@
 /**
  * Home/Today view: snapshot of macros + active workout + body weight + quick actions.
  */
-import { pref, getByIndex, get, getAll } from '../db.js';
+import { pref, getByIndex, get, getAll, exportAllData, importAllData } from '../db.js';
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout } from './schedule.js';
@@ -213,6 +213,8 @@ export async function renderHome(app) {
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
         <button class="btn ghost" data-action="edit-profile">Edit profile</button>
+        <button class="btn ghost" data-action="export-data">Export data</button>
+        <button class="btn ghost" data-action="import-data">Import data</button>
       </div>
     </div>
   `;
@@ -235,6 +237,40 @@ export async function renderHome(app) {
   };
   app.querySelector('[data-action="log-weight"]').onclick = () => navigate('body');
   app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
+
+  app.querySelector('[data-action="export-data"]').onclick = async () => {
+    const data = await exportAllData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `fit-tracker-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('Data exported');
+  };
+
+  app.querySelector('[data-action="import-data"]').onclick = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json,.json';
+    input.onchange = async () => {
+      const file = input.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!data.sessions && !data.meals && !data.prefs) throw new Error('Invalid backup file');
+        if (!confirm('This will replace all current data with the backup. Continue?')) return;
+        await importAllData(data);
+        toast('Data restored — reloading…');
+        setTimeout(() => window.location.reload(), 800);
+      } catch (e) {
+        toast(`Import failed: ${e.message}`);
+      }
+    };
+    input.click();
+  };
 }
 
 function renderTodayBadge(today_w, activePlan) {
