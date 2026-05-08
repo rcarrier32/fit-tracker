@@ -422,11 +422,11 @@ function openExerciseMenu(session, i, allExercises, exMap) {
       <h2>${ex.name}</h2>
       <div class="muted" style="margin-bottom:14px">${formatTarget(ex)}${muscleLabel ? ` · ${muscleLabel}` : ''}</div>
 
-      ${bwsAlts.length ? `<button class="btn" id="bws-alts" style="margin-bottom:8px">Swap — BWS alternates (${bwsAlts.length})</button>` : ''}
-      ${muscleLabel ? `<button class="btn ${bwsAlts.length ? 'secondary' : ''}" id="similar" style="margin-bottom:8px">Similar exercises (${muscleLabel})</button>` : ''}
-      <button class="btn secondary" id="swap" style="margin-bottom:8px">🔄 Any exercise</button>
-      <button class="btn secondary" id="add-set" style="margin-bottom:8px">+ Add a set</button>
-      <button class="btn secondary" id="rm-set" style="margin-bottom:8px">− Remove last set</button>
+      <button class="btn" id="swap-all" style="margin-bottom:8px">🔄 Swap exercise</button>
+      <div class="btn-row" style="margin-bottom:8px">
+        <button class="btn secondary" id="add-set">+ Set</button>
+        <button class="btn secondary" id="rm-set">− Set</button>
+      </div>
       <button class="btn ghost" id="progression" style="margin-bottom:8px">📈 Progression chart</button>
       <button class="btn ghost" id="edit-target" style="margin-bottom:8px">Edit target reps/sets</button>
       <button class="btn danger" id="remove" style="margin-top:6px">🗑 Remove exercise</button>
@@ -437,56 +437,69 @@ function openExerciseMenu(session, i, allExercises, exMap) {
       openProgressionChart(ex.name);
     };
 
-    sheet.querySelector('#bws-alts')?.addEventListener('click', () => {
+    sheet.querySelector('#swap-all').onclick = () => {
       close();
       openSheet((s2, close2) => {
-        s2.innerHTML = `
-          <h2>BWS alternates</h2>
-          <div class="muted" style="margin-bottom:12px">Official alternates for ${ex.name}</div>
+        const similarExercises = primaryMuscle
+          ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name)
+          : [];
+        const bwsSection = bwsAlts.length ? `
+          <div class="group-label" style="margin:0 0 6px">BWS alternates</div>
           ${bwsAlts.map(name => {
             const alt = exMap[name.toLowerCase()];
             const muscle = alt?.primary_muscle?.replace(/_/g, ' ') || '';
-            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}">
+            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
                 <div class="list-item-title">${name}</div>
                 <div class="list-item-meta">${muscle}${alt?.video_url ? ' · ▶' : ''}</div>
               </div>
             </div>`;
-          }).join('')}
+          }).join('')}` : '';
+        const similarSection = similarExercises.length ? `
+          <div class="group-label" style="margin:12px 0 6px">${muscleLabel || 'Similar'}</div>
+          ${similarExercises.slice(0, 12).map(e =>
+            `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1">
+                <div class="list-item-title">${e.name}</div>
+                <div class="list-item-meta">${e.primary_muscle?.replace(/_/g, ' ') || ''}${e.video_url ? ' · ▶' : ''}</div>
+              </div>
+            </div>`
+          ).join('')}` : '';
+        s2.innerHTML = `
+          <h2>Swap: ${ex.name}</h2>
+          ${bwsSection}
+          ${similarSection}
+          <div class="group-label" style="margin:12px 0 6px">Any exercise</div>
+          <input type="text" id="ex-filter" placeholder="Search all exercises…" autocomplete="off">
+          <div id="ex-filter-results"></div>
         `;
-        s2.querySelectorAll('.list-item').forEach(item => {
-          item.onclick = async () => {
-            const originalName = ex.name;
-            ex.name = item.dataset.name;
-            ex.swapped = true;
-            await put('sessions', session);
-            close2();
-            _offerPermanentSwap(originalName, ex.name, session);
-          };
+        const doSwap = async (name) => {
+          const originalName = ex.name;
+          ex.name = name;
+          ex.swapped = true;
+          await put('sessions', session);
+          close2();
+          _offerPermanentSwap(originalName, ex.name, session);
+        };
+        s2.querySelectorAll('.list-item[data-name]').forEach(item => {
+          item.onclick = () => doSwap(item.dataset.name);
         });
+        const $filter = s2.querySelector('#ex-filter');
+        const $filterResults = s2.querySelector('#ex-filter-results');
+        $filter.oninput = () => {
+          const q = $filter.value.trim().toLowerCase();
+          if (!q) { $filterResults.innerHTML = ''; return; }
+          const hits = allExercises.filter(e => e.name.toLowerCase().includes(q)).slice(0, 10);
+          $filterResults.innerHTML = hits.map(e =>
+            `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div class="list-item-title">${e.name}</div>
+            </div>`
+          ).join('');
+          $filterResults.querySelectorAll('.list-item').forEach(item => {
+            item.onclick = () => doSwap(item.dataset.name);
+          });
+        };
       });
-    });
-
-    sheet.querySelector('#similar')?.addEventListener('click', async () => {
-      close();
-      const picked = await pickExerciseFromLibrary(allExercises, { filterMuscle: primaryMuscle, title: `${muscleLabel} exercises` });
-      if (!picked) return;
-      const originalName = ex.name;
-      ex.name = picked.name;
-      ex.swapped = true;
-      await put('sessions', session);
-      _offerPermanentSwap(originalName, ex.name, session);
-    });
-
-    sheet.querySelector('#swap').onclick = async () => {
-      close();
-      const picked = await pickExerciseFromLibrary(allExercises);
-      if (!picked) return;
-      const originalName = ex.name;
-      ex.name = picked.name;
-      ex.swapped = true;
-      await put('sessions', session);
-      _offerPermanentSwap(originalName, ex.name, session);
     };
 
     sheet.querySelector('#add-set').onclick = async () => {
