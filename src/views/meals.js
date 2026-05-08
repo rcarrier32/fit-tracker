@@ -203,7 +203,7 @@ function openQuickAdd(prefill = {}, dateKey) {
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
 
       <label style="display:flex;align-items:center;gap:8px;margin-top:12px">
-        <input type="checkbox" id="m-fav" style="width:auto;min-height:auto"> Save to my library
+        <input type="checkbox" id="m-fav" checked style="width:auto;min-height:auto"> Save to my library
       </label>
       <div class="btn-row" style="margin-top:14px">
         <button class="btn" id="m-save">Log</button>
