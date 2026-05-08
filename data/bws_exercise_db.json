@@ -1,0 +1,4004 @@
+{
+  "exercises": [
+    {
+      "name": "(Banded) Decline Push-Ups",
+      "video_url": "https://youtu.be/LdahU9kB-u0",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "(Banded) Incline Push-Ups",
+      "video_url": "https://youtu.be/67V0-5gjEeA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "(Weighted) Chin-Ups",
+      "video_url": "https://youtu.be/-TZRdvUS7Qo",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "(Weighted) Prone Arm Circles",
+      "video_url": "https://youtu.be/6D-4V_M8RJA",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "(Weighted) Pull-Ups",
+      "video_url": "https://youtu.be/w_yuTRQd6HA",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "(Weighted) Single Leg Hip Thrusts",
+      "video_url": "https://youtu.be/FKD9-qezw08",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "3 Point Dumbbell Row",
+      "video_url": "https://youtu.be/hrBLmuQ_vq8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Banded Hip Abductions",
+      "video_url": "https://youtu.be/CA0ALPgTkxw",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Banded Pull-Ups",
+      "video_url": "https://youtu.be/VGm-f5-T5no",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Banded Push-Ups",
+      "video_url": "https://youtu.be/dI7LVElfMOg",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Back Box Squat",
+      "video_url": "https://youtu.be/QryQO4VuPK8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Back Squat",
+      "video_url": "https://youtu.be/AWo-q7P-HZ0",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Bench Press",
+      "video_url": "https://youtu.be/pCGVSBk0bIQ",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Barbell Curl",
+      "video_url": "https://youtu.be/-ClfZ00zo8c",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Deadlift",
+      "video_url": "https://youtu.be/JL1tJTEmxfw",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Barbell Hip Thrust",
+      "video_url": "https://youtu.be/_vBMijiZoxE",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Barbell Romanian Deadlift",
+      "video_url": "https://youtu.be/Q-2telZDPRw",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Row (lat focus)",
+      "video_url": "https://youtu.be/tS5lKXxtNvE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Barbell Row (mid/upper back)",
+      "video_url": "https://youtu.be/FTCmwlfZ29A",
+      "sources": [
+        "bws_4day_30min",
+        "bws_5day_30min",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Behind Body Cable Curls",
+      "video_url": "https://youtu.be/S2CNDlAY8kY",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Bent Over Dumbbell Face Pulls",
+      "video_url": "https://youtu.be/kA415Unr-_E",
+      "sources": [
+        "bws_5day_30min",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Bird Dog",
+      "video_url": "https://youtu.be/4qE_9h_6Hes",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Bulgarian Split Squat (glute focus)",
+      "video_url": "https://youtu.be/sqadB2rroz0",
+      "sources": [
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Bulgarian Split Squat (quad focus)",
+      "video_url": "https://youtu.be/r9XtxWSTlcg",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_5day_30min",
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Cable Crunches (Upper Abs)",
+      "video_url": "https://youtu.be/Y0nXmTZ1Ibs",
+      "sources": [
+        "bws_ab_routine"
+      ]
+    },
+    {
+      "name": "Cable Lateral Raise",
+      "video_url": "https://youtu.be/1muit9qEctY",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Cable Pushdowns",
+      "video_url": "https://youtu.be/MlfCS_7ZLXA",
+      "sources": [
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Chest Supported DB Rear Delt Row",
+      "video_url": "https://youtu.be/6LTUVaKpRCk",
+      "sources": [
+        "bws_4day_30min",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Chest Supported DB Row (lat focus)",
+      "video_url": "https://youtu.be/I2Unz9FR0sc",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Chest Supported Machine Row",
+      "video_url": "https://youtu.be/iDiVxqvHGWY",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Close-Grip Barbell Bench Press",
+      "video_url": "https://youtu.be/JzCGNgXuATs",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Close-Grip Dumbbell Press",
+      "video_url": "https://youtu.be/wHx9-aLjDOM",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Close-Grip Push-Ups",
+      "video_url": "https://youtu.be/ZtAz8gupAss",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Close-Grip Smith Machine Press",
+      "video_url": "https://youtu.be/GIuRW-MDHK8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Cross Cable Tricep Extensions",
+      "video_url": "https://youtu.be/Fua2QlXnn6Y",
+      "sources": [
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "DB Chest Supported Row (mid/upper back)",
+      "video_url": "https://youtu.be/kNvy2_9Ji2w",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Dead Bug",
+      "video_url": "https://youtu.be/UJ7b8gYa2Es",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Decline Dumbbell Press",
+      "video_url": "https://youtu.be/pSOseCLdzIY",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Decline Machine Chest Press",
+      "video_url": "https://youtu.be/H4R-LiTJeH8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Dumbbell Fly",
+      "video_url": "https://youtu.be/WRn2hqy0gXU",
+      "sources": [
+        "bws_5day_30min",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Dumbbell Goblet Squat",
+      "video_url": "https://youtu.be/nYDEYFXN2Rs",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Dumbbell Lateral Raise",
+      "video_url": "https://youtu.be/zcO3sgAeLA0",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Dumbbell Lying Leg Curls",
+      "video_url": "https://youtu.be/Ot1MZipNLOQ",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Dumbbell Romanian Deadlift",
+      "video_url": "https://youtu.be/Xu4DxwKWzl4",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Dumbbell Spider Curls",
+      "video_url": "https://youtu.be/hDDcQkCxHjE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Flat Dumbbell Press",
+      "video_url": "https://youtu.be/g14dhC5KYBM",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Flat Machine Chest Press",
+      "video_url": "https://youtu.be/sO8lFa9CidE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Flat Smith Machine Chest Press",
+      "video_url": "https://youtu.be/3Z3C44SXSQE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Front Foot Elevated Reverse Lunge",
+      "video_url": "https://youtu.be/JySEdVXPUM8",
+      "sources": [
+        "bws_4day_30min",
+        "bws_5day_30min",
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Glute Focused Leg Press",
+      "video_url": "https://youtu.be/p13BNdwR93A",
+      "sources": [
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Half Kneeling Landmine Press",
+      "video_url": "https://youtu.be/JOOS3MPCT8s",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Half-Kneeling Cable Row",
+      "video_url": "https://youtu.be/tTev-zsqR4A",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Hammer Curls",
+      "video_url": "https://youtu.be/OrGL-ymYREg",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Hanging Leg Raises (Lower Abs)",
+      "video_url": "https://youtu.be/PjFeAHXSoY0",
+      "sources": [
+        "bws_ab_routine"
+      ]
+    },
+    {
+      "name": "Heel Elevated Goblet Squat",
+      "video_url": "https://youtu.be/l9crMLuT4II",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Heel Elevated Split Squat",
+      "video_url": "https://youtu.be/bJE0-eZLa6E",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Hyperextensions (back/hamstring)",
+      "video_url": "https://youtu.be/RU5d2H_OmSc",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Hyperextensions (glute focus)",
+      "video_url": "https://youtu.be/bsXgCaIIwCg",
+      "sources": [
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Incline Barbell Skullcrushers",
+      "video_url": "https://youtu.be/XgwPiPY4vCI",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Incline DB Overhead Extensions",
+      "video_url": "https://youtu.be/3d86xMhHROA",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Incline Dumbbell Curls",
+      "video_url": "https://youtu.be/3D56VDVkQnM",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Incline Machine Chest Press",
+      "video_url": "https://youtu.be/abc1fisYB3w",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Inverted Row",
+      "video_url": "https://youtu.be/SyMSay4zrsA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Kneeling Lat Pulldown",
+      "video_url": "https://youtu.be/4LxKeTqlpZA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Kneeling One Arm Lat Pulldown",
+      "video_url": "https://youtu.be/PkA-D-Ld4tE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Lat Focused Cable Row",
+      "video_url": "https://youtu.be/ZaEnZ47cDTk",
+      "sources": [
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Lat Pulldown",
+      "video_url": "https://youtu.be/AvYZZhEl7Xk",
+      "sources": [
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Lean In Lateral Raise",
+      "video_url": "https://youtu.be/2q4kjTDg-vs",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Leg Press Calf Raise",
+      "video_url": "https://youtu.be/s8yUXsZrgE0",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Low Incline Barbell Press",
+      "video_url": "https://youtu.be/jW4j7FoqudI",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Low Incline Cable Press",
+      "video_url": "https://youtu.be/6qV1WZ_z0u0",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Low Incline Dumbbell Press",
+      "video_url": "https://youtu.be/kpzUeELReEA",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Low Incline Smith Machine Press",
+      "video_url": "https://youtu.be/R53nThQcdZo",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Lying Incline Lateral Raise",
+      "video_url": "https://youtu.be/upEqeI0F73M",
+      "sources": [
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Lying Leg Curls",
+      "video_url": "https://youtu.be/aYy3alWRDmk",
+      "sources": [
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Neutral Grip DB Press",
+      "video_url": "https://youtu.be/N-kUwH1uf9c",
+      "sources": [
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Overhead Rope Extensions",
+      "video_url": "https://youtu.be/7yoTblFCUQM",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Palloff Press",
+      "video_url": "https://youtu.be/WhCH2CwVo4I",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Pec-Deck Machine Fly",
+      "video_url": "https://youtu.be/rnV3y1P7894",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Pull-Up Negatives",
+      "video_url": "https://youtu.be/SyMSay4zrsA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Pull-Ups",
+      "video_url": "https://youtu.be/w_yuTRQd6HA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Pull-Ups (Weighted)",
+      "video_url": "https://youtu.be/w_yuTRQd6HA",
+      "sources": [
+        "bws_4day_30min",
+        "bws_5day_30min",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Quad-Focused Leg Press",
+      "video_url": "https://youtu.be/0nrW-q7-WRQ",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Rear Delt Cable Fly",
+      "video_url": "https://youtu.be/2Xepcd9FYvE",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Rear Delt Cable Row",
+      "video_url": "https://youtu.be/k9G7BykDD4o",
+      "sources": [
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Reverse Crunches",
+      "video_url": "https://youtu.be/Y0nXmTZ1Ibs",
+      "sources": [
+        "bws_ab_routine"
+      ]
+    },
+    {
+      "name": "Reverse Hyperextensions",
+      "video_url": "https://youtu.be/yRvF177yb88",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Reverse Lunges",
+      "video_url": "https://youtu.be/AUEGDvCrQJA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "RKC Plank",
+      "video_url": "https://youtu.be/lOgA1UfFbWY",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Rope Cable Curls (neutral grip)",
+      "video_url": "https://youtu.be/0vEzBCydrU0",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Bodyweight Calf Raise",
+      "video_url": "https://youtu.be/jW-cNnwRJ7E",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Cable Row (mid/upper back)",
+      "video_url": "https://youtu.be/Q-5V5T55giY",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Dumbbell Curls",
+      "video_url": "https://youtu.be/qUAzPq4B2aw",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Seated Dumbbell Shoulder Press",
+      "video_url": "https://youtu.be/DPXG3BJvl8A",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Flat Cable Press",
+      "video_url": "https://youtu.be/hPpNTAEDnxM",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Leg Curls",
+      "video_url": "https://youtu.be/81umRgyxIAU",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_5day_30min",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Seated Leg Extensions",
+      "video_url": "https://youtu.be/nIalczfM8es",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Seated Mid-Chest Cable Fly",
+      "video_url": "https://youtu.be/Y8E3dHNsSTU",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Seated Neutral-Grip DB Press",
+      "video_url": "https://youtu.be/W35eREjZnhI",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Seated Weighted Calf Raise",
+      "video_url": "https://youtu.be/2TkLMol2bCo",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Side Lying Hip Raise",
+      "video_url": "https://youtu.be/ZieZ6pjc4fQ",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Side Lying Leg Raise",
+      "video_url": "https://youtu.be/ht3Ayrre2HA",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Side Plank",
+      "video_url": "https://youtu.be/o4LGPtKjbhU",
+      "sources": [
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Single Leg Weighted Calf Raise",
+      "video_url": "https://youtu.be/cRKA_Qdut7I",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Single-Leg Leg Press",
+      "video_url": "https://youtu.be/hdioTTf8qdw",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Sissy Squat",
+      "video_url": "https://youtu.be/3SeCC8ABZ_Q",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Smith Machine Hip Thrust",
+      "video_url": "https://youtu.be/srYETmyq3_c",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Smith Machine Squat",
+      "video_url": "https://youtu.be/zSVi51Jp3eI",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Standing Barbell Overhead Press",
+      "video_url": "https://youtu.be/S3kYKH32VqI",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Standing Cable Curl",
+      "video_url": "https://youtu.be/8Bb-ak2lB8E",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Standing Dumbbell Shoulder Press",
+      "video_url": "https://youtu.be/jWriqmLrQqs",
+      "sources": [
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal"
+      ]
+    },
+    {
+      "name": "Standing Face Pulls",
+      "video_url": "https://youtu.be/02g7XtSRXug",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_30min",
+        "bws_4day_upper_lower",
+        "bws_5day_30min",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Standing High To Low Cable Fly",
+      "video_url": "https://youtu.be/JfZjng7jAKs",
+      "sources": [
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Standing Mid-Chest Cable Fly",
+      "video_url": "https://youtu.be/fyFVaCP9J-8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Standing Weighted Calf Raise",
+      "video_url": "https://youtu.be/q2Eigaa9dKU",
+      "sources": [
+        "bws_3day_full_body",
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_5day_split_v3",
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Sumo Deadlift",
+      "video_url": "https://youtu.be/9rXKd-_DaRs",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Swiss Ball Leg Curls",
+      "video_url": "https://youtu.be/uRBpd65dbYs",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Toes-Elevated Smith Machine Calf Raise",
+      "video_url": "https://youtu.be/_ChZv2iluM8",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Trap Bar Deadlift",
+      "video_url": "https://youtu.be/5mnlJtf-7WM",
+      "sources": [
+        "bws_master_library"
+      ]
+    },
+    {
+      "name": "Walking Lunges (quad focus)",
+      "video_url": "https://youtu.be/JB20RuTOaFc",
+      "sources": [
+        "bws_4day_upper_lower",
+        "bws_5day_split_v1",
+        "bws_master_library",
+        "ryhan_4day_personal",
+        "ryhan_5day_personal"
+      ]
+    },
+    {
+      "name": "Wall Slides",
+      "video_url": "https://youtu.be/x4zjfuLXHVk",
+      "sources": [
+        "bws_master_library",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Weighted Crunches",
+      "video_url": "https://youtu.be/QdIutxfm_hU",
+      "sources": [
+        "bws_ab_routine"
+      ]
+    },
+    {
+      "name": "Weighted Step-Ups",
+      "video_url": "https://youtu.be/Cjc3AgmdtlA",
+      "sources": [
+        "bws_master_library",
+        "ryhan_3day_personal",
+        "ryhan_4day_personal"
+      ]
+    },
+    {
+      "name": "Wide Grip BB Upright Row (last resort)",
+      "video_url": "https://youtu.be/6BTMVh9AnCw",
+      "sources": [
+        "bws_master_library"
+      ]
+    }
+  ],
+  "programs": {
+    "bws_3day_full_body": {
+      "days": [
+        {
+          "day_name": "Full Body A",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "(Weighted) Pull-Ups",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Bulgarian Split Squat (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/r9XtxWSTlcg"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/zcO3sgAeLA0"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Full Body B",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AWo-q7P-HZ0"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/S3kYKH32VqI"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "Seated Cable Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Q-5V5T55giY"
+            },
+            {
+              "name": "Banded Push-Ups",
+              "set_targets": [
+                "10+",
+                "10+",
+                "10+ (to failure)"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/dI7LVElfMOg"
+            },
+            {
+              "name": "Incline DB Overhead Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/3d86xMhHROA"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            },
+            {
+              "name": "RKC Plank",
+              "set_targets": [
+                "30-60s hold",
+                "30-60s hold",
+                "30-60s hold"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/lOgA1UfFbWY"
+            }
+          ]
+        },
+        {
+          "day_name": "Full Body C",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Seated Leg Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/nIalczfM8es"
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/1muit9qEctY"
+            },
+            {
+              "name": "Standing Cable Curl",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/8Bb-ak2lB8E"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            },
+            {
+              "name": "Bird Dog",
+              "set_targets": [
+                "5 per side",
+                "5 per side"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/4qE_9h_6Hes"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_5day_split_v1": {
+      "days": [
+        {
+          "day_name": "Upper",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/S3kYKH32VqI"
+            },
+            {
+              "name": "Lat Pulldown",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AvYZZhEl7Xk"
+            },
+            {
+              "name": "Standing High To Low Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JfZjng7jAKs"
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/1muit9qEctY"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AWo-q7P-HZ0"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Seated Leg Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/nIalczfM8es"
+            },
+            {
+              "name": "Walking Lunges (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JB20RuTOaFc"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Push",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            },
+            {
+              "name": "Flat Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/g14dhC5KYBM"
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/zcO3sgAeLA0"
+            },
+            {
+              "name": "Incline DB Overhead Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/3d86xMhHROA"
+            },
+            {
+              "name": "Cable Pushdowns",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/MlfCS_7ZLXA"
+            }
+          ]
+        },
+        {
+          "day_name": "Pull",
+          "exercises": [
+            {
+              "name": "(Weighted) Pull-Ups",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Lat Focused Cable Row",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/ZaEnZ47cDTk"
+            },
+            {
+              "name": "Rear Delt Cable Row",
+              "set_targets": [
+                "12-15",
+                "12-15",
+                "12-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/k9G7BykDD4o"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            },
+            {
+              "name": "Hammer Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/OrGL-ymYREg"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Bulgarian Split Squat (glute focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/sqadB2rroz0"
+            },
+            {
+              "name": "Barbell Hip Thrust",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/_vBMijiZoxE"
+            },
+            {
+              "name": "Lying Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/aYy3alWRDmk"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_4day_upper_lower": {
+      "days": [
+        {
+          "day_name": "Upper 1",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "(Weighted) Pull-Ups",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/XZRyDGqSfF8"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            },
+            {
+              "name": "Lying Incline Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/upEqeI0F73M"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AWo-q7P-HZ0"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Seated Leg Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/nIalczfM8es"
+            },
+            {
+              "name": "Walking Lunges (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JB20RuTOaFc"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Upper 2",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Chest Supported DB Row (lat focus)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/I2Unz9FR0sc"
+            },
+            {
+              "name": "Flat Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/g14dhC5KYBM"
+            },
+            {
+              "name": "Rear Delt Cable Row",
+              "set_targets": [
+                "12-15",
+                "12-15",
+                "12-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/k9G7BykDD4o"
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/1muit9qEctY"
+            },
+            {
+              "name": "Hammer Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/OrGL-ymYREg"
+            },
+            {
+              "name": "Incline DB Overhead Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/3d86xMhHROA"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Bulgarian Split Squat (glute focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/sqadB2rroz0"
+            },
+            {
+              "name": "Barbell Hip Thrust",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/_vBMijiZoxE"
+            },
+            {
+              "name": "Lying Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/aYy3alWRDmk"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_5day_split_v3": {
+      "days": [
+        {
+          "day_name": "Upper",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Standing Dumbbell Shoulder Press",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/jWriqmLrQqs"
+            },
+            {
+              "name": "Lat Pulldown",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AvYZZhEl7Xk"
+            },
+            {
+              "name": "Decline Dumbbell Press",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pSOseCLdzIY"
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/zcO3sgAeLA0"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Quad-Focused Leg Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/0nrW-q7-WRQ"
+            },
+            {
+              "name": "Heel Elevated Split Squat",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/bJE0-eZLa6E"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "Seated Leg Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/nIalczfM8es"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "RKC Plank",
+              "set_targets": [
+                "30-60s hold",
+                "30-60s hold"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/lOgA1UfFbWY"
+            }
+          ]
+        },
+        {
+          "day_name": "Push",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "6-8",
+                "8-10",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Flat Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/g14dhC5KYBM"
+            },
+            {
+              "name": "Lean In Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/2q4kjTDg-vs"
+            },
+            {
+              "name": "Incline DB Overhead Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/3d86xMhHROA"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            },
+            {
+              "name": "Cable Pushdowns",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/MlfCS_7ZLXA"
+            }
+          ]
+        },
+        {
+          "day_name": "Pull",
+          "exercises": [
+            {
+              "name": "(Weighted) Chin-Ups",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/-TZRdvUS7Qo"
+            },
+            {
+              "name": "Chest Supported DB Row (lat focus)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/I2Unz9FR0sc"
+            },
+            {
+              "name": "Chest Supported DB Rear Delt Row",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/6LTUVaKpRCk"
+            },
+            {
+              "name": "Behind Body Cable Curls",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/S2CNDlAY8kY"
+            },
+            {
+              "name": "Rope Cable Curls (neutral grip)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/0vEzBCydrU0"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Front Foot Elevated Reverse Lunge",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JySEdVXPUM8"
+            },
+            {
+              "name": "Hyperextensions (back/hamstring)",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/RU5d2H_OmSc"
+            },
+            {
+              "name": "Lying Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/aYy3alWRDmk"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            },
+            {
+              "name": "Bird Dog",
+              "set_targets": [
+                "5 per side",
+                "5 per side",
+                "5 per side"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/4qE_9h_6Hes"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_5day_30min": {
+      "days": [
+        {
+          "day_name": "Upper",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "Barbell Row (mid/upper back)",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/FTCmwlfZ29A"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/S3kYKH32VqI"
+            },
+            {
+              "name": "Pull-Ups (Weighted)",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "C",
+              "label": "C1",
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/AWo-q7P-HZ0"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Bulgarian Split Squat (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/r9XtxWSTlcg"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "C",
+              "label": "C1",
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            }
+          ]
+        },
+        {
+          "day_name": "Push",
+          "exercises": [
+            {
+              "name": "Lying Incline Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/upEqeI0F73M"
+            },
+            {
+              "name": "Dumbbell Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/WRn2hqy0gXU"
+            }
+          ]
+        },
+        {
+          "day_name": "Pull",
+          "exercises": [
+            {
+              "name": "Chest Supported DB Row (lat focus)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/I2Unz9FR0sc"
+            },
+            {
+              "name": "Bent Over Dumbbell Face Pulls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/kA415Unr-_E"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Front Foot Elevated Reverse Lunge",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/JySEdVXPUM8"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "Barbell Hip Thrust",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/_vBMijiZoxE"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_4day_30min": {
+      "days": [
+        {
+          "day_name": "Upper",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "Barbell Row (mid/upper back)",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/FTCmwlfZ29A"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/S3kYKH32VqI"
+            },
+            {
+              "name": "Pull-Ups (Weighted)",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "C",
+              "label": "C1",
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Back Squat",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/AWo-q7P-HZ0"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Bulgarian Split Squat (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/r9XtxWSTlcg"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "C",
+              "label": "C1",
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            }
+          ]
+        },
+        {
+          "day_name": "Upper 2",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Chest Supported DB Row (lat focus)",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/I2Unz9FR0sc"
+            },
+            {
+              "name": "Flat Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/g14dhC5KYBM"
+            },
+            {
+              "name": "Chest Supported DB Rear Delt Row",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/6LTUVaKpRCk"
+            },
+            {
+              "name": "Hammer Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "C",
+              "label": "C1",
+              "video_url": "https://youtu.be/OrGL-ymYREg"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Front Foot Elevated Reverse Lunge",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/JySEdVXPUM8"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "Barbell Hip Thrust",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/_vBMijiZoxE"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            }
+          ]
+        }
+      ]
+    },
+    "bws_ab_routine": {
+      "days": [
+        {
+          "day_name": "Day 1",
+          "exercises": [
+            {
+              "name": "Weighted Crunches",
+              "set_targets": [
+                "8-15",
+                "8-15",
+                "8-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": null
+            },
+            {
+              "name": "Reverse Crunches",
+              "set_targets": [
+                "8-15",
+                "8-15",
+                "8-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": null
+            }
+          ]
+        },
+        {
+          "day_name": "Day 2",
+          "exercises": [
+            {
+              "name": "Hanging Leg Raises (Lower Abs)",
+              "set_targets": [
+                "8-15",
+                "8-15",
+                "8-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": null
+            },
+            {
+              "name": "Cable Crunches (Upper Abs)",
+              "set_targets": [
+                "8-15",
+                "8-15",
+                "8-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": null
+            }
+          ]
+        }
+      ]
+    },
+    "ryhan_5day_personal": {
+      "days": [
+        {
+          "day_name": "Upper",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/S3kYKH32VqI"
+            },
+            {
+              "name": "Lat Pulldown",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AvYZZhEl7Xk"
+            },
+            {
+              "name": "Standing High To Low Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JfZjng7jAKs"
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/1muit9qEctY"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Quad-Focused Leg Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/0nrW-q7-WRQ"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Seated Leg Extensions",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/nIalczfM8es"
+            },
+            {
+              "name": "Walking Lunges (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JB20RuTOaFc"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Push",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Dumbbell Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/WRn2hqy0gXU"
+            },
+            {
+              "name": "Neutral Grip DB Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/N-kUwH1uf9c"
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/zcO3sgAeLA0"
+            },
+            {
+              "name": "Cable Pushdowns",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/MlfCS_7ZLXA"
+            },
+            {
+              "name": "Cross Cable Tricep Extensions",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Fua2QlXnn6Y"
+            }
+          ]
+        },
+        {
+          "day_name": "Pull",
+          "exercises": [
+            {
+              "name": "(Weighted) Pull-Ups",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Lat Focused Cable Row",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/ZaEnZ47cDTk"
+            },
+            {
+              "name": "Rear Delt Cable Row",
+              "set_targets": [
+                "12-15",
+                "12-15",
+                "12-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/k9G7BykDD4o"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            },
+            {
+              "name": "Hammer Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/OrGL-ymYREg"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Glute Focused Leg Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/p13BNdwR93A"
+            },
+            {
+              "name": "Bulgarian Split Squat (glute focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/sqadB2rroz0"
+            },
+            {
+              "name": "Barbell Hip Thrust",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/_vBMijiZoxE"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            }
+          ]
+        }
+      ]
+    },
+    "ryhan_4day_personal": {
+      "days": [
+        {
+          "day_name": "Upper 1",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "(Weighted) Pull-Ups",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/w_yuTRQd6HA"
+            },
+            {
+              "name": "Standing Barbell Overhead Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/XZRyDGqSfF8"
+            },
+            {
+              "name": "Seated Mid-Chest Cable Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Y8E3dHNsSTU"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Incline Dumbbell Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/3D56VDVkQnM"
+            },
+            {
+              "name": "Lying Incline Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/upEqeI0F73M"
+            },
+            {
+              "name": "Standing Face Pulls",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/02g7XtSRXug"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 1 (Quad Focus)",
+          "exercises": [
+            {
+              "name": "Weighted Step-Ups",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Cjc3AgmdtlA"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Heel Elevated Goblet Squat",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/l9crMLuT4II"
+            },
+            {
+              "name": "Walking Lunges (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JB20RuTOaFc"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "Side Plank",
+              "set_targets": [
+                "30s per side",
+                "30s per side"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/o4LGPtKjbhU"
+            }
+          ]
+        },
+        {
+          "day_name": "Upper 2",
+          "exercises": [
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "Chest Supported DB Row (lat focus)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/I2Unz9FR0sc"
+            },
+            {
+              "name": "Flat Dumbbell Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/g14dhC5KYBM"
+            },
+            {
+              "name": "Chest Supported DB Rear Delt Row",
+              "set_targets": [
+                "12-15",
+                "12-15",
+                "12-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/6LTUVaKpRCk"
+            },
+            {
+              "name": "Lying Incline Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/upEqeI0F73M"
+            },
+            {
+              "name": "Hammer Curls",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/OrGL-ymYREg"
+            },
+            {
+              "name": "Cable Pushdowns",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/MlfCS_7ZLXA"
+            },
+            {
+              "name": "Wall Slides",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/x4zjfuLXHVk"
+            }
+          ]
+        },
+        {
+          "day_name": "Lower 2 (Glute Focus)",
+          "exercises": [
+            {
+              "name": "Barbell Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/JL1tJTEmxfw"
+            },
+            {
+              "name": "Bulgarian Split Squat (glute focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/sqadB2rroz0"
+            },
+            {
+              "name": "Hyperextensions (glute focus)",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/bsXgCaIIwCg"
+            },
+            {
+              "name": "Lying Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/aYy3alWRDmk"
+            },
+            {
+              "name": "Banded Hip Abductions",
+              "set_targets": [
+                "12",
+                "12",
+                "12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/CA0ALPgTkxw"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            }
+          ]
+        }
+      ]
+    },
+    "ryhan_3day_personal": {
+      "days": [
+        {
+          "day_name": "Full Body A",
+          "exercises": [
+            {
+              "name": "Barbell Bench Press",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/pCGVSBk0bIQ"
+            },
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Lat Pulldown",
+              "set_targets": [
+                "6-12",
+                "6-12",
+                "6-12"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/AvYZZhEl7Xk"
+            },
+            {
+              "name": "Bulgarian Split Squat (quad focus)",
+              "set_targets": [
+                "8-10 per leg",
+                "8-10 per leg",
+                "8-10 per leg"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/r9XtxWSTlcg"
+            },
+            {
+              "name": "Dumbbell Fly",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/WRn2hqy0gXU"
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/zcO3sgAeLA0"
+            },
+            {
+              "name": "Standing Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/q2Eigaa9dKU"
+            },
+            {
+              "name": "(Weighted) Prone Arm Circles",
+              "set_targets": [
+                "10",
+                "10",
+                "10"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/6D-4V_M8RJA"
+            }
+          ]
+        },
+        {
+          "day_name": "Full Body B",
+          "exercises": [
+            {
+              "name": "Weighted Step-Ups",
+              "set_targets": [
+                "8-10",
+                "8-10",
+                "8-10"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Cjc3AgmdtlA"
+            },
+            {
+              "name": "Standing Dumbbell Shoulder Press",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/jWriqmLrQqs"
+            },
+            {
+              "name": "Seated Leg Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/81umRgyxIAU"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Close-Grip Push-Ups",
+              "set_targets": [
+                "10+",
+                "10+",
+                "10+ (to failure)"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/ZtAz8gupAss"
+            },
+            {
+              "name": "Incline Barbell Skullcrushers",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/XgwPiPY4vCI"
+            },
+            {
+              "name": "Seated Weighted Calf Raise",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/2TkLMol2bCo"
+            },
+            {
+              "name": "RKC Plank",
+              "set_targets": [
+                "30-60s hold",
+                "30-60s hold",
+                "30-60s hold"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/lOgA1UfFbWY"
+            }
+          ]
+        },
+        {
+          "day_name": "Full Body C",
+          "exercises": [
+            {
+              "name": "Dumbbell Romanian Deadlift",
+              "set_targets": [
+                "6-8",
+                "6-8",
+                "6-8"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/Xu4DxwKWzl4"
+            },
+            {
+              "name": "Low Incline Dumbbell Press",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A1",
+              "video_url": "https://youtu.be/kpzUeELReEA"
+            },
+            {
+              "name": "DB Chest Supported Row (mid/upper back)",
+              "set_targets": [
+                "10-12",
+                "10-12",
+                "10-12"
+              ],
+              "superset": "A",
+              "label": "A2",
+              "video_url": "https://youtu.be/kNvy2_9Ji2w"
+            },
+            {
+              "name": "Heel Elevated Goblet Squat",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/l9crMLuT4II"
+            },
+            {
+              "name": "Lying Incline Lateral Raise",
+              "set_targets": [
+                "15-20",
+                "15-20",
+                "15-20"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/upEqeI0F73M"
+            },
+            {
+              "name": "Seated Dumbbell Curls",
+              "set_targets": [
+                "10-15",
+                "10-15",
+                "10-15"
+              ],
+              "superset": null,
+              "label": null,
+              "video_url": "https://youtu.be/qUAzPq4B2aw"
+            },
+            {
+              "name": "(Weighted) Prone Arm Circles",
+              "set_targets": [
+                "10",
+                "10"
+              ],
+              "superset": "B",
+              "label": "B1",
+              "video_url": "https://youtu.be/6D-4V_M8RJA"
+            },
+            {
+              "name": "Bird Dog",
+              "set_targets": [
+                "5 per side",
+                "5 per side"
+              ],
+              "superset": "B",
+              "label": "B2",
+              "video_url": "https://youtu.be/4qE_9h_6Hes"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "stats": {
+    "total_unique_exercises": 128,
+    "with_video": 124,
+    "without_video": 4,
+    "master_lookup_size": 124,
+    "total_exercises": 124
+  }
+}

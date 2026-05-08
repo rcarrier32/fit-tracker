@@ -1,0 +1,75 @@
+{
+  "program_name": "Fat Don't Fly - Phase 1",
+  "source": "PJF Performance",
+  "duration_weeks": 2,
+  "days_per_week": 6,
+  "templates": {
+    "strength_a": {
+      "label": "Full Body Strength (A) + Zone 5 Cardio",
+      "exercises": [
+        {"group": null, "name": "Daily Overview", "sets": 1, "reps": 1},
+        {"group": null, "name": "Dynamic Warm Up 2", "sets": 1, "reps": 1, "expansion": ["Skips 1x30s", "Seal Jacks 1x30s", "Post tilt hip bridge 1x10", "T Spine side lying opener 1x7 each side", "1/2 Kneel hip flexor stretch 1x10 each side", "Hamstring crossover touches 1x7 each side", "Knee hug lateral lunge 1x4 each side", "Hip flip forward 1x10 yds", "Hip flip backwards 1x10 yds"]},
+        {"group": null, "name": "MB High Toss/Extensive Jumps Contrast", "sets": 3, "reps_w1": "5-20", "reps_w2": "5-25", "rest": "1:15"},
+        {"group": "Superset", "name": "Box Squat", "sets": 3, "reps": 8, "rest": "1:00"},
+        {"group": "Superset", "name": "Inverted Row", "sets": 3, "reps_w1": 8, "reps_w2": 10, "rest": "1:00"},
+        {"group": "Superset", "name": "Dumbbell Bench Press", "sets": 3, "reps": 10, "rest": "0:15"},
+        {"group": "Superset", "name": "Band Resisted Bridge March", "sets": 3, "reps_w1": 10, "reps_w2": 12, "rest": "0:30", "notes": "Perform each side"},
+        {"group": null, "name": "Complex (Landmine or DB)", "sets": 3, "reps": 7, "rest": "1:00", "notes": "Perform each side"},
+        {"group": null, "name": "Tricep Push Down Iso Hold", "optional": true, "sets": 3, "reps": 5, "time": "00:00:05", "rest": "0:00"},
+        {"group": null, "name": "Reverse Flys", "optional": true, "sets": 3, "reps": 12, "rest": "0:00"},
+        {"group": null, "name": "Towel Inverted Curl", "optional": true, "sets": 3, "reps_w1": 12, "reps_w2": 15, "rest": "0:15"},
+        {"group": "Zone 5 Cardio", "name": "Zone 5 Cardio (90-100%)", "sets_w1": 10, "sets_w2": 12, "reps": 1, "time": "00:00:15", "rest": "0:45"},
+        {"group": null, "name": "Optional Static Stretch", "optional": true, "sets": 1, "time": "00:00:15", "rest": "0:00"},
+        {"group": null, "name": "7/11 Breathing", "sets": 1, "time": "00:03:00"}
+      ],
+      "time_limit": "01:30:00"
+    },
+    "core_movement_quality": {
+      "label": "Core/Movement Quality + Zone 2 Cardio",
+      "exercises": [
+        {"group": "Superset", "name": "Daily Overview", "sets": 1, "reps": 1},
+        {"group": "Superset", "name": "SB Stir The Pot/Rocker", "sets": 3, "reps_w1": 7, "reps_w2": 8},
+        {"group": "Superset", "name": "Wall Side T Spine Opener", "sets": 3, "reps": 4, "notes": "Perform each side"},
+        {"group": "Superset", "name": "Core Rotation Pallof Press", "sets": 3, "reps_w1": 6, "reps_w2": 8, "rest": "0:00", "notes": "Perform each side"},
+        {"group": "Superset", "name": "Brettzel Stretch", "sets": 3, "time": "00:00:20", "rest": "0:00", "notes": "Perform each side"},
+        {"group": "Superset", "name": "Reverse 1/2 Crunch", "sets": 3, "reps": 12, "rest": "0:00"},
+        {"group": "Superset", "name": "Weighted Windmill Mobility", "sets": 3, "reps_w1": 4, "reps_w2": 6, "rest": "0:00"},
+        {"group": "Zone 2 (Low Impact)", "name": "Zone 2 60-70% (Low Impact)", "sets": 1, "time_w1": "00:20:00", "time_w2": "00:25:00"}
+      ],
+      "time_limit": "01:00:00"
+    },
+    "strength_b": {
+      "label": "Full Body Strength (B) + Optional Zone 4 Cardio",
+      "exercises": [
+        {"group": null, "name": "Daily Overview", "sets": 1, "reps": 1},
+        {"group": null, "name": "Foam Roller Circuit", "sets": 1, "time": "00:00:25"},
+        {"group": null, "name": "Dynamic Warm Up 2", "sets": 1, "reps": 1},
+        {"group": null, "name": "Dumbbell Kickstand Clean/Press", "sets": 3, "reps": 4, "rest": "1:00", "notes": "Perform each side"},
+        {"group": "Circuit", "name": "Lat Pull-Down OR Pull Up", "sets": 3, "reps": 15, "rest": "0:00"},
+        {"group": "Circuit", "name": "1.5 DB Squats", "sets": 3, "reps": 10, "rest": "0:20"},
+        {"group": "Circuit", "name": "Push Ups", "sets": 3, "reps": "MAX", "rest": "1:15", "notes": "Stop 1-2 reps short of failure"},
+        {"group": "Superset", "name": "Hamstring Walk Outs", "sets": 3, "reps_w1": 5, "reps_w2": 6, "rest": "0:00"},
+        {"group": "Superset", "name": "Dumbbell Scarecrows", "sets": 3, "reps": 15, "rest": "0:00"},
+        {"group": "Superset", "name": "21 Curls", "optional": true, "sets": 3, "reps": 7, "rest": "0:00"},
+        {"group": "Superset", "name": "Tricep Extension", "optional": true, "sets": 3, "reps": 15},
+        {"group": "Optional Zone 4 Cardio", "name": "Zone 4 Cardio (80-90%)", "sets_w1": 10, "sets_w2": 12, "reps": 1, "time": "00:01:00", "rest": "1:00"},
+        {"group": null, "name": "7/11 Breathing", "sets": 1, "time": "00:03:00"}
+      ],
+      "time_limit": "01:30:00"
+    }
+  },
+  "schedule": [
+    {"week": 1, "day": 1, "template": "strength_a"},
+    {"week": 1, "day": 2, "template": "core_movement_quality"},
+    {"week": 1, "day": 3, "template": "strength_b"},
+    {"week": 1, "day": 4, "template": "core_movement_quality"},
+    {"week": 1, "day": 5, "template": "strength_a"},
+    {"week": 1, "day": 6, "template": "core_movement_quality"},
+    {"week": 2, "day": 1, "template": "strength_a"},
+    {"week": 2, "day": 2, "template": "core_movement_quality"},
+    {"week": 2, "day": 3, "template": "strength_b"},
+    {"week": 2, "day": 4, "template": "core_movement_quality"},
+    {"week": 2, "day": 5, "template": "strength_a"},
+    {"week": 2, "day": 6, "template": "core_movement_quality"}
+  ]
+}
