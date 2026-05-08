@@ -504,6 +504,10 @@ function openLogServings(item, parentClose, dateKey) {
       <label>Servings</label>
       <input type="number" id="srv" value="1" step="0.25" inputmode="decimal">
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
+      ${!item.id || item.barcode ? `
+        <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px">
+          <input type="checkbox" id="save-lib" ${item.barcode ? 'checked' : ''}> Save to my library
+        </label>` : ''}
       <div class="btn-row" style="margin-top:14px">
         <button class="btn" id="log">Log</button>
         <button class="btn ghost" id="cancel">Cancel</button>
@@ -541,6 +545,19 @@ function openLogServings(item, parentClose, dateKey) {
         fat:      Math.round((item.fat || 0) * s * 10) / 10,
         time: new Date().toISOString(),
       });
+      if (sheet.querySelector('#save-lib')?.checked) {
+        await put('user_meals', {
+          name: item.name,
+          serving: item.serving || '1 serving',
+          calories: item.calories,
+          protein: item.protein || 0,
+          carbs: item.carbs || 0,
+          fat: item.fat || 0,
+          barcode: item.barcode,
+          category: 'user',
+          kind: 'user',
+        });
+      }
       toast(`Logged ${item.name}`);
       close();
       if (parentClose) parentClose();
