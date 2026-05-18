@@ -1,7 +1,7 @@
 /**
  * Service worker — cache app shell + data on install, network-first for HTML, cache-first for static.
  */
-const CACHE = 'fit-tracker-v19';
+const CACHE = 'fit-tracker-v20';
 const APP_SHELL = [
   './',
   './index.html',
@@ -43,9 +43,16 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const { request } = e;
-  // Don't intercept cross-origin requests (Open Food Facts, YouTube, CDNs)
-  if (new URL(request.url).origin !== location.origin) return;
-  // Network-first: always fetch fresh when online, fall back to cache offline
+  const url = new URL(request.url);
+  if (url.origin !== location.origin) return;
+
+  // JS modules must always come from the network (avoid stale broken bundles)
+  if (url.pathname.endsWith('.js')) {
+    e.respondWith(fetch(request));
+    return;
+  }
+
+  // Network-first for everything else; cache only successful responses
   e.respondWith(
     fetch(request).then(res => {
       if (res.ok) {
