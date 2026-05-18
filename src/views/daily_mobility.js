@@ -134,8 +134,7 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
         <div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="padding:8px 12px;cursor:pointer">
           <div class="list-item-title" style="font-size:13px">${e.name}</div>
         </div>
-      `).join('') || `<div class="muted">Type a custom name above</div>`;
-      $pick.innerHTML = $pick.innerHTML.replace(/<\/motion>/g, '</div>');`;
+      `).join('') || '<div class="muted">Type a custom name above</div>';
 
       $pick.querySelectorAll('[data-name]').forEach(row => {
         row.onclick = () => { sheet.querySelector('#ex-name').value = row.dataset.name; };

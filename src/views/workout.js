@@ -420,7 +420,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${ex.name}</h2>
-      <div class="muted" style="margin-bottom:14px">${formatTarget(ex)}${muscleLabel ? ` · ${muscleLabel}` : ''}</div>
+      <div class="muted" style="margin-bottom:14px">${formatTarget(ex)}${muscleLabel ? ' · ' + muscleLabel : ''}</div>
 
       <button class="btn" id="swap-all" style="margin-bottom:8px">🔄 Swap exercise</button>
       <div class="btn-row" style="margin-bottom:8px">
@@ -744,9 +744,10 @@ function applyCompactState(card, ex) {
 function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const sets = Math.max(parseInt(ex.target_sets) || 3, ex.sets.length, 3);
   const lookup = exMap[ex.name.toLowerCase()];
+  const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   const videoLink = lookup?.video_url
     ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
-    : `<a class="video-link" href="${lookup?.fallback_search || `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}`}" target="_blank">🔍 Find</a>`;
+    : `<a class="video-link" href="${lookup?.fallback_search || ytSearch}" target="_blank">🔍 Find</a>`;
 
   const prevSets = prevRef[ex.name]?.sets || [];
   let setRows = '';
@@ -878,6 +879,7 @@ async function renderTagDay(app, today_w) {
       <button class="btn ghost" id="mob-move">Move tab</button>
       <button class="btn ghost" id="back">Today</button>
     </div>
+  `;
   const { renderDailyMobility } = await import('./daily_mobility.js');
   await renderDailyMobility(app.querySelector('#daily-mobility'), dateKey, { compact: true });
   app.querySelector('#back').onclick = () => navigate('home');
@@ -935,7 +937,7 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       ${stats.prs.map(pr => `
         <div style="font-size:14px;margin-top:4px;display:flex;justify-content:space-between;align-items:baseline">
           <span>${pr.name}</span>
-          <span style="color:var(--accent);font-weight:600">${pr.todayE1RM} lb e1RM${pr.prevE1RM ? `<span style="color:var(--fg-dim);font-weight:400"> (was ${pr.prevE1RM})</span>` : ' <span style="color:var(--fg-dim);font-weight:400;font-size:12px">first time</span>'}</span>
+          <span style="color:var(--accent);font-weight:600">${pr.todayE1RM} lb e1RM${pr.prevE1RM ? '<span style="color:var(--fg-dim);font-weight:400"> (was ' + pr.prevE1RM + ')</span>' : ' <span style="color:var(--fg-dim);font-weight:400;font-size:12px">first time</span>'}</span>
         </div>
       `).join('')}
     </div>

@@ -222,7 +222,7 @@ function renderList(el, meals, dateKey) {
     node.innerHTML = `
       <div style="flex:1">
         <div class="list-item-title">${m.name}</div>
-        <div class="list-item-meta">${m.calories || 0} kcal · ${m.protein || 0}p · ${m.carbs || 0}c · ${m.fat || 0}f${m.servings && m.servings !== 1 ? ` · ${m.servings}×` : ''}${micro ? ` · ${micro}` : ''}</div>
+        <div class="list-item-meta">${m.calories || 0} kcal · ${m.protein || 0}p · ${m.carbs || 0}c · ${m.fat || 0}f${m.servings && m.servings !== 1 ? ' · ' + m.servings + '×' : ''}${micro ? ' · ' + micro : ''}</div>
       </div>
       <button class="btn ghost del-meal" data-id="${m.id}" style="width:auto;padding:6px 10px">✕</button>
     `;
@@ -966,7 +966,7 @@ function openFoodSearch(dateKey, initialQuery = '') {
             <div class="list-item off-item" data-code="${p.code}">
               <div style="flex:1">
                 <div class="list-item-title">${name}</div>
-                <div class="list-item-meta">${brands}${cal ? ` · ~${Math.round(cal)} kcal` : ''}</div>
+                <div class="list-item-meta">${brands}${cal ? ' · ~' + Math.round(cal) + ' kcal' : ''}</div>
               </div>
               <span class="pill accent">+</span>
             </div>`;

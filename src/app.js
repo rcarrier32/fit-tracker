@@ -93,8 +93,8 @@ export function openSheet(contentBuilder) {
 (async () => {
   // Load catalogs in background — views await them when needed
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
-  if (!location.hash) navigate('home');
-  else render();
+  if (!location.hash) location.hash = '#/home';
+  await render();
 })();
 
 if ('serviceWorker' in navigator) {

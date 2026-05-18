@@ -197,7 +197,7 @@ export async function renderHome(app) {
         <span class="pill ${remaining >= 0 ? 'accent' : ''}">${remaining >= 0 ? remaining + ' left' : Math.abs(remaining) + ' over'}</span>
       </div>
       <div class="bar"><div class="bar-fill ${eaten.cal > target + cardio_burned ? 'warn' : ''}" style="width:${Math.min(100, eaten.cal / (target + cardio_burned) * 100)}%"></div></div>
-      <div class="muted">${eaten.cal} eaten${cardio_burned ? ` · ${cardio_burned} burned` : ''} · budget ${target + cardio_burned} kcal</div>
+      <div class="muted">${eaten.cal} eaten${cardio_burned ? ' · ' + cardio_burned + ' burned' : ''} · budget ${target + cardio_burned} kcal</div>
 
       <div class="macro-grid">
         ${macroBox('Protein', eaten.p, macroT.protein_g, 'g')}
@@ -228,7 +228,7 @@ export async function renderHome(app) {
         <h2 style="margin:0">Body weight</h2>
         ${bodyToday ? `<span class="pill accent">Logged</span>` : ''}
       </div>
-      <div class="muted">Latest: ${userProfile.weight_lb} lb · target ${tdee.weekly_change_lb > 0 ? '+' : ''}${tdee.weekly_change_lb} lb/week · ${actualTdee ? `actual TDEE ~${actualTdee} kcal` : `maintenance ~${tdee.maintenance} kcal`}</div>
+      <div class="muted">Latest: ${userProfile.weight_lb} lb · target ${tdee.weekly_change_lb > 0 ? '+' : ''}${tdee.weekly_change_lb} lb/week · ${actualTdee ? ('actual TDEE ~' + actualTdee + ' kcal') : ('maintenance ~' + tdee.maintenance + ' kcal')}</div>
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
         <button class="btn ghost" data-action="edit-profile">Edit profile</button>
@@ -367,7 +367,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
   if (today_w.type === 'program' && today_w.program) {
     const p = today_w.program;
     const detail = today_w.day_index != null
-      ? `${p.days?.[today_w.day_index]?.day_name || `Day ${today_w.day_index + 1}`}`
+      ? (p.days?.[today_w.day_index]?.day_name || ('Day ' + (today_w.day_index + 1)))
       : `Wk ${today_w.week}, Day ${today_w.day}`;
     const preview = getExercisePreview(today_w);
     const totalEx = today_w.program.days
@@ -378,7 +378,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
         ${preview.map(e => `
           <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--fg-dim);padding:3px 0">
             <span>${e.name}</span>
-            <span style="opacity:0.55">${e.sets ? `${e.sets}×${e.reps || e.set_targets?.[0] || ''}` : ''}</span>
+            <span style="opacity:0.55">${e.sets ? (e.sets + '×' + (e.reps || e.set_targets?.[0] || '')) : ''}</span>
           </div>
         `).join('')}
         ${totalEx > 4 ? `<div style="font-size:12px;color:var(--fg-dim);opacity:0.5;padding-top:2px">+ ${totalEx - 4} more</div>` : ''}
