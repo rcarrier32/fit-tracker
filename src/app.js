@@ -80,7 +80,8 @@ export function openSheet(contentBuilder) {
     if (!closed && document.body.contains(backdrop)) dismiss(false);
   }
 
-  history.pushState({ fitSheet: 1 }, '');
+  // Keep full path + hash (empty url breaks iOS Safari → wrong path → GitHub 404)
+  history.pushState({ fitSheet: 1 }, '', location.pathname + location.search + location.hash);
   window.addEventListener('popstate', onPopState);
   backdrop.addEventListener('click', e => { if (e.target === backdrop) dismiss(true); });
 

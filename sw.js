@@ -1,7 +1,7 @@
 /**
  * Service worker — cache app shell + data on install, network-first for HTML, cache-first for static.
  */
-const CACHE = 'fit-tracker-v16';
+const CACHE = 'fit-tracker-v18';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,8 +12,11 @@ const APP_SHELL = [
   './src/lib/tdee.js',
   './src/lib/e1rm.js',
   './src/lib/static_data.js',
+  './src/lib/off_nutrients.js',
+  './src/lib/plans.js',
   './src/lib/plan_builder.js',
   './src/views/home.js',
+  './src/views/daily_mobility.js',
   './src/views/workout.js',
   './src/views/meals.js',
   './src/views/body.js',
