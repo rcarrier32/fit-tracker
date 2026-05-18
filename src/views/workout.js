@@ -36,7 +36,7 @@ export async function renderWorkout(app) {
     return;
   }
   if (today_w.type === 'tag') {
-    return renderTagDay(app, today_w);
+    return await renderTagDay(app, today_w);
   }
 
   const program = today_w.program;
@@ -862,22 +862,26 @@ function pickDay(program, week, day, day_index) {
   return null;
 }
 
-function renderTagDay(app, today_w) {
+async function renderTagDay(app, today_w) {
   const map = {
     'Rest':   { icon: '😴', txt: 'Rest day', sub: 'Recovery, stretching, walking — anything light is fine.' },
-    'Cardio': { icon: '🏃', txt: 'Zone 2 cardio', sub: '30–45 min steady state. Untracked here.' },
+    'Cardio': { icon: '🏃', txt: 'Zone 2 cardio', sub: 'Log steady-state on the Move tab.' },
     'Custom': { icon: '✏️', txt: 'Free-form session', sub: 'Add exercises and log as you go.' },
   };
   const m = map[today_w.tag] || { icon: '·', txt: today_w.tag, sub: '' };
+  const dateKey = today();
   app.innerHTML = `
     <h1>${m.icon} ${m.txt}</h1>
     <div class="muted">${m.sub}</div>
-    <div class="card" style="margin-top:14px">
-      <div class="muted">No prescribed program for today. Use the schedule editor to assign one if you'd like to lift.</div>
-      <button class="btn ghost" id="back" style="margin-top:10px">Back to today</button>
+    <div id="daily-mobility"></div>
+    <div class="btn-row" style="margin-top:14px">
+      <button class="btn ghost" id="mob-move">Move tab</button>
+      <button class="btn ghost" id="back">Today</button>
     </div>
-  `;
+  const { renderDailyMobility } = await import('./daily_mobility.js');
+  await renderDailyMobility(app.querySelector('#daily-mobility'), dateKey, { compact: true });
   app.querySelector('#back').onclick = () => navigate('home');
+  app.querySelector('#mob-move').onclick = () => navigate('cardio');
 }
 
 function computeSessionStats(session, allSessions) {

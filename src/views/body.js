@@ -2,8 +2,8 @@
  * Body view: log weight + body comp daily, view trend chart.
  */
 import { put, get, getAll, pref } from '../db.js';
-import { profile, actualTdeeForWeek, bfPctNavy } from '../lib/tdee.js';
-import { toast } from '../app.js';
+import { profile, actualTdeeForWeek, bfPctNavy, bmiFromImperial, bmiCategory } from '../lib/tdee.js';
+import { toast, openSheet } from '../app.js';
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 const ymd = (d) => d.toISOString().slice(0, 10);
@@ -23,6 +23,15 @@ export async function renderBody(app, date) {
 
   const dateLabel = isToday ? 'Today' : new Date(dateKey + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
 
+  const weightForBmi = todayLog?.weight_lb ?? userProfile.weight_lb;
+  const heightIn = userProfile.height_in;
+  const bmi = bmiFromImperial(weightForBmi, heightIn);
+  const bmiLine = bmi != null
+    ? `<div class="muted" style="font-size:12px;margin-top:6px">BMI <strong style="color:var(--fg)">${bmi}</strong> · ${bmiCategory(bmi)}</div>`
+    : !heightIn
+      ? `<div class="muted" style="font-size:12px;margin-top:6px">Add height below to see estimated BMI</div>`
+      : '';
+
   app.innerHTML = `
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
       <h1 style="margin:0;flex:1">Body</h1>
@@ -32,12 +41,16 @@ export async function renderBody(app, date) {
     </div>
     <div class="muted" style="margin-bottom:12px">Morning weigh-in — after bathroom, before food</div>
 
-    <div class="card">
-      <label>Weight (lb)</label>
-      <input type="number" id="w" inputmode="decimal" step="0.1" value="${todayLog?.weight_lb ?? ''}" placeholder="${userProfile.weight_lb || ''}">
-      <label>Notes (optional)</label>
-      <input type="text" id="n" value="${todayLog?.notes ?? ''}" placeholder="e.g. salty meal yesterday">
-      <button class="btn" id="save" style="margin-top:14px">${todayLog ? 'Update' : 'Log'} ${isToday ? 'today' : dateLabel}</button>
+    <div class="card" style="padding:12px 14px">
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap">
+        <div style="flex:1;min-width:120px">
+          <label style="margin-bottom:4px">Weight (lb)</label>
+          <input type="number" id="w" inputmode="decimal" step="0.1" value="${todayLog?.weight_lb ?? ''}" placeholder="${userProfile.weight_lb || ''}">
+        </div>
+        <button class="btn ghost" id="notes-btn" style="width:auto;padding:10px 14px;margin-bottom:0">${todayLog?.notes ? '📝 Notes' : 'Notes'}</button>
+        <button class="btn" id="save" style="width:auto;padding:10px 18px;margin-bottom:0">${todayLog ? 'Update' : 'Log'}</button>
+      </div>
+      ${bmiLine}
     </div>
 
     ${rolling7display ? `
@@ -66,7 +79,7 @@ export async function renderBody(app, date) {
         </div>
         <div>
           <label>Height (in)</label>
-          <input type="number" id="bf-height" inputmode="decimal" step="0.25" placeholder="${userProfile.height_in || ''}">
+          <input type="number" id="bf-height" inputmode="decimal" step="0.25" placeholder="${userProfile.height_in || ''}" value="${userProfile.height_in || ''}">
         </div>
         <div style="display:flex;align-items:flex-end">
           <button class="btn secondary" id="calc-bf">Calculate</button>
@@ -79,11 +92,27 @@ export async function renderBody(app, date) {
     <div id="history">${renderHistory(all)}</div>
   `;
 
+  let pendingNotes = todayLog?.notes ?? '';
+
+  app.querySelector('#notes-btn').onclick = () => {
+    openSheet((sheet, close) => {
+      sheet.innerHTML = `
+        <h2>Notes</h2>
+        <input type="text" id="n" value="${(pendingNotes || '').replace(/"/g, '&quot;')}" placeholder="e.g. salty meal yesterday">
+        <button class="btn" id="n-save" style="margin-top:14px">Done</button>
+      `;
+      sheet.querySelector('#n-save').onclick = () => {
+        pendingNotes = sheet.querySelector('#n').value.trim();
+        app.querySelector('#notes-btn').textContent = pendingNotes ? '📝 Notes' : 'Notes';
+        close();
+      };
+    });
+  };
+
   app.querySelector('#save').onclick = async () => {
     const w = parseFloat(app.querySelector('#w').value);
     if (!w) { toast('Enter a weight'); return; }
-    const n = app.querySelector('#n').value.trim();
-    await put('body', { date: dateKey, weight_lb: w, notes: n || undefined });
+    await put('body', { date: dateKey, weight_lb: w, notes: pendingNotes || undefined });
     if (isToday && userProfile) await pref('profile', { ...userProfile, weight_lb: w });
     toast('Saved');
     renderBody(app);
@@ -111,11 +140,12 @@ export async function renderBody(app, date) {
     if (!waist || !neck || !height) { $res.textContent = 'Enter waist, neck, and height.'; return; }
     const bf = bfPctNavy({ height_in: height, waist_in: waist, neck_in: neck });
     if (bf === null) { $res.textContent = 'Could not calculate.'; return; }
-    $res.innerHTML = `Estimated body fat: <strong style="color:var(--fg)">${bf}%</strong>`;
-    // Save measurements to profile for next time
-    const updatedProfile = { ...userProfile, waist_in: waist, neck_in: neck, height_in: height, bf_pct: bf };
-    await pref('profile', updatedProfile);
+    const bmiNow = bmiFromImperial(weightForBmi, height);
+    $res.innerHTML = `Estimated body fat: <strong style="color:var(--fg)">${bf}%</strong>` +
+      (bmiNow != null ? ` · BMI <strong style="color:var(--fg)">${bmiNow}</strong>` : '');
+    await pref('profile', { ...userProfile, waist_in: waist, neck_in: neck, height_in: height, bf_pct: bf });
     toast(`BF% updated to ${bf}%`);
+    renderBody(app);
   });
 }
 
@@ -160,7 +190,6 @@ function renderTrendCard(all, prof) {
 }
 
 async function renderWeeklyCard(all) {
-  // Use last 7 days of actual weight + actual calories to calc real TDEE
   const { getByIndex } = await import('../db.js');
   const days = [];
   for (let i = 0; i <= 6; i++) days.push(daysAgo(i));

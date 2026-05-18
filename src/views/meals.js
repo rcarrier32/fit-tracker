@@ -9,24 +9,65 @@
 import { getAll, getByIndex, put, del } from '../db.js';
 import { toast, openSheet } from '../app.js';
 import { loadCatalogs } from '../lib/static_data.js';
+import { parseServingInfo, nutrientsFromProduct, offFetch } from '../lib/off_nutrients.js';
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
 let _activeDate = null; // null = today
+let _macroRange = 'day'; // 'day' | 'week'
+
+function parseGramsPerServing(serving) {
+  return parseServingInfo(serving).gramsPerServing;
+}
+
+function macroPercents(p, c, f) {
+  const pCal = (p || 0) * 4;
+  const cCal = (c || 0) * 4;
+  const fCal = (f || 0) * 9;
+  const total = pCal + cCal + fCal;
+  if (!total) return null;
+  return {
+    p: Math.round(pCal / total * 100),
+    c: Math.round(cCal / total * 100),
+    f: Math.round(fCal / total * 100),
+  };
+}
+
+function sumMacros(meals) {
+  return meals.reduce((s, m) => ({
+    cal: s.cal + (m.calories || 0),
+    p: s.p + (m.protein || 0),
+    c: s.c + (m.carbs || 0),
+    f: s.f + (m.fat || 0),
+    fiber: s.fiber + (m.fiber || 0),
+    sat: s.sat + (m.saturated_fat || 0),
+  }), { cal: 0, p: 0, c: 0, f: 0, fiber: 0, sat: 0 });
+}
+
+function macroPctLine(p, c, f) {
+  const pct = macroPercents(p, c, f);
+  if (!pct) return '';
+  return `<div class="muted" style="font-size:11px;margin-top:6px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
+}
 
 export async function renderMeals(app, date) {
   if (date) _activeDate = date;
   const dateKey = _activeDate || todayStr();
   const isToday = dateKey === todayStr();
-  const meals = await getByIndex('meals', 'date', dateKey);
+  const [meals, allMeals] = await Promise.all([
+    getByIndex('meals', 'date', dateKey),
+    _macroRange === 'week' ? getAll('meals') : Promise.resolve(null),
+  ]);
   const { pref } = await import('../db.js');
   const userProfile = (await pref('profile')) || {};
-  const sums = meals.reduce((s, m) => ({
-    cal: s.cal + (m.calories || 0),
-    p:   s.p   + (m.protein  || 0),
-    c:   s.c   + (m.carbs    || 0),
-    f:   s.f   + (m.fat      || 0),
-  }), { cal: 0, p: 0, c: 0, f: 0 });
+  let displayMeals = meals;
+  if (_macroRange === 'week') {
+    const start = new Date(dateKey + 'T12:00:00');
+    start.setDate(start.getDate() - 6);
+    const startStr = start.toISOString().slice(0, 10);
+    displayMeals = (allMeals || []).filter(m => m.date >= startStr && m.date <= dateKey);
+  }
+  const sums = sumMacros(displayMeals);
 
   let targets = null;
   if (userProfile.weight_lb) {
@@ -45,19 +86,39 @@ export async function renderMeals(app, date) {
       <button class="btn ghost" id="next-day" style="width:auto;padding:6px 10px" ${isToday ? 'disabled' : ''}>›</button>
     </div>
 
+    <div style="display:flex;gap:6px;margin-bottom:8px">
+      <button class="pill ${_macroRange === 'day' ? 'accent' : ''}" data-range="day">Day</button>
+      <button class="pill ${_macroRange === 'week' ? 'accent' : ''}" data-range="week">7 days</button>
+    </div>
     ${targets ? `
     <div class="card" style="padding:10px 12px;margin-bottom:10px">
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center">
-        ${macroCell('Cal', Math.round(sums.cal), targets.cal)}
-        ${macroCell('Protein', Math.round(sums.p), targets.p, 'g')}
-        ${macroCell('Carbs', Math.round(sums.c), targets.c, 'g')}
-        ${macroCell('Fat', Math.round(sums.f), targets.f, 'g')}
+        ${macroCell('Cal', Math.round(sums.cal), _macroRange === 'week' ? targets.cal * 7 : targets.cal)}
+        ${macroCell('Protein', Math.round(sums.p), _macroRange === 'week' ? targets.p * 7 : targets.p, 'g')}
+        ${macroCell('Carbs', Math.round(sums.c), _macroRange === 'week' ? targets.c * 7 : targets.c, 'g')}
+        ${macroCell('Fat', Math.round(sums.f), _macroRange === 'week' ? targets.f * 7 : targets.f, 'g')}
       </div>
-    </div>` : `<div class="muted" style="margin-bottom:10px">${Math.round(sums.cal)} kcal · ${Math.round(sums.p)}p · ${Math.round(sums.c)}c · ${Math.round(sums.f)}f</div>`}
+      ${macroPctLine(sums.p, sums.c, sums.f)}
+      <div class="muted" style="font-size:11px;margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+        <span>Fiber: ${Math.round(sums.fiber * 10) / 10}g</span>
+        <span>Sat. fat: ${Math.round(sums.sat * 10) / 10}g</span>
+      </div>
+    </div>` : `
+    <div class="muted" style="margin-bottom:10px">
+      ${Math.round(sums.cal)} kcal · ${Math.round(sums.p)}p · ${Math.round(sums.c)}c · ${Math.round(sums.f)}f
+      ${macroPctLine(sums.p, sums.c, sums.f)}
+      <div style="margin-top:4px">Fiber ${Math.round(sums.fiber * 10) / 10}g · Sat. fat ${Math.round(sums.sat * 10) / 10}g</div>
+    </div>`}
 
+    <div style="display:flex;gap:8px;margin:0 0 8px;align-items:stretch">
+      <div class="search-bar" style="flex:1;margin:0">
+        <input type="text" id="meal-search" placeholder="Search foods…" autocomplete="off">
+      </div>
+      <button class="btn secondary" data-action="library" style="width:auto;flex-shrink:0;padding:0 14px">Library</button>
+    </div>
     <div class="btn-row" style="margin:0 0 12px">
       <button class="btn" data-action="quick">+ Quick add</button>
-      <button class="btn secondary" data-action="library">Library</button>
+      <button class="btn secondary" data-action="search-off">Search</button>
       <button class="btn secondary" data-action="scan">📷 Scan</button>
     </div>
     <div id="meal-list"></div>
@@ -65,8 +126,22 @@ export async function renderMeals(app, date) {
 
   renderList(app.querySelector('#meal-list'), meals, dateKey);
 
+  app.querySelectorAll('[data-range]').forEach(b => {
+    b.onclick = () => {
+      _macroRange = b.dataset.range;
+      renderMeals(app);
+    };
+  });
+
+  const $mealSearch = app.querySelector('#meal-search');
+  const openLib = (q) => openLibraryPicker(dateKey, q);
+  app.querySelector('[data-action="library"]').onclick = () => openLib($mealSearch.value.trim());
+  $mealSearch.addEventListener('keydown', e => {
+    if (e.key === 'Enter') openLib(e.target.value.trim());
+  });
+
   app.querySelector('[data-action="quick"]').onclick = () => openQuickAdd({}, dateKey);
-  app.querySelector('[data-action="library"]').onclick = () => openLibraryPicker(dateKey);
+  app.querySelector('[data-action="search-off"]').onclick = () => openFoodSearch(dateKey, $mealSearch.value.trim());
   app.querySelector('[data-action="scan"]').onclick = () => openBarcodeScanner(dateKey);
 
   app.querySelector('#prev-day').onclick = () => {
@@ -139,14 +214,23 @@ function renderList(el, meals, dateKey) {
   for (const m of meals) {
     const node = document.createElement('div');
     node.className = 'list-item';
+    node.style.cursor = 'pointer';
+    const micro = [
+      m.fiber ? `${m.fiber}g fiber` : '',
+      m.saturated_fat ? `${m.saturated_fat}g sat fat` : '',
+    ].filter(Boolean).join(' · ');
     node.innerHTML = `
       <div style="flex:1">
         <div class="list-item-title">${m.name}</div>
-        <div class="list-item-meta">${m.calories || 0} kcal · ${m.protein || 0}p · ${m.carbs || 0}c · ${m.fat || 0}f${m.servings && m.servings !== 1 ? ` · ${m.servings}×` : ''}</div>
+        <div class="list-item-meta">${m.calories || 0} kcal · ${m.protein || 0}p · ${m.carbs || 0}c · ${m.fat || 0}f${m.servings && m.servings !== 1 ? ` · ${m.servings}×` : ''}${micro ? ` · ${micro}` : ''}</div>
       </div>
-      <button class="btn ghost" data-id="${m.id}" style="width:auto;padding:6px 10px">✕</button>
+      <button class="btn ghost del-meal" data-id="${m.id}" style="width:auto;padding:6px 10px">✕</button>
     `;
-    node.querySelector('button').onclick = async (e) => {
+    node.onclick = (e) => {
+      if (e.target.closest('.del-meal')) return;
+      openEditMeal(m, dateKey);
+    };
+    node.querySelector('.del-meal').onclick = async (e) => {
       e.stopPropagation();
       const item = { ...m };
       await del('meals', m.id);
@@ -160,10 +244,30 @@ function renderList(el, meals, dateKey) {
   }
 }
 
+
+function openEditMeal(m, dateKey) {
+  const s = m.servings || 1;
+  openQuickAdd({
+    id: m.id,
+    name: m.name,
+    serving: m.serving || '1 serving',
+    calories: Math.round((m.calories || 0) / s),
+    protein: Math.round(((m.protein || 0) / s) * 10) / 10,
+    carbs: Math.round(((m.carbs || 0) / s) * 10) / 10,
+    fat: Math.round(((m.fat || 0) / s) * 10) / 10,
+    fiber: Math.round(((m.fiber || 0) / s) * 10) / 10,
+    saturated_fat: Math.round(((m.saturated_fat || 0) / s) * 10) / 10,
+    servings: s,
+    skipLibrary: true,
+  }, dateKey);
+}
+
 /* ── Quick Add (with servings + barcode link) ── */
 
 function openQuickAdd(prefill = {}, dateKey) {
   dateKey = dateKey || todayStr();
+  const isEdit = !!prefill.id;
+  const si0 = parseServingInfo(prefill.serving);
   openSheet((sheet, close) => {
     const base = {
       name:     prefill.name     || '',
@@ -171,11 +275,13 @@ function openQuickAdd(prefill = {}, dateKey) {
       protein:  prefill.protein  || 0,
       carbs:    prefill.carbs    || 0,
       fat:      prefill.fat      || 0,
+      fiber:    prefill.fiber    || 0,
+      saturated_fat: prefill.saturated_fat || 0,
       serving:  prefill.serving  || '1 serving',
     };
     sheet.innerHTML = `
-      <h2>Quick add</h2>
-      <div class="muted" style="margin-bottom:8px">Enter values per serving — log multiplies by servings consumed.</div>
+      <h2>${isEdit ? 'Edit entry' : 'Quick add'}</h2>
+      <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
       <input type="text" id="m-name" value="${base.name}" autocomplete="off" placeholder="e.g. Chicken & rice">
       <label>Serving size (label, optional)</label>
@@ -197,16 +303,35 @@ function openQuickAdd(prefill = {}, dateKey) {
           <label>Fat (g)</label>
           <input type="number" id="m-f" inputmode="decimal" value="${base.fat || ''}">
         </div>
+        <div>
+          <label>Fiber (g)</label>
+          <input type="number" id="m-fiber" inputmode="decimal" value="${base.fiber || ''}">
+        </div>
+        <div>
+          <label>Sat. fat (g)</label>
+          <input type="number" id="m-sat" inputmode="decimal" value="${base.saturated_fat || ''}">
+        </div>
       </div>
+      ${si0.preferOz && si0.ozPerServing ? `
+        <label>Amount (oz)</label>
+        <input type="number" id="m-oz" inputmode="decimal" placeholder="e.g. 4">
+        <div class="muted" style="font-size:12px;margin-bottom:8px">${si0.ozPerServing} oz per serving — enter ounces to calculate servings</div>
+      ` : ''}
+      ${si0.gramsPerServing && !si0.preferOz ? `
+        <label>Amount (grams)</label>
+        <input type="number" id="m-grams" inputmode="decimal" placeholder="e.g. 150">
+        <div class="muted" style="font-size:12px;margin-bottom:8px">${si0.gramsPerServing}g per serving — enter grams to calculate servings</div>
+      ` : ''}
       <label>Servings consumed</label>
-      <input type="number" id="m-srv" value="1" step="0.25" inputmode="decimal">
+      <input type="number" id="m-srv" value="${prefill.servings ?? 1}" step="0.25" inputmode="decimal">
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
 
+      ${!isEdit && !prefill.skipLibrary ? `
       <label style="display:flex;align-items:center;gap:8px;margin-top:12px">
         <input type="checkbox" id="m-fav" checked style="width:auto;min-height:auto"> Save to my library
-      </label>
+      </label>` : ''}
       <div class="btn-row" style="margin-top:14px">
-        <button class="btn" id="m-save">Log</button>
+        <button class="btn" id="m-save">${isEdit ? 'Save' : 'Log'}</button>
         <button class="btn ghost" id="m-cancel">Cancel</button>
       </div>
       <div style="margin-top:14px;text-align:center">
@@ -220,17 +345,43 @@ function openQuickAdd(prefill = {}, dateKey) {
       const p = +$('#m-p').value || 0;
       const cb = +$('#m-c').value || 0;
       const f = +$('#m-f').value || 0;
-      $('#preview').textContent = `Total: ${Math.round(c * s)} kcal · ${Math.round(p * s * 10) / 10}p · ${Math.round(cb * s * 10) / 10}c · ${Math.round(f * s * 10) / 10}f`;
+      const fiber = +$('#m-fiber').value || 0;
+      const sat = +$('#m-sat').value || 0;
+      $('#preview').textContent = `Total: ${Math.round(c * s)} kcal · ${Math.round(p * s * 10) / 10}p · ${Math.round(cb * s * 10) / 10}c · ${Math.round(f * s * 10) / 10}f` +
+        (fiber || sat ? ` · fiber ${Math.round(fiber * s * 10) / 10}g · sat ${Math.round(sat * s * 10) / 10}g` : '');
+    }
+    const $grams = $('#m-grams');
+    const $oz = $('#m-oz');
+    if ($grams) {
+      $grams.oninput = () => {
+        const g = parseFloat($grams.value);
+        const si = parseServingInfo($('#m-srvlbl').value);
+        if (g && si.gramsPerServing) {
+          $('#m-srv').value = Math.round((g / si.gramsPerServing) * 100) / 100;
+          update();
+        }
+      };
+    }
+    if ($oz) {
+      $oz.oninput = () => {
+        const oz = parseFloat($oz.value);
+        const si = parseServingInfo($('#m-srvlbl').value);
+        if (oz && si.ozPerServing) {
+          $('#m-srv').value = Math.round((oz / si.ozPerServing) * 100) / 100;
+          update();
+        }
+      };
     }
     sheet.addEventListener('input', e => {
       if (e.target.matches('input[type="number"]')) update();
     });
     update();
     $('#m-cancel').onclick = close;
-    $('#m-scan').onclick = (e) => { e.preventDefault(); close(); openBarcodeScanner(); };
+    $('#m-scan').onclick = (e) => { e.preventDefault(); close(); openBarcodeScanner(dateKey); };
     $('#m-save').onclick = async () => {
       const s = +$('#m-srv').value || 1;
       const meal = {
+        ...(prefill.id ? { id: prefill.id } : {}),
         date: dateKey,
         name: $('#m-name').value.trim() || 'Meal',
         serving: $('#m-srvlbl').value.trim() || undefined,
@@ -239,10 +390,13 @@ function openQuickAdd(prefill = {}, dateKey) {
         protein:  Math.round((+$('#m-p').value || 0) * s * 10) / 10,
         carbs:    Math.round((+$('#m-c').value || 0) * s * 10) / 10,
         fat:      Math.round((+$('#m-f').value || 0) * s * 10) / 10,
-        time: new Date().toISOString(),
+        fiber:    Math.round((+$('#m-fiber').value || 0) * s * 10) / 10,
+        saturated_fat: Math.round((+$('#m-sat').value || 0) * s * 10) / 10,
+        time: prefill.time || new Date().toISOString(),
       };
       await put('meals', meal);
-      if ($('#m-fav').checked) {
+      const $fav = $('#m-fav');
+      if ($fav?.checked) {
         await put('user_meals', {
           name: meal.name,
           serving: meal.serving,
@@ -250,11 +404,13 @@ function openQuickAdd(prefill = {}, dateKey) {
           protein: +$('#m-p').value || 0,
           carbs: +$('#m-c').value || 0,
           fat: +$('#m-f').value || 0,
+          fiber: +$('#m-fiber').value || 0,
+          saturated_fat: +$('#m-sat').value || 0,
           category: 'user',
           kind: 'user',
         });
       }
-      toast('Logged');
+      toast(isEdit ? 'Updated' : 'Logged');
       close();
       renderMeals(document.getElementById('app'));
     };
@@ -299,7 +455,7 @@ function buildRecentItems(logs, lib) {
     });
 }
 
-async function openLibraryPicker(dateKey) {
+async function openLibraryPicker(dateKey, initialQuery = '') {
   dateKey = dateKey || todayStr();
   const [{ mealItems }, userMeals, recentLogs] = await Promise.all([
     loadCatalogs(),
@@ -310,9 +466,11 @@ async function openLibraryPicker(dateKey) {
   const recentItems = buildRecentItems(recentLogs, lib);
   openSheet((sheet, close) => {
     sheet.innerHTML = `
-      <h2>Library</h2>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <h2 style="margin:0;flex-shrink:0">Library</h2>
+        <div class="search-bar" style="flex:1;margin:0"><input type="text" id="search" placeholder="Search…" autocomplete="off"></div>
+      </div>
       <div id="recents"></div>
-      <div class="search-bar"><input type="text" id="search" placeholder="Search meals or foods..." autocomplete="off"></div>
       <div id="cat-tabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;overflow-x:auto"></div>
       <div id="meals"></div>
     `;
@@ -350,17 +508,29 @@ async function openLibraryPicker(dateKey) {
         return;
       }
       $meals.innerHTML = filtered.map(m => `
-        <div class="list-item" data-id="${m.id}">
+        <div class="list-item" data-id="${m.id || ''}" data-kind="${m.kind}" data-user-id="${m.kind === 'user' && m.id ? m.id : ''}">
           <div style="flex:1">
             <div class="list-item-title">${m.name || '(unnamed)'}</div>
             <div class="list-item-meta">${m.serving ? m.serving + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
           </div>
+          ${m.kind === 'user' && m.id ? '<button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px">✎</button>' : ''}
           <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : '+ Log'}</span>
         </div>
       `).join('');
       $meals.querySelectorAll('.list-item').forEach(item => {
+        const editBtn = item.querySelector('.edit-user');
+        if (editBtn) {
+          editBtn.onclick = (e) => {
+            e.stopPropagation();
+            const um = lib.find(x => String(x.id) === item.dataset.userId);
+            if (um) openEditUserMeal(um, () => { close(); openLibraryPicker(dateKey, $search.value.trim()); });
+          };
+        }
         item.onclick = () => {
-          const m = lib.find(x => String(x.id) === item.dataset.id);
+          let m = lib.find(x => x.id != null && String(x.id) === item.dataset.id);
+          if (!m && item.dataset.kind === 'user') {
+            m = lib.find(x => x.kind === 'user' && x.name === item.querySelector('.list-item-title')?.textContent);
+          }
           if (!m) return;
           if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
           else openLogServings(m, close, dateKey);
@@ -388,7 +558,12 @@ async function openLibraryPicker(dateKey) {
       $recents.style.display = $search.value.trim() ? 'none' : '';
       render();
     };
+    if (initialQuery) {
+      $search.value = initialQuery;
+      $recents.style.display = 'none';
+    }
     render();
+    setTimeout(() => $search.focus(), 100);
   });
 }
 
@@ -473,6 +648,7 @@ function openRecipeDetail(recipe, parentClose, dateKey) {
         protein:  Math.round((cur.protein_g || 0) * s * 10) / 10,
         carbs:    Math.round((cur.carbs_g || 0) * s * 10) / 10,
         fat:      Math.round((cur.fat_g || 0) * s * 10) / 10,
+        fiber:    Math.round((cur.fiber_g || 0) * s * 10) / 10,
         recipe_id: recipe.id,
         time: new Date().toISOString(),
       });
@@ -488,18 +664,23 @@ function openRecipeDetail(recipe, parentClose, dateKey) {
 
 function openLogServings(item, parentClose, dateKey) {
   dateKey = dateKey || todayStr();
-  // Parse serving grams from strings like "100g", "28g", "1 oz (28g)"
-  const gramMatch = (item.serving || '').match(/(\d+\.?\d*)\s*g\b/i);
-  const gramsPerServing = gramMatch ? parseFloat(gramMatch[1]) : null;
+  const si = item._servingInfo || parseServingInfo(item.serving);
+  const useOz = si.preferOz && si.ozPerServing;
 
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${item.name}</h2>
+      ${item.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${item.nutritionNote}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per ${item.serving || '1 serving'}: ${item.calories} kcal · ${item.protein}p · ${item.carbs || 0}c · ${item.fat || 0}f</div>
-      ${gramsPerServing ? `
+      ${useOz ? `
+        <label>Amount (oz)</label>
+        <input type="number" id="oz" inputmode="decimal" placeholder="e.g. 4">
+        <div class="muted" style="font-size:12px;margin-bottom:8px">${si.ozPerServing} oz per serving — enter oz to calculate servings</div>
+      ` : ''}
+      ${si.gramsPerServing && !useOz ? `
         <label>Amount (grams)</label>
         <input type="number" id="grams" inputmode="decimal" placeholder="e.g. 150">
-        <div class="muted" style="font-size:12px;margin-bottom:8px">${gramsPerServing}g per serving — enter grams to auto-calculate servings</div>
+        <div class="muted" style="font-size:12px;margin-bottom:8px">${si.gramsPerServing}g per serving — enter grams to auto-calculate servings</div>
       ` : ''}
       <label>Servings</label>
       <input type="number" id="srv" value="1" step="0.25" inputmode="decimal">
@@ -520,11 +701,21 @@ function openLogServings(item, parentClose, dateKey) {
     }
     const $srv = sheet.querySelector('#srv');
     const $grams = sheet.querySelector('#grams');
+    const $oz = sheet.querySelector('#oz');
     if ($grams) {
       $grams.oninput = () => {
         const g = parseFloat($grams.value);
-        if (g && gramsPerServing) {
-          $srv.value = Math.round((g / gramsPerServing) * 100) / 100;
+        if (g && si.gramsPerServing) {
+          $srv.value = Math.round((g / si.gramsPerServing) * 100) / 100;
+          update();
+        }
+      };
+    }
+    if ($oz) {
+      $oz.oninput = () => {
+        const oz = parseFloat($oz.value);
+        if (oz && si.ozPerServing) {
+          $srv.value = Math.round((oz / si.ozPerServing) * 100) / 100;
           update();
         }
       };
@@ -543,6 +734,8 @@ function openLogServings(item, parentClose, dateKey) {
         protein:  Math.round((item.protein || 0) * s * 10) / 10,
         carbs:    Math.round((item.carbs || 0) * s * 10) / 10,
         fat:      Math.round((item.fat || 0) * s * 10) / 10,
+        fiber:    Math.round((item.fiber || 0) * s * 10) / 10,
+        saturated_fat: Math.round((item.saturated_fat || 0) * s * 10) / 10,
         time: new Date().toISOString(),
       });
       if (sheet.querySelector('#save-lib')?.checked) {
@@ -553,6 +746,8 @@ function openLogServings(item, parentClose, dateKey) {
           protein: item.protein || 0,
           carbs: item.carbs || 0,
           fat: item.fat || 0,
+          fiber: item.fiber || 0,
+          saturated_fat: item.saturated_fat || 0,
           barcode: item.barcode,
           category: 'user',
           kind: 'user',
@@ -563,7 +758,7 @@ function openLogServings(item, parentClose, dateKey) {
       if (parentClose) parentClose();
       renderMeals(document.getElementById('app'));
     };
-    setTimeout(() => ($grams || $srv).focus(), 100);
+    setTimeout(() => ($oz || $grams || $srv).focus(), 100);
   });
 }
 
@@ -571,9 +766,12 @@ function openLogServings(item, parentClose, dateKey) {
 
 function openBarcodeScanner(dateKey) {
   dateKey = dateKey || todayStr();
-  openSheet((sheet, close) => {
+  openSheet((sheet, close, hooks) => {
     sheet.innerHTML = `
-      <h2>Scan barcode</h2>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <h2 style="margin:0">Scan barcode</h2>
+        <button class="btn ghost" id="scan-cancel" style="width:auto;padding:6px 12px">Cancel</button>
+      </div>
       <div id="scan-status" class="muted">Starting camera…</div>
       <video id="cam" autoplay playsinline muted style="width:100%;border-radius:12px;background:#000;margin-top:8px;max-height:60vh"></video>
       <div style="margin-top:12px">
@@ -589,7 +787,7 @@ function openBarcodeScanner(dateKey) {
     async function lookupBarcode(code) {
       status.textContent = `Looking up ${code}…`;
       try {
-        const r = await fetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`);
+        const r = await offFetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`);
         if (!r.ok) throw new Error(`Server error ${r.status}`);
         const j = await r.json();
         if (j.status !== 1) {
@@ -598,21 +796,21 @@ function openBarcodeScanner(dateKey) {
           return;
         }
         const p = j.product;
-        const n = p.nutriments || {};
-        const serving = p.serving_size || '100g';
-        const cal = n['energy-kcal_serving'] ?? n['energy-kcal_100g'];
-        const prot = n['proteins_serving'] ?? n['proteins_100g'];
-        const carb = n['carbohydrates_serving'] ?? n['carbohydrates_100g'];
-        const fat = n['fat_serving'] ?? n['fat_100g'];
+        const nut = nutrientsFromProduct(p);
         cleanup();
         close();
+        if (nut.needsReview) toast('Nutrition may be incomplete — review before logging');
         openLogServings({
           name: p.product_name || p.brands || `Product ${code}`,
-          serving: serving,
-          calories: cal ? Math.round(cal) : 0,
-          protein: prot ? Math.round(prot * 10) / 10 : 0,
-          carbs: carb ? Math.round(carb * 10) / 10 : 0,
-          fat: fat ? Math.round(fat * 10) / 10 : 0,
+          serving: nut.serving,
+          calories: nut.calories,
+          protein: nut.protein,
+          carbs: nut.carbs,
+          fat: nut.fat,
+          fiber: nut.fiber,
+          saturated_fat: nut.saturated_fat,
+          nutritionNote: nut.note,
+          _servingInfo: nut.servingInfo,
           barcode: code,
         }, null, dateKey);
       } catch (e) {
@@ -623,7 +821,10 @@ function openBarcodeScanner(dateKey) {
 
     function cleanup() {
       if (stream) stream.getTracks().forEach(t => t.stop());
+      stream = null;
     }
+    hooks.onClose = cleanup;
+    sheet.querySelector('#scan-cancel').onclick = close;
 
     sheet.querySelector('#manual-go').onclick = () => {
       const code = sheet.querySelector('#manual-code').value.trim();
@@ -726,8 +927,138 @@ function openBarcodeScanner(dateKey) {
       }
     })();
 
-    sheet.parentElement.addEventListener('click', e => {
-      if (e.target === sheet.parentElement) cleanup();
-    });
+  });
+}
+
+function openFoodSearch(dateKey, initialQuery = '') {
+  dateKey = dateKey || todayStr();
+  openSheet((sheet, close) => {
+    sheet.innerHTML = `
+      <h2>Search foods</h2>
+      <div class="muted" style="margin-bottom:8px">Open Food Facts database</div>
+      <div class="search-bar"><input type="text" id="off-q" placeholder="e.g. greek yogurt" autocomplete="off"></div>
+      <button class="btn" id="off-go" style="margin-top:8px">Search</button>
+      <div id="off-results" style="margin-top:12px"></div>
+    `;
+    const $q = sheet.querySelector('#off-q');
+    const $res = sheet.querySelector('#off-results');
+    if (initialQuery) $q.value = initialQuery;
+    async function run() {
+      const q = $q.value.trim();
+      if (!q) { toast('Enter a search term'); return; }
+      $res.innerHTML = '<div class="muted">Searching…</div>';
+      try {
+        const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=20`;
+        const r = await offFetch(url);
+        if (!r.ok) throw new Error(`Server error ${r.status}`);
+        const j = await r.json();
+        const products = j.products || [];
+        if (!products.length) {
+          $res.innerHTML = '<div class="empty"><div>No results</div></div>';
+          return;
+        }
+        $res.innerHTML = products.map(p => {
+          const n = p.nutriments || {};
+          const cal = n['energy-kcal_100g'] || n['energy-kcal_serving'];
+          const name = (p.product_name || p.generic_name || 'Unknown').replace(/</g, '&lt;');
+          const brands = (p.brands || '').replace(/</g, '&lt;');
+          return `
+            <div class="list-item off-item" data-code="${p.code}">
+              <div style="flex:1">
+                <div class="list-item-title">${name}</div>
+                <div class="list-item-meta">${brands}${cal ? ` · ~${Math.round(cal)} kcal` : ''}</div>
+              </div>
+              <span class="pill accent">+</span>
+            </div>`;
+        }).join('');
+        $res.querySelectorAll('.off-item').forEach(el => {
+          el.onclick = async () => {
+            const code = el.dataset.code;
+            close();
+            try {
+              const r2 = await offFetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`);
+              const j2 = await r2.json();
+              if (j2.status !== 1) { toast('Product not found'); return; }
+              const prod = j2.product;
+              const nut = nutrientsFromProduct(prod);
+              if (nut.needsReview) toast('Nutrition may be incomplete — review before logging');
+              openLogServings({
+                name: prod.product_name || prod.brands || `Product ${code}`,
+                serving: nut.serving,
+                calories: nut.calories,
+                protein: nut.protein,
+                carbs: nut.carbs,
+                fat: nut.fat,
+                fiber: nut.fiber,
+                saturated_fat: nut.saturated_fat,
+                nutritionNote: nut.note,
+                _servingInfo: nut.servingInfo,
+                barcode: code,
+              }, null, dateKey);
+            } catch (err) {
+              toast(`Lookup failed: ${err.message}`);
+            }
+          };
+        });
+      } catch (e) {
+        $res.innerHTML = `<div class="muted">Search failed: ${e.message}</div>`;
+      }
+    }
+    sheet.querySelector('#off-go').onclick = run;
+    $q.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
+    if (initialQuery) run();
+    else setTimeout(() => $q.focus(), 100);
+  });
+}
+
+function openEditUserMeal(item, onUpdated) {
+  openSheet((sheet, close) => {
+    const esc = (s) => (s || '').replace(/"/g, '&quot;');
+    sheet.innerHTML = `
+      <h2>Edit saved food</h2>
+      <label>Name</label>
+      <input type="text" id="u-name" value="${esc(item.name)}" autocomplete="off">
+      <label>Serving label</label>
+      <input type="text" id="u-srv" value="${esc(item.serving || '1 serving')}">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label>Cals</label><input type="number" id="u-cal" value="${item.calories || ''}"></div>
+        <div><label>Protein (g)</label><input type="number" id="u-p" value="${item.protein || ''}"></div>
+        <div><label>Carbs (g)</label><input type="number" id="u-c" value="${item.carbs || ''}"></div>
+        <div><label>Fat (g)</label><input type="number" id="u-f" value="${item.fat || ''}"></div>
+        <div><label>Fiber (g)</label><input type="number" id="u-fiber" value="${item.fiber || ''}"></div>
+        <div><label>Sat. fat (g)</label><input type="number" id="u-sat" value="${item.saturated_fat || ''}"></div>
+      </div>
+      <div class="btn-row" style="margin-top:14px">
+        <button class="btn" id="u-save">Save</button>
+        <button class="btn ghost" id="u-del">Delete</button>
+        <button class="btn ghost" id="u-cancel">Cancel</button>
+      </div>
+    `;
+    sheet.querySelector('#u-cancel').onclick = close;
+    sheet.querySelector('#u-save').onclick = async () => {
+      await put('user_meals', {
+        ...item,
+        name: sheet.querySelector('#u-name').value.trim() || 'Food',
+        serving: sheet.querySelector('#u-srv').value.trim() || '1 serving',
+        calories: +sheet.querySelector('#u-cal').value || 0,
+        protein: +sheet.querySelector('#u-p').value || 0,
+        carbs: +sheet.querySelector('#u-c').value || 0,
+        fat: +sheet.querySelector('#u-f').value || 0,
+        fiber: +sheet.querySelector('#u-fiber').value || 0,
+        saturated_fat: +sheet.querySelector('#u-sat').value || 0,
+        category: 'user',
+        kind: 'user',
+      });
+      toast('Saved');
+      close();
+      onUpdated?.();
+    };
+    sheet.querySelector('#u-del').onclick = async () => {
+      if (!confirm(`Delete "${item.name}" from your library?`)) return;
+      await del('user_meals', item.id);
+      toast('Deleted');
+      close();
+      onUpdated?.();
+    };
   });
 }

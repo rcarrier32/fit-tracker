@@ -4,6 +4,7 @@
  */
 import { getAll, getByIndex, put, del, pref } from '../db.js';
 import { toast, openSheet } from '../app.js';
+import { renderDailyMobility } from './daily_mobility.js';
 
 const today = () => new Date().toISOString().slice(0, 10);
 const ymd = (d) => d.toISOString().slice(0, 10);
@@ -70,6 +71,8 @@ export async function renderCardio(app, date) {
       <button class="btn ghost" id="next-day" style="width:auto;padding:6px 10px" ${isToday ? 'disabled' : ''}>›</button>
     </div>
 
+    <div id="daily-mobility"></div>
+
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">${dateLabel}</h2>
@@ -82,6 +85,7 @@ export async function renderCardio(app, date) {
     ${isToday ? `<h2>Recent</h2><div id="history-list"><div class="muted">Loading…</div></div>` : ''}
   `;
 
+  await renderDailyMobility(app.querySelector('#daily-mobility'), dateKey);
   renderTodayList(app.querySelector('#today-list'), logs);
   app.querySelector('#log-btn').onclick = () => openLogSheet(weight_lb, dateKey, () => renderCardio(app));
 

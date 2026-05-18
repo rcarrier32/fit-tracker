@@ -80,6 +80,23 @@ export function profile(opts) {
   };
 }
 
+/** BMI from imperial weight (lb) and height (in). */
+export function bmiFromImperial(weight_lb, height_in) {
+  if (!weight_lb || !height_in) return null;
+  const kg = weight_lb / 2.20462;
+  const m = height_in * 0.0254;
+  const bmi = kg / (m * m);
+  return Math.round(bmi * 10) / 10;
+}
+
+export function bmiCategory(bmi) {
+  if (bmi == null) return '';
+  if (bmi < 18.5) return 'underweight';
+  if (bmi < 25) return 'healthy';
+  if (bmi < 30) return 'overweight';
+  return 'obese';
+}
+
 /* Body fat % from Navy circumference method */
 export function bfPctNavy({ height_in, waist_in, neck_in, gender = 'M' }) {
   if (gender === 'M') {

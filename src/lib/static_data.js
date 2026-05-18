@@ -36,6 +36,7 @@ export async function loadCatalogs() {
       protein: r.default_protein_g || 0,
       fat: r.default_fat_g || 0,
       carbs: r.default_carbs_g || 0,
+      fiber: r.default_fiber_g || (r.variants?.[0]?.fiber_g) || 0,
       category: r.category,
       ingredients: r.ingredients,
       instructions: r.instructions,

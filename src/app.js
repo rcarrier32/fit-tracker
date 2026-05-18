@@ -56,7 +56,7 @@ export function toast(msg, ms = 1800) {
   setTimeout(() => el.remove(), ms);
 }
 
-// Sheet helper
+// Sheet helper — hooks.onClose on dismiss; device back closes sheet first
 export function openSheet(contentBuilder) {
   const backdrop = document.createElement('div');
   backdrop.className = 'sheet-backdrop';
@@ -64,10 +64,28 @@ export function openSheet(contentBuilder) {
   sheet.className = 'sheet';
   backdrop.appendChild(sheet);
   document.body.appendChild(backdrop);
-  const close = () => backdrop.remove();
-  backdrop.addEventListener('click', e => { if (e.target === backdrop) close(); });
-  contentBuilder(sheet, close);
-  return close;
+  const hooks = { onClose: null };
+  let closed = false;
+
+  const dismiss = (syncHistory = true) => {
+    if (closed) return;
+    closed = true;
+    hooks.onClose?.();
+    backdrop.remove();
+    window.removeEventListener('popstate', onPopState);
+    if (syncHistory && history.state?.fitSheet) history.back();
+  };
+
+  function onPopState() {
+    if (!closed && document.body.contains(backdrop)) dismiss(false);
+  }
+
+  history.pushState({ fitSheet: 1 }, '');
+  window.addEventListener('popstate', onPopState);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) dismiss(true); });
+
+  contentBuilder(sheet, () => dismiss(true), hooks);
+  return () => dismiss(true);
 }
 
 // Boot

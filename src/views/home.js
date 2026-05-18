@@ -2,6 +2,19 @@
  * Home/Today view: snapshot of macros + active workout + body weight + quick actions.
  */
 import { pref, getByIndex, get, getAll, exportAllData, importAllData } from '../db.js';
+
+function macroPercents(p, c, f) {
+  const pCal = (p || 0) * 4;
+  const cCal = (c || 0) * 4;
+  const fCal = (f || 0) * 9;
+  const total = pCal + cCal + fCal;
+  if (!total) return null;
+  return {
+    p: Math.round(pCal / total * 100),
+    c: Math.round(cCal / total * 100),
+    f: Math.round(fCal / total * 100),
+  };
+}
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout } from './schedule.js';
@@ -150,14 +163,16 @@ export async function renderHome(app) {
     p:    acc.p    + (m.protein  || 0),
     c:    acc.c    + (m.carbs    || 0),
     f:    acc.f    + (m.fat      || 0),
-  }), { cal: 0, p: 0, c: 0, f: 0 });
+    fiber: acc.fiber + (m.fiber || 0),
+    sat:   acc.sat   + (m.saturated_fat || 0),
+  }), { cal: 0, p: 0, c: 0, f: 0, fiber: 0, sat: 0 });
   const cardio_burned = todays_cardio.reduce((s, l) => s + (l.calories_burned || 0), 0);
 
   const target = tdee.target_calories;
   const macroT = tdee.macros;
   const remaining = target + cardio_burned - eaten.cal;
 
-  const [today_w, schedule, bodyToday, activePlan, allBody, allMeals, weeklySummary] = await Promise.all([
+  const [today_w, schedule, bodyToday, activePlan, allBody, allMeals, weeklySummary, todaysSessions] = await Promise.all([
     todaysWorkout(),
     pref('schedule'),
     get('body', today()),
@@ -165,13 +180,15 @@ export async function renderHome(app) {
     getAll('body'),
     getAll('meals'),
     computeWeeklySummary(),
+    getByIndex('sessions', 'date', today()),
   ]);
+  const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
   app.innerHTML = `
     <h1>Today</h1>
     <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
-    ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan })}
+    ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday })}
     ${renderWeeklySummary(weeklySummary)}
 
     <div class="card">
@@ -188,6 +205,8 @@ export async function renderHome(app) {
         ${macroBox('Fat',     eaten.f, macroT.fat_g,     'g')}
         ${macroBox('Cal',     eaten.cal, target,         '')}
       </div>
+      ${renderMacroPct(eaten.p, eaten.c, eaten.f)}
+      <div class="muted" style="font-size:11px;margin-top:6px">Fiber ${Math.round(eaten.fiber * 10) / 10}g · Sat. fat ${Math.round(eaten.sat * 10) / 10}g</div>
 
       <div class="btn-row" style="margin-top:8px">
         <button class="btn" data-action="log-meal">+ Log Meal</button>
@@ -201,7 +220,7 @@ export async function renderHome(app) {
         ${renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday)}
     </div>
 
     <div class="card">
@@ -294,7 +313,28 @@ function renderPlanProgress(plan) {
   `;
 }
 
-function renderTodayBody(today_w, schedule) {
+function isWorkoutDoneToday(today_w, sessions) {
+  const done = (sessions || []).filter(s => s.done);
+  if (!done.length) return false;
+  if (today_w.type === 'program' && today_w.program) {
+    const p = today_w.program;
+    return done.some(s =>
+      s.program_id === p.id &&
+      s.week === today_w.week &&
+      s.day === today_w.day &&
+      (today_w.day_index == null || s.day_index === today_w.day_index)
+    );
+  }
+  return false;
+}
+
+function renderMacroPct(p, c, f) {
+  const pct = macroPercents(p, c, f);
+  if (!pct) return '';
+  return `<div class="muted" style="font-size:11px;margin-top:8px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
+}
+
+function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -348,8 +388,9 @@ function renderTodayBody(today_w, schedule) {
       <div style="margin-top:6px">${p.name || p.program_name || p.id} — ${detail}</div>
       <div class="muted" style="font-size:12px">${today_w.mode === 'follow' ? 'Following progression' : 'Pinned day'}</div>
       ${previewHtml}
+      ${workoutDoneToday ? `<div class="pill accent" style="display:inline-block;margin-top:8px">Workout complete ✓</div>` : ''}
       <div class="btn-row" style="margin-top:10px">
-        <button class="btn" data-action="start-workout">Start workout</button>
+        <button class="btn" data-action="start-workout">${workoutDoneToday ? 'View workout' : 'Start workout'}</button>
         <button class="btn ghost" data-action="schedule">Edit week</button>
       </div>
     `;
@@ -363,7 +404,7 @@ function renderTodayBody(today_w, schedule) {
   `;
 }
 
-function renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan }) {
+function renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday }) {
   const budget = target + cardio_burned;
   const remaining = budget - eaten.cal;
   const hour = new Date().getHours();
@@ -394,7 +435,8 @@ function renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bod
       const dayLabel = today_w.day_index != null
         ? today_w.program.days?.[today_w.day_index]?.day_name || `Day ${today_w.day_index + 1}`
         : `Day ${today_w.day}`;
-      msgs.push(`Lift day: ${dayLabel}. Get it done.`);
+      if (workoutDoneToday) msgs.push(`Workout done for ${dayLabel}. Nice work.`);
+      else msgs.push(`Lift day: ${dayLabel}. Get it done.`);
     }
   }
 
@@ -499,6 +541,8 @@ async function showOnboarding(app) {
       <input type="number" id="weight" value="${existing.weight_lb || 200}" inputmode="decimal">
       <label>Body fat % (estimate ok)</label>
       <input type="number" id="bf" value="${existing.bf_pct || 20}" inputmode="decimal">
+      <label>Height (in, optional — for BMI on Body tab)</label>
+      <input type="number" id="height" value="${existing.height_in || ''}" inputmode="decimal" step="0.25" placeholder="e.g. 70">
       <label>Goal</label>
       <select id="change">
         ${RATE_OPTS.map(([v, l]) => `<option value="${v}" ${v === closestRate ? 'selected' : ''}>${l}</option>`).join('')}
@@ -536,10 +580,12 @@ async function showOnboarding(app) {
 
   app.querySelector('#save').onclick = async () => {
     const rate = +app.querySelector('#change').value;
+    const heightVal = +app.querySelector('#height').value;
     const profileData = {
       ...(existing || {}),
       weight_lb: +app.querySelector('#weight').value,
       bf_pct: +app.querySelector('#bf').value,
+      ...(heightVal ? { height_in: heightVal } : {}),
       goal: rate < 0 ? 'Lose Fat' : rate > 0 ? 'Gain' : 'Maintain',
       activity_level: app.querySelector('#activity').value,
       weekly_change_lb: rate,
