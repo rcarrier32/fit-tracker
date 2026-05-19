@@ -423,6 +423,7 @@ function openQuickAdd(prefill = {}, dateKey) {
     };
     sheet.innerHTML = `
       <h2>${isEdit ? 'Edit entry' : 'Quick add'}</h2>
+      ${prefill.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${attrEsc(prefill.nutritionNote)}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
       <input type="text" id="m-name" value="${base.name}" autocomplete="off" placeholder="e.g. Chicken & rice">
@@ -514,6 +515,7 @@ function openQuickAdd(prefill = {}, dateKey) {
           fat: +$('#m-f').value || 0,
           fiber: +$('#m-fiber').value || 0,
           saturated_fat: +$('#m-sat').value || 0,
+          ...(prefill.barcode ? { barcode: prefill.barcode } : {}),
           category: 'user',
           kind: 'user',
         });
@@ -768,6 +770,29 @@ function openRecipeDetail(recipe, parentClose, dateKey) {
   });
 }
 
+/** After OFF lookup — open log sheet without dismissing the next sheet via history.back(). */
+function openProductFromLookup({ name, nut, barcode }, dateKey) {
+  const item = {
+    name,
+    serving: nut.serving,
+    calories: nut.calories,
+    protein: nut.protein,
+    carbs: nut.carbs,
+    fat: nut.fat,
+    fiber: nut.fiber,
+    saturated_fat: nut.saturated_fat,
+    nutritionNote: nut.note,
+    _servingInfo: nut.servingInfo,
+    barcode,
+  };
+  if (nut.needsReview) {
+    toast('Nutrition may be incomplete — check values before logging');
+    openQuickAdd({ ...item, skipLibrary: false, barcode }, dateKey);
+    return;
+  }
+  openLogServings(item, null, dateKey);
+}
+
 /* ── Log a food/user item with servings ── */
 
 function openLogServings(item, parentClose, dateKey) {
@@ -776,7 +801,7 @@ function openLogServings(item, parentClose, dateKey) {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${item.name}</h2>
-      ${item.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${item.nutritionNote}</div>` : ''}
+      ${item.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${attrEsc(item.nutritionNote)}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per ${item.serving || '1 serving'}: ${item.calories} kcal · ${item.protein}p · ${item.carbs || 0}c · ${item.fat || 0}f</div>
       ${servingFieldsHtml('log', item.serving || '1 serving', si, { servings: 1 })}
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
@@ -874,21 +899,12 @@ function openBarcodeScanner(dateKey) {
         const p = j.product;
         const nut = nutrientsFromProduct(p);
         cleanup();
-        close();
-        if (nut.needsReview) toast('Nutrition may be incomplete — review before logging');
-        openLogServings({
+        close(false);
+        openProductFromLookup({
           name: p.product_name || p.brands || `Product ${code}`,
-          serving: nut.serving,
-          calories: nut.calories,
-          protein: nut.protein,
-          carbs: nut.carbs,
-          fat: nut.fat,
-          fiber: nut.fiber,
-          saturated_fat: nut.saturated_fat,
-          nutritionNote: nut.note,
-          _servingInfo: nut.servingInfo,
+          nut,
           barcode: code,
-        }, null, dateKey);
+        }, dateKey);
       } catch (e) {
         toast(`Lookup failed: ${e.message}`);
         status.textContent = `Error — check your connection or try manual entry.`;
@@ -1051,20 +1067,11 @@ function openFoodSearch(dateKey, initialQuery = '') {
               if (j2.status !== 1) { toast('Product not found'); return; }
               const prod = j2.product;
               const nut = nutrientsFromProduct(prod);
-              if (nut.needsReview) toast('Nutrition may be incomplete — review before logging');
-              openLogServings({
+              openProductFromLookup({
                 name: prod.product_name || prod.brands || `Product ${code}`,
-                serving: nut.serving,
-                calories: nut.calories,
-                protein: nut.protein,
-                carbs: nut.carbs,
-                fat: nut.fat,
-                fiber: nut.fiber,
-                saturated_fat: nut.saturated_fat,
-                nutritionNote: nut.note,
-                _servingInfo: nut.servingInfo,
+                nut,
                 barcode: code,
-              }, null, dateKey);
+              }, dateKey);
             } catch (err) {
               toast(`Lookup failed: ${err.message}`);
             }
