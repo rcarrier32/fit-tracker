@@ -27,6 +27,8 @@ const UNIT_ORDER = ['cup', 'fl_oz', 'oz', 'ml', 'tbsp', 'tsp', 'g', 'serving'];
 export function normalizeUnit(raw) {
   const u = (raw || '').toLowerCase().trim().replace(/\./g, '');
   if (!u) return null;
+  // Already-normalized keys from parseLabelUnits
+  if (u === 'fl_oz' || u === 'tbsp' || u === 'tsp') return u;
   if (u === 'g' || u === 'gram' || u === 'grams') return 'g';
   if (u === 'oz' || u === 'ounce' || u === 'ounces') return 'oz';
   if (u === 'ml' || u === 'milliliter' || u === 'milliliters' || u === 'millilitre') return 'ml';

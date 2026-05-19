@@ -1,7 +1,7 @@
 /**
  * Open Food Facts nutrient + serving parsing (US oz labels, kJ-only energy, per-100g scaling).
  */
-import { OZ_G, enrichUnits, normalizeUnit, pickDefaultUnit } from './serving_units.js';
+import { OZ_G, ML_PER_FL_OZ, enrichUnits, normalizeUnit, pickDefaultUnit } from './serving_units.js';
 
 export const OFF_USER_AGENT = 'FitTracker/1.0 (https://github.com/local/fit-tracker)';
 
@@ -28,9 +28,12 @@ function addUnit(units, unit, amount) {
 
 function parseLabelUnits(label) {
   const units = {};
+  const flM = label.match(/(\d+\.?\d*)\s*(?:fl\.?\s*oz|fluid\s*ounces?)\b/i);
+  if (flM) addUnit(units, 'fl_oz', flM[1]);
+  // Strip matched fl oz so the weight-oz pattern does not pick up the same number
+  const withoutFl = flM ? label.replace(flM[0], ' ') : label;
   const patterns = [
     [/(\d+\.?\d*)\s*(?:cup|cups)\b/i, 'cup'],
-    [/(\d+\.?\d*)\s*(?:fl\.?\s*oz|fluid\s*ounces?)\b/i, 'fl_oz'],
     [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
     [/(\d+\.?\d*)\s*(?:ml|mL|milliliters?)\b/i, 'ml'],
     [/(\d+\.?\d*)\s*(?:tbsp|tablespoons?)\b/i, 'tbsp'],
@@ -39,7 +42,7 @@ function parseLabelUnits(label) {
     [/(\d+\.?\d*)\s*(?:serving|servings|portion|portions)\b/i, 'serving'],
   ];
   for (const [re, unit] of patterns) {
-    const m = label.match(re);
+    const m = withoutFl.match(re);
     if (m) addUnit(units, unit, m[1]);
   }
   return units;
@@ -72,8 +75,9 @@ export function parseServingInfo(servingStr, product = null) {
       let u = normalizeUnit(rawU);
       // OFF sometimes uses "oz" for beverage bottles that are fluid ounces
       const sizeText = `${label} ${product?.serving_size || ''}`;
-      if (u === 'oz' && /\bfl\.?\s*oz\b/i.test(sizeText) && q >= 8 && q <= 32) {
-        u = 'fl_oz';
+      if (u === 'oz' && q >= 8 && q <= 32) {
+        if (/\bfl\.?\s*oz\b/i.test(sizeText)) u = 'fl_oz';
+        else if (units.ml > 0 && Math.abs(units.ml / q - ML_PER_FL_OZ) < 2) u = 'fl_oz';
       }
       if (u === 'ml' && /^l/i.test(rawU.trim())) addUnit(units, 'ml', q * 1000);
       else if (u) addUnit(units, u, q);
