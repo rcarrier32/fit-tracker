@@ -10,7 +10,6 @@ import { renderDashboard } from './views/dashboard.js';
 import { renderCardio } from './views/cardio.js';
 import { renderPrograms } from './views/programs.js';
 import { offerBackupRestore, scheduleLocalBackup } from './lib/backup.js';
-import { initUpdates } from './lib/updates.js';
 
 const ROUTES = {
   home:      renderHome,
@@ -95,6 +94,7 @@ export function openSheet(contentBuilder) {
 
 // Boot
 (async () => {
+  const { initUpdates } = await import(`./lib/updates.js?v=${window.__FIT_V ?? ''}`);
   initUpdates();
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();
