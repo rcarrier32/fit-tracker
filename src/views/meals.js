@@ -16,6 +16,7 @@ import {
   convertAmount,
   enrichUnits,
   perAmountForUnit,
+  reconcileLiquidUnits,
   unitsForUi,
 } from '../lib/serving_units.js';
 
@@ -38,7 +39,7 @@ function servingFieldsHtml(prefix, servingLabel, si, { servings = 1, focusAmount
   const info = resolveServingInfo(si);
   const units = info.units || enrichUnits({ serving: 1 });
   const defaultUnit = info.defaultUnit || 'oz';
-  const uiUnits = unitsForUi(units, defaultUnit);
+  const uiUnits = unitsForUi(units, defaultUnit, servingLabel);
   const perVal = perAmountForUnit(units, defaultUnit);
   const unitPills = uiUnits.map(u =>
     `<button type="button" class="pill${u === defaultUnit ? ' accent' : ''}" data-unit="${u}">${UNIT_LABELS[u] || u}</button>`
@@ -71,7 +72,7 @@ function wireServingFields(sheet, prefix, updatePreview) {
     const unit = getUnit();
     const per = parseFloat(q('per')?.value);
     if (per > 0) units[unit] = per;
-    return enrichUnits(units);
+    return reconcileLiquidUnits(enrichUnits(units), q('srvlbl')?.value || '');
   }
 
   function setUnit(unit, { fromLabel = false } = {}) {

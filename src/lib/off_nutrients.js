@@ -1,7 +1,10 @@
 /**
  * Open Food Facts nutrient + serving parsing (US oz labels, kJ-only energy, per-100g scaling).
  */
-import { OZ_G, ML_PER_FL_OZ, enrichUnits, normalizeUnit, pickDefaultUnit } from './serving_units.js';
+import {
+  OZ_G, ML_PER_FL_OZ, VOLUME_IN_LABEL, enrichUnits, normalizeUnit, pickDefaultUnit,
+  reconcileLiquidUnits,
+} from './serving_units.js';
 
 export const OFF_USER_AGENT = 'FitTracker/1.0 (https://github.com/local/fit-tracker)';
 
@@ -34,6 +37,7 @@ function parseLabelUnits(label) {
   const withoutFl = flM ? label.replace(flM[0], ' ') : label;
   const patterns = [
     [/(\d+\.?\d*)\s*(?:cup|cups)\b/i, 'cup'],
+    [/(\d+\.?\d*)\s*(?:can|cans|bottle|bottles)\b/i, 'can'],
     [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
     [/(\d+\.?\d*)\s*(?:ml|mL|milliliters?)\b/i, 'ml'],
     [/(\d+\.?\d*)\s*(?:tbsp|tablespoons?)\b/i, 'tbsp'],
@@ -80,13 +84,21 @@ export function parseServingInfo(servingStr, product = null) {
         else if (units.ml > 0 && Math.abs(units.ml / q - ML_PER_FL_OZ) < 2) u = 'fl_oz';
       }
       if (u === 'ml' && /^l/i.test(rawU.trim())) addUnit(units, 'ml', q * 1000);
-      else if (u) addUnit(units, u, q);
+      else if (u === 'ml' && /^cl/i.test(rawU.trim())) addUnit(units, 'ml', q * 10);
+      else if (
+        u === 'g' && units.ml > 0 && VOLUME_IN_LABEL.test(sizeText)
+        && Math.abs(q - units.ml) <= 20
+      ) {
+        /* skip — OFF listed mass equal to mL for a drink */
+      } else if (u) addUnit(units, u, q);
       else if (/fl/i.test(rawLow) && /oz/i.test(rawLow)) addUnit(units, 'fl_oz', q);
       else if (!rawU.trim() && q > 0 && q < 50) addUnit(units, 'oz', q);
     }
   }
 
+  const sizeText = `${label} ${product?.serving_size || ''}`;
   let enriched = enrichUnits(units);
+  enriched = reconcileLiquidUnits(enriched, sizeText);
   if (!Object.keys(enriched).length) {
     addUnit(enriched, 'serving', 1);
     enriched = enrichUnits(enriched);
