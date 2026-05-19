@@ -2,7 +2,7 @@
  * In-app update checks — no manual cache clearing needed.
  * Bump `LOCAL_V` and version.json `v` (and sw.js CACHE) on each release.
  */
-export const LOCAL_V = 27;
+export const LOCAL_V = 28;
 
 const VERSION_URL = new URL('version.json', location.href).href;
 

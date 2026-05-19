@@ -32,7 +32,8 @@ export function normalizeUnit(raw) {
   if (u === 'ml' || u === 'milliliter' || u === 'milliliters' || u === 'millilitre') return 'ml';
   if (u === 'l' || u === 'liter' || u === 'liters' || u === 'litre' || u === 'litres') return 'ml';
   if (u === 'cup' || u === 'cups') return 'cup';
-  if (u === 'fl oz' || u === 'floz' || u === 'fluid ounce' || u === 'fluid ounces') return 'fl_oz';
+  if (u === 'fl oz' || u === 'floz' || u === 'fluid ounce' || u === 'fluid ounces'
+    || u === 'fluid oz' || u === 'us fl oz') return 'fl_oz';
   if (u === 'tbsp' || u === 'tablespoon' || u === 'tablespoons') return 'tbsp';
   if (u === 'tsp' || u === 'teaspoon' || u === 'teaspoons') return 'tsp';
   if (u === 'serving' || u === 'servings' || u === 'portion' || u === 'portions') return 'serving';
@@ -44,7 +45,8 @@ export function enrichUnits(units) {
   const u = { ...units };
   if (u.ml > 0) {
     if (!u.cup) u.cup = Math.round((u.ml / ML_PER_CUP) * 1000) / 1000;
-    if (!u.fl_oz) u.fl_oz = Math.round((u.ml / ML_PER_FL_OZ) * 100) / 100;
+    // Only derive fl oz from mL when not already set from label (avoid 17.99 vs 18)
+    if (!(u.fl_oz > 0)) u.fl_oz = Math.round((u.ml / ML_PER_FL_OZ) * 100) / 100;
     if (!u.tbsp) u.tbsp = Math.round((u.ml / ML_PER_TBSP) * 100) / 100;
     if (!u.tsp) u.tsp = Math.round((u.ml / ML_PER_TSP) * 100) / 100;
   }

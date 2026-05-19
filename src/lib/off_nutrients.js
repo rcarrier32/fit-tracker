@@ -68,9 +68,16 @@ export function parseServingInfo(servingStr, product = null) {
     const q = parseFloat(product.serving_quantity);
     const rawU = product.serving_quantity_unit || '';
     if (!Number.isNaN(q) && q > 0) {
-      const u = normalizeUnit(rawU);
+      const rawLow = rawU.toLowerCase();
+      let u = normalizeUnit(rawU);
+      // OFF sometimes uses "oz" for beverage bottles that are fluid ounces
+      const sizeText = `${label} ${product?.serving_size || ''}`;
+      if (u === 'oz' && /\bfl\.?\s*oz\b/i.test(sizeText) && q >= 8 && q <= 32) {
+        u = 'fl_oz';
+      }
       if (u === 'ml' && /^l/i.test(rawU.trim())) addUnit(units, 'ml', q * 1000);
       else if (u) addUnit(units, u, q);
+      else if (/fl/i.test(rawLow) && /oz/i.test(rawLow)) addUnit(units, 'fl_oz', q);
       else if (!rawU.trim() && q > 0 && q < 50) addUnit(units, 'oz', q);
     }
   }
@@ -169,7 +176,10 @@ export function nutrientsFromProduct(product) {
     };
   }
 
-  const scaleG = si.gramsPerServing || (hasPer100 ? 100 : 0);
+  // Use mL as mass proxy for beverages when grams unknown (water ≈ 1 g/mL)
+  const scaleG = si.gramsPerServing
+    || (si.units?.ml > 0 ? si.units.ml : 0)
+    || (hasPer100 ? 100 : 0);
   const round1 = (v) => Math.round((v || 0) * 10) / 10;
 
   const calories = Math.round(kcalFromNutriments(n, scaleG) || 0);

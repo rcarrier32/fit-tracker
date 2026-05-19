@@ -417,7 +417,7 @@ function openQuickAdd(prefill = {}, dateKey) {
       ${prefill.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${attrEsc(prefill.nutritionNote)}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
-      <input type="text" id="m-name" value="${base.name}" autocomplete="off" placeholder="e.g. Chicken & rice">
+      <input type="text" id="m-name" value="${attrEsc(base.name)}" autocomplete="off" placeholder="e.g. Chicken & rice">
       ${servingFieldsHtml('m', base.serving, si0, { servings: prefill.servings ?? 1, focusAmount: false })}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
         <div>
@@ -761,6 +761,25 @@ function openRecipeDetail(recipe, parentClose, dateKey) {
   });
 }
 
+/** Normalize UPC/EAN — scanners often drop the leading 0. */
+function normalizeBarcode(code) {
+  const digits = String(code || '').replace(/\D/g, '');
+  if (!digits) return '';
+  if (digits.length === 11) return '0' + digits;
+  if (digits.length === 12) return digits;
+  if (digits.length === 13 && digits.startsWith('0')) return digits;
+  return digits;
+}
+
+/** Barcode lookup variants to try against Open Food Facts. */
+function barcodeLookupCodes(code) {
+  const base = normalizeBarcode(code);
+  const tries = new Set([base, code.replace(/\D/g, '')]);
+  if (base.length === 12) tries.add('0' + base);
+  if (base.length === 13 && base.startsWith('0')) tries.add(base.slice(1));
+  return [...tries].filter(Boolean);
+}
+
 /** After OFF lookup — open log sheet without dismissing the next sheet via history.back(). */
 function openProductFromLookup({ name, nut, barcode }, dateKey) {
   const item = {
@@ -776,11 +795,7 @@ function openProductFromLookup({ name, nut, barcode }, dateKey) {
     _servingInfo: nut.servingInfo,
     barcode,
   };
-  if (nut.needsReview) {
-    toast('Nutrition may be incomplete — check values before logging');
-    openQuickAdd({ ...item, skipLibrary: false, barcode }, dateKey);
-    return;
-  }
+  if (nut.needsReview) toast('Nutrition may be incomplete — check values before logging');
   openLogServings(item, null, dateKey);
 }
 
@@ -791,7 +806,7 @@ function openLogServings(item, parentClose, dateKey) {
   const si = item._servingInfo || parseServingInfo(item.serving);
   openSheet((sheet, close) => {
     sheet.innerHTML = `
-      <h2>${item.name}</h2>
+      <h2>${attrEsc(item.name)}</h2>
       ${item.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${attrEsc(item.nutritionNote)}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per ${item.serving || '1 serving'}: ${item.calories} kcal · ${item.protein}p · ${item.carbs || 0}c · ${item.fat || 0}f</div>
       ${servingFieldsHtml('log', item.serving || '1 serving', si, { servings: 1 })}
@@ -810,9 +825,7 @@ function openLogServings(item, parentClose, dateKey) {
       sheet.querySelector('#preview').textContent =
         `Total: ${Math.round(item.calories * s)} kcal · ${Math.round((item.protein || 0) * s * 10) / 10}p · ${Math.round((item.carbs || 0) * s * 10) / 10}c · ${Math.round((item.fat || 0) * s * 10) / 10}f`;
     }
-    const $srv = sheet.querySelector('#log-srv');
     wireServingFields(sheet, 'log', update);
-    $srv.oninput = update;
     update();
     sheet.querySelector('#cancel').onclick = close;
     sheet.querySelector('#log').onclick = async () => {
@@ -879,24 +892,35 @@ function openBarcodeScanner(dateKey) {
     async function lookupBarcode(code) {
       status.textContent = `Looking up ${code}…`;
       try {
-        const r = await offFetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`);
-        if (!r.ok) throw new Error(`Server error ${r.status}`);
-        const j = await r.json();
-        if (j.status !== 1) {
+        let product = null;
+        let usedCode = code;
+        for (const tryCode of barcodeLookupCodes(code)) {
+          const r = await offFetch(
+            `https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(tryCode)}.json`
+          );
+          if (!r.ok) continue;
+          const j = await r.json();
+          if (j.status === 1 && j.product) {
+            product = j.product;
+            usedCode = tryCode;
+            break;
+          }
+        }
+        if (!product) {
           toast(`Not found: ${code}`);
           status.textContent = `Not found — try manual entry.`;
           return;
         }
-        const p = j.product;
-        const nut = nutrientsFromProduct(p);
+        const nut = nutrientsFromProduct(product);
         cleanup();
         close(false);
         openProductFromLookup({
-          name: p.product_name || p.brands || `Product ${code}`,
+          name: product.product_name || product.brands || `Product ${usedCode}`,
           nut,
-          barcode: code,
+          barcode: usedCode,
         }, dateKey);
       } catch (e) {
+        console.error('[scan] lookup failed', e);
         toast(`Lookup failed: ${e.message}`);
         status.textContent = `Error — check your connection or try manual entry.`;
       }
