@@ -37,13 +37,14 @@ function parseLabelUnits(label) {
   const withoutFl = flM ? label.replace(flM[0], ' ') : label;
   const patterns = [
     [/(\d+\.?\d*)\s*(?:cup|cups)\b/i, 'cup'],
-    [/(\d+\.?\d*)\s*(?:can|cans|bottle|bottles)\b/i, 'can'],
-    [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
     [/(\d+\.?\d*)\s*(?:ml|mL|milliliters?)\b/i, 'ml'],
+    [/(\d+\.?\d*)\s*(?:lb|lbs|pounds?)\b/i, 'lb'],
+    [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
     [/(\d+\.?\d*)\s*(?:tbsp|tablespoons?)\b/i, 'tbsp'],
     [/(\d+\.?\d*)\s*(?:tsp|teaspoons?)\b/i, 'tsp'],
     [/(\d+\.?\d*)\s*g\b/i, 'g'],
     [/(\d+\.?\d*)\s*(?:serving|servings|portion|portions)\b/i, 'serving'],
+    [/(\d+\.?\d*)\s*(?:can|cans|bottle|bottles|slice|slices|piece|pieces|bar|bars|packet|packets)\b/i, 'serving'],
   ];
   for (const [re, unit] of patterns) {
     const m = withoutFl.match(re);
