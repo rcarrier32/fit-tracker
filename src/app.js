@@ -85,8 +85,10 @@ export function openSheet(contentBuilder) {
   window.addEventListener('popstate', onPopState);
   backdrop.addEventListener('click', e => { if (e.target === backdrop) dismiss(true); });
 
-  contentBuilder(sheet, () => dismiss(true), hooks);
-  return () => dismiss(true);
+  /** @param {boolean} [syncHistory=true] pass false when opening another sheet immediately */
+  const close = (syncHistory = true) => dismiss(syncHistory);
+  contentBuilder(sheet, close, hooks);
+  return close;
 }
 
 // Boot

@@ -11,7 +11,7 @@ const today = () => new Date().toISOString().slice(0, 10);
 let _restInterval = null;
 
 export async function renderWorkout(app) {
-  if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
+  stopRestTimer();
   const today_w = await todaysWorkout();
   if (today_w.type === 'unset') {
     app.innerHTML = `
@@ -101,6 +101,7 @@ export async function renderWorkout(app) {
     <div class="btn-row" style="margin-top:14px">
       <button class="btn secondary" id="add-ex">+ Add exercise</button>
       <button class="btn" id="finish">Finish workout</button>
+      <button class="btn ghost" id="skip-workout">Skip</button>
     </div>
   `;
 
@@ -152,6 +153,15 @@ export async function renderWorkout(app) {
     const allSessions = await getAll('sessions');
     const stats = computeSessionStats(session, allSessions);
     renderWorkoutComplete(app, session, stats, program, week, day);
+  };
+  app.querySelector('#skip-workout').onclick = async () => {
+    session.done = true;
+    session.skipped = true;
+    await put('sessions', session);
+    if (today_w.mode === 'follow') await advanceCursor(programId, 'follow');
+    stopRestTimer();
+    toast('Workout skipped');
+    navigate('home');
   };
 
   // Wire up set logging
@@ -225,9 +235,7 @@ export async function renderWorkout(app) {
         applyCompactState(card, ex);
       } else {
         // Un-check: clear timer on this card and remove compact if present
-        if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
-        const $rt = card.querySelector('.rest-timer-line');
-        if ($rt) $rt.textContent = '';
+        stopRestTimer();
         card.classList.remove('exercise--compact');
         const $sum = card.querySelector('.exercise-summary');
         if ($sum) $sum.style.display = 'none';
@@ -433,12 +441,12 @@ function openExerciseMenu(session, i, allExercises, exMap) {
     `;
 
     sheet.querySelector('#progression').onclick = () => {
-      close();
+      close(false);
       openProgressionChart(ex.name);
     };
 
     sheet.querySelector('#swap-all').onclick = () => {
-      close();
+      close(false);
       openSheet((s2, close2) => {
         const similarExercises = primaryMuscle
           ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name)
@@ -707,15 +715,25 @@ function formatPrevSets(sets) {
     .join('  ');
 }
 
-function startRestTimer(card) {
+function stopRestTimer() {
   if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
-  document.querySelectorAll('.rest-timer-line').forEach(el => { el.textContent = ''; });
+  document.querySelectorAll('.rest-timer-line').forEach(el => { el.innerHTML = ''; });
+}
+
+function startRestTimer(card) {
+  stopRestTimer();
   const $el = card.querySelector('.rest-timer-line');
   if (!$el) return;
   const start = Date.now();
+  $el.innerHTML = '<span class="rest-timer-text">rest 0:00</span> <button type="button" class="btn ghost rest-stop" style="width:auto;padding:2px 8px;font-size:11px;margin-left:6px">Stop</button>';
+  const $text = $el.querySelector('.rest-timer-text');
+  $el.querySelector('.rest-stop').onclick = (e) => {
+    e.stopPropagation();
+    stopRestTimer();
+  };
   _restInterval = setInterval(() => {
     const sec = Math.floor((Date.now() - start) / 1000);
-    $el.textContent = `rest ${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+    if ($text) $text.textContent = `rest ${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
   }, 1000);
 }
 

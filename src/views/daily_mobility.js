@@ -48,18 +48,31 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
 
     el.innerHTML = `
       <div class="card" style="margin-bottom:12px;padding:12px 14px">
-        <div class="card-row">
+        <div class="mob-toggle card-row" style="cursor:pointer">
           <h2 style="margin:0;font-size:${compact ? '15px' : '17px'}">Daily mobility</h2>
-          <span class="pill mob-pill ${doneCount === items.length && items.length ? 'accent' : ''}">${doneCount}/${items.length}</span>
+          <span style="font-size:12px;color:var(--fg-dim)">${doneCount}/${items.length} <span class="mob-chevron">▼</span></span>
         </div>
-        ${routine.note ? `<div class="muted" style="font-size:12px;margin-bottom:10px">${routine.note}</div>` : ''}
-        <div id="mob-list"></div>
-        <div class="btn-row" style="margin-top:10px;margin-bottom:0">
-          <button class="btn secondary" id="mob-add" style="flex:1">+ Add exercise</button>
-          ${doneCount < items.length ? `<button class="btn ghost" id="mob-done-all">All done</button>` : ''}
+        <div class="mob-body" style="display:none">
+          ${routine.note ? `<div class="muted" style="font-size:12px;margin:8px 0 10px">${routine.note}</div>` : ''}
+          <div id="mob-list"></div>
+          <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+            <button class="btn secondary" id="mob-add" style="flex:1">+ Add exercise</button>
+            ${doneCount < items.length ? `<button class="btn ghost" id="mob-done-all">All done</button>` : ''}
+          </div>
         </div>
       </div>
     `;
+
+    const $toggle = el.querySelector('.mob-toggle');
+    const $body = el.querySelector('.mob-body');
+    const $chevron = el.querySelector('.mob-chevron');
+    if ($toggle && $body) {
+      $toggle.onclick = () => {
+        const open = $body.style.display === 'none';
+        $body.style.display = open ? '' : 'none';
+        if ($chevron) $chevron.textContent = open ? '▲' : '▼';
+      };
+    }
 
     const $list = el.querySelector('#mob-list');
     $list.innerHTML = items.map(ex => {

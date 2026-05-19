@@ -16,6 +16,64 @@ const todayStr = () => new Date().toISOString().slice(0, 10);
 let _activeDate = null; // null = today
 let _macroRange = 'day'; // 'day' | 'week'
 
+
+/** Wire serving label, per-serving size, amount eaten, and servings fields. */
+function wireServingFields(sheet, ids, updatePreview) {
+  const $ = (s) => sheet.querySelector(s);
+  function getSi() {
+    const label = $(ids.srvlbl)?.value || '';
+    const fromLabel = parseServingInfo(label);
+    const oz = parseFloat($(ids.perOz)?.value);
+    const g = parseFloat($(ids.perG)?.value);
+    if (oz > 0) {
+      return { ...fromLabel, ozPerServing: oz, gramsPerServing: oz * 28.349523125, preferOz: true };
+    }
+    if (g > 0) {
+      return { ...fromLabel, gramsPerServing: g, ozPerServing: Math.round((g / 28.349523125) * 100) / 100, preferOz: false };
+    }
+    return fromLabel;
+  }
+  function syncPerServingFromLabel() {
+    const si = parseServingInfo($(ids.srvlbl)?.value || '');
+    if (ids.perOz && si.ozPerServing && !$(ids.perOz).value) $(ids.perOz).value = si.ozPerServing;
+    if (ids.perG && si.gramsPerServing && !$(ids.perG).value) $(ids.perG).value = Math.round(si.gramsPerServing);
+  }
+  function calcServingsFromAmount() {
+    const si = getSi();
+    const oz = parseFloat($(ids.amtOz)?.value);
+    const g = parseFloat($(ids.amtG)?.value);
+    if (oz > 0 && si.ozPerServing) {
+      $(ids.srv).value = Math.round((oz / si.ozPerServing) * 100) / 100;
+    } else if (g > 0 && si.gramsPerServing) {
+      $(ids.srv).value = Math.round((g / si.gramsPerServing) * 100) / 100;
+    }
+    updatePreview?.();
+  }
+  if (ids.srvlbl) $(ids.srvlbl).addEventListener('input', () => { syncPerServingFromLabel(); calcServingsFromAmount(); });
+  for (const id of [ids.perOz, ids.perG, ids.amtOz, ids.amtG, ids.srv]) {
+    if (id && $(id)) $(id).addEventListener('input', () => {
+      if (id === ids.amtOz && $(ids.amtOz).value) $(ids.amtG).value = '';
+      if (id === ids.amtG && $(ids.amtG).value) $(ids.amtOz).value = '';
+      if (id === ids.amtOz || id === ids.amtG) calcServingsFromAmount();
+      else updatePreview?.();
+    });
+  }
+  syncPerServingFromLabel();
+}
+
+async function loadZXingReader() {
+  if (window.ZXingBrowser?.BrowserMultiFormatReader) return window.ZXingBrowser.BrowserMultiFormatReader;
+  if (window.ZXing?.BrowserMultiFormatReader) return window.ZXing.BrowserMultiFormatReader;
+  await new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/@zxing/browser@0.1.5/umd/index.min.js';
+    s.onload = res;
+    s.onerror = rej;
+    document.head.appendChild(s);
+  });
+  return window.ZXingBrowser?.BrowserMultiFormatReader || window.ZXing?.BrowserMultiFormatReader;
+}
+
 function parseGramsPerServing(serving) {
   return parseServingInfo(serving).gramsPerServing;
 }
@@ -284,8 +342,29 @@ function openQuickAdd(prefill = {}, dateKey) {
       <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
       <input type="text" id="m-name" value="${base.name}" autocomplete="off" placeholder="e.g. Chicken & rice">
-      <label>Serving size (label, optional)</label>
-      <input type="text" id="m-srvlbl" value="${base.serving}" placeholder="e.g. 4 oz, 1 cup">
+      <label>Serving size (label)</label>
+      <input type="text" id="m-srvlbl" value="${base.serving}" placeholder="e.g. 4 oz, 1 cup, 150g">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div>
+          <label style="font-size:12px">Per serving (oz)</label>
+          <input type="number" id="m-per-oz" inputmode="decimal" placeholder="e.g. 4" value="${si0.ozPerServing || ''}">
+        </div>
+        <div>
+          <label style="font-size:12px">Per serving (g)</label>
+          <input type="number" id="m-per-g" inputmode="decimal" placeholder="e.g. 113" value="${si0.gramsPerServing ? Math.round(si0.gramsPerServing) : ''}">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div>
+          <label style="font-size:12px">You ate (oz)</label>
+          <input type="number" id="m-amt-oz" inputmode="decimal" placeholder="optional">
+        </div>
+        <div>
+          <label style="font-size:12px">You ate (g)</label>
+          <input type="number" id="m-amt-g" inputmode="decimal" placeholder="optional">
+        </div>
+      </div>
+      <div class="muted" style="font-size:12px;margin-bottom:8px">Enter oz or grams eaten to auto-calculate servings below.</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <div>
           <label>Cals (per serving)</label>
@@ -312,16 +391,6 @@ function openQuickAdd(prefill = {}, dateKey) {
           <input type="number" id="m-sat" inputmode="decimal" value="${base.saturated_fat || ''}">
         </div>
       </div>
-      ${si0.preferOz && si0.ozPerServing ? `
-        <label>Amount (oz)</label>
-        <input type="number" id="m-oz" inputmode="decimal" placeholder="e.g. 4">
-        <div class="muted" style="font-size:12px;margin-bottom:8px">${si0.ozPerServing} oz per serving — enter ounces to calculate servings</div>
-      ` : ''}
-      ${si0.gramsPerServing && !si0.preferOz ? `
-        <label>Amount (grams)</label>
-        <input type="number" id="m-grams" inputmode="decimal" placeholder="e.g. 150">
-        <div class="muted" style="font-size:12px;margin-bottom:8px">${si0.gramsPerServing}g per serving — enter grams to calculate servings</div>
-      ` : ''}
       <label>Servings consumed</label>
       <input type="number" id="m-srv" value="${prefill.servings ?? 1}" step="0.25" inputmode="decimal">
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
@@ -350,34 +419,16 @@ function openQuickAdd(prefill = {}, dateKey) {
       $('#preview').textContent = `Total: ${Math.round(c * s)} kcal · ${Math.round(p * s * 10) / 10}p · ${Math.round(cb * s * 10) / 10}c · ${Math.round(f * s * 10) / 10}f` +
         (fiber || sat ? ` · fiber ${Math.round(fiber * s * 10) / 10}g · sat ${Math.round(sat * s * 10) / 10}g` : '');
     }
-    const $grams = $('#m-grams');
-    const $oz = $('#m-oz');
-    if ($grams) {
-      $grams.oninput = () => {
-        const g = parseFloat($grams.value);
-        const si = parseServingInfo($('#m-srvlbl').value);
-        if (g && si.gramsPerServing) {
-          $('#m-srv').value = Math.round((g / si.gramsPerServing) * 100) / 100;
-          update();
-        }
-      };
-    }
-    if ($oz) {
-      $oz.oninput = () => {
-        const oz = parseFloat($oz.value);
-        const si = parseServingInfo($('#m-srvlbl').value);
-        if (oz && si.ozPerServing) {
-          $('#m-srv').value = Math.round((oz / si.ozPerServing) * 100) / 100;
-          update();
-        }
-      };
-    }
+    wireServingFields(sheet, {
+      srvlbl: '#m-srvlbl', perOz: '#m-per-oz', perG: '#m-per-g',
+      amtOz: '#m-amt-oz', amtG: '#m-amt-g', srv: '#m-srv',
+    }, update);
     sheet.addEventListener('input', e => {
       if (e.target.matches('input[type="number"]')) update();
     });
     update();
     $('#m-cancel').onclick = close;
-    $('#m-scan').onclick = (e) => { e.preventDefault(); close(); openBarcodeScanner(dateKey); };
+    $('#m-scan').onclick = (e) => { e.preventDefault(); close(false); openBarcodeScanner(dateKey); };
     $('#m-save').onclick = async () => {
       const s = +$('#m-srv').value || 1;
       const meal = {
@@ -523,7 +574,7 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
           editBtn.onclick = (e) => {
             e.stopPropagation();
             const um = lib.find(x => String(x.id) === item.dataset.userId);
-            if (um) openEditUserMeal(um, () => { close(); openLibraryPicker(dateKey, $search.value.trim()); });
+            if (um) openEditUserMeal(um, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
           };
         }
         item.onclick = () => {
@@ -672,16 +723,17 @@ function openLogServings(item, parentClose, dateKey) {
       <h2>${item.name}</h2>
       ${item.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${item.nutritionNote}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per ${item.serving || '1 serving'}: ${item.calories} kcal · ${item.protein}p · ${item.carbs || 0}c · ${item.fat || 0}f</div>
-      ${useOz ? `
-        <label>Amount (oz)</label>
-        <input type="number" id="oz" inputmode="decimal" placeholder="e.g. 4">
-        <div class="muted" style="font-size:12px;margin-bottom:8px">${si.ozPerServing} oz per serving — enter oz to calculate servings</div>
-      ` : ''}
-      ${si.gramsPerServing && !useOz ? `
-        <label>Amount (grams)</label>
-        <input type="number" id="grams" inputmode="decimal" placeholder="e.g. 150">
-        <div class="muted" style="font-size:12px;margin-bottom:8px">${si.gramsPerServing}g per serving — enter grams to auto-calculate servings</div>
-      ` : ''}
+      <label>Serving label (optional edit)</label>
+      <input type="text" id="log-srvlbl" value="${item.serving || '1 serving'}">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div><label style="font-size:12px">Per serving (oz)</label><input type="number" id="log-per-oz" inputmode="decimal" value="${si.ozPerServing || ''}"></div>
+        <div><label style="font-size:12px">Per serving (g)</label><input type="number" id="log-per-g" inputmode="decimal" value="${si.gramsPerServing ? Math.round(si.gramsPerServing) : ''}"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div><label style="font-size:12px">You ate (oz)</label><input type="number" id="log-amt-oz" inputmode="decimal"></div>
+        <div><label style="font-size:12px">You ate (g)</label><input type="number" id="log-amt-g" inputmode="decimal"></div>
+      </div>
+      <div class="muted" style="font-size:12px;margin-bottom:8px">Oz or grams eaten updates servings automatically.</div>
       <label>Servings</label>
       <input type="number" id="srv" value="1" step="0.25" inputmode="decimal">
       <div id="preview" class="muted" style="margin-top:6px;font-size:13px"></div>
@@ -700,26 +752,10 @@ function openLogServings(item, parentClose, dateKey) {
         `Total: ${Math.round(item.calories * s)} kcal · ${Math.round((item.protein || 0) * s * 10) / 10}p · ${Math.round((item.carbs || 0) * s * 10) / 10}c · ${Math.round((item.fat || 0) * s * 10) / 10}f`;
     }
     const $srv = sheet.querySelector('#srv');
-    const $grams = sheet.querySelector('#grams');
-    const $oz = sheet.querySelector('#oz');
-    if ($grams) {
-      $grams.oninput = () => {
-        const g = parseFloat($grams.value);
-        if (g && si.gramsPerServing) {
-          $srv.value = Math.round((g / si.gramsPerServing) * 100) / 100;
-          update();
-        }
-      };
-    }
-    if ($oz) {
-      $oz.oninput = () => {
-        const oz = parseFloat($oz.value);
-        if (oz && si.ozPerServing) {
-          $srv.value = Math.round((oz / si.ozPerServing) * 100) / 100;
-          update();
-        }
-      };
-    }
+    wireServingFields(sheet, {
+      srvlbl: '#log-srvlbl', perOz: '#log-per-oz', perG: '#log-per-g',
+      amtOz: '#log-amt-oz', amtG: '#log-amt-g', srv: '#srv',
+    }, update);
     $srv.oninput = update;
     update();
     sheet.querySelector('#cancel').onclick = close;
@@ -729,7 +765,7 @@ function openLogServings(item, parentClose, dateKey) {
         date: dateKey,
         name: item.name,
         servings: s,
-        serving: item.serving,
+        serving: sheet.querySelector('#log-srvlbl')?.value.trim() || item.serving,
         calories: Math.round(item.calories * s),
         protein:  Math.round((item.protein || 0) * s * 10) / 10,
         carbs:    Math.round((item.carbs || 0) * s * 10) / 10,
@@ -863,14 +899,8 @@ function openBarcodeScanner(dateKey) {
         if (!file) return;
         status.textContent = 'Reading barcode…';
         try {
-          if (!window.ZXing) {
-            await new Promise((res, rej) => {
-              const s = document.createElement('script');
-              s.src = 'https://unpkg.com/@zxing/browser@0.1.5/umd/index.min.js';
-              s.onload = res; s.onerror = rej;
-              document.head.appendChild(s);
-            });
-          }
+          const ReaderClass = await loadZXingReader();
+          if (!ReaderClass) throw new Error('Barcode reader failed to load');
           const img = new Image();
           const objUrl = URL.createObjectURL(file);
           img.src = objUrl;
@@ -884,7 +914,7 @@ function openBarcodeScanner(dateKey) {
           canvas.width = Math.round(img.naturalWidth * scale);
           canvas.height = Math.round(img.naturalHeight * scale);
           canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-          const reader = new ZXing.BrowserMultiFormatReader();
+          const reader = new ReaderClass();
           const result = await reader.decodeFromCanvas(canvas);
           await lookupBarcode(result.getText());
         } catch (e) {
@@ -974,7 +1004,7 @@ function openFoodSearch(dateKey, initialQuery = '') {
         $res.querySelectorAll('.off-item').forEach(el => {
           el.onclick = async () => {
             const code = el.dataset.code;
-            close();
+            close(false);
             try {
               const r2 = await offFetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`);
               const j2 = await r2.json();
