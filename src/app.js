@@ -10,6 +10,7 @@ import { renderDashboard } from './views/dashboard.js';
 import { renderCardio } from './views/cardio.js';
 import { renderPrograms } from './views/programs.js';
 import { offerBackupRestore, scheduleLocalBackup } from './lib/backup.js';
+import { initUpdates } from './lib/updates.js';
 
 const ROUTES = {
   home:      renderHome,
@@ -94,6 +95,7 @@ export function openSheet(contentBuilder) {
 
 // Boot
 (async () => {
+  initUpdates();
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();
   if (!location.hash) location.hash = '#/home';
@@ -104,7 +106,3 @@ export function openSheet(contentBuilder) {
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') scheduleLocalBackup();
 });
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW register failed', err));
-}

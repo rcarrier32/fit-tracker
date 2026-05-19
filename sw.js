@@ -1,38 +1,18 @@
 /**
- * Service worker — cache app shell + data on install, network-first for HTML, cache-first for static.
+ * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v22';
-const APP_SHELL = [
-  './',
-  './index.html',
-  './manifest.json',
-  './src/styles.css',
-  './src/app.js',
-  './src/db.js',
-  './src/lib/tdee.js',
-  './src/lib/e1rm.js',
-  './src/lib/static_data.js',
-  './src/lib/off_nutrients.js',
-  './src/lib/plans.js',
-  './src/lib/plan_builder.js',
-  './src/views/home.js',
-  './src/views/daily_mobility.js',
-  './src/views/workout.js',
-  './src/views/meals.js',
-  './src/views/body.js',
-  './src/views/dashboard.js',
-  './src/views/schedule.js',
-  './src/views/cardio.js',
-  './src/views/programs.js',
-  './src/lib/backup.js',
-  './data/library.json',
-  './data/meal_library.json',
-  './data/common_foods.json',
-];
+const CACHE = 'fit-tracker-v24';
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(APP_SHELL).catch(err => console.warn('cache miss', err))));
-  self.skipWaiting();
+  e.waitUntil(
+    caches.open(CACHE).then(c =>
+      c.addAll([
+        './data/library.json',
+        './data/meal_library.json',
+        './data/common_foods.json',
+      ]).catch(err => console.warn('cache miss', err))
+    )
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -42,25 +22,35 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
+self.addEventListener('message', e => {
+  if (e.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
 self.addEventListener('fetch', e => {
-  const { request } = e;
-  const url = new URL(request.url);
+  const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
-  // JS modules must always come from the network (avoid stale broken bundles)
-  if (url.pathname.endsWith('.js')) {
-    e.respondWith(fetch(request));
+  // App shell + modules: always network (updates apply without clearing cache)
+  if (
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('.html') ||
+    url.pathname.endsWith('.css') ||
+    url.pathname.endsWith('version.json')
+  ) {
+    e.respondWith(fetch(e.request));
     return;
   }
 
-  // Network-first for everything else; cache only successful responses
-  e.respondWith(
-    fetch(request).then(res => {
-      if (res.ok) {
-        const clone = res.clone();
-        caches.open(CACHE).then(c => c.put(request, clone));
-      }
-      return res;
-    }).catch(() => caches.match(request))
-  );
+  // Data JSON: network-first, cache fallback for offline
+  if (url.pathname.endsWith('.json')) {
+    e.respondWith(
+      fetch(e.request).then(res => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(e.request))
+    );
+  }
 });
