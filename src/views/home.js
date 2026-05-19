@@ -282,6 +282,8 @@ export async function renderHome(app) {
         if (!data.sessions && !data.meals && !data.prefs) throw new Error('Invalid backup file');
         if (!confirm('This will replace all current data with the backup. Continue?')) return;
         await importAllData(data);
+        const { touchLocalBackup } = await import('../lib/backup.js');
+        touchLocalBackup();
         toast('Data restored — reloading…');
         setTimeout(() => window.location.reload(), 800);
       } catch (e) {

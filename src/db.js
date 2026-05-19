@@ -45,11 +45,15 @@ async function tx(store, mode = 'readonly') {
   return d.transaction(store, mode).objectStore(store);
 }
 
+function afterWrite() {
+  import('./lib/backup.js').then(m => m.touchLocalBackup()).catch(() => {});
+}
+
 export async function put(store, value) {
   const s = await tx(store, 'readwrite');
   return new Promise((res, rej) => {
     const r = s.put(value);
-    r.onsuccess = () => res(r.result);
+    r.onsuccess = () => { afterWrite(); res(r.result); };
     r.onerror = () => rej(r.error);
   });
 }
@@ -86,7 +90,7 @@ export async function del(store, key) {
   const s = await tx(store, 'readwrite');
   return new Promise((res, rej) => {
     const r = s.delete(key);
-    r.onsuccess = () => res();
+    r.onsuccess = () => { afterWrite(); res(); };
     r.onerror = () => rej(r.error);
   });
 }

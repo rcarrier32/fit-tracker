@@ -15,29 +15,6 @@
 <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-<script>
-(function () {
-  var key = 'fit-cache-v21';
-  if (localStorage.getItem(key) === '1') return;
-  var done = function () { localStorage.setItem(key, '1'); };
-  if (!('serviceWorker' in navigator)) { done(); return; }
-  navigator.serviceWorker.getRegistrations().then(function (regs) {
-    return Promise.all(regs.map(function (r) { return r.unregister(); }));
-  }).then(function () {
-    if ('caches' in window) {
-      return caches.keys().then(function (keys) {
-        return Promise.all(keys.map(function (k) { return caches.delete(k); }));
-      });
-    }
-  }).then(function () {
-    done();
-    if (!sessionStorage.getItem('fit-cache-reload')) {
-      sessionStorage.setItem('fit-cache-reload', '1');
-      location.reload();
-    }
-  }).catch(done);
-})();
-</script>
 <div id="app"></div>
 <nav id="tabbar">
   <button data-route="home"      class="tab"><span class="tab-icon">🏠</span><span class="tab-label">Today</span></button>
