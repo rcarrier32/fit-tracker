@@ -1,7 +1,7 @@
 /**
  * Open Food Facts nutrient + serving parsing (US oz labels, kJ-only energy, per-100g scaling).
  */
-const OZ_G = 28.349523125;
+import { OZ_G, enrichUnits, normalizeUnit, pickDefaultUnit } from './serving_units.js';
 
 export const OFF_USER_AGENT = 'FitTracker/1.0 (https://github.com/local/fit-tracker)';
 
@@ -15,7 +15,46 @@ function num(v) {
   return Number.isFinite(n) ? n : null;
 }
 
-/** @returns {{ label: string, gramsPerServing: number|null, ozPerServing: number|null, preferOz: boolean }} */
+function addUnit(units, unit, amount) {
+  const u = normalizeUnit(unit);
+  const n = parseFloat(amount);
+  if (!u || !(n > 0)) return;
+  if (u === 'ml' && (unit || '').toLowerCase().startsWith('l') && n < 50) {
+    units.ml = n * 1000;
+    return;
+  }
+  units[u] = n;
+}
+
+function parseLabelUnits(label) {
+  const units = {};
+  const patterns = [
+    [/(\d+\.?\d*)\s*(?:cup|cups)\b/i, 'cup'],
+    [/(\d+\.?\d*)\s*(?:fl\.?\s*oz|fluid\s*ounces?)\b/i, 'fl_oz'],
+    [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
+    [/(\d+\.?\d*)\s*(?:ml|mL|milliliters?)\b/i, 'ml'],
+    [/(\d+\.?\d*)\s*(?:tbsp|tablespoons?)\b/i, 'tbsp'],
+    [/(\d+\.?\d*)\s*(?:tsp|teaspoons?)\b/i, 'tsp'],
+    [/(\d+\.?\d*)\s*g\b/i, 'g'],
+    [/(\d+\.?\d*)\s*(?:serving|servings|portion|portions)\b/i, 'serving'],
+  ];
+  for (const [re, unit] of patterns) {
+    const m = label.match(re);
+    if (m) addUnit(units, unit, m[1]);
+  }
+  return units;
+}
+
+/**
+ * @returns {{
+ *   label: string,
+ *   units: Record<string, number>,
+ *   defaultUnit: string,
+ *   gramsPerServing: number|null,
+ *   ozPerServing: number|null,
+ *   preferOz: boolean,
+ * }}
+ */
 export function parseServingInfo(servingStr, product = null) {
   let label = (servingStr || product?.serving_size || '').trim();
   if (!label && product?.serving_quantity != null && product?.serving_quantity_unit) {
@@ -23,28 +62,40 @@ export function parseServingInfo(servingStr, product = null) {
   }
   if (!label) label = '1 serving';
 
-  const ozM = label.match(/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i);
-  const gM = label.match(/(\d+\.?\d*)\s*g\b/i);
+  const units = parseLabelUnits(label);
 
-  let grams = null;
   if (product?.serving_quantity != null) {
     const q = parseFloat(product.serving_quantity);
-    const u = (product.serving_quantity_unit || '').toLowerCase();
-    if (!Number.isNaN(q)) {
-      if (u === 'g' || u === 'gram' || u === 'grams') grams = q;
-      else if (u === 'oz' || u === 'ounce' || u === 'ounces') grams = q * OZ_G;
-      else if (!u && q > 0 && q < 50) grams = q * OZ_G; // bare number + oz in label
+    const rawU = product.serving_quantity_unit || '';
+    if (!Number.isNaN(q) && q > 0) {
+      const u = normalizeUnit(rawU);
+      if (u === 'ml' && /^l/i.test(rawU.trim())) addUnit(units, 'ml', q * 1000);
+      else if (u) addUnit(units, u, q);
+      else if (!rawU.trim() && q > 0 && q < 50) addUnit(units, 'oz', q);
     }
   }
-  if (grams == null && gM) grams = parseFloat(gM[1]);
-  if (grams == null && ozM) grams = parseFloat(ozM[1]) * OZ_G;
 
-  const oz = ozM ? parseFloat(ozM[1]) : (grams ? Math.round((grams / OZ_G) * 100) / 100 : null);
+  let enriched = enrichUnits(units);
+  if (!Object.keys(enriched).length) {
+    addUnit(enriched, 'serving', 1);
+    enriched = enrichUnits(enriched);
+  }
+
+  const defaultUnit = pickDefaultUnit(enriched, label);
+  const grams = enriched.g > 0 ? enriched.g : null;
+  const oz = enriched.oz > 0 ? enriched.oz : (grams ? Math.round((grams / OZ_G) * 100) / 100 : null);
   const ozIdx = label.toLowerCase().search(/\b(?:oz|ounce)/);
   const gIdx = label.toLowerCase().indexOf('g');
-  const preferOz = !!ozM && (gIdx < 0 || (ozIdx >= 0 && ozIdx < gIdx));
+  const preferOz = !!oz && (gIdx < 0 || (ozIdx >= 0 && ozIdx < gIdx));
 
-  return { label, gramsPerServing: grams, ozPerServing: oz, preferOz };
+  return {
+    label,
+    units: enriched,
+    defaultUnit,
+    gramsPerServing: grams,
+    ozPerServing: oz,
+    preferOz,
+  };
 }
 
 function kcalFromNutriments(n, servingGrams) {
@@ -106,9 +157,11 @@ export function nutrientsFromProduct(product) {
     || num(n['energy-kj_100g']) != null
     || num(n['energy_100g']) != null;
 
-  if (!si.gramsPerServing && hasPer100) {
+  if (!si.gramsPerServing && !si.units.ml && !si.units.cup && hasPer100) {
     si = {
       ...si,
+      units: enrichUnits({ ...si.units, g: 100 }),
+      defaultUnit: 'g',
       gramsPerServing: 100,
       ozPerServing: Math.round((100 / OZ_G) * 100) / 100,
       label: /\d+\s*g\b/i.test(si.label) ? si.label : '100 g',
@@ -158,4 +211,4 @@ export function nutrientsFromOFF(nutriments, serving, product = null) {
   });
 }
 
-export { OZ_G };
+export { OZ_G } from './serving_units.js';

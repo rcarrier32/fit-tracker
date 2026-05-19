@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v26';
+const CACHE = 'fit-tracker-v27';
 
 self.addEventListener('install', e => {
   e.waitUntil(

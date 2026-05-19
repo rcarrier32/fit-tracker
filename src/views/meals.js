@@ -10,59 +10,51 @@ import { getAll, getByIndex, put, del } from '../db.js';
 import { toast, openSheet } from '../app.js';
 import { loadCatalogs } from '../lib/static_data.js';
 import { parseServingInfo, nutrientsFromProduct, offFetch } from '../lib/off_nutrients.js';
+import {
+  UNIT_LABELS,
+  calcServings,
+  convertAmount,
+  enrichUnits,
+  perAmountForUnit,
+  unitsForUi,
+} from '../lib/serving_units.js';
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
 let _activeDate = null; // null = today
 let _macroRange = 'day'; // 'day' | 'week'
 
-
-const OZ_G = 28.349523125;
-
 function attrEsc(s) {
   return String(s ?? '').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
-function initialServingUnit(si) {
-  if (si.preferOz && si.ozPerServing) return 'oz';
-  if (si.gramsPerServing && !si.preferOz) return 'g';
-  if (si.ozPerServing && !si.gramsPerServing) return 'oz';
-  if (si.gramsPerServing) return 'g';
-  return 'oz';
+function resolveServingInfo(si) {
+  if (si?.units && si.defaultUnit) return si;
+  return parseServingInfo(si?.label || (typeof si === 'string' ? si : '') || '');
 }
 
-function perSizeForUnit(si, unit) {
-  if (unit === 'oz') return si.ozPerServing ?? '';
-  return si.gramsPerServing ? Math.round(si.gramsPerServing) : '';
-}
-
-function convertSizeVal(val, fromUnit, toUnit) {
-  const n = parseFloat(val);
-  if (!(n > 0) || fromUnit === toUnit) return val;
-  if (fromUnit === 'oz' && toUnit === 'g') return Math.round(n * OZ_G);
-  if (fromUnit === 'g' && toUnit === 'oz') return Math.round((n / OZ_G) * 100) / 100;
-  return val;
-}
-
-/** Shared serving UI: label, oz/g unit toggle, one per-serving + one amount field, servings. */
-function servingFieldsHtml(prefix, servingLabel, si, { servings = 1 } = {}) {
-  const unit = initialServingUnit(si);
-  const perVal = perSizeForUnit(si, unit);
+/** Shared serving UI — enter amount eaten; servings auto-calculate. */
+function servingFieldsHtml(prefix, servingLabel, si, { servings = 1, focusAmount = true } = {}) {
+  const info = resolveServingInfo(si);
+  const units = info.units || enrichUnits({ serving: 1 });
+  const defaultUnit = info.defaultUnit || 'oz';
+  const uiUnits = unitsForUi(units, defaultUnit);
+  const perVal = perAmountForUnit(units, defaultUnit);
+  const unitPills = uiUnits.map(u =>
+    `<button type="button" class="pill${u === defaultUnit ? ' accent' : ''}" data-unit="${u}">${UNIT_LABELS[u] || u}</button>`
+  ).join('');
+  const unitLbl = UNIT_LABELS[defaultUnit] || defaultUnit;
   return `
     <label>Serving label</label>
-    <input type="text" id="${prefix}-srvlbl" value="${attrEsc(servingLabel)}" placeholder="e.g. 4 oz chicken">
-    <label style="margin-top:10px">Size unit</label>
-    <div id="${prefix}-unit-row" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-      <button type="button" class="pill${unit === 'oz' ? ' accent' : ''}" data-unit="oz">oz</button>
-      <button type="button" class="pill${unit === 'g' ? ' accent' : ''}" data-unit="g">grams</button>
-    </div>
-    <label id="${prefix}-per-lbl">Per serving (${unit})</label>
-    <input type="number" id="${prefix}-per" inputmode="decimal" placeholder="e.g. 4" value="${perVal}">
-    <label id="${prefix}-amt-lbl">You ate (${unit})</label>
-    <input type="number" id="${prefix}-amt" inputmode="decimal" placeholder="optional">
-    <div class="muted" style="font-size:12px;margin-bottom:8px">Weight eaten updates servings automatically.</div>
-    <label>Servings</label>
-    <input type="number" id="${prefix}-srv" value="${servings}" step="0.25" inputmode="decimal">
+    <input type="text" id="${prefix}-srvlbl" value="${attrEsc(servingLabel)}" placeholder="e.g. 1 cup, 4 oz chicken">
+    <label style="margin-top:10px">Unit</label>
+    <div id="${prefix}-unit-row" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">${unitPills}</div>
+    <label id="${prefix}-per-lbl">Per serving (${unitLbl})</label>
+    <input type="number" id="${prefix}-per" inputmode="decimal" value="${perVal}">
+    <label id="${prefix}-amt-lbl" style="margin-top:10px">How much did you eat? (${unitLbl})</label>
+    <input type="number" id="${prefix}-amt" inputmode="decimal" placeholder="e.g. 12"${focusAmount ? ' autofocus' : ''}>
+    <div class="muted" style="font-size:12px;margin:8px 0">Servings: <strong id="${prefix}-srv-disp">${servings}</strong> <span id="${prefix}-srv-hint">(enter amount above)</span></div>
+    <input type="hidden" id="${prefix}-srv" value="${servings}">
   `;
 }
 
@@ -73,58 +65,61 @@ function wireServingFields(sheet, prefix, updatePreview) {
     return q('unit-row')?.querySelector('.pill.accent')?.dataset.unit || 'oz';
   }
 
+  function getPerUnits() {
+    const parsed = parseServingInfo(q('srvlbl')?.value || '');
+    const units = { ...parsed.units };
+    const unit = getUnit();
+    const per = parseFloat(q('per')?.value);
+    if (per > 0) units[unit] = per;
+    return enrichUnits(units);
+  }
+
   function setUnit(unit, { fromLabel = false } = {}) {
     const prev = getUnit();
+    const perUnits = getPerUnits();
     if (!fromLabel && prev !== unit) {
       const per = q('per');
       const amt = q('amt');
-      if (per?.value) per.value = convertSizeVal(per.value, prev, unit);
-      if (amt?.value) amt.value = convertSizeVal(amt.value, prev, unit);
+      if (per?.value) per.value = convertAmount(per.value, prev, unit, perUnits);
+      if (amt?.value) amt.value = convertAmount(amt.value, prev, unit, perUnits);
     }
     q('unit-row')?.querySelectorAll('[data-unit]').forEach(btn => {
       btn.classList.toggle('accent', btn.dataset.unit === unit);
     });
-    const lbl = unit === 'oz' ? 'oz' : 'g';
+    const lbl = UNIT_LABELS[unit] || unit;
     if (q('per-lbl')) q('per-lbl').textContent = `Per serving (${lbl})`;
-    if (q('amt-lbl')) q('amt-lbl').textContent = `You ate (${lbl})`;
-  }
-
-  function getSi() {
-    const fromLabel = parseServingInfo(q('srvlbl')?.value || '');
-    const unit = getUnit();
-    const per = parseFloat(q('per')?.value);
-    if (per > 0) {
-      if (unit === 'oz') {
-        return { ...fromLabel, ozPerServing: per, gramsPerServing: per * OZ_G, preferOz: true };
-      }
-      return { ...fromLabel, gramsPerServing: per, ozPerServing: Math.round((per / OZ_G) * 100) / 100, preferOz: false };
-    }
-    return fromLabel;
+    if (q('amt-lbl')) q('amt-lbl').textContent = `How much did you eat? (${lbl})`;
   }
 
   function syncPerServingFromLabel() {
-    const si = parseServingInfo(q('srvlbl')?.value || '');
-    if (!si.ozPerServing && !si.gramsPerServing) return;
-    const unit = initialServingUnit(si);
+    const parsed = parseServingInfo(q('srvlbl')?.value || '');
+    const units = parsed.units;
+    if (!Object.keys(units).length) return;
+    const unit = parsed.defaultUnit;
     setUnit(unit, { fromLabel: true });
     const per = q('per');
-    if (per && !per.value) per.value = perSizeForUnit(si, unit);
+    if (per) per.value = perAmountForUnit(units, unit);
     calcServingsFromAmount();
   }
 
   function calcServingsFromAmount() {
-    const si = getSi();
+    const perUnits = getPerUnits();
     const unit = getUnit();
     const amt = parseFloat(q('amt')?.value);
     const srv = q('srv');
-    if (!(amt > 0) || !srv) {
-      updatePreview?.();
-      return;
-    }
-    if (unit === 'oz' && si.ozPerServing) {
-      srv.value = Math.round((amt / si.ozPerServing) * 100) / 100;
-    } else if (unit === 'g' && si.gramsPerServing) {
-      srv.value = Math.round((amt / si.gramsPerServing) * 100) / 100;
+    const disp = q('srv-disp');
+    const hint = q('srv-hint');
+    let s = parseFloat(srv?.value) || 1;
+    if (amt > 0) {
+      const calc = calcServings(amt, unit, perUnits);
+      if (calc != null) {
+        s = calc;
+        if (srv) srv.value = String(s);
+        if (disp) disp.textContent = String(s);
+        if (hint) hint.textContent = '';
+      }
+    } else if (hint) {
+      hint.textContent = '(enter amount above)';
     }
     updatePreview?.();
   }
@@ -136,12 +131,8 @@ function wireServingFields(sheet, prefix, updatePreview) {
     };
   });
   q('srvlbl')?.addEventListener('input', () => { syncPerServingFromLabel(); });
-  for (const id of ['per', 'amt', 'srv']) {
-    q(id)?.addEventListener('input', () => {
-      if (id === 'amt' || id === 'per') calcServingsFromAmount();
-      else updatePreview?.();
-    });
-  }
+  q('per')?.addEventListener('input', calcServingsFromAmount);
+  q('amt')?.addEventListener('input', calcServingsFromAmount);
   syncPerServingFromLabel();
 }
 
@@ -427,7 +418,7 @@ function openQuickAdd(prefill = {}, dateKey) {
       <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
       <input type="text" id="m-name" value="${base.name}" autocomplete="off" placeholder="e.g. Chicken & rice">
-      ${servingFieldsHtml('m', base.serving, si0, { servings: prefill.servings ?? 1 })}
+      ${servingFieldsHtml('m', base.serving, si0, { servings: prefill.servings ?? 1, focusAmount: false })}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
         <div>
           <label>Cals (per serving)</label>
@@ -859,7 +850,7 @@ function openLogServings(item, parentClose, dateKey) {
       if (parentClose) parentClose();
       renderMeals(document.getElementById('app'));
     };
-    setTimeout(() => sheet.querySelector('#log-amt')?.focus() || $srv?.focus(), 100);
+    setTimeout(() => sheet.querySelector('#log-amt')?.focus(), 100);
   });
 }
 
