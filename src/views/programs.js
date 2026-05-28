@@ -31,6 +31,22 @@ export async function renderPrograms(app) {
     </div>
 
     ${customPrograms.length ? `<div class="group-label">My Plans</div><div id="custom-list"></div>` : ''}
+
+    <div class="group-label">Rehab Protocols</div>
+    <div class="card" style="padding:12px 14px;border-color:rgba(167,139,250,0.3);cursor:pointer" id="tos-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-weight:600;margin-bottom:2px">TOS + Scapular Dyskinesis</div>
+          <div class="muted" style="font-size:12px">
+            Thoracic outlet syndrome · 12-week motor control protocol · Swimming inclusive
+          </div>
+        </div>
+        <span class="pill" style="color:#a78bfa;border-color:rgba(167,139,250,0.4);flex-shrink:0;margin-left:8px">
+          5 phases
+        </span>
+      </div>
+    </div>
+
     <div class="group-label">BWS Strength</div>
     <div id="bws-list"></div>
 
@@ -45,6 +61,8 @@ export async function renderPrograms(app) {
     const customEl = app.querySelector('#custom-list');
     renderCustomProgramList(customEl, customPrograms, activePlan, () => renderPrograms(app));
   }
+
+  app.querySelector('#tos-card').onclick = () => navigate('tos');
 
   app.querySelector('#build-plan').onclick = async () => {
     const { exercises } = await loadCatalogs();

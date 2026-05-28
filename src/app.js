@@ -9,6 +9,7 @@ import { renderBody } from './views/body.js';
 import { renderDashboard } from './views/dashboard.js';
 import { renderCardio } from './views/cardio.js';
 import { renderPrograms } from './views/programs.js';
+import { renderTOS } from './views/tos.js';
 import { offerBackupRestore, scheduleLocalBackup } from './lib/backup.js';
 
 const ROUTES = {
@@ -18,6 +19,7 @@ const ROUTES = {
   body:      renderBody,
   dashboard: renderDashboard,
   cardio:    renderCardio,
+  tos:       renderTOS,
   programs:  renderPrograms,
 };
 
