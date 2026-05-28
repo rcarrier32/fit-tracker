@@ -261,7 +261,8 @@ export async function renderHome(app) {
   `;
 
   app.querySelector('[data-action="log-meal"]').onclick = () => navigate('meals');
-  app.querySelector('#open-tos')?.onclick = () => navigate('tos');
+  const openTosBtn = app.querySelector('#open-tos');
+  if (openTosBtn) openTosBtn.onclick = () => navigate('tos');
   app.querySelector('[data-action="log-activity"]').onclick = () => navigate('cardio');
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {
