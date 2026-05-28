@@ -2,7 +2,7 @@
  * In-app update check via version.json only (avoids SW reload loops).
  * Bump `window.__FIT_V` in index.html, version.json `v`, and sw.js CACHE together.
  */
-export const LOCAL_V = 31; // keep in sync with index.html window.__FIT_V
+export const LOCAL_V = 32; // keep in sync with index.html window.__FIT_V
 
 const VERSION_URL = new URL('version.json', location.href).href;
 const RELOAD_GUARD_KEY = 'fit-update-reload-ts';
