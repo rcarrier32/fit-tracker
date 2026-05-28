@@ -2,6 +2,7 @@
  * TOS + Scapular Dyskinesis Rehabilitation Protocol.
  * Standalone view at #/tos — accessible from Programs → Rehab Protocols.
  */
+import { pref } from '../db.js';
 import { navigate } from '../app.js';
 
 const PHASES = [
@@ -281,31 +282,68 @@ const AVOID_ITEMS = [
   'Cervical lateral flexion stretch toward symptomatic side',
 ];
 
-export function renderTOS(app) {
-  let activePhase = 'phase1';
-  let completed = {};
+export async function renderTOS(app) {
+  const todayKey = new Date().toISOString().slice(0, 10);
 
-  function toggle(id) {
+  // ── Persisted state ──────────────────────────────────────────────────────
+  const saved    = (await pref('tos_progress')) || null;
+  const allLogs  = (await pref('tos_logs'))     || {};
+
+  let currentPhase   = saved?.phase   || null;   // phase the user is "in"
+  let currentStarted = saved?.started || null;   // ISO date they started it
+  let activePhase    = currentPhase   || 'phase1'; // tab currently viewed
+  let completed      = { ...(allLogs[todayKey] || {}) }; // today's checkboxes
+
+  async function saveProgress(phaseId) {
+    const p = PHASES.find(ph => ph.id === phaseId);
+    currentPhase   = phaseId;
+    currentStarted = todayKey;
+    await pref('tos_progress', {
+      phase:   phaseId,
+      started: todayKey,
+      label:   p.label,
+      tag:     p.tag,
+      accent:  p.accent,
+    });
+  }
+
+  async function toggle(id) {
     completed[id] = !completed[id];
+    const logs = (await pref('tos_logs')) || {};
+    logs[todayKey] = { ...(logs[todayKey] || {}), [id]: completed[id] };
+    await pref('tos_logs', logs);
     mount();
   }
 
+  function weekInPhase() {
+    if (!currentPhase || currentPhase !== activePhase || !currentStarted) return null;
+    const start = new Date(currentStarted + 'T12:00:00');
+    const days  = Math.floor((Date.now() - start) / 864e5);
+    return Math.max(1, Math.floor(days / 7) + 1);
+  }
+
+  // ── Sub-renderers ────────────────────────────────────────────────────────
   function tabHTML(p) {
-    const active = p.id === activePhase;
-    const border = active ? p.accent : 'rgba(255,255,255,0.1)';
-    const bg     = active ? p.bg    : 'transparent';
-    const color  = active ? p.accent : '#cbd5e1';
+    const isViewing  = p.id === activePhase;
+    const isCurrent  = p.id === currentPhase;
+    const border = isViewing ? p.accent
+                 : isCurrent ? p.accent + '55'
+                 : 'rgba(255,255,255,0.1)';
+    const bg    = isViewing ? p.bg : 'transparent';
+    const color = isViewing ? p.accent : isCurrent ? p.accent : '#cbd5e1';
     return `
       <button data-phase="${p.id}" style="flex-shrink:0;background:${bg};border:1px solid ${border};
         border-radius:8px;padding:7px 12px;cursor:pointer;display:flex;flex-direction:column;
         align-items:flex-start;gap:2px;min-width:82px;transition:all 0.15s ease">
         <span style="font-size:13px;font-weight:600;color:${color}">${p.label}</span>
-        <span style="font-size:10px;color:#475569;letter-spacing:0.02em">${p.tag.split('·')[0].trim()}</span>
+        <span style="font-size:10px;color:#475569;letter-spacing:0.02em">
+          ${isCurrent && !isViewing ? '● active' : p.tag.split('·')[0].trim()}
+        </span>
       </button>`;
   }
 
   function cardHTML(ex, phase) {
-    const done = !!completed[ex.id];
+    const done        = !!completed[ex.id];
     const checkBg     = done ? phase.accent : 'transparent';
     const checkBorder = done ? phase.accent : 'rgba(255,255,255,0.25)';
     const checkColor  = done ? '#0f172a'    : 'rgba(255,255,255,0.4)';
@@ -376,11 +414,15 @@ export function renderTOS(app) {
       </div>`;
   }
 
+  // ── Main render ──────────────────────────────────────────────────────────
   function mount() {
-    const phase = PHASES.find(p => p.id === activePhase);
-    const done  = phase.exercises.filter(e => completed[e.id]).length;
-    const total = phase.exercises.length;
-    const pct   = total ? Math.round((done / total) * 100) : 0;
+    const phase      = PHASES.find(p => p.id === activePhase);
+    const done       = phase.exercises.filter(e => completed[e.id]).length;
+    const total      = phase.exercises.length;
+    const pct        = total ? Math.round((done / total) * 100) : 0;
+    const week       = weekInPhase();
+    const isActive   = activePhase === currentPhase || activePhase === 'daily';
+    const isDaily    = activePhase === 'daily';
 
     app.innerHTML = `
       <div style="margin-bottom:4px">
@@ -400,7 +442,6 @@ export function renderTOS(app) {
           ).join('')}
         </div>
 
-        <!-- Phase tabs -->
         <div style="display:flex;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none;
           -webkit-overflow-scrolling:touch">
           ${PHASES.map(p => tabHTML(p)).join('')}
@@ -413,17 +454,28 @@ export function renderTOS(app) {
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
           <div style="flex:1">
             <div style="font-size:10px;letter-spacing:0.12em;font-weight:600;
-              color:${phase.accent};margin-bottom:5px;text-transform:uppercase">${phase.tag}</div>
+              color:${phase.accent};margin-bottom:3px;text-transform:uppercase">${phase.tag}</div>
+            ${week ? `<div style="font-size:11px;color:${phase.accent};opacity:0.8;margin-bottom:5px;font-weight:600">
+              Week ${week}</div>` : ''}
             <p style="font-size:12.5px;color:#94a3b8;margin:0;line-height:1.5">${phase.description}</p>
           </div>
           <div style="text-align:right;flex-shrink:0">
-            <div style="font-size:20px;font-weight:700;line-height:1;color:${phase.accent}">${done}/${total}</div>
-            <div style="font-size:10px;color:#475569;margin-top:1px;margin-bottom:5px">done today</div>
-            <div style="width:56px;height:3px;background:rgba(255,255,255,0.08);
-              border-radius:99px;overflow:hidden;margin-left:auto">
-              <div style="height:100%;border-radius:99px;background:${phase.accent};
-                width:${pct}%;transition:width 0.3s ease"></div>
-            </div>
+            ${isActive ? `
+              <div style="font-size:20px;font-weight:700;line-height:1;color:${phase.accent}">${done}/${total}</div>
+              <div style="font-size:10px;color:#475569;margin-top:1px;margin-bottom:5px">done today</div>
+              <div style="width:56px;height:3px;background:rgba(255,255,255,0.08);
+                border-radius:99px;overflow:hidden;margin-left:auto">
+                <div style="height:100%;border-radius:99px;background:${phase.accent};
+                  width:${pct}%;transition:width 0.3s ease"></div>
+              </div>
+            ` : `
+              <button data-begin="${phase.id}"
+                style="font-size:11px;padding:5px 10px;border-radius:6px;cursor:pointer;
+                  background:${phase.bg};border:1px solid ${phase.accent};color:${phase.accent};
+                  white-space:nowrap">
+                ▶ Begin phase
+              </button>
+            `}
           </div>
         </div>
       </div>
@@ -434,7 +486,7 @@ export function renderTOS(app) {
       </div>
 
       <!-- Avoid section -->
-      ${activePhase !== 'daily' ? `
+      ${!isDaily ? `
         <div style="padding:12px 14px;background:rgba(239,68,68,0.06);
           border:1px solid rgba(239,68,68,0.15);border-radius:10px;margin-bottom:12px">
           <div style="font-size:11px;font-weight:700;color:#f87171;letter-spacing:0.05em;margin-bottom:8px">
@@ -467,8 +519,14 @@ export function renderTOS(app) {
     app.querySelectorAll('[data-phase]').forEach(btn => {
       btn.addEventListener('click', () => {
         activePhase = btn.dataset.phase;
-        app.scrollTop = 0;
         window.scrollTo(0, 0);
+        mount();
+      });
+    });
+
+    app.querySelectorAll('[data-begin]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await saveProgress(btn.dataset.begin);
         mount();
       });
     });

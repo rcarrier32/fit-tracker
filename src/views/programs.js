@@ -9,20 +9,21 @@ import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/p
 import { pref } from '../db.js';
 
 export async function renderPrograms(app) {
-  const [{ programs }, activePlan] = await Promise.all([
+  const [{ programs }, activePlan, tosProgress, customPrograms] = await Promise.all([
     loadCatalogs(),
     getActivePlan(),
+    pref('tos_progress'),
+    pref('custom_programs').then(v => v || []),
   ]);
 
   const bws = programs.filter(p => p.source === 'BWS');
   const pjf = programs.filter(p => p.source === 'PJF');
 
-  const customPrograms = (await pref('custom_programs')) || [];
-
   app.innerHTML = `
     <h1>Programs</h1>
 
-    ${activePlan ? renderActivePlanCard(activePlan, programs) : ''}
+    ${activePlan    ? renderActivePlanCard(activePlan, programs) : ''}
+    ${tosProgress   ? renderActiveTOSCard(tosProgress)           : ''}
 
     <div class="card" style="padding:12px 14px">
       <div style="font-weight:600;margin-bottom:2px">Build My Own Plan</div>
@@ -58,8 +59,7 @@ export async function renderPrograms(app) {
   renderProgramList(app.querySelector('#pjf-list'), pjf, activePlan, () => renderPrograms(app));
 
   if (customPrograms.length) {
-    const customEl = app.querySelector('#custom-list');
-    renderCustomProgramList(customEl, customPrograms, activePlan, () => renderPrograms(app));
+    renderCustomProgramList(app.querySelector('#custom-list'), customPrograms, activePlan, () => renderPrograms(app));
   }
 
   app.querySelector('#tos-card').onclick = () => navigate('tos');
@@ -75,6 +75,15 @@ export async function renderPrograms(app) {
       toast('Plan ended');
       renderPrograms(app);
     });
+  }
+
+  if (tosProgress) {
+    app.querySelector('[data-action="end-tos"]')?.addEventListener('click', async () => {
+      await pref('tos_progress', null);
+      toast('TOS protocol ended');
+      renderPrograms(app);
+    });
+    app.querySelector('[data-action="open-tos"]')?.addEventListener('click', () => navigate('tos'));
   }
 }
 
@@ -92,6 +101,28 @@ function renderActivePlanCard(plan, programs) {
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="muted" style="margin-top:4px">${pct}% complete · ${weeksLeft} week${weeksLeft !== 1 ? 's' : ''} left</div>
       <button class="btn ghost danger-text" data-action="end-plan" style="margin-top:10px;color:var(--danger);border-color:var(--danger)">End plan early</button>
+    </div>
+  `;
+}
+
+function renderActiveTOSCard(progress) {
+  const start = new Date(progress.started + 'T12:00:00');
+  const days  = Math.floor((Date.now() - start) / 864e5);
+  const week  = Math.max(1, Math.floor(days / 7) + 1);
+  const accent = progress.accent || '#a78bfa';
+  return `
+    <div class="card" style="border-color:${accent}55">
+      <div class="card-row">
+        <h2 style="margin:0;color:${accent}">Active Rehab</h2>
+        <span class="pill" style="color:${accent};border-color:${accent}55">Week ${week}</span>
+      </div>
+      <div style="font-weight:600;margin:6px 0 1px">TOS + Scapular Dyskinesis</div>
+      <div class="muted" style="font-size:12px;margin-bottom:10px">${progress.label} · ${progress.tag}</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" data-action="open-tos" style="flex:1">Open</button>
+        <button class="btn ghost" data-action="end-tos"
+          style="width:auto;padding:0 14px;color:var(--danger);border-color:var(--danger)">End</button>
+      </div>
     </div>
   `;
 }
