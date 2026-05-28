@@ -1,9 +1,10 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v32';
+const CACHE = 'fit-tracker-v33';
 
 self.addEventListener('install', e => {
+  self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload
   e.waitUntil(
     caches.open(CACHE).then(c =>
       c.addAll([
@@ -30,14 +31,14 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
-  // App shell + modules: always network (updates apply without clearing cache)
+  // App shell + modules: always bypass HTTP cache so stale code never serves
   if (
     url.pathname.endsWith('.js') ||
     url.pathname.endsWith('.html') ||
     url.pathname.endsWith('.css') ||
     url.pathname.endsWith('version.json')
   ) {
-    e.respondWith(fetch(e.request));
+    e.respondWith(fetch(e.request, { cache: 'no-store' }));
     return;
   }
 
