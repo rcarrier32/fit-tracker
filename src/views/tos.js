@@ -38,6 +38,11 @@ const PHASES = [
     accent: '#22d3ee',
     bg: 'rgba(8,145,178,0.10)',
     description: 'Release the structures pulling your scapula down and your first rib up. No strength work yet — just tissue prep and breathing mechanics.',
+    criteria: [
+      'First rib no longer tender on palpation just above the clavicle',
+      '10 min diaphragmatic breathing with no upper chest or scalene activation',
+      'TOS symptoms reduced ≥ 50% from baseline',
+    ],
     exercises: [
       {
         id: 'breathing',
@@ -95,6 +100,21 @@ const PHASES = [
         videoId: 'jZ1WNCfmTLE',
         videoTitle: 'Thoracic Extension Over Foam Roller (Weighted)',
       },
+      {
+        id: 'scalene-release',
+        name: 'Anterior Scalene Self-Release',
+        subtitle: 'Reduces scalene hypertonicity — do before breathing work for better results',
+        sets: '60–90 s per side',
+        freq: 'Before diaphragmatic breathing sessions',
+        optional: true,
+        cues: [
+          'Use a massage ball or fingertips just above the clavicle, on the side of the neck.',
+          'Find the tender spot in the scalene — hold gentle sustained pressure, do not dig.',
+          'Breathe slowly through the hold. Let the tissue release gradually over 60–90 s.',
+        ],
+        videoId: '87b3JoX06yI',
+        videoTitle: 'Scalene Active Massage — Self Release — Rehab Hero',
+      },
     ],
   },
   {
@@ -104,6 +124,11 @@ const PHASES = [
     accent: '#34d399',
     bg: 'rgba(5,150,105,0.10)',
     description: 'Rewire the nervous system. No weights yet. Use a mirror — visual feedback is essential. If kinematics break down, stop and reset manually. Slow and deliberate beats fast and sloppy.',
+    criteria: [
+      '30 consecutive mirror abductions to 90° with no scapular depression or downward rotation',
+      'Upper trap elevation hold 3 × 10 with no compensatory neck shortening',
+      'Symptoms ≤ 2/10 during normal daily activities',
+    ],
     exercises: [
       {
         id: 'trap-shrug',
@@ -170,6 +195,11 @@ const PHASES = [
     accent: '#a78bfa',
     bg: 'rgba(124,58,237,0.10)',
     description: "Add load only when unloaded patterns are automatic. If kinematics break down under load, reduce weight — don't push through dysfunction.",
+    criteria: [
+      'All Phase 3 sets at target reps with correct scapular mechanics under load',
+      'No symptoms with sustained arm elevation to 90° for 30 s',
+      'Scapular upward rotation maintained throughout full shoulder range under load',
+    ],
     exercises: [
       {
         id: 'wall-pushup',
@@ -236,6 +266,10 @@ const PHASES = [
     accent: '#38bdf8',
     bg: 'rgba(3,105,161,0.10)',
     description: 'Return-to-sport guidance only — begin after Phase 3 mechanics are solid. Repetitive overhead swimming is a known TOS aggravator; stroke mechanics determine whether it helps or hurts. Stop if symptoms appear and regress to Phase 3.',
+    criteria: [
+      'No symptoms with overhead shoulder movement in Phase 3',
+      'Scapular mechanics are automatic under load — no active compensation required',
+    ],
     exercises: [
       {
         id: 'backstroke',
@@ -265,6 +299,58 @@ const PHASES = [
         warning: '⚠ Avoid butterfly until Phase 3 is fully complete. Avoid aggressive overhead reach in breaststroke glide phase.',
         videoId: 'AQy_c30lNjI',
         videoTitle: 'How to Swim Freestyle — Global Triathlon Network',
+      },
+    ],
+  },
+  {
+    id: 'neural',
+    label: 'Neural Mob',
+    tag: 'Phase 1+ · Run Daily',
+    accent: '#f59e0b',
+    bg: 'rgba(245,158,11,0.10)',
+    description: 'Brachial plexus nerve mobilization — begin in Phase 1 and run daily throughout the protocol. Sliders move the nerve through its bed without adding tension; start here before attempting tensioners. 10 reps, slow and smooth. Stop immediately if symptoms increase and wait 24 h before retrying.',
+    exercises: [
+      {
+        id: 'brachial-floss',
+        name: 'Brachial Plexus Slider',
+        subtitle: 'The core neural mobilization for TOS — coordinates neck and arm in opposite directions',
+        sets: '2–3 × 10 reps',
+        freq: 'Daily',
+        cues: [
+          'Sitting. Side-bend neck AWAY from symptomatic side as arm comes DOWN to side.',
+          'Then side-bend neck TOWARD symptomatic side as arm opens to abduction/external rotation.',
+          'Rhythm is slow and smooth — think "see-saw." No forcing. Stop if symptoms spike.',
+        ],
+        videoId: '1-5lPq86RE8',
+        videoTitle: '3 Nerve Flossing Exercises for Brachial Plexus and TOS — Rehab Hero',
+      },
+      {
+        id: 'median-floss',
+        name: 'Median Nerve Slider',
+        subtitle: 'Thumb, index, middle finger symptoms — ULTT1-based technique',
+        sets: '2 × 10 reps per side',
+        freq: 'Daily',
+        cues: [
+          'Arm out to side at shoulder height, elbow bent 90°, wrist neutral.',
+          'Extend elbow and wrist simultaneously — palm faces forward at end range.',
+          'Return smoothly. Keep shoulder depressed throughout — no shrugging up.',
+        ],
+        videoId: 'f0RHZ6bnhxg',
+        videoTitle: 'Median Nerve Glides or Nerve Flossing — Ask Doctor Jo',
+      },
+      {
+        id: 'ulnar-floss',
+        name: 'Ulnar Nerve Slider',
+        subtitle: 'Ring finger, little finger, medial forearm symptoms — ULTT3-based technique',
+        sets: '2 × 10 reps per side',
+        freq: 'Daily',
+        cues: [
+          'Arm at side, elbow bent, wrist extended (hand flexed back).',
+          'Flex elbow toward face while extending wrist and fingers outward.',
+          'Stop before any tingling increases — this is mobilization, not provocation.',
+        ],
+        videoId: 'JRqFY-epdNc',
+        videoTitle: 'Ulnar Nerve Flossing/Gliding — Bob & Brad',
       },
     ],
   },
@@ -371,8 +457,11 @@ export async function renderTOS(app) {
         <div style="flex:1;padding:10px 12px;min-width:0">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px">
             <div>
-              <div style="font-size:13px;font-weight:700;color:#f1f5f9;line-height:1.3;margin-bottom:2px">
-                ${ex.name}
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+                <div style="font-size:13px;font-weight:700;color:#f1f5f9;line-height:1.3">${ex.name}</div>
+                ${ex.optional ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
+                  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+                  color:#475569;letter-spacing:0.06em;flex-shrink:0">OPTIONAL</span>` : ''}
               </div>
               <div style="font-size:11px;color:#64748b;line-height:1.35">${ex.subtitle}</div>
             </div>
@@ -458,6 +547,15 @@ export async function renderTOS(app) {
             ${week ? `<div style="font-size:11px;color:${phase.accent};opacity:0.8;margin-bottom:5px;font-weight:600">
               Week ${week}</div>` : ''}
             <p style="font-size:12.5px;color:#94a3b8;margin:0;line-height:1.5">${phase.description}</p>
+            ${week && phase.criteria ? `
+              <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.07)">
+                <div style="font-size:9px;letter-spacing:0.1em;color:#475569;margin-bottom:5px">ADVANCE WHEN</div>
+                ${phase.criteria.map(c => `
+                  <div style="font-size:11px;color:#64748b;display:flex;gap:5px;margin-bottom:3px;line-height:1.4">
+                    <span style="color:${phase.accent};flex-shrink:0;opacity:0.7">→</span>
+                    <span>${c}</span>
+                  </div>`).join('')}
+              </div>` : ''}
           </div>
           <div style="text-align:right;flex-shrink:0">
             ${isActive ? `
