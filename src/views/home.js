@@ -172,7 +172,7 @@ export async function renderHome(app) {
   const macroT = tdee.macros;
   const remaining = target + cardio_burned - eaten.cal;
 
-  const [today_w, schedule, bodyToday, activePlan, allBody, allMeals, weeklySummary, todaysSessions] = await Promise.all([
+  const [today_w, schedule, bodyToday, activePlan, allBody, allMeals, weeklySummary, todaysSessions, tosProgress, tosLogs] = await Promise.all([
     todaysWorkout(),
     pref('schedule'),
     get('body', today()),
@@ -181,7 +181,17 @@ export async function renderHome(app) {
     getAll('meals'),
     computeWeeklySummary(),
     getByIndex('sessions', 'date', today()),
+    pref('tos_progress'),
+    pref('tos_logs'),
   ]);
+
+  const tosDoneToday = tosProgress
+    ? Object.values((tosLogs || {})[today()] || {}).filter(Boolean).length
+    : 0;
+  const tosWeek = tosProgress ? (() => {
+    const days = Math.floor((Date.now() - new Date(tosProgress.started + 'T12:00:00')) / 864e5);
+    return Math.max(1, Math.floor(days / 7) + 1);
+  })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
@@ -221,6 +231,18 @@ export async function renderHome(app) {
       </div>
       ${activePlan ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday)}
+      ${tosProgress ? `
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--fg)">TOS Rehab</div>
+              <div style="font-size:11px;color:var(--fg-dim)">
+                ${tosProgress.label} · Week ${tosWeek}${tosDoneToday > 0 ? ` · ${tosDoneToday} done today` : ''}
+              </div>
+            </div>
+            <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
+          </div>
+        </div>` : ''}
     </div>
 
     <div class="card">
@@ -239,6 +261,7 @@ export async function renderHome(app) {
   `;
 
   app.querySelector('[data-action="log-meal"]').onclick = () => navigate('meals');
+  app.querySelector('#open-tos')?.onclick = () => navigate('tos');
   app.querySelector('[data-action="log-activity"]').onclick = () => navigate('cardio');
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {
