@@ -259,6 +259,7 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   gap: 4px;
   white-space: nowrap;
 }
+.video-link { cursor: pointer; }
 .video-link.has-video { color: var(--accent); border-color: var(--accent); }
 .exercise-meta {
   display: flex;

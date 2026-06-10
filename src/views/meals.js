@@ -830,7 +830,7 @@ function openLogServings(item, parentClose, dateKey) {
     update();
     sheet.querySelector('#cancel').onclick = close;
     sheet.querySelector('#log').onclick = async () => {
-      const s = +$srv.value || 1;
+      const s = +sheet.querySelector('#log-srv').value || 1;
       await put('meals', {
         date: dateKey,
         name: item.name,

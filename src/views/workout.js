@@ -10,6 +10,28 @@ import { loadCatalogs } from '../lib/static_data.js';
 const today = () => new Date().toISOString().slice(0, 10);
 let _restInterval = null;
 
+function ytVideoId(url) {
+  if (!url) return null;
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function toggleYtPlayer(btn, videoId, title) {
+  const anchor = btn.parentElement;
+  const existing = anchor.nextElementSibling?.classList.contains('yt-inline-player')
+    ? anchor.nextElementSibling : null;
+  if (existing) { existing.remove(); btn.textContent = btn.dataset.ytname ? '▶ Video' : '▶'; return; }
+  const wrap = document.createElement('div');
+  wrap.className = 'yt-inline-player';
+  wrap.style.cssText = 'aspect-ratio:16/9;background:#000;margin-top:8px;border-radius:8px;overflow:hidden';
+  wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen title="${title || ''}"
+    style="width:100%;height:100%;border:none;display:block"></iframe>`;
+  anchor.insertAdjacentElement('afterend', wrap);
+  btn.textContent = '✕ Close';
+}
+
 export async function renderWorkout(app) {
   stopRestTimer();
   const today_w = await todaysWorkout();
@@ -115,6 +137,15 @@ export async function renderWorkout(app) {
       $body.style.display = open ? '' : 'none';
       $chevron.textContent = open ? '▲' : '▼';
     };
+  }
+
+  // Warmup video buttons (delegated)
+  const $warmupCard = app.querySelector('.warmup-body');
+  if ($warmupCard) {
+    $warmupCard.addEventListener('click', e => {
+      const btn = e.target.closest('button.video-link.has-video[data-ytid]');
+      if (btn) toggleYtPlayer(btn, btn.dataset.ytid, btn.dataset.ytname);
+    });
   }
 
   const $ex = app.querySelector('#exercises');
@@ -253,6 +284,10 @@ export async function renderWorkout(app) {
       const i = +card.dataset.i;
       openExerciseMenu(session, i, allExercises, exMap);
     }
+
+    if (e.target.matches('button.video-link.has-video[data-ytid]')) {
+      toggleYtPlayer(e.target, e.target.dataset.ytid, e.target.dataset.ytname);
+    }
   });
 }
 
@@ -277,9 +312,13 @@ function _pickWarmup(focus, warmups) {
 function _warmupBlockHtml(warmup, exMap) {
   const rows = warmup.exercises.map(ex => {
     const lookup = exMap[ex.name.toLowerCase()];
-    const videoHtml = lookup?.video_url
-      ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</a>`
-      : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">🔍</a>`;
+    const _wYtId = ytVideoId(lookup?.video_url);
+    const _wNameEsc = ex.name.replace(/"/g, '&quot;');
+    const videoHtml = _wYtId
+      ? `<button class="video-link has-video" data-ytid="${_wYtId}" data-ytname="${_wNameEsc}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</button>`
+      : lookup?.video_url
+        ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</a>`
+        : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">🔍</a>`;
     const setsStr = ex.sets ? `${ex.sets}×` : '';
     const target = ex.reps || ex.time || '';
     return `
@@ -763,9 +802,12 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const sets = Math.max(parseInt(ex.target_sets) || 3, ex.sets.length, 3);
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
-  const videoLink = lookup?.video_url
-    ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
-    : `<a class="video-link" href="${lookup?.fallback_search || ytSearch}" target="_blank">🔍 Find</a>`;
+  const _ytId = ytVideoId(lookup?.video_url);
+  const videoLink = _ytId
+    ? `<button class="video-link has-video" data-ytid="${_ytId}" data-ytname="${ex.name.replace(/"/g, '&quot;')}">▶ Video</button>`
+    : lookup?.video_url
+      ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
+      : `<a class="video-link" href="${lookup?.fallback_search || ytSearch}" target="_blank">🔍 Find</a>`;
 
   const prevSets = prevRef[ex.name]?.sets || [];
   let setRows = '';

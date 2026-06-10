@@ -156,10 +156,8 @@ export async function openScheduleEditor() {
             (newSlot) => { editing[idx] = newSlot; },
             () => renderSlots(),
             expandedSet.has(idx),
+            (isExpanded) => { if (isExpanded) expandedSet.add(idx); else expandedSet.delete(idx); },
           );
-          rowEl.querySelector('.slot-header').addEventListener('click', () => {
-            if (expandedSet.has(idx)) expandedSet.delete(idx); else expandedSet.add(idx);
-          });
           $slots.appendChild(rowEl);
         }
       }
@@ -182,7 +180,7 @@ export async function openScheduleEditor() {
   });
 }
 
-function slotRow(dow, slot, programs, onChange, onRefresh, startExpanded) {
+function slotRow(dow, slot, programs, onChange, onRefresh, startExpanded, onExpandChange) {
   const row = document.createElement('div');
   row.className = 'card';
   row.style.marginBottom = '6px';
@@ -229,6 +227,7 @@ function slotRow(dow, slot, programs, onChange, onRefresh, startExpanded) {
     expanded = !expanded;
     $body.style.display = expanded ? 'block' : 'none';
     $chevron.style.transform = expanded ? 'rotate(180deg)' : '';
+    onExpandChange?.(expanded);
   };
 
   row.querySelector('#change-btn').onclick = (e) => {

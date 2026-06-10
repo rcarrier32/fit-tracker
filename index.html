@@ -12,7 +12,7 @@
 <title>Fit Tracker</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="src/styles.css?v=33">
+<link rel="stylesheet" href="src/styles.css?v=34">
 </head>
 <body>
 <div id="app"></div>
@@ -25,11 +25,11 @@
   <button data-route="programs"  class="tab"><span class="tab-icon">📋</span><span class="tab-label">Plans</span></button>
 </nav>
 <script>
-window.__FIT_V = 33;
+window.__FIT_V = 34;
 // If JS modules fail to load (stale SW serving broken cached code), auto-reload once.
 setTimeout(function() {
   if (document.getElementById('app') && !document.getElementById('app').children.length) {
-    var key = 'fit-blank-reload-v33';
+    var key = 'fit-blank-reload-v34';
     if (!sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, '1');
       location.reload();
@@ -37,6 +37,6 @@ setTimeout(function() {
   }
 }, 3500);
 </script>
-<script type="module" src="src/app.js?v=33"></script>
+<script type="module" src="src/app.js?v=34"></script>
 </body>
 </html>

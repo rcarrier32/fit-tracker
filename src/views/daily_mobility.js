@@ -79,22 +79,35 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
       const done = completed.has(ex.id);
       const lookup = exerciseByName.get(ex.name?.toLowerCase());
       const target = ex.reps || ex.time || '';
+      const ytHtml = (() => {
+        if (!lookup?.video_url) return '';
+        const m = lookup.video_url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/);
+        const vid = m ? m[1] : null;
+        return vid
+          ? `<button type="button" class="pill mob-yt" data-ytid="${vid}" data-ytname="${ex.name.replace(/"/g, '&quot;')}" style="flex-shrink:0">▶</button>`
+          : `<a href="${lookup.video_url}" target="_blank" class="pill" style="flex-shrink:0" onclick="event.stopPropagation()">▶</a>`;
+      })();
       return `
-        <label class="list-item" style="cursor:pointer;padding:10px 0;margin:0;gap:10px;align-items:flex-start;display:flex">
-          <input type="checkbox" data-id="${ex.id}" ${done ? 'checked' : ''} style="width:auto;min-height:auto;margin-top:3px">
-          <div style="flex:1;min-width:0">
+        <div class="list-item mob-row" data-id="${ex.id}" style="cursor:pointer;padding:10px 0;margin:0;gap:10px;align-items:flex-start;display:flex">
+          <input type="checkbox" data-id="${ex.id}" ${done ? 'checked' : ''} style="width:auto;min-height:auto;margin-top:3px;cursor:pointer">
+          <div style="flex:1;min-width:0;pointer-events:none">
             <div style="font-size:14px;font-weight:500;${done ? 'opacity:0.55;text-decoration:line-through' : ''}">${ex.name}</div>
             ${ex.notes ? `<div class="muted" style="font-size:12px">${ex.notes}</div>` : ''}
           </div>
-          ${target ? `<span class="muted" style="font-size:12px;white-space:nowrap">${target}</span>` : ''}
-          ${lookup?.video_url ? `<a href="${lookup.video_url}" target="_blank" class="pill" style="flex-shrink:0" onclick="event.stopPropagation()">▶</a>` : ''}
+          ${target ? `<span class="muted" style="font-size:12px;white-space:nowrap;pointer-events:none">${target}</span>` : ''}
+          ${ytHtml}
           ${!ex.builtin ? `<button type="button" class="btn ghost mob-del" data-id="${ex.id}" style="width:auto;padding:4px 8px">✕</button>` : ''}
-        </label>
+        </div>
       `;
     }).join('');
 
-    $list.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      cb.onchange = async () => {
+    // Row click toggles checkbox (row is a div now, not label)
+    $list.querySelectorAll('.mob-row').forEach(row => {
+      row.onclick = async (e) => {
+        if (e.target.closest('.mob-del') || e.target.closest('.mob-yt') || e.target.tagName === 'A') return;
+        const cb = row.querySelector('input[type="checkbox"]');
+        if (!cb) return;
+        cb.checked = !cb.checked;
         if (cb.checked) completed.add(cb.dataset.id);
         else completed.delete(cb.dataset.id);
         await saveLog(dateKey, { completed: [...completed], extra });
@@ -104,7 +117,6 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
 
     $list.querySelectorAll('.mob-del').forEach(btn => {
       btn.onclick = async (e) => {
-        e.preventDefault();
         e.stopPropagation();
         const id = btn.dataset.id;
         const idx = extra.findIndex((_, i) => `extra-${i}` === id);
@@ -112,6 +124,23 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
         completed.delete(id);
         await saveLog(dateKey, { completed: [...completed], extra });
         mount();
+      };
+    });
+
+    $list.querySelectorAll('.mob-yt').forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const row = btn.closest('.mob-row');
+        const existing = row.nextElementSibling?.classList.contains('yt-inline-player') ? row.nextElementSibling : null;
+        if (existing) { existing.remove(); btn.textContent = '▶'; return; }
+        const w = document.createElement('div');
+        w.className = 'yt-inline-player';
+        w.style.cssText = 'aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;margin:4px 0';
+        w.innerHTML = `<iframe src="https://www.youtube.com/embed/${btn.dataset.ytid}?autoplay=1&playsinline=1&rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>`;
+        row.insertAdjacentElement('afterend', w);
+        btn.textContent = '✕';
       };
     });
 
