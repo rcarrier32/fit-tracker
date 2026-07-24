@@ -1,0 +1,65 @@
+{
+  "generated_for": 1,
+  "max_seconds": 360,
+  "exercises": [
+    {
+      "id": "pm-side-swings",
+      "name": "Side-to-Side Leg Swings",
+      "section": "pool-mobility",
+      "query": "pool water leg abduction swing side hip aquatic exercise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Ij62eXy_qQA",
+          "title": "Aquatics - Hip Abduction ABD",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Ij62eXy_qQA",
+          "score": 3.96
+        },
+        {
+          "videoId": "6Q1eGj8_IDM",
+          "title": "Aquatics - Hip Extension",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 15,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/6Q1eGj8_IDM",
+          "score": 3.96
+        },
+        {
+          "videoId": "wc-so8ruNvQ",
+          "title": "Aquatics - Hip Flexor Stretch",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 21,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/wc-so8ruNvQ",
+          "score": 3.94
+        },
+        {
+          "videoId": "AT1sCirKNF4",
+          "title": "Aquatic exercise- Squats + Lunges",
+          "channel": "Dr. Dania Qutishat",
+          "seconds": 48,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/AT1sCirKNF4",
+          "score": 1.37
+        },
+        {
+          "videoId": "G_hz954kSxQ",
+          "title": "5 Gentle Hip Water Exercises for Beginners",
+          "channel": "Justin Agustin",
+          "seconds": 50,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/G_hz954kSxQ",
+          "score": 1.36
+        }
+      ]
+    }
+  ]
+}

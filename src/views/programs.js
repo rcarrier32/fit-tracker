@@ -9,12 +9,17 @@ import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/p
 import { pref } from '../db.js';
 
 export async function renderPrograms(app) {
-  const [{ programs }, activePlan, tosProgress, customPrograms] = await Promise.all([
+  const [{ programs }, activePlan, tosProgress, hipProgress, customPrograms] = await Promise.all([
     loadCatalogs(),
     getActivePlan(),
     pref('tos_progress'),
+    pref('hip_progress'),
     pref('custom_programs').then(v => v || []),
   ]);
+
+  const hipWeek = hipProgress?.started
+    ? Math.max(1, Math.floor(Math.floor((Date.now() - new Date(hipProgress.started + 'T12:00:00')) / 864e5) / 7) + 1)
+    : null;
 
   const bws = programs.filter(p => p.source === 'BWS');
   const pjf = programs.filter(p => p.source === 'PJF');
@@ -48,6 +53,20 @@ export async function renderPrograms(app) {
       </div>
     </div>
 
+    <div class="card" style="padding:12px 14px;border-color:rgba(34,211,238,0.3);cursor:pointer;margin-top:10px" id="hip-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-weight:600;margin-bottom:2px">Hip Recovery Playbook</div>
+          <div class="muted" style="font-size:12px">
+            PT program · Pool mobility &amp; strength · Deep-water aerobic progression
+          </div>
+        </div>
+        <span class="pill" style="color:#22d3ee;border-color:rgba(34,211,238,0.4);flex-shrink:0;margin-left:8px">
+          ${hipWeek ? `Week ${hipWeek}` : '6 sections'}
+        </span>
+      </div>
+    </div>
+
     <div class="group-label">BWS Strength</div>
     <div id="bws-list"></div>
 
@@ -63,6 +82,7 @@ export async function renderPrograms(app) {
   }
 
   app.querySelector('#tos-card').onclick = () => navigate('tos');
+  app.querySelector('#hip-card').onclick = () => navigate('hip');
 
   app.querySelector('#build-plan').onclick = async () => {
     const { exercises } = await loadCatalogs();

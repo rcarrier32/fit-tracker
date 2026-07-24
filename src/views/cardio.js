@@ -38,6 +38,11 @@ const ACTIVITIES = [
   { id: 'strength',   label: 'Strength',   icon: '🏋️', met: { low: 3.0, moderate: 5.0, high: 6.0 } },
   { id: 'pickleball', label: 'Pickleball', icon: null, met: { low: 4.0, moderate: 5.0, high: 6.5 } },
   { id: 'basketball', label: 'Basketball', icon: '🏀', met: { low: 4.0, moderate: 6.5, high: 8.0 } },
+  // Pool work — METs from the Compendium of Physical Activities (swim laps freestyle 5.8–9.8,
+  // water jogging 9.8, water aerobics/calisthenics 5.3).
+  { id: 'swimming',   label: 'Swimming',   icon: '🏊', met: { low: 5.8, moderate: 7.0, high: 9.8 } },
+  { id: 'water_run',  label: 'Deep-Water Running', icon: '🌊', met: { low: 6.0, moderate: 8.0, high: 9.8 } },
+  { id: 'pool_ex',    label: 'Pool Exercise', icon: '💦', met: { low: 3.5, moderate: 5.3, high: 6.5 } },
 ];
 
 export function burnCalories(activity_id, intensity, duration_min, weight_lb) {
