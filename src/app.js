@@ -11,7 +11,7 @@ import { renderCardio } from './views/cardio.js';
 import { renderPrograms } from './views/programs.js';
 import { renderTOS } from './views/tos.js';
 import { renderHip } from './views/hip.js';
-import { offerBackupRestore, scheduleLocalBackup } from './lib/backup.js';
+import { offerBackupRestore, scheduleLocalBackup, requestPersistence } from './lib/backup.js';
 
 const ROUTES = {
   home:      renderHome,
@@ -100,6 +100,7 @@ export function openSheet(contentBuilder) {
 (async () => {
   const { initUpdates } = await import(`./lib/updates.js?v=${window.__FIT_V ?? ''}`);
   initUpdates();
+  requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();
   if (!location.hash) location.hash = '#/home';
