@@ -1208,11 +1208,14 @@ function openFoodSearch(dateKey, initialQuery = '') {
       if (!q) { toast('Enter a search term'); return; }
       $res.innerHTML = '<div class="muted">Searching…</div>';
       try {
-        const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=20`;
-        const r = await offFetch(url);
+        // Same-origin — served by our own api/off-search.js proxy, which forwards to
+        // Open Food Facts server-side. A direct browser fetch to OFF's search API is
+        // blocked by CORS (it sends no Access-Control-Allow-Origin header), so this
+        // needs the proxy rather than calling world.openfoodfacts.org directly.
+        const r = await fetch(`/api/off-search?q=${encodeURIComponent(q)}`);
         if (!r.ok) throw new Error(`Server error ${r.status}`);
         const j = await r.json();
-        const products = j.products || [];
+        const products = j.hits || [];
         if (!products.length) {
           $res.innerHTML = '<div class="empty"><div>No results</div></div>';
           return;
@@ -1221,7 +1224,7 @@ function openFoodSearch(dateKey, initialQuery = '') {
           const n = p.nutriments || {};
           const cal = n['energy-kcal_100g'] || n['energy-kcal_serving'];
           const name = (p.product_name || p.generic_name || 'Unknown').replace(/</g, '&lt;');
-          const brands = (p.brands || '').replace(/</g, '&lt;');
+          const brands = (Array.isArray(p.brands) ? p.brands.join(', ') : (p.brands || '')).replace(/</g, '&lt;');
           return `
             <div class="list-item off-item" data-code="${p.code}">
               <div style="flex:1">
@@ -1252,14 +1255,7 @@ function openFoodSearch(dateKey, initialQuery = '') {
           };
         });
       } catch (e) {
-        // fetch() throws a bare TypeError for both a network outage and a CORS block —
-        // this is currently CORS: Open Food Facts's text-search endpoints don't send an
-        // Access-Control-Allow-Origin header, so every browser search fails this way
-        // regardless of connection. Barcode lookup uses a different, CORS-enabled endpoint
-        // and is unaffected.
-        $res.innerHTML = e instanceof TypeError
-          ? `<div class="muted">Open Food Facts search isn't reachable from the browser right now. Try <b>Library</b> for saved foods, or <b>Scan</b> a barcode instead.</div>`
-          : `<div class="muted">Search failed: ${e.message}</div>`;
+        $res.innerHTML = `<div class="muted">Search failed: ${e.message}. Try <b>Library</b> for saved foods, or <b>Scan</b> a barcode instead.</div>`;
       }
     }
     sheet.querySelector('#off-go').onclick = run;
