@@ -1252,7 +1252,14 @@ function openFoodSearch(dateKey, initialQuery = '') {
           };
         });
       } catch (e) {
-        $res.innerHTML = `<div class="muted">Search failed: ${e.message}</div>`;
+        // fetch() throws a bare TypeError for both a network outage and a CORS block —
+        // this is currently CORS: Open Food Facts's text-search endpoints don't send an
+        // Access-Control-Allow-Origin header, so every browser search fails this way
+        // regardless of connection. Barcode lookup uses a different, CORS-enabled endpoint
+        // and is unaffected.
+        $res.innerHTML = e instanceof TypeError
+          ? `<div class="muted">Open Food Facts search isn't reachable from the browser right now. Try <b>Library</b> for saved foods, or <b>Scan</b> a barcode instead.</div>`
+          : `<div class="muted">Search failed: ${e.message}</div>`;
       }
     }
     sheet.querySelector('#off-go').onclick = run;
