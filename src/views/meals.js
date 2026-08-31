@@ -887,10 +887,12 @@ function prettyCat(c) {
 
 /* ── Combo meals: save several ingredients (shake, bowl…) as one item ── */
 
+const CB_FIELD_LABEL = 'display:block;font-size:11px;color:var(--fg-dim);margin-bottom:3px';
+
 function comboRowHtml(ing = {}) {
   return `
     <div class="cb-row" data-fiber="${ing.fiber || 0}" data-sat="${ing.saturated_fat || 0}" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
-      <div style="display:flex;gap:8px;margin-bottom:6px">
+      <div style="display:flex;gap:8px;margin-bottom:8px">
         <div style="flex:1;position:relative">
           <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" autocomplete="off">
           <div class="cb-i-suggest" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:20;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;margin-top:4px;max-height:180px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.35)"></div>
@@ -898,15 +900,15 @@ function comboRowHtml(ing = {}) {
         <button type="button" class="btn secondary cb-i-find" style="width:auto;padding:6px 10px;flex-shrink:0;font-size:16px" title="Scan, search, or pick from Library">🔍</button>
         <button type="button" class="btn ghost cb-i-remove" style="width:auto;padding:6px 10px;flex-shrink:0">✕</button>
       </div>
-      <div style="display:flex;gap:6px;margin-bottom:6px">
-        <input type="number" class="cb-i-amount" inputmode="decimal" placeholder="Amount" value="${ing.amount ?? ''}" style="flex:1">
-        <input type="text" class="cb-i-unit" placeholder="unit (g, tbsp, banana…)" value="${attrEsc(ing.unit || '')}" style="flex:1">
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <div style="flex:1"><label style="${CB_FIELD_LABEL}">Amount</label><input type="number" class="cb-i-amount" inputmode="decimal" placeholder="Amount" value="${ing.amount ?? ''}"></div>
+        <div style="flex:1"><label style="${CB_FIELD_LABEL}">Unit</label><input type="text" class="cb-i-unit" placeholder="g, tbsp, banana…" value="${attrEsc(ing.unit || '')}"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-        <input type="number" class="cb-i-cal" inputmode="decimal" placeholder="Cal" value="${ing.calories ?? ''}">
-        <input type="number" class="cb-i-p" inputmode="decimal" placeholder="Protein (g)" value="${ing.protein ?? ''}">
-        <input type="number" class="cb-i-c" inputmode="decimal" placeholder="Carbs (g)" value="${ing.carbs ?? ''}">
-        <input type="number" class="cb-i-f" inputmode="decimal" placeholder="Fat (g)" value="${ing.fat ?? ''}">
+        <div><label style="${CB_FIELD_LABEL}">Calories</label><input type="number" class="cb-i-cal" inputmode="decimal" placeholder="Cal" value="${ing.calories ?? ''}"></div>
+        <div><label style="${CB_FIELD_LABEL}">Protein (g)</label><input type="number" class="cb-i-p" inputmode="decimal" placeholder="Protein" value="${ing.protein ?? ''}"></div>
+        <div><label style="${CB_FIELD_LABEL}">Carbs (g)</label><input type="number" class="cb-i-c" inputmode="decimal" placeholder="Carbs" value="${ing.carbs ?? ''}"></div>
+        <div><label style="${CB_FIELD_LABEL}">Fat (g)</label><input type="number" class="cb-i-f" inputmode="decimal" placeholder="Fat" value="${ing.fat ?? ''}"></div>
       </div>
     </div>
   `;
@@ -993,6 +995,35 @@ async function openComboBuilder(dateKey, existing = null, onSaved = null) {
         (fiber || sat ? ` · fiber ${Math.round(fiber * 10) / 10}g · sat ${Math.round(sat * 10) / 10}g` : '');
     }
 
+    // The row's own "amount ↔ macros" relationship — a picked ingredient's macros are only
+    // ever correct for the amount they were picked at, so editing amount has to rescale
+    // them the same way wireIngredientRows/scaleIngredient does for a saved combo. Snapshot
+    // the current amount+macros as the reference point whenever it's genuinely known (a
+    // fresh pick, or the user typing macros in by hand) so the NEXT amount edit has
+    // something real to scale from.
+    function rebase(row) {
+      row.dataset.baseAmount = numInput(row.querySelector('.cb-i-amount'));
+      row.dataset.baseCal = numInput(row.querySelector('.cb-i-cal'));
+      row.dataset.baseP = numInput(row.querySelector('.cb-i-p'));
+      row.dataset.baseC = numInput(row.querySelector('.cb-i-c'));
+      row.dataset.baseF = numInput(row.querySelector('.cb-i-f'));
+      row.dataset.baseFiber = parseFloat(row.dataset.fiber) || 0;
+      row.dataset.baseSat = parseFloat(row.dataset.sat) || 0;
+    }
+
+    function rescaleFromBase(row) {
+      const base = parseFloat(row.dataset.baseAmount) || 0;
+      if (base <= 0) return;  // nothing known to scale from (blank row, no pick yet)
+      const newAmount = numInput(row.querySelector('.cb-i-amount'));
+      const ratio = newAmount / base;
+      row.querySelector('.cb-i-cal').value = Math.round((parseFloat(row.dataset.baseCal) || 0) * ratio);
+      row.querySelector('.cb-i-p').value = Math.round((parseFloat(row.dataset.baseP) || 0) * ratio * 10) / 10;
+      row.querySelector('.cb-i-c').value = Math.round((parseFloat(row.dataset.baseC) || 0) * ratio * 10) / 10;
+      row.querySelector('.cb-i-f').value = Math.round((parseFloat(row.dataset.baseF) || 0) * ratio * 10) / 10;
+      row.dataset.fiber = Math.round((parseFloat(row.dataset.baseFiber) || 0) * ratio * 10) / 10;
+      row.dataset.sat = Math.round((parseFloat(row.dataset.baseSat) || 0) * ratio * 10) / 10;
+    }
+
     function fillRow(row, picked) {
       row.querySelector('.cb-i-name').value = picked.name;
       row.querySelector('.cb-i-amount').value = picked.amount;
@@ -1006,6 +1037,7 @@ async function openComboBuilder(dateKey, existing = null, onSaved = null) {
       // 0 for both, permanently undercounting daily totals for anyone using combos.
       row.dataset.fiber = picked.fiber || 0;
       row.dataset.sat = picked.saturated_fat || 0;
+      rebase(row);
       updateTotal();
     }
 
@@ -1014,7 +1046,12 @@ async function openComboBuilder(dateKey, existing = null, onSaved = null) {
       el.innerHTML = comboRowHtml(ing);
       const row = el.firstElementChild;
       $rows.appendChild(row);
-      row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateTotal));
+      if (ing.amount != null) rebase(row);  // pre-filled row (editing an existing combo)
+      row.querySelector('.cb-i-amount').addEventListener('input', () => { rescaleFromBase(row); updateTotal(); });
+      ['.cb-i-cal', '.cb-i-p', '.cb-i-c', '.cb-i-f'].forEach(sel =>
+        row.querySelector(sel).addEventListener('input', () => { rebase(row); updateTotal(); }));
+      row.querySelector('.cb-i-name').addEventListener('input', updateTotal);
+      row.querySelector('.cb-i-unit').addEventListener('input', updateTotal);
       row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
       row.querySelector('.cb-i-find').onclick = () => {
         openIngredientPicker(dateKey, (picked) => {
