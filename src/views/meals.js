@@ -325,11 +325,10 @@ export async function renderMeals(app, date) {
       <div style="margin-top:4px">Fiber ${Math.round(sums.fiber * 10) / 10}g · Sat. fat ${Math.round(sums.sat * 10) / 10}g</div>
     </div>`}
 
-    <div style="display:flex;gap:8px;margin:0 0 8px;align-items:stretch">
-      <div class="search-bar" style="flex:1;margin:0">
-        <input type="text" id="meal-search" placeholder="Search foods…" autocomplete="off">
-      </div>
-      <button class="btn secondary" data-action="library" style="width:auto;flex-shrink:0;padding:0 14px">Library</button>
+    <div style="display:flex;gap:8px;margin:0 0 12px;position:relative">
+      <input type="text" id="meal-search" placeholder="Search foods…" autocomplete="off" style="flex:1;margin:0">
+      <div id="meal-search-suggest" style="display:none;position:absolute;top:100%;left:0;right:56px;z-index:20;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;margin-top:4px;max-height:260px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.35)"></div>
+      <button class="btn secondary" data-action="library" style="flex:0 0 48px;width:48px;padding:0;font-size:19px" title="Browse your library" aria-label="Browse your library">📚</button>
     </div>
     <div style="display:flex;gap:8px;margin:0 0 12px">
       <button class="btn" data-action="quick" style="flex:2" title="Type in a food and its macros by hand">+ New</button>
@@ -355,6 +354,48 @@ export async function renderMeals(app, date) {
   $mealSearch.addEventListener('keydown', e => {
     if (e.key === 'Enter') openLib(e.target.value.trim());
   });
+
+  // Live search — was Enter-only before, which reads as "search doesn't do anything"
+  // compared to the Library sheet's own live-filtering box. Same lazy-load-once,
+  // filter-in-memory pattern as the combo builder's ingredient typeahead.
+  const $suggest = app.querySelector('#meal-search-suggest');
+  let searchLib = null;
+  async function getSearchLib() {
+    if (searchLib) return searchLib;
+    const [{ mealItems }, userMeals] = await Promise.all([loadCatalogs(), getAll('user_meals')]);
+    searchLib = [...userMeals.map(m => ({ ...m, kind: m.kind || 'user' })), ...mealItems];
+    return searchLib;
+  }
+  function hideMealSuggest() { $suggest.style.display = 'none'; $suggest.innerHTML = ''; }
+  function openMealSuggestItem(m) {
+    hideMealSuggest();
+    if (m.kind === 'recipe') openRecipeDetail(m, null, dateKey);
+    else if (m.kind === 'composite') openCompositeDetail(m, null, dateKey);
+    else openLogServings(m, null, dateKey);
+  }
+  $mealSearch.addEventListener('input', async () => {
+    const q = $mealSearch.value.trim().toLowerCase();
+    if (q.length < 2) { hideMealSuggest(); return; }
+    const lib = await getSearchLib();
+    if ($mealSearch.value.trim().toLowerCase() !== q) return; // stale response, user kept typing
+    const matches = lib.filter(m => (m.name || '').toLowerCase().includes(q)).slice(0, 8);
+    if (!matches.length) { hideMealSuggest(); return; }
+    $suggest.innerHTML = matches.map((m, i) => `
+      <div class="list-item meal-suggest-item" data-i="${i}" style="padding:10px 12px">
+        <div style="flex:1">
+          <div class="list-item-title">${attrEsc(m.name)}</div>
+          <div class="list-item-meta">${m.serving ? attrEsc(m.serving) + ' · ' : ''}${m.calories || 0} kcal · ${m.protein || 0}p</div>
+        </div>
+        <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : m.kind === 'composite' ? 'Combo →' : '+ Log'}</span>
+      </div>
+    `).join('');
+    $suggest.style.display = 'block';
+    $suggest.querySelectorAll('.meal-suggest-item').forEach(el => {
+      el.onmousedown = (e) => e.preventDefault();
+      el.onclick = () => openMealSuggestItem(matches[+el.dataset.i]);
+    });
+  });
+  $mealSearch.addEventListener('blur', () => setTimeout(hideMealSuggest, 150));
 
   app.querySelector('[data-action="quick"]').onclick = () => openQuickAdd({}, dateKey);
   app.querySelector('[data-action="search-off"]').onclick = () => openFoodSearch(dateKey, $mealSearch.value.trim());
