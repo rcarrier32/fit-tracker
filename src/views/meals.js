@@ -23,6 +23,12 @@ import {
 
 const todayStr = () => localDateStr();
 
+// This app is static, served from GitHub Pages — it can't run server code, so the one
+// proxy function OFF text-search needs (api/off-search.js) is hosted separately on
+// Vercel and called here by absolute URL. See fit-tracker-hosting memory / commit history
+// (v40) for why this split exists; update this if the Vercel project is ever relinked.
+const OFF_SEARCH_PROXY = 'https://fit-tracker-one-pi.vercel.app/api/off-search';
+
 let _activeDate = null; // null = today
 let _macroRange = 'day'; // 'day' | 'week'
 
@@ -218,6 +224,44 @@ function wireServingFields(sheet, prefix, updatePreview) {
   calcServingsFromAmount();
 }
 
+/**
+ * Editing "Per serving" size should rescale the macro fields proportionally, since they
+ * were parsed/entered against the *old* serving size — shared by openLogServings (scaling
+ * a scanned item's macros) and openEditUserMeal (scaling a saved item's macros), which
+ * otherwise carried this ~20-line block twice, nearly verbatim. `macroFieldIds` are the
+ * `${prefix}-...` suffixes to scale (e.g. ['cal','prot','carb','fat']).
+ */
+function wireServingSizeRescale(sheet, prefix, si, macroFieldIds, onRescale) {
+  const q = (id) => sheet.querySelector(`#${prefix}-${id}`);
+  let basisG = si.gramsPerServing || (si.units?.ml > 0 ? si.units.ml : null) || null;
+  function currentBasisG() {
+    const unit = q('unit-select')?.value || 'oz';
+    const per = parseFloat(q('per')?.value);
+    if (!(per > 0)) return null;
+    const enriched = enrichUnits({ [unit]: per });
+    return enriched.g > 0 ? enriched.g : (enriched.ml > 0 ? enriched.ml : null);
+  }
+  q('per')?.addEventListener('input', () => {
+    const newBasis = currentBasisG();
+    if (basisG > 0 && newBasis > 0 && Math.abs(newBasis - basisG) > 0.01) {
+      const ratio = newBasis / basisG;
+      macroFieldIds.forEach(id => {
+        const el = q(id);
+        if (el) el.value = Math.round(parseFloat(el.value || 0) * ratio * 100) / 100;
+      });
+      // Keep the free-text label matched to the amount just typed — it's re-parsed every
+      // future time this item is opened, so a stale label paired with already-rescaled
+      // macros would silently mismatch on the next open/edit.
+      const srvlbl = q('srvlbl');
+      const perNow = q('per')?.value;
+      const unitNow = q('unit-select')?.value;
+      if (srvlbl && perNow && unitNow) srvlbl.value = `${perNow} ${UNIT_LABELS[unitNow] || unitNow}`;
+    }
+    basisG = newBasis ?? basisG;
+    onRescale?.();
+  });
+}
+
 async function loadZXingReader() {
   if (window.ZXingBrowser?.BrowserMultiFormatReader) return window.ZXingBrowser.BrowserMultiFormatReader;
   if (window.ZXing?.BrowserMultiFormatReader) return window.ZXing.BrowserMultiFormatReader;
@@ -229,10 +273,6 @@ async function loadZXingReader() {
     document.head.appendChild(s);
   });
   return window.ZXingBrowser?.BrowserMultiFormatReader || window.ZXing?.BrowserMultiFormatReader;
-}
-
-function parseGramsPerServing(serving) {
-  return parseServingInfo(serving).gramsPerServing;
 }
 
 function macroPercents(p, c, f) {
@@ -482,7 +522,7 @@ function renderList(el, meals, dateKey) {
     ].filter(Boolean).join(' · ');
     node.innerHTML = `
       <div style="flex:1">
-        <div class="list-item-title">${m.name}</div>
+        <div class="list-item-title">${attrEsc(m.name)}</div>
         <div class="list-item-meta">${m.calories || 0} kcal · ${m.protein || 0}p · ${m.carbs || 0}c · ${m.fat || 0}f${m.servings && m.servings !== 1 ? ' · ' + m.servings + '×' : ''}${micro ? ' · ' + micro : ''}</div>
       </div>
       <button class="btn ghost del-meal" data-id="${m.id}" style="width:auto;padding:6px 10px">✕</button>
@@ -733,7 +773,12 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
       const q = $search.value.trim().toLowerCase();
       const filtered = lib.filter(m =>
         (activeCat === 'all' || m.category === activeCat) &&
-        (!q || (m.name || '').toLowerCase().includes(q))
+        (!q || (m.name || '').toLowerCase().includes(q)) &&
+        // Picking an ingredient for a combo row needs a flat per-serving item — a recipe
+        // (ingredients/instructions/variants) or another combo doesn't fit that shape, and
+        // clicking one used to fall through to logging the whole thing to today instead of
+        // filling the row, with no indication anything went wrong. Just don't offer them.
+        (!onPick || (m.kind !== 'recipe' && m.kind !== 'composite'))
       ).sort((a, b) => {
         // common foods first, then user/combo, then recipes
         const order = { food: 0, user: 1, composite: 1, recipe: 2 };
@@ -746,8 +791,8 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
       $meals.innerHTML = filtered.map((m, i) => `
         <div class="list-item" data-idx="${i}">
           <div style="flex:1">
-            <div class="list-item-title">${m.name || '(unnamed)'}</div>
-            <div class="list-item-meta">${m.serving ? m.serving + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
+            <div class="list-item-title">${attrEsc(m.name) || '(unnamed)'}</div>
+            <div class="list-item-meta">${m.serving ? attrEsc(m.serving) + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
           </div>
           <button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px" title="Edit">✎</button>
           ${(m.kind === 'user' || m.kind === 'composite') && m.id != null
@@ -760,14 +805,24 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
         const m = filtered[+itemEl.dataset.idx];
         itemEl.querySelector('.edit-user').onclick = (e) => {
           e.stopPropagation();
-          if (m.kind === 'composite') { openComboBuilder(dateKey, m); return; }
+          if (m.kind === 'composite') {
+            openComboBuilder(dateKey, m, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
+            return;
+          }
           // A catalog food/recipe (static JSON, not yours to mutate) opens as an unsaved
-          // draft with its id stripped — Saving it there creates your own personal copy
-          // via autoIncrement instead of colliding with the catalog's synthetic string id.
-          // `id` must be entirely absent (not just undefined) for autoIncrement to fire —
-          // an explicit `id: undefined` property still throws IndexedDB's DataError.
-          const { id: _unusedId, ...rest } = m;
-          const draft = (m.kind === 'user' && m.id != null) ? m : { ...rest, kind: 'user', category: 'user' };
+          // draft — Saving it there creates your own personal copy via autoIncrement
+          // instead of colliding with the catalog's synthetic string id (`id` must be
+          // entirely absent, not just undefined, or IndexedDB throws a DataError). Only
+          // the flat food-shaped fields are carried over — a recipe's `ingredients` (a
+          // string array, a completely different shape than a combo's ingredient objects),
+          // `instructions`, and `variants` don't fit this editor and shouldn't ride along
+          // as stray dead data on the new record.
+          const draft = (m.kind === 'user' && m.id != null) ? m : {
+            name: m.name, serving: m.serving,
+            calories: m.calories, protein: m.protein, carbs: m.carbs, fat: m.fat,
+            fiber: m.fiber, saturated_fat: m.saturated_fat, barcode: m.barcode,
+            kind: 'user', category: 'user',
+          };
           openEditUserMeal(draft, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
         };
         itemEl.querySelector('.del-user')?.addEventListener('click', async (e) => {
@@ -787,19 +842,27 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
       });
     }
     const $recents = sheet.querySelector('#recents');
-    if (recentItems.length) {
+    // Same "no recipe/combo as a flat ingredient" rule as the main list (see above).
+    const recentForList = onPick ? recentItems.filter(m => m.kind !== 'recipe' && m.kind !== 'composite') : recentItems;
+    if (recentForList.length) {
       $recents.innerHTML = `<div class="group-label" style="margin-top:4px;margin-bottom:6px">Recent</div>` +
-        recentItems.map((item, idx) => `
+        recentForList.map((item, idx) => `
           <div class="list-item recent-item" style="padding:10px 12px" data-recent="${idx}">
             <div style="flex:1">
-              <div class="list-item-title">${item.name}</div>
-              <div class="list-item-meta">${item.serving ? item.serving + ' · ' : ''}${item.calories} kcal · ${item.protein}p</div>
+              <div class="list-item-title">${attrEsc(item.name)}</div>
+              <div class="list-item-meta">${item.serving ? attrEsc(item.serving) + ' · ' : ''}${item.calories} kcal · ${item.protein}p</div>
             </div>
-            <span class="pill accent" style="flex-shrink:0">+ Log</span>
+            <span class="pill ${item.kind === 'recipe' ? '' : 'accent'}" style="flex-shrink:0">${item.kind === 'recipe' ? '→' : item.kind === 'composite' ? 'Combo →' : '+ Log'}</span>
           </div>
         `).join('');
       $recents.querySelectorAll('.recent-item').forEach(el => {
-        el.onclick = () => openLogServings(recentItems[+el.dataset.recent], close, dateKey, onPick);
+        el.onclick = () => {
+          const m = recentForList[+el.dataset.recent];
+          if (onPick && m.kind !== 'recipe' && m.kind !== 'composite') openLogServings(m, close, dateKey, onPick);
+          else if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
+          else if (m.kind === 'composite') openCompositeDetail(m, close, dateKey);
+          else openLogServings(m, close, dateKey);
+        };
       });
     }
 
@@ -826,7 +889,7 @@ function prettyCat(c) {
 
 function comboRowHtml(ing = {}) {
   return `
-    <div class="cb-row" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
+    <div class="cb-row" data-fiber="${ing.fiber || 0}" data-sat="${ing.saturated_fat || 0}" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
       <div style="display:flex;gap:8px;margin-bottom:6px">
         <div style="flex:1;position:relative">
           <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" autocomplete="off">
@@ -877,22 +940,29 @@ function openIngredientPicker(dateKey, onPick) {
  * in my Library." */
 function libItemToRowFill(m) {
   const si = parseServingInfo(m.serving || '');
-  const amount = si.gramsPerServing || si.ozPerServing || 1;
-  const unit = si.gramsPerServing ? 'g' : (si.ozPerServing ? 'oz' : (si.defaultUnit || 'serving'));
+  // ozPerServing is only ever derived FROM grams (enrichUnits sets it only if .g is set —
+  // see serving_units.js), so it's never the sole signal for a purely volume-labeled item
+  // ("8 fl oz", "1 cup"). Without the ml fallback, amount silently defaulted to 1 while
+  // unit correctly resolved to fl_oz/ml/cup — a mismatched pair that corrupts every later
+  // rescale (ratio = newAmount / 1 instead of newAmount / trueServingSize).
+  const mlPerServing = si.units?.ml > 0 ? si.units.ml : null;
+  const amount = si.gramsPerServing || si.ozPerServing || mlPerServing || 1;
+  const unit = si.gramsPerServing ? 'g' : si.ozPerServing ? 'oz' : mlPerServing ? 'ml' : (si.defaultUnit || 'serving');
   return {
     name: m.name, amount, unit,
     calories: m.calories || 0, protein: m.protein || 0, carbs: m.carbs || 0, fat: m.fat || 0,
+    fiber: m.fiber || 0, saturated_fat: m.saturated_fat || 0,
   };
 }
 
-async function openComboBuilder(dateKey, existing = null) {
+async function openComboBuilder(dateKey, existing = null, onSaved = null) {
   dateKey = dateKey || todayStr();
   // Loaded once up front so each row's ingredient-name field can live-filter it, the same
   // way the Library picker's own search box does — typing "avoc" should surface your
   // saved "Avocado" immediately instead of requiring the separate 🔍 picker sheet.
   const [{ mealItems }, userMeals] = await Promise.all([loadCatalogs(), getAll('user_meals')]);
   const lib = [...userMeals, ...mealItems].filter(m => m.name && m.kind !== 'recipe' && m.kind !== 'composite');
-  openSheet((sheet, close) => {
+  openSheet((sheet, close, hooks) => {
     sheet.innerHTML = `
       <h2>${existing ? 'Edit combo' : 'Build a combo meal'}</h2>
       <div class="muted" style="margin-bottom:8px;font-size:13px">Save several measured ingredients as one item — log it in one tap next time, still able to adjust amounts.</div>
@@ -909,15 +979,18 @@ async function openComboBuilder(dateKey, existing = null) {
     const $rows = sheet.querySelector('#cb-rows');
 
     function updateTotal() {
-      let cal = 0, p = 0, c = 0, f = 0;
+      let cal = 0, p = 0, c = 0, f = 0, fiber = 0, sat = 0;
       $rows.querySelectorAll('.cb-row').forEach(row => {
         cal += numInput(row.querySelector('.cb-i-cal'));
         p   += numInput(row.querySelector('.cb-i-p'));
         c   += numInput(row.querySelector('.cb-i-c'));
         f   += numInput(row.querySelector('.cb-i-f'));
+        fiber += parseFloat(row.dataset.fiber) || 0;
+        sat   += parseFloat(row.dataset.sat) || 0;
       });
       sheet.querySelector('#cb-total').textContent =
-        `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f`;
+        `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f` +
+        (fiber || sat ? ` · fiber ${Math.round(fiber * 10) / 10}g · sat ${Math.round(sat * 10) / 10}g` : '');
     }
 
     function fillRow(row, picked) {
@@ -928,6 +1001,11 @@ async function openComboBuilder(dateKey, existing = null) {
       row.querySelector('.cb-i-p').value = picked.protein;
       row.querySelector('.cb-i-c').value = picked.carbs;
       row.querySelector('.cb-i-f').value = picked.fat;
+      // Fiber/sat fat aren't editable inline (same as openLogServings) but shouldn't be
+      // silently dropped when the source actually has them — every combo used to report
+      // 0 for both, permanently undercounting daily totals for anyone using combos.
+      row.dataset.fiber = picked.fiber || 0;
+      row.dataset.sat = picked.saturated_fat || 0;
       updateTotal();
     }
 
@@ -939,7 +1017,14 @@ async function openComboBuilder(dateKey, existing = null) {
       row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateTotal));
       row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
       row.querySelector('.cb-i-find').onclick = () => {
-        openIngredientPicker(dateKey, (picked) => fillRow(row, picked));
+        openIngredientPicker(dateKey, (picked) => {
+          fillRow(row, picked);
+          // The picker's scan/search/library chain closes each of its own hops with
+          // syncHistory=false (so it doesn't fight the next sheet's pushState) and never
+          // resyncs on its own — left alone, this combo builder's *own* eventual close()
+          // would never fire its history.back(), permanently leaking those entries.
+          hooks.resyncHistory();
+        });
       };
 
       // Typeahead — live-filters the same Library data the picker's "My Library" option
@@ -984,11 +1069,14 @@ async function openComboBuilder(dateKey, existing = null) {
         protein: numInput(row.querySelector('.cb-i-p')),
         carbs: numInput(row.querySelector('.cb-i-c')),
         fat: numInput(row.querySelector('.cb-i-f')),
+        fiber: parseFloat(row.dataset.fiber) || 0,
+        saturated_fat: parseFloat(row.dataset.sat) || 0,
       })).filter(ing => ing.name);
       if (!ingredients.length) { toast('Add at least one ingredient'); return; }
       const totals = ingredients.reduce((t, i) => ({
         cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
-      }), { cal: 0, p: 0, c: 0, f: 0 });
+        fiber: t.fiber + i.fiber, sat: t.sat + i.saturated_fat,
+      }), { cal: 0, p: 0, c: 0, f: 0, fiber: 0, sat: 0 });
       await saveToLibrary({
         ...(existing?.id ? { id: existing.id } : {}),
         name,
@@ -997,14 +1085,15 @@ async function openComboBuilder(dateKey, existing = null) {
         protein: Math.round(totals.p * 10) / 10,
         carbs: Math.round(totals.c * 10) / 10,
         fat: Math.round(totals.f * 10) / 10,
-        fiber: 0,
-        saturated_fat: 0,
+        fiber: Math.round(totals.fiber * 10) / 10,
+        saturated_fat: Math.round(totals.sat * 10) / 10,
         ingredients,
         category: 'user',
         kind: 'composite',
       });
       toast(`Saved "${name}"`);
       close();
+      onSaved?.();
     };
   });
 }
@@ -1017,6 +1106,8 @@ function scaleIngredient(ing, newAmount) {
     protein: Math.round((ing.protein || 0) * ratio * 10) / 10,
     carbs: Math.round((ing.carbs || 0) * ratio * 10) / 10,
     fat: Math.round((ing.fat || 0) * ratio * 10) / 10,
+    fiber: Math.round((ing.fiber || 0) * ratio * 10) / 10,
+    saturated_fat: Math.round((ing.saturated_fat || 0) * ratio * 10) / 10,
   };
 }
 
@@ -1052,7 +1143,8 @@ function wireIngredientRows(sheet, ingredients, onUpdate) {
   function totalsOf(resolved) {
     return resolved.reduce((t, i) => ({
       cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
-    }), { cal: 0, p: 0, c: 0, f: 0 });
+      fiber: t.fiber + (i.fiber || 0), sat: t.sat + (i.saturated_fat || 0),
+    }), { cal: 0, p: 0, c: 0, f: 0, fiber: 0, sat: 0 });
   }
   function update() {
     const resolved = resolve();
@@ -1062,7 +1154,8 @@ function wireIngredientRows(sheet, ingredients, onUpdate) {
     });
     const t = totalsOf(resolved);
     sheet.querySelector('#cd-total').textContent =
-      `Total: ${Math.round(t.cal)} kcal · ${Math.round(t.p * 10) / 10}p · ${Math.round(t.c * 10) / 10}c · ${Math.round(t.f * 10) / 10}f`;
+      `Total: ${Math.round(t.cal)} kcal · ${Math.round(t.p * 10) / 10}p · ${Math.round(t.c * 10) / 10}c · ${Math.round(t.f * 10) / 10}f` +
+      (t.fiber || t.sat ? ` · fiber ${Math.round(t.fiber * 10) / 10}g · sat ${Math.round(t.sat * 10) / 10}g` : '');
     onUpdate?.();
   }
   $rows.querySelectorAll('.cd-i-amount').forEach(inp => inp.addEventListener('input', update));
@@ -1105,8 +1198,8 @@ function openCompositeDetail(item, parentClose, dateKey) {
         protein: Math.round(totals.p * 10) / 10,
         carbs: Math.round(totals.c * 10) / 10,
         fat: Math.round(totals.f * 10) / 10,
-        fiber: 0,
-        saturated_fat: 0,
+        fiber: Math.round(totals.fiber * 10) / 10,
+        saturated_fat: Math.round(totals.sat * 10) / 10,
         ingredients: resolved,
         comboId: item.id ?? null,
         time: new Date().toISOString(),
@@ -1120,8 +1213,8 @@ function openCompositeDetail(item, parentClose, dateKey) {
           protein: Math.round(totals.p * 10) / 10,
           carbs: Math.round(totals.c * 10) / 10,
           fat: Math.round(totals.f * 10) / 10,
-          fiber: 0,
-          saturated_fat: 0,
+          fiber: Math.round(totals.fiber * 10) / 10,
+          saturated_fat: Math.round(totals.sat * 10) / 10,
           ingredients: resolved,
           category: 'user',
           kind: 'composite',
@@ -1165,8 +1258,8 @@ function openLoggedComboEdit(m, dateKey) {
         protein: Math.round(totals.p * 10) / 10,
         carbs: Math.round(totals.c * 10) / 10,
         fat: Math.round(totals.f * 10) / 10,
-        fiber: 0,
-        saturated_fat: 0,
+        fiber: Math.round(totals.fiber * 10) / 10,
+        saturated_fat: Math.round(totals.sat * 10) / 10,
         ingredients: resolved,
       });
       if (m.comboId != null && sheet.querySelector('#cd-update-defaults')?.checked) {
@@ -1178,8 +1271,8 @@ function openLoggedComboEdit(m, dateKey) {
           protein: Math.round(totals.p * 10) / 10,
           carbs: Math.round(totals.c * 10) / 10,
           fat: Math.round(totals.f * 10) / 10,
-          fiber: 0,
-          saturated_fat: 0,
+          fiber: Math.round(totals.fiber * 10) / 10,
+          saturated_fat: Math.round(totals.sat * 10) / 10,
           ingredients: resolved,
           category: 'user',
           kind: 'composite',
@@ -1359,40 +1452,7 @@ function openLogServings(item, parentClose, dateKey, onPick) {
         `Total: ${Math.round(m.cal * s)} kcal · ${Math.round(m.prot * s * 10) / 10}p · ${Math.round(m.carb * s * 10) / 10}c · ${Math.round(m.fat * s * 10) / 10}f`;
     }
     wireServingFields(sheet, 'log', update);
-
-    // Editing "Per serving" size (not just switching units) should rescale the macro
-    // fields proportionally, since they were parsed against the *old* serving size.
-    let basisG = si.gramsPerServing || (si.units?.ml > 0 ? si.units.ml : null) || null;
-    function currentBasisG() {
-      const unit = sheet.querySelector('#log-unit-select')?.value || 'oz';
-      const per = parseFloat(sheet.querySelector('#log-per')?.value);
-      if (!(per > 0)) return null;
-      const enriched = enrichUnits({ [unit]: per });
-      return enriched.g > 0 ? enriched.g : (enriched.ml > 0 ? enriched.ml : null);
-    }
-    sheet.querySelector('#log-per')?.addEventListener('input', () => {
-      const newBasis = currentBasisG();
-      if (basisG > 0 && newBasis > 0 && Math.abs(newBasis - basisG) > 0.01) {
-        const ratio = newBasis / basisG;
-        const scaleField = (id) => {
-          const el = sheet.querySelector(id);
-          if (el) el.value = Math.round(parseFloat(el.value || 0) * ratio * 100) / 100;
-        };
-        scaleField('#log-cal');
-        scaleField('#log-prot');
-        scaleField('#log-carb');
-        scaleField('#log-fat');
-        // Keep the free-text label matched to the amount just typed — if this gets saved
-        // to the library, a stale "100 g" label paired with already-halved macros would
-        // silently mis-parse the next time this saved item is opened.
-        const srvlbl = sheet.querySelector('#log-srvlbl');
-        const perNow = sheet.querySelector('#log-per')?.value;
-        const unitNow = sheet.querySelector('#log-unit-select')?.value;
-        if (srvlbl && perNow && unitNow) srvlbl.value = `${perNow} ${UNIT_LABELS[unitNow] || unitNow}`;
-      }
-      basisG = newBasis ?? basisG;
-      update();
-    });
+    wireServingSizeRescale(sheet, 'log', si, ['cal', 'prot', 'carb', 'fat'], update);
     ['#log-cal', '#log-prot', '#log-carb', '#log-fat'].forEach(id => {
       sheet.querySelector(id)?.addEventListener('input', update);
     });
@@ -1436,6 +1496,8 @@ function openLogServings(item, parentClose, dateKey, onPick) {
           protein: Math.round(m.prot * s * 10) / 10,
           carbs: Math.round(m.carb * s * 10) / 10,
           fat: Math.round(m.fat * s * 10) / 10,
+          fiber: Math.round((item.fiber || 0) * s * 10) / 10,
+          saturated_fat: Math.round((item.saturated_fat || 0) * s * 10) / 10,
         });
         // syncHistory=false on both: this is unwinding 2+ nested picker sheets back down
         // to the combo builder underneath, not a user back-navigation. `close()`'s default
@@ -1674,11 +1736,13 @@ function openFoodSearch(dateKey, initialQuery = '', onPick) {
       if (!q) { toast('Enter a search term'); return; }
       $res.innerHTML = '<div class="muted">Searching…</div>';
       try {
-        // Same-origin — served by our own api/off-search.js proxy, which forwards to
-        // Open Food Facts server-side. A direct browser fetch to OFF's search API is
-        // blocked by CORS (it sends no Access-Control-Allow-Origin header), so this
-        // needs the proxy rather than calling world.openfoodfacts.org directly.
-        const r = await fetch(`/api/off-search?q=${encodeURIComponent(q)}`);
+        // Cross-origin, not same-origin: this app is static, served from GitHub Pages
+        // (rcarrier32.github.io/fit-tracker), which can't run server code — so the one
+        // proxy function this needs (api/off-search.js) lives on Vercel instead, called
+        // here by absolute URL. It forwards to Open Food Facts server-side; a direct
+        // browser fetch to OFF's own search API is blocked by CORS (it sends no
+        // Access-Control-Allow-Origin header) regardless of which origin calls it.
+        const r = await fetch(`${OFF_SEARCH_PROXY}?q=${encodeURIComponent(q)}`);
         if (!r.ok) throw new Error(`Server error ${r.status}`);
         const j = await r.json();
         const products = j.hits || [];
@@ -1760,36 +1824,7 @@ function openEditUserMeal(item, onUpdated) {
     sheet.querySelector('#u-amt')?.style.setProperty('display', 'none');
     sheet.querySelector('#u-srv-disp')?.closest('div')?.style.setProperty('display', 'none');
     wireServingFields(sheet, 'u', () => {});
-
-    // Editing "Per serving" size rescales the macros, same pattern as logging a scan.
-    let basisG = si.gramsPerServing || (si.units?.ml > 0 ? si.units.ml : null) || null;
-    function currentBasisG() {
-      const unit = sheet.querySelector('#u-unit-select')?.value || 'oz';
-      const per = parseFloat(sheet.querySelector('#u-per')?.value);
-      if (!(per > 0)) return null;
-      const enriched = enrichUnits({ [unit]: per });
-      return enriched.g > 0 ? enriched.g : (enriched.ml > 0 ? enriched.ml : null);
-    }
-    sheet.querySelector('#u-per')?.addEventListener('input', () => {
-      const newBasis = currentBasisG();
-      if (basisG > 0 && newBasis > 0 && Math.abs(newBasis - basisG) > 0.01) {
-        const ratio = newBasis / basisG;
-        const scaleField = (id) => {
-          const el = sheet.querySelector(id);
-          if (el) el.value = Math.round(parseFloat(el.value || 0) * ratio * 100) / 100;
-        };
-        scaleField('#u-cal'); scaleField('#u-p'); scaleField('#u-c');
-        scaleField('#u-f'); scaleField('#u-fiber'); scaleField('#u-sat');
-        // The free-text label is re-parsed every future time this item is opened — if it
-        // still says "100 g" after the amount was changed to 50, the next open shows 100g
-        // paired with the already-halved macros. Regenerate it to match what was just typed.
-        const srvlbl = sheet.querySelector('#u-srvlbl');
-        const perNow = sheet.querySelector('#u-per')?.value;
-        const unitNow = sheet.querySelector('#u-unit-select')?.value;
-        if (srvlbl && perNow && unitNow) srvlbl.value = `${perNow} ${UNIT_LABELS[unitNow] || unitNow}`;
-      }
-      basisG = newBasis ?? basisG;
-    });
+    wireServingSizeRescale(sheet, 'u', si, ['cal', 'p', 'c', 'f', 'fiber', 'sat']);
 
     sheet.querySelector('#u-cancel').onclick = close;
     sheet.querySelector('#u-save').onclick = async () => {

@@ -3,10 +3,16 @@
  *
  * The browser can't call search.openfoodfacts.org directly: it doesn't send an
  * Access-Control-Allow-Origin header, so every in-browser fetch is blocked by CORS
- * regardless of network conditions. A server-to-server request has no such restriction,
- * and the app itself only ever calls this same-origin endpoint, which needs none either.
+ * regardless of network conditions. A server-to-server request has no such restriction.
+ *
+ * The app itself is static and hosted on GitHub Pages (rcarrier32.github.io/fit-tracker)
+ * — GitHub Pages can't run server code, which is why this one function lives on Vercel
+ * instead, and the app calls it cross-origin by absolute URL. That means THIS response
+ * needs its own Access-Control-Allow-Origin — without it, the browser blocks the app's
+ * own fetch to this endpoint exactly the same way it blocks the direct OFF call above.
  */
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   const q = (req.query.q || '').toString().trim();
   if (!q) {
     res.status(400).json({ error: 'missing query param "q"' });

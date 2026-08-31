@@ -81,9 +81,24 @@ export function openSheet(contentBuilder) {
   sheet.className = 'sheet';
   backdrop.appendChild(sheet);
   document.body.appendChild(backdrop);
-  const hooks = { onClose: null };
   let closed = false;
   const token = ++_sheetToken;
+  const hooks = {
+    onClose: null,
+    // A sheet that opens a chain of its OWN nested sub-sheets via syncHistory=false
+    // (so each hop doesn't fight the next pushState — see the dismiss() comment above)
+    // leaves history.state pointing at whichever sub-sheet pushed last once that chain
+    // resolves, not back at this sheet's own token — so this sheet's *own* eventual
+    // close() would never fire its history.back() (the equality check below would never
+    // match), permanently leaking those entries. Call this once such a chain is fully
+    // resolved (success or cancelled) to re-stamp the current entry as this sheet's own,
+    // restoring normal back-button behavior for it. Synchronous, fires no navigation.
+    resyncHistory: () => {
+      if (!closed && history.state?.fitSheet !== token) {
+        history.replaceState({ fitSheet: token }, '', location.pathname + location.search + location.hash);
+      }
+    },
+  };
 
   const dismiss = (syncHistory = true) => {
     if (closed) return;
