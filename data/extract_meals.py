@@ -19,9 +19,22 @@ CAL_PROT_RE = re.compile(r'^\s*(\d{2,4})\s+(\d{1,3})g\s*$')
 FAT_SOD_RE = re.compile(r'^\s*(\d{1,3})g\s*Sodium\s+(\d+)mg\s*$')
 CARB_POT_RE = re.compile(r'^\s*(\d{1,3})g\s*Potassium\s+(\d+)mg\s*$')
 FIBER_RE = re.compile(r'^\s*Fiber\s+(\d+)g')
-# The "BWS " prefix is optional (the Recipe Book source omits it), and the quoted
-# hint frequently line-wraps in the -layout text dump, so this is matched against
-# whitespace-normalized whole-page text rather than a single line — see parse_page.
+# End-anchored variant of FIBER_RE, for skipping a line that's ONLY the fiber fact (no
+# hint/tip text sharing its row) — FIBER_RE itself isn't end-anchored, since it's also
+# used to pull fiber_g out of a hybrid row that NUTRITION_INLINE_RE hasn't stripped yet.
+FIBER_ONLY_RE = re.compile(r'^\s*Fiber\s+\d+g\s*$')
+# Some page layouts put a nutrition-fact fragment (Fiber, or "Ng Sodium Mmg" / "Ng
+# Potassium Mmg") on the SAME row as trailing hint/tip text — a third column between the
+# ingredient list and the instructions, e.g. "13g Sodium        880mg      with Fruit -
+# 400-500" on the app.". Stripped from the front of a line before the normal column split
+# runs, so neither the fact itself nor a stray "880mg" fragment leaks into an ingredient
+# or into the instructions text right where MFP_RE is hunting for a closing quote.
+NUTRITION_INLINE_RE = re.compile(
+    r'^\s*(?:Fiber\s+\d+g|\d+g\s*Sodium\s+\d+mg|\d+g\s*Potassium\s+\d+mg)\s{2,}'
+)
+# The "BWS " prefix is optional (the Recipe Book source omits it), and the quoted hint
+# frequently line-wraps in the -layout text dump — searched against the already
+# column-isolated instructions text (built in step 2), never the raw page, see parse_page.
 MFP_RE = re.compile(r'searching\s*[\"“”](?:BWS\s+)?([^\"“”]+?)[\"“”]', re.IGNORECASE)
 CAL_BAND_RE = re.compile(r'(\d{3,4})-?(\d{3,4})?\s*calories', re.IGNORECASE)
 TIME_RE = re.compile(r'^\s*\d{1,3}\s*MINUTES?\s*$', re.IGNORECASE)
@@ -68,22 +81,84 @@ def parse_page(page_text, source):
         if mfib and 'fiber_g' not in meal:
             meal['fiber_g'] = int(mfib.group(1))
 
-    # 2. Find name via MyFitnessPal hint or page heading.
-    # The hint sentence often wraps across 2+ physical lines in the -layout dump
-    # ("...searching \"BWS Cinnamon Yogurt Overnight\nOats - 200-300\"..."), so a
-    # single-line regex misses it. Collapse the whole page to one whitespace-normalized
-    # line for this search only (the original `lines` is still used below for ingredients).
-    flat_page = re.sub(r'\s+', ' ', page_text)
-    mh = MFP_RE.search(flat_page)
+    # 2. Ingredients + instructions.
+    # Heuristic: lines below the time stamp ("15 MINUTES") have ingredients on the left,
+    # instructions (and, further down some layouts, the MFP hint + tips) on the right,
+    # split by 3+ spaces. Scans the WHOLE rest of the page, not just up to the calorie
+    # line — some sources put the hint sentence and tips after the nutrition block, and
+    # confining the scan to before it silently dropped that content and the recipe's
+    # only reliable name signal along with it (see MFP_RE / step 3 below).
+    start = 0
+    for i, l in enumerate(lines):
+        if TIME_RE.match(l):
+            start = i + 1
+            break
+    block = lines[start:]
+    ingredients = []
+    instructions = []
+    for l in block:
+        if not l.strip(): continue
+        # Skip "Go to the recipe" and similar, and the page footer byline.
+        if 'go to the recipe' in l.lower() or 'contact@' in l.lower(): continue
+        # Pure nutrition-fact lines (calories/fat+sodium/carbs+potassium) carry no
+        # ingredient or instruction text at all — never candidates for either column.
+        if CAL_PROT_RE.match(l) or FAT_SOD_RE.match(l) or CARB_POT_RE.match(l) or FIBER_ONLY_RE.match(l): continue
+        l = NUTRITION_INLINE_RE.sub('', l)
+        if not l.strip(): continue
+        # Split on 3+ spaces — left = ingredient, right = instruction. The ingredient
+        # column is itself indented (a left margin, not a column boundary) — split on
+        # the STRIPPED line, or maxsplit=1 fires on that leading run and "left" comes
+        # back empty with the real ingredient text still glued to the instruction side.
+        parts = re.split(r'\s{3,}', l.strip(), maxsplit=1)
+        if len(parts) == 2:
+            left, right = parts[0].strip(), parts[1].strip()
+            if left: ingredients.append(left)
+            if right: instructions.append(right)
+        else:
+            single = parts[0].strip()
+            if not single: continue
+            # A bare quote-close/calorie-band tail — '- 200-300" on the app.', or an
+            # ingredient-column word that the hint sentence's closing quote landed on top
+            # of, e.g. 'Cucumbers" on the app.' — is short and parens-free like an
+            # ingredient, but it's the END of the hint sentence, not an ingredient. Must
+            # be `search`, not `match`: "on the app" is frequently NOT at the start of the
+            # fragment. Route it back to instructions or MFP_RE loses its closing quote
+            # and the recipe silently loses its only reliable name signal. "enjoy!" gets
+            # the same treatment for a different reason — it's always the tail of a step
+            # sentence ("...and enjoy!"), never an ingredient, and at 1-2 words it easily
+            # passes the short-line ingredient heuristic below.
+            if (re.match(r'^[-–]\s*\d', single) or re.search(r'on the app\b', single, re.IGNORECASE)
+                    or re.search(r'\benjoy!?\s*$', single, re.IGNORECASE)):
+                instructions.append(single)
+            # If line is short and parens-like, ingredient. Otherwise instruction.
+            elif (len(single) < 60 and (ING_PARENS_RE.search(single) or len(single.split()) <= 6)):
+                ingredients.append(single)
+            else:
+                instructions.append(single)
+
+    if ingredients: meal['ingredients'] = ingredients
+    if instructions: meal['instructions'] = ' '.join(instructions)
+
+    # 3. Find name via MyFitnessPal hint or page heading.
+    # The hint sentence often wraps across 2+ physical lines in the -layout dump, so a
+    # single-line regex misses it — search the already-reconstructed instructions text
+    # instead of the raw page. Pages routinely carry a THIRD column (nutrition facts:
+    # "Fiber 3g") positioned between the ingredient and instruction columns; naively
+    # flattening the whole page interleaves that column's text into the middle of the
+    # hint sentence ("BWS BBQ Chicken, Rice & Broccoli\nFiber 3g\n- 200-300" reads as
+    # one line in -layout output). `instructions` is built from the RIGHT half of each
+    # split line only, so it's already immune to that — the nutrition-facts numbers
+    # live in dedicated fixed-format lines (CAL_PROT_RE etc.) that never reach it.
+    mh = MFP_RE.search(meal.get('instructions', ''))
     if mh:
         meal['name'] = norm_name(mh.group(1))
         meal['name_source'] = 'mfp_hint'
     if 'name' not in meal:
         # Fallback: first non-empty heading-ish line. Apply the same 3+-space
-        # column split used for ingredients/instructions below so a line that's
+        # column split used for ingredients/instructions above so a line that's
         # really "<ingredient>   <instruction>" doesn't get read as one heading.
         for line in lines[:8]:
-            left = re.split(r'\s{3,}', line, maxsplit=1)[0]
+            left = re.split(r'\s{3,}', line.strip(), maxsplit=1)[0]
             s = left.strip()
             if not s or len(s) < 4: continue
             if any(skip in s.lower() for skip in ['minutes', 'calories', 'recipe', 'go to', 'contact@']): continue
@@ -92,7 +167,7 @@ def parse_page(page_text, source):
                 meal['name_source'] = 'fallback_heading'
                 break
 
-    # 3. Calorie band (e.g. "500-600 calories")
+    # 4. Calorie band (e.g. "500-600 calories")
     for line in lines[:30]:
         mb = CAL_BAND_RE.search(line)
         if mb:
@@ -100,40 +175,6 @@ def parse_page(page_text, source):
             hi = int(mb.group(2)) if mb.group(2) else lo + 100
             meal['cal_band'] = f"{lo}-{hi}"
             break
-
-    # 4. Ingredients + instructions
-    # Heuristic: lines below the time stamp ("15 MINUTES") and before nutrition
-    # have ingredients on left, instructions on right (split by 3+ spaces).
-    start = 0
-    for i, l in enumerate(lines):
-        if TIME_RE.match(l):
-            start = i + 1
-            break
-    end = cal_idx
-    block = lines[start:end]
-    ingredients = []
-    instructions = []
-    for l in block:
-        if not l.strip(): continue
-        # Skip "Go to the recipe" and similar
-        if 'go to the recipe' in l.lower() or 'contact@' in l.lower(): continue
-        # Split on 3+ spaces — left = ingredient, right = instruction
-        parts = re.split(r'\s{3,}', l, maxsplit=1)
-        if len(parts) == 2:
-            left, right = parts[0].strip(), parts[1].strip()
-            if left: ingredients.append(left)
-            if right: instructions.append(right)
-        else:
-            single = parts[0].strip()
-            if not single: continue
-            # If line is short and parens-like, ingredient. Otherwise instruction.
-            if (len(single) < 60 and (ING_PARENS_RE.search(single) or len(single.split()) <= 6)):
-                ingredients.append(single)
-            else:
-                instructions.append(single)
-
-    if ingredients: meal['ingredients'] = ingredients
-    if instructions: meal['instructions'] = ' '.join(instructions)
 
     return meal
 
