@@ -16,6 +16,7 @@ import {
   calcServings,
   convertAmount,
   enrichUnits,
+  normalizeUnit,
   perAmountForUnit,
   reconcileLiquidUnits,
   unitsForUi,
@@ -889,6 +890,22 @@ function prettyCat(c) {
 
 const CB_FIELD_LABEL = 'display:block;font-size:11px;color:var(--fg-dim);margin-bottom:3px';
 
+/**
+ * Same unit-family + <select> logic servingFieldsHtml uses for a single food (only offer a
+ * dropdown when there's actually more than one unit to convert between — otherwise a bare
+ * hidden input, matching that screen exactly rather than always showing a picker).
+ */
+function comboUnitFieldHtml(unit, amount, name) {
+  const baseUnit = normalizeUnit(unit) || 'serving';
+  const units = enrichUnits({ [baseUnit]: amount > 0 ? amount : 1 });
+  const uiUnits = unitsForUi(units, baseUnit, name || '');
+  if (uiUnits.length > 1) {
+    return `<select class="cb-i-unit">${unitOptionsHtml(uiUnits, baseUnit)}</select>`;
+  }
+  return `<input type="hidden" class="cb-i-unit" value="${baseUnit}">
+    <div class="muted" style="padding:8px 0;font-size:13px">${UNIT_LABELS[baseUnit] || baseUnit}</div>`;
+}
+
 function comboRowHtml(ing = {}) {
   return `
     <div class="cb-row" data-fiber="${ing.fiber || 0}" data-sat="${ing.saturated_fat || 0}" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
@@ -902,7 +919,7 @@ function comboRowHtml(ing = {}) {
       </div>
       <div style="display:flex;gap:6px;margin-bottom:8px">
         <div style="flex:1"><label style="${CB_FIELD_LABEL}">Amount</label><input type="number" class="cb-i-amount" inputmode="decimal" placeholder="Amount" value="${ing.amount ?? ''}"></div>
-        <div style="flex:1"><label style="${CB_FIELD_LABEL}">Unit</label><input type="text" class="cb-i-unit" placeholder="g, tbsp, banana…" value="${attrEsc(ing.unit || '')}"></div>
+        <div style="flex:1" class="cb-i-unit-wrap"><label style="${CB_FIELD_LABEL}">Unit</label>${comboUnitFieldHtml(ing.unit, ing.amount, ing.name)}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
         <div><label style="${CB_FIELD_LABEL}">Calories</label><input type="number" class="cb-i-cal" inputmode="decimal" placeholder="Cal" value="${ing.calories ?? ''}"></div>
@@ -1024,10 +1041,35 @@ async function openComboBuilder(dateKey, existing = null, onSaved = null) {
       row.dataset.sat = Math.round((parseFloat(row.dataset.baseSat) || 0) * ratio * 10) / 10;
     }
 
+    // Wires the unit <select> the same way wireServingFields does: the "previous unit" has
+    // to be tracked separately from the element's own value, since by the time a native
+    // <select> fires "change" its value already IS the new unit. Switching units converts
+    // the amount number (same real quantity, different label) and re-anchors the scaling
+    // reference to it — it must NOT rescale the macros, which haven't actually changed.
+    function wireUnitSelect(row) {
+      const el = row.querySelector('.cb-i-unit');
+      row.dataset.activeUnit = el.value;
+      if (el.tagName !== 'SELECT') return;
+      el.addEventListener('change', () => {
+        const from = row.dataset.activeUnit || el.value;
+        const to = el.value;
+        if (from !== to) {
+          const amtEl = row.querySelector('.cb-i-amount');
+          const amt = numInput(amtEl);
+          if (amt > 0) amtEl.value = convertAmount(amt, from, to, enrichUnits({ [from]: amt }));
+          row.dataset.activeUnit = to;
+          rebase(row);
+          updateTotal();
+        }
+      });
+    }
+
     function fillRow(row, picked) {
       row.querySelector('.cb-i-name').value = picked.name;
       row.querySelector('.cb-i-amount').value = picked.amount;
-      row.querySelector('.cb-i-unit').value = picked.unit;
+      const wrap = row.querySelector('.cb-i-unit-wrap');
+      wrap.innerHTML = `<label style="${CB_FIELD_LABEL}">Unit</label>${comboUnitFieldHtml(picked.unit, picked.amount, picked.name)}`;
+      wireUnitSelect(row);
       row.querySelector('.cb-i-cal').value = picked.calories;
       row.querySelector('.cb-i-p').value = picked.protein;
       row.querySelector('.cb-i-c').value = picked.carbs;
@@ -1046,12 +1088,12 @@ async function openComboBuilder(dateKey, existing = null, onSaved = null) {
       el.innerHTML = comboRowHtml(ing);
       const row = el.firstElementChild;
       $rows.appendChild(row);
+      wireUnitSelect(row);
       if (ing.amount != null) rebase(row);  // pre-filled row (editing an existing combo)
       row.querySelector('.cb-i-amount').addEventListener('input', () => { rescaleFromBase(row); updateTotal(); });
       ['.cb-i-cal', '.cb-i-p', '.cb-i-c', '.cb-i-f'].forEach(sel =>
         row.querySelector(sel).addEventListener('input', () => { rebase(row); updateTotal(); }));
       row.querySelector('.cb-i-name').addEventListener('input', updateTotal);
-      row.querySelector('.cb-i-unit').addEventListener('input', updateTotal);
       row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
       row.querySelector('.cb-i-find').onclick = () => {
         openIngredientPicker(dateKey, (picked) => {
