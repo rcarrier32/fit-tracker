@@ -709,6 +709,9 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
             <div class="list-item-meta">${m.serving ? m.serving + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
           </div>
           <button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px" title="Edit">✎</button>
+          ${(m.kind === 'user' || m.kind === 'composite') && m.id != null
+            ? '<button class="btn ghost del-user" style="width:auto;padding:6px 8px;margin-right:4px" title="Delete">🗑️</button>'
+            : ''}
           <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : m.kind === 'composite' ? 'Combo →' : '+ Log'}</span>
         </div>
       `).join('');
@@ -726,6 +729,14 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
           const draft = (m.kind === 'user' && m.id != null) ? m : { ...rest, kind: 'user', category: 'user' };
           openEditUserMeal(draft, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
         };
+        itemEl.querySelector('.del-user')?.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          if (!confirm(`Delete "${m.name}" from your library?`)) return;
+          await del('user_meals', m.id);
+          toast('Deleted');
+          close(false);
+          openLibraryPicker(dateKey, $search.value.trim());
+        });
         itemEl.onclick = () => {
           if (onPick && m.kind !== 'recipe' && m.kind !== 'composite') openLogServings(m, close, dateKey, onPick);
           else if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
@@ -776,7 +787,10 @@ function comboRowHtml(ing = {}) {
   return `
     <div class="cb-row" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
       <div style="display:flex;gap:8px;margin-bottom:6px">
-        <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" style="flex:1">
+        <div style="flex:1;position:relative">
+          <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" autocomplete="off">
+          <div class="cb-i-suggest" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:20;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;margin-top:4px;max-height:180px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,0.35)"></div>
+        </div>
         <button type="button" class="btn secondary cb-i-find" style="width:auto;padding:6px 10px;flex-shrink:0;font-size:16px" title="Scan, search, or pick from Library">🔍</button>
         <button type="button" class="btn ghost cb-i-remove" style="width:auto;padding:6px 10px;flex-shrink:0">✕</button>
       </div>
@@ -816,8 +830,27 @@ function openIngredientPicker(dateKey, onPick) {
   });
 }
 
-function openComboBuilder(dateKey, existing = null) {
+/** Best-guess amount/unit/macros for a Library item, used to fill a combo row directly —
+ * same derivation as the pick-mode flow, but applied instantly instead of opening a
+ * confirm sheet, since typeahead is meant to be the fast path for "I already have this
+ * in my Library." */
+function libItemToRowFill(m) {
+  const si = parseServingInfo(m.serving || '');
+  const amount = si.gramsPerServing || si.ozPerServing || 1;
+  const unit = si.gramsPerServing ? 'g' : (si.ozPerServing ? 'oz' : (si.defaultUnit || 'serving'));
+  return {
+    name: m.name, amount, unit,
+    calories: m.calories || 0, protein: m.protein || 0, carbs: m.carbs || 0, fat: m.fat || 0,
+  };
+}
+
+async function openComboBuilder(dateKey, existing = null) {
   dateKey = dateKey || todayStr();
+  // Loaded once up front so each row's ingredient-name field can live-filter it, the same
+  // way the Library picker's own search box does — typing "avoc" should surface your
+  // saved "Avocado" immediately instead of requiring the separate 🔍 picker sheet.
+  const [{ mealItems }, userMeals] = await Promise.all([loadCatalogs(), getAll('user_meals')]);
+  const lib = [...userMeals, ...mealItems].filter(m => m.name && m.kind !== 'recipe' && m.kind !== 'composite');
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${existing ? 'Edit combo' : 'Build a combo meal'}</h2>
@@ -846,6 +879,17 @@ function openComboBuilder(dateKey, existing = null) {
         `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f`;
     }
 
+    function fillRow(row, picked) {
+      row.querySelector('.cb-i-name').value = picked.name;
+      row.querySelector('.cb-i-amount').value = picked.amount;
+      row.querySelector('.cb-i-unit').value = picked.unit;
+      row.querySelector('.cb-i-cal').value = picked.calories;
+      row.querySelector('.cb-i-p').value = picked.protein;
+      row.querySelector('.cb-i-c').value = picked.carbs;
+      row.querySelector('.cb-i-f').value = picked.fat;
+      updateTotal();
+    }
+
     function addRow(ing) {
       const el = document.createElement('div');
       el.innerHTML = comboRowHtml(ing);
@@ -854,17 +898,33 @@ function openComboBuilder(dateKey, existing = null) {
       row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateTotal));
       row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
       row.querySelector('.cb-i-find').onclick = () => {
-        openIngredientPicker(dateKey, (picked) => {
-          row.querySelector('.cb-i-name').value = picked.name;
-          row.querySelector('.cb-i-amount').value = picked.amount;
-          row.querySelector('.cb-i-unit').value = picked.unit;
-          row.querySelector('.cb-i-cal').value = picked.calories;
-          row.querySelector('.cb-i-p').value = picked.protein;
-          row.querySelector('.cb-i-c').value = picked.carbs;
-          row.querySelector('.cb-i-f').value = picked.fat;
-          updateTotal();
-        });
+        openIngredientPicker(dateKey, (picked) => fillRow(row, picked));
       };
+
+      // Typeahead — live-filters the same Library data the picker's "My Library" option
+      // browses, so the common case (already-saved ingredient) doesn't need the extra
+      // sheet at all: type a few letters, tap the match, done.
+      const $name = row.querySelector('.cb-i-name');
+      const $suggest = row.querySelector('.cb-i-suggest');
+      function hideSuggest() { $suggest.style.display = 'none'; $suggest.innerHTML = ''; }
+      $name.addEventListener('input', () => {
+        const q = $name.value.trim().toLowerCase();
+        if (q.length < 2) { hideSuggest(); return; }
+        const matches = lib.filter(m => m.name.toLowerCase().includes(q)).slice(0, 6);
+        if (!matches.length) { hideSuggest(); return; }
+        $suggest.innerHTML = matches.map((m, i) => `
+          <div class="cb-suggest-item" data-i="${i}" style="padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--border)">
+            <div style="font-size:14px">${attrEsc(m.name)}</div>
+            <div class="muted" style="font-size:12px">${m.serving ? attrEsc(m.serving) + ' · ' : ''}${m.calories || 0} kcal</div>
+          </div>
+        `).join('');
+        $suggest.style.display = 'block';
+        $suggest.querySelectorAll('.cb-suggest-item').forEach(el => {
+          el.onmousedown = (e) => e.preventDefault();  // fire before the input's blur hides the list
+          el.onclick = () => { fillRow(row, libItemToRowFill(matches[+el.dataset.i])); hideSuggest(); };
+        });
+      });
+      $name.addEventListener('blur', () => setTimeout(hideSuggest, 150));
     }
 
     (existing?.ingredients?.length ? existing.ingredients : [{}, {}]).forEach(addRow);

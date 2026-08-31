@@ -61,6 +61,18 @@ export function toast(msg, ms = 1800) {
   setTimeout(() => el.remove(), ms);
 }
 
+// Every sheet used to push the *same* constant history state ({fitSheet: 1}), so every
+// still-open sheet's popstate listener would react to ANY sheet's dismissal — closing two
+// or more nested sheets in the same tick (e.g. a "close this, then close its parent too"
+// flow, or even just a plain backdrop-tap/Cancel while sheets are nested 2+ deep) fired a
+// burst of popstate events that got misattributed to sheets that were never meant to
+// close, silently discarding whatever the user had in progress underneath (e.g. a combo
+// mid-build). Each sheet now gets a unique, monotonically increasing token and only
+// dismisses when the *current* history state's token has dropped below its own — a
+// comparison that stays correct even across orphaned entries left by sheets that closed
+// with syncHistory=false to open a follow-up sheet immediately.
+let _sheetToken = 0;
+
 // Sheet helper — hooks.onClose on dismiss; device back closes sheet first
 export function openSheet(contentBuilder) {
   const backdrop = document.createElement('div');
@@ -71,6 +83,7 @@ export function openSheet(contentBuilder) {
   document.body.appendChild(backdrop);
   const hooks = { onClose: null };
   let closed = false;
+  const token = ++_sheetToken;
 
   const dismiss = (syncHistory = true) => {
     if (closed) return;
@@ -78,15 +91,18 @@ export function openSheet(contentBuilder) {
     hooks.onClose?.();
     backdrop.remove();
     window.removeEventListener('popstate', onPopState);
-    if (syncHistory && history.state?.fitSheet) history.back();
+    if (syncHistory && history.state?.fitSheet === token) history.back();
   };
 
   function onPopState() {
-    if (!closed && document.body.contains(backdrop)) dismiss(false);
+    if (closed || !document.body.contains(backdrop)) return;
+    // Dismiss only once navigation has moved back to or past this sheet's own entry —
+    // not on every popstate regardless of whose entry it actually belongs to.
+    if ((history.state?.fitSheet ?? 0) < token) dismiss(false);
   }
 
   // Keep full path + hash (empty url breaks iOS Safari → wrong path → GitHub 404)
-  history.pushState({ fitSheet: 1 }, '', location.pathname + location.search + location.hash);
+  history.pushState({ fitSheet: token }, '', location.pathname + location.search + location.hash);
   window.addEventListener('popstate', onPopState);
   backdrop.addEventListener('click', e => { if (e.target === backdrop) dismiss(true); });
 
