@@ -5194,6 +5194,166 @@
         "grip"
       ],
       "bws_alternates": []
+    },
+    {
+      "id": "hip-flexor-w-rotation-breathing",
+      "name": "Hip Flexor w/ Rotation/Breathing",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Hip%20Flexor%20w%2F%20Rotation%2FBreathing"
+    },
+    {
+      "id": "2-leg-metronome-plyo-progressions",
+      "name": "2 Leg Metronome Plyo Progressions",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=2%20Leg%20Metronome%20Plyo%20Progressions"
+    },
+    {
+      "id": "extensive-knee-dominant-jump",
+      "name": "Extensive Knee Dominant Jump",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Extensive%20Knee%20Dominant%20Jump"
+    },
+    {
+      "id": "cable-hip-flexor-driv",
+      "name": "Cable Hip Flexor Driv",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Cable%20Hip%20Flexor%20Driv"
+    },
+    {
+      "id": "optional-adductor-stretch-progressions",
+      "name": "Optional Adductor Stretch Progressions",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Optional%20Adductor%20Stretch%20Progressions"
+    },
+    {
+      "id": "all-four-alternating-belly-lif",
+      "name": "All Four Alternating Belly Lif",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=All%20Four%20Alternating%20Belly%20Lif"
+    },
+    {
+      "id": "60-degree-knee-isos",
+      "name": "60 Degree Knee ISOs",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=60%20Degree%20Knee%20ISOs"
+    },
+    {
+      "id": "front-chain-stretch-w-reach-and-tu",
+      "name": "Front Chain Stretch w/ Reach and Tu",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Front%20Chain%20Stretch%20w%2F%20Reach%20and%20Tu"
+    },
+    {
+      "id": "split-stance-switch-stick",
+      "name": "Split Stance Switch & Stick",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Split%20Stance%20Switch%20%26%20Stick"
+    },
+    {
+      "id": "rfe-iso-oscillating-progressions",
+      "name": "RFE Iso/Oscillating Progressions",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=RFE%20Iso%2FOscillating%20Progressions"
+    },
+    {
+      "id": "optional-post-chain-stretch",
+      "name": "Optional Post Chain Stretch",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Optional%20Post%20Chain%20Stretch"
+    },
+    {
+      "id": "hip-shift-mechanics",
+      "name": "Hip Shift Mechanics",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Hip%20Shift%20Mechanics"
+    },
+    {
+      "id": "proprioception-progressions",
+      "name": "Proprioception Progressions",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Proprioception%20Progressions"
+    },
+    {
+      "id": "euro-step-freestyles",
+      "name": "Euro Step Freestyles",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Euro%20Step%20Freestyles"
+    },
+    {
+      "id": "one-leg-rdl-same-side-load",
+      "name": "One Leg RDL Same Side Load",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=One%20Leg%20RDL%20Same%20Side%20Load"
+    },
+    {
+      "id": "90-degree-knee-isos",
+      "name": "90 Degree Knee ISOs",
+      "video_url": null,
+      "sources": [
+        "pjf"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=90%20Degree%20Knee%20ISOs"
     }
   ],
   "programs": {
@@ -5672,7 +5832,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -5696,7 +5856,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -5720,7 +5880,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -6506,7 +6666,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -6530,7 +6690,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -6554,7 +6714,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -7501,7 +7661,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -7525,7 +7685,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -7549,7 +7709,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -8335,7 +8495,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -8359,7 +8519,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -8383,7 +8543,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -9354,7 +9514,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -9378,7 +9538,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -9402,7 +9562,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -10080,7 +10240,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -10104,7 +10264,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -10128,7 +10288,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -10673,7 +10833,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cable Rotation Hip Flexor Driv",
+                    "name": "Cable Rotation Hip Flexor Drive",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -10931,7 +11091,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -10955,7 +11115,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -10979,7 +11139,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -11801,7 +11961,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Inverted Row Progressions",
+                    "name": "Inverted Row",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -11825,7 +11985,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -11849,7 +12009,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -12250,7 +12410,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -12520,7 +12680,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -12700,7 +12860,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -12724,7 +12884,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -13132,7 +13292,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 2,
@@ -13414,7 +13574,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -13594,7 +13754,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -13618,7 +13778,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -13900,7 +14060,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 2,
@@ -14247,7 +14407,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -14529,7 +14689,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -14709,7 +14869,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -14733,7 +14893,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -15141,7 +15301,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 1,
@@ -15411,7 +15571,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -15591,7 +15751,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -15615,7 +15775,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -15897,7 +16057,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -16220,7 +16380,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -16490,7 +16650,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -16670,7 +16830,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -16694,7 +16854,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -17102,7 +17262,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 2,
@@ -17384,7 +17544,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -17564,7 +17724,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -17588,7 +17748,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -17870,7 +18030,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -18217,7 +18377,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
@@ -18487,7 +18647,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -18667,7 +18827,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -18691,7 +18851,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -19099,7 +19259,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 2,
@@ -19381,7 +19541,7 @@
                     "notes": null
                   },
                   {
-                    "name": "90/90 Knee Ro",
+                    "name": "90/90 Knee Roll",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -19561,7 +19721,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Dumbbell Incline Curls (Optio",
+                    "name": "Dumbbell Incline Curls (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -19585,7 +19745,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Tricep Extension (Optio",
+                    "name": "Tricep Extension (Optional)",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": 3,
@@ -19879,7 +20039,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Cross Connect Glute Bridg",
+                    "name": "Cross Connect Glute Bridge",
                     "round_group": null,
                     "is_alternate": true,
                     "sets": null,
