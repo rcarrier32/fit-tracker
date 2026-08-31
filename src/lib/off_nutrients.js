@@ -60,7 +60,7 @@ function parseLabelUnits(label) {
     [new RegExp(`${QTY_RE}\\s*(?:oz|ounce|ounces)\\b`, 'i'), 'oz'],
     [new RegExp(`${QTY_RE}\\s*(?:tbsp|tablespoons?)\\b`, 'i'), 'tbsp'],
     [new RegExp(`${QTY_RE}\\s*(?:tsp|teaspoons?)\\b`, 'i'), 'tsp'],
-    [new RegExp(`${QTY_RE}\\s*g\\b`, 'i'), 'g'],
+    [new RegExp(`${QTY_RE}\\s*(?:g|grams?)\\b`, 'i'), 'g'],
     [new RegExp(`${QTY_RE}\\s*(?:serving|servings|portion|portions)\\b`, 'i'), 'serving'],
     [new RegExp(`${QTY_RE}\\s*(?:can|cans|bottle|bottles|slice|slices|piece|pieces|bar|bars|packet|packets)\\b`, 'i'), 'serving'],
   ];

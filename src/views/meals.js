@@ -702,33 +702,31 @@ async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
         $meals.innerHTML = `<div class="empty"><div class="icon">🥄</div><div>No matches</div></div>`;
         return;
       }
-      $meals.innerHTML = filtered.map(m => `
-        <div class="list-item" data-id="${m.id || ''}" data-kind="${m.kind}" data-user-id="${(m.kind === 'user' || m.kind === 'composite') && m.id ? m.id : ''}">
+      $meals.innerHTML = filtered.map((m, i) => `
+        <div class="list-item" data-idx="${i}">
           <div style="flex:1">
             <div class="list-item-title">${m.name || '(unnamed)'}</div>
             <div class="list-item-meta">${m.serving ? m.serving + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
           </div>
-          ${(m.kind === 'user' || m.kind === 'composite') && m.id ? '<button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px">✎</button>' : ''}
+          <button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px" title="Edit">✎</button>
           <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : m.kind === 'composite' ? 'Combo →' : '+ Log'}</span>
         </div>
       `).join('');
-      $meals.querySelectorAll('.list-item').forEach(item => {
-        const editBtn = item.querySelector('.edit-user');
-        if (editBtn) {
-          editBtn.onclick = (e) => {
-            e.stopPropagation();
-            const um = lib.find(x => String(x.id) === item.dataset.userId);
-            if (!um) return;
-            if (um.kind === 'composite') openComboBuilder(dateKey, um);
-            else openEditUserMeal(um, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
-          };
-        }
-        item.onclick = () => {
-          let m = lib.find(x => x.id != null && String(x.id) === item.dataset.id);
-          if (!m && item.dataset.kind === 'user') {
-            m = lib.find(x => x.kind === 'user' && x.name === item.querySelector('.list-item-title')?.textContent);
-          }
-          if (!m) return;
+      $meals.querySelectorAll('.list-item').forEach(itemEl => {
+        const m = filtered[+itemEl.dataset.idx];
+        itemEl.querySelector('.edit-user').onclick = (e) => {
+          e.stopPropagation();
+          if (m.kind === 'composite') { openComboBuilder(dateKey, m); return; }
+          // A catalog food/recipe (static JSON, not yours to mutate) opens as an unsaved
+          // draft with its id stripped — Saving it there creates your own personal copy
+          // via autoIncrement instead of colliding with the catalog's synthetic string id.
+          // `id` must be entirely absent (not just undefined) for autoIncrement to fire —
+          // an explicit `id: undefined` property still throws IndexedDB's DataError.
+          const { id: _unusedId, ...rest } = m;
+          const draft = (m.kind === 'user' && m.id != null) ? m : { ...rest, kind: 'user', category: 'user' };
+          openEditUserMeal(draft, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
+        };
+        itemEl.onclick = () => {
           if (onPick && m.kind !== 'recipe' && m.kind !== 'composite') openLogServings(m, close, dateKey, onPick);
           else if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
           else if (m.kind === 'composite') openCompositeDetail(m, close, dateKey);
@@ -1283,6 +1281,13 @@ function openLogServings(item, parentClose, dateKey, onPick) {
         scaleField('#log-prot');
         scaleField('#log-carb');
         scaleField('#log-fat');
+        // Keep the free-text label matched to the amount just typed — if this gets saved
+        // to the library, a stale "100 g" label paired with already-halved macros would
+        // silently mis-parse the next time this saved item is opened.
+        const srvlbl = sheet.querySelector('#log-srvlbl');
+        const perNow = sheet.querySelector('#log-per')?.value;
+        const unitNow = sheet.querySelector('#log-unit-select')?.value;
+        if (srvlbl && perNow && unitNow) srvlbl.value = `${perNow} ${UNIT_LABELS[unitNow] || unitNow}`;
       }
       basisG = newBasis ?? basisG;
       update();
@@ -1626,14 +1631,14 @@ function openFoodSearch(dateKey, initialQuery = '', onPick) {
 }
 
 function openEditUserMeal(item, onUpdated) {
+  const si = parseServingInfo(item.serving);
   openSheet((sheet, close) => {
-    const esc = (s) => (s || '').replace(/"/g, '&quot;');
     sheet.innerHTML = `
-      <h2>Edit saved food</h2>
+      <h2>${item.id != null ? 'Edit saved food' : 'Save a copy to my library'}</h2>
       <label>Name</label>
-      <input type="text" id="u-name" value="${esc(item.name)}" autocomplete="off">
-      <label>Serving label</label>
-      <input type="text" id="u-srv" value="${esc(item.serving || '1 serving')}">
+      <input type="text" id="u-name" value="${attrEsc(item.name)}" autocomplete="off">
+      ${servingFieldsHtml('u', item.serving || '1 serving', si, { servings: 1, focusAmount: false })}
+      <div class="muted" style="font-size:12px;margin:-4px 0 10px">Changing "Per serving" rescales the macros below to match.</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <div><label>Cals</label><input type="number" id="u-cal" value="${item.calories || ''}"></div>
         <div><label>Protein (g)</label><input type="number" id="u-p" value="${item.protein || ''}"></div>
@@ -1644,16 +1649,53 @@ function openEditUserMeal(item, onUpdated) {
       </div>
       <div class="btn-row" style="margin-top:14px">
         <button class="btn" id="u-save">Save</button>
-        <button class="btn ghost" id="u-del">Delete</button>
+        ${item.id != null ? '<button class="btn ghost" id="u-del">Delete</button>' : ''}
         <button class="btn ghost" id="u-cancel">Cancel</button>
       </div>
     `;
+    // "How much did you eat"/Servings don't apply to editing a library default — hide
+    // them, but still run wireServingFields for its unit-switch/conversion wiring.
+    sheet.querySelector('#u-amt-lbl')?.style.setProperty('display', 'none');
+    sheet.querySelector('#u-amt')?.style.setProperty('display', 'none');
+    sheet.querySelector('#u-srv-disp')?.closest('div')?.style.setProperty('display', 'none');
+    wireServingFields(sheet, 'u', () => {});
+
+    // Editing "Per serving" size rescales the macros, same pattern as logging a scan.
+    let basisG = si.gramsPerServing || (si.units?.ml > 0 ? si.units.ml : null) || null;
+    function currentBasisG() {
+      const unit = sheet.querySelector('#u-unit-select')?.value || 'oz';
+      const per = parseFloat(sheet.querySelector('#u-per')?.value);
+      if (!(per > 0)) return null;
+      const enriched = enrichUnits({ [unit]: per });
+      return enriched.g > 0 ? enriched.g : (enriched.ml > 0 ? enriched.ml : null);
+    }
+    sheet.querySelector('#u-per')?.addEventListener('input', () => {
+      const newBasis = currentBasisG();
+      if (basisG > 0 && newBasis > 0 && Math.abs(newBasis - basisG) > 0.01) {
+        const ratio = newBasis / basisG;
+        const scaleField = (id) => {
+          const el = sheet.querySelector(id);
+          if (el) el.value = Math.round(parseFloat(el.value || 0) * ratio * 100) / 100;
+        };
+        scaleField('#u-cal'); scaleField('#u-p'); scaleField('#u-c');
+        scaleField('#u-f'); scaleField('#u-fiber'); scaleField('#u-sat');
+        // The free-text label is re-parsed every future time this item is opened — if it
+        // still says "100 g" after the amount was changed to 50, the next open shows 100g
+        // paired with the already-halved macros. Regenerate it to match what was just typed.
+        const srvlbl = sheet.querySelector('#u-srvlbl');
+        const perNow = sheet.querySelector('#u-per')?.value;
+        const unitNow = sheet.querySelector('#u-unit-select')?.value;
+        if (srvlbl && perNow && unitNow) srvlbl.value = `${perNow} ${UNIT_LABELS[unitNow] || unitNow}`;
+      }
+      basisG = newBasis ?? basisG;
+    });
+
     sheet.querySelector('#u-cancel').onclick = close;
     sheet.querySelector('#u-save').onclick = async () => {
       await put('user_meals', {
         ...item,
         name: sheet.querySelector('#u-name').value.trim() || 'Food',
-        serving: sheet.querySelector('#u-srv').value.trim() || '1 serving',
+        serving: sheet.querySelector('#u-srvlbl').value.trim() || '1 serving',
         calories: numInput(sheet.querySelector('#u-cal')),
         protein: numInput(sheet.querySelector('#u-p')),
         carbs: numInput(sheet.querySelector('#u-c')),
@@ -1667,12 +1709,12 @@ function openEditUserMeal(item, onUpdated) {
       close();
       onUpdated?.();
     };
-    sheet.querySelector('#u-del').onclick = async () => {
+    sheet.querySelector('#u-del')?.addEventListener('click', async () => {
       if (!confirm(`Delete "${item.name}" from your library?`)) return;
       await del('user_meals', item.id);
       toast('Deleted');
       close();
       onUpdated?.();
-    };
+    });
   });
 }
