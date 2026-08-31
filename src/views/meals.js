@@ -331,13 +331,11 @@ export async function renderMeals(app, date) {
       </div>
       <button class="btn secondary" data-action="library" style="width:auto;flex-shrink:0;padding:0 14px">Library</button>
     </div>
-    <div class="btn-row" style="margin:0 0 12px">
-      <button class="btn" data-action="quick">+ Quick add</button>
-      <button class="btn secondary" data-action="search-off">Search</button>
-      <button class="btn secondary" data-action="scan">📷 Scan</button>
-    </div>
-    <div style="text-align:center;margin:-4px 0 12px">
-      <a href="#" data-action="combo" style="color:var(--fg-dim);font-size:13px">+ Save a combo (shake, bowl — multiple ingredients as one item) →</a>
+    <div style="display:flex;gap:8px;margin:0 0 12px">
+      <button class="btn" data-action="quick" style="flex:2" title="Type in a food and its macros by hand">+ New</button>
+      <button class="btn secondary" data-action="combo" style="flex:1;white-space:nowrap;padding:14px 10px" title="Save several ingredients as one item">+ Combo</button>
+      <button class="btn secondary" data-action="search-off" style="flex:0 0 48px;width:48px;padding:0;font-size:19px" title="Search Open Food Facts" aria-label="Search Open Food Facts">🔍</button>
+      <button class="btn secondary" data-action="scan" style="flex:0 0 48px;width:48px;padding:0;font-size:19px" title="Scan a barcode" aria-label="Scan a barcode">📷</button>
     </div>
     <div id="meal-list"></div>
   `;
@@ -507,7 +505,7 @@ function openQuickAdd(prefill = {}, dateKey) {
       serving:  prefill.serving  || '1 serving',
     };
     sheet.innerHTML = `
-      <h2>${isEdit ? 'Edit entry' : 'Quick add'}</h2>
+      <h2>${isEdit ? 'Edit entry' : 'New food'}</h2>
       ${prefill.nutritionNote ? `<div class="muted" style="margin-bottom:8px;padding:8px 10px;background:var(--bg-input);border-radius:8px;color:var(--warn)">${attrEsc(prefill.nutritionNote)}</div>` : ''}
       <div class="muted" style="margin-bottom:8px">Per serving — totals multiply by servings consumed.</div>
       <label>Name</label>
@@ -652,7 +650,7 @@ function buildRecentItems(logs, lib) {
     });
 }
 
-async function openLibraryPicker(dateKey, initialQuery = '') {
+async function openLibraryPicker(dateKey, initialQuery = '', onPick) {
   dateKey = dateKey || todayStr();
   const [{ mealItems }, userMeals, recentLogs] = await Promise.all([
     loadCatalogs(),
@@ -731,7 +729,8 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
             m = lib.find(x => x.kind === 'user' && x.name === item.querySelector('.list-item-title')?.textContent);
           }
           if (!m) return;
-          if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
+          if (onPick && m.kind !== 'recipe' && m.kind !== 'composite') openLogServings(m, close, dateKey, onPick);
+          else if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
           else if (m.kind === 'composite') openCompositeDetail(m, close, dateKey);
           else openLogServings(m, close, dateKey);
         };
@@ -750,7 +749,7 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
           </div>
         `).join('');
       $recents.querySelectorAll('.recent-item').forEach(el => {
-        el.onclick = () => openLogServings(recentItems[+el.dataset.recent], close, dateKey);
+        el.onclick = () => openLogServings(recentItems[+el.dataset.recent], close, dateKey, onPick);
       });
     }
 
@@ -780,6 +779,7 @@ function comboRowHtml(ing = {}) {
     <div class="cb-row" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
       <div style="display:flex;gap:8px;margin-bottom:6px">
         <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" style="flex:1">
+        <button type="button" class="btn secondary cb-i-find" style="width:auto;padding:6px 10px;flex-shrink:0;font-size:16px" title="Scan, search, or pick from Library">🔍</button>
         <button type="button" class="btn ghost cb-i-remove" style="width:auto;padding:6px 10px;flex-shrink:0">✕</button>
       </div>
       <div style="display:flex;gap:6px;margin-bottom:6px">
@@ -794,6 +794,28 @@ function comboRowHtml(ing = {}) {
       </div>
     </div>
   `;
+}
+
+/** Small chooser for filling one combo ingredient row — scan a barcode, search Open Food
+ * Facts, or pick from the Library — each in "pick" mode: instead of logging the item, the
+ * resolved amount/unit/macros are handed to `onPick` for that one row. */
+function openIngredientPicker(dateKey, onPick) {
+  openSheet((sheet, close) => {
+    sheet.innerHTML = `
+      <h2>Find an ingredient</h2>
+      <div class="muted" style="margin-bottom:10px;font-size:13px">Scanned or searched items are saved to your Library too, so they're ready to use again.</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn secondary" id="ip-scan">📷 Scan barcode</button>
+        <button class="btn secondary" id="ip-search">🔍 Search Open Food Facts</button>
+        <button class="btn secondary" id="ip-library">📚 My Library</button>
+      </div>
+      <button class="btn ghost" id="ip-cancel" style="margin-top:14px">Cancel</button>
+    `;
+    sheet.querySelector('#ip-cancel').onclick = close;
+    sheet.querySelector('#ip-scan').onclick = () => { close(false); openBarcodeScanner(dateKey, onPick); };
+    sheet.querySelector('#ip-search').onclick = () => { close(false); openFoodSearch(dateKey, '', onPick); };
+    sheet.querySelector('#ip-library').onclick = () => { close(false); openLibraryPicker(dateKey, '', onPick); };
+  });
 }
 
 function openComboBuilder(dateKey, existing = null) {
@@ -833,6 +855,18 @@ function openComboBuilder(dateKey, existing = null) {
       $rows.appendChild(row);
       row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateTotal));
       row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
+      row.querySelector('.cb-i-find').onclick = () => {
+        openIngredientPicker(dateKey, (picked) => {
+          row.querySelector('.cb-i-name').value = picked.name;
+          row.querySelector('.cb-i-amount').value = picked.amount;
+          row.querySelector('.cb-i-unit').value = picked.unit;
+          row.querySelector('.cb-i-cal').value = picked.calories;
+          row.querySelector('.cb-i-p').value = picked.protein;
+          row.querySelector('.cb-i-c').value = picked.carbs;
+          row.querySelector('.cb-i-f').value = picked.fat;
+          updateTotal();
+        });
+      };
     }
 
     (existing?.ingredients?.length ? existing.ingredients : [{}, {}]).forEach(addRow);
@@ -1166,7 +1200,7 @@ function barcodeLookupCodes(code) {
 }
 
 /** After OFF lookup — open log sheet without dismissing the next sheet via history.back(). */
-function openProductFromLookup({ name, nut, barcode }, dateKey) {
+function openProductFromLookup({ name, nut, barcode }, dateKey, onPick) {
   const item = {
     name,
     serving: nut.serving,
@@ -1181,12 +1215,12 @@ function openProductFromLookup({ name, nut, barcode }, dateKey) {
     barcode,
   };
   if (nut.needsReview) toast('Nutrition may be incomplete — check values before logging');
-  openLogServings(item, null, dateKey);
+  openLogServings(item, null, dateKey, onPick);
 }
 
 /* ── Log a food/user item with servings ── */
 
-function openLogServings(item, parentClose, dateKey) {
+function openLogServings(item, parentClose, dateKey, onPick) {
   dateKey = dateKey || todayStr();
   const si = item._servingInfo || parseServingInfo(item.serving);
   openSheet((sheet, close) => {
@@ -1207,7 +1241,7 @@ function openLogServings(item, parentClose, dateKey) {
           <input type="checkbox" id="save-lib" ${item.barcode ? 'checked' : ''}> Save to my library
         </label>` : ''}
       <div class="btn-row" style="margin-top:14px">
-        <button class="btn" id="log">Log</button>
+        <button class="btn" id="log">${onPick ? 'Add to combo' : 'Log'}</button>
         <button class="btn ghost" id="cancel">Cancel</button>
       </div>
     `;
@@ -1259,10 +1293,53 @@ function openLogServings(item, parentClose, dateKey) {
 
     update();
     sheet.querySelector('#cancel').onclick = close;
+    async function maybeSaveToLibrary(m, servingLabel) {
+      if (!sheet.querySelector('#save-lib')?.checked) return;
+      await saveToLibrary({
+        name: item.name,
+        serving: servingLabel || '1 serving',
+        calories: m.cal,
+        protein: m.prot,
+        carbs: m.carb,
+        fat: m.fat,
+        fiber: item.fiber || 0,
+        saturated_fat: item.saturated_fat || 0,
+        barcode: item.barcode,
+        category: 'user',
+        kind: 'user',
+      });
+    }
     sheet.querySelector('#log').onclick = async () => {
       const s = numInput(sheet.querySelector('#log-srv'), 1);
       const m = getMacros();
       const servingLabel = sheet.querySelector('#log-srvlbl')?.value.trim() || item.serving;
+      if (onPick) {
+        // Picking this item as an ingredient for a combo — don't log it to today, hand
+        // its resolved amount/macros back to the row that asked for it. Still offer to
+        // save it to the library (checked by default for a scan) so a newly-scanned
+        // ingredient is reusable on its own too, not just trapped inside this combo.
+        await maybeSaveToLibrary(m, servingLabel);
+        const unit = sheet.querySelector('#log-unit-select')?.value || 'oz';
+        const amtField = sheet.querySelector('#log-amt');
+        const amount = numInput(amtField) > 0 ? numInput(amtField) : numInput(sheet.querySelector('#log-per'), 1);
+        onPick({
+          name: item.name,
+          amount,
+          unit,
+          calories: Math.round(m.cal * s),
+          protein: Math.round(m.prot * s * 10) / 10,
+          carbs: Math.round(m.carb * s * 10) / 10,
+          fat: Math.round(m.fat * s * 10) / 10,
+        });
+        // syncHistory=false on both: this is unwinding 2+ nested picker sheets back down
+        // to the combo builder underneath, not a user back-navigation. `close()`'s default
+        // (true) calls history.back(), and firing that from two sheets in the same tick
+        // fires stray popstate events that the *outer* combo-builder sheet's own listener
+        // also reacts to — closing a sheet nobody asked to close. false avoids that entirely.
+        close(false);
+        if (parentClose) parentClose(false);
+        return;
+      }
       await put('meals', {
         date: dateKey,
         name: item.name,
@@ -1276,21 +1353,7 @@ function openLogServings(item, parentClose, dateKey) {
         saturated_fat: Math.round((item.saturated_fat || 0) * s * 10) / 10,
         time: new Date().toISOString(),
       });
-      if (sheet.querySelector('#save-lib')?.checked) {
-        await saveToLibrary({
-          name: item.name,
-          serving: servingLabel || '1 serving',
-          calories: m.cal,
-          protein: m.prot,
-          carbs: m.carb,
-          fat: m.fat,
-          fiber: item.fiber || 0,
-          saturated_fat: item.saturated_fat || 0,
-          barcode: item.barcode,
-          category: 'user',
-          kind: 'user',
-        });
-      }
+      await maybeSaveToLibrary(m, servingLabel);
       toast(`Logged ${item.name}`);
       close();
       if (parentClose) parentClose();
@@ -1302,7 +1365,7 @@ function openLogServings(item, parentClose, dateKey) {
 
 /* ── Barcode scanner ── */
 
-function openBarcodeScanner(dateKey) {
+function openBarcodeScanner(dateKey, onPick) {
   dateKey = dateKey || todayStr();
   openSheet((sheet, close, hooks) => {
     sheet.innerHTML = `
@@ -1344,7 +1407,7 @@ function openBarcodeScanner(dateKey) {
             fiber: saved.fiber,
             saturated_fat: saved.saturated_fat,
             barcode: saved.barcode,
-          }, null, dateKey);
+          }, null, dateKey, onPick);
           return;
         }
         let product = null;
@@ -1373,7 +1436,7 @@ function openBarcodeScanner(dateKey) {
           name: product.product_name || product.brands || `Product ${usedCode}`,
           nut,
           barcode: usedCode,
-        }, dateKey);
+        }, dateKey, onPick);
       } catch (e) {
         console.error('[scan] lookup failed', e);
         toast(`Lookup failed: ${e.message}`);
@@ -1487,7 +1550,7 @@ function openBarcodeScanner(dateKey) {
   });
 }
 
-function openFoodSearch(dateKey, initialQuery = '') {
+function openFoodSearch(dateKey, initialQuery = '', onPick) {
   dateKey = dateKey || todayStr();
   openSheet((sheet, close) => {
     sheet.innerHTML = `
@@ -1545,7 +1608,7 @@ function openFoodSearch(dateKey, initialQuery = '') {
                 name: prod.product_name || prod.brands || `Product ${code}`,
                 nut,
                 barcode: code,
-              }, dateKey);
+              }, dateKey, onPick);
             } catch (err) {
               toast(`Lookup failed: ${err.message}`);
             }
