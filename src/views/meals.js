@@ -51,9 +51,12 @@ function resolveServingInfo(si) {
  */
 async function saveToLibrary(record) {
   const existing = await getAll('user_meals');
-  const match = record.barcode
+  const match = record.id != null
+    ? existing.find(m => m.id === record.id)
+    : record.barcode
     ? existing.find(m => m.barcode === record.barcode)
-    : existing.find(m => (m.name || '').trim().toLowerCase() === (record.name || '').trim().toLowerCase());
+    : existing.find(m => (m.kind || 'user') === (record.kind || 'user')
+        && (m.name || '').trim().toLowerCase() === (record.name || '').trim().toLowerCase());
   await put('user_meals', match ? { ...match, ...record, id: match.id } : record);
 }
 
@@ -333,6 +336,9 @@ export async function renderMeals(app, date) {
       <button class="btn secondary" data-action="search-off">Search</button>
       <button class="btn secondary" data-action="scan">📷 Scan</button>
     </div>
+    <div style="text-align:center;margin:-4px 0 12px">
+      <a href="#" data-action="combo" style="color:var(--fg-dim);font-size:13px">+ Save a combo (shake, bowl — multiple ingredients as one item) →</a>
+    </div>
     <div id="meal-list"></div>
   `;
 
@@ -355,6 +361,7 @@ export async function renderMeals(app, date) {
   app.querySelector('[data-action="quick"]').onclick = () => openQuickAdd({}, dateKey);
   app.querySelector('[data-action="search-off"]').onclick = () => openFoodSearch(dateKey, $mealSearch.value.trim());
   app.querySelector('[data-action="scan"]').onclick = () => openBarcodeScanner(dateKey);
+  app.querySelector('[data-action="combo"]').onclick = (e) => { e.preventDefault(); openComboBuilder(dateKey); };
 
   app.querySelector('#prev-day').onclick = () => {
     const d = new Date(dateKey + 'T12:00:00');
@@ -688,8 +695,8 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
         (activeCat === 'all' || m.category === activeCat) &&
         (!q || (m.name || '').toLowerCase().includes(q))
       ).sort((a, b) => {
-        // common foods first, then user, then recipes
-        const order = { food: 0, user: 1, recipe: 2 };
+        // common foods first, then user/combo, then recipes
+        const order = { food: 0, user: 1, composite: 1, recipe: 2 };
         return (order[a.kind] ?? 3) - (order[b.kind] ?? 3) || (a.name || '').localeCompare(b.name || '');
       }).slice(0, 100);
       if (!filtered.length) {
@@ -697,13 +704,13 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
         return;
       }
       $meals.innerHTML = filtered.map(m => `
-        <div class="list-item" data-id="${m.id || ''}" data-kind="${m.kind}" data-user-id="${m.kind === 'user' && m.id ? m.id : ''}">
+        <div class="list-item" data-id="${m.id || ''}" data-kind="${m.kind}" data-user-id="${(m.kind === 'user' || m.kind === 'composite') && m.id ? m.id : ''}">
           <div style="flex:1">
             <div class="list-item-title">${m.name || '(unnamed)'}</div>
             <div class="list-item-meta">${m.serving ? m.serving + ' · ' : ''}${m.calories} kcal · ${m.protein}p${m.carbs ? ' · ' + m.carbs + 'c' : ''}${m.fat ? ' · ' + m.fat + 'f' : ''}</div>
           </div>
-          ${m.kind === 'user' && m.id ? '<button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px">✎</button>' : ''}
-          <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : '+ Log'}</span>
+          ${(m.kind === 'user' || m.kind === 'composite') && m.id ? '<button class="btn ghost edit-user" style="width:auto;padding:6px 8px;margin-right:4px">✎</button>' : ''}
+          <span class="pill ${m.kind === 'recipe' ? '' : 'accent'}">${m.kind === 'recipe' ? '→' : m.kind === 'composite' ? 'Combo →' : '+ Log'}</span>
         </div>
       `).join('');
       $meals.querySelectorAll('.list-item').forEach(item => {
@@ -712,7 +719,9 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
           editBtn.onclick = (e) => {
             e.stopPropagation();
             const um = lib.find(x => String(x.id) === item.dataset.userId);
-            if (um) openEditUserMeal(um, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
+            if (!um) return;
+            if (um.kind === 'composite') openComboBuilder(dateKey, um);
+            else openEditUserMeal(um, () => { close(false); openLibraryPicker(dateKey, $search.value.trim()); });
           };
         }
         item.onclick = () => {
@@ -722,6 +731,7 @@ async function openLibraryPicker(dateKey, initialQuery = '') {
           }
           if (!m) return;
           if (m.kind === 'recipe') openRecipeDetail(m, close, dateKey);
+          else if (m.kind === 'composite') openCompositeDetail(m, close, dateKey);
           else openLogServings(m, close, dateKey);
         };
       });
@@ -760,6 +770,214 @@ function prettyCat(c) {
   if (c === 'all') return 'All';
   if (c.startsWith('common-')) return c.replace('common-', '');
   return c;
+}
+
+/* ── Combo meals: save several ingredients (shake, bowl…) as one item ── */
+
+function comboRowHtml(ing = {}) {
+  return `
+    <div class="cb-row" style="border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px">
+      <div style="display:flex;gap:8px;margin-bottom:6px">
+        <input type="text" class="cb-i-name" placeholder="Ingredient (e.g. Avocado)" value="${attrEsc(ing.name || '')}" style="flex:1">
+        <button type="button" class="btn ghost cb-i-remove" style="width:auto;padding:6px 10px;flex-shrink:0">✕</button>
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:6px">
+        <input type="number" class="cb-i-amount" inputmode="decimal" placeholder="Amount" value="${ing.amount ?? ''}" style="flex:1">
+        <input type="text" class="cb-i-unit" placeholder="unit (g, tbsp, banana…)" value="${attrEsc(ing.unit || '')}" style="flex:1">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <input type="number" class="cb-i-cal" inputmode="decimal" placeholder="Cal" value="${ing.calories ?? ''}">
+        <input type="number" class="cb-i-p" inputmode="decimal" placeholder="Protein (g)" value="${ing.protein ?? ''}">
+        <input type="number" class="cb-i-c" inputmode="decimal" placeholder="Carbs (g)" value="${ing.carbs ?? ''}">
+        <input type="number" class="cb-i-f" inputmode="decimal" placeholder="Fat (g)" value="${ing.fat ?? ''}">
+      </div>
+    </div>
+  `;
+}
+
+function openComboBuilder(dateKey, existing = null) {
+  dateKey = dateKey || todayStr();
+  openSheet((sheet, close) => {
+    sheet.innerHTML = `
+      <h2>${existing ? 'Edit combo' : 'Build a combo meal'}</h2>
+      <div class="muted" style="margin-bottom:8px;font-size:13px">Save several measured ingredients as one item — log it in one tap next time, still able to adjust amounts.</div>
+      <label>Name</label>
+      <input type="text" id="cb-name" placeholder="e.g. Avocado Shake" value="${attrEsc(existing?.name || '')}" autocomplete="off">
+      <div id="cb-rows" style="margin-top:10px"></div>
+      <button type="button" class="btn secondary" id="cb-add-row">+ Add ingredient</button>
+      <div id="cb-total" class="muted" style="margin:12px 0;font-size:14px"></div>
+      <div class="btn-row" style="margin-top:6px">
+        <button class="btn" id="cb-save">Save combo</button>
+        <button class="btn ghost" id="cb-cancel">Cancel</button>
+      </div>
+    `;
+    const $rows = sheet.querySelector('#cb-rows');
+
+    function updateTotal() {
+      let cal = 0, p = 0, c = 0, f = 0;
+      $rows.querySelectorAll('.cb-row').forEach(row => {
+        cal += numInput(row.querySelector('.cb-i-cal'));
+        p   += numInput(row.querySelector('.cb-i-p'));
+        c   += numInput(row.querySelector('.cb-i-c'));
+        f   += numInput(row.querySelector('.cb-i-f'));
+      });
+      sheet.querySelector('#cb-total').textContent =
+        `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f`;
+    }
+
+    function addRow(ing) {
+      const el = document.createElement('div');
+      el.innerHTML = comboRowHtml(ing);
+      const row = el.firstElementChild;
+      $rows.appendChild(row);
+      row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateTotal));
+      row.querySelector('.cb-i-remove').onclick = () => { row.remove(); updateTotal(); };
+    }
+
+    (existing?.ingredients?.length ? existing.ingredients : [{}, {}]).forEach(addRow);
+    updateTotal();
+
+    sheet.querySelector('#cb-add-row').onclick = () => addRow({});
+    sheet.querySelector('#cb-cancel').onclick = close;
+    sheet.querySelector('#cb-save').onclick = async () => {
+      const name = sheet.querySelector('#cb-name').value.trim();
+      if (!name) { toast('Enter a name for this combo'); return; }
+      const ingredients = [...$rows.querySelectorAll('.cb-row')].map(row => ({
+        name: row.querySelector('.cb-i-name').value.trim(),
+        amount: numInput(row.querySelector('.cb-i-amount'), 1),
+        unit: row.querySelector('.cb-i-unit').value.trim(),
+        calories: numInput(row.querySelector('.cb-i-cal')),
+        protein: numInput(row.querySelector('.cb-i-p')),
+        carbs: numInput(row.querySelector('.cb-i-c')),
+        fat: numInput(row.querySelector('.cb-i-f')),
+      })).filter(ing => ing.name);
+      if (!ingredients.length) { toast('Add at least one ingredient'); return; }
+      const totals = ingredients.reduce((t, i) => ({
+        cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
+      }), { cal: 0, p: 0, c: 0, f: 0 });
+      await saveToLibrary({
+        ...(existing?.id ? { id: existing.id } : {}),
+        name,
+        serving: `${ingredients.length} ingredient${ingredients.length > 1 ? 's' : ''}`,
+        calories: Math.round(totals.cal),
+        protein: Math.round(totals.p * 10) / 10,
+        carbs: Math.round(totals.c * 10) / 10,
+        fat: Math.round(totals.f * 10) / 10,
+        fiber: 0,
+        saturated_fat: 0,
+        ingredients,
+        category: 'user',
+        kind: 'composite',
+      });
+      toast(`Saved "${name}"`);
+      close();
+    };
+  });
+}
+
+/** Scale one ingredient's macros by amount ÷ its saved default amount. */
+function scaleIngredient(ing, newAmount) {
+  const ratio = ing.amount > 0 ? newAmount / ing.amount : 0;
+  return {
+    calories: Math.round((ing.calories || 0) * ratio),
+    protein: Math.round((ing.protein || 0) * ratio * 10) / 10,
+    carbs: Math.round((ing.carbs || 0) * ratio * 10) / 10,
+    fat: Math.round((ing.fat || 0) * ratio * 10) / 10,
+  };
+}
+
+/** Log a saved combo — each ingredient's amount defaults from the save but is editable,
+ * and rescales that line (and the running total) independently of the others. */
+function openCompositeDetail(item, parentClose, dateKey) {
+  dateKey = dateKey || todayStr();
+  const ingredients = item.ingredients || [];
+  openSheet((sheet, close) => {
+    sheet.innerHTML = `
+      <h2>${attrEsc(item.name)}</h2>
+      <div class="muted" style="margin-bottom:10px;font-size:13px">Adjust any ingredient's amount — the total updates as you go.</div>
+      <div id="cd-rows"></div>
+      <div id="cd-total" class="muted" style="margin:10px 0;font-size:14px"></div>
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:14px">
+        <input type="checkbox" id="cd-update-defaults" style="width:auto;min-height:auto"> Update saved amounts with these changes
+      </label>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn" id="cd-log">Log</button>
+        <button class="btn ghost" id="cd-cancel">Cancel</button>
+      </div>
+    `;
+    const $rows = sheet.querySelector('#cd-rows');
+    $rows.innerHTML = ingredients.map((ing, i) => `
+      <div class="cd-row" data-idx="${i}" style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px">${attrEsc(ing.name)}</div>
+          <div class="muted cd-row-macros" style="font-size:12px"></div>
+        </div>
+        <input type="number" class="cd-i-amount" inputmode="decimal" value="${ing.amount ?? 0}" style="width:70px;flex-shrink:0">
+        <span class="muted" style="font-size:12px;flex-shrink:0">${attrEsc(ing.unit || '')}</span>
+      </div>
+    `).join('');
+
+    function update() {
+      let cal = 0, p = 0, c = 0, f = 0;
+      $rows.querySelectorAll('.cd-row').forEach(row => {
+        const ing = ingredients[+row.dataset.idx];
+        const amt = numInput(row.querySelector('.cd-i-amount'), ing.amount);
+        const s = scaleIngredient(ing, amt);
+        row.querySelector('.cd-row-macros').textContent = `${s.calories} kcal · ${s.protein}p · ${s.carbs}c · ${s.fat}f`;
+        cal += s.calories; p += s.protein; c += s.carbs; f += s.fat;
+      });
+      sheet.querySelector('#cd-total').textContent =
+        `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f`;
+    }
+    $rows.querySelectorAll('.cd-i-amount').forEach(inp => inp.addEventListener('input', update));
+    update();
+
+    sheet.querySelector('#cd-cancel').onclick = close;
+    sheet.querySelector('#cd-log').onclick = async () => {
+      const resolved = ingredients.map((ing, i) => {
+        const row = $rows.querySelector(`.cd-row[data-idx="${i}"]`);
+        const amt = numInput(row.querySelector('.cd-i-amount'), ing.amount);
+        return { ...ing, amount: amt, ...scaleIngredient(ing, amt) };
+      });
+      const totals = resolved.reduce((t, i) => ({
+        cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
+      }), { cal: 0, p: 0, c: 0, f: 0 });
+      await put('meals', {
+        date: dateKey,
+        name: item.name,
+        servings: 1,
+        serving: `${resolved.length} ingredients`,
+        calories: Math.round(totals.cal),
+        protein: Math.round(totals.p * 10) / 10,
+        carbs: Math.round(totals.c * 10) / 10,
+        fat: Math.round(totals.f * 10) / 10,
+        fiber: 0,
+        saturated_fat: 0,
+        ingredients: resolved,
+        time: new Date().toISOString(),
+      });
+      if (sheet.querySelector('#cd-update-defaults')?.checked) {
+        await saveToLibrary({
+          id: item.id,
+          name: item.name,
+          serving: `${resolved.length} ingredients`,
+          calories: Math.round(totals.cal),
+          protein: Math.round(totals.p * 10) / 10,
+          carbs: Math.round(totals.c * 10) / 10,
+          fat: Math.round(totals.f * 10) / 10,
+          fiber: 0,
+          saturated_fat: 0,
+          ingredients: resolved,
+          category: 'user',
+          kind: 'composite',
+        });
+      }
+      toast(`Logged ${item.name}`);
+      close();
+      if (parentClose) parentClose();
+      renderMeals(document.getElementById('app'));
+    };
+  });
 }
 
 /* ── Recipe detail (ingredients + instructions + variant picker) ── */
