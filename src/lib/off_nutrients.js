@@ -18,9 +18,27 @@ function num(v) {
   return Number.isFinite(n) ? n : null;
 }
 
+/**
+ * Parses "3", "3.5", "3/4", and "1 3/4" — nutrition labels routinely print serving sizes
+ * as simple or mixed fractions ("3/4 cup"), and a bare parseFloat on that string reads
+ * only the leading whole number (parseFloat("3/4") === 3), silently turning 0.75 into 3.
+ */
+function parseQty(str) {
+  const s = String(str ?? '').trim();
+  const mixed = s.match(/^(\d+)\s+(\d+)\/(\d+)$/);
+  if (mixed) return parseInt(mixed[1], 10) + parseInt(mixed[2], 10) / parseInt(mixed[3], 10);
+  const frac = s.match(/^(\d+)\/(\d+)$/);
+  if (frac) return parseInt(frac[1], 10) / parseInt(frac[2], 10);
+  const n = parseFloat(s);
+  return Number.isFinite(n) ? n : null;
+}
+
+// Whole, decimal, simple-fraction ("3/4"), or mixed-fraction ("1 3/4") quantity.
+const QTY_RE = '(\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+\\.?\\d*)';
+
 function addUnit(units, unit, amount) {
   const u = normalizeUnit(unit);
-  const n = parseFloat(amount);
+  const n = parseQty(amount);
   if (!u || !(n > 0)) return;
   if (u === 'ml' && (unit || '').toLowerCase().startsWith('l') && n < 50) {
     units.ml = n * 1000;
@@ -31,20 +49,20 @@ function addUnit(units, unit, amount) {
 
 function parseLabelUnits(label) {
   const units = {};
-  const flM = label.match(/(\d+\.?\d*)\s*(?:fl\.?\s*oz|fluid\s*ounces?)\b/i);
+  const flM = label.match(new RegExp(`${QTY_RE}\\s*(?:fl\\.?\\s*oz|fluid\\s*ounces?)\\b`, 'i'));
   if (flM) addUnit(units, 'fl_oz', flM[1]);
   // Strip matched fl oz so the weight-oz pattern does not pick up the same number
   const withoutFl = flM ? label.replace(flM[0], ' ') : label;
   const patterns = [
-    [/(\d+\.?\d*)\s*(?:cup|cups)\b/i, 'cup'],
-    [/(\d+\.?\d*)\s*(?:ml|mL|milliliters?)\b/i, 'ml'],
-    [/(\d+\.?\d*)\s*(?:lb|lbs|pounds?)\b/i, 'lb'],
-    [/(\d+\.?\d*)\s*(?:oz|ounce|ounces)\b/i, 'oz'],
-    [/(\d+\.?\d*)\s*(?:tbsp|tablespoons?)\b/i, 'tbsp'],
-    [/(\d+\.?\d*)\s*(?:tsp|teaspoons?)\b/i, 'tsp'],
-    [/(\d+\.?\d*)\s*g\b/i, 'g'],
-    [/(\d+\.?\d*)\s*(?:serving|servings|portion|portions)\b/i, 'serving'],
-    [/(\d+\.?\d*)\s*(?:can|cans|bottle|bottles|slice|slices|piece|pieces|bar|bars|packet|packets)\b/i, 'serving'],
+    [new RegExp(`${QTY_RE}\\s*(?:cup|cups)\\b`, 'i'), 'cup'],
+    [new RegExp(`${QTY_RE}\\s*(?:ml|mL|milliliters?)\\b`, 'i'), 'ml'],
+    [new RegExp(`${QTY_RE}\\s*(?:lb|lbs|pounds?)\\b`, 'i'), 'lb'],
+    [new RegExp(`${QTY_RE}\\s*(?:oz|ounce|ounces)\\b`, 'i'), 'oz'],
+    [new RegExp(`${QTY_RE}\\s*(?:tbsp|tablespoons?)\\b`, 'i'), 'tbsp'],
+    [new RegExp(`${QTY_RE}\\s*(?:tsp|teaspoons?)\\b`, 'i'), 'tsp'],
+    [new RegExp(`${QTY_RE}\\s*g\\b`, 'i'), 'g'],
+    [new RegExp(`${QTY_RE}\\s*(?:serving|servings|portion|portions)\\b`, 'i'), 'serving'],
+    [new RegExp(`${QTY_RE}\\s*(?:can|cans|bottle|bottles|slice|slices|piece|pieces|bar|bars|packet|packets)\\b`, 'i'), 'serving'],
   ];
   for (const [re, unit] of patterns) {
     const m = withoutFl.match(re);
@@ -91,6 +109,10 @@ export function parseServingInfo(servingStr, product = null) {
         && Math.abs(q - units.ml) <= 20
       ) {
         /* skip — OFF listed mass equal to mL for a drink */
+      } else if (u && units[u] > 0 && Math.abs(units[u] - q) / units[u] > 0.15) {
+        /* skip -- OFF's serving_quantity disagrees with the label text by >15%.
+           The label text (e.g. "3/4 cup (170g)") is what's printed on the package;
+           serving_quantity is separate OFF metadata that's often stale or miskeyed. */
       } else if (u) addUnit(units, u, q);
       else if (/fl/i.test(rawLow) && /oz/i.test(rawLow)) addUnit(units, 'fl_oz', q);
       else if (!rawU.trim() && q > 0 && q < 50) addUnit(units, 'oz', q);

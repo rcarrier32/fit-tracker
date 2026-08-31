@@ -2,6 +2,7 @@
  * Home/Today view: snapshot of macros + active workout + body weight + quick actions.
  */
 import { pref, getByIndex, get, getAll, exportAllData, importAllData } from '../db.js';
+import { localDateStr } from '../lib/date.js';
 
 function macroPercents(p, c, f) {
   const pCal = (p || 0) * 4;
@@ -23,12 +24,12 @@ import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => localDateStr();
 
 function computeActualTdee(allBody, allMeals) {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 7);
-  const cutoffStr = cutoff.toISOString().slice(0, 10);
+  const cutoffStr = localDateStr(cutoff);
   const recentBody = allBody.filter(e => e.date >= cutoffStr).sort((a, b) => a.date.localeCompare(b.date));
   if (recentBody.length < 2) return null;
   const weightChange = recentBody[recentBody.length - 1].weight_lb - recentBody[0].weight_lb;
@@ -62,8 +63,8 @@ async function computeWeeklySummary() {
   const now = new Date();
   const lastMon = new Date(now); lastMon.setDate(now.getDate() - 7);
   const lastSun = new Date(now); lastSun.setDate(now.getDate() - 1);
-  const startStr = lastMon.toISOString().slice(0, 10);
-  const endStr   = lastSun.toISOString().slice(0, 10);
+  const startStr = localDateStr(lastMon);
+  const endStr   = localDateStr(lastSun);
 
   const [allSessions, allMeals, allBody] = await Promise.all([
     getAll('sessions'),
@@ -287,7 +288,7 @@ export async function renderHome(app) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `fit-tracker-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.download = `fit-tracker-backup-${localDateStr()}.json`;
     a.click();
     URL.revokeObjectURL(url);
     toast('Data exported');

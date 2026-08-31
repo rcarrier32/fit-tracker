@@ -7,6 +7,7 @@ import { startPlan, getActivePlan, getAllPlans, endPlan, currentWeek, planProgre
 import { toast, openSheet, navigate } from '../app.js';
 import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/plan_builder.js';
 import { pref } from '../db.js';
+import { localDateStr } from '../lib/date.js';
 
 export async function renderPrograms(app) {
   const [{ programs }, activePlan, tosProgress, hipProgress, customPrograms] = await Promise.all([
@@ -210,7 +211,7 @@ function openStartPlanSheet(program, onConfirm) {
       </div>
 
       <div class="group-label">Start date</div>
-      <input type="date" id="start-date" value="${new Date().toISOString().slice(0, 10)}">
+      <input type="date" id="start-date" value="${localDateStr()}">
 
       <div id="end-date-preview" class="muted" style="margin-top:6px;font-size:13px"></div>
 
@@ -296,7 +297,7 @@ async function openStartCustomPlanSheet(program, onConfirm) {
         <span class="muted">weeks</span>
       </div>
       <div class="group-label">Start date</div>
-      <input type="date" id="start-date" value="${new Date().toISOString().slice(0, 10)}">
+      <input type="date" id="start-date" value="${localDateStr()}">
       <div id="end-preview" class="muted" style="margin-top:6px;font-size:13px"></div>
       <button class="btn" id="confirm" style="margin-top:18px">Start plan</button>
       <button class="btn ghost" id="cancel" style="margin-top:8px">Cancel</button>

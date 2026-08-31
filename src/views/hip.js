@@ -11,8 +11,9 @@ import {
   SECTIONS, WEEKLY_SCHEDULE, AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE,
 } from '../lib/hip_protocol.js';
+import { localDateStr } from '../lib/date.js';
 
-const todayKey = () => new Date().toISOString().slice(0, 10);
+const todayKey = () => localDateStr();
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -92,7 +93,7 @@ export async function renderHip(app) {
   function shiftLogDate(deltaDays) {
     const d = new Date(logDate + 'T12:00:00');
     d.setDate(d.getDate() + deltaDays);
-    const next = d.toISOString().slice(0, 10);
+    const next = localDateStr(d);
     if (next > day) return;
     logDate = next;
     pain = allPain[logDate] ?? null;
@@ -345,7 +346,7 @@ export async function renderHip(app) {
     if (logDate === day) return 'today';
     const d = new Date(logDate + 'T12:00:00');
     const yest = new Date(day + 'T12:00:00'); yest.setDate(yest.getDate() - 1);
-    if (logDate === yest.toISOString().slice(0, 10)) return 'yesterday';
+    if (logDate === localDateStr(yest)) return 'yesterday';
     return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
   }
 
@@ -407,7 +408,7 @@ export async function renderHip(app) {
     for (let i = 13; i >= 0; i--) {
       const d = new Date();
       d.setDate(d.getDate() - i);
-      const k = d.toISOString().slice(0, 10);
+      const k = localDateStr(d);
       // allPain is kept in sync by setPain, so it's the single source for the trend —
       // reading `pain` here would misattribute a backfilled day to today.
       days.push({ k, v: allPain[k] ?? null });

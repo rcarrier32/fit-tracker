@@ -5,6 +5,7 @@
  * Week number is derived live from start_date + today's date.
  */
 import { getAll, put, del } from '../db.js';
+import { localDateStr } from './date.js';
 
 export async function getActivePlan() {
   const all = await getAll('plans');
@@ -23,7 +24,7 @@ export async function startPlan(program_id, total_weeks, start_date) {
   }
   return put('plans', {
     program_id,
-    start_date: start_date || new Date().toISOString().slice(0, 10),
+    start_date: start_date || localDateStr(),
     total_weeks,
     active: true,
   });

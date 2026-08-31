@@ -29,6 +29,13 @@ const UNIT_ORDER = ['cup', 'fl_oz', 'ml', 'oz', 'lb', 'g', 'tbsp', 'tsp', 'servi
 /** Label mentions volume (incl. “1 can” text — parsed as serving + mL, not a “can” unit). */
 export const VOLUME_IN_LABEL = /\b(ml|mL|milliliters?|liters?|litres?|fl\.?\s*oz|fluid\s*ounce|cups?)\b/i;
 
+/**
+ * Pourable-liquid units only — deliberately excludes "cup". A cup measurement usually means
+ * a solid or semi-solid (yogurt, rice, flour) whose gram weight is real, independent data;
+ * only mL/L/fl-oz labels are the beverage-duplicate case `reconcileLiquidUnits` targets.
+ */
+const POURABLE_VOLUME_IN_LABEL = /\b(ml|mL|milliliters?|liters?|litres?|fl\.?\s*oz|fluid\s*ounce)\b/i;
+
 /** @param {string} raw */
 export function normalizeUnit(raw) {
   const u = (raw || '').toLowerCase().trim().replace(/\./g, '');
@@ -75,9 +82,9 @@ export function enrichUnits(units) {
  */
 export function reconcileLiquidUnits(units, label = '') {
   const u = { ...units };
-  if (!VOLUME_IN_LABEL.test(label)) return u;
+  if (!POURABLE_VOLUME_IN_LABEL.test(label)) return u;
 
-  const hasVolume = u.ml > 0 || u.fl_oz > 0 || u.cup > 0;
+  const hasVolume = u.ml > 0 || u.fl_oz > 0;
   if (!hasVolume) return u;
 
   if (u.g > 0 && u.ml > 0 && Math.abs(u.g - u.ml) <= 15) {
@@ -102,9 +109,11 @@ export function pickDefaultUnit(units, label = '') {
   if (/\bcups?\b/.test(lbl) && has('cup')) return 'cup';
   if (/\bfl\.?\s*oz\b/.test(lbl) && has('fl_oz')) return 'fl_oz';
   if (has('cup') && has('ml') && units.cup === 1 && Math.abs(units.ml - ML_PER_CUP) < 8) return 'cup';
-  if (/\b(?:lb|lbs|pound)/.test(lbl) && has('lb')) return 'lb';
-  if (/\b(?:oz|ounce)/.test(lbl) && has('oz') && !/\bfl\.?\s*oz/.test(lbl)) return 'oz';
-  if (/\b(?:g|gram)\b/.test(lbl) && has('g') && !VOLUME_IN_LABEL.test(lbl)) return 'g';
+  // `\b` alone misses "170g"/"6oz" — a digit and the following letter are both \w
+  // characters, so there's no word-boundary between them. `(?<=\d)` covers that case.
+  if (/(?:\b|(?<=\d))(?:lb|lbs|pound)/.test(lbl) && has('lb')) return 'lb';
+  if (/(?:\b|(?<=\d))(?:oz|ounce)/.test(lbl) && has('oz') && !/\bfl\.?\s*oz/.test(lbl)) return 'oz';
+  if (/(?:\b|(?<=\d))(?:g|grams?)\b/.test(lbl) && has('g') && !VOLUME_IN_LABEL.test(lbl)) return 'g';
   if (/\btbsp\b/.test(lbl) && has('tbsp')) return 'tbsp';
   if (/\btsp\b/.test(lbl) && has('tsp')) return 'tsp';
   if (VOLUME_IN_LABEL.test(lbl) && has('ml')) return 'ml';
@@ -144,12 +153,12 @@ export function calcServings(amount, unit, perServingUnits) {
 
 export function convertAmount(val, from, to, perServingUnits) {
   const n = parseFloat(val);
-  if (!(n > 0) || from === to) return val;
-  const servings = calcServings(n, from, perServingUnits);
-  if (servings == null) return val;
+  const perFrom = perServingUnits[from];
   const perTo = perServingUnits[to];
-  if (!(perTo > 0)) return val;
-  const out = servings * perTo;
+  if (!(n > 0) || from === to || !(perFrom > 0) || !(perTo > 0)) return val;
+  // Use the raw ratio, not the 2-decimal-rounded `calcServings` display value — rounding
+  // mid-conversion loses precision that compounds across repeated unit round-trips.
+  const out = (n / perFrom) * perTo;
   return to === 'g' || to === 'ml' ? Math.round(out) : Math.round(out * 100) / 100;
 }
 

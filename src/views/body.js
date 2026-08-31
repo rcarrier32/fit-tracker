@@ -4,9 +4,10 @@
 import { put, get, getAll, pref } from '../db.js';
 import { profile, actualTdeeForWeek, bfPctNavy, bmiFromImperial, bmiCategory } from '../lib/tdee.js';
 import { toast, openSheet } from '../app.js';
+import { localDateStr } from '../lib/date.js';
 
-const todayStr = () => new Date().toISOString().slice(0, 10);
-const ymd = (d) => d.toISOString().slice(0, 10);
+const todayStr = () => localDateStr();
+const ymd = (d) => localDateStr(d);
 const daysAgo = (n) => { const d = new Date(); d.setDate(d.getDate() - n); return ymd(d); };
 let _bodyDate = null;
 
@@ -121,14 +122,14 @@ export async function renderBody(app, date) {
   app.querySelector('#prev-day').onclick = () => {
     const d = new Date(dateKey + 'T12:00:00');
     d.setDate(d.getDate() - 1);
-    _bodyDate = d.toISOString().slice(0, 10);
+    _bodyDate = localDateStr(d);
     renderBody(app);
   };
   app.querySelector('#next-day').onclick = () => {
     if (isToday) return;
     const d = new Date(dateKey + 'T12:00:00');
     d.setDate(d.getDate() + 1);
-    _bodyDate = d.toISOString().slice(0, 10);
+    _bodyDate = localDateStr(d);
     renderBody(app);
   };
 
@@ -153,7 +154,7 @@ function rollingAverage(all, days) {
   if (all.length < 2) return null;
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - days);
-  const cutStr = cutoff.toISOString().slice(0, 10);
+  const cutStr = localDateStr(cutoff);
   const recent = all.filter(e => e.date >= cutStr);
   if (!recent.length) return null;
   return recent.reduce((s, e) => s + e.weight_lb, 0) / recent.length;

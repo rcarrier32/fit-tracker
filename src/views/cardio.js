@@ -5,9 +5,10 @@
 import { getAll, getByIndex, put, del, pref } from '../db.js';
 import { toast, openSheet } from '../app.js';
 import { renderDailyMobility } from './daily_mobility.js';
+import { localDateStr } from '../lib/date.js';
 
-const today = () => new Date().toISOString().slice(0, 10);
-const ymd = (d) => d.toISOString().slice(0, 10);
+const today = () => localDateStr();
+const ymd = (d) => localDateStr(d);
 
 let _cardioDate = null;
 

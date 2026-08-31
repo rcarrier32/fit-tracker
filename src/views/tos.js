@@ -4,6 +4,7 @@
  */
 import { pref } from '../db.js';
 import { navigate } from '../app.js';
+import { localDateStr } from '../lib/date.js';
 
 const PHASES = [
   {
@@ -362,7 +363,7 @@ const AVOID_ITEMS = [
 ];
 
 export async function renderTOS(app) {
-  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayKey = localDateStr();
 
   // ── Persisted state ──────────────────────────────────────────────────────
   const saved    = (await pref('tos_progress')) || null;

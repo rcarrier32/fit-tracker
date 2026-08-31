@@ -4,6 +4,7 @@
 import { getAll, getByIndex } from '../db.js';
 import { rpeE1RM, setVolume } from '../lib/e1rm.js';
 import { openProgressionChart } from './workout.js';
+import { localDateStr } from '../lib/date.js';
 
 export async function renderDashboard(app) {
   const sessions = await getAll('sessions');
@@ -113,5 +114,5 @@ export async function renderDashboard(app) {
 
 function daysAgoStr(n) {
   const d = new Date(); d.setDate(d.getDate() - n);
-  return d.toISOString().slice(0, 10);
+  return localDateStr(d);
 }

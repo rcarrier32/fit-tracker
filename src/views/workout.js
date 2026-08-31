@@ -6,8 +6,9 @@ import { rpeE1RM } from '../lib/e1rm.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor } from './schedule.js';
 import { loadCatalogs } from '../lib/static_data.js';
+import { localDateStr } from '../lib/date.js';
 
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => localDateStr();
 let _restInterval = null;
 
 function ytVideoId(url) {

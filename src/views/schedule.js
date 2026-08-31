@@ -15,6 +15,7 @@
 import { pref } from '../db.js';
 import { openSheet, toast } from '../app.js';
 import { loadCatalogs, getAllPrograms } from '../lib/static_data.js';
+import { localDateStr } from '../lib/date.js';
 
 const DOW_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -547,7 +548,7 @@ export async function advanceCursor(programId, mode) {
       day = 1;
       if (week > program.weeks.length) {
         // Program finished — record completion and reset cursor for a clean "start over"
-        await pref(`completed:${programId}`, { date: new Date().toISOString().slice(0, 10) });
+        await pref(`completed:${programId}`, { date: localDateStr() });
         await pref(`cursor:${programId}`, { week: 1, day: 1 });
         return;
       }
