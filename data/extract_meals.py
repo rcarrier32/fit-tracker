@@ -11,7 +11,7 @@ import json
 import re
 from pathlib import Path
 
-DATA = Path("/Users/carriermac/Downloads/fit-tracker/data")
+DATA = Path(__file__).resolve().parent
 MEAL_DIR = DATA / "meal_pdfs"
 OUT = DATA / "meal_library.json"
 
@@ -19,17 +19,20 @@ CAL_PROT_RE = re.compile(r'^\s*(\d{2,4})\s+(\d{1,3})g\s*$')
 FAT_SOD_RE = re.compile(r'^\s*(\d{1,3})g\s*Sodium\s+(\d+)mg\s*$')
 CARB_POT_RE = re.compile(r'^\s*(\d{1,3})g\s*Potassium\s+(\d+)mg\s*$')
 FIBER_RE = re.compile(r'^\s*Fiber\s+(\d+)g')
-MFP_RE = re.compile(r'searching\s*[\"“”](BWS [^\"“”]+?)[\"“”]', re.IGNORECASE)
+# The "BWS " prefix is optional (the Recipe Book source omits it), and the quoted
+# hint frequently line-wraps in the -layout text dump, so this is matched against
+# whitespace-normalized whole-page text rather than a single line — see parse_page.
+MFP_RE = re.compile(r'searching\s*[\"“”](?:BWS\s+)?([^\"“”]+?)[\"“”]', re.IGNORECASE)
 CAL_BAND_RE = re.compile(r'(\d{3,4})-?(\d{3,4})?\s*calories', re.IGNORECASE)
-TIME_RE = re.compile(r'^\s*\d{1,3}\s*MINUTES\s*$', re.IGNORECASE)
+TIME_RE = re.compile(r'^\s*\d{1,3}\s*MINUTES?\s*$', re.IGNORECASE)
 
 # Lines that look like an ingredient: usually short, often have parens with measurements
 ING_PARENS_RE = re.compile(r'\([^)]{2,}\)')
 
 def norm_name(s):
-    s = s.strip()
-    s = re.sub(r'\s*-\s*\d{3,4}-?\d*\s*$', '', s)  # strip trailing "-200-300"
-    s = re.sub(r'BWS\s+', '', s, flags=re.IGNORECASE)
+    s = re.sub(r'\s+', ' ', s).strip()
+    s = re.sub(r'\s*-\s*\d{3,4}\+?(?:-\d{3,4})?\s*$', '', s)  # strip trailing "-200-300" / "-800+"
+    s = re.sub(r'^BWS\s+', '', s, flags=re.IGNORECASE)
     return s.strip()
 
 def parse_page(page_text, source):
@@ -65,20 +68,28 @@ def parse_page(page_text, source):
         if mfib and 'fiber_g' not in meal:
             meal['fiber_g'] = int(mfib.group(1))
 
-    # 2. Find name via MyFitnessPal hint or page heading
-    for line in lines:
-        mh = MFP_RE.search(line)
-        if mh:
-            meal['name'] = norm_name(mh.group(1))
-            break
+    # 2. Find name via MyFitnessPal hint or page heading.
+    # The hint sentence often wraps across 2+ physical lines in the -layout dump
+    # ("...searching \"BWS Cinnamon Yogurt Overnight\nOats - 200-300\"..."), so a
+    # single-line regex misses it. Collapse the whole page to one whitespace-normalized
+    # line for this search only (the original `lines` is still used below for ingredients).
+    flat_page = re.sub(r'\s+', ' ', page_text)
+    mh = MFP_RE.search(flat_page)
+    if mh:
+        meal['name'] = norm_name(mh.group(1))
+        meal['name_source'] = 'mfp_hint'
     if 'name' not in meal:
-        # Fallback: first non-empty heading-ish line
+        # Fallback: first non-empty heading-ish line. Apply the same 3+-space
+        # column split used for ingredients/instructions below so a line that's
+        # really "<ingredient>   <instruction>" doesn't get read as one heading.
         for line in lines[:8]:
-            s = line.strip()
+            left = re.split(r'\s{3,}', line, maxsplit=1)[0]
+            s = left.strip()
             if not s or len(s) < 4: continue
             if any(skip in s.lower() for skip in ['minutes', 'calories', 'recipe', 'go to', 'contact@']): continue
             if re.match(r'^[A-Z]', s) and len(s.split()) <= 10:
                 meal['name'] = s
+                meal['name_source'] = 'fallback_heading'
                 break
 
     # 3. Calorie band (e.g. "500-600 calories")

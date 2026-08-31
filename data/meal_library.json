@@ -25,32 +25,6 @@
       "default_carbs_g": 45
     },
     {
-      "name": "American cheese from Subway and enjoy!",
-      "category": "recipe",
-      "ingredients": [
-        "Egg And Cheese Flatbread (6-inch)"
-      ],
-      "instructions": "1 MINUTE Order two Egg and Cheese on 6-inch Flatbread with egg whites and American cheese from Subway and enjoy!",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 720,
-          "protein_g": 38,
-          "fat_g": 24,
-          "carbs_g": 92,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 720,
-      "default_protein_g": 38,
-      "default_fat_g": 24,
-      "default_carbs_g": 92
-    },
-    {
       "name": "Apple Pie Protein Balls",
       "category": "plan",
       "ingredients": [
@@ -151,34 +125,6 @@
       "default_carbs_g": null
     },
     {
-      "name": "Banana",
-      "category": "recipe",
-      "ingredients": [
-        "Spinach, Feta, Egg White Wrap",
-        "Horizon Organic Lowfat Milk Box",
-        "Banana"
-      ],
-      "instructions": "1 MINUTE Order two Spinach, Feta, Egg White Wraps, one Horizon Organic Lowfat Milk Box, and one Banana from Starbucks and enjoy! Log this meal on MyFitnessPal by searching \"Spinach, Feta, Egg White Wrap, Milk & Banana from Starbucks - 800+\" on the app.",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 840,
-          "protein_g": 49,
-          "fat_g": 19,
-          "carbs_g": 118,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 840,
-      "default_protein_g": 49,
-      "default_fat_g": 19,
-      "default_carbs_g": 118
-    },
-    {
       "name": "Banana (2 large bananas)              and blend until smooth.",
       "category": "breakfast",
       "ingredients": [
@@ -187,7 +133,7 @@
         "scoop)",
         "tbsp)"
       ],
-      "instructions": "Unsweetened Almond Milk (or              Place almond milk, banana, ice cubes, frozen cauli\ufb02ower, peanut butter, maple syrup, powdered peanut butter, and protein powder into your blender Banana (2 large bananas)              and blend until smooth. Pour into glass and enjoy! (Pour into a mason jar if you are on the go.) Whey Protein Powder (1 1/2 Frozen Cauli\ufb02ower (1 1/4 cup) All Natural Peanut Butter (2 1/2   Log this meal on MyFitnessPal by searching \"BWS Peanut Butter & Banana Smoothie - 800+\" on the app. Maple Syrup To make the recipe vegan, substitute a vegan protein powder instead of the whey protein powder.",
+      "instructions": "Unsweetened Almond Milk (or              Place almond milk, banana, ice cubes, frozen cauliﬂower, peanut butter, maple syrup, powdered peanut butter, and protein powder into your blender Banana (2 large bananas)              and blend until smooth. Pour into glass and enjoy! (Pour into a mason jar if you are on the go.) Whey Protein Powder (1 1/2 Frozen Cauliﬂower (1 1/4 cup) All Natural Peanut Butter (2 1/2   Log this meal on MyFitnessPal by searching \"BWS Peanut Butter & Banana Smoothie - 800+\" on the app. Maple Syrup To make the recipe vegan, substitute a vegan protein powder instead of the whey protein powder.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -240,7 +186,7 @@
         "cut into small cubes)",
         "rinsed well)"
       ],
-      "instructions": "Russet Potato (1 1/2 medium,           Heat a pan over medium heat with oil. Add the potatoes and cook for 10 to 12 minutes, stirring occasionally, until the potatoes start to brown and soften. Extra Virgin Olive Oil                   Add the onion and continue to cook for \ufb01ve to six minutes more. Red Onion (1/4 cup; chopped)            Add the chickpeas, crumbled tofu, paprika, garlic powder, and a pinch of salt Chickpeas (1 cup; cooked,              and continue to cook until the potatoes are tender and chickpeas are warmed through, about three to \ufb01ve minutes. Add the spinach and stir until Paprika                                       wilted. Season with additional salt if needed. Garlic Powder                             Place onto a plate and enjoy! Baby Spinach (1 cup; chopped) Tofu (6 oz; \ufb01rm, crumbled) Log this meal on MyFitnessPal by searching \"BWS Breakfast Hash - 600-700\" on the app.",
+      "instructions": "Russet Potato (1 1/2 medium,           Heat a pan over medium heat with oil. Add the potatoes and cook for 10 to 12 minutes, stirring occasionally, until the potatoes start to brown and soften. Extra Virgin Olive Oil                   Add the onion and continue to cook for ﬁve to six minutes more. Red Onion (1/4 cup; chopped)            Add the chickpeas, crumbled tofu, paprika, garlic powder, and a pinch of salt Chickpeas (1 cup; cooked,              and continue to cook until the potatoes are tender and chickpeas are warmed through, about three to ﬁve minutes. Add the spinach and stir until Paprika                                       wilted. Season with additional salt if needed. Garlic Powder                             Place onto a plate and enjoy! Baby Spinach (1 cup; chopped) Tofu (6 oz; ﬁrm, crumbled) Log this meal on MyFitnessPal by searching \"BWS Breakfast Hash - 600-700\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -264,7 +210,7 @@
       "name": "Brown Rice (dry)                         Cook the rice according to package directions.",
       "category": "budget",
       "ingredients": null,
-      "instructions": "Brown Rice (dry)                         Cook the rice according to package directions. Extra Virgin Olive Oil                   Meanwhile, heat the oil in a pot over medium heat. Add the onion and cook Red Onion (\ufb01nely chopped)                for three to \ufb01ve minutes or until the onion has softened. Add the garlic, taco Garlic (clove, minced)                        seasoning, and salt and cook for another minute. Taco Seasoning                               Add the black beans and water and stir to combine. Bring the mixture to a Black Beans (cooked, rinsed)             simmer and continue to cook for three to \ufb01ve minutes or until the liquid Water                                    begins to thicken and beans are warmed through. Remove the pot from the Lime (juice, divided)                         heat and stir in half of the lime juice. Mash the black beans with a potato Romaine (large, chopped)                 masher or a fork until just a few whole beans remain. Season with salt to taste if needed. Cherry Tomatoes (halved) Canned Chicken                         To serve, add the chicken, rice, beans, lettuce, and tomatoes onto a plate or bowl and drizzle with the remaining lime juice. Enjoy!",
+      "instructions": "Brown Rice (dry)                         Cook the rice according to package directions. Extra Virgin Olive Oil                   Meanwhile, heat the oil in a pot over medium heat. Add the onion and cook Red Onion (ﬁnely chopped)                for three to ﬁve minutes or until the onion has softened. Add the garlic, taco Garlic (clove, minced)                        seasoning, and salt and cook for another minute. Taco Seasoning                               Add the black beans and water and stir to combine. Bring the mixture to a Black Beans (cooked, rinsed)             simmer and continue to cook for three to ﬁve minutes or until the liquid Water                                    begins to thicken and beans are warmed through. Remove the pot from the Lime (juice, divided)                         heat and stir in half of the lime juice. Mash the black beans with a potato Romaine (large, chopped)                 masher or a fork until just a few whole beans remain. Season with salt to taste if needed. Cherry Tomatoes (halved) Canned Chicken                         To serve, add the chicken, rice, beans, lettuce, and tomatoes onto a plate or bowl and drizzle with the remaining lime juice. Enjoy!",
       "sources": [
         "BWS_Budget_-_Meal_Prep_Guide_(Fat_Loss)"
       ],
@@ -320,7 +266,7 @@
         "diced; a little over 1 3/4 cups)",
         "3/4 cups)"
       ],
-      "instructions": "Chicken Breast (boneless,               Preheat the oven to 425\u00baF (218\u00baC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                               while you prep the other ingredients. Extra Virgin Olive Oil                     Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into \ufb02orets, 1       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
+      "instructions": "Chicken Breast (boneless,               Preheat the oven to 425ºF (218ºC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                               while you prep the other ingredients. Extra Virgin Olive Oil                     Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into ﬂorets, 1       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -348,7 +294,7 @@
         "diced; a little over 1 cup)",
         "1 cup)"
       ],
-      "instructions": "Chicken Breast (boneless,              Preheat the oven to 425\u00baF (218\u00baC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                              while you prep the other ingredients. Extra Virgin Olive Oil                   Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into \ufb02orets,       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
+      "instructions": "Chicken Breast (boneless,              Preheat the oven to 425ºF (218ºC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                              while you prep the other ingredients. Extra Virgin Olive Oil                   Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into ﬂorets,       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -376,7 +322,7 @@
         "diced; about 3/4 cup)",
         "1 cup)"
       ],
-      "instructions": "Chicken Breast (boneless,             Preheat the oven to 425\u00baF (218\u00baC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                             while you prep the other ingredients. Extra Virgin Olive Oil                      Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and               Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into \ufb02orets,        Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
+      "instructions": "Chicken Breast (boneless,             Preheat the oven to 425ºF (218ºC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                             while you prep the other ingredients. Extra Virgin Olive Oil                      Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and               Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into ﬂorets,        Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -413,7 +359,7 @@
         "diced; a little over 2 cups)",
         "3/4 cups)"
       ],
-      "instructions": "Chicken Breast (boneless,               Preheat the oven to 425\u00baF (218\u00baC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                        while you prep the other ingredients. Extra Virgin Olive Oil                     Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into \ufb02orets, 1       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
+      "instructions": "Chicken Breast (boneless,               Preheat the oven to 425ºF (218ºC). Toss the cubed chicken pieces with the spices. Stir everything to combine, and store in the fridge for 15 minutes Cajun Seasoning                        while you prep the other ingredients. Extra Virgin Olive Oil                     Prepare a sheet pan with aluminum foil and spray with non-stick spray. Sweet Potato (peeled and             Arrange the vegetables over top. Drizzle with olive oil and sprinkle a pinch of salt over top. Broccoli (chopped into ﬂorets, 1       Arrange a separate sheet pan like you did for the vegetables, except place the chicken on top of it. Bake all ingredients for 12-15 minutes. Remove the broccoli and chicken. Stir sweet potatoes and roast for another 15 minutes or so. Place all ingredients on a plate. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -442,7 +388,7 @@
         "cup; shredded)",
         "berries)"
       ],
-      "instructions": "Chicken Breast, Cooked (1.5 oz;            Heat a skillet over medium heat and spray with cooking spray. Add the celery, and carrots. Cook for 6-8 minutes. Stir in chicken, garlic powder, Carrots (1/4 cup; diced)                onion powder, and buffalo sauce. Celery (diced)                           To assemble each of the quesadillas, sprinkle half of the cheese on one side Garlic Powder                              of the tortilla. Top with chicken mixture and the other half of the cheese and Onion Powder                               fold. Hot Sauce (like Frank's)                  Heat a skillet and spray with non-stick spray. Add one quesadilla onto the pan and \ufb02ip once the wrap gets crispy and the cheese starts to melt. Low Fat Cheddar Cheese (1/4              Serve on a plate and drizzle extra buffalo sauce on top. Enjoy with fruit on the side! Cilantro Apple (1 medium apple; substitute 150 grams grapes or 185 grams Log this meal on MyFitnessPal by searching \u201cBWS Buffalo Chicken Quesadilla with Fruit - 300-400\u201d on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
+      "instructions": "Chicken Breast, Cooked (1.5 oz;            Heat a skillet over medium heat and spray with cooking spray. Add the celery, and carrots. Cook for 6-8 minutes. Stir in chicken, garlic powder, Carrots (1/4 cup; diced)                onion powder, and buffalo sauce. Celery (diced)                           To assemble each of the quesadillas, sprinkle half of the cheese on one side Garlic Powder                              of the tortilla. Top with chicken mixture and the other half of the cheese and Onion Powder                               fold. Hot Sauce (like Frank's)                  Heat a skillet and spray with non-stick spray. Add one quesadilla onto the pan and ﬂip once the wrap gets crispy and the cheese starts to melt. Low Fat Cheddar Cheese (1/4              Serve on a plate and drizzle extra buffalo sauce on top. Enjoy with fruit on the side! Cilantro Apple (1 medium apple; substitute 150 grams grapes or 185 grams Log this meal on MyFitnessPal by searching “BWS Buffalo Chicken Quesadilla with Fruit - 300-400” on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -497,7 +443,7 @@
         "boneless, cut into cubes)",
         "milk fat)"
       ],
-      "instructions": "Brown Rice (3 tbsp; dry)                Soak the rice in water and set aside. Chicken Breast (3 oz; skinless,             In a bowl, combine the chicken breast, yogurt, biryani masala, lemon juice, salt, half the mint, and half the cilantro. Plain Greek Yogurt (1.5 tbsp; 2% In a large pot or dutch oven over medium-high heat, add a splash of the broth. Cook the marinated chicken, about six to eight minutes, adding more Biryani Masala broth as needed to prevent sticking. Lemon Juice Drain the rice and add it to the chicken, along with the tomato, remaining Sea Salt broth, mint, and cilantro. Mint Leaves (chopped, divided) Bring to a boil, then lower to a simmer and cover. Cook for 20 minutes or Cilantro (chopped, divided) until the rice is cooked. Enjoy! Low Sodium Vegetable Broth Tomato (1/4 cup; chopped) Log this meal on MyFitnessPal by searching \u201cBWS Chicken Biryani - 200-300\u201d on the app.",
+      "instructions": "Brown Rice (3 tbsp; dry)                Soak the rice in water and set aside. Chicken Breast (3 oz; skinless,             In a bowl, combine the chicken breast, yogurt, biryani masala, lemon juice, salt, half the mint, and half the cilantro. Plain Greek Yogurt (1.5 tbsp; 2% In a large pot or dutch oven over medium-high heat, add a splash of the broth. Cook the marinated chicken, about six to eight minutes, adding more Biryani Masala broth as needed to prevent sticking. Lemon Juice Drain the rice and add it to the chicken, along with the tomato, remaining Sea Salt broth, mint, and cilantro. Mint Leaves (chopped, divided) Bring to a boil, then lower to a simmer and cover. Cook for 20 minutes or Cilantro (chopped, divided) until the rice is cooked. Enjoy! Low Sodium Vegetable Broth Tomato (1/4 cup; chopped) Log this meal on MyFitnessPal by searching “BWS Chicken Biryani - 200-300” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -560,7 +506,7 @@
         "boneless, skinless, cut into cubes)",
         "milk fat)"
       ],
-      "instructions": "Brown Rice (1/2 cup; dry)             Soak the rice in water and set aside. Chicken Breast (8.25 oz;                In a bowl, combine the chicken breast, yogurt, biryani masala, lemon juice, salt, half the mint, and half the cilantro. Plain Greek Yogurt (1/4 cup; 2% In a large pot or dutch oven over medium-high heat, add a splash of the broth. Cook the marinated chicken, about six to eight minutes, adding more Biryani Masala broth as needed to prevent sticking. Lemon Juice Drain the rice and add it to the chicken, along with the tomato, remaining Sea Salt broth, mint, and cilantro. Mint Leaves (chopped, divided) Bring to a boil, then lower to a simmer and cover. Cook for 20 minutes or Cilantro (chopped, divided) until the rice is cooked. Enjoy! Low Sodium Vegetable Broth Tomato (1/2 cup; chopped) Log this meal on MyFitnessPal by searching \u201cBWS Chicken Biryani - 800+\u201d on the app.",
+      "instructions": "Brown Rice (1/2 cup; dry)             Soak the rice in water and set aside. Chicken Breast (8.25 oz;                In a bowl, combine the chicken breast, yogurt, biryani masala, lemon juice, salt, half the mint, and half the cilantro. Plain Greek Yogurt (1/4 cup; 2% In a large pot or dutch oven over medium-high heat, add a splash of the broth. Cook the marinated chicken, about six to eight minutes, adding more Biryani Masala broth as needed to prevent sticking. Lemon Juice Drain the rice and add it to the chicken, along with the tomato, remaining Sea Salt broth, mint, and cilantro. Mint Leaves (chopped, divided) Bring to a boil, then lower to a simmer and cover. Cook for 20 minutes or Cilantro (chopped, divided) until the rice is cooked. Enjoy! Low Sodium Vegetable Broth Tomato (1/2 cup; chopped) Log this meal on MyFitnessPal by searching “BWS Chicken Biryani - 800+” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -585,9 +531,9 @@
       "category": "lunch",
       "ingredients": [
         "skinless)",
-        "\ufb02orets)"
+        "ﬂorets)"
       ],
-      "instructions": "Brown Rice (2 tbsp; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (3 oz; boneless,        paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water.Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (2 tbsp; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (3 oz; boneless,        paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water.Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -612,9 +558,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "\ufb02orets)"
+        "ﬂorets)"
       ],
-      "instructions": "Brown Rice (3 tbsp; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (3.5 oz;                 paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (3 tbsp; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (3.5 oz;                 paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -639,9 +585,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "\ufb02orets)"
+        "ﬂorets)"
       ],
-      "instructions": "Brown Rice (3 tbsp; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (5 oz;                    paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (3 tbsp; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (5 oz;                    paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (3/4 cup; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -666,9 +612,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "into \ufb02orets)"
+        "into ﬂorets)"
       ],
-      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (5.5 oz;                  paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (1 1/4 cups; chopped           preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (5.5 oz;                  paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (1 1/4 cups; chopped           preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -693,9 +639,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "into \ufb02orets)"
+        "into ﬂorets)"
       ],
-      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (5.75 oz;                paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (1 1/2 cups; chopped          preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (5.75 oz;                paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (1 1/2 cups; chopped          preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -720,9 +666,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "\ufb02orets)"
+        "ﬂorets)"
       ],
-      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (7 oz;                    paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (2 cups; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (1/3 cup; dry)               Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (7 oz;                    paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (2 cups; chopped into        preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -747,9 +693,9 @@
       "category": "lunch",
       "ingredients": [
         "boneless, skinless)",
-        "into \ufb02orets)"
+        "into ﬂorets)"
       ],
-      "instructions": "Brown Rice (1/2 cup; dry)                Preheat the oven to 400\u00baF (204\u00baC). Line a baking dish with parchment Chicken Breast (7 oz;                   paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (2 1/2 cups; chopped       preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
+      "instructions": "Brown Rice (1/2 cup; dry)                Preheat the oven to 400ºF (204ºC). Line a baking dish with parchment Chicken Breast (7 oz;                   paper. Cook rice according to package instructions or in a rice cooker. Extra Virgin Olive Oil In the prepped baking dish, coat the chicken with oil and salt. Bake for 20 to Sea Salt 25 minutes, or until cooked through. Set aside and cover with foil while Broccoli (2 1/2 cups; chopped       preparing the other ingredients. While the rice is cooking, place broccoli in a steaming basket or boiling G Hughes Bbq Sauce water. Steam for 5 minutes or until tender. Set aside. Slice the cooked chicken and place it, along with the broccoli and rice, onto a plate. Top with G Hughes sugar free BBQ sauce and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -823,33 +769,6 @@
       "default_protein_g": 54,
       "default_fat_g": 26,
       "default_carbs_g": 88
-    },
-    {
-      "name": "Chipotle and enjoy!",
-      "category": "recipe",
-      "ingredients": [
-        "High Protein Salad Bowl (chicken and",
-        "steak)"
-      ],
-      "instructions": "1 MINUTE Order one High Protein Salad Bowl with steak, chicken, white rice, black beans, tomatillo-red chili salsa, cheese and shredded romaine lettuce from Chipotle and enjoy!",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 820,
-          "protein_g": 68,
-          "fat_g": null,
-          "carbs_g": 71,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 820,
-      "default_protein_g": 68,
-      "default_fat_g": null,
-      "default_carbs_g": 71
     },
     {
       "name": "Chocolate Oats",
@@ -1232,7 +1151,7 @@
         "onion; sliced)",
         "Corn Tortilla"
       ],
-      "instructions": "Chili Powder                                    Preheat the oven to 400\u00baF (205\u00baC). Line a large baking sheet with Cumin                                       parchment paper. Sea Salt                                    In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/2 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Spray non-stick spray over top and then sprinkle with the seasoning. Toss until Orange Bell Pepper (1/2                     well coated. Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/2 medium Scoop the steak and peppers into tortillas, add salsa, and enjoy! Flank Steak (5.5 oz; sliced) Salsa (1 tbsp) Log this meal on MyFitnessPal by searching \u201cBWS One Pan Steak Fajitas with Corn Tortillas - 600-700\u201d on the app.",
+      "instructions": "Chili Powder                                    Preheat the oven to 400ºF (205ºC). Line a large baking sheet with Cumin                                       parchment paper. Sea Salt                                    In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/2 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Spray non-stick spray over top and then sprinkle with the seasoning. Toss until Orange Bell Pepper (1/2                     well coated. Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/2 medium Scoop the steak and peppers into tortillas, add salsa, and enjoy! Flank Steak (5.5 oz; sliced) Salsa (1 tbsp) Log this meal on MyFitnessPal by searching “BWS One Pan Steak Fajitas with Corn Tortillas - 600-700” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -1270,7 +1189,7 @@
         "onion; sliced)",
         "pulled apart)"
       ],
-      "instructions": "Chili Powder                               Preheat the oven to 400\u00baF (205\u00baC). Line a large baking sheet with Cumin                                      parchment paper. Sea Salt                                   In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/4 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Spray non-stick spray over top and then sprinkle with the seasoning. Toss until Orange Bell Pepper (1/4                    well coated. Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/4 medium Scoop the steak and peppers into lettuce wraps and enjoy! Flank Steak (3 oz; sliced) Iceberg Lettuce (small, leaves Log this meal on MyFitnessPal by searching \u201cBWS One Pan Steak Fajitas - 200- 300\u201d on the app.",
+      "instructions": "Chili Powder                               Preheat the oven to 400ºF (205ºC). Line a large baking sheet with Cumin                                      parchment paper. Sea Salt                                   In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/4 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Spray non-stick spray over top and then sprinkle with the seasoning. Toss until Orange Bell Pepper (1/4                    well coated. Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/4 medium Scoop the steak and peppers into lettuce wraps and enjoy! Flank Steak (3 oz; sliced) Iceberg Lettuce (small, leaves Log this meal on MyFitnessPal by searching “BWS One Pan Steak Fajitas - 200- 300” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -1300,7 +1219,7 @@
         "pulled apart)",
         "Corn Tortilla"
       ],
-      "instructions": "Chili Powder                                  Preheat the oven to 400\u00baF (205\u00baC). Line a large baking sheet with Cumin                                     parchment paper. Sea Salt                                  In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/2 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Drizzle oil over top and then sprinkle with the seasoning. Toss until well coated. Orange Bell Pepper (1/2                   Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/2 medium Scoop the steak and peppers into tortillas, add salsa, and enjoy! Flank Steak (7 oz; sliced) Extra Virgin Olive Oil Salsa (2 3/4 tbsp) Log this meal on MyFitnessPal by searching \u201cBWS One Pan Steak Fajitas with Corn Tortillas - 800+\u201d on the app.",
+      "instructions": "Chili Powder                                  Preheat the oven to 400ºF (205ºC). Line a large baking sheet with Cumin                                     parchment paper. Sea Salt                                  In a bowl, combine the chili powder, cumin, and salt. Set aside. Red Bell Pepper (1/2 medium In a large mixing bowl, add your sliced peppers, onion, and steak. Drizzle oil over top and then sprinkle with the seasoning. Toss until well coated. Orange Bell Pepper (1/2                   Transfer to your baking sheet and bake for 10 to 15 minutes or until the steak is cooked to your liking and the peppers are soft. Sweet Onion (1/2 medium Scoop the steak and peppers into tortillas, add salsa, and enjoy! Flank Steak (7 oz; sliced) Extra Virgin Olive Oil Salsa (2 3/4 tbsp) Log this meal on MyFitnessPal by searching “BWS One Pan Steak Fajitas with Corn Tortillas - 800+” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -1355,7 +1274,7 @@
         "pieces)",
         "substitute 175 grams apple instead)"
       ],
-      "instructions": "Whole Grain Bread (toasted)              Spread one slice of the toast with mayonnaise and the other slice with Dijon Mayonnaise                                 mustard. Layer on the chicken breast, tomato slices and lettuce and close Dijon Mustard                              the sandwich. Chicken Breast, Cooked (3.5             Enjoy with banana on the side! Tomato (1/2 cup; sliced) Iceberg Lettuce (torn into Log this meal on MyFitnessPal by searching \u201cBWS Chicken, Lettuce & Tomato Banana (1 small banana;            Sandwich with Fruit - 500-600\u201d on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Whole Grain Bread (toasted)              Spread one slice of the toast with mayonnaise and the other slice with Dijon Mayonnaise                                 mustard. Layer on the chicken breast, tomato slices and lettuce and close Dijon Mustard                              the sandwich. Chicken Breast, Cooked (3.5             Enjoy with banana on the side! Tomato (1/2 cup; sliced) Iceberg Lettuce (torn into Log this meal on MyFitnessPal by searching “BWS Chicken, Lettuce & Tomato Banana (1 small banana;            Sandwich with Fruit - 500-600” on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -1399,7 +1318,7 @@
       "ingredients": [
         "(substitute unsweetened cashew milk)"
       ],
-      "instructions": "Oat Flour (1 1/2 tbsp)                 In a mug combine the oat \ufb02our, cocoa powder, baking powder, and Cocoa Powder (2 tbsp)                  chocolate chips. Baking Powder                            Add the milk, maple syrup, and oil. Stir well to combine until you\u2019ve reached Dark Chocolate Chips (1 tsp)            a smooth consistency without any chunks. Unsweetened Almond Milk                  Microwave for 90 seconds until the cake is spongy to the touch. Allow the cake to cool slightly and enjoy! Sugar Free Maple Syrup Coconut Oil (melted) Log this meal on MyFitnessPal by searching \"BWS Double Chocolate Mug Cake\" on the app.",
+      "instructions": "Oat Flour (1 1/2 tbsp)                 In a mug combine the oat ﬂour, cocoa powder, baking powder, and Cocoa Powder (2 tbsp)                  chocolate chips. Baking Powder                            Add the milk, maple syrup, and oil. Stir well to combine until you’ve reached Dark Chocolate Chips (1 tsp)            a smooth consistency without any chunks. Unsweetened Almond Milk                  Microwave for 90 seconds until the cake is spongy to the touch. Allow the cake to cool slightly and enjoy! Sugar Free Maple Syrup Coconut Oil (melted) Log this meal on MyFitnessPal by searching \"BWS Double Chocolate Mug Cake\" on the app.",
       "sources": [
         "CSMs_Regular_Snacks"
       ],
@@ -1426,7 +1345,7 @@
         "medium, cubed)",
         "Egg (whisked)"
       ],
-      "instructions": "Sweet Potato (1 1/4 cup,               Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Black Beans (2/3 cup, cooked)         Heat a skillet over medium heat and spray with non-stick spray. Add the Egg Whites (1/3 cup)                   eggs and egg whites and scramble until cooked through. Season with the Avocado (1/8 avocado, sliced)          remaining sea salt. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
+      "instructions": "Sweet Potato (1 1/4 cup,               Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Black Beans (2/3 cup, cooked)         Heat a skillet over medium heat and spray with non-stick spray. Add the Egg Whites (1/3 cup)                   eggs and egg whites and scramble until cooked through. Season with the Avocado (1/8 avocado, sliced)          remaining sea salt. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V2_1900-2100",
         "CSMs_Breakfast"
@@ -1463,7 +1382,7 @@
         "medium, cubed)",
         "Egg (whisked)"
       ],
-      "instructions": "Sweet Potato (1 1/2 cups,             Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Egg Whites (1/2 cup)                 Heat a skillet over medium heat and spray with non-stick spray. Add the Black Beans (3/4 cup, cooked)        eggs and egg whites and scramble until cooked through. Season with the Avocado (1/4 avocado, sliced)         remaining sea salt. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
+      "instructions": "Sweet Potato (1 1/2 cups,             Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Egg Whites (1/2 cup)                 Heat a skillet over medium heat and spray with non-stick spray. Add the Black Beans (3/4 cup, cooked)        eggs and egg whites and scramble until cooked through. Season with the Avocado (1/4 avocado, sliced)         remaining sea salt. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V2_2100-2300",
         "CSMs_Breakfast"
@@ -1509,7 +1428,7 @@
         "cubed)",
         "Egg (whisked)"
       ],
-      "instructions": "Sweet Potato (1 cup, medium,         Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Egg Whites (1/2 cup)                 Heat a skillet over medium heat and spray with non-stick spray. Add the egg Black Beans (1/2 cup, cooked)        and egg whites and scramble until cooked through. Season with salt to Avocado (1/8 avocado, sliced)        taste. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
+      "instructions": "Sweet Potato (1 cup, medium,         Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment paper. Season the sweet potato with salt. Bake for 25 to 30 minutes or until cooked through. Egg Whites (1/2 cup)                 Heat a skillet over medium heat and spray with non-stick spray. Add the egg Black Beans (1/2 cup, cooked)        and egg whites and scramble until cooked through. Season with salt to Avocado (1/8 avocado, sliced)        taste. Divide the sweet potato, scrambled eggs and black beans in a bowl. Top with the sliced avocado. Enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1530,96 +1449,12 @@
       "default_carbs_g": null
     },
     {
-      "name": "Egg Mc Mu\ufb03n                                McDonald's and enjoy!",
-      "category": "recipe",
-      "ingredients": [
-        "Fruit And Maple Oatmeal",
-        "Egg Mc Mu\ufb03n",
-        "1% Lowfat Milk"
-      ],
-      "instructions": "1 MINUTE Order one Egg McMu\ufb03n, one Fruit and Maple Oatmeal and one Milk from McDonald's and enjoy! Log this meal on MyFitnessPal by searching \"Egg McMu\ufb03n, Fruit and Maple Oatmeal & Milk from McDonald's - 700-800\" on the app.",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 730,
-          "protein_g": 31,
-          "fat_g": 20,
-          "carbs_g": 106,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 730,
-      "default_protein_g": 31,
-      "default_fat_g": 20,
-      "default_carbs_g": 106
-    },
-    {
-      "name": "Egg White & Red Pepper Sous Vide Egg",
-      "category": "recipe",
-      "ingredients": [
-        "Turkey Bacon, Cheddar And Egg White",
-        "Sandwich",
-        "Bites"
-      ],
-      "instructions": "1 MINUTE Order one Turkey Bacon, Cheddar and Egg White Sandwich and one Egg White & Red Pepper Sous Vide Egg Bites from Starbucks and enjoy! Egg White & Red Pepper Sous Vide Egg Log this meal on MyFitnessPal by searching \"Turkey Bacon, Cheddar and Egg from Starbucks - 400-500\" on the app.",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 400,
-          "protein_g": 29,
-          "fat_g": 13,
-          "carbs_g": 39,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 400,
-      "default_protein_g": 29,
-      "default_fat_g": 13,
-      "default_carbs_g": 39
-    },
-    {
-      "name": "Egg White Grill                               one Milk from Chick-\ufb01l-A and enjoy!",
-      "category": "recipe",
-      "ingredients": [
-        "Yogurt Parfait With Harvest Nut Granola",
-        "Egg White Grill",
-        "Milk"
-      ],
-      "instructions": "1 MINUTE Order one Egg White Grill, one Yogurt Parfait with Harvest Nut Granola, and one Milk from Chick-\ufb01l-A and enjoy! Log this meal on MyFitnessPal by searching \"Egg White Grill, Yogurt Parfait & Milk from Chick-\ufb01l-A - 600-700\" on the app.",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 660,
-          "protein_g": 46,
-          "fat_g": 18,
-          "carbs_g": 77,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 660,
-      "default_protein_g": 46,
-      "default_fat_g": 18,
-      "default_carbs_g": 77
-    },
-    {
-      "name": "Egg Whites (1 1/4 cup)                 \ufb02uffy and cooked through",
+      "name": "Egg Whites (1 1/4 cup)                 ﬂuffy and cooked through",
       "category": "breakfast",
       "ingredients": [
         "tbsp)"
       ],
-      "instructions": "Oats (1 1/4 cup, quick or rolled)       Add the oats, water, egg whites, and stevia (optional) to a small pot over Water                                   medium heat, stirring continuously. Cook for two to three minutes or until Egg Whites (1 1/4 cup)                 \ufb02uffy and cooked through All Natural Peanut Butter (2             Transfer the oats to a bowl and top with peanut butter and chia seeds. Drizzle honey over top. Enjoy! Chia Seeds Honey (optional) Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 800+\" on the app.",
+      "instructions": "Oats (1 1/4 cup, quick or rolled)       Add the oats, water, egg whites, and stevia (optional) to a small pot over Water                                   medium heat, stirring continuously. Cook for two to three minutes or until Egg Whites (1 1/4 cup)                 ﬂuffy and cooked through All Natural Peanut Butter (2             Transfer the oats to a bowl and top with peanut butter and chia seeds. Drizzle honey over top. Enjoy! Chia Seeds Honey (optional) Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 800+\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1645,7 +1480,7 @@
       "ingredients": [
         "tbsp)"
       ],
-      "instructions": "Oats (1 cup, quick or rolled)             Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                          medium heat. Cook for two to three minutes or until \ufb02uffy and cooked Egg Whites (1 cup)                       through. All Natural Peanut Butter (1 1/2           Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 600- 700\" on the app.",
+      "instructions": "Oats (1 cup, quick or rolled)             Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                          medium heat. Cook for two to three minutes or until ﬂuffy and cooked Egg Whites (1 cup)                       through. All Natural Peanut Butter (1 1/2           Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 600- 700\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1666,12 +1501,12 @@
       "default_carbs_g": 70
     },
     {
-      "name": "Egg Whites (1 cup)                       \ufb02uffy and cooked through.",
+      "name": "Egg Whites (1 cup)                       ﬂuffy and cooked through.",
       "category": "breakfast",
       "ingredients": [
         "tbsp)"
       ],
-      "instructions": "Oats (1 1/4 cup, quick or rolled)         Add the oats, water, egg whites, and stevia (optional) to a small pot over Water                                     medium heat, stirring continuously. Cook for two to three minutes or until Egg Whites (1 cup)                       \ufb02uffy and cooked through. All Natural Peanut Butter (1 1/2          Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 700- 800\" on the app.",
+      "instructions": "Oats (1 1/4 cup, quick or rolled)         Add the oats, water, egg whites, and stevia (optional) to a small pot over Water                                     medium heat, stirring continuously. Cook for two to three minutes or until Egg Whites (1 cup)                       ﬂuffy and cooked through. All Natural Peanut Butter (1 1/2          Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 700- 800\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1697,7 +1532,7 @@
       "ingredients": [
         "tbsp)"
       ],
-      "instructions": "Oats (1/2 cup, quick or rolled)           Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                        medium heat. Cook for two to three minutes or until \ufb02uffy and cooked Egg Whites (1/2 cup)                      through. All Natural Peanut Butter (1/2              Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 200- 300\" on the app.",
+      "instructions": "Oats (1/2 cup, quick or rolled)           Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                        medium heat. Cook for two to three minutes or until ﬂuffy and cooked Egg Whites (1/2 cup)                      through. All Natural Peanut Butter (1/2              Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 200- 300\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1724,7 +1559,7 @@
         "Egg",
         "divided)"
       ],
-      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/2 cup)                    combine. Fresh Dill (\ufb01nely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost set. Place the Feta Cheese (3 tbsp, crumbled)           feta cheese on one half of the omelette and then fold the other half over on Smoked Salmon (3.4 oz )                  top. Remove from the heat and transfer onto a plate. Whole Grain Bread                         Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
+      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/2 cup)                    combine. Fresh Dill (ﬁnely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost set. Place the Feta Cheese (3 tbsp, crumbled)           feta cheese on one half of the omelette and then fold the other half over on Smoked Salmon (3.4 oz )                  top. Remove from the heat and transfer onto a plate. Whole Grain Bread                         Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1748,7 +1583,7 @@
       "name": "Egg Whites (1/2 cup)                    through.",
       "category": "breakfast",
       "ingredients": null,
-      "instructions": "Oats (2/3 cup, quick or rolled)          Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until \ufb02uffy and cooked Egg Whites (1/2 cup)                    through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 300- 400\" on the app.",
+      "instructions": "Oats (2/3 cup, quick or rolled)          Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until ﬂuffy and cooked Egg Whites (1/2 cup)                    through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 300- 400\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1775,7 +1610,7 @@
         "Egg",
         "divided)"
       ],
-      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/3 cup)                     combine. Fresh Dill (\ufb01nely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (2 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (3.4 oz )                  other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
+      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/3 cup)                     combine. Fresh Dill (ﬁnely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (2 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (3.4 oz )                  other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1802,7 +1637,7 @@
         "Egg",
         "divided)"
       ],
-      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/4 cup)                     combine. Fresh Dill (\ufb01nely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (1 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (3 oz)                     other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
+      "instructions": "In a bowl, add the eggs, egg whites, and half of the dill. Whisk well to Egg Whites (1/4 cup)                     combine. Fresh Dill (ﬁnely chopped,                In a non-stick skillet over medium heat, spray with nonstick spray. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (1 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (3 oz)                     other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slices. Once toasted, spread jam over top. Low Sugar Jam Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1838,7 +1673,7 @@
         "Egg",
         "divided)"
       ],
-      "instructions": "In a bowl, add the egg, egg whites, and half of the dill. Whisk well to Egg Whites (1/4 cup)                  combine. Fresh Dill (\ufb01nely chopped,               In a non-stick skillet over medium heat, spray with nonstick. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (2 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (2.3 oz)                other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slice. Top with smoked salmon and the remaining dill. Enjoy with toast on the side!",
+      "instructions": "In a bowl, add the egg, egg whites, and half of the dill. Whisk well to Egg Whites (1/4 cup)                  combine. Fresh Dill (ﬁnely chopped,               In a non-stick skillet over medium heat, spray with nonstick. Once hot, pour the egg mixture into the skillet and let it cook until almost Feta Cheese (2 tbsp, crumbled) set. Place the feta cheese on one half of the omelette and then fold the Smoked Salmon (2.3 oz)                other half over on top. Remove from the heat and transfer onto a plate. Whole Grain Bread Meanwhile, toast the bread slice. Top with smoked salmon and the remaining dill. Enjoy with toast on the side!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1862,7 +1697,7 @@
       "name": "Egg Whites (3/4 cup)                    through.",
       "category": "breakfast",
       "ingredients": null,
-      "instructions": "Oats (3/4 cup, quick or rolled)          Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until \ufb02uffy and cooked Egg Whites (3/4 cup)                    through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 400- 500\" on the app.",
+      "instructions": "Oats (3/4 cup, quick or rolled)          Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until ﬂuffy and cooked Egg Whites (3/4 cup)                    through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 400- 500\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1886,7 +1721,7 @@
       "name": "Egg Whites (3/4 cup)                   through.",
       "category": "breakfast",
       "ingredients": null,
-      "instructions": "Oats (3/4 cup, quick or rolled)         Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until \ufb02uffy and cooked Egg Whites (3/4 cup)                   through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 500- 600\" on the app.",
+      "instructions": "Oats (3/4 cup, quick or rolled)         Add the oats, water and egg whites, and stevia (optional) to a small pot over Water                                     medium heat. Cook for two to three minutes or until ﬂuffy and cooked Egg Whites (3/4 cup)                   through. All Natural Peanut Butter (1 tbsp)       Transfer to a bowl and top with peanut butter and chia seeds. Enjoy! Chia Seeds Stevia Powder (optional; to taste) Log this meal on MyFitnessPal by searching \"BWS Peanut Butter Oatmeal - 500- 600\" on the app.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -1912,7 +1747,7 @@
       "ingredients": [
         "crumbled; 6 oz)"
       ],
-      "instructions": "Jasmine Rice (dry; 1/2 cup)             Cook rice according to package instructions or in a rice cooker. Tamari (substitute soy sauce)               Preheat the oven to 400\u00baF (205\u00baC) and lightly grease a sheet pan with oil. Extra Virgin Olive Oil In a large bowl, whisk together the tamari, oil, rice vinegar, garlic powder, Rice Vinegar smoked paprika, chili powder, and nutritional yeast. Add in the crumbled Garlic Powder                               tofu and toss well. Transfer to the sheet pan and bake for 18 to 20 minutes, Smoked Paprika                              until crispy. Chili Powder Meanwhile, steam the edamame using a steaming basket and boiling water Nutritional Yeast                           for 3-5 minutes. Once \ufb01nished, mix together with the baked tofu mixture. Tofu (extra \ufb01rm, pressed, Place the rice onto a plate and top with the tofu & edamame mixture. Enjoy! Frozen Edamame (3/4 cup) Log this meal on MyFitnessPal by searching \"BWS Crispy Ground Tofu on Rice - 800+\" on the app.",
+      "instructions": "Jasmine Rice (dry; 1/2 cup)             Cook rice according to package instructions or in a rice cooker. Tamari (substitute soy sauce)               Preheat the oven to 400ºF (205ºC) and lightly grease a sheet pan with oil. Extra Virgin Olive Oil In a large bowl, whisk together the tamari, oil, rice vinegar, garlic powder, Rice Vinegar smoked paprika, chili powder, and nutritional yeast. Add in the crumbled Garlic Powder                               tofu and toss well. Transfer to the sheet pan and bake for 18 to 20 minutes, Smoked Paprika                              until crispy. Chili Powder Meanwhile, steam the edamame using a steaming basket and boiling water Nutritional Yeast                           for 3-5 minutes. Once ﬁnished, mix together with the baked tofu mixture. Tofu (extra ﬁrm, pressed, Place the rice onto a plate and top with the tofu & edamame mixture. Enjoy! Frozen Edamame (3/4 cup) Log this meal on MyFitnessPal by searching \"BWS Crispy Ground Tofu on Rice - 800+\" on the app.",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -1967,7 +1802,7 @@
         "oz; 93% lean, 7% raw)",
         "diced)"
       ],
-      "instructions": "Sweet Potato (1 cup; medium)         Preheat oven to 425\u00baF (218\u00baC) and line a large baking sheet with parchment Extra Virgin Olive Oil                        paper. Chili Powder                                  Wash the sweet potato and then dice it into half inch cubes. Place in a bowl Cayenne Pepper (optional)                and place in the olive oil, chili powder and cayenne pepper. Toss until the White Onion (1 medium onion;          diced sweet potato is coated. Spread across the baking sheet and bake in the oven for 20 minutes. Extra Lean Ground Turkey (5             Meanwhile, heat a large skillet over medium heat and spray with non-stick spray. Add the onion, ground turkey, sea salt and black pepper. Use a Sea Salt                                 spatula to stir and break up the turkey as it cooks. Black Pepper (optional)                  Once the turkey is cooked through, drain off any excess liquid and return to Kale Leaves (4 cups; \ufb01nely             heat. Add the kale. Stir and saut\u00e9 just until wilted and remove from the heat immediately. Add turkey to the bowl and top with the roasted sweet potato. Enjoy!",
+      "instructions": "Sweet Potato (1 cup; medium)         Preheat oven to 425ºF (218ºC) and line a large baking sheet with parchment Extra Virgin Olive Oil                        paper. Chili Powder                                  Wash the sweet potato and then dice it into half inch cubes. Place in a bowl Cayenne Pepper (optional)                and place in the olive oil, chili powder and cayenne pepper. Toss until the White Onion (1 medium onion;          diced sweet potato is coated. Spread across the baking sheet and bake in the oven for 20 minutes. Extra Lean Ground Turkey (5             Meanwhile, heat a large skillet over medium heat and spray with non-stick spray. Add the onion, ground turkey, sea salt and black pepper. Use a Sea Salt                                 spatula to stir and break up the turkey as it cooks. Black Pepper (optional)                  Once the turkey is cooked through, drain off any excess liquid and return to Kale Leaves (4 cups; ﬁnely             heat. Add the kale. Stir and sauté just until wilted and remove from the heat immediately. Add turkey to the bowl and top with the roasted sweet potato. Enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2124,7 +1959,7 @@
         "dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)              In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                                     tofu and toss until well coated. Let it marinate in the fridge while you work on Ginger (grated)                            the quinoa. Tofu (7 oz; extra \ufb01rm, patted        Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Quinoa (1/2 cup; dry)                  remove the pot from the heat and \ufb02uff the quinoa with a fork. Water                                   Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 1/2 cups)               your desired amount of leftover marinade over top and enjoy! Carrot (1/2 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 500-600\u201d on the app.",
+      "instructions": "Tamari (substitute soy sauce)              In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                                     tofu and toss until well coated. Let it marinate in the fridge while you work on Ginger (grated)                            the quinoa. Tofu (7 oz; extra ﬁrm, patted        Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Quinoa (1/2 cup; dry)                  remove the pot from the heat and ﬂuff the quinoa with a fork. Water                                   Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 1/2 cups)               your desired amount of leftover marinade over top and enjoy! Carrot (1/2 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 500-600” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2160,7 +1995,7 @@
         "patted dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)             In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                              tofu and toss until well coated. Let it marinate in the fridge while you work on Ginger (grated)                           the quinoa. Tofu (6.25 oz; extra \ufb01rm,              Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Quinoa (1/4 cup; dry)                  remove the pot from the heat and \ufb02uff the quinoa with a fork. Water                                    Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 cup)                   your desired amount of leftover marinade over top and enjoy! Carrot (1/4 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 300-400\u201d on the app.",
+      "instructions": "Tamari (substitute soy sauce)             In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                              tofu and toss until well coated. Let it marinate in the fridge while you work on Ginger (grated)                           the quinoa. Tofu (6.25 oz; extra ﬁrm,              Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Quinoa (1/4 cup; dry)                  remove the pot from the heat and ﬂuff the quinoa with a fork. Water                                    Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 cup)                   your desired amount of leftover marinade over top and enjoy! Carrot (1/4 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 300-400” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2187,7 +2022,7 @@
         "dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)         In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                              tofu and toss until well coated. Let it marinate in the fridge while you start on Ginger (grated)                         the quinoa. Tofu (5 oz; extra \ufb01rm, patted         Combine quinoa and water together in a saucepan. Place over high heat and bring to a boil. Once boiling, reduce heat to a simmer and cover with a Quinoa (3 tbsp; dry)                  lid. Let simmer for 13 to 15 minutes or until water is absorbed. Water                                   Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 cup)                  your desired amount of leftover marinade over top and enjoy! Carrot (1/4 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 200-300\u201d on the app.",
+      "instructions": "Tamari (substitute soy sauce)         In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                              tofu and toss until well coated. Let it marinate in the fridge while you start on Ginger (grated)                         the quinoa. Tofu (5 oz; extra ﬁrm, patted         Combine quinoa and water together in a saucepan. Place over high heat and bring to a boil. Once boiling, reduce heat to a simmer and cover with a Quinoa (3 tbsp; dry)                  lid. Let simmer for 13 to 15 minutes or until water is absorbed. Water                                   Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Baby Spinach (1 cup)                  your desired amount of leftover marinade over top and enjoy! Carrot (1/4 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 200-300” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2352,40 +2187,12 @@
       "default_carbs_g": 74
     },
     {
-      "name": "Impossible Breakfast Sandwich",
-      "category": "recipe",
-      "ingredients": [
-        "Horizon Organic Lowfat Milk Box",
-        "Berry Trio Yogurt",
-        "Impossible Breakfast Sandwich"
-      ],
-      "instructions": "1 MINUTE Order one Impossible Breakfast Sandwich, one Berry Trio Yogurt, and one Horizon Organic Lowfat Milk Box from Starbucks and enjoy! Log this meal on MyFitnessPal by searching \"Impossible Breakfast Sandwich, Berry Trio Yogurt & Milk from Starbucks - 800+\" on the app.",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 810,
-          "protein_g": 43,
-          "fat_g": 28,
-          "carbs_g": 98,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 810,
-      "default_protein_g": 43,
-      "default_fat_g": 28,
-      "default_carbs_g": 98
-    },
-    {
       "name": "In a non-stick skillet over medium heat, spray with nonstick.",
       "category": "breakfast",
       "ingredients": [
         "divided)"
       ],
-      "instructions": "Fresh Dill (\ufb01nely chopped,                In a bowl, add the egg whites and half of the dill. Whisk well to combine. In a non-stick skillet over medium heat, spray with nonstick. Feta Cheese (2 tbsp, crumbled) Once hot, pour the egg mixture into the skillet and let it cook until almost Smoked Salmon (2.3 oz) set. Place the feta cheese on one half of the omelette and then fold the Egg Whites (1/2 cup) other half over on top. Remove from the heat and transfer onto a plate. Low Sugar Jam Meanwhile, toast the bread slices. Once toasted, spread jam over top. Whole Grain Bread (toasted) Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
+      "instructions": "Fresh Dill (ﬁnely chopped,                In a bowl, add the egg whites and half of the dill. Whisk well to combine. In a non-stick skillet over medium heat, spray with nonstick. Feta Cheese (2 tbsp, crumbled) Once hot, pour the egg mixture into the skillet and let it cook until almost Smoked Salmon (2.3 oz) set. Place the feta cheese on one half of the omelette and then fold the Egg Whites (1/2 cup) other half over on top. Remove from the heat and transfer onto a plate. Low Sugar Jam Meanwhile, toast the bread slices. Once toasted, spread jam over top. Whole Grain Bread (toasted) Top with smoked salmon and the remaining dill. Serve with toast on the side. Enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -2414,7 +2221,7 @@
         "substitute)",
         "tbsps)"
       ],
-      "instructions": "Brown Rice (dry; about 1/4 cup)         Cook rice according to package instructions or in a rice cooker. Water                                     Heat a cast-iron pan over medium heat and add the sesame oil. Once hot Sesame Oil                                    add the chicken and cook for about four to \ufb01ve minutes, stirring Chicken Thighs (boneless,               occasionally. Remove and set aside on a plate. Add the green beans to the same skillet and cook for two to three minutes, Green Beans (washed,                    until just starting to soften. Add the garlic and cook for one minute more, until fragrant. Add the chicken back in and put a lid on to \ufb01nish cooking, Garlic (cloves, smashed)                        about two to three minutes more. Tamari (can use soy sauce as a Meanwhile, in a small bowl, mix together the tamari, sriracha, honey, and cornstarch. Remove the lid and add the sauce. Reduce the heat and stir to Sriracha                                  combine until thickened, about one minute. Honey Place the rice onto a plate and add the chicken and green beans. Top with Cornstarch peanuts. Enjoy! Raw Peanuts (chopped; 1 1/4 Log this meal on MyFitnessPal by searching \"BWS Kung Pao Chicken - 400-500\" on the app.",
+      "instructions": "Brown Rice (dry; about 1/4 cup)         Cook rice according to package instructions or in a rice cooker. Water                                     Heat a cast-iron pan over medium heat and add the sesame oil. Once hot Sesame Oil                                    add the chicken and cook for about four to ﬁve minutes, stirring Chicken Thighs (boneless,               occasionally. Remove and set aside on a plate. Add the green beans to the same skillet and cook for two to three minutes, Green Beans (washed,                    until just starting to soften. Add the garlic and cook for one minute more, until fragrant. Add the chicken back in and put a lid on to ﬁnish cooking, Garlic (cloves, smashed)                        about two to three minutes more. Tamari (can use soy sauce as a Meanwhile, in a small bowl, mix together the tamari, sriracha, honey, and cornstarch. Remove the lid and add the sauce. Reduce the heat and stir to Sriracha                                  combine until thickened, about one minute. Honey Place the rice onto a plate and add the chicken and green beans. Top with Cornstarch peanuts. Enjoy! Raw Peanuts (chopped; 1 1/4 Log this meal on MyFitnessPal by searching \"BWS Kung Pao Chicken - 400-500\" on the app.",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -2470,7 +2277,7 @@
         "substitute)",
         "tbsps)"
       ],
-      "instructions": "Brown Rice (dry; about 1/2 cup)        Cook according to package instructions or in a rice cooker. Water                                     Heat a cast-iron pan over medium heat and add the sesame oil. Once hot Sesame Oil                               add the chicken and cook for about four to \ufb01ve minutes, stirring Chicken Thighs (boneless,              occasionally. Remove and set aside on a plate. Add the green beans to the same skillet and cook for two to three minutes, Green Beans (washed,                   until just starting to soften. Add the garlic and cook for one minute more, until fragrant. Add the chicken back in and put a lid on to \ufb01nish cooking, Garlic (cloves, smashed)                       about two to three minutes more. Tamari (can use soy sauce as a Meanwhile, in a small bowl, mix together the tamari, sriracha, honey, and cornstarch. Remove the lid and add the sauce. Reduce the heat and stir to Sriracha                               combine until thickened, about one minute. Honey Place the rice onto a plate and add the chicken and green beans. Top with Cornstarch peanuts. Enjoy! Raw Peanuts (chopped; 1 1/2 Log this meal on MyFitnessPal by searching \"BWS Kung Pao Chicken - 800+\" on the app.",
+      "instructions": "Brown Rice (dry; about 1/2 cup)        Cook according to package instructions or in a rice cooker. Water                                     Heat a cast-iron pan over medium heat and add the sesame oil. Once hot Sesame Oil                               add the chicken and cook for about four to ﬁve minutes, stirring Chicken Thighs (boneless,              occasionally. Remove and set aside on a plate. Add the green beans to the same skillet and cook for two to three minutes, Green Beans (washed,                   until just starting to soften. Add the garlic and cook for one minute more, until fragrant. Add the chicken back in and put a lid on to ﬁnish cooking, Garlic (cloves, smashed)                       about two to three minutes more. Tamari (can use soy sauce as a Meanwhile, in a small bowl, mix together the tamari, sriracha, honey, and cornstarch. Remove the lid and add the sauce. Reduce the heat and stir to Sriracha                               combine until thickened, about one minute. Honey Place the rice onto a plate and add the chicken and green beans. Top with Cornstarch peanuts. Enjoy! Raw Peanuts (chopped; 1 1/2 Log this meal on MyFitnessPal by searching \"BWS Kung Pao Chicken - 800+\" on the app.",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -2522,7 +2329,7 @@
         "oz)",
         "Sea Salt & Black Pepper (to taste)"
       ],
-      "instructions": "Whole Wheat Spaghetti (2 1/4             Bring a large pot of water to boil. Once the water is boiling, add your pasta. Look at the back of the label on the pasta box to see how long to prepare Butter (divided)                         the pasta until it is cooked through. Once cooked, remove from heat, strain Extra Virgin Olive Oil (divided)             and run cold water over the pasta to prevent over-cooking. Shrimp (peeled, deveined; 7             Meanwhile, in a skillet over medium heat, add half the butter and olive oil. Then add the shrimp and cook for 1 to 3 minutes per side or until the shrimp Arugula (2 1/2 cups)                      are no longer translucent. Lemon Juice                                 Remove the shrimp and set aside. Add the arugula to the pan and saut\u00e9 until Chives (chopped)                            just wilted. Add the pasta to the pan along with the shrimp, lemon juice and the remaining butter and olive oil. Toss to coat. Place cooked pasta onto a plate and enjoy!",
+      "instructions": "Whole Wheat Spaghetti (2 1/4             Bring a large pot of water to boil. Once the water is boiling, add your pasta. Look at the back of the label on the pasta box to see how long to prepare Butter (divided)                         the pasta until it is cooked through. Once cooked, remove from heat, strain Extra Virgin Olive Oil (divided)             and run cold water over the pasta to prevent over-cooking. Shrimp (peeled, deveined; 7             Meanwhile, in a skillet over medium heat, add half the butter and olive oil. Then add the shrimp and cook for 1 to 3 minutes per side or until the shrimp Arugula (2 1/2 cups)                      are no longer translucent. Lemon Juice                                 Remove the shrimp and set aside. Add the arugula to the pan and sauté until Chives (chopped)                            just wilted. Add the pasta to the pan along with the shrimp, lemon juice and the remaining butter and olive oil. Toss to coat. Place cooked pasta onto a plate and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -2608,7 +2415,7 @@
         "pieces)",
         "substitute 250 grams apple instead)"
       ],
-      "instructions": "Whole Grain Bread (toasted)               In a small bowl, mix the greek yogurt and mayonnaise together until Mayonnaise                                  combined. Dijon Mustard                               Spread one slice of the toast with mayonnaise and greek yogurt mixture and Chicken Breast, Cooked (3.5             the other slice with Dijon mustard. Layer on the chicken breast, tomato slices and lettuce and close the sandwich. Repeat to make a second sandwich. Tomato (1/4 cup; sliced)                 Enjoy! Iceberg Lettuce (torn into Banana (1 large banana; Log this meal on MyFitnessPal by searching \u201cBWS Chicken, Lettuce & Tomato Plain Greek Yogurt Sandwich with Fruit - 600-700\u201d on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Whole Grain Bread (toasted)               In a small bowl, mix the greek yogurt and mayonnaise together until Mayonnaise                                  combined. Dijon Mustard                               Spread one slice of the toast with mayonnaise and greek yogurt mixture and Chicken Breast, Cooked (3.5             the other slice with Dijon mustard. Layer on the chicken breast, tomato slices and lettuce and close the sandwich. Repeat to make a second sandwich. Tomato (1/4 cup; sliced)                 Enjoy! Iceberg Lettuce (torn into Banana (1 large banana; Log this meal on MyFitnessPal by searching “BWS Chicken, Lettuce & Tomato Plain Greek Yogurt Sandwich with Fruit - 600-700” on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2632,7 +2439,7 @@
       "name": "Mushrooms (sliced; 1/2 cup)             water immediately to prevent from overcooking.",
       "category": "dinner",
       "ingredients": null,
-      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Extra Virgin Olive Oil                         directions on the package. When \ufb01nished cooking, strain and run under cold Mushrooms (sliced; 1/2 cup)             water immediately to prevent from overcooking. Unsweetened Almond Milk                   Meanwhile, heat olive oil in a large skillet over medium heat. Add Onion Powder                                   mushrooms and cook until soft. Set mushrooms aside. Garlic Powder                              In the same saucepan over medium heat, add almond milk, onion powder, Cornstarch                                 garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Nutritional Yeast                          whisking occasionally. Frozen Peas (1/4 cup)                   Reduce heat and let simmer for 15 minutes, stirring occasionally until the Frozen Edamame (1/3 cup)                sauce becomes thicker. Baby Spinach (chopped; 1 cup)           Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
+      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Extra Virgin Olive Oil                         directions on the package. When ﬁnished cooking, strain and run under cold Mushrooms (sliced; 1/2 cup)             water immediately to prevent from overcooking. Unsweetened Almond Milk                   Meanwhile, heat olive oil in a large skillet over medium heat. Add Onion Powder                                   mushrooms and cook until soft. Set mushrooms aside. Garlic Powder                              In the same saucepan over medium heat, add almond milk, onion powder, Cornstarch                                 garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Nutritional Yeast                          whisking occasionally. Frozen Peas (1/4 cup)                   Reduce heat and let simmer for 15 minutes, stirring occasionally until the Frozen Edamame (1/3 cup)                sauce becomes thicker. Baby Spinach (chopped; 1 cup)           Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -2658,7 +2465,7 @@
       "ingredients": [
         "cup)"
       ],
-      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Extra Virgin Olive Oil                  directions on the package. When \ufb01nished cooking, strain and run under cold Mushrooms (sliced; 3/4 cup)             water immediately to prevent from overcooking. Unsweetened Almond Milk                   Meanwhile, heat olive oil in a large skillet over medium heat. Add Onion Powder                            mushrooms and cook until soft. Set mushrooms aside. Garlic Powder                                 In the same saucepan over medium heat, add almond milk, onion powder, Cornstarch                                garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Nutritional Yeast                      whisking occasionally. Frozen Peas (1/3 cup)                   Reduce heat and let simmer for 15 minutes, stirring occasionally until the Frozen Edamame (1/3 cup)                sauce becomes thicker. Baby Spinach (chopped; 1 cup)           Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
+      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Extra Virgin Olive Oil                  directions on the package. When ﬁnished cooking, strain and run under cold Mushrooms (sliced; 3/4 cup)             water immediately to prevent from overcooking. Unsweetened Almond Milk                   Meanwhile, heat olive oil in a large skillet over medium heat. Add Onion Powder                            mushrooms and cook until soft. Set mushrooms aside. Garlic Powder                                 In the same saucepan over medium heat, add almond milk, onion powder, Cornstarch                                garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Nutritional Yeast                      whisking occasionally. Frozen Peas (1/3 cup)                   Reduce heat and let simmer for 15 minutes, stirring occasionally until the Frozen Edamame (1/3 cup)                sauce becomes thicker. Baby Spinach (chopped; 1 cup)           Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -2722,7 +2529,7 @@
         "sliced)",
         "apple)"
       ],
-      "instructions": "Canned In Water Tuna (5.75            In a small bowl add the tuna, Greek yogurt, and mayonnaise. Mix together until well combined. Nonfat (0%) Plain Greek Yogurt          Meanwhile toast the bread slices. Mayonnaise Split the tuna amongst the toast slices, top with cucumber, and place the Whole Grain Bread (toasted) other respective pieces of toast over top. Serve with pear on the side and Cucumber (1/3 cucumber;               enjoy! Pear (1 1/2 medium pear; substitute 1 large banana or 225 grams Log this meal on MyFitnessPal by searching \u201cBWS Tuna & Cucumber Sandwich with Fruit - 700-800\u201d on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Canned In Water Tuna (5.75            In a small bowl add the tuna, Greek yogurt, and mayonnaise. Mix together until well combined. Nonfat (0%) Plain Greek Yogurt          Meanwhile toast the bread slices. Mayonnaise Split the tuna amongst the toast slices, top with cucumber, and place the Whole Grain Bread (toasted) other respective pieces of toast over top. Serve with pear on the side and Cucumber (1/3 cucumber;               enjoy! Pear (1 1/2 medium pear; substitute 1 large banana or 225 grams Log this meal on MyFitnessPal by searching “BWS Tuna & Cucumber Sandwich with Fruit - 700-800” on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V3_1900-2100",
         "BWS_Meal_Plan_-_Males_Shred_V3_1900-2100 (1)",
@@ -2789,7 +2596,7 @@
         "substitute 1 medium banana or 200",
         "grams apple)"
       ],
-      "instructions": "Canned In Water Tuna (5 oz)           In a small bowl add the tuna, Greek yogurt, and mayonnaise. Mix together Nonfat (0%) Plain Greek Yogurt          until well combined. Mayonnaise                            Meanwhile toast the bread slices. Whole Grain Bread (toasted) Add the tuna to one half of the toast, top with cucumber, and place the other Cucumber (1/3 cucumber;               half piece of bread over top. Serve with pear on the side and enjoy! Pear (1 1/2 medium pears; Log this meal on MyFitnessPal by searching \u201cBWS Tuna & Cucumber Sandwich with Fruit - 600-700\u201d on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Canned In Water Tuna (5 oz)           In a small bowl add the tuna, Greek yogurt, and mayonnaise. Mix together Nonfat (0%) Plain Greek Yogurt          until well combined. Mayonnaise                            Meanwhile toast the bread slices. Whole Grain Bread (toasted) Add the tuna to one half of the toast, top with cucumber, and place the other Cucumber (1/3 cucumber;               half piece of bread over top. Serve with pear on the side and enjoy! Pear (1 1/2 medium pears; Log this meal on MyFitnessPal by searching “BWS Tuna & Cucumber Sandwich with Fruit - 600-700” on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -2816,7 +2623,7 @@
         "oz)",
         "halved)"
       ],
-      "instructions": "Tofu (regular \ufb01rm, drained; 6.5        In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                          Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes and Basil Leaves (chopped) balsamic vinegar. Serve with an apple and peanut butter on the side. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (3/4 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Apple (1 medium apple) Tomato Toast with Fruit - 700-800\" on the app. All Natural Peanut Butter Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Tofu (regular ﬁrm, drained; 6.5        In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                          Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes and Basil Leaves (chopped) balsamic vinegar. Serve with an apple and peanut butter on the side. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (3/4 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Apple (1 medium apple) Tomato Toast with Fruit - 700-800\" on the app. All Natural Peanut Butter Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -2870,7 +2677,7 @@
         "oz)",
         "halved)"
       ],
-      "instructions": "Tofu (regular \ufb01rm, drained; 4         In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                      Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes, Basil Leaves (chopped) balsamic vinegar and top with second piece of toast. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (1/2 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Tomato Toast - 300-400\" on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Tofu (regular ﬁrm, drained; 4         In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                      Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes, Basil Leaves (chopped) balsamic vinegar and top with second piece of toast. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (1/2 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Tomato Toast - 300-400\" on the app. Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -2906,7 +2713,7 @@
         "oz)",
         "halved)"
       ],
-      "instructions": "Tofu (regular \ufb01rm, drained; 6.5        In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                     Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes and Basil Leaves (chopped) balsamic vinegar. Serve with an apple and peanut butter on the side. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (3/4 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Apple (1 medium apple) Tomato Toast with Fruit - 800+\" on the app. All Natural Peanut Butter Aim for a slice of whole grain bread to be between 70 and 100 calories.",
+      "instructions": "Tofu (regular ﬁrm, drained; 6.5        In a mixing bowl, mash the tofu with a fork until crumbly and wet. Gently fold in the nutritional yeast, apple cider vinegar, and basil. Mix well. Nutritional Yeast                     Meanwhile, toast the bread slices. Apple Cider Vinegar Spread the vegan ricotta onto the toast slices and top with tomatoes and Basil Leaves (chopped) balsamic vinegar. Serve with an apple and peanut butter on the side. Enjoy! Whole Grain Bread (toasted) Cherry Tomatoes (3/4 cup; Balsamic Vinegar Log this meal on MyFitnessPal by searching \"BWS Vegan Ricotta & Balsamic Apple (1 medium apple) Tomato Toast with Fruit - 800+\" on the app. All Natural Peanut Butter Aim for a slice of whole grain bread to be between 70 and 100 calories.",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -3153,7 +2960,7 @@
         "Egg",
         "Bagel (sliced in half, toasted)"
       ],
-      "instructions": "Turkey Bacon                           Heat a skillet over medium heat. Cook the turkey bacon for \ufb01ve minutes Whole Grain Mustard                     each side or until cooked to your desired crispiness. Transfer to a towel- Pickle (chopped)                       lined plate to absorb any excess oil. Arugula (2 cups)                     In the same pan, add oil and crack the eggs and cook until the whites are Extra Virgin Olive Oil                      set and the yolk is cooked to your liking. Remove the eggs and add the egg whites. Egg Whites (1/2 cup)                 While the egg whites are cooking, spread mustard on the bottom of both bagel slices and top with the pickle, arugula, bacon, and eggs to make two sandwiches. Close the bagels and serve with egg whites on the side and enjoy!",
+      "instructions": "Turkey Bacon                           Heat a skillet over medium heat. Cook the turkey bacon for ﬁve minutes Whole Grain Mustard                     each side or until cooked to your desired crispiness. Transfer to a towel- Pickle (chopped)                       lined plate to absorb any excess oil. Arugula (2 cups)                     In the same pan, add oil and crack the eggs and cook until the whites are Extra Virgin Olive Oil                      set and the yolk is cooked to your liking. Remove the eggs and add the egg whites. Egg Whites (1/2 cup)                 While the egg whites are cooking, spread mustard on the bottom of both bagel slices and top with the pickle, arugula, bacon, and eggs to make two sandwiches. Close the bagels and serve with egg whites on the side and enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -3181,7 +2988,7 @@
         "less than 1 scoop)",
         "unsweetened cashew milk)"
       ],
-      "instructions": "Frozen Blueberries (2 cups)         Place frozen blueberries, frozen cauli\ufb02ower, plain Greek yogurt, protein Frozen Cauli\ufb02ower (2 cups)          powder, honey, almond butter and almond milk into your blender and blend Plain Greek Yogurt (1 cup, 2%       until smooth. Once smooth, top with chia seeds and pour into a glass and enjoy! Whey Protein Powder (a little Chia Seeds Unsweetened Almond Milk (or          Log this meal on MyFitnessPal by searching \"BWS Creamy Blueberry Smoothie - 800+\" on the app. Almond Butter (2 tsp) Honey",
+      "instructions": "Frozen Blueberries (2 cups)         Place frozen blueberries, frozen cauliﬂower, plain Greek yogurt, protein Frozen Cauliﬂower (2 cups)          powder, honey, almond butter and almond milk into your blender and blend Plain Greek Yogurt (1 cup, 2%       until smooth. Once smooth, top with chia seeds and pour into a glass and enjoy! Whey Protein Powder (a little Chia Seeds Unsweetened Almond Milk (or          Log this meal on MyFitnessPal by searching \"BWS Creamy Blueberry Smoothie - 800+\" on the app. Almond Butter (2 tsp) Honey",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -3202,16 +3009,16 @@
       "default_carbs_g": 99
     },
     {
-      "name": "Preheat the oven to 375\u00b0F (191\u00baC).",
+      "name": "Preheat the oven to 375°F (191ºC).",
       "category": "dinner",
       "ingredients": [
         "cup)",
-        "cubes; 5.5 oz extra \ufb01rm)",
+        "cubes; 5.5 oz extra ﬁrm)",
         "about 2 cups)",
-        "\ufb02orets; 2 cups)",
+        "ﬂorets; 2 cups)",
         "cup)"
       ],
-      "instructions": "Brown Rice (dry; a little over 1/2       Cook rice according to package instructions or in a rice cooker. Preheat the oven to 375\u00b0F (191\u00baC). Water Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Tofu (drained, chopped into the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu the garlic powder, ground cumin, and sea salt. Mix well. Garlic Powder Add the cauli\ufb02ower, broccoli, and edamame to the opposite side of the pan Cumin and drizzle olive oil over top. Sprinkle the remaining garlic powder, and sea Sea Salt salt. Mix everything well. Extra Virgin Olive Oil Roast for 20 minutes, and then take out of the oven to stir the vegetables Broccoli (chopped into \ufb02orets; around. Place back in the oven and roast for another 20 minutes or until the cauli\ufb02ower is tender. Cauli\ufb02ower (chopped into Place on a plate and enjoy! Frozen Edamame (a little over 1 Log this meal on MyFitnessPal by searching \"BWS One Pan Tofu, Cauli\ufb02ower & Broccoli - 800+\" on the app.",
+      "instructions": "Brown Rice (dry; a little over 1/2       Cook rice according to package instructions or in a rice cooker. Preheat the oven to 375°F (191ºC). Water Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Tofu (drained, chopped into the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu the garlic powder, ground cumin, and sea salt. Mix well. Garlic Powder Add the cauliﬂower, broccoli, and edamame to the opposite side of the pan Cumin and drizzle olive oil over top. Sprinkle the remaining garlic powder, and sea Sea Salt salt. Mix everything well. Extra Virgin Olive Oil Roast for 20 minutes, and then take out of the oven to stir the vegetables Broccoli (chopped into ﬂorets; around. Place back in the oven and roast for another 20 minutes or until the cauliﬂower is tender. Cauliﬂower (chopped into Place on a plate and enjoy! Frozen Edamame (a little over 1 Log this meal on MyFitnessPal by searching \"BWS One Pan Tofu, Cauliﬂower & Broccoli - 800+\" on the app.",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -3301,7 +3108,7 @@
       "ingredients": [
         "crumbled; 5 oz)"
       ],
-      "instructions": "Jasmine Rice (dry; 1/2 cup)             Cook rice according to package instructions or in a rice cooker. Tamari (substitute soy sauce)              Preheat the oven to 400\u00baF (205\u00baC) and lightly grease a sheet pan with oil. Rice Vinegar In a large bowl, whisk together the tamari, rice vinegar, garlic powder, Garlic Powder smoked paprika, chili powder, and nutritional yeast. Add in the crumbled Smoked Paprika                             tofu and toss well. Transfer to the sheet pan and bake for 18 to 20 minutes, Chili Powder                               until crispy. Nutritional Yeast Place the rice onto a plate and top with the tofu mixture. Enjoy! Tofu (extra \ufb01rm, pressed, Log this meal on MyFitnessPal by searching \"BWS Crispy Ground Tofu on Rice - 400-500\" on the app.",
+      "instructions": "Jasmine Rice (dry; 1/2 cup)             Cook rice according to package instructions or in a rice cooker. Tamari (substitute soy sauce)              Preheat the oven to 400ºF (205ºC) and lightly grease a sheet pan with oil. Rice Vinegar In a large bowl, whisk together the tamari, rice vinegar, garlic powder, Garlic Powder smoked paprika, chili powder, and nutritional yeast. Add in the crumbled Smoked Paprika                             tofu and toss well. Transfer to the sheet pan and bake for 18 to 20 minutes, Chili Powder                               until crispy. Nutritional Yeast Place the rice onto a plate and top with the tofu mixture. Enjoy! Tofu (extra ﬁrm, pressed, Log this meal on MyFitnessPal by searching \"BWS Crispy Ground Tofu on Rice - 400-500\" on the app.",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -3348,7 +3155,7 @@
         "small banana or 140 grams apple)",
         "pepper; sliced)"
       ],
-      "instructions": "Lay tortillas \ufb02at and spread the hummus in the center of each tortilla. Layer Hummus                                   the romaine leaves, turkey, cucumber and bell pepper. Roll the tortillas Romaine (large, whole)                   tightly while folding the ends in. Turkey Breast, Cooked (4 oz)           Serve with fruit on the side and enjoy! Cucumber (1/3 cucumber; Grapes (1 1/4 cups; substitute 1 Log this meal on MyFitnessPal by searching \u201cBWS Turkey, Hummus & Veggie Red Bell Pepper (1/3 bell            Wrap with Fruit - 600-700\u201d on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
+      "instructions": "Lay tortillas ﬂat and spread the hummus in the center of each tortilla. Layer Hummus                                   the romaine leaves, turkey, cucumber and bell pepper. Roll the tortillas Romaine (large, whole)                   tightly while folding the ends in. Turkey Breast, Cooked (4 oz)           Serve with fruit on the side and enjoy! Cucumber (1/3 cucumber; Grapes (1 1/4 cups; substitute 1 Log this meal on MyFitnessPal by searching “BWS Turkey, Hummus & Veggie Red Bell Pepper (1/3 bell            Wrap with Fruit - 600-700” on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V1_1900-2100",
         "CSMs_Lunch"
@@ -3388,7 +3195,7 @@
         "berries)",
         "pepper; sliced)"
       ],
-      "instructions": "Lay tortillas \ufb02at and spread the hummus in the center of each tortilla. Layer Hummus                                  the romaine leaves, turkey, cucumber and bell pepper. Roll the tortillas Romaine (large, whole)                  tightly while folding the ends in. Turkey Breast, Cooked (6 oz)          Serve with apple as a side and enjoy! Cucumber (3/4 cucumber; Red Bell Pepper (1 bell pepper; Log this meal on MyFitnessPal by searching \u201cBWS Turkey, Hummus & Veggie Apple (1 medium apple;             Wrap with Fruit - 800+\u201d on the app. substitute 150 grams grapes or 185 grams Aim for a whole wheat tortilla between 150 and 180 calories.",
+      "instructions": "Lay tortillas ﬂat and spread the hummus in the center of each tortilla. Layer Hummus                                  the romaine leaves, turkey, cucumber and bell pepper. Roll the tortillas Romaine (large, whole)                  tightly while folding the ends in. Turkey Breast, Cooked (6 oz)          Serve with apple as a side and enjoy! Cucumber (3/4 cucumber; Red Bell Pepper (1 bell pepper; Log this meal on MyFitnessPal by searching “BWS Turkey, Hummus & Veggie Apple (1 medium apple;             Wrap with Fruit - 800+” on the app. substitute 150 grams grapes or 185 grams Aim for a whole wheat tortilla between 150 and 180 calories.",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V1_2100-2300",
         "CSMs_Lunch"
@@ -3446,7 +3253,7 @@
         "berries)",
         "pepper; sliced)"
       ],
-      "instructions": "Lay tortilla \ufb02at and spread the hummus in the center of the tortilla. Add the Hummus                                  romaine leaves, turkey, cucumber and bell pepper to the tortilla. Roll the Romaine (large, whole)                  tortilla tightly while folding the ends in. Turkey Breast, Cooked (3 oz)           Serve with apple as a side and enjoy! Cucumber (1/4 cucumber; Apple (1 medium apple; Log this meal on MyFitnessPal by searching \u201cBWS Turkey, Hummus & Veggie Wrap with Fruit - 400-500\u201d on the app. Red Bell Pepper (1/4 bell Aim for a whole wheat tortilla between 150 and 180 calories.",
+      "instructions": "Lay tortilla ﬂat and spread the hummus in the center of the tortilla. Add the Hummus                                  romaine leaves, turkey, cucumber and bell pepper to the tortilla. Roll the Romaine (large, whole)                  tortilla tightly while folding the ends in. Turkey Breast, Cooked (3 oz)           Serve with apple as a side and enjoy! Cucumber (1/4 cucumber; Apple (1 medium apple; Log this meal on MyFitnessPal by searching “BWS Turkey, Hummus & Veggie Wrap with Fruit - 400-500” on the app. Red Bell Pepper (1/4 bell Aim for a whole wheat tortilla between 150 and 180 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3474,7 +3281,7 @@
         "sliced)",
         "pepper; sliced)"
       ],
-      "instructions": "Lay tortilla \ufb02at and spread the hummus in the center of the tortilla. Layer the Hummus                                    romaine leaves, turkey, cucumber and bell pepper. Roll the tortilla tightly Romaine (large, whole)                  while folding the ends in. Turkey Breast, Cooked (2.5 oz)          Serve immediately and enjoy! Cucumber (1/4 cucumber; Red Bell Pepper (1/4 bell Log this meal on MyFitnessPal by searching \u201cBWS Turkey, Hummus & Veggie Wrap - 300-400\u201d on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
+      "instructions": "Lay tortilla ﬂat and spread the hummus in the center of the tortilla. Layer the Hummus                                    romaine leaves, turkey, cucumber and bell pepper. Roll the tortilla tightly Romaine (large, whole)                  while folding the ends in. Turkey Breast, Cooked (2.5 oz)          Serve immediately and enjoy! Cucumber (1/4 cucumber; Red Bell Pepper (1/4 bell Log this meal on MyFitnessPal by searching “BWS Turkey, Hummus & Veggie Wrap - 300-400” on the app. Aim for a whole wheat tortilla between 150 and 180 calories.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3530,7 +3337,7 @@
       "default_carbs_g": 16
     },
     {
-      "name": "Sesame Oil                                 Prepare cauli\ufb02ower rice according to package instructions.",
+      "name": "Sesame Oil                                 Prepare cauliﬂower rice according to package instructions.",
       "category": "lunch",
       "ingredients": [
         "Cremini Mushrooms (sliced)",
@@ -3538,7 +3345,7 @@
         "cup)",
         "Garlic (clove, minced)"
       ],
-      "instructions": "Sesame Oil                                 Prepare cauli\ufb02ower rice according to package instructions. Heat the sesame oil in a large pan or skillet over medium-high heat. Yellow Onion (1/4 onion, sliced) Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Kale Leaves (\ufb01nely chopped; 1/2 until the mushrooms and onions have started to brown. Add the kale and stir to combine. Continue to cook until kale has wilted. Add Frozen Edamame (thawed; 3/4 in the edamame and cook for 2 to 3 minutes or until the edamame has warmed through. Vegetable Broth Tamari (substitute soy sauce)               Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and garlic. Ginger (fresh, \ufb01nely grated) Add the ginger and garlic sauce to the pan. Stir to combine and cook, Cauli\ufb02ower Rice (1 cup)                  stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the cauli\ufb02ower rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
+      "instructions": "Sesame Oil                                 Prepare cauliﬂower rice according to package instructions. Heat the sesame oil in a large pan or skillet over medium-high heat. Yellow Onion (1/4 onion, sliced) Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Kale Leaves (ﬁnely chopped; 1/2 until the mushrooms and onions have started to brown. Add the kale and stir to combine. Continue to cook until kale has wilted. Add Frozen Edamame (thawed; 3/4 in the edamame and cook for 2 to 3 minutes or until the edamame has warmed through. Vegetable Broth Tamari (substitute soy sauce)               Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and garlic. Ginger (fresh, ﬁnely grated) Add the ginger and garlic sauce to the pan. Stir to combine and cook, Cauliﬂower Rice (1 cup)                  stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the cauliﬂower rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3565,7 +3372,7 @@
         "dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)              In a large bowl, whisk together the tamari, lime juice, sesame oil, and ginger. Lime Juice                              Add the tofu and toss until well coated. Let it marinate in the fridge while you Sesame Oil                                 work on the quinoa. Ginger (grated)                            Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (9 oz; extra \ufb01rm, patted        heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and \ufb02uff the quinoa with a fork. Quinoa (1/2 cup; dry)                  Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                   your desired amount of leftover marinade over top and enjoy! Baby Spinach (2 cups) Carrot (2/3 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 600-700\u201d on the app. Generally, quinoa triples when it is cooked, so 100 grams (1/2 cup) dry quinoa",
+      "instructions": "Tamari (substitute soy sauce)              In a large bowl, whisk together the tamari, lime juice, sesame oil, and ginger. Lime Juice                              Add the tofu and toss until well coated. Let it marinate in the fridge while you Sesame Oil                                 work on the quinoa. Ginger (grated)                            Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (9 oz; extra ﬁrm, patted        heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and ﬂuff the quinoa with a fork. Quinoa (1/2 cup; dry)                  Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                   your desired amount of leftover marinade over top and enjoy! Baby Spinach (2 cups) Carrot (2/3 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 600-700” on the app. Generally, quinoa triples when it is cooked, so 100 grams (1/2 cup) dry quinoa",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3592,7 +3399,7 @@
         "dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)             In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                             tofu and toss until well coated. Let it marinate in the fridge while you work on Sesame Oil                               the quinoa. Ginger (grated)                              Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (12 oz; extra \ufb01rm, patted         heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and \ufb02uff the quinoa with a fork. Quinoa (2/3 cup; dry)                 Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                  your desired amount of leftover marinade over top and enjoy! Baby Spinach (3 cups) Carrot (1 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 800+\u201d on the app. Generally, quinoa triples when cooked, so 110 grams (2/3 cup) of dry quinoa",
+      "instructions": "Tamari (substitute soy sauce)             In a large bowl, whisk together the tamari, lime juice, and ginger. Add the Lime Juice                             tofu and toss until well coated. Let it marinate in the fridge while you work on Sesame Oil                               the quinoa. Ginger (grated)                              Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (12 oz; extra ﬁrm, patted         heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and ﬂuff the quinoa with a fork. Quinoa (2/3 cup; dry)                 Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                  your desired amount of leftover marinade over top and enjoy! Baby Spinach (3 cups) Carrot (1 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 800+” on the app. Generally, quinoa triples when cooked, so 110 grams (2/3 cup) of dry quinoa",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3619,7 +3426,7 @@
         "patted dry, cubed)",
         "shredded)"
       ],
-      "instructions": "Tamari (substitute soy sauce)          In a large bowl, whisk together the tamari, lime juice, sesame oil, and ginger. Lime Juice                             Add the tofu and toss until well coated. Let it marinate in the fridge while you Sesame Oil                               work on the quinoa. Ginger (grated)                          Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (9.75 oz; extra \ufb01rm,             heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and \ufb02uff the quinoa with a fork. Quinoa (2/3 cup; dry)                  Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                  your desired amount of leftover marinade over top and enjoy! Baby Spinach (2 cups) Carrot (3/4 cup; medium, Log this meal on MyFitnessPal by searching \u201cBWS Tofu, Spinach & Quinoa Bowls - 700-800\u201d on the app. Generally, quinoa triples when cooked, so 110 grams (2/3 cup) dry quinoa would",
+      "instructions": "Tamari (substitute soy sauce)          In a large bowl, whisk together the tamari, lime juice, sesame oil, and ginger. Lime Juice                             Add the tofu and toss until well coated. Let it marinate in the fridge while you Sesame Oil                               work on the quinoa. Ginger (grated)                          Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Tofu (9.75 oz; extra ﬁrm,             heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, remove the pot from the heat and ﬂuff the quinoa with a fork. Quinoa (2/3 cup; dry)                  Place the quinoa, spinach, carrot, and marinated tofu into a bowl. Drizzle Water                                  your desired amount of leftover marinade over top and enjoy! Baby Spinach (2 cups) Carrot (3/4 cup; medium, Log this meal on MyFitnessPal by searching “BWS Tofu, Spinach & Quinoa Bowls - 700-800” on the app. Generally, quinoa triples when cooked, so 110 grams (2/3 cup) dry quinoa would",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3640,7 +3447,7 @@
       "default_carbs_g": 86
     },
     {
-      "name": "Shrimp (deveined, peeled, tails         Preheat the oven to 400\u00baF (204\u00baC).",
+      "name": "Shrimp (deveined, peeled, tails         Preheat the oven to 400ºF (204ºC).",
       "category": "dinner",
       "ingredients": [
         "removed; 2.8 oz)",
@@ -3649,7 +3456,7 @@
         "1/4 cup)",
         "Corn Tortilla"
       ],
-      "instructions": "Shrimp (deveined, peeled, tails         Preheat the oven to 400\u00baF (204\u00baC). Place aluminum foil over top of a baking sheet and spray with non-stick Red Bell Pepper (thinly sliced;        spray. Then place the shrimp, peppers, and onions on top of the baking sheet. Drizzle the oil over top of the shrimp and then season the shrimp with Green Bell Pepper (thinly              the taco seasoning. Mix together the shrimp and veggies until they are well coated and then arrange into a single layer. Red Onion (thinly sliced; about Bake for six to eight minutes or until the shrimp are cooked through. Remove the pan from the oven and turn the oven to broil. Remove the Extra Virgin Olive Oil shrimp from the pan and set aside on a separate plate. Place the sheet pan Taco Seasoning back into the oven and broil the peppers and onions for three to four Lime (juiced) minutes or until slightly charred. Add the shrimp back to the pan and drizzle everything with lime juice. Place the tortilla on a plate and assemble shrimp and vegetable mixture over top. Enjoy!",
+      "instructions": "Shrimp (deveined, peeled, tails         Preheat the oven to 400ºF (204ºC). Place aluminum foil over top of a baking sheet and spray with non-stick Red Bell Pepper (thinly sliced;        spray. Then place the shrimp, peppers, and onions on top of the baking sheet. Drizzle the oil over top of the shrimp and then season the shrimp with Green Bell Pepper (thinly              the taco seasoning. Mix together the shrimp and veggies until they are well coated and then arrange into a single layer. Red Onion (thinly sliced; about Bake for six to eight minutes or until the shrimp are cooked through. Remove the pan from the oven and turn the oven to broil. Remove the Extra Virgin Olive Oil shrimp from the pan and set aside on a separate plate. Place the sheet pan Taco Seasoning back into the oven and broil the peppers and onions for three to four Lime (juiced) minutes or until slightly charred. Add the shrimp back to the pan and drizzle everything with lime juice. Place the tortilla on a plate and assemble shrimp and vegetable mixture over top. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -3773,57 +3580,12 @@
       "default_carbs_g": 38
     },
     {
-      "name": "Subway and enjoy!",
-      "category": "recipe",
-      "ingredients": [
-        "Turkey Breast And Ham Sandwich (foot",
-        "long)"
-      ],
-      "instructions": "1 MINUTE Order one footlong Turkey Breast and Ham Sandwich on 9-grain wheat bread with lettuce, tomatoes, onions, green peppers and cucumbers from Subway and enjoy!",
-      "sources": [
-        "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-      ],
-      "variants": [
-        {
-          "cal_band": null,
-          "calories": 560,
-          "protein_g": 36,
-          "fat_g": null,
-          "carbs_g": 92,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        },
-        {
-          "cal_band": null,
-          "calories": 640,
-          "protein_g": 46,
-          "fat_g": null,
-          "carbs_g": 44,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        },
-        {
-          "cal_band": null,
-          "calories": 640,
-          "protein_g": 46,
-          "fat_g": 10,
-          "carbs_g": 44,
-          "fiber_g": 0,
-          "source": "BWS_Recipe_Book_200-800__Calorie_Fast_Food"
-        }
-      ],
-      "default_calories": 640,
-      "default_protein_g": 46,
-      "default_fat_g": null,
-      "default_carbs_g": 44
-    },
-    {
       "name": "Tempeh (crumbled; 2.7 oz)              remove the pot from the heat",
       "category": "dinner",
       "ingredients": [
-        "removed and \ufb01nely chopped)"
+        "removed and ﬁnely chopped)"
       ],
-      "instructions": "Quinoa (dry; 1/8 cup)                  Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Water                                    heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Tempeh (crumbled; 2.7 oz)              remove the pot from the heat Chili Powder                             Heat a pan over medium-high heat and spray with non-stick spray. Add the Cumin                                    crumbled tempeh and cook for about \ufb01ve minutes until browned. Add the Oregano                                  chili powder, cumin, oregano, a pinch of salt, and jalape\u00f1o and cook for one more minute. Jalapeno Pepper (small, seeds Stir in the tomato and half of the lime juice and continue to cook for another Tomato (diced; 1/2 tomato)             three to \ufb01ve minutes until the tomatoes begin to soften. Add a little bit of Lime (juiced, divided)                        water if it starts to stick to the pan. Season with additional salt if needed. Romaine (chopped)                        To serve, divide the romaine lettuce, quinoa, and tempeh in the bowl and drizzle with the remaining lime juice. Enjoy!",
+      "instructions": "Quinoa (dry; 1/8 cup)                  Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Water                                    heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Tempeh (crumbled; 2.7 oz)              remove the pot from the heat Chili Powder                             Heat a pan over medium-high heat and spray with non-stick spray. Add the Cumin                                    crumbled tempeh and cook for about ﬁve minutes until browned. Add the Oregano                                  chili powder, cumin, oregano, a pinch of salt, and jalapeño and cook for one more minute. Jalapeno Pepper (small, seeds Stir in the tomato and half of the lime juice and continue to cook for another Tomato (diced; 1/2 tomato)             three to ﬁve minutes until the tomatoes begin to soften. Add a little bit of Lime (juiced, divided)                        water if it starts to stick to the pan. Season with additional salt if needed. Romaine (chopped)                        To serve, divide the romaine lettuce, quinoa, and tempeh in the bowl and drizzle with the remaining lime juice. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -3848,10 +3610,10 @@
       "category": "dinner",
       "ingredients": [
         "Jalapeno Pepper (small, seeds removed",
-        "and \ufb01nely chopped)",
+        "and ﬁnely chopped)",
         "Lime (juiced, divided)"
       ],
-      "instructions": "Quinoa (dry; 2/3 cup)                  Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Water                                  heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Tempeh (crumbled; 6 oz)                remove the pot from the heat and \ufb02uff the quinoa with a fork. Chili Powder                                 Heat a pan over medium-high heat and spray with non-stick spray. Add the Cumin                                        crumbled tempeh and cook for about \ufb01ve minutes until browned. Add the Oregano                                  chili powder, cumin, oregano, a pinch of salt, and jalape\u00f1o and cook for one more minute. Stir in the tomato and half of the lime juice and continue to cook for another Tomato (diced; 1 tomato)               three to \ufb01ve minutes until the tomatoes begin to soften. Add a little bit of water if it starts to stick to the pan. Season with additional salt if needed. Romaine (chopped)                       To serve, place the romaine lettuce, quinoa, and tempeh into a bowl and drizzle with the remaining lime juice. Enjoy!",
+      "instructions": "Quinoa (dry; 2/3 cup)                  Add quinoa and water to a pot and bring to a low boil. Once boiling, reduce Water                                  heat to a simmer, cover and let cook for about 12 to 15 minutes. When done, Tempeh (crumbled; 6 oz)                remove the pot from the heat and ﬂuff the quinoa with a fork. Chili Powder                                 Heat a pan over medium-high heat and spray with non-stick spray. Add the Cumin                                        crumbled tempeh and cook for about ﬁve minutes until browned. Add the Oregano                                  chili powder, cumin, oregano, a pinch of salt, and jalapeño and cook for one more minute. Stir in the tomato and half of the lime juice and continue to cook for another Tomato (diced; 1 tomato)               three to ﬁve minutes until the tomatoes begin to soften. Add a little bit of water if it starts to stick to the pan. Season with additional salt if needed. Romaine (chopped)                       To serve, place the romaine lettuce, quinoa, and tempeh into a bowl and drizzle with the remaining lime juice. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -3872,7 +3634,7 @@
       "default_carbs_g": 103
     },
     {
-      "name": "Tofu (5.5 oz; extra-\ufb01rm,                  paper.",
+      "name": "Tofu (5.5 oz; extra-ﬁrm,                  paper.",
       "category": "lunch",
       "ingredients": [
         "cubes)",
@@ -3880,7 +3642,7 @@
         "and sliced)",
         "bell pepper; chopped)"
       ],
-      "instructions": "Brown Rice (3 1/2 tbsp; dry)             Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment Tofu (5.5 oz; extra-\ufb01rm,                  paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and mix until the vegetables are lightly coated in the Broccoli (1 cup; cut into \ufb02orets)       tamari. Spray with non-stick spray Transfer the vegetables to the other side Carrot (1/4 cup; large, peeled            of the baking sheet. Bake the tofu and veggies for 20 minutes. Red Bell Pepper (1/2 medium Meanwhile, in the mixing bowl, combine the maple syrup, garlic, and ginger. Maple Syrup                                 Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Garlic (small clove, minced)                    Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Ground Ginger                              Serve and enjoy! Log this meal on MyFitnessPal by searching \u201cBWS Sticky Sheet Pan Tofu Stir Fry",
+      "instructions": "Brown Rice (3 1/2 tbsp; dry)             Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment Tofu (5.5 oz; extra-ﬁrm,                  paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and mix until the vegetables are lightly coated in the Broccoli (1 cup; cut into ﬂorets)       tamari. Spray with non-stick spray Transfer the vegetables to the other side Carrot (1/4 cup; large, peeled            of the baking sheet. Bake the tofu and veggies for 20 minutes. Red Bell Pepper (1/2 medium Meanwhile, in the mixing bowl, combine the maple syrup, garlic, and ginger. Maple Syrup                                 Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Garlic (small clove, minced)                    Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Ground Ginger                              Serve and enjoy! Log this meal on MyFitnessPal by searching “BWS Sticky Sheet Pan Tofu Stir Fry",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3901,16 +3663,16 @@
       "default_carbs_g": null
     },
     {
-      "name": "Tofu (6.5 oz; extra-\ufb01rm,                   paper.",
+      "name": "Tofu (6.5 oz; extra-ﬁrm,                   paper.",
       "category": "lunch",
       "ingredients": [
         "cubes)",
         "sauce)",
-        "\ufb02orets)",
+        "ﬂorets)",
         "and sliced)",
         "pepper; chopped)"
       ],
-      "instructions": "Brown Rice (1/4 cup; dry)                Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment Tofu (6.5 oz; extra-\ufb01rm,                   paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and sesame oil and mix until the vegetables are lightly Sesame Oil                                 coated in the tamari. Transfer the vegetables to the other side of the baking Broccoli (1 1/3 cups; cut into          sheet. Bake the tofu and veggies for 20 minutes. Carrot (1/2 cup; large, peeled Meanwhile, in the mixing bowl, combine the maple syrup, garlic, and ginger. Red Bell Pepper (1 medium bell             Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Maple Syrup                                  Serve and enjoy! Garlic (small clove, minced) Ground Ginger Log this meal on MyFitnessPal by searching \u201cBWS Sticky Sheet Pan Tofu Stir Fry with Rice - 400-500\u201d on the app.",
+      "instructions": "Brown Rice (1/4 cup; dry)                Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment Tofu (6.5 oz; extra-ﬁrm,                   paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and sesame oil and mix until the vegetables are lightly Sesame Oil                                 coated in the tamari. Transfer the vegetables to the other side of the baking Broccoli (1 1/3 cups; cut into          sheet. Bake the tofu and veggies for 20 minutes. Carrot (1/2 cup; large, peeled Meanwhile, in the mixing bowl, combine the maple syrup, garlic, and ginger. Red Bell Pepper (1 medium bell             Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Maple Syrup                                  Serve and enjoy! Garlic (small clove, minced) Ground Ginger Log this meal on MyFitnessPal by searching “BWS Sticky Sheet Pan Tofu Stir Fry with Rice - 400-500” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3931,16 +3693,16 @@
       "default_carbs_g": 69
     },
     {
-      "name": "Tofu (7 oz; extra-\ufb01rm, pressed,         paper.",
+      "name": "Tofu (7 oz; extra-ﬁrm, pressed,         paper.",
       "category": "lunch",
       "ingredients": [
         "sauce)",
-        "\ufb02orets)",
+        "ﬂorets)",
         "and sliced)",
         "pepper; chopped)",
         "Garlic (small clove, minced)"
       ],
-      "instructions": "Brown Rice (1/3 cup; dry)               Cook rice according to package instructions or in a rice cooker. Water                                     Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment Tofu (7 oz; extra-\ufb01rm, pressed,         paper. cut into 1-cm thick triangles or cubes) Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu Tamari (divided; substitute soy in the tamari. Transfer the tofu to one side of the baking sheet. To the same mixing bowl add the broccoli, carrot, and bell pepper. Add half the Sesame Oil                                     remaining tamari and sesame oil and mix until the vegetables are lightly Broccoli (1 1/2 cups; cut into         coated in the tamari. Transfer the vegetables to the other side of the baking sheet. Carrot (1/2 cup; large, peeled Bake the tofu and veggies for 20 minutes. In the mixing bowl, combine the maple syrup, garlic, ginger, and red pepper \ufb02akes. Red Bell Pepper (1 medium bell Meanwhile, steam the edamame until no longer frozen. Maple Syrup                                 Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Serve with edamame and enjoy! Ground Ginger Frozen Edamame (2/3 cup) Log this meal on MyFitnessPal by searching \u201cBWS Sticky Sheet Pan Tofu Stir Fry with Rice - 700-800\u201d on the app.",
+      "instructions": "Brown Rice (1/3 cup; dry)               Cook rice according to package instructions or in a rice cooker. Water                                     Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment Tofu (7 oz; extra-ﬁrm, pressed,         paper. cut into 1-cm thick triangles or cubes) Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu Tamari (divided; substitute soy in the tamari. Transfer the tofu to one side of the baking sheet. To the same mixing bowl add the broccoli, carrot, and bell pepper. Add half the Sesame Oil                                     remaining tamari and sesame oil and mix until the vegetables are lightly Broccoli (1 1/2 cups; cut into         coated in the tamari. Transfer the vegetables to the other side of the baking sheet. Carrot (1/2 cup; large, peeled Bake the tofu and veggies for 20 minutes. In the mixing bowl, combine the maple syrup, garlic, ginger, and red pepper ﬂakes. Red Bell Pepper (1 medium bell Meanwhile, steam the edamame until no longer frozen. Maple Syrup                                 Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Serve with edamame and enjoy! Ground Ginger Frozen Edamame (2/3 cup) Log this meal on MyFitnessPal by searching “BWS Sticky Sheet Pan Tofu Stir Fry with Rice - 700-800” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3961,16 +3723,16 @@
       "default_carbs_g": null
     },
     {
-      "name": "Tofu (7.5 oz; extra-\ufb01rm,                   paper.",
+      "name": "Tofu (7.5 oz; extra-ﬁrm,                   paper.",
       "category": "lunch",
       "ingredients": [
         "cubes)",
         "sauce)",
-        "\ufb02orets)",
+        "ﬂorets)",
         "pepper, chopped)",
         "Garlic (small clove, minced)"
       ],
-      "instructions": "Brown Rice (1/4 cup; dry)                Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400\u00baF (204\u00baC) and line a baking sheet with parchment Tofu (7.5 oz; extra-\ufb01rm,                   paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and mix until the vegetables are lightly coated in the Broccoli (1 1/2 cups; cut into          tamari. Transfer the vegetables to the other side of the baking sheet and spray with non-stick cooking spray. Carrot (large, peeled and sliced) Bake the tofu and veggies for 20 minutes. Red Bell Pepper (1 medium bell Meanwhile, in the mixing bowl, combine the maple syrup, garlic, ginger, and red pepper \ufb02akes. Maple Syrup Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Ground Ginger                              Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Serve and enjoy!",
+      "instructions": "Brown Rice (1/4 cup; dry)                Cook rice according to package instructions or in a rice cooker. Water                                      Preheat the oven to 400ºF (204ºC) and line a baking sheet with parchment Tofu (7.5 oz; extra-ﬁrm,                   paper. pressed, cut into 1-cm thick triangles or Add the tofu and half of the tamari to a mixing bowl and toss to coat the tofu in the tamari. Transfer the tofu to one side of the baking sheet. To the same Tamari (divided; substitute soy mixing bowl add the broccoli, carrot, and bell pepper. Add half the remaining tamari and mix until the vegetables are lightly coated in the Broccoli (1 1/2 cups; cut into          tamari. Transfer the vegetables to the other side of the baking sheet and spray with non-stick cooking spray. Carrot (large, peeled and sliced) Bake the tofu and veggies for 20 minutes. Red Bell Pepper (1 medium bell Meanwhile, in the mixing bowl, combine the maple syrup, garlic, ginger, and red pepper ﬂakes. Maple Syrup Flip the tofu and the vegetables, then drizzle with the maple ginger sauce. Ground Ginger                              Continue baking for 8 to 10 minutes until the sauce is sticky and bubbly. Serve and enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -3991,15 +3753,15 @@
       "default_carbs_g": 81
     },
     {
-      "name": "Tofu (drained, chopped into             Preheat the oven to 375\u00b0F (191\u00baC).",
+      "name": "Tofu (drained, chopped into             Preheat the oven to 375°F (191ºC).",
       "category": "dinner",
       "ingredients": [
-        "cubes; 2.5 oz extra \ufb01rm)",
+        "cubes; 2.5 oz extra ﬁrm)",
         "about 1 1/4 cup)",
-        "\ufb02orets; 1 1/4 cup)",
+        "ﬂorets; 1 1/4 cup)",
         "cup)"
       ],
-      "instructions": "Tofu (drained, chopped into             Preheat the oven to 375\u00b0F (191\u00baC). Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Garlic Powder                             the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Cumin                                     the garlic powder, ground cumin, and sea salt. Mix well. Sea Salt Add the cauli\ufb02ower, broccoli, and edamame to the opposite side of the pan Broccoli (chopped into \ufb02orets;         and spray with non-stick spray. Sprinkle the remaining garlic powder, and sea salt. Mix everything well. Cauli\ufb02ower (chopped into Roast for 20 minutes, and then take out of the oven to stir the vegetables around. Place back in the oven and roast for another 20 minutes or until the Frozen Edamame (about 2/3 cauli\ufb02ower is tender. Place on a plate and enjoy!",
+      "instructions": "Tofu (drained, chopped into             Preheat the oven to 375°F (191ºC). Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Garlic Powder                             the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Cumin                                     the garlic powder, ground cumin, and sea salt. Mix well. Sea Salt Add the cauliﬂower, broccoli, and edamame to the opposite side of the pan Broccoli (chopped into ﬂorets;         and spray with non-stick spray. Sprinkle the remaining garlic powder, and sea salt. Mix everything well. Cauliﬂower (chopped into Roast for 20 minutes, and then take out of the oven to stir the vegetables around. Place back in the oven and roast for another 20 minutes or until the Frozen Edamame (about 2/3 cauliﬂower is tender. Place on a plate and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -4020,15 +3782,15 @@
       "default_carbs_g": 25
     },
     {
-      "name": "Tofu (drained, chopped into            Preheat the oven to 375\u00b0F (191\u00baC).",
+      "name": "Tofu (drained, chopped into            Preheat the oven to 375°F (191ºC).",
       "category": "dinner",
       "ingredients": [
-        "cubes; 4 oz extra \ufb01rm)",
+        "cubes; 4 oz extra ﬁrm)",
         "about 1 1/4 cup)",
-        "\ufb02orets; 1 1/4 cup)",
+        "ﬂorets; 1 1/4 cup)",
         "cup)"
       ],
-      "instructions": "Tofu (drained, chopped into            Preheat the oven to 375\u00b0F (191\u00baC). Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Garlic Powder                            the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Cumin                                    the garlic powder, ground cumin, and sea salt. Mix well. Sea Salt Add the cauli\ufb02ower, broccoli, and edamame to the opposite side of the pan Broccoli (chopped into \ufb02orets;        and spray with non-stick spray. Sprinkle the remaining garlic powder, and sea salt. Mix everything well. Cauli\ufb02ower (chopped into Roast for 20 minutes, and then take out of the oven to stir the vegetables around. Place back in the oven and roast for another 20 minutes or until the Frozen Edamame (about 3/4 cauli\ufb02ower is tender. Place on a plate and enjoy!",
+      "instructions": "Tofu (drained, chopped into            Preheat the oven to 375°F (191ºC). Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add Garlic Powder                            the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Cumin                                    the garlic powder, ground cumin, and sea salt. Mix well. Sea Salt Add the cauliﬂower, broccoli, and edamame to the opposite side of the pan Broccoli (chopped into ﬂorets;        and spray with non-stick spray. Sprinkle the remaining garlic powder, and sea salt. Mix everything well. Cauliﬂower (chopped into Roast for 20 minutes, and then take out of the oven to stir the vegetables around. Place back in the oven and roast for another 20 minutes or until the Frozen Edamame (about 3/4 cauliﬂower is tender. Place on a plate and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -4055,7 +3817,7 @@
         "bell pepper)",
         "(from the can with juices; 2/3 cup)"
       ],
-      "instructions": "Tofu (\ufb01rm, pat dry; 5 oz)               Preheat the oven to 375\u00baF (191\u00baC). Take 3/4 of the tofu and slice into even Water                                      pieces. Take the remaining 1/4 of the tofu and crumble it. Set both aside, Red Bell Pepper (chopped; 1/4             separately. Heat the water in an oven-safe skillet over medium heat. Saut\u00e9 the red bell Paprika                                    pepper until slightly tender, about 3 to 4 minutes. Cumin                                      Stir in the paprika and cumin for 1 minute. Stir in the diced tomatoes, 3/4 of Fire Roasted Diced Tomatoes             the parsley, salt and pepper. Place the tofu slices on top and cover with a lid. Simmer for 10 minutes. Parsley (\ufb01nely chopped, divided) Remove the lid and transfer the skillet to the oven. Bake for 10 minutes Sourdough Bread                         uncovered or until the tofu has crisped on top. Garnish with the crumbled tofu and remaining parsley. Serve with sourdough bread. Enjoy!",
+      "instructions": "Tofu (ﬁrm, pat dry; 5 oz)               Preheat the oven to 375ºF (191ºC). Take 3/4 of the tofu and slice into even Water                                      pieces. Take the remaining 1/4 of the tofu and crumble it. Set both aside, Red Bell Pepper (chopped; 1/4             separately. Heat the water in an oven-safe skillet over medium heat. Sauté the red bell Paprika                                    pepper until slightly tender, about 3 to 4 minutes. Cumin                                      Stir in the paprika and cumin for 1 minute. Stir in the diced tomatoes, 3/4 of Fire Roasted Diced Tomatoes             the parsley, salt and pepper. Place the tofu slices on top and cover with a lid. Simmer for 10 minutes. Parsley (ﬁnely chopped, divided) Remove the lid and transfer the skillet to the oven. Bake for 10 minutes Sourdough Bread                         uncovered or until the tofu has crisped on top. Garnish with the crumbled tofu and remaining parsley. Serve with sourdough bread. Enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -4114,7 +3876,7 @@
       "name": "Unsweetened Almond Milk                    glass and enjoy!",
       "category": "snack",
       "ingredients": [
-        "(chocolate-\ufb02avored)"
+        "(chocolate-ﬂavored)"
       ],
       "instructions": "Avocado (1/4 of an avocado)             Place all ingredients in your blender and blend until smooth. Pour into a Unsweetened Almond Milk                    glass and enjoy! Almond Butter (1 tbsp) Baby Spinach (1 cup) Whey Protein Powder Log this meal on MyFitnessPal by searching \"BWS Chocolate Avocado Smoothie\" on the app. To make the recipe vegan, substitute a vegan protein powder instead of the whey protein powder.",
       "sources": [
@@ -4140,7 +3902,7 @@
       "name": "Unsweetened Almond Milk                   water immediately to prevent from overcooking.",
       "category": "dinner",
       "ingredients": null,
-      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Mushrooms (sliced; 1/2 cup)             directions on the package. When \ufb01nished cooking, strain and run under cold Unsweetened Almond Milk                   water immediately to prevent from overcooking. Onion Powder                                   Meanwhile, spray a large skillet with cooking spray and heat over medium Garlic Powder                              heat. Add mushrooms and cook until soft. Set mushrooms aside. Cornstarch                                 In the same saucepan over medium heat, add almond milk, onion powder, Nutritional Yeast                          garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Frozen Peas (1/4 cup)                   whisking occasionally. Frozen Edamame (1/4 cup)                Reduce heat and let simmer for 15 minutes, stirring occasionally until the Baby Spinach (chopped; 1 cup)           sauce becomes thicker. Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
+      "instructions": "Chickpea Pasta                          Bring a large pot of water to a boil and cook chickpea pasta as per the Mushrooms (sliced; 1/2 cup)             directions on the package. When ﬁnished cooking, strain and run under cold Unsweetened Almond Milk                   water immediately to prevent from overcooking. Onion Powder                                   Meanwhile, spray a large skillet with cooking spray and heat over medium Garlic Powder                              heat. Add mushrooms and cook until soft. Set mushrooms aside. Cornstarch                                 In the same saucepan over medium heat, add almond milk, onion powder, Nutritional Yeast                          garlic powder, cornstarch, nutritional yeast and a pinch of salt. Bring to a boil, Frozen Peas (1/4 cup)                   whisking occasionally. Frozen Edamame (1/4 cup)                Reduce heat and let simmer for 15 minutes, stirring occasionally until the Baby Spinach (chopped; 1 cup)           sauce becomes thicker. Add mushrooms, peas, edamame and spinach. When sauce is simmering again and spinach has wilted, add pasta and stir until well coated. Place into a bowl and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -4176,7 +3938,7 @@
         "Egg",
         "pieces)"
       ],
-      "instructions": "In a mug whisk the egg and milk together. Stir in the cinnamon and maple Unsweetened Almond Milk                 syrup. Cinnamon                                  Add the bread to the mug and stir to combine with the egg mixture. If the Maple Syrup                            bread isn\u2019t saturated with the egg mixture add a splash more milk. Press the Whole Grain Bread (cut into small       bread into an even layer in the bottom of the mug and let it rest for about \ufb01ve minutes so the bread can absorb the egg mixture. Microwave for two minutes or until the bread is \ufb01rm to the touch and just moist on top. Let the mug cake cool slightly then transfer to a plate or a bowl. Enjoy!",
+      "instructions": "In a mug whisk the egg and milk together. Stir in the cinnamon and maple Unsweetened Almond Milk                 syrup. Cinnamon                                  Add the bread to the mug and stir to combine with the egg mixture. If the Maple Syrup                            bread isn’t saturated with the egg mixture add a splash more milk. Press the Whole Grain Bread (cut into small       bread into an even layer in the bottom of the mug and let it rest for about ﬁve minutes so the bread can absorb the egg mixture. Microwave for two minutes or until the bread is ﬁrm to the touch and just moist on top. Let the mug cake cool slightly then transfer to a plate or a bowl. Enjoy!",
       "sources": [
         "BWS_5Min_Meal_Guide_(Fat_Loss)"
       ],
@@ -4221,7 +3983,7 @@
       "default_carbs_g": 29
     },
     {
-      "name": "Water                                       once \ufb01nished.",
+      "name": "Water                                       once ﬁnished.",
       "category": "lunch",
       "ingredients": [
         "Cremini Mushrooms (sliced)",
@@ -4229,7 +3991,7 @@
         "1/4 cups)",
         "Garlic (clove, minced)"
       ],
-      "instructions": "Brown Rice (1/8 cup; dry)                Cook rice according to package instructions or in a rice cooker. Set aside Water                                       once \ufb01nished. Sesame Oil                                    Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (1/4 onion, sliced)         until the mushrooms and onions have started to brown. Kale Leaves (\ufb01nely chopped; 1/2 Add the kale and stir to combine. Continue to cook until kale has wilted. Add in the edamame and cook for 2 to 3 minutes or until the edamame has Frozen Edamame (thawed; 1 warmed through. Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and Vegetable Broth garlic. Tamari (substitute soy sauce) Ginger (fresh, \ufb01nely grated)             Add the ginger and garlic sauce to the pan. Stir to combine and cook, stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
+      "instructions": "Brown Rice (1/8 cup; dry)                Cook rice according to package instructions or in a rice cooker. Set aside Water                                       once ﬁnished. Sesame Oil                                    Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (1/4 onion, sliced)         until the mushrooms and onions have started to brown. Kale Leaves (ﬁnely chopped; 1/2 Add the kale and stir to combine. Continue to cook until kale has wilted. Add in the edamame and cook for 2 to 3 minutes or until the edamame has Frozen Edamame (thawed; 1 warmed through. Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and Vegetable Broth garlic. Tamari (substitute soy sauce) Ginger (fresh, ﬁnely grated)             Add the ginger and garlic sauce to the pan. Stir to combine and cook, stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4250,7 +4012,7 @@
       "default_carbs_g": 53
     },
     {
-      "name": "Water                                      once \ufb01nished.",
+      "name": "Water                                      once ﬁnished.",
       "category": "lunch",
       "ingredients": [
         "Cremini Mushrooms (sliced)",
@@ -4258,7 +4020,7 @@
         "cup)",
         "Garlic (clove, minced)"
       ],
-      "instructions": "Brown Rice (1/4 cup; dry)               Cook rice according to package instructions or in a rice cooker. Set aside Water                                      once \ufb01nished. Sesame Oil                                     Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (1/3 onion, sliced)        until the mushrooms and onions have started to brown. Kale Leaves (\ufb01nely chopped; Add the kale and stir to combine. Continue to cook until kale has wilted. Add in the edamame and cook for 2 to 3 minutes or until the edamame has Frozen Edamame (thawed; 1 warmed through. Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and Vegetable Broth garlic. Tamari (substitute soy sauce) Ginger (fresh, \ufb01nely grated)                Add the ginger and garlic sauce to the pan. Stir to combine and cook, stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
+      "instructions": "Brown Rice (1/4 cup; dry)               Cook rice according to package instructions or in a rice cooker. Set aside Water                                      once ﬁnished. Sesame Oil                                     Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (1/3 onion, sliced)        until the mushrooms and onions have started to brown. Kale Leaves (ﬁnely chopped; Add the kale and stir to combine. Continue to cook until kale has wilted. Add in the edamame and cook for 2 to 3 minutes or until the edamame has Frozen Edamame (thawed; 1 warmed through. Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and Vegetable Broth garlic. Tamari (substitute soy sauce) Ginger (fresh, ﬁnely grated)                Add the ginger and garlic sauce to the pan. Stir to combine and cook, stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4306,7 +4068,7 @@
       "default_carbs_g": 76
     },
     {
-      "name": "Water                                   once \ufb01nished.",
+      "name": "Water                                   once ﬁnished.",
       "category": "lunch",
       "ingredients": [
         "Cremini Mushrooms (sliced)",
@@ -4315,7 +4077,7 @@
         "3/4 cup)",
         "Garlic (clove, minced)"
       ],
-      "instructions": "Brown Rice (1/2 cup; dry)               Cook rice according to package instructions or in a rice cooker. Set aside Water                                   once \ufb01nished. Sesame Oil                                 Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (2/3 onion,                until the mushrooms and onions have started to brown. Add the kale and stir to combine. Continue to cook until kale has wilted. Add Kale Leaves (\ufb01nely chopped; 1 in the edamame and cook for 2 to 3 minutes or until the edamame has warmed through. Frozen Edamame (thawed; 1 Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and garlic. Vegetable Broth Tamari (substitute soy sauce)             Add the ginger and garlic sauce to the pan. Stir to combine and cook, Ginger (fresh, \ufb01nely grated)                 stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
+      "instructions": "Brown Rice (1/2 cup; dry)               Cook rice according to package instructions or in a rice cooker. Set aside Water                                   once ﬁnished. Sesame Oil                                 Heat the sesame oil in a large pan or skillet over medium-high heat. Add the mushrooms and onions to the pan and cook for 5 to 8 minutes or Yellow Onion (2/3 onion,                until the mushrooms and onions have started to brown. Add the kale and stir to combine. Continue to cook until kale has wilted. Add Kale Leaves (ﬁnely chopped; 1 in the edamame and cook for 2 to 3 minutes or until the edamame has warmed through. Frozen Edamame (thawed; 1 Meanwhile, in a small bowl combine the vegetable broth, tamari, ginger and garlic. Vegetable Broth Tamari (substitute soy sauce)             Add the ginger and garlic sauce to the pan. Stir to combine and cook, Ginger (fresh, ﬁnely grated)                 stirring often, for 2 to 3 minutes more. Season the stir fry with additional tamari or salt if needed. To serve, place the rice onto a plate and top with the mushroom and edamame stir fry. Enjoy!",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4336,14 +4098,14 @@
       "default_carbs_g": 106
     },
     {
-      "name": "Water                                   Preheat the oven to 375\u00b0F (191\u00baC).",
+      "name": "Water                                   Preheat the oven to 375°F (191ºC).",
       "category": "dinner",
       "ingredients": [
-        "cubes; 5 oz extra \ufb01rm)",
+        "cubes; 5 oz extra ﬁrm)",
         "about 1 1/4 cup)",
-        "\ufb02orets; 1 1/4 cup)"
+        "ﬂorets; 1 1/4 cup)"
       ],
-      "instructions": "Brown Rice (dry; about 1/3 cup)        Cook rice according to package instructions or in a rice cooker. Water                                   Preheat the oven to 375\u00b0F (191\u00baC). Tofu (drained, chopped into Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Garlic Powder the garlic powder, ground cumin, and sea salt. Mix well. Cumin Add the cauli\ufb02ower, broccoli, and edamame to the opposite side of the pan Sea Salt and spray with non-stick spray. Sprinkle the remaining garlic powder, and Broccoli (chopped into \ufb02orets; sea salt. Mix everything well. Roast for 20 minutes, and then take out of the oven to stir the vegetables Cauli\ufb02ower (chopped into around. Place back in the oven and roast for another 20 minutes or until the cauli\ufb02ower is tender. Frozen Edamame (about 1 cup) Place on a plate and enjoy!",
+      "instructions": "Brown Rice (dry; about 1/3 cup)        Cook rice according to package instructions or in a rice cooker. Water                                   Preheat the oven to 375°F (191ºC). Tofu (drained, chopped into Prepare a sheet pan with aluminum foil and spray with non-stick spray. Add the tofu to the pan and spray with non-stick spray. Sprinkle over top the tofu Garlic Powder the garlic powder, ground cumin, and sea salt. Mix well. Cumin Add the cauliﬂower, broccoli, and edamame to the opposite side of the pan Sea Salt and spray with non-stick spray. Sprinkle the remaining garlic powder, and Broccoli (chopped into ﬂorets; sea salt. Mix everything well. Roast for 20 minutes, and then take out of the oven to stir the vegetables Cauliﬂower (chopped into around. Place back in the oven and roast for another 20 minutes or until the cauliﬂower is tender. Frozen Edamame (about 1 cup) Place on a plate and enjoy!",
       "sources": [
         "CSMs_Dinner"
       ],
@@ -4427,7 +4189,7 @@
         "Egg",
         "Bagel (sliced in half, toasted)"
       ],
-      "instructions": "Turkey Bacon (when cooked,             Heat a skillet over medium heat. Cook the turkey bacon for \ufb01ve minutes each side or until cooked to your desired crispiness. Transfer to a towel- Whole Grain Mustard                 lined plate to absorb any excess oil. Pickle (chopped)                       In the same pan, crack the egg and add egg whites and cook until the Arugula (1 cup)                     whites are set and the yolk is cooked to your liking. Slice the bagel in half and add to a toaster. Remove once done. Egg Whites (1/3 cup) Spread mustard on the bottom bagel and top with the pickle, arugula, 2 slices of turkey bacon, egg, and egg whites. Consume the remaining 2 slices of turkey bacon on the side. Close the bagel and enjoy!",
+      "instructions": "Turkey Bacon (when cooked,             Heat a skillet over medium heat. Cook the turkey bacon for ﬁve minutes each side or until cooked to your desired crispiness. Transfer to a towel- Whole Grain Mustard                 lined plate to absorb any excess oil. Pickle (chopped)                       In the same pan, crack the egg and add egg whites and cook until the Arugula (1 cup)                     whites are set and the yolk is cooked to your liking. Slice the bagel in half and add to a toaster. Remove once done. Egg Whites (1/3 cup) Spread mustard on the bottom bagel and top with the pickle, arugula, 2 slices of turkey bacon, egg, and egg whites. Consume the remaining 2 slices of turkey bacon on the side. Close the bagel and enjoy!",
       "sources": [
         "CSMs_Breakfast"
       ],
@@ -4455,7 +4217,7 @@
         "medium-sized, peeled and sectioned)",
         "scoop, preferably vanilla)"
       ],
-      "instructions": "Unsweetened Almond Milk                    Place the almond milk, ground \ufb02ax seeds, hemp seeds, orange, frozen berries, spinach, and protein powder together in a blender. Blend until Ground Flax Seed                        smooth. Hemp Seeds                               Pour into glass and enjoy! (Pour into a mason jar if you are on the go.) Navel Orange (about 1/4 Frozen Berries (1/2 cup) Baby Spinach (2/3 cup)              Log this meal on MyFitnessPal by searching \"BWS Winter Berry Smoothie\" on the Whey Protein Powder (2/3            app. To make the recipe vegan, substitute a vegan protein powder instead of the whey protein powder.",
+      "instructions": "Unsweetened Almond Milk                    Place the almond milk, ground ﬂax seeds, hemp seeds, orange, frozen berries, spinach, and protein powder together in a blender. Blend until Ground Flax Seed                        smooth. Hemp Seeds                               Pour into glass and enjoy! (Pour into a mason jar if you are on the go.) Navel Orange (about 1/4 Frozen Berries (1/2 cup) Baby Spinach (2/3 cup)              Log this meal on MyFitnessPal by searching \"BWS Winter Berry Smoothie\" on the Whey Protein Powder (2/3            app. To make the recipe vegan, substitute a vegan protein powder instead of the whey protein powder.",
       "sources": [
         "CSMs_High_Protein_Snacks"
       ],
@@ -4480,11 +4242,11 @@
       "category": "lunch",
       "ingredients": [
         "pepper; sliced)",
-        "small \ufb02orets)",
+        "small ﬂorets)",
         "chunks)",
         "Navel Orange (zested and juiced)"
       ],
-      "instructions": "Cherry Tomatoes (1 cup)                Cook rice according to package instructions or in a rice cooker. Salmon Fillet (6 oz)                   Preheat oven to 375\u00baF (191\u00baC) and line a baking sheet with parchment paper. Yellow Bell Pepper (1 bell Meanwhile, zest the navel orange with a microplane. Once \ufb01nished, juice \u00bc of the orange. Broccoli (2 cups; chopped into Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with Red Onion (1/3 cup; sliced into the soy sauce, orange juice and zest. Sprinkle everything with salt and pepper to taste. Extra Virgin Olive Oil Soy Sauce                                     Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Divide onto your plate, serve with cooked rice, and enjoy! Brown Rice (1/4 cup; dry) Water Log this meal on MyFitnessPal by searching \u201cBWS One Pan Salmon with Rainbow Veggies & Rice- 700-800\u201d on the app.",
+      "instructions": "Cherry Tomatoes (1 cup)                Cook rice according to package instructions or in a rice cooker. Salmon Fillet (6 oz)                   Preheat oven to 375ºF (191ºC) and line a baking sheet with parchment paper. Yellow Bell Pepper (1 bell Meanwhile, zest the navel orange with a microplane. Once ﬁnished, juice ¼ of the orange. Broccoli (2 cups; chopped into Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with Red Onion (1/3 cup; sliced into the soy sauce, orange juice and zest. Sprinkle everything with salt and pepper to taste. Extra Virgin Olive Oil Soy Sauce                                     Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Divide onto your plate, serve with cooked rice, and enjoy! Brown Rice (1/4 cup; dry) Water Log this meal on MyFitnessPal by searching “BWS One Pan Salmon with Rainbow Veggies & Rice- 700-800” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4518,12 +4280,12 @@
       "category": "plan",
       "ingredients": [
         "pepper; sliced)",
-        "small \ufb02orets)",
+        "small ﬂorets)",
         "chunks)",
         "Navel Orange (zested and juiced)",
         "Sea Salt & Black Pepper (to taste)"
       ],
-      "instructions": "Cherry Tomatoes (3/4 cup)               Preheat oven to 375\u00baF (191\u00baC) and line a baking sheet with parchment paper. Salmon Fillet (5 oz)                   Meanwhile, zest the navel orange with a microplane. Once \ufb01nished, juice \u00bc Yellow Bell Pepper (1 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (2 cups; chopped into the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Red Onion (1/3 cup; sliced into         pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Extra Virgin Olive Oil Soy Sauce                               Divide onto your plate and enjoy! Log this meal on MyFitnessPal by searching \u201cBWS One Pan Salmon with Rainbow Veggies - 500-600\u201d on the app.",
+      "instructions": "Cherry Tomatoes (3/4 cup)               Preheat oven to 375ºF (191ºC) and line a baking sheet with parchment paper. Salmon Fillet (5 oz)                   Meanwhile, zest the navel orange with a microplane. Once ﬁnished, juice ¼ Yellow Bell Pepper (1 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (2 cups; chopped into the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Red Onion (1/3 cup; sliced into         pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Extra Virgin Olive Oil Soy Sauce                               Divide onto your plate and enjoy! Log this meal on MyFitnessPal by searching “BWS One Pan Salmon with Rainbow Veggies - 500-600” on the app.",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V2_1900-2100",
         "CSMs_Lunch"
@@ -4558,11 +4320,11 @@
       "category": "lunch",
       "ingredients": [
         "pepper; sliced)",
-        "into small \ufb02orets)",
+        "into small ﬂorets)",
         "chunks)",
         "Sea Salt & Black Pepper (to taste)"
       ],
-      "instructions": "Cherry Tomatoes (3/4 cup)               Preheat oven to 375\u00baF (191\u00baC) and line a baking sheet with parchment paper. Salmon Fillet (4.5 oz)                  Meanwhile, zest the navel orange with a microplane. Once \ufb01nished, juice \u00bc Yellow Bell Pepper (1/2 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (1 3/4 cups; chopped the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Red Onion (1/3 cup; sliced into          pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Extra Virgin Olive Oil Soy Sauce                                     Divide onto your plate and enjoy! Navel Orange (zested and juiced) Log this meal on MyFitnessPal by searching \u201cBWS One Pan Salmon with Rainbow Veggies - 400-500\u201d on the app.",
+      "instructions": "Cherry Tomatoes (3/4 cup)               Preheat oven to 375ºF (191ºC) and line a baking sheet with parchment paper. Salmon Fillet (4.5 oz)                  Meanwhile, zest the navel orange with a microplane. Once ﬁnished, juice ¼ Yellow Bell Pepper (1/2 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (1 3/4 cups; chopped the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Red Onion (1/3 cup; sliced into          pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Extra Virgin Olive Oil Soy Sauce                                     Divide onto your plate and enjoy! Navel Orange (zested and juiced) Log this meal on MyFitnessPal by searching “BWS One Pan Salmon with Rainbow Veggies - 400-500” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4596,11 +4358,11 @@
       "category": "lunch",
       "ingredients": [
         "pepper; sliced)",
-        "small \ufb02orets)",
+        "small ﬂorets)",
         "chunks)",
         "Sea Salt & Black Pepper (to taste)"
       ],
-      "instructions": "Cherry Tomatoes (1/3 cup)                Preheat oven to 375\u00baF (191\u00baC) and line a baking sheet with parchment paper. Salmon Fillet (3.5 oz)                  Meanwhile, zest the navel orange with a microplane. Once \ufb01nished, juice \u00bc Yellow Bell Pepper (1/4 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (1 cup; chopped into the sheet pan. Spray the vegetables with non-stick cooking spray. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with Red Onion (1 1/2 tbsp; sliced into       salt and pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Soy Sauce Navel Orange (zested and juiced)                Divide onto your plate and enjoy! Log this meal on MyFitnessPal by searching \u201cBWS One Pan Salmon with Rainbow Veggies - 200-300\u201d on the app.",
+      "instructions": "Cherry Tomatoes (1/3 cup)                Preheat oven to 375ºF (191ºC) and line a baking sheet with parchment paper. Salmon Fillet (3.5 oz)                  Meanwhile, zest the navel orange with a microplane. Once ﬁnished, juice ¼ Yellow Bell Pepper (1/4 bell             of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Broccoli (1 cup; chopped into the sheet pan. Spray the vegetables with non-stick cooking spray. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with Red Onion (1 1/2 tbsp; sliced into       salt and pepper to taste. Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Soy Sauce Navel Orange (zested and juiced)                Divide onto your plate and enjoy! Log this meal on MyFitnessPal by searching “BWS One Pan Salmon with Rainbow Veggies - 200-300” on the app.",
       "sources": [
         "CSMs_Lunch"
       ],
@@ -4625,11 +4387,11 @@
       "category": "plan",
       "ingredients": [
         "Yellow Bell Pepper (sliced)",
-        "small \ufb02orets)",
+        "small ﬂorets)",
         "chunks)",
         "Navel Orange (zested and juiced)"
       ],
-      "instructions": "Cherry Tomatoes (1 cup)                Cook rice according to package instructions or in a rice cooker. Salmon Fillet (5 oz)                   Preheat oven to 375\u00baF (191\u00baC) and line a baking sheet with parchment paper. Meanwhile, zest the navel orange with a microplane. Once \ufb01nished, juice \u00bc Broccoli (2 cups; chopped into of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Red Onion (1/3 cup; sliced into the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Extra Virgin Olive Oil pepper to taste. Soy Sauce Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Brown Rice (1/4 cup; dry)               Divide onto your plate, serve with cooked rice, and enjoy! Water Log this meal on MyFitnessPal by searching \u201cBWS One Pan Salmon with Rainbow Veggies & Rice - 600-700\u201d on the app.",
+      "instructions": "Cherry Tomatoes (1 cup)                Cook rice according to package instructions or in a rice cooker. Salmon Fillet (5 oz)                   Preheat oven to 375ºF (191ºC) and line a baking sheet with parchment paper. Meanwhile, zest the navel orange with a microplane. Once ﬁnished, juice ¼ Broccoli (2 cups; chopped into of the orange. Place the cherry tomatoes, salmon, bell pepper, broccoli, and red onion on Red Onion (1/3 cup; sliced into the sheet pan. Drizzle the vegetables with olive oil. Brush the salmon with the soy sauce, orange juice and zest. Sprinkle everything with salt and Extra Virgin Olive Oil pepper to taste. Soy Sauce Place in the oven and bake for 30 minutes, or until salmon is fully cooked. Brown Rice (1/4 cup; dry)               Divide onto your plate, serve with cooked rice, and enjoy! Water Log this meal on MyFitnessPal by searching “BWS One Pan Salmon with Rainbow Veggies & Rice - 600-700” on the app.",
       "sources": [
         "BWS_Meal_Plan_-_Males_Shred_V2_2100-2300",
         "CSMs_Lunch"
@@ -4882,19 +4644,18 @@
     }
   ],
   "stats": {
-    "total_recipes": 152,
-    "with_ingredients": 139,
-    "with_instructions": 152,
+    "total_recipes": 144,
+    "with_ingredients": 131,
+    "with_instructions": 144,
     "by_category": {
-      "dinner": 22,
-      "budget": 3,
+      "snack": 22,
       "plan": 14,
-      "breakfast": 40,
-      "lunch": 36,
       "quick": 7,
-      "recipe": 8,
-      "snack": 22
+      "breakfast": 40,
+      "budget": 3,
+      "dinner": 22,
+      "lunch": 36
     },
-    "total_variants": 231
+    "total_variants": 221
   }
 }
