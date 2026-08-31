@@ -62,7 +62,7 @@ export async function renderPrograms(app) {
             PT program · Pool mobility &amp; strength · Deep-water aerobic progression
           </div>
         </div>
-        <span class="pill" style="color:#22d3ee;border-color:rgba(34,211,238,0.4);flex-shrink:0;margin-left:8px">
+        <span class="pill" style="color:#38bdf8;border-color:rgba(56,189,248,0.4);flex-shrink:0;margin-left:8px">
           ${hipWeek ? `Week ${hipWeek}` : '6 sections'}
         </span>
       </div>

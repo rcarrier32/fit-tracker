@@ -612,9 +612,9 @@ export async function renderHip(app) {
           <div style="display:flex;gap:9px;align-items:baseline;padding:3px 0;
             ${i === dow ? 'color:#f1f5f9;font-weight:600' : 'color:#64748b'}">
             <span style="width:30px;flex-shrink:0;font-size:11px;
-              color:${i === dow ? '#22d3ee' : '#475569'}">${d.day}</span>
+              color:${i === dow ? '#38bdf8' : '#475569'}">${d.day}</span>
             <span style="font-size:11.5px;line-height:1.4">${esc(d.focus)}</span>
-            ${i === dow ? '<span style="font-size:9px;color:#22d3ee;letter-spacing:0.06em">TODAY</span>' : ''}
+            ${i === dow ? '<span style="font-size:9px;color:#38bdf8;letter-spacing:0.06em">TODAY</span>' : ''}
           </div>`).join('')}
       </div>`;
   }
@@ -711,7 +711,7 @@ export async function renderHip(app) {
 
       ${!started ? `
         <button id="hip-begin" style="width:100%;padding:11px;border-radius:8px;cursor:pointer;
-          background:rgba(8,145,178,0.10);border:1px solid #22d3ee;color:#22d3ee;
+          background:rgba(2,132,199,0.10);border:1px solid #38bdf8;color:#38bdf8;
           font-size:13px;font-weight:600;margin-bottom:12px">▶ Start tracking this protocol</button>` : ''}
 
       <div style="padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">

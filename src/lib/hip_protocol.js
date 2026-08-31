@@ -141,7 +141,7 @@ export const SECTIONS = [
     label: 'PT Program',
     tag: 'Core · 3× / week',
     accent: '#22d3ee',
-    bg: 'rgba(8,145,178,0.10)',
+    bg: 'rgba(2,132,199,0.10)',
     description: 'Your prescribed PT exercises. Quality over load — every rep should be controlled, and the pelvis should stay level throughout. Sets and reps are editable; update them as your PT progresses you.',
     criteria: [
       'Single leg stance 30 s per side with no pelvic drop',

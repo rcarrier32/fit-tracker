@@ -37,7 +37,7 @@ const PHASES = [
     label: 'Phase 1',
     tag: 'Weeks 1–2 · Decompression',
     accent: '#22d3ee',
-    bg: 'rgba(8,145,178,0.10)',
+    bg: 'rgba(2,132,199,0.10)',
     description: 'Release the structures pulling your scapula down and your first rib up. No strength work yet — just tissue prep and breathing mechanics.',
     criteria: [
       'First rib no longer tender on palpation just above the clavicle',
