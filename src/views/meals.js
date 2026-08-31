@@ -450,7 +450,8 @@ function renderList(el, meals, dateKey) {
     `;
     node.onclick = (e) => {
       if (e.target.closest('.del-meal')) return;
-      openEditMeal(m, dateKey);
+      if (m.ingredients?.length) openLoggedComboEdit(m, dateKey);
+      else openEditMeal(m, dateKey);
     };
     node.querySelector('.del-meal').onclick = async (e) => {
       e.stopPropagation();
@@ -886,6 +887,59 @@ function scaleIngredient(ing, newAmount) {
   };
 }
 
+function renderIngredientRows(ingredients) {
+  return ingredients.map((ing, i) => `
+    <div class="cd-row" data-idx="${i}" style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px">${attrEsc(ing.name)}</div>
+        <div class="muted cd-row-macros" style="font-size:12px"></div>
+      </div>
+      <input type="number" class="cd-i-amount" inputmode="decimal" value="${ing.amount ?? 0}" style="width:70px;flex-shrink:0">
+      <span class="muted" style="font-size:12px;flex-shrink:0">${attrEsc(ing.unit || '')}</span>
+    </div>
+  `).join('');
+}
+
+/**
+ * Wires live per-line + running-total recalculation for ingredient rows already in the
+ * sheet (from `renderIngredientRows`). Each line rescales against its OWN saved `amount`
+ * (never the last-typed value), so edits don't compound the way the old per-serving-grams
+ * rescale bug did. Returns a function that reads the currently-resolved ingredients+totals
+ * on demand, shared between the "log a saved combo" and "edit an already-logged combo" sheets.
+ */
+function wireIngredientRows(sheet, ingredients, onUpdate) {
+  const $rows = sheet.querySelector('#cd-rows');
+  function resolve() {
+    return ingredients.map((ing, i) => {
+      const row = $rows.querySelector(`.cd-row[data-idx="${i}"]`);
+      const amt = numInput(row.querySelector('.cd-i-amount'), ing.amount);
+      return { ...ing, amount: amt, ...scaleIngredient(ing, amt) };
+    });
+  }
+  function totalsOf(resolved) {
+    return resolved.reduce((t, i) => ({
+      cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
+    }), { cal: 0, p: 0, c: 0, f: 0 });
+  }
+  function update() {
+    const resolved = resolve();
+    resolved.forEach((s, i) => {
+      $rows.querySelector(`.cd-row[data-idx="${i}"] .cd-row-macros`).textContent =
+        `${s.calories} kcal · ${s.protein}p · ${s.carbs}c · ${s.fat}f`;
+    });
+    const t = totalsOf(resolved);
+    sheet.querySelector('#cd-total').textContent =
+      `Total: ${Math.round(t.cal)} kcal · ${Math.round(t.p * 10) / 10}p · ${Math.round(t.c * 10) / 10}c · ${Math.round(t.f * 10) / 10}f`;
+    onUpdate?.();
+  }
+  $rows.querySelectorAll('.cd-i-amount').forEach(inp => inp.addEventListener('input', update));
+  update();
+  return () => {
+    const resolved = resolve();
+    return { resolved, totals: totalsOf(resolved) };
+  };
+}
+
 /** Log a saved combo — each ingredient's amount defaults from the save but is editable,
  * and rescales that line (and the running total) independently of the others. */
 function openCompositeDetail(item, parentClose, dateKey) {
@@ -895,7 +949,7 @@ function openCompositeDetail(item, parentClose, dateKey) {
     sheet.innerHTML = `
       <h2>${attrEsc(item.name)}</h2>
       <div class="muted" style="margin-bottom:10px;font-size:13px">Adjust any ingredient's amount — the total updates as you go.</div>
-      <div id="cd-rows"></div>
+      <div id="cd-rows">${renderIngredientRows(ingredients)}</div>
       <div id="cd-total" class="muted" style="margin:10px 0;font-size:14px"></div>
       <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:14px">
         <input type="checkbox" id="cd-update-defaults" style="width:auto;min-height:auto"> Update saved amounts with these changes
@@ -905,43 +959,10 @@ function openCompositeDetail(item, parentClose, dateKey) {
         <button class="btn ghost" id="cd-cancel">Cancel</button>
       </div>
     `;
-    const $rows = sheet.querySelector('#cd-rows');
-    $rows.innerHTML = ingredients.map((ing, i) => `
-      <div class="cd-row" data-idx="${i}" style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-        <div style="flex:1;min-width:0">
-          <div style="font-size:14px">${attrEsc(ing.name)}</div>
-          <div class="muted cd-row-macros" style="font-size:12px"></div>
-        </div>
-        <input type="number" class="cd-i-amount" inputmode="decimal" value="${ing.amount ?? 0}" style="width:70px;flex-shrink:0">
-        <span class="muted" style="font-size:12px;flex-shrink:0">${attrEsc(ing.unit || '')}</span>
-      </div>
-    `).join('');
-
-    function update() {
-      let cal = 0, p = 0, c = 0, f = 0;
-      $rows.querySelectorAll('.cd-row').forEach(row => {
-        const ing = ingredients[+row.dataset.idx];
-        const amt = numInput(row.querySelector('.cd-i-amount'), ing.amount);
-        const s = scaleIngredient(ing, amt);
-        row.querySelector('.cd-row-macros').textContent = `${s.calories} kcal · ${s.protein}p · ${s.carbs}c · ${s.fat}f`;
-        cal += s.calories; p += s.protein; c += s.carbs; f += s.fat;
-      });
-      sheet.querySelector('#cd-total').textContent =
-        `Total: ${Math.round(cal)} kcal · ${Math.round(p * 10) / 10}p · ${Math.round(c * 10) / 10}c · ${Math.round(f * 10) / 10}f`;
-    }
-    $rows.querySelectorAll('.cd-i-amount').forEach(inp => inp.addEventListener('input', update));
-    update();
-
+    const getResolved = wireIngredientRows(sheet, ingredients);
     sheet.querySelector('#cd-cancel').onclick = close;
     sheet.querySelector('#cd-log').onclick = async () => {
-      const resolved = ingredients.map((ing, i) => {
-        const row = $rows.querySelector(`.cd-row[data-idx="${i}"]`);
-        const amt = numInput(row.querySelector('.cd-i-amount'), ing.amount);
-        return { ...ing, amount: amt, ...scaleIngredient(ing, amt) };
-      });
-      const totals = resolved.reduce((t, i) => ({
-        cal: t.cal + i.calories, p: t.p + i.protein, c: t.c + i.carbs, f: t.f + i.fat,
-      }), { cal: 0, p: 0, c: 0, f: 0 });
+      const { resolved, totals } = getResolved();
       await put('meals', {
         date: dateKey,
         name: item.name,
@@ -954,6 +975,7 @@ function openCompositeDetail(item, parentClose, dateKey) {
         fiber: 0,
         saturated_fat: 0,
         ingredients: resolved,
+        comboId: item.id ?? null,
         time: new Date().toISOString(),
       });
       if (sheet.querySelector('#cd-update-defaults')?.checked) {
@@ -975,6 +997,63 @@ function openCompositeDetail(item, parentClose, dateKey) {
       toast(`Logged ${item.name}`);
       close();
       if (parentClose) parentClose();
+      renderMeals(document.getElementById('app'));
+    };
+  });
+}
+
+/** Edit an already-logged combo entry — same per-ingredient override UI as logging one,
+ * but updates the existing `meals` record in place instead of creating a new entry. */
+function openLoggedComboEdit(m, dateKey) {
+  const ingredients = m.ingredients || [];
+  openSheet((sheet, close) => {
+    sheet.innerHTML = `
+      <h2>${attrEsc(m.name)}</h2>
+      <div class="muted" style="margin-bottom:10px;font-size:13px">Adjust any ingredient's amount — the total updates as you go.</div>
+      <div id="cd-rows">${renderIngredientRows(ingredients)}</div>
+      <div id="cd-total" class="muted" style="margin:10px 0;font-size:14px"></div>
+      ${m.comboId != null ? `
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:14px">
+        <input type="checkbox" id="cd-update-defaults" style="width:auto;min-height:auto"> Update the saved combo's default amounts too
+      </label>` : ''}
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn" id="cd-save">Save</button>
+        <button class="btn ghost" id="cd-cancel">Cancel</button>
+      </div>
+    `;
+    const getResolved = wireIngredientRows(sheet, ingredients);
+    sheet.querySelector('#cd-cancel').onclick = close;
+    sheet.querySelector('#cd-save').onclick = async () => {
+      const { resolved, totals } = getResolved();
+      await put('meals', {
+        ...m,
+        serving: `${resolved.length} ingredients`,
+        calories: Math.round(totals.cal),
+        protein: Math.round(totals.p * 10) / 10,
+        carbs: Math.round(totals.c * 10) / 10,
+        fat: Math.round(totals.f * 10) / 10,
+        fiber: 0,
+        saturated_fat: 0,
+        ingredients: resolved,
+      });
+      if (m.comboId != null && sheet.querySelector('#cd-update-defaults')?.checked) {
+        await saveToLibrary({
+          id: m.comboId,
+          name: m.name,
+          serving: `${resolved.length} ingredients`,
+          calories: Math.round(totals.cal),
+          protein: Math.round(totals.p * 10) / 10,
+          carbs: Math.round(totals.c * 10) / 10,
+          fat: Math.round(totals.f * 10) / 10,
+          fiber: 0,
+          saturated_fat: 0,
+          ingredients: resolved,
+          category: 'user',
+          kind: 'composite',
+        });
+      }
+      toast('Updated');
+      close();
       renderMeals(document.getElementById('app'));
     };
   });
