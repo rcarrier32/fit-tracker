@@ -126,9 +126,16 @@ def parse_page(page_text, source):
             # and the recipe silently loses its only reliable name signal. "enjoy!" gets
             # the same treatment for a different reason — it's always the tail of a step
             # sentence ("...and enjoy!"), never an ingredient, and at 1-2 words it easily
-            # passes the short-line ingredient heuristic below.
+            # passes the short-line ingredient heuristic below. A trailing period is the
+            # general case of the same problem: a substitution tip ("...ground turkey or
+            # chicken.") can wrap with nothing but its last word on the next line —
+            # "chicken." — which is short and parens-free enough to read as an ingredient,
+            # and would then get glued onto whatever real ingredient came before it by the
+            # lowercase-continuation rejoin downstream. No real ingredient in this dataset
+            # ends in a sentence period, so this is a safe, general tell.
             if (re.match(r'^[-–]\s*\d', single) or re.search(r'on the app\b', single, re.IGNORECASE)
-                    or re.search(r'\benjoy!?\s*$', single, re.IGNORECASE)):
+                    or re.search(r'\benjoy!?\s*$', single, re.IGNORECASE)
+                    or re.search(r'\.\s*$', single)):
                 instructions.append(single)
             # If line is short and parens-like, ingredient. Otherwise instruction.
             elif (len(single) < 60 and (ING_PARENS_RE.search(single) or len(single.split()) <= 6)):

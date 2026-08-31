@@ -33,7 +33,22 @@ OUT = Path("/Users/carriermac/Developer/Family Cooking App/data/bws-recipes.json
 # exclusion already applied to fit-tracker's own meal_library.json).
 EXCLUDED_SOURCES = {"BWS_Recipe_Book_200-800__Calorie_Fast_Food"}
 
-QTY_TOKEN_RE = re.compile(r'(\d+\s+\d+/\d+|\d+/\d+|\d+\.\d+|\d+)(?!\s*%)')
+QTY_TOKEN_RE = re.compile(r'(\d+\s+\d+/\d+|\d+/\d+|\d+\.\d+|\d+)')
+PERCENT_RE = re.compile(r'\d+(?:\.\d+)?\s*%')
+
+
+def find_quantity(content):
+    """The first real quantity in `content`, e.g. "about 4 oz" inside "90% lean, 10% fat
+    or leaner; about 4 oz". Masks out any N% occurrence before searching rather than
+    excluding it with a negative lookahead on the number regex — a lookahead lets the
+    greedy \\d+ in QTY_TOKEN_RE backtrack from "90" down to "9" once "90%" fails the
+    exclusion, and "9" (immediately followed by "0", not "%") then quietly passes the
+    same check and gets returned as if it were the real quantity. Masking removes "90%"
+    from consideration entirely, so there's nothing left for a backtrack to fall onto;
+    positions and every non-percent character are preserved, so a match against the
+    masked text points at the identical span in the original string."""
+    masked = PERCENT_RE.sub(lambda m: ' ' * len(m.group()), content)
+    return QTY_TOKEN_RE.search(masked)
 
 TIP_MARKERS = (
     'log this meal', 'myfitnesspal', 'searching "', "searching “",
@@ -124,7 +139,7 @@ def reformat_and_double(text):
     "Cinnamon") is left untouched — matches the app's own qty:null / UNCOUNTABLE handling,
     the correct outcome for a quantity BWS never stated in the first place."""
     for start, end, content in find_balanced_parens(text):
-        m = QTY_TOKEN_RE.search(content)
+        m = find_quantity(content)
         if not m:
             continue
         try:
@@ -183,14 +198,29 @@ def clean_ingredients(items):
     nothing on its right side, e.g. "Whole Wheat Spaghetti (about" / "3 cups)" — read as
     two separate ingredients instead of one; rejoined here by detecting an unclosed paren
     or a continuation that starts lowercase/with a closing paren. (2) stray tip/hint
-    fragments ("and enjoy!", "…") that still made it through — dropped outright."""
+    fragments ("and enjoy!", "…") that still made it through — dropped outright.
+
+    A third wrap shape doesn't fit either signal: "Non Fat (0%) Plain Greek" / "Yogurt
+    (2 cup)" — both halves are properly capitalized (real ingredient-name words), and the
+    first half's own paren has a percentage, not a missing bracket, so nothing above
+    catches it. Confirmed by running every converted line through the app's actual
+    parseIngredient(): every ingredient with a paren+digit that STILL came back qty:null
+    was one of these — 17 across the dataset, always ending in "Greek" (BWS never
+    abbreviates "Greek Yogurt" any other way that wraps this awkwardly). Narrow and safe:
+    doesn't touch "Extra Virgin Olive Oil (divided)"-style lines, which have no digit to
+    lose and are complete ingredients on their own."""
     joined = []
     for item in items:
         if JUNK_INGREDIENT_RE.match(item.strip()):
             continue  # drop outright — must happen before the rejoin check below, or a
             # junk fragment that happens to start lowercase ("and enjoy!") gets glued onto
             # the previous real ingredient instead of being discarded.
-        if joined and (re.match(r'^[a-z)]', item) or joined[-1].count('(') > joined[-1].count(')')):
+        prev_wraps = joined and (
+            re.match(r'^[a-z)]', item)
+            or joined[-1].count('(') > joined[-1].count(')')
+            or re.search(r'\bGreek$', joined[-1].strip(), re.IGNORECASE)
+        )
+        if prev_wraps:
             joined[-1] = f'{joined[-1]} {item}'
         else:
             joined.append(item)
