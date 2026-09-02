@@ -1,15 +1,18 @@
 /**
  * In-app update check via version.json only (avoids SW reload loops).
- * Bump `window.__FIT_V` in index.html, version.json `v`, and sw.js CACHE together.
+ * Never bump the version by hand — `scripts/bump-version.sh <n>` moves index.html,
+ * 404.html, version.json, sw.js CACHE and LOCAL_V together. They drifted apart once
+ * (index.html sat at 36 while version.json was 55) and the banner became permanent.
  */
-export const LOCAL_V = 33; // keep in sync with index.html window.__FIT_V
+export const LOCAL_V = 56; // keep in sync with index.html window.__FIT_V
 
 const VERSION_URL = new URL('version.json', location.href).href;
-const RELOAD_GUARD_KEY = 'fit-update-reload-ts';
+const RELOAD_GUARD_KEY = 'fit-update-attempted-v';
 const CHECK_INTERVAL_MS = 5 * 60 * 1000;
 
 let _banner = null;
 let _lastCheck = 0;
+let _remoteV = 0;
 
 function getLocalV() {
   const htmlV = Number(window.__FIT_V);
@@ -51,9 +54,13 @@ export async function checkForAppUpdate() {
     const remote = await fetchRemoteVersion();
     const localV = getLocalV();
     if (remote?.v != null && Number(remote.v) > localV) {
-      const reloadedAt = Number(sessionStorage.getItem(RELOAD_GUARD_KEY) || 0);
-      if (reloadedAt && now - reloadedAt < 15000) {
-        console.warn('[updates] still on v', localV, 'after reload; server has', remote.v);
+      _remoteV = Number(remote.v);
+      // We already reloaded for this exact server version and still came back older,
+      // so the served index.html itself is behind version.json — reloading again will
+      // never fix it. Stay quiet for this version rather than nagging every 5 minutes.
+      const attemptedV = Number(sessionStorage.getItem(RELOAD_GUARD_KEY) || 0);
+      if (attemptedV >= _remoteV) {
+        console.warn('[updates] still on v', localV, 'after reload; server has', _remoteV);
         hideUpdateBanner();
         return false;
       }
@@ -76,7 +83,7 @@ export async function applyUpdate() {
     btn.textContent = 'Updating…';
   }
 
-  sessionStorage.setItem(RELOAD_GUARD_KEY, String(Date.now()));
+  sessionStorage.setItem(RELOAD_GUARD_KEY, String(_remoteV));
 
   try {
     const reg = await navigator.serviceWorker?.getRegistration();
