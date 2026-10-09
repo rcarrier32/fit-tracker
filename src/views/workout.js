@@ -7,6 +7,15 @@ import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor } from './schedule.js';
 import { loadCatalogs } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
+import { hipCaution } from '../lib/hip_protocol.js';
+
+// Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
+let _hipFlare = null;
+function hipCautionHtml(name) {
+  const why = _hipFlare && hipCaution(name);
+  if (!why) return '';
+  return `<div style="font-size:11px;color:#fdba74;margin-top:2px;line-height:1.35">⚠ Hip flare · ${why}</div>`;
+}
 
 const today = () => localDateStr();
 let _restInterval = null;
@@ -35,6 +44,7 @@ function toggleYtPlayer(btn, videoId, title) {
 
 export async function renderWorkout(app) {
   stopRestTimer();
+  _hipFlare = await pref('hip_flare');
   const today_w = await todaysWorkout();
   if (today_w.type === 'unset') {
     app.innerHTML = `
@@ -326,6 +336,7 @@ function _warmupBlockHtml(warmup, exMap) {
       <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
         <div style="flex:1;min-width:0">
           <div style="font-size:14px;font-weight:500">${ex.name}</div>
+          ${hipCautionHtml(ex.name)}
           ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
         </div>
         <div style="font-size:12px;color:var(--fg-dim);white-space:nowrap">${setsStr}${target}</div>
@@ -853,6 +864,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     <div class="exercise-header">
       <div style="flex:1">
         <div class="exercise-name">${ex.name}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}</div>
+        ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
         <div class="e1rm-line" style="font-size:12px;margin-top:2px">${initialE1RM}</div>

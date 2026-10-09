@@ -186,15 +186,16 @@ export async function renderHome(app) {
     pref('tos_progress'),
     pref('tos_logs'),
   ]);
-  const [hipProgress, hipLogs, hipFlare, hipPaused] = await Promise.all([
+  const [hipProgress, hipLogs, hipFlare, hipPaused, hipCustom] = await Promise.all([
     pref('hip_progress'),
     pref('hip_logs').then(v => v || {}),
     pref('hip_flare'),
     pref('hip_paused').then(v => v || {}),
+    pref('hip_custom').then(v => v || []),
   ]);
   // Only once the hip plan is in use — started, flaring, or anything ever checked off.
   const hip = (hipProgress || hipFlare || Object.keys(hipLogs).length)
-    ? hipToday({ flare: hipFlare, paused: hipPaused, done: hipLogs[today()] || {} })
+    ? hipToday({ flare: hipFlare, paused: hipPaused, custom: hipCustom, done: hipLogs[today()] || {} })
     : null;
 
   const tosDoneToday = tosProgress

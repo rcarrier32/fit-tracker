@@ -1290,11 +1290,12 @@ export function weeklySchedule(date = new Date()) {
  * Pelvic Reset otherwise or during a flare) and how much of it is checked off.
  * Shared by the Hip tab (which tab to open), the Home card and the Plans card.
  */
-export function hipToday({ flare = null, paused = {}, done = {}, date = new Date() } = {}) {
+export function hipToday({ flare = null, paused = {}, done = {}, custom = [], date = new Date() } = {}) {
   const day = weeklySchedule(date)[date.getDay()];
   const sectionId = flare ? 'pelvic-reset' : day.sections[day.sections.length - 1];
   const section = SECTIONS.find(s => s.id === sectionId);
-  const items = (section.exercises || []).filter(e => !paused[e.id]);
+  const items = [...(section.exercises || []), ...custom.filter(c => c.sectionId === sectionId)]
+    .filter(e => !paused[e.id]);
   return {
     sectionId,
     sectionLabel: section.label,
@@ -1341,3 +1342,52 @@ export const FLARE = {
   stopIf: 'Stop the exercise if you get a sharp pinch, burning that builds during the set, new tingling or numbness, weakness, or a limp. Write what happened in the note below — do not swap in something harder.',
   urgent: 'Same-day care if you cannot put weight on the leg, have significant new weakness, a fever with a hot or swollen hip, or one leg swells. Emergency care for any loss of bowel or bladder control, or numbness in the groin/saddle area.',
 };
+
+/**
+ * Side-hip (lateral hip / abductor) exercises — the load that lands on the sore area.
+ * Counted per week so total volume is visible, which matters more than any one exercise.
+ */
+export const SIDE_HIP_IDS = new Set([
+  'pt-side-lying-abduction', 'pt-side-plank', 'pt-band-walks', 'pt-fire-hydrant',
+  'mrc-monster-walk', 'mrc-quadruped-hip-hike', 'mrc-standing-hip-hike',
+  'mrc-side-plank-clamshell', 'mrc-copenhagen-knee', 'ps-abduction',
+]);
+
+/** Side-hip exercises checked off in the Sun–Sat week containing `date`. */
+export function sideHipCount(logs, date = new Date(), extraIds = []) {
+  const ids = new Set([...SIDE_HIP_IDS, ...extraIds]);
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+  d.setDate(d.getDate() - d.getDay());
+  let n = 0;
+  for (let i = 0; i < 7; i++) {
+    const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    for (const [id, done] of Object.entries(logs[k] || {})) if (done && ids.has(id)) n++;
+    d.setDate(d.getDate() + 1);
+  }
+  return n;
+}
+
+/** Planned side-hip exercises per week on the A/B schedule (A·B·A or B·A·B). */
+export function plannedSideHip(date = new Date()) {
+  const per = (id) => (SECTIONS.find(s => s.id === id)?.exercises || []).filter(e => SIDE_HIP_IDS.has(e.id)).length;
+  return weeklySchedule(date).reduce((n, d) => {
+    const sid = d.sections.find(x => x.startsWith('session-'));
+    return n + (sid ? per(sid) : 0);
+  }, 0);
+}
+
+/**
+ * Lifting-program movements that overlap with what flared the hip. Name-based, so it
+ * covers the PJF / BWS library without tagging every entry. Used only for a caution
+ * badge while flare mode is on — never to pause or remove anything outside the Hip tab.
+ */
+const HIP_CAUTION_RULES = [
+  [/90\s*\/\s*90/i, 'Seated 90/90 — the position the flare started in.'],
+  [/hip flexor\s*\/\s*quad bridge|couch stretch|hip flexor stretch|kneeling hip flexor/i, 'Hip-forward stretch — a known aggravator right now.'],
+  [/lunge|split squat/i, 'Lunge pattern — lunges currently provoke the hip.'],
+];
+
+export function hipCaution(name) {
+  for (const [re, reason] of HIP_CAUTION_RULES) if (re.test(name || '')) return reason;
+  return null;
+}
