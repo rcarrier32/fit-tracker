@@ -8,7 +8,7 @@
 import { pref } from '../db.js';
 import { navigate, toast, openSheet } from '../app.js';
 import {
-  SECTIONS, WEEKLY_SCHEDULE, AEROBIC_PROGRESSION, POST_POOL,
+  SECTIONS, EXERCISE_INDEX, weeklySchedule, AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE, FLARE,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
@@ -50,9 +50,12 @@ export async function renderHip(app) {
   let note       = allNotes[logDate] || '';    // free-text symptom note
 
   // Open on the section that matches today's schedule, when there is one.
-  const todaySched = WEEKLY_SCHEDULE[new Date().getDay()];
+  const week7 = weeklySchedule(new Date());
+  const todaySched = week7[new Date().getDay()];
   const firstToday = todaySched.sections.find(id => SECTIONS.some(s => s.id === id));
   if (firstToday) activeId = firstToday;
+  // Flare days are Pelvic Reset + a short walk — open there instead of the strength session.
+  if (flare) activeId = 'pelvic-reset';
 
   // ── Persistence ────────────────────────────────────────────────────────────
   async function begin() {
@@ -159,7 +162,7 @@ export async function renderHip(app) {
     if (pausedIds.length) {
       lines.push('PAUSED EXERCISES');
       for (const exId of pausedIds) {
-        const ex = SECTIONS.flatMap(s => s.exercises || []).find(e => e.id === exId);
+        const ex = EXERCISE_INDEX[exId];
         lines.push(`  ${ex ? ex.name : exId} — since ${paused[exId].since}${paused[exId].reason ? `: ${paused[exId].reason}` : ''}`);
       }
       lines.push('');
@@ -198,7 +201,7 @@ export async function renderHip(app) {
       }
       const named = Object.entries(tally)
         .map(([exId, n]) => {
-          const ex = SECTIONS.flatMap(s => s.exercises || []).find(e => e.id === exId);
+          const ex = EXERCISE_INDEX[exId];
           return [ex ? ex.name : exId, n];
         })
         .sort((a, b) => b[1] - a[1]);
@@ -217,7 +220,7 @@ export async function renderHip(app) {
     if (edited.length) {
       lines.push('PRESCRIPTIONS CHANGED FROM DEFAULT');
       for (const exId of edited) {
-        const ex = SECTIONS.flatMap(s => s.exercises || []).find(e => e.id === exId);
+        const ex = EXERCISE_INDEX[exId];
         lines.push(`  ${ex ? ex.name : exId}: ${rx[exId]}`);
       }
       lines.push('');
@@ -320,6 +323,9 @@ export async function renderHip(app) {
                 ${ex.optional ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
                   background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
                   color:#475569;letter-spacing:0.06em;flex-shrink:0">CAUTION</span>` : ''}
+                ${ex.source ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
+                  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+                  color:#64748b;letter-spacing:0.04em;flex-shrink:0;white-space:nowrap">${esc(ex.source)}</span>` : ''}
               </div>
               <div style="font-size:11px;color:#64748b;line-height:1.35">${esc(ex.subtitle)}</div>
             </div>
@@ -718,7 +724,9 @@ export async function renderHip(app) {
         <div style="font-size:11px;font-weight:700;color:#cbd5e1;letter-spacing:0.05em;margin-bottom:8px">
           WEEKLY SCHEDULE
         </div>
-        ${WEEKLY_SCHEDULE.map((d, i) => `
+        ${flare ? `<div style="font-size:11px;color:#fdba74;line-height:1.45;margin-bottom:6px">
+          Flare mode: today is Pelvic Reset + a short easy walk, whatever the schedule says.</div>` : ''}
+        ${week7.map((d, i) => `
           <div style="display:flex;gap:9px;align-items:baseline;padding:3px 0;
             ${i === dow ? 'color:#f1f5f9;font-weight:600' : 'color:#64748b'}">
             <span style="width:30px;flex-shrink:0;font-size:11px;
@@ -746,13 +754,13 @@ export async function renderHip(app) {
           <div>
             <h1 style="margin:0;font-size:20px">Hip Recovery</h1>
             <div style="font-size:11px;color:var(--fg-dim);margin-top:1px">
-              PT program · Pool progression · Driving strategy${week ? ` · Week ${week}` : ''}
+              Sessions A/B · Pelvic Reset · Driving strategy${week ? ` · Week ${week}` : ''}
             </div>
           </div>
         </div>
 
         <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:10px">
-          ${['Pool-Based Aerobic', flare ? 'Flare — Calm Down' : 'Psoas Focus', 'Pain Guides Load'].map(t =>
+          ${['3× / week · A/B', flare ? 'Flare — Calm Down' : 'Psoas Focus', 'Pain Guides Load'].map(t =>
             `<span class="pill" style="font-size:10px;padding:2px 8px">${t}</span>`
           ).join('')}
         </div>
@@ -833,8 +841,8 @@ export async function renderHip(app) {
 
       <div style="padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
         <div style="font-size:11px;color:#475569;line-height:1.55">
-          From your Comprehensive Hip Recovery Playbook v4. Sets and reps are starting defaults —
-          tap any SETS chip to match what your PT prescribed. Pain above 3/10 during or after a
+          From your Comprehensive Hip Recovery Playbook v4, merged with your Motion RC plan into
+          Sessions A and B. Tap any SETS chip to match what your PT or coach prescribed. Pain above 3/10 during or after a
           session means reduce load, not push through. Follow your physical therapist over this app.
         </div>
       </div>

@@ -13,7 +13,13 @@
  * the card falls back to a search link built from `search`.
  */
 
-export const SECTIONS = [
+/**
+ * Source catalog — the playbook's sections plus the Motion RC plan, as written. The
+ * PT Program and Motion RC sections are not shown directly: they're merged into
+ * Session A / Session B below. Exercise ids are stable, so logs, custom sets and pauses
+ * carry across the merge.
+ */
+const SOURCE_SECTIONS = [
   {
     id: 'warmup',
     label: 'Warm-Up',
@@ -1032,6 +1038,99 @@ export const SECTIONS = [
   },
 ];
 
+/** Every exercise by id — including ones dropped in the merge, so old logs keep names. */
+export const EXERCISE_INDEX = Object.fromEntries(
+  SOURCE_SECTIONS.flatMap(s => (s.exercises || []).map(ex => [ex.id, ex]))
+);
+
+const sourceSection = (id) => SOURCE_SECTIONS.find(s => s.id === id);
+const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'pt-sls'];
+
+/** Pull exercises from the catalog, tagged with where they came from and which session(s). */
+function pick(session, ids) {
+  return ids.map(id => {
+    const ex = EXERCISE_INDEX[id];
+    if (!ex) throw new Error(`hip_protocol: unknown exercise ${id}`);
+    return {
+      ...ex,
+      source: id.startsWith('mrc-') ? 'Motion RC' : 'PT',
+      freq: BOTH.includes(id) ? 'Sessions A & B' : `Session ${session}`,
+      ...(id === 'mrc-tfl-ir-stretch' ? { optional: true } : {}),
+    };
+  });
+}
+
+const SESSION_CRITERIA = sourceSection('pt').criteria;
+
+/**
+ * Merged PT + Motion RC plan. One exercise per movement slot per session; where the two
+ * programs overlapped, one version sits in A and the other in B. Dropped as duplicates:
+ * Modified Side Plank (covered by the side plank clamshell) and Band Walks (Monster Walk).
+ */
+const SESSION_A = {
+  id: 'session-a',
+  label: 'Session A',
+  tag: 'Strength · Alternates with B',
+  accent: '#22d3ee',
+  bg: 'rgba(2,132,199,0.10)',
+  description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  criteria: SESSION_CRITERIA,
+  exercises: pick('A', [
+    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+    'pt-sls',
+    'mrc-elevated-ham-bridge',
+    'mrc-side-plank-clamshell',
+    'mrc-monster-walk', 'pt-fire-hydrant',
+    'mrc-quadruped-hip-hike',
+    'pt-sl-rdl',
+    'mrc-hip-flexor-march',
+    'pt-prone-ext', 'pt-bird-dog',
+    'pt-step-ups',
+    'pt-posterior-lunge',
+  ]),
+};
+
+const SESSION_B = {
+  id: 'session-b',
+  label: 'Session B',
+  tag: 'Strength · Alternates with A',
+  accent: '#e879f9',
+  bg: 'rgba(192,38,211,0.10)',
+  description: 'Merged PT + Motion RC plan — the partner to Session A, with the other version of each movement slot. Same mobility prep. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  criteria: SESSION_CRITERIA,
+  exercises: pick('B', [
+    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+    'pt-sls',
+    'pt-bridge-squeeze',
+    'mrc-copenhagen-knee',
+    'mrc-standing-hip-hike',
+    'pt-side-lying-abduction',
+    'mrc-hip-airplane',
+    'pt-slr',
+    'pt-prone-ext-bent',
+    'pt-lateral-step-ups',
+    'mrc-adductor-slider-lunge',
+  ]),
+};
+
+/** Pool work isn't happening right now — kept at the end, marked optional. */
+const optionalPool = (id) => {
+  const s = sourceSection(id);
+  return { ...s, tag: `Optional · ${s.tag.split('·').slice(1).join('·').trim() || s.tag}` };
+};
+
+export const SECTIONS = [
+  sourceSection('warmup'),
+  sourceSection('pelvic-reset'),
+  SESSION_A,
+  SESSION_B,
+  sourceSection('recovery'),
+  sourceSection('benchmarks'),
+  optionalPool('pool-mobility'),
+  optionalPool('pool-strength'),
+  optionalPool('aerobic'),
+];
+
 /**
  * Published benchmarks from the Mass General Brigham Sports Medicine "Rehabilitation Protocol
  * for Hip Arthroscopy for Femoroacetabular Impingement" (rev. 07/2024).
@@ -1162,18 +1261,32 @@ export const POST_POOL = [
 ];
 
 /** Weekly schedule from the playbook. Index 0 = Sunday, matching Date#getDay(). */
-export const WEEKLY_SCHEDULE = [
-  { day: 'Sun', focus: 'Recovery + Stretching',        sections: ['warmup'] },
-  { day: 'Mon', focus: 'PT + Pool Walk + Swim',        sections: ['warmup', 'pt', 'pool-mobility', 'aerobic'] },
-  { day: 'Tue', focus: 'Pool Mobility + Deep Water Running', sections: ['warmup', 'pool-mobility', 'aerobic'] },
-  { day: 'Wed', focus: 'PT + Pool Intervals',          sections: ['warmup', 'pt', 'aerobic'] },
-  { day: 'Thu', focus: 'Pool Recovery + Balance',      sections: ['warmup', 'pool-mobility', 'pool-strength'] },
-  { day: 'Fri', focus: 'PT + Deep Water Running',      sections: ['warmup', 'pt', 'aerobic'] },
-  { day: 'Sat', focus: 'Easy Swim + Mobility',         sections: ['warmup', 'pool-mobility', 'aerobic'] },
-];
+// Monday of a known week — anchors the A/B alternation so it's stable across reloads.
+const AB_EPOCH = new Date(2026, 9, 5, 12);   // Mon 5 Oct 2026 — an "A-first" week
+
+const STRENGTH = ['warmup', 'pelvic-reset'];
+const OFF_DAY = { focus: 'Easy walk or bike + Pelvic Reset', sections: ['warmup', 'pelvic-reset'] };
+
+/**
+ * The week containing `date`, Sun–Sat. Mon/Wed/Fri are strength days alternating A and B:
+ * A-first weeks run A·B·A, the next week B·A·B. Everything else is an easy day.
+ */
+export function weeklySchedule(date = new Date()) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+  const monday = new Date(d);
+  monday.setDate(d.getDate() - d.getDay() + 1);   // the Monday of this Sun–Sat week
+  const weeks = Math.round((monday - AB_EPOCH) / (7 * 864e5));
+  const aFirst = ((weeks % 2) + 2) % 2 === 0;
+  const session = (isA) => isA
+    ? { focus: 'Session A', sections: [...STRENGTH, 'session-a'] }
+    : { focus: 'Session B', sections: [...STRENGTH, 'session-b'] };
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const plan = [OFF_DAY, session(aFirst), OFF_DAY, session(!aFirst), OFF_DAY, session(aFirst), OFF_DAY];
+  return plan.map((p, i) => ({ day: days[i], ...p }));
+}
 
 /** Flat lookup of every exercise across sections. */
-export const ALL_EXERCISES = SECTIONS.flatMap(s =>
+export const ALL_EXERCISES = SOURCE_SECTIONS.flatMap(s =>
   (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id }))
 );
 
