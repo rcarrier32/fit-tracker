@@ -926,3 +926,33 @@ export const WEEKLY_SCHEDULE = [
 export const ALL_EXERCISES = SECTIONS.flatMap(s =>
   (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id }))
 );
+
+/**
+ * Flare mode — new burning/pinching on the side and back of the hip (Oct 2026), which
+ * started after a pulling sensation in a 90/90 stretch. Cause not established; this is
+ * load management while it settles, not a diagnosis. Hip tab only — it deliberately
+ * does not touch the lifting programs or daily mobility.
+ *
+ * `defaultPauses` are seeded into pref('hip_paused') when flare mode is switched on.
+ * Pauses persist independently of the flag and are resumed one at a time by hand.
+ */
+export const FLARE = {
+  summary: 'Burning/pinching on the side and back of the hip, glute and outer-thigh tightness. Started after a pull in a 90/90 stretch; lunges, sitting, and the forward-driving hip flexor stretch make it worse. Lying down eases it. Cause not established yet — so calm it down rather than stretch or strengthen through it.',
+  defaultPauses: [
+    { id: 'wu-half-kneel-flexor', reason: 'Forward-driving hip flexor stretch — a known aggravator of this flare.' },
+    { id: 'pt-posterior-lunge', reason: 'Lunges currently provoke the symptoms.' },
+  ],
+  calm: [
+    { title: 'Unload when it burns', detail: 'On your back with a pillow under the knees. Skip it if that position is not comfortable.' },
+    { title: 'Short, easy walks', detail: 'Only while it stays mild and does not build during or after. Stop before you start to limp — do not walk through the burning.' },
+    { title: 'Gentle range only', detail: 'Move within what is comfortable. Nothing forced to end range, no deep hip rotation, no 90/90 positions.' },
+    { title: 'Ice if it helps', detail: '10–15 min with a towel between ice and skin. Skip it if it does not help.' },
+  ],
+  positions: [
+    { title: 'Keep the pelvis level', detail: 'Stand on both feet evenly — no hanging on one hip. In single-leg work, if the opposite hip drops or hikes, end the set.' },
+    { title: 'Sitting', detail: 'Feet flat, knees no higher than hips, no crossed legs. Get up every 30–45 min.' },
+    { title: 'Sleeping', detail: 'Not on the sore side. On the other side, a pillow between the knees so the top leg does not drop across.' },
+  ],
+  stopIf: 'Stop the exercise if you get a sharp pinch, burning that builds during the set, new tingling or numbness, weakness, or a limp. Write what happened in the note below — do not swap in something harder.',
+  urgent: 'Same-day care if you cannot put weight on the leg, have significant new weakness, a fever with a hot or swollen hip, or one leg swells. Emergency care for any loss of bowel or bladder control, or numbness in the groin/saddle area.',
+};
