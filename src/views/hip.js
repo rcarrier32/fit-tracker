@@ -8,7 +8,7 @@
 import { pref } from '../db.js';
 import { navigate, toast, openSheet } from '../app.js';
 import {
-  SECTIONS, EXERCISE_INDEX, weeklySchedule, AEROBIC_PROGRESSION, POST_POOL,
+  SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE, FLARE,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
@@ -52,10 +52,8 @@ export async function renderHip(app) {
   // Open on the section that matches today's schedule, when there is one.
   const week7 = weeklySchedule(new Date());
   const todaySched = week7[new Date().getDay()];
-  const firstToday = todaySched.sections.find(id => SECTIONS.some(s => s.id === id));
-  if (firstToday) activeId = firstToday;
-  // Flare days are Pelvic Reset + a short walk — open there instead of the strength session.
-  if (flare) activeId = 'pelvic-reset';
+  // Open on today's main work: the strength session, or Pelvic Reset on easy/flare days.
+  activeId = hipToday({ flare, paused }).sectionId;
 
   // ── Persistence ────────────────────────────────────────────────────────────
   async function begin() {
@@ -378,6 +376,11 @@ export async function renderHip(app) {
       </div>`;
   }
 
+  function pausedDays(since) {
+    const n = Math.round((new Date(day + 'T12:00:00') - new Date(since + 'T12:00:00')) / 864e5);
+    return n <= 0 ? 'Paused today' : `Paused ${n} day${n === 1 ? '' : 's'}`;
+  }
+
   /** Collapsed card for a paused exercise — out of the session, one tap to resume. */
   function pausedCardHTML(ex) {
     const p = paused[ex.id];
@@ -392,6 +395,9 @@ export async function renderHip(app) {
               PAUSED · ${esc(p.since.slice(5))}</span>
           </div>
           ${p.reason ? `<div style="font-size:11px;color:#64748b;line-height:1.4">${esc(p.reason)}</div>` : ''}
+          <div style="font-size:10.5px;color:#64748b;line-height:1.4;margin-top:4px">
+            <span style="color:#94a3b8;font-weight:600">${pausedDays(p.since)} · </span>${esc(FLARE.returnRule)}
+          </div>
         </div>
         <button data-resume="${ex.id}" style="flex-shrink:0;font-size:11px;padding:5px 10px;
           border-radius:6px;cursor:pointer;background:transparent;border:1px solid rgba(255,255,255,0.15);

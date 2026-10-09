@@ -10,11 +10,12 @@ import { pref } from '../db.js';
 import { localDateStr } from '../lib/date.js';
 
 export async function renderPrograms(app) {
-  const [{ programs }, activePlan, tosProgress, hipProgress, customPrograms] = await Promise.all([
+  const [{ programs }, activePlan, tosProgress, hipProgress, hipFlare, customPrograms] = await Promise.all([
     loadCatalogs(),
     getActivePlan(),
     pref('tos_progress'),
     pref('hip_progress'),
+    pref('hip_flare'),
     pref('custom_programs').then(v => v || []),
   ]);
 
@@ -59,11 +60,11 @@ export async function renderPrograms(app) {
         <div>
           <div style="font-weight:600;margin-bottom:2px">Hip Recovery Playbook</div>
           <div class="muted" style="font-size:12px">
-            PT program · Pool mobility &amp; strength · Deep-water aerobic progression
+            Sessions A/B (PT + Motion RC) · Pelvic Reset · Flare mode
           </div>
         </div>
         <span class="pill" style="color:#38bdf8;border-color:rgba(56,189,248,0.4);flex-shrink:0;margin-left:8px">
-          ${hipWeek ? `Week ${hipWeek}` : '6 sections'}
+          ${hipFlare ? 'Flare mode' : hipWeek ? `Week ${hipWeek}` : 'A/B plan'}
         </span>
       </div>
     </div>

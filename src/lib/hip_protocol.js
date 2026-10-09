@@ -1285,6 +1285,26 @@ export function weeklySchedule(date = new Date()) {
   return plan.map((p, i) => ({ day: days[i], ...p }));
 }
 
+/**
+ * What today's hip work is: the main section (the strength session on Mon/Wed/Fri,
+ * Pelvic Reset otherwise or during a flare) and how much of it is checked off.
+ * Shared by the Hip tab (which tab to open), the Home card and the Plans card.
+ */
+export function hipToday({ flare = null, paused = {}, done = {}, date = new Date() } = {}) {
+  const day = weeklySchedule(date)[date.getDay()];
+  const sectionId = flare ? 'pelvic-reset' : day.sections[day.sections.length - 1];
+  const section = SECTIONS.find(s => s.id === sectionId);
+  const items = (section.exercises || []).filter(e => !paused[e.id]);
+  return {
+    sectionId,
+    sectionLabel: section.label,
+    label: flare ? 'Flare day · Pelvic Reset + short walk' : day.focus,
+    strength: !flare && sectionId.startsWith('session-'),
+    done: items.filter(e => done[e.id]).length,
+    total: items.length,
+  };
+}
+
 /** Flat lookup of every exercise across sections. */
 export const ALL_EXERCISES = SOURCE_SECTIONS.flatMap(s =>
   (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id }))
@@ -1317,6 +1337,7 @@ export const FLARE = {
     { title: 'Sitting', detail: 'Feet flat, knees no higher than hips, no crossed legs. Get up every 30–45 min.' },
     { title: 'Sleeping', detail: 'Not on the sore side. On the other side, a pillow between the knees so the top leg does not drop across.' },
   ],
+  returnRule: 'Bring it back once the hip has been settled 2–3 days with no worse next morning: do it at about half the volume. If the next morning is fine, return to full. If it flares again, re-pause and give it longer.',
   stopIf: 'Stop the exercise if you get a sharp pinch, burning that builds during the set, new tingling or numbness, weakness, or a limp. Write what happened in the note below — do not swap in something harder.',
   urgent: 'Same-day care if you cannot put weight on the leg, have significant new weakness, a fever with a hot or swollen hip, or one leg swells. Emergency care for any loss of bowel or bladder control, or numbness in the groin/saddle area.',
 };
