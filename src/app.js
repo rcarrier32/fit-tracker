@@ -141,6 +141,12 @@ if (FIRST_COPY) (async () => {
   requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();
+  // One-time merge of duplicate workout sessions left by the old double boot.
+  try {
+    const { dedupeSessions } = await import('./lib/session_dedupe.js');
+    const removed = await dedupeSessions();
+    if (removed) toast(`Merged ${removed} duplicate workout session${removed === 1 ? '' : 's'}`, 3000);
+  } catch (err) { console.error('[boot] session dedupe failed', err); }
   if (!location.hash) location.hash = '#/home';
   await render();
   scheduleLocalBackup();
