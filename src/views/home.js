@@ -18,7 +18,7 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout, selectSingleProgram } from './schedule.js';
+import { openScheduleEditor, todaysWorkout, selectSingleProgram, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
@@ -242,7 +242,7 @@ export async function renderHome(app) {
         <h2 style="margin:0">Today's Workout</h2>
         ${renderTodayBadge(today_w, activePlan)}
       </div>
-      ${activePlan ? renderPlanProgress(activePlan) : ''}
+      ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
@@ -444,7 +444,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
     ` : '';
     return `
       <div style="margin-top:6px">${p.name || p.program_name || p.id} — ${detail}</div>
-      <div class="muted" style="font-size:12px">${today_w.mode === 'follow' ? 'Following progression' : 'Pinned day'}</div>
+      <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
       ${previewHtml}
       ${workoutDoneToday ? `<div class="pill accent" style="display:inline-block;margin-top:8px">Workout complete ✓</div>` : ''}
       <div class="btn-row" style="margin-top:10px">
@@ -567,9 +567,9 @@ function prettyName(p) {
 function describeProgram(p) {
   if (p.weeks) {
     const totalDays = p.weeks.reduce((s, w) => s + (w.days?.length || 0), 0);
-    return `${p.weeks.length} weeks · ${totalDays} day-templates`;
+    return `Progression · ${p.weeks.length} weeks, ${totalDays} workouts in order`;
   }
-  if (p.days) return `${p.days.length} day rotation`;
+  if (p.days) return `Rotation · ${p.days.length} workouts that repeat`;
   return '';
 }
 

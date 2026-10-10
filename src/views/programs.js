@@ -7,7 +7,7 @@ import { startPlan, getActivePlan, getAllPlans, endPlan, currentWeek, planProgre
 import { toast, openSheet, navigate } from '../app.js';
 import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/plan_builder.js';
 import { pref } from '../db.js';
-import { programName, selectSingleProgram } from './schedule.js';
+import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 
 export async function renderPrograms(app) {
@@ -120,7 +120,10 @@ function renderActivePlanCard(plan, programs) {
         <h2 style="margin:0;color:var(--accent)">Active Plan</h2>
         <span class="pill accent">Week ${week} of ${plan.total_weeks}</span>
       </div>
-      <div style="font-weight:600;margin:6px 0 4px">${name}</div>
+      <div style="font-weight:600;margin:6px 0 2px">${name}</div>
+      ${prog ? `<div class="muted" style="font-size:12px;margin-bottom:4px">${programKind(prog) === 'progression'
+        ? 'Progression — each finished workout moves you forward'
+        : `Rotation — the same ${prog.days?.length || ''} workouts repeat; add weight to progress`}</div>` : ''}
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="muted" style="margin-top:4px">${over
         ? `Finished — all ${plan.total_weeks} weeks are up. Restart it or pick a new plan below.`
@@ -158,8 +161,9 @@ function renderProgramList(el, programs, activePlan, onRefresh) {
     card.className = 'card';
     card.style.marginBottom = '10px';
     const isActive = activePlan?.program_id === p.id;
-    const weeks = p.recommended_weeks;
+    const kind = programKind(p);
     const tags = [
+      kind === 'progression' ? `Progression · ${p.weeks.length} weeks` : `Rotation · ${p.days?.length || '?'} days, repeats`,
       p.sessions_per_week ? `${p.sessions_per_week} days/wk` : null,
       p.session_length_min ? `~${p.session_length_min} min` : null,
       p.level || null,
@@ -174,13 +178,12 @@ function renderProgramList(el, programs, activePlan, onRefresh) {
           ${p.description ? `<div class="muted" style="margin-top:3px;font-size:13px">${p.description}</div>` : ''}
           <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
             ${tags.map(t => `<span class="pill">${t}</span>`).join('')}
-            ${weeks ? `<span class="pill" style="color:var(--accent);border-color:var(--accent)">${weeks} weeks recommended</span>` : ''}
           </div>
         </div>
       </div>
       <div style="margin-top:10px">
         <button class="btn ${isActive ? 'secondary' : ''}" data-start>
-          ${isActive ? 'Restart plan' : 'Start this plan'}
+          ${isActive ? 'Restart from day 1' : kind === 'progression' ? 'Start this program' : 'Use this rotation'}
         </button>
       </div>
     `;
@@ -209,8 +212,8 @@ function openStartPlanSheet(program, onConfirm) {
       <div class="group-label">Duration</div>
       <div class="muted" style="margin-bottom:8px">
         ${program.weeks
-          ? `This program is <strong style="color:var(--fg)">${recommended} week${recommended === 1 ? '' : 's'}</strong> long.`
-          : `We recommend <strong style="color:var(--fg)">${recommended} weeks</strong> — enough time to see real strength gains.`}
+          ? `<strong style="color:var(--fg)">Progression.</strong> ${recommended} week${recommended === 1 ? '' : 's'}, and each workout you finish moves you to the next day — Week 1 Day 1 through to the end.`
+          : `<strong style="color:var(--fg)">Rotation.</strong> The same ${program.days?.length || ''} workouts in order, then back to the first. It doesn't change week to week — you progress by adding weight. Pick how long to run it before reassessing (${recommended} weeks is a good block).`}
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <input type="number" id="weeks-input" value="${recommended || 12}" min="1" max="52" inputmode="numeric" style="flex:1">
@@ -308,7 +311,7 @@ async function openStartCustomPlanSheet(program, onConfirm) {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${program.name}</h2>
-      <div class="muted" style="margin-bottom:12px">${program.days.length}-day rotation</div>
+      <div class="muted" style="margin-bottom:12px">Rotation — these ${program.days.length} workouts in order, then back to the first. You progress by adding weight, not by moving through weeks.</div>
       <div class="group-label">Duration</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
         <input type="number" id="weeks-input" value="8" min="1" max="52" inputmode="numeric" style="flex:1">

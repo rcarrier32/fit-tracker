@@ -482,6 +482,26 @@ function suggestBalanced(programs) {
 /** Display name for any program — PJF entries only carry `program_name`. */
 export const programName = (p) => p?.name || p?.program_name || p?.id || 'Program';
 
+/**
+ * Two kinds of program behave differently and are labelled differently everywhere:
+ *  - progression (PJF, `weeks`): Week 1 Day 1 → … → the end; each finish moves forward
+ *  - rotation (BWS / custom, `days`): Day A → B → C → back to A, forever; you progress
+ *    by adding weight, not by moving through weeks
+ */
+export const programKind = (p) => (p?.weeks ? 'progression' : 'rotation');
+
+/** One line saying where you are and how this program moves. */
+export function positionLabel(today_w) {
+  const p = today_w.program;
+  if (!p) return '';
+  if (today_w.mode && today_w.mode !== 'follow') return 'Same workout every time on this day';
+  if (programKind(p) === 'progression') {
+    const wk = p.weeks.find(w => w.week_num === today_w.week);
+    return `Progression · Week ${today_w.week} of ${p.weeks.length} · Day ${today_w.day} of ${wk?.days?.length || '?'}`;
+  }
+  return `Rotation · Day ${(today_w.day_index ?? 0) + 1} of ${p.days.length} · repeats — add weight as it gets easy`;
+}
+
 /** Start-of-program cursor. Week-based programs never carry a day_index. */
 export const defaultCursor = (program) => (program?.weeks ? { week: 1, day: 1 } : { day_index: 0 });
 
@@ -573,6 +593,10 @@ export async function selectSingleProgram(programId, { restart = false } = {}) {
     await pref('schedule', null);
   }
   await pref('active_program', programId);
+  // A plan for a different program no longer describes what you are running.
+  const { getActivePlan, endPlan } = await import('../lib/plans.js');
+  const plan = await getActivePlan();
+  if (plan && plan.program_id !== programId) await endPlan(plan.id);
   if (restart || (await pref(`completed:${programId}`))) {
     await pref(`completed:${programId}`, null);
     await pref(`cursor:${programId}`, null);

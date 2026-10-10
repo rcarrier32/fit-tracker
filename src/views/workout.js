@@ -4,7 +4,7 @@
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName } from './schedule.js';
+import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
@@ -160,9 +160,8 @@ export async function renderWorkout(app) {
 
   app.innerHTML = `
     <h1>${dayData.focus || dayData.day_name}</h1>
-    <div class="muted">${program.name || program.program_name || program.id} · ${program.days && !program.weeks
-      ? `Day ${(day_index ?? 0) + 1} of ${program.days.length}`
-      : `Wk ${week}, Day ${day}`}</div>
+    <div class="muted">${programName(program)}</div>
+    <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
