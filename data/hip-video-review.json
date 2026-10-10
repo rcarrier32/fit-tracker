@@ -1,5 +1,5 @@
 {
-  "generated_for": 21,
+  "generated_for": 23,
   "max_seconds": 360,
   "exercises": [
     {
@@ -894,6 +894,872 @@
           "embeddable": true,
           "url": "https://youtu.be/yPNbVUzm-rs",
           "score": 1.46
+        }
+      ]
+    },
+    {
+      "id": "lv-bridge-march",
+      "name": "Bridge March",
+      "section": "progressions",
+      "error": "backendError: Internal error encountered.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "lv-sl-bridge",
+      "name": "Single-Leg Glute Bridge",
+      "section": "progressions",
+      "query": "single leg glute bridge physical therapy",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "ADGDhSfU3dM",
+          "title": "Single Leg Glute Bridge Exercise",
+          "channel": "Advanced Clinical Physiotherapy",
+          "seconds": 70,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/ADGDhSfU3dM",
+          "score": 4.31
+        },
+        {
+          "videoId": "26f56P593Kc",
+          "title": "Single leg glute bridge with band - Fit Family Physical Therapy",
+          "channel": "Fit Family Physical Therapy",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/26f56P593Kc",
+          "score": 1.47
+        },
+        {
+          "videoId": "AVAXhy6pl7o",
+          "title": "Strengthening Exercise for ACL: Single Leg Bridge",
+          "channel": "MedStar Health",
+          "seconds": 27,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/AVAXhy6pl7o",
+          "score": 1.43
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-hip-thrust",
+      "name": "Single-Leg Hip Thrust",
+      "section": "progressions",
+      "query": "single leg hip thrust bench",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "-R63wQkgb6g",
+          "title": "Her Hip Thrusts Were Now PERFECT!😍",
+          "channel": "Squat University",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/-R63wQkgb6g",
+          "score": 3.84
+        },
+        {
+          "videoId": "4ilXaDauMnE",
+          "title": "How To Perform The Bodyweight Single-Leg Hip Thrust 🍑 #fyp #glutelab #shorts #gluteworkout #glutes",
+          "channel": "Bret Contreras Glute Guy",
+          "seconds": 28,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/4ilXaDauMnE",
+          "score": 2.42
+        },
+        {
+          "videoId": "3suM3LwVlVM",
+          "title": "How To: Single Leg DB Hip Thrust",
+          "channel": "Summit Performance Club",
+          "seconds": 53,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/3suM3LwVlVM",
+          "score": 1.35
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-elevated-ham-bridge",
+      "name": "Single-Leg Elevated Hamstring Bridge",
+      "section": "progressions",
+      "query": "single leg elevated hamstring bridge",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Cpc9qjU8tEY",
+          "title": "Single Leg Hamstring Bridge",
+          "channel": "Julian Malander",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Cpc9qjU8tEY",
+          "score": 0.98
+        },
+        {
+          "videoId": "PZinEf_K2UY",
+          "title": "Feet Elevated Single Leg Hamstring Bridge ISO",
+          "channel": "CrossFit Ares ",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/PZinEf_K2UY",
+          "score": 0.98
+        },
+        {
+          "videoId": "dUnGItvrneg",
+          "title": "SL Foot Elevated Isometric Hamstring Bridge",
+          "channel": "FastTrack Training & Rehab",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/dUnGItvrneg",
+          "score": 0.98
+        }
+      ]
+    },
+    {
+      "id": "lv-slider-ham-curl",
+      "name": "Slider Hamstring Curl",
+      "section": "progressions",
+      "query": "slider hamstring curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "SLRv1VZIpQs",
+          "title": "Single Leg Hamstring Curl with Slider (Eccentric)",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/SLRv1VZIpQs",
+          "score": 4.96
+        },
+        {
+          "videoId": "hI2aXh24hAU",
+          "title": "Eccentric hamstring curls with a slider - One of the GOAT hamstring exercises",
+          "channel": "Coach Griffin",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/hI2aXh24hAU",
+          "score": 2.48
+        },
+        {
+          "videoId": "kkkTfzi2gj4",
+          "title": "How To: Slider Leg Curl",
+          "channel": "Kia Khadem",
+          "seconds": 31,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/kkkTfzi2gj4",
+          "score": 2.41
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-slider-ham-curl",
+      "name": "Single-Leg Slider Hamstring Curl",
+      "section": "progressions",
+      "query": "single leg slider hamstring curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "DenoSLSQaN0",
+          "title": "Single Leg Hamstring Curl with Slider (Slight Lift)",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/DenoSLSQaN0",
+          "score": 3.97
+        },
+        {
+          "videoId": "SLRv1VZIpQs",
+          "title": "Single Leg Hamstring Curl with Slider (Eccentric)",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/SLRv1VZIpQs",
+          "score": 3.96
+        },
+        {
+          "videoId": "dE5d39sErBU",
+          "title": "Eccentric Single-Leg Sliding Leg Curl",
+          "channel": "Men's Health",
+          "seconds": 74,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/dE5d39sErBU",
+          "score": 1.79
+        }
+      ]
+    },
+    {
+      "id": "lv-copenhagen-long",
+      "name": "Copenhagen Side Plank (Long Lever)",
+      "section": "progressions",
+      "query": "copenhagen plank long lever",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "aGuAemGeyvA",
+          "title": "Copenhagen Plank Long lever | Step-by-Step Tutorial",
+          "channel": "Physio Plus Fitness",
+          "seconds": 45,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/aGuAemGeyvA",
+          "score": 5.38
+        },
+        {
+          "videoId": "kXTHTV6--Bo",
+          "title": "Copenhagen Plank",
+          "channel": "Movement Physio",
+          "seconds": 6,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/kXTHTV6--Bo",
+          "score": 4.98
+        },
+        {
+          "videoId": "o053rmFZZ-I",
+          "title": "Long Lever Copenhagen Plank Tutorial - Proper Form and Technique",
+          "channel": "Runna",
+          "seconds": 26,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/o053rmFZZ-I",
+          "score": 2.43
+        }
+      ]
+    },
+    {
+      "id": "lv-copenhagen-raise",
+      "name": "Copenhagen with Bottom-Leg Raises",
+      "section": "progressions",
+      "query": "copenhagen plank leg raise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "OESM2L1z5hg",
+          "title": "Her Missing Exercise!🔥",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/OESM2L1z5hg",
+          "score": 4.34
+        },
+        {
+          "videoId": "5Hs7AfiMXgs",
+          "title": "Copenhagen Planks for Strength and Reducing Risk of Groin Injury (Science-Based)",
+          "channel": "E3 Rehab",
+          "seconds": 322,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/5Hs7AfiMXgs",
+          "score": 4.11
+        },
+        {
+          "videoId": "CYfcIXEA78s",
+          "title": "Copenhagen Planks - How To Progress and Regress | Physical Therapy | Adductor Strain, Tendinopathy",
+          "channel": "Fitness Pain Free",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/CYfcIXEA78s",
+          "score": 2.47
+        }
+      ]
+    },
+    {
+      "id": "lv-side-plank-abduction",
+      "name": "Side Plank with Top-Leg Raise",
+      "section": "progressions",
+      "query": "side plank hip abduction",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "S5A7E_Sj914",
+          "title": "Side Plank with Hip Abduction & Mini Band",
+          "channel": "The Hockey Physiotherapy Podcast",
+          "seconds": 7,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/S5A7E_Sj914",
+          "score": 4.98
+        },
+        {
+          "videoId": "7lU38lnnHCg",
+          "title": "side plank hip abduction",
+          "channel": "re.PHYSIO Physical Therapy & Performance",
+          "seconds": 20,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7lU38lnnHCg",
+          "score": 4.94
+        },
+        {
+          "videoId": "ZR84WQVhdIE",
+          "title": "Side Plank with Hip Abduction",
+          "channel": "Endurance Physio",
+          "seconds": 85,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/ZR84WQVhdIE",
+          "score": 4.76
+        }
+      ]
+    },
+    {
+      "id": "lv-airplane-free",
+      "name": "Hip Airplane (No Support)",
+      "section": "progressions",
+      "query": "hip airplane exercise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Z__fcK0giiM",
+          "title": "REVEALING MY SECRET SAUCE to the hip airplane #gluteusmedius",
+          "channel": "Jenn Chew | Vancouver Physiotherapist for Runners",
+          "seconds": 8,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Z__fcK0giiM",
+          "score": 4.98
+        },
+        {
+          "videoId": "yXUjrvOG-rA",
+          "title": "Kickstand Hip Airplane Conquer Movement Physical Therapy   Wilmington, NC",
+          "channel": "Conquer Movement PT",
+          "seconds": 15,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/yXUjrvOG-rA",
+          "score": 2.46
+        },
+        {
+          "videoId": "uEqg50HSqMk",
+          "title": "Hip Airplane Exercise For Mobility And Strength",
+          "channel": "Dr. Carl Baird",
+          "seconds": 48,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/uEqg50HSqMk",
+          "score": 2.37
+        }
+      ]
+    },
+    {
+      "id": "lv-airplane-weighted",
+      "name": "Weighted Hip Airplane",
+      "section": "progressions",
+      "query": "weighted hip airplane",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "oSU3zh1fLFI",
+          "title": "Kettlebell Hip Airplane",
+          "channel": "Movement Physio",
+          "seconds": 10,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/oSU3zh1fLFI",
+          "score": 3.97
+        },
+        {
+          "videoId": "DZruqZYqITc",
+          "title": "The Solution To Tight Hips!",
+          "channel": "Squat University",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/DZruqZYqITc",
+          "score": 3.84
+        },
+        {
+          "videoId": "h_wDshR_BPk",
+          "title": "The ANSWER For Tight Hips!😳",
+          "channel": "Squat University",
+          "seconds": 57,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/h_wDshR_BPk",
+          "score": 3.84
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-rdl-kb",
+      "name": "Single-Leg RDL with Kettlebell",
+      "section": "progressions",
+      "query": "single leg rdl kettlebell",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "s32cCgmRV3I",
+          "title": "Single Leg Kettlebell Romanian Deadlift (RDL)",
+          "channel": "Movement Physio",
+          "seconds": 9,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/s32cCgmRV3I",
+          "score": 3.98
+        },
+        {
+          "videoId": "v5JFb2AsSVs",
+          "title": "Single Leg Deadlifts Are CRAZY HARD!",
+          "channel": "Squat University",
+          "seconds": 52,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/v5JFb2AsSVs",
+          "score": 3.86
+        },
+        {
+          "videoId": "J0bEKhnP-Mw",
+          "title": "Fixing The Single Leg RDL Problem (INCREDIBLE CHANGES)",
+          "channel": "Squat University",
+          "seconds": 117,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/J0bEKhnP-Mw",
+          "score": 3.67
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-rdl-reach",
+      "name": "Single-Leg RDL to Knee Drive",
+      "section": "progressions",
+      "query": "single leg rdl to knee drive",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "I37TdFmIyhY",
+          "title": "Single Leg RDL to Knee Drive",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 25,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/I37TdFmIyhY",
+          "score": 3.93
+        },
+        {
+          "videoId": "bE5NZ33Klfo",
+          "title": "3 Way Single Leg RDL to Knee Drive",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 25,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/bE5NZ33Klfo",
+          "score": 3.93
+        },
+        {
+          "videoId": "8xoHpL25Zbg",
+          "title": "Single-Leg RDL to High Knee Drive",
+          "channel": "Simone Sports Performance",
+          "seconds": 22,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/8xoHpL25Zbg",
+          "score": 1.94
+        }
+      ]
+    },
+    {
+      "id": "lv-step-up-db",
+      "name": "Weighted Step Up with Leg Raise",
+      "section": "progressions",
+      "query": "dumbbell step up knee drive",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Ppg0gX1BrQI",
+          "title": "DB Step Up with Knee Drive",
+          "channel": "The BeFit Physio Method",
+          "seconds": 57,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Ppg0gX1BrQI",
+          "score": 3.84
+        },
+        {
+          "videoId": "1hrOIfy-6F8",
+          "title": "Weighted Step-Up with Knee Drive | Single-Leg Strength & Balance Exercise",
+          "channel": "Therapeutic EDGE",
+          "seconds": 124,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/1hrOIfy-6F8",
+          "score": 2.16
+        },
+        {
+          "videoId": "ZC_HVjGgvUA",
+          "title": "Exercise Alert: Step up Knee Drive why we use it here at Rehab 2 Perform:",
+          "channel": "Rehab 2 Perform",
+          "seconds": 24,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/ZC_HVjGgvUA",
+          "score": 1.43
+        }
+      ]
+    },
+    {
+      "id": "lv-high-step-up",
+      "name": "High Box Step Up",
+      "section": "progressions",
+      "query": "high box step up",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "jcGbLEETLxs",
+          "title": "How To Perform The High Box Step-up",
+          "channel": "Champion Physical Therapy and Performance",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/jcGbLEETLxs",
+          "score": 2.39
+        },
+        {
+          "videoId": "GRI6nCoByLM",
+          "title": "High Box Step up",
+          "channel": "SDE Method",
+          "seconds": 10,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/GRI6nCoByLM",
+          "score": 1.97
+        },
+        {
+          "videoId": "21I0mwfdINc",
+          "title": "High Box Step Up",
+          "channel": "Michael Brasch",
+          "seconds": 11,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/21I0mwfdINc",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "lv-lateral-step-down",
+      "name": "Lateral Step-Down",
+      "section": "progressions",
+      "query": "lateral step down exercise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "_r_vsI64pyw",
+          "title": "Lateral Step Down",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 20,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/_r_vsI64pyw",
+          "score": 4.94
+        },
+        {
+          "videoId": "qqS_g5oGKiw",
+          "title": "Lateral Step Downs",
+          "channel": "Sports Movement Physio & Performance",
+          "seconds": 30,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/qqS_g5oGKiw",
+          "score": 4.92
+        },
+        {
+          "videoId": "2x4jnXr8ykM",
+          "title": "How To Do Lateral Step Downs - Strength & Balance - Wellen",
+          "channel": "Wellen",
+          "seconds": 93,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/2x4jnXr8ykM",
+          "score": 2.24
+        }
+      ]
+    },
+    {
+      "id": "lv-lateral-step-up-weighted",
+      "name": "Weighted Side Step-Ups",
+      "section": "progressions",
+      "query": "weighted lateral step up",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Vr7G2yzb9f4",
+          "title": "Lateral Step-up",
+          "channel": "Movement Physio",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Vr7G2yzb9f4",
+          "score": 3.97
+        },
+        {
+          "videoId": "l0YLm7CmNj4",
+          "title": "Weighted Lateral Step-Down | Single-Leg Strength & Control Exercise",
+          "channel": "Therapeutic EDGE",
+          "seconds": 109,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/l0YLm7CmNj4",
+          "score": 2.2
+        },
+        {
+          "videoId": "xOwIRnI4VxA",
+          "title": "Weighted Lateral step ups",
+          "channel": "Jenny B",
+          "seconds": 8,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/xOwIRnI4VxA",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-pad-reach",
+      "name": "Single-Leg Pad Balance + Clock Reaches",
+      "section": "progressions",
+      "query": "single leg balance pad clock reach",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "-xJuUREljhs",
+          "title": "Clock Balance Exercise demonstrated by Physiotherapist Adam Hanton Fong",
+          "channel": "SOS Physiotherapy",
+          "seconds": 42,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/-xJuUREljhs",
+          "score": 4.38
+        },
+        {
+          "videoId": "mjzu4CEkTLE",
+          "title": "Single Leg Balance Clock",
+          "channel": "Movement Physio",
+          "seconds": 15,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mjzu4CEkTLE",
+          "score": 3.96
+        },
+        {
+          "videoId": "6LxZpysB0E8",
+          "title": "Single-Leg Clock Reach",
+          "channel": "Mark the Spot",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/6LxZpysB0E8",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "lv-sl-pad-catch",
+      "name": "Single-Leg Pad Balance + Ball Catches",
+      "section": "progressions",
+      "query": "single leg balance ball toss",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "_3xk3oQd4JY",
+          "title": "Single Leg Stance with Ball Throw",
+          "channel": "VisionExPhysiology",
+          "seconds": 14,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/_3xk3oQd4JY",
+          "score": 3.96
+        },
+        {
+          "videoId": "o60k-HsW7Iw",
+          "title": "Single Leg Stance Balance (with ball toss)",
+          "channel": "FitLife Fitness, Aquatics and Physical Therapy",
+          "seconds": 42,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/o60k-HsW7Iw",
+          "score": 3.88
+        },
+        {
+          "videoId": "8cGTXOxyEqw",
+          "title": "How to Do a Single Leg Balance with Ball Toss Exercise | MedBridge",
+          "channel": "Medbridge",
+          "seconds": 28,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/8cGTXOxyEqw",
+          "score": 1.42
+        }
+      ]
+    },
+    {
+      "id": "lv-standing-march",
+      "name": "Standing Banded March (No Wall)",
+      "section": "progressions",
+      "query": "standing banded hip flexor march",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "9g_itZqD4Ns",
+          "title": "Standing Hip Flexion (Short Lever)- Band Resisted",
+          "channel": "Aubin Grove, Kwinana & Harrisdale Physiotherapy",
+          "seconds": 12,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/9g_itZqD4Ns",
+          "score": 4.97
+        },
+        {
+          "videoId": "yo9XK585cSI",
+          "title": "Standing banded march for hip flexor strengthening",
+          "channel": "Strong Stride Physical Therapy & Performance",
+          "seconds": 11,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/yo9XK585cSI",
+          "score": 1.97
+        },
+        {
+          "videoId": "LeBOkz-3vtQ",
+          "title": "Strengthen The Hip Flexors For Power And Speed - Standing Wall Psoas March",
+          "channel": "[P]rehab",
+          "seconds": 25,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/LeBOkz-3vtQ",
+          "score": 1.93
+        }
+      ]
+    },
+    {
+      "id": "lv-deficit-reverse-lunge",
+      "name": "Deficit Reverse Lunge",
+      "section": "progressions",
+      "query": "deficit reverse lunge",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "r_UZ5OLa--c",
+          "title": "How to: Dumbbell Deficit Reverse Lunges (Growth & Strength)",
+          "channel": "David Iglesias",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/r_UZ5OLa--c",
+          "score": 2.47
+        },
+        {
+          "videoId": "8FjJVQ_9fys",
+          "title": "How To Deficit Reverse Lunge #glutes #reverselunge #fitnessmodel #legs #fitness #fitnesstips",
+          "channel": "Red5 Performance",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/8FjJVQ_9fys",
+          "score": 2.39
+        },
+        {
+          "videoId": "kl0cEKOLAGw",
+          "title": "How To Do Deficit reverse lunges",
+          "channel": "LeanBeefLive",
+          "seconds": 45,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/kl0cEKOLAGw",
+          "score": 2.38
+        }
+      ]
+    },
+    {
+      "id": "lv-bulgarian-split-squat",
+      "name": "Bulgarian Split Squat",
+      "section": "progressions",
+      "query": "bulgarian split squat form",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "lG3MsPmEQQk",
+          "title": "🔥 Bulgarian Split Squat Tutorial",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/lG3MsPmEQQk",
+          "score": 5.33
+        },
+        {
+          "videoId": "hPlKPjohFS0",
+          "title": "The PERFECT Bulgarian Split Squat (Avoid These Errors!)",
+          "channel": "Squat University",
+          "seconds": 320,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/hPlKPjohFS0",
+          "score": 4.11
+        },
+        {
+          "videoId": "vgn7bSXkgkA",
+          "title": "How to do a Bulgarian Split Squat / Proper Setup",
+          "channel": "Denvyr | Tall Girl Nutritionist",
+          "seconds": 31,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/vgn7bSXkgkA",
+          "score": 2.41
+        }
+      ]
+    },
+    {
+      "id": "lv-bird-dog-loaded",
+      "name": "Bird Dog with Ankle Weight or Band",
+      "section": "progressions",
+      "query": "bird dog with band",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "my0UbQW4Zco",
+          "title": "Bird Dog Exercises - Nail Great Technique and Variations",
+          "channel": "FMS",
+          "seconds": 158,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/my0UbQW4Zco",
+          "score": 2.06
+        },
+        {
+          "videoId": "JvwFtLGgVAk",
+          "title": "EricCressey.com: Band-Resisted Birddog",
+          "channel": "Eric Cressey",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/JvwFtLGgVAk",
+          "score": 1.98
+        },
+        {
+          "videoId": "P-Lu4rltctI",
+          "title": "Banded Bird-Dog",
+          "channel": "Nell Rojas",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/P-Lu4rltctI",
+          "score": 1.97
         }
       ]
     }

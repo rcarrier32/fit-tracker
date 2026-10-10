@@ -200,6 +200,13 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   font-size: 12px;
 }
 .set-row.done { opacity: 0.55; }
+.set-row.timed { grid-template-columns: 30px 1fr 1.4fr 48px; }
+.set-row .timed-target { font-size: 16px; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
+.set-row .timer-btn {
+  background: var(--accent); color: #0f1419; border: none; border-radius: 8px;
+  height: 40px; font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums;
+}
+.set-row.done .timer-btn { background: var(--bg-input); color: var(--fg-dim); }
 .set-row.done input { background: rgba(74, 222, 128, 0.08); }
 .set-row .check {
   background: var(--bg-input);

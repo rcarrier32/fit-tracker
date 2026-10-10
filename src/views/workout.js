@@ -31,6 +31,38 @@ async function saveSession(session) {
   if (session.id == null) session.id = id;
 }
 
+/** Seconds from a program time: "00:00:45", "1:30", "45 sec", "2 min". */
+function parseSecs(t) {
+  if (t == null) return 0;
+  const str = String(t).trim();
+  if (/^\d+(:\d{1,2}){1,2}$/.test(str)) return str.split(':').reduce((a, n) => a * 60 + +n, 0);
+  const m = str.match(/([\d.]+)\s*(s|sec|second|m|min|minute)?/i);
+  if (!m) return 0;
+  return Math.round(+m[1] * (/^m/i.test(m[2] || '') ? 60 : 1));
+}
+const fmtSecs = (n) => `${Math.floor(n / 60)}:${String(Math.round(n % 60)).padStart(2, '0')}`;
+
+/** A timed exercise (hold, interval, carry) logs a duration instead of weight × reps. */
+const isTimed = (ex) => parseSecs(ex.time) > 0 && !ex.target_reps;
+
+let _setTimer = null;   // the one running set countdown: { interval, btn }
+function stopSetTimer() {
+  if (!_setTimer) return;
+  clearInterval(_setTimer.interval);
+  if (_setTimer.btn?.isConnected) _setTimer.btn.textContent = '▶ Start';
+  _setTimer = null;
+}
+function beep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator(); const g = ctx.createGain();
+    o.frequency.value = 880; o.connect(g); g.connect(ctx.destination);
+    g.gain.setValueAtTime(0.25, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+    o.start(); o.stop(ctx.currentTime + 0.5);
+  } catch { /* no audio */ }
+  try { navigator.vibrate?.([200, 100, 200]); } catch { /* no vibration */ }
+}
+
 /** Set k of an exercise, creating any missing sets before it (sparse arrays break Stats). */
 function setAt(ex, k) {
   if (!ex.sets) ex.sets = [];
@@ -63,6 +95,7 @@ export async function renderWorkout(app) {
   const token = ++_renderToken;
   const stale = () => token !== _renderToken;
   stopRestTimer();
+  stopSetTimer();
   _hipFlare = await pref('hip_flare');
   const today_w = await todaysWorkout();
   if (stale()) return;
@@ -269,7 +302,7 @@ export async function renderWorkout(app) {
   $ex.addEventListener('click', async e => {
     // Compact re-expansion: tap anywhere on a compact card except action buttons
     const compactCard = e.target.closest('.exercise--compact');
-    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop')) {
+    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn')) {
       compactCard.classList.remove('exercise--compact');
       const $sum = compactCard.querySelector('.exercise-summary');
       if ($sum) $sum.style.display = 'none';
@@ -312,9 +345,16 @@ export async function renderWorkout(app) {
         }
       }
 
+      const timedRow = e.target.closest('.set-row').classList.contains('timed');
+      if (timedRow) {
+        if (!set.done && !set.secs) set.secs = parseSecs(session.exercises[i].time);
+        if (_setTimer?.btn?.closest('.set-row') === e.target.closest('.set-row')) stopSetTimer();
+      }
+
       set.done = !set.done;
       await saveSession(session);
       e.target.closest('.set-row').classList.toggle('done', !!set.done);
+      e.target.textContent = set.done ? '✓' : '○';
 
       // Carry this set's numbers into the next empty row so the next set is one tap.
       if (set.done) {
@@ -354,6 +394,29 @@ export async function renderWorkout(app) {
         const $sum = card.querySelector('.exercise-summary');
         if ($sum) $sum.style.display = 'none';
       }
+    }
+
+    if (e.target.matches('.timer-btn')) {
+      const btn = e.target;
+      const row = btn.closest('.set-row');
+      if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
+      stopSetTimer();
+      stopRestTimer();
+      const total = +btn.dataset.secs || 0;
+      const started = Date.now();
+      const tick = () => {
+        const left = Math.max(0, total - Math.floor((Date.now() - started) / 1000));
+        btn.textContent = `■ ${fmtSecs(left)}`;
+        if (left > 0) return;
+        stopSetTimer();
+        beep();
+        // Time's up: log the set (fires the normal check path, then the rest timer).
+        const check = row.querySelector('.check');
+        if (check && !row.classList.contains('done')) check.click();
+      };
+      _setTimer = { btn, interval: setInterval(tick, 250) };
+      tick();
+      return;
     }
 
     if (e.target.matches('.rpe-btn')) {
@@ -937,7 +1000,19 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
 
   const prevSets = prevRef[ex.name]?.sets || [];
   let setRows = '';
-  for (let s = 0; s < sets; s++) {
+  const timed = isTimed(ex);
+  const target = parseSecs(ex.time);
+  for (let s = 0; s < sets && timed; s++) {
+    const set = ex.sets[s] || {};
+    setRows += `
+      <div class="set-row timed ${set.done ? 'done' : ''}">
+        <span class="set-num">${s + 1}</span>
+        <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}</span>
+        <button class="timer-btn" data-set="${s}" data-secs="${target}">▶ Start</button>
+        <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>
+      </div>`;
+  }
+  for (let s = 0; s < sets && !timed; s++) {
     const set = ex.sets[s] || {};
     const prev = prevSets[s] || {};
     const done = set.done ? 'done' : '';
@@ -999,9 +1074,9 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
 
 function formatTarget(ex) {
   const parts = [];
-  if (ex.target_sets) parts.push(`${ex.target_sets} sets`);
+  if (ex.target_sets) parts.push(`${ex.target_sets} set${+ex.target_sets === 1 ? '' : 's'}`);
   if (ex.target_reps) parts.push(`× ${ex.target_reps}`);
-  if (ex.time) parts.push(ex.time);
+  if (ex.time) parts.push(parseSecs(ex.time) ? fmtSecs(parseSecs(ex.time)) : ex.time);
   if (ex.rest) parts.push(`rest ${ex.rest}`);
   return parts.join(' · ');
 }

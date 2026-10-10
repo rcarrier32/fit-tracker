@@ -11,6 +11,7 @@ import {
   SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, sideHipCount, plannedSideHip,
   AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE, FLARE,
+  HIP_LADDERS, LADDER_UNLOCK_SESSIONS,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
 import { esc, setCount, exerciseRowHTML, wireExerciseRows, openExerciseDetail } from '../lib/exercise_ui.js';
@@ -24,7 +25,7 @@ export async function renderHip(app) {
   const day = todayKey();
 
   // ── Persisted state ────────────────────────────────────────────────────────
-  const [savedProgress, allLogs, savedRx, allPain, allNotes, savedFlare, savedPaused, savedCustom, allSets] = await Promise.all([
+  const [savedProgress, allLogs, savedRx, allPain, allNotes, savedFlare, savedPaused, savedCustom, allSets, savedLevels] = await Promise.all([
     pref('hip_progress'),
     pref('hip_logs').then(v => v || {}),
     pref('hip_prescriptions').then(v => v || {}),
@@ -34,6 +35,7 @@ export async function renderHip(app) {
     pref('hip_paused').then(v => v || {}),
     pref('hip_custom').then(v => v || []),
     pref('hip_sets').then(v => v || {}),
+    pref('hip_levels').then(v => v || {}),
   ]);
   let surgeryDate = (await pref('hip_surgery_date')) || '';
   let surgerySide = (await pref('hip_surgery_side')) || '';        // 'left' | 'right' | ''
@@ -42,7 +44,8 @@ export async function renderHip(app) {
   let started    = savedProgress?.started || null;
   let activeId   = SECTIONS[0].id;
   let completed  = { ...(allLogs[day] || {}) };
-  let setsDone   = { ...(allSets[day] || {}) };   // exercise id → [bool per set], today only
+  let setsDone   = { ...(allSets[day] || {}) };
+  let levels     = { ...savedLevels };      // plan exercise id → { step, since } on its ladder   // exercise id → [bool per set], today only
   let rx         = { ...savedRx };          // exercise id → custom "sets" string
   let flare      = savedFlare || null;      // { since } while flare mode is on
   let paused     = { ...savedPaused };      // exercise id → { since, reason }
@@ -127,9 +130,37 @@ export async function renderHip(app) {
     };
   }
 
+  /**
+   * The version of an exercise you're on. Shown with the harder step's name/dose/cues,
+   * but it keeps the plan exercise's id so logs, pauses and side-hip counts don't move.
+   */
+  function atLevel(ex) {
+    const ladder = HIP_LADDERS[ex.id];
+    const step = levels[ex.id]?.step || 0;
+    if (!ladder || !step) return ex;
+    const lv = EXERCISE_INDEX[ladder.steps[step]];
+    if (!lv) return ex;
+    return { ...lv, id: ex.id, levelId: lv.id, freq: ex.freq, source: ex.source };
+  }
+
+  /** Pain-free sessions (≤ 3/10 or unlogged) with this exercise done since reaching its step. */
+  function sessionsAtLevel(exId) {
+    const since = levels[exId]?.since || '';
+    const logs = { ...allLogs, [day]: completed };
+    return Object.entries(logs).filter(([d, l]) => d >= since && l?.[exId] && !((allPain[d] ?? 0) > 3)).length;
+  }
+
+  async function setLevel(exId, step) {
+    if (step) levels[exId] = { step, since: day }; else delete levels[exId];
+    await pref('hip_levels', levels);
+    // The old SETS override was for the old version.
+    if (rx[exId]) await setRx(exId, '');
+    mount();
+  }
+
   /** A section's protocol exercises plus any you've added to it. */
   const sectionItems = (section) => [
-    ...(section.exercises || []),
+    ...(section.exercises || []).map(atLevel),
     ...custom.filter(c => c.sectionId === section.id).map(customEx),
   ];
 
@@ -250,6 +281,16 @@ export async function renderHip(app) {
       lines.push('  ' + FLARE.summary);
       lines.push('');
     }
+    const leveled = Object.entries(levels).filter(([id, l]) => l?.step && HIP_LADDERS[id]);
+    if (leveled.length) {
+      lines.push('PROGRESSED TO HARDER VERSIONS');
+      for (const [id, l] of leveled) {
+        const lv = EXERCISE_INDEX[HIP_LADDERS[id].steps[l.step]];
+        lines.push(`  ${EXERCISE_INDEX[id]?.name || id} → ${lv?.name || '?'} — since ${l.since}`);
+      }
+      lines.push('');
+    }
+
     const pausedIds = Object.keys(paused);
     if (pausedIds.length) {
       lines.push('PAUSED EXERCISES');
@@ -378,7 +419,35 @@ export async function renderHip(app) {
   const cardHTML = (ex, section) => exerciseRowHTML(ex, {
     accent: section.accent, rx: rxFor(ex), edited: !!rx[ex.id],
     done: !!completed[ex.id], sets: setsFor(ex),
+    badge: HIP_LADDERS[ex.id] && levels[ex.id]?.step
+      ? `LEVEL ${levels[ex.id].step + 1} OF ${HIP_LADDERS[ex.id].steps.length}` : '',
   });
+
+  function ladderFor(ex) {
+    const ladder = HIP_LADDERS[ex.id];
+    if (!ladder) return null;
+    const step = levels[ex.id]?.step || 0;
+    const last = step >= ladder.steps.length - 1;
+    const n = sessionsAtLevel(ex.id);
+    const ready = !flare && !last && n >= LADDER_UNLOCK_SESSIONS;
+    return {
+      name: ladder.name,
+      current: step,
+      steps: ladder.steps.map(id => ({ name: EXERCISE_INDEX[id]?.name || id })),
+      ready,
+      note: flare ? 'Flare mode — stay at this level (or drop one) until it settles.'
+        : last ? 'Top of this ladder. Progress with load, range, or slower tempo.'
+        : ready ? `${n} pain-free sessions at this level — ready to try the next one if it feels right (and your PT agrees).`
+        : `${n} of ${LADDER_UNLOCK_SESSIONS} pain-free sessions at this level before moving up. Drop back any time it hurts.`,
+      onChange: async (next, close) => {
+        const target = EXERCISE_INDEX[ladder.steps[next]]?.name;
+        if (next > step && !confirm(`Move up to ${target}? Go back down if it hurts above 3/10.`)) return;
+        close(false);
+        await setLevel(ex.id, next);
+        openExerciseSheet(ex.id);
+      },
+    };
+  }
 
   /** FKH-style exercise detail: video on top, then sets, then how-to. */
   function openExerciseSheet(exId) {
@@ -408,6 +477,7 @@ export async function renderHip(app) {
         return n ? { name: n.name, open: () => openExerciseSheet(n.id) } : null;
       },
       completeLabel: `${section.label} complete`,
+      ladder: ladderFor(ex),
       actions: [
         { label: 'Pause — it provokes the hip', onClick: (close) => {
           const reason = prompt(`Pause ${ex.name}? Why (optional)`, 'Provokes the hip');

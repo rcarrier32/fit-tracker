@@ -1094,6 +1094,316 @@ const SOURCE_SECTIONS = [
       },
     ],
   },
+  {
+    id: 'progressions',
+    label: 'Progressions',
+    tag: 'Harder versions · reached from an exercise, never shown as a tab',
+    accent: '#a3e635',
+    bg: 'rgba(132,204,22,0.10)',
+    description: 'Advanced and single-leg versions, reached through each exercise\'s progression ladder.',
+    exercises: [
+      {
+        id: 'lv-bridge-march',
+        name: 'Bridge March',
+        subtitle: 'Hold the bridge and lift one foot at a time — the step between two legs and one',
+        sets: '3 × 8 per side',
+        freq: 'Per session',
+        cues: [
+          'Bridge up, ball squeeze optional, hips level.',
+          'Lift one foot an inch, set it down, then the other. The hips must not drop or rotate.',
+          'If the pelvis tips toward the lifted leg, stay at the two-leg bridge a while longer.',
+        ],
+        search: 'glute bridge march exercise',
+      },
+      {
+        id: 'lv-sl-bridge',
+        name: 'Single-Leg Glute Bridge',
+        subtitle: 'One foot down, the other knee pulled in or leg straight',
+        sets: '3 × 10 per leg',
+        freq: 'Per session',
+        cues: [
+          'Working foot flat, other knee hugged in (easier) or leg straight out (harder).',
+          'Drive through the heel, ribs down, hips level at the top — squeeze 1 s.',
+          'Stop the set when the hip on the free side starts to sag.',
+        ],
+        search: 'single leg glute bridge physical therapy',
+      },
+      {
+        id: 'lv-sl-hip-thrust',
+        name: 'Single-Leg Hip Thrust',
+        subtitle: 'Shoulders on a bench, one foot on the floor',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Upper back on a bench, working foot under the knee at the top.',
+          'Lower with control, drive up to full hip extension, pelvis level.',
+          'Add a dumbbell on the hip once 3 × 12 is easy.',
+        ],
+        search: 'single leg hip thrust bench',
+      },
+      {
+        id: 'lv-sl-elevated-ham-bridge',
+        name: 'Single-Leg Elevated Hamstring Bridge',
+        subtitle: 'One heel on the box, the other leg up',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'One heel on a box or bench, other leg pointing up or knee bent.',
+          'Drive through the heel, hips level, ribs down.',
+          'Cramping in the hamstring means shorten the range, not push through.',
+        ],
+        search: 'single leg elevated hamstring bridge',
+      },
+      {
+        id: 'lv-slider-ham-curl',
+        name: 'Slider Hamstring Curl',
+        subtitle: 'Bridge up, then slide the heels out and back',
+        sets: '3 × 8',
+        freq: 'Per session',
+        cues: [
+          'Heels on sliders or a towel on a smooth floor, bridge up.',
+          'Slide the heels out slowly keeping the hips up, then pull them back in.',
+          'Lower the hips between reps at first; keep them up the whole set later.',
+        ],
+        search: 'slider hamstring curl',
+      },
+      {
+        id: 'lv-sl-slider-ham-curl',
+        name: 'Single-Leg Slider Hamstring Curl',
+        subtitle: 'The slider curl on one leg',
+        sets: '3 × 6 per leg',
+        freq: 'Per session',
+        cues: [
+          'Same as the two-leg slider curl, one heel on the slider, other leg up.',
+          'Slow on the way out — that is the hard part.',
+          'Hips stay level; if they rotate, go back to two legs.',
+        ],
+        search: 'single leg slider hamstring curl',
+      },
+      {
+        id: 'lv-copenhagen-long',
+        name: 'Copenhagen Side Plank (Long Lever)',
+        subtitle: 'Top FOOT on the bench instead of the knee',
+        sets: '3 × 20 s per side',
+        freq: 'Per session',
+        cues: [
+          'Side plank with the inside of the top foot/ankle on a bench, bottom leg free.',
+          'Hips stacked and lifted; squeeze the top leg down into the bench.',
+          'Groin pain (not effort) means back to the knee version.',
+        ],
+        warning: 'Long-lever Copenhagen loads the groin hard — move up only when the knee version is easy and pain-free.',
+        search: 'copenhagen plank long lever',
+      },
+      {
+        id: 'lv-copenhagen-raise',
+        name: 'Copenhagen with Bottom-Leg Raises',
+        subtitle: 'Long-lever Copenhagen, lift the bottom leg up to meet the bench',
+        sets: '2 × 8 per side',
+        freq: 'Per session',
+        cues: [
+          'Long-lever Copenhagen position.',
+          'Raise the bottom leg up toward the bench, lower slowly.',
+          'Hips stay up the whole set.',
+        ],
+        search: 'copenhagen plank leg raise',
+      },
+      {
+        id: 'lv-side-plank-abduction',
+        name: 'Side Plank with Top-Leg Raise',
+        subtitle: 'Full side plank, lift the top leg',
+        sets: '3 × 8 per side',
+        freq: 'Per session',
+        cues: [
+          'Side plank from the elbow and feet (or knees to start).',
+          'Lift the top leg slightly behind you, toes forward — not up toward the ceiling.',
+          'Body stays in one line; no hip sag.',
+        ],
+        search: 'side plank hip abduction',
+      },
+      {
+        id: 'lv-airplane-free',
+        name: 'Hip Airplane (No Support)',
+        subtitle: 'The airplane without the roller',
+        sets: '2 × 6 per leg',
+        freq: 'Per session',
+        cues: [
+          'Hinge on one leg, arms out, trunk parallel to the floor.',
+          'Rotate the pelvis open and closed over the standing hip, slowly.',
+          'Fingertips on a wall if balance limits it.',
+        ],
+        search: 'hip airplane exercise',
+      },
+      {
+        id: 'lv-airplane-weighted',
+        name: 'Weighted Hip Airplane',
+        subtitle: 'Hold a light dumbbell or plate against the chest',
+        sets: '2 × 6 per leg',
+        freq: 'Per session',
+        cues: [
+          'Same airplane, light weight held at the chest.',
+          'Rotation comes from the standing hip, not the low back.',
+          'Weight goes up only when every rep is smooth.',
+        ],
+        search: 'weighted hip airplane',
+      },
+      {
+        id: 'lv-sl-rdl-kb',
+        name: 'Single-Leg RDL with Kettlebell',
+        subtitle: 'Weight in the hand opposite the standing leg',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Kettlebell or dumbbell in the opposite hand.',
+          'Hinge back, long spine, pelvis square to the floor — no opening up.',
+          'Start light; balance and a level pelvis matter more than the load.',
+        ],
+        search: 'single leg rdl kettlebell',
+      },
+      {
+        id: 'lv-sl-rdl-reach',
+        name: 'Single-Leg RDL to Knee Drive',
+        subtitle: 'Hinge down, stand up straight into a knee drive',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Single-leg RDL down, then stand and drive the free knee up to hip height.',
+          'Hold the top 1 s balanced, then hinge again.',
+          'A pinch in the front of the hip at the knee drive means stop at standing tall.',
+        ],
+        search: 'single leg rdl to knee drive',
+      },
+      {
+        id: 'lv-step-up-db',
+        name: 'Weighted Step Up with Leg Raise',
+        subtitle: 'Step up with leg raise holding dumbbells',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Dumbbells at the sides, same low step to start.',
+          'Drive up, knee to hip height at the top, lower in 2–3 s.',
+          'Raise the step height before the weight.',
+        ],
+        search: 'dumbbell step up knee drive',
+      },
+      {
+        id: 'lv-high-step-up',
+        name: 'High Box Step Up',
+        subtitle: 'Box at knee height or a little above',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Box around knee height.',
+          'All the push comes from the top leg — no bounce off the floor foot.',
+          'Pelvis level; the knee tracks over the middle toes.',
+        ],
+        search: 'high box step up',
+      },
+      {
+        id: 'lv-lateral-step-down',
+        name: 'Lateral Step-Down',
+        subtitle: 'Stand on the step, lower the other heel to tap the floor',
+        sets: '3 × 10 per leg',
+        freq: 'Per session',
+        cues: [
+          'Stand sideways on a low step on one leg.',
+          'Slowly lower the other heel to touch the floor, then stand back up.',
+          'Knee over the middle toes, pelvis level — that is the whole exercise.',
+        ],
+        search: 'lateral step down exercise',
+      },
+      {
+        id: 'lv-lateral-step-up-weighted',
+        name: 'Weighted Side Step-Ups',
+        subtitle: 'Side step-ups holding dumbbells or a goblet weight',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Same side step-up, weight held goblet-style or at the sides.',
+          'Control the way down.',
+          'Pelvis level; a hip drop means too heavy or too high.',
+        ],
+        search: 'weighted lateral step up',
+      },
+      {
+        id: 'lv-sl-pad-reach',
+        name: 'Single-Leg Pad Balance + Clock Reaches',
+        subtitle: 'On the pad, reach the free foot to 3 points',
+        sets: '3 × 5 reaches per leg',
+        freq: 'Per session',
+        cues: [
+          'Stand on the pad on one leg.',
+          'Tap the free foot forward, to the side, and behind, returning to center each time.',
+          'Stance hip stays still and level.',
+        ],
+        search: 'single leg balance pad clock reach',
+      },
+      {
+        id: 'lv-sl-pad-catch',
+        name: 'Single-Leg Pad Balance + Ball Catches',
+        subtitle: 'Partner or wall tosses while balancing on the pad',
+        sets: '3 × 10 catches per leg',
+        freq: 'Per session',
+        cues: [
+          'On the pad, catch and return a ball from a partner or off a wall.',
+          'Toss to different heights and sides as it gets easier.',
+          'This is the bridge back to court reactions — stay on it until it is boring.',
+        ],
+        search: 'single leg balance ball toss',
+      },
+      {
+        id: 'lv-standing-march',
+        name: 'Standing Banded March (No Wall)',
+        subtitle: 'The banded march on one leg without wall support',
+        sets: '2 × 8 per side',
+        freq: 'Per session',
+        cues: [
+          'Band around the forefeet, stand tall without holding on.',
+          'Drive one knee to hip height, hold 2 s, lower slowly.',
+          'Stop at the height where the front of the hip stays quiet.',
+        ],
+        search: 'standing banded hip flexor march',
+      },
+      {
+        id: 'lv-deficit-reverse-lunge',
+        name: 'Deficit Reverse Lunge',
+        subtitle: 'Front foot on a low step, step back',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Front foot on a 2–4" step, step the other foot back.',
+          'Torso tall, front knee over the middle toes.',
+          'Skip this while lunges provoke the hip.',
+        ],
+        search: 'deficit reverse lunge',
+      },
+      {
+        id: 'lv-bulgarian-split-squat',
+        name: 'Bulgarian Split Squat',
+        subtitle: 'Rear foot on a bench',
+        sets: '3 × 8 per leg',
+        freq: 'Per session',
+        cues: [
+          'Rear foot on a bench, front foot far enough forward that the shin stays fairly upright.',
+          'Lower straight down, front heel stays heavy.',
+          'Bodyweight first; dumbbells once 3 × 10 is easy and pain-free.',
+        ],
+        search: 'bulgarian split squat form',
+      },
+      {
+        id: 'lv-bird-dog-loaded',
+        name: 'Bird Dog with Ankle Weight or Band',
+        subtitle: 'Same bird dog, with resistance on the moving leg',
+        sets: '3 × 8 per side, 3 s hold',
+        freq: 'Per session',
+        cues: [
+          'Light ankle weight, or a band from the hand to the opposite foot.',
+          'Pelvis square to the floor, reach long.',
+          'Resistance makes rotation harder to resist — that is the point.',
+        ],
+        search: 'bird dog with band',
+      },
+    ],
+  },
 ];
 
 /** Every exercise by id — including ones dropped in the merge, so old logs keep names. */
@@ -1515,3 +1825,29 @@ export const HIP_CATALOG_ENTRIES = Object.values(EXERCISE_INDEX).map(ex => {
     aliases: [],
   };
 });
+
+/**
+ * Progression ladders (FKH progressionChains pattern). Step 0 is the exercise in the plan;
+ * later steps are harder — mostly two legs → one leg, or support → no support → load.
+ * Logs, check-offs and side-hip counts stay keyed by the plan exercise's id whatever level
+ * is shown. `unlocksAt` = pain-free sessions at a step before the app SUGGESTS moving up.
+ * It never moves you up on its own: pain governs load here.
+ */
+export const HIP_LADDERS = {
+  'pt-bridge-squeeze':        { name: 'Bridge → single leg', steps: ['pt-bridge-squeeze', 'lv-bridge-march', 'lv-sl-bridge', 'lv-sl-hip-thrust'] },
+  'mrc-elevated-ham-bridge':  { name: 'Hamstring bridge → single-leg curl', steps: ['mrc-elevated-ham-bridge', 'lv-sl-elevated-ham-bridge', 'lv-slider-ham-curl', 'lv-sl-slider-ham-curl'] },
+  'mrc-copenhagen-knee':      { name: 'Copenhagen → long lever', steps: ['mrc-copenhagen-knee', 'lv-copenhagen-long', 'lv-copenhagen-raise'] },
+  'mrc-side-plank-clamshell': { name: 'Side plank → leg raise', steps: ['mrc-side-plank-clamshell', 'lv-side-plank-abduction'] },
+  'mrc-hip-airplane':         { name: 'Airplane → unsupported → weighted', steps: ['mrc-hip-airplane', 'lv-airplane-free', 'lv-airplane-weighted'] },
+  'pt-sl-rdl':                { name: 'Single-leg RDL → loaded', steps: ['pt-sl-rdl', 'lv-sl-rdl-kb', 'lv-sl-rdl-reach'] },
+  'pt-step-ups':              { name: 'Step up → weighted → high box', steps: ['pt-step-ups', 'lv-step-up-db', 'lv-high-step-up'] },
+  'pt-lateral-step-ups':      { name: 'Side step-up → step-down → weighted', steps: ['pt-lateral-step-ups', 'lv-lateral-step-down', 'lv-lateral-step-up-weighted'] },
+  'pt-sl-balance-pad':        { name: 'Pad balance → reaches → catches', steps: ['pt-sl-balance-pad', 'lv-sl-pad-reach', 'lv-sl-pad-catch'] },
+  'mrc-hip-flexor-march':     { name: 'Wall march → standing', steps: ['mrc-hip-flexor-march', 'lv-standing-march'] },
+  'pt-posterior-lunge':       { name: 'Lunge → deficit → split squat', steps: ['pt-posterior-lunge', 'lv-deficit-reverse-lunge', 'lv-bulgarian-split-squat'] },
+  'pt-bird-dog':              { name: 'Bird dog → loaded', steps: ['pt-bird-dog', 'lv-bird-dog-loaded'] },
+};
+export const LADDER_UNLOCK_SESSIONS = 4;
+
+/** Every non-plan exercise a ladder can show — the video enrichment script targets these too. */
+export const LEVEL_EXERCISES = (SOURCE_SECTIONS.find(s => s.id === 'progressions')?.exercises || []);

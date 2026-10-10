@@ -64,7 +64,7 @@ function thumbHTML(ex) {
  * Compact list row. Tapping the row fires [data-open=key]; the circle fires [data-check=key].
  * @param {object} ex
  * @param {{ key?: string, rx?: string, done?: boolean, sets?: boolean[], accent?: string,
- *           edited?: boolean, check?: boolean }} o
+ *           edited?: boolean, check?: boolean, badge?: string }} o
  */
 export function exerciseRowHTML(ex, o = {}) {
   const key = esc(o.key ?? ex.id);
@@ -87,6 +87,7 @@ export function exerciseRowHTML(ex, o = {}) {
             border:1px solid rgba(255,255,255,0.12);color:#64748b;flex-shrink:0">OPTIONAL</span>` : ''}
           ${ex.warning ? `<span style="font-size:10px;color:#fca5a5;flex-shrink:0">⚠</span>` : ''}
         </div>
+        ${o.badge ? `<div style="font-size:9.5px;color:${accent};margin-top:2px;letter-spacing:0.04em">${esc(o.badge)}</div>` : ''}
         ${rx ? `<div style="font-size:11px;color:#94a3b8;margin-top:3px;line-height:1.3;
           overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
           ${esc(rx)}${o.edited ? ` <span style="color:${accent}">✎</span>` : ''}</div>` : ''}
@@ -120,6 +121,32 @@ export function wireExerciseRows(root, h) {
   root.querySelectorAll('[data-open]').forEach(row => {
     row.onclick = () => h.open(row.dataset.open);
   });
+}
+
+/** Progression ladder: every step tappable, current one highlighted, harder ones to the right. */
+function ladderHTML(l, accent) {
+  return `
+    <div style="margin-top:16px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);
+      border:1px solid ${l.ready ? accent + '66' : 'rgba(255,255,255,0.08)'}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+        <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700">PROGRESSION</div>
+        <div style="font-size:10.5px;color:#64748b">${esc(l.name)}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px">
+        ${l.steps.map((st, i) => {
+          const cur = i === l.current;
+          return `<button data-step="${i}" style="display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+            padding:7px 9px;border-radius:8px;cursor:${cur ? 'default' : 'pointer'};
+            background:${cur ? accent + '1f' : 'transparent'};
+            border:1px solid ${cur ? accent + '88' : 'rgba(255,255,255,0.07)'};color:${cur ? '#f1f5f9' : '#94a3b8'}">
+            <span style="width:18px;font-size:10px;font-weight:800;color:${cur ? accent : '#475569'}">${i + 1}</span>
+            <span style="flex:1;font-size:12.5px;font-weight:${cur ? 700 : 500}">${esc(st.name)}</span>
+            <span style="font-size:10px;color:${cur ? accent : '#475569'}">${cur ? 'NOW' : i < l.current ? 'easier' : 'harder'}</span>
+          </button>`;
+        }).join('')}
+      </div>
+      ${l.note ? `<div style="font-size:11.5px;color:${l.ready ? accent : '#94a3b8'};margin-top:8px;line-height:1.45">${esc(l.note)}</div>` : ''}
+    </div>`;
 }
 
 function videoBlockHTML(ex) {
@@ -160,6 +187,9 @@ function videoBlockHTML(ex) {
  * @param {string}   [o.completeLabel] shown once nothing is left
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
+ * @param {{ name: string, steps: { name: string }[], current: number, note?: string,
+ *           ready?: boolean, onChange: (step: number, close: Function) => void }} [o.ladder]
+ *                                    progression ladder — easier/harder versions of this exercise
  */
 export function openExerciseDetail(ex, o = {}) {
   const accent = o.accent || '#38bdf8';
@@ -187,6 +217,7 @@ export function openExerciseDetail(ex, o = {}) {
 
       <div id="ex-sets"></div>
       ${o.extraHTML || ''}
+      ${o.ladder ? ladderHTML(o.ladder, accent) : ''}
 
       ${ex.cues?.length ? `
         <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700;margin:16px 0 6px">HOW TO</div>
@@ -287,6 +318,12 @@ export function openExerciseDetail(ex, o = {}) {
     });
     sheet.querySelectorAll('[data-action]').forEach(btn => {
       btn.onclick = () => o.actions[+btn.dataset.action].onClick(close);
+    });
+    sheet.querySelectorAll('[data-step]').forEach(btn => {
+      btn.onclick = () => {
+        const step = +btn.dataset.step;
+        if (step !== o.ladder.current) o.ladder.onChange(step, close);
+      };
     });
   });
 }

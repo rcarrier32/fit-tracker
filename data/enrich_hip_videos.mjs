@@ -32,7 +32,7 @@ const ROOT         = path.resolve(import.meta.dirname, '..');
 const PROTOCOL_PATH = path.join(ROOT, 'src/lib/hip_protocol.js');
 const REVIEW_PATH   = path.join(ROOT, 'data/hip-video-review.json');
 
-const { SECTIONS } = await import(pathToFileURL(PROTOCOL_PATH).href);
+const { SECTIONS, LEVEL_EXERCISES = [] } = await import(pathToFileURL(PROTOCOL_PATH).href);
 
 // ── args ──
 const args = process.argv.slice(2);
@@ -86,7 +86,8 @@ const KEY = process.env.YOUTUBE_API_KEY === 'PASTE_YOUR_KEY_HERE'
   : process.env.YOUTUBE_API_KEY;
 
 // ── target selection ──
-const targets = SECTIONS
+// Progression-ladder versions live in a hidden 'progressions' section — include it.
+const targets = [...SECTIONS, { id: 'progressions', label: 'Progressions', exercises: LEVEL_EXERCISES }]
   .filter(s => !SECTION || s.id === SECTION)
   .flatMap(s => (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id, sectionLabel: s.label })))
   .filter(ex => !ONLY || ex.id === ONLY)
@@ -235,7 +236,15 @@ for (const ex of targets) {
   }
 }
 
+const fresh0 = new Set(out.exercises.map(e => e.id));
+// Merge into the existing review file: a partial run (--only, --section, --missing) used
+// to overwrite every earlier entry, including ones already approved.
+if (existsSync(REVIEW_PATH)) {
+  const prev = JSON.parse(readFileSync(REVIEW_PATH, 'utf8'));
+  const fresh = new Set(out.exercises.map(e => e.id));
+  out.exercises = [...(prev.exercises || []).filter(e => !fresh.has(e.id)), ...out.exercises];
+}
 writeFileSync(REVIEW_PATH, JSON.stringify(out, null, 2));
-const withCandidates = out.exercises.filter(e => e.candidates.length).length;
+const withCandidates = out.exercises.filter(e => fresh0.has(e.id) && e.candidates.length).length;
 console.log(`\nWrote ${REVIEW_PATH}`);
 console.log(`${withCandidates}/${targets.length} exercises have candidates. Set "approved" per exercise, then: node data/enrich_hip_videos.mjs --apply`);
