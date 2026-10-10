@@ -7,7 +7,7 @@ import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor } from './schedule.js';
 import { loadCatalogs } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
-import { hipCaution } from '../lib/hip_protocol.js';
+import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -524,8 +524,25 @@ function openExerciseMenu(session, i, allExercises, exMap) {
               </div>
             </div>`
           ).join('')}` : '';
+        const hipAlts = _hipFlare
+          ? hipSwaps(ex.name).filter(n => exMap[n.toLowerCase()] && n !== ex.name)
+          : [];
+        const hipSection = hipAlts.length ? `
+          <div class="group-label" style="margin:0 0 6px;color:#fdba74">Hip-friendly swaps · flare mode</div>
+          ${hipAlts.map(name => {
+            const alt = exMap[name.toLowerCase()];
+            const from = alt?.sources?.includes('hip') ? 'from your hip plan' : (alt?.primary_muscle || '').replace(/_/g, ' ');
+            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1">
+                <div class="list-item-title">${name}</div>
+                <div class="list-item-meta">${from}${alt?.video_url ? ' · ▶' : ''}</div>
+              </div>
+            </div>`;
+          }).join('')}
+          <div style="height:10px"></div>` : '';
         s2.innerHTML = `
           <h2>Swap: ${ex.name}</h2>
+          ${hipSection}
           ${bwsSection}
           ${similarSection}
           <div class="group-label" style="margin:12px 0 6px">Any exercise</div>

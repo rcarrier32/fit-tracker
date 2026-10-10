@@ -1377,17 +1377,78 @@ export function plannedSideHip(date = new Date()) {
 }
 
 /**
- * Lifting-program movements that overlap with what flared the hip. Name-based, so it
- * covers the PJF / BWS library without tagging every entry. Used only for a caution
- * badge while flare mode is on — never to pause or remove anything outside the Hip tab.
+ * Movement-type tags from an exercise name. Name-based so they apply across the whole
+ * catalog (PJF, BWS, hip) without hand-tagging every entry.
  */
-const HIP_CAUTION_RULES = [
-  [/90\s*\/\s*90/i, 'Seated 90/90 — the position the flare started in.'],
-  [/hip flexor\s*\/\s*quad bridge|couch stretch|hip flexor stretch|kneeling hip flexor/i, 'Hip-forward stretch — a known aggravator right now.'],
-  [/lunge|split squat/i, 'Lunge pattern — lunges currently provoke the hip.'],
+const PATTERN_RULES = [
+  ['deep-rotation',       /90\s*\/\s*90|mermaid/i],
+  ['hip-forward-stretch', /hip flexor\s*\/\s*quad bridge|couch stretch|hip flexor stretch|kneeling hip flexor|thomas/i],
+  ['lunge',               /lunge|split squat/i],
+  ['side-lying-load',     /side plank|side-lying|sidelying|clamshell|copenhagen/i],
+  ['hinge',               /\brdl\b|romanian|deadlift|hinge|good morning|airplane/i],
+  ['bridge',              /bridge|hip thrust|hip lift/i],
+  ['squat',               /squat|leg press/i],
+  ['step',                /step[- ]?up|step down/i],
 ];
 
-export function hipCaution(name) {
-  for (const [re, reason] of HIP_CAUTION_RULES) if (re.test(name || '')) return reason;
-  return null;
+export function movementTags(name) {
+  return PATTERN_RULES.filter(([, re]) => re.test(name || '')).map(([tag]) => tag);
 }
+
+/**
+ * Which tags overlap with what flared the hip, and what to try instead. Used for a
+ * caution badge and swap suggestions while flare mode is on — never to pause or remove
+ * anything outside the Hip tab. Swap names are filtered against the live catalog.
+ */
+const CAUTION = {
+  'deep-rotation': {
+    reason: 'Seated 90/90-type rotation — the position the flare started in.',
+    swaps: ['Bench Hip Lift with Roller Squeeze', 'Supine Ball Squeeze Series', 'Sidelying Grounding', 'Cat Cow', 'Dead Bug'],
+  },
+  'hip-forward-stretch': {
+    reason: 'Hip-forward stretch — a known aggravator right now.',
+    swaps: ['Posterior Pelvic Tilt Breathing', 'Bench Hip Lift with Roller Squeeze', 'Pelvic Tilts', 'Hamstring Stretch', 'Dead Bug'],
+  },
+  'lunge': {
+    reason: 'Lunge pattern — lunges currently provoke the hip.',
+    swaps: ['Weighted Step-Ups', 'Step Ups', 'Box Squat', 'Dumbbell Goblet Squat', 'Hip Thrust', 'Dumbbell Romanian Deadlift', 'Bridge with Ball Squeeze'],
+  },
+};
+// The Thomas stretch is tagged hip-forward for search, but it stays in the warm-up
+// unflagged — only the half-kneeling stretch was named as an aggravator.
+const NOT_FLAGGED = /thomas/i;
+
+function cautionTag(name) {
+  if (NOT_FLAGGED.test(name || '')) return null;
+  return movementTags(name).find(t => CAUTION[t]) || null;
+}
+
+export function hipCaution(name) {
+  const tag = cautionTag(name);
+  return tag ? CAUTION[tag].reason : null;
+}
+
+/** Hip-friendly alternatives for a flagged move (empty if it isn't flagged). */
+export function hipSwaps(name) {
+  const tag = cautionTag(name);
+  return tag ? CAUTION[tag].swaps : [];
+}
+
+/**
+ * Hip-tab exercises shaped like library entries, so lifting search, swaps, the add-
+ * exercise picker and video lookup all see them. Ids are prefixed so they can't collide
+ * with library ids (the library already has e.g. "hip-thrust").
+ */
+export const HIP_CATALOG_ENTRIES = Object.values(EXERCISE_INDEX).map(ex => {
+  const tags = movementTags(ex.name);
+  return {
+    id: `hiprx-${ex.id}`,
+    name: ex.name,
+    primary_muscle: tags.includes('bridge') ? 'glutes' : tags.includes('hinge') ? 'hamstrings' : 'hips',
+    muscles: [],
+    video_url: ex.videoId ? `https://www.youtube.com/watch?v=${ex.videoId}` : null,
+    fallback_search: `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`,
+    sources: ['hip'],
+    aliases: [],
+  };
+});
