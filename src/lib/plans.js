@@ -46,7 +46,9 @@ export function currentWeek(plan) {
 
 export function planProgress(plan) {
   const week = currentWeek(plan);
-  const pct = Math.round((week / plan.total_weeks) * 100);
   const weeksLeft = plan.total_weeks - week + 1;
-  return { week, pct, weeksLeft };
+  const elapsed = Math.max(0, Math.floor((Date.now() - new Date(plan.start_date + 'T12:00:00')) / 864e5));
+  // Time actually elapsed — "Week 1 of 2" used to read as 50% complete on day one.
+  const pct = Math.min(100, Math.round((elapsed / (plan.total_weeks * 7)) * 100));
+  return { week, pct, weeksLeft, over: elapsed >= plan.total_weeks * 7 };
 }

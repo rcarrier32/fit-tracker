@@ -24,7 +24,7 @@ export async function renderDashboard(app) {
   for (const s of sessions) {
     for (const ex of (s.exercises || [])) {
       for (const set of (ex.sets || [])) {
-        if (!set.weight || !set.reps) continue;
+        if (!set?.done || !set.weight || !set.reps) continue;
         const e1 = rpeE1RM(set.weight, set.reps, set.rpe);
         const cur = e1rmByEx[ex.name];
         if (!cur || e1 > cur.e1rm) {
@@ -34,12 +34,12 @@ export async function renderDashboard(app) {
     }
   }
 
-  const totalSessions = sessions.filter(s => s.done).length;
-  const last7Sessions = sessions.filter(s => s.date >= daysAgoStr(7) && s.done).length;
+  const totalSessions = sessions.filter(s => s.done && !s.skipped).length;
+  const last7Sessions = sessions.filter(s => s.date >= daysAgoStr(7) && s.done && !s.skipped).length;
   const last7TotalVolume = sessions
     .filter(s => s.date >= daysAgoStr(7))
     .reduce((sum, s) => sum + (s.exercises || []).reduce((a, ex) =>
-      a + (ex.sets || []).reduce((b, set) => b + setVolume(set), 0), 0), 0);
+      a + (ex.sets || []).reduce((b, set) => b + (set?.done ? setVolume(set) : 0), 0), 0), 0);
 
   const sortedE1rm = Object.entries(e1rmByEx)
     .sort((a, b) => b[1].e1rm - a[1].e1rm)

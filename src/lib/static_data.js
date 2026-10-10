@@ -98,3 +98,7 @@ export async function getAllPrograms() {
   const custom = (await pref('custom_programs')) || [];
   return [...programs, ...custom.map(p => ({ ...p, source: 'custom' }))];
 }
+
+/** PJF day sheets include section headers ("Daily Overview: …", "Superset") as rows. */
+export const isHeaderRow = (name) =>
+  /^(daily overview|start of workout.*overview|superset|circuit|combo cardio)\b/i.test(String(name || '').trim());

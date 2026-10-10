@@ -7,6 +7,7 @@ import { startPlan, getActivePlan, getAllPlans, endPlan, currentWeek, planProgre
 import { toast, openSheet, navigate } from '../app.js';
 import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/plan_builder.js';
 import { pref } from '../db.js';
+import { programName, selectSingleProgram } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 
 export async function renderPrograms(app) {
@@ -29,7 +30,7 @@ export async function renderPrograms(app) {
   app.innerHTML = `
     <h1>Programs</h1>
 
-    ${activePlan    ? renderActivePlanCard(activePlan, programs) : ''}
+    ${activePlan    ? renderActivePlanCard(activePlan, [...programs, ...customPrograms]) : ''}
     ${tosProgress   ? renderActiveTOSCard(tosProgress)           : ''}
 
     <div class="card" style="padding:12px 14px">
@@ -111,8 +112,8 @@ export async function renderPrograms(app) {
 
 function renderActivePlanCard(plan, programs) {
   const prog = programs.find(p => p.id === plan.program_id);
-  const { week, pct, weeksLeft } = planProgress(plan);
-  const name = prog?.name || plan.program_id;
+  const { week, pct, weeksLeft, over } = planProgress(plan);
+  const name = prog ? programName(prog) : 'Deleted plan';
   return `
     <div class="card" style="border-color:var(--accent)">
       <div class="card-row">
@@ -121,8 +122,10 @@ function renderActivePlanCard(plan, programs) {
       </div>
       <div style="font-weight:600;margin:6px 0 4px">${name}</div>
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
-      <div class="muted" style="margin-top:4px">${pct}% complete · ${weeksLeft} week${weeksLeft !== 1 ? 's' : ''} left</div>
-      <button class="btn ghost danger-text" data-action="end-plan" style="margin-top:10px;color:var(--danger);border-color:var(--danger)">End plan early</button>
+      <div class="muted" style="margin-top:4px">${over
+        ? `Finished — all ${plan.total_weeks} weeks are up. Restart it or pick a new plan below.`
+        : `${pct}% complete · ${weeksLeft} week${weeksLeft !== 1 ? 's' : ''} left`}</div>
+      <button class="btn ghost danger-text" data-action="end-plan" style="margin-top:10px;color:var(--danger);border-color:var(--danger)">${over ? 'Close plan' : 'End plan early'}</button>
     </div>
   `;
 }
@@ -165,7 +168,7 @@ function renderProgramList(el, programs, activePlan, onRefresh) {
     card.innerHTML = `
       <div class="card-row" style="align-items:flex-start">
         <div style="flex:1">
-          <div style="font-weight:600;font-size:16px">${p.name || p.program_name || p.id}
+          <div style="font-weight:600;font-size:16px">${programName(p)}
             ${isActive ? `<span class="pill accent" style="margin-left:6px;font-size:10px">Active</span>` : ''}
           </div>
           ${p.description ? `<div class="muted" style="margin-top:3px;font-size:13px">${p.description}</div>` : ''}
@@ -189,9 +192,10 @@ function renderProgramList(el, programs, activePlan, onRefresh) {
 
 function openStartPlanSheet(program, onConfirm) {
   openSheet((sheet, close) => {
-    const recommended = program.recommended_weeks || 12;
+    // A fixed-length program (PJF) is exactly its own length; rotations run as long as you like.
+    const recommended = program.weeks?.length || program.recommended_weeks || 12;
     sheet.innerHTML = `
-      <h2>${program.name || program.program_name}</h2>
+      <h2>${programName(program)}</h2>
       ${program.description ? `<div class="muted" style="margin-bottom:12px">${program.description}</div>` : ''}
 
       <div class="card" style="margin-bottom:14px">
@@ -204,10 +208,12 @@ function openStartPlanSheet(program, onConfirm) {
 
       <div class="group-label">Duration</div>
       <div class="muted" style="margin-bottom:8px">
-        ${recommended ? `We recommend <strong style="color:var(--fg)">${recommended} weeks</strong> — enough time to see real strength gains.` : 'Set how many weeks you want to run this program.'}
+        ${program.weeks
+          ? `This program is <strong style="color:var(--fg)">${recommended} week${recommended === 1 ? '' : 's'}</strong> long.`
+          : `We recommend <strong style="color:var(--fg)">${recommended} weeks</strong> — enough time to see real strength gains.`}
       </div>
       <div style="display:flex;align-items:center;gap:8px">
-        <input type="number" id="weeks-input" value="${recommended || 12}" min="4" max="52" inputmode="numeric" style="flex:1">
+        <input type="number" id="weeks-input" value="${recommended || 12}" min="1" max="52" inputmode="numeric" style="flex:1">
         <span class="muted">weeks</span>
       </div>
 
@@ -237,14 +243,16 @@ function openStartPlanSheet(program, onConfirm) {
     $start.oninput = updatePreview;
     updatePreview();
 
-    sheet.querySelector('#confirm-btn').onclick = async () => {
+    sheet.querySelector('#confirm-btn').onclick = async (e) => {
       const w = parseInt($weeks.value);
       if (!w || w < 1) { toast('Enter number of weeks'); return; }
+      const btn = e.currentTarget;
+      if (btn.disabled) return;
+      btn.disabled = true;
+      // Starting (or restarting) always begins at Week 1, Day 1 and makes this today's program.
+      if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $start.value);
-      // Also set the legacy active_program pref so workout view still works
-      const { pref } = await import('../db.js');
-      await pref('active_program', program.id);
-      toast(`${program.name} started — Week 1 of ${w}`);
+      toast(`${programName(program)} started — Week 1 of ${w}`);
       close();
       onConfirm();
     };
@@ -277,9 +285,18 @@ function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {
     `;
     card.querySelector('[data-start]').onclick = () => openStartCustomPlanSheet(p, onRefresh);
     card.querySelector('[data-delete]').onclick = async () => {
-      if (!confirm(`Delete "${p.name}"?`)) return;
+      const sched = await pref('schedule');
+      const inSchedule = sched?.slots?.some(sl => sl?.program_id === p.id);
+      const inUse = isActive || inSchedule || (await pref('active_program')) === p.id;
+      if (!confirm(inUse
+        ? `Delete "${p.name}"? It is your current plan — it will be removed from your schedule too.`
+        : `Delete "${p.name}"?`)) return;
       const all = (await pref('custom_programs')) || [];
       await pref('custom_programs', all.filter(x => x.id !== p.id));
+      if (isActive) await endPlan(activePlan.id);
+      if (inSchedule) await pref('schedule', { ...sched, slots: sched.slots.map(sl => (sl?.program_id === p.id ? null : sl)) });
+      if ((await pref('active_program')) === p.id) await pref('active_program', null);
+      await pref(`cursor:${p.id}`, null);
       toast('Deleted');
       onRefresh();
     };
@@ -294,7 +311,7 @@ async function openStartCustomPlanSheet(program, onConfirm) {
       <div class="muted" style="margin-bottom:12px">${program.days.length}-day rotation</div>
       <div class="group-label">Duration</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-        <input type="number" id="weeks-input" value="8" min="4" max="52" inputmode="numeric" style="flex:1">
+        <input type="number" id="weeks-input" value="8" min="1" max="52" inputmode="numeric" style="flex:1">
         <span class="muted">weeks</span>
       </div>
       <div class="group-label">Start date</div>
@@ -314,11 +331,14 @@ async function openStartCustomPlanSheet(program, onConfirm) {
       $p.textContent = `Finish: ${end.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}`;
     };
     $w.oninput = updatePreview; $s.oninput = updatePreview; updatePreview();
-    sheet.querySelector('#confirm').onclick = async () => {
+    sheet.querySelector('#confirm').onclick = async (e) => {
       const w = parseInt($w.value);
       if (!w) { toast('Enter weeks'); return; }
+      const btn = e.currentTarget;
+      if (btn.disabled) return;
+      btn.disabled = true;
+      if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $s.value);
-      await pref('active_program', program.id);
       toast(`${program.name} started`);
       close(); onConfirm();
     };
@@ -344,7 +364,7 @@ function openPlanBuilder(allExercises, onSave) {
     `;
     sheet.querySelectorAll('.list-item').forEach(item => {
       item.onclick = () => {
-        close();
+        close(false);   // the customizer opens straight after — see openSheet's close() note
         const template = SPLIT_TEMPLATES[item.dataset.key];
         openPlanCustomizer(template, allExercises, onSave);
       };
@@ -354,7 +374,7 @@ function openPlanBuilder(allExercises, onSave) {
 
 function openPlanCustomizer(template, allExercises, onSave) {
   // Build initial exercise picks for all days
-  const daySlots = template.days.map(day => autoFillDay(day, allExercises));
+  const daySlots = template.days.map((day, di) => autoFillDay(day, allExercises, di));
   // per-day ab finisher: array of { label, muscle, sets, reps, picked }
   const abSlots = template.days.map(() => []);
 
@@ -478,7 +498,7 @@ function openPlanCustomizer(template, allExercises, onSave) {
         };
         const existing = (await pref('custom_programs')) || [];
         await pref('custom_programs', [...existing, program]);
-        close();
+        close(false);
         openStartCustomPlanSheet(program, onSave);
       };
     }

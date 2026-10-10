@@ -12,9 +12,9 @@
  * 'follow' mode: each slot uses that program's current cursor and advances it after completion.
  * 'fixed'  mode: always loads the same (week, day) — useful for dedicated mobility/zone-2 days.
  */
-import { pref } from '../db.js';
+import { pref, getByIndex } from '../db.js';
 import { openSheet, toast } from '../app.js';
-import { loadCatalogs, getAllPrograms } from '../lib/static_data.js';
+import { loadCatalogs, getAllPrograms, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 
 const DOW_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -44,7 +44,7 @@ export async function openScheduleEditor() {
           <button class="btn" id="save">Save schedule</button>
           <button class="btn ghost" id="cancel">Cancel</button>
         </div>
-        <button class="btn ghost" id="toggle-setup" style="margin-top:8px">${isEmpty ? '' : 'Quick Setup'}</button>
+        <button class="btn ghost" id="toggle-setup" style="margin-top:8px">${isEmpty ? 'Hide Quick Setup' : 'Quick Setup'}</button>
       `;
 
       function renderSetupPanel() {
@@ -173,8 +173,9 @@ export async function openScheduleEditor() {
         close();
         resolve(editing);
       };
-      sheet.querySelector('#toggle-setup').onclick = () => {
+      sheet.querySelector('#toggle-setup').onclick = (e) => {
         showSetup = !showSetup;
+        e.currentTarget.textContent = showSetup ? 'Hide Quick Setup' : 'Quick Setup';
         renderSetupPanel();
       };
     });
@@ -264,7 +265,7 @@ function buildExercisePreview(slot, programs) {
 
   if (!dayData) return '<div class="muted">No exercises found</div>';
 
-  const exs = (dayData.exercises || []).filter(e => !e.is_alternate).slice(0, 12);
+  const exs = (dayData.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).slice(0, 12);
   if (!exs.length) return '<div class="muted">No exercises listed</div>';
 
   return exs.map(e => `
@@ -359,10 +360,12 @@ function openProgramDayPicker(program, current, onPick, parentClose) {
       <div class="group-label">Always use one specific day</div>
       <div id="days"></div>
     `;
+    // Two stacked sheets close together: drop both without history sync, then step back
+    // over both entries at once (two separate back() calls race and leave one behind).
+    const closeBoth = () => { close(false); parentClose(false); history.go(-2); };
     sheet.querySelector('[data-mode="follow"]').onclick = () => {
       onPick({ program_id: program.id, mode: 'follow' });
-      close();
-      parentClose();
+      closeBoth();
     };
     const $days = sheet.querySelector('#days');
     if (program.weeks) {
@@ -375,7 +378,7 @@ function openProgramDayPicker(program, current, onPick, parentClose) {
         item.innerHTML = `<div style="flex:1"><div class="list-item-title">Day ${d.day_num}: ${d.focus}</div></div>`;
         item.onclick = () => {
           onPick({ program_id: program.id, mode: 'fixed', week: 1, day: d.day_num });
-          close(); parentClose();
+          closeBoth();
         };
         $days.appendChild(item);
       });
@@ -386,7 +389,7 @@ function openProgramDayPicker(program, current, onPick, parentClose) {
         item.innerHTML = `<div style="flex:1"><div class="list-item-title">${d.day_name}</div></div>`;
         item.onclick = () => {
           onPick({ program_id: program.id, mode: 'fixed', day_index: i });
-          close(); parentClose();
+          closeBoth();
         };
         $days.appendChild(item);
       });
@@ -476,55 +479,105 @@ function suggestBalanced(programs) {
   ];
 }
 
+/** Display name for any program — PJF entries only carry `program_name`. */
+export const programName = (p) => p?.name || p?.program_name || p?.id || 'Program';
+
+/** Start-of-program cursor. Week-based programs never carry a day_index. */
+export const defaultCursor = (program) => (program?.weeks ? { week: 1, day: 1 } : { day_index: 0 });
+
+async function findProgram(id) {
+  if (!id) return null;
+  const { programById } = await loadCatalogs();
+  const p = programById.get(id);
+  if (p) return p;
+  const customList = (await pref('custom_programs')) || [];
+  return customList.find(c => c.id === id) || null;
+}
+
+/** Day key for "I chose to move past today's finished workout". */
+const NEXT_KEY = () => `fit-lift-next-${localDateStr()}`;
+export function allowNextWorkoutToday() {
+  try { sessionStorage.setItem(NEXT_KEY(), '1'); } catch { /* private mode */ }
+}
+const nextAllowed = () => { try { return sessionStorage.getItem(NEXT_KEY()) === '1'; } catch { return false; } };
+
+/**
+ * Follow-mode position for a program. Finishing advances the cursor immediately, so if a
+ * workout for this program was already finished today, today still IS that workout —
+ * otherwise Today flips to "Start workout" for tomorrow's day the moment you tap Finish.
+ */
+async function followPosition(program) {
+  const completed = await pref(`completed:${program.id}`);
+  const doneToday = nextAllowed() ? null
+    : (await getByIndex('sessions', 'date', localDateStr()))
+      .filter(x => x.program_id === program.id && x.done)
+      .sort((a, b) => (b.id || 0) - (a.id || 0))[0];
+  if (doneToday) {
+    return {
+      week: doneToday.week, day: doneToday.day,
+      day_index: program.weeks ? null : (doneToday.day_index ?? 0),
+      doneToday: true,
+    };
+  }
+  if (completed) return { completedAt: completed.date };
+  const cur = { ...defaultCursor(program), ...((await pref(`cursor:${program.id}`)) || {}) };
+  return program.weeks
+    ? { week: cur.week || 1, day: cur.day || 1, day_index: null }
+    : { week: 1, day: 1, day_index: cur.day_index ?? 0 };
+}
+
 /** Used by Home + Workout views to figure out today's prescription. */
 export async function todaysWorkout() {
   const sched = await pref('schedule');
-  if (sched && sched.type === 'weekly') {
+  // A schedule with no program on any day (or none at all) falls back to the single
+  // program — otherwise picking a program after ever opening the editor did nothing.
+  const hasProgramSlots = sched?.type === 'weekly' && sched.slots.some(sl => sl?.program_id);
+  if (sched && sched.type === 'weekly' && (hasProgramSlots || !(await pref('active_program')))) {
     const dow = new Date().getDay();
     const slot = sched.slots[dow];
     if (!slot) return { type: 'unset' };
     if (slot.label) return { type: 'tag', tag: slot.label };
     if (slot.program_id) {
-      const { programById } = await loadCatalogs();
-      let program = programById.get(slot.program_id);
-      if (!program) {
-        const customList = (await pref('custom_programs')) || [];
-        program = customList.find(p => p.id === slot.program_id) || null;
-      }
-      if (!program) return { type: 'unset' };
-      let week = 1, day = 1, day_index = null;
+      const program = await findProgram(slot.program_id);
+      if (!program) return { type: 'unset', missingProgram: slot.program_id };
       if (slot.mode === 'follow') {
-        const completed = await pref(`completed:${slot.program_id}`);
-        if (completed) {
-          return { type: 'completed', program, programId: slot.program_id, completedAt: completed.date };
-        }
-        const cur = (await pref(`cursor:${slot.program_id}`)) || { week: 1, day: 1, day_index: 0 };
-        week = cur.week; day = cur.day; day_index = cur.day_index;
-      } else {
-        week = slot.week || 1;
-        day = slot.day || 1;
-        day_index = slot.day_index;
+        const pos = await followPosition(program);
+        if (pos.completedAt) return { type: 'completed', program, programId: program.id, completedAt: pos.completedAt };
+        return { type: 'program', program, ...pos, mode: 'follow' };
       }
-      return { type: 'program', program, week, day, day_index, mode: slot.mode };
+      return {
+        type: 'program', program, mode: slot.mode,
+        week: slot.week || 1, day: slot.day || 1,
+        day_index: program.weeks ? null : (slot.day_index ?? 0),
+      };
     }
   }
-  // Fallback to legacy single-program mode
+  // Single-program mode
   const programId = await pref('active_program');
-  if (!programId) return { type: 'unset' };
-  const { programById } = await loadCatalogs();
-  let program = programById.get(programId);
-  if (!program) {
-    const customList = (await pref('custom_programs')) || [];
-    program = customList.find(p => p.id === programId) || null;
-  }
+  const program = await findProgram(programId);
   if (!program) return { type: 'unset' };
-  return {
-    type: 'program',
-    program,
-    week: (await pref('active_week')) || 1,
-    day: (await pref('active_day')) || 1,
-    mode: 'follow',
-  };
+  const pos = await followPosition(program);
+  if (pos.completedAt) return { type: 'completed', program, programId, completedAt: pos.completedAt };
+  return { type: 'program', program, ...pos, mode: 'follow' };
+}
+
+/**
+ * Make `programId` the single program. Replaces a weekly schedule that assigns programs
+ * (after asking), and a restart wipes the cursor + completed flag so it starts at day 1.
+ * Returns false if the user cancelled.
+ */
+export async function selectSingleProgram(programId, { restart = false } = {}) {
+  const sched = await pref('schedule');
+  if (sched?.slots?.some(sl => sl?.program_id)) {
+    if (!confirm('This replaces your Mixed Week schedule with this one program. Continue?')) return false;
+    await pref('schedule', null);
+  }
+  await pref('active_program', programId);
+  if (restart || (await pref(`completed:${programId}`))) {
+    await pref(`completed:${programId}`, null);
+    await pref(`cursor:${programId}`, null);
+  }
+  return true;
 }
 
 /** Advance the cursor for whichever program was just completed. */
@@ -537,9 +590,9 @@ export async function advanceCursor(programId, mode) {
     program = customList.find(p => p.id === programId) || null;
   }
   if (!program) return;
-  const cur = (await pref(`cursor:${programId}`)) || { week: 1, day: 1, day_index: 0 };
+  const cur = { ...defaultCursor(program), ...((await pref(`cursor:${programId}`)) || {}) };
   if (program.weeks) {
-    let { week, day } = cur;
+    let { week = 1, day = 1 } = cur;
     const wk = program.weeks.find(w => w.week_num === week);
     const maxDay = wk?.days?.length || 6;
     day += 1;

@@ -132,11 +132,12 @@ export function suggestForSlot(muscle, allExercises, usedInDay = new Set()) {
 }
 
 // Auto-populate a day template with exercise picks
-export function autoFillDay(dayTemplate, allExercises) {
+// `dayIndex` rotates the pick so repeated day templates (Full Body A/B/C) aren't identical.
+export function autoFillDay(dayTemplate, allExercises, dayIndex = 0) {
   const usedInDay = new Set();
   return dayTemplate.slots.map(slot => {
     const options = suggestForSlot(slot.muscle, allExercises, usedInDay);
-    const pick = options[0] || null;
+    const pick = options.length ? options[dayIndex % options.length] : null;
     if (pick) usedInDay.add(pick.name);
     return {
       ...slot,

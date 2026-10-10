@@ -244,8 +244,8 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 .exercise--compact { cursor: pointer; }
 .exercise--compact .set-row,
 .exercise--compact .exercise-target,
-.exercise--compact .e1rm-line,
-.exercise--compact .rest-timer-line { display: none; }
+.exercise--compact .e1rm-line { display: none; }
+/* The rest timer stays visible on a finished exercise — that rest is the one you time. */
 .video-link {
   background: var(--bg-input);
   border: 1px solid var(--border);

@@ -18,8 +18,8 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout } from './schedule.js';
-import { loadCatalogs } from '../lib/static_data.js';
+import { openScheduleEditor, todaysWorkout, selectSingleProgram } from './schedule.js';
+import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
@@ -55,7 +55,7 @@ function getExercisePreview(today_w) {
   } else if (p.days) {
     dayData = day_index != null ? p.days[day_index] : p.days[((day || 1) - 1) % p.days.length];
   }
-  return (dayData?.exercises || []).filter(e => !e.is_alternate).slice(0, 4);
+  return (dayData?.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).slice(0, 4);
 }
 
 async function computeWeeklySummary() {
@@ -295,6 +295,7 @@ export async function renderHome(app) {
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {
     await pref('completed:' + startOverBtn.dataset.programId, null);
+    await pref('cursor:' + startOverBtn.dataset.programId, null);   // back to Week 1, Day 1
     renderHome(app);
   };
   const cpBtn = app.querySelector('[data-action="change-program"]');
@@ -347,12 +348,14 @@ export async function renderHome(app) {
 }
 
 function renderTodayBadge(today_w, activePlan) {
-  if (activePlan) {
-    const { week, weeksLeft } = planProgress(activePlan);
+  // The plan badge only makes sense when today's workout is that plan's program.
+  if (activePlan && activePlan.program_id === today_w.program?.id) {
+    const { week } = planProgress(activePlan);
     return `<span class="pill accent">Week ${week} of ${activePlan.total_weeks}</span>`;
   }
   if (today_w.type === 'program' && today_w.program) {
-    return `<span class="pill ${today_w.program.source.toLowerCase()}">${today_w.program.source}</span>`;
+    const src = today_w.program.source || 'Custom';
+    return `<span class="pill ${src.toLowerCase()}">${src}</span>`;
   }
   return '';
 }
@@ -371,6 +374,7 @@ function isWorkoutDoneToday(today_w, sessions) {
   const done = (sessions || []).filter(s => s.done);
   if (!done.length) return false;
   if (today_w.type === 'program' && today_w.program) {
+    if (today_w.doneToday) return true;
     const p = today_w.program;
     return done.some(s =>
       s.program_id === p.id &&
@@ -425,7 +429,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
       : `Wk ${today_w.week}, Day ${today_w.day}`;
     const preview = getExercisePreview(today_w);
     const totalEx = today_w.program.days
-      ? (today_w.program.days[today_w.day_index ?? 0]?.exercises || []).filter(e => !e.is_alternate).length
+      ? (today_w.program.days[today_w.day_index ?? 0]?.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).length
       : null;
     const previewHtml = preview.length ? `
       <div style="margin:8px 0 2px">
@@ -525,7 +529,7 @@ async function openProgramPicker() {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>Choose a program</h2>
-      <div class="muted" style="margin-bottom:12px">PJF programs link out to the PJF app for videos. BWS programs use embedded YouTube links.</div>
+      <div class="muted" style="margin-bottom:12px">Tap ▶ on any exercise during a workout for its demo video.</div>
       <div id="prog-list"></div>
     `;
     const list = sheet.querySelector('#prog-list');
@@ -544,9 +548,7 @@ async function openProgramPicker() {
           <span class="pill ${src.toLowerCase()}">${src}</span>
         `;
         item.onclick = async () => {
-          await import('../db.js').then(({ pref }) => pref('active_program', p.id));
-          await import('../db.js').then(({ pref }) => pref('active_week', 1));
-          await import('../db.js').then(({ pref }) => pref('active_day', 1));
+          if (!(await selectSingleProgram(p.id))) return;
           close();
           toast(`Selected ${prettyName(p)}`);
           renderHome(document.getElementById('app'));

@@ -4,8 +4,8 @@
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, advanceCursor } from './schedule.js';
-import { loadCatalogs } from '../lib/static_data.js';
+import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName } from './schedule.js';
+import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail } from '../lib/exercise_ui.js';
@@ -20,6 +20,23 @@ function hipCautionHtml(name) {
 
 const today = () => localDateStr();
 let _restInterval = null;
+let _renderToken = 0;   // newest renderWorkout wins; older in-flight renders bail out
+
+/**
+ * Sessions are created lazily: browsing to a day builds one in memory, and the first
+ * real write (a set, a swap, Finish) stores it. Keeps the id once IndexedDB assigns it.
+ */
+async function saveSession(session) {
+  const id = await put('sessions', session);
+  if (session.id == null) session.id = id;
+}
+
+/** Set k of an exercise, creating any missing sets before it (sparse arrays break Stats). */
+function setAt(ex, k) {
+  if (!ex.sets) ex.sets = [];
+  for (let j = 0; j <= k; j++) if (!ex.sets[j]) ex.sets[j] = {};
+  return ex.sets[k];
+}
 
 function ytVideoId(url) {
   if (!url) return null;
@@ -43,9 +60,12 @@ function openLiftDetail(btn) {
 }
 
 export async function renderWorkout(app) {
+  const token = ++_renderToken;
+  const stale = () => token !== _renderToken;
   stopRestTimer();
   _hipFlare = await pref('hip_flare');
   const today_w = await todaysWorkout();
+  if (stale()) return;
   if (today_w.type === 'unset') {
     app.innerHTML = `
       <div class="empty">
@@ -81,18 +101,25 @@ export async function renderWorkout(app) {
   // Fetch the day's exercises
   const dayData = pickDay(program, week, day, day_index);
   if (!dayData) {
-    app.innerHTML = `<div class="empty">No workout found for Wk ${week}, Day ${day}</div>`;
+    app.innerHTML = `<div class="empty">No workout found for Wk ${week}, Day ${day}
+      <button class="btn ghost" id="back" style="margin-top:14px;max-width:240px">Back to today</button></div>`;
+    app.querySelector('#back').onclick = () => navigate('home');
     return;
   }
 
   // Fetch or create today's session
   const todaysSessions = await getByIndex('sessions', 'date', today());
-  let session = todaysSessions.find(s => s.program_id === programId && s.week === week && s.day === day && s.day_index === day_index);
+  if (stale()) return;
+  // Single-program sessions saved before v58 have no day_index; that meant the first
+  // rotation day, so treat missing as 0 rather than starting a duplicate session.
+  const sameIndex = (a, b) => (a ?? 0) === (b ?? 0);
+  let session = todaysSessions.find(s => s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index));
   if (!session) {
     const allSwaps = (await pref('swaps')) || {};
     const dayKey = _sessionDayKey({ day_index, week, day });
-    const rawExercises = dayData.exercises.filter(e => !e.is_alternate).map(ex => ({
+    const rawExercises = dayData.exercises.filter(e => !e.is_alternate && !isHeaderRow(e.name)).map(ex => ({
       name: ex.name,
+      orig_name: ex.name,
       target_reps: ex.reps || ex.set_targets?.[0] || '',
       target_sets: ex.sets || ex.set_targets?.length || 3,
       time: ex.time,
@@ -106,14 +133,22 @@ export async function renderWorkout(app) {
       program_id: programId,
       week, day, day_index,
       focus: dayData.focus || dayData.day_name,
-      exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps) : rawExercises,
+      exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps, { week, day }) : rawExercises,
       done: false,
     };
-    session.id = await put('sessions', session);
+  }
+
+  // Already finished today (Finish advances the cursor, but today stays this workout).
+  if (session.done && today_w.doneToday) {
+    const allSessions = await getAll('sessions');
+    if (stale()) return;
+    renderWorkoutComplete(app, session, computeSessionStats(session, allSessions), program, week, day);
+    return;
   }
 
   // Look up video URLs for each exercise
   const { exercises: allExercises, exerciseByName, warmups } = await loadCatalogs();
+  if (stale()) return;
   const exMap = {};
   for (const [k, v] of exerciseByName) exMap[k] = v;
 
@@ -121,14 +156,17 @@ export async function renderWorkout(app) {
 
   // Build last-session reference weights + all-time best e1RM per exercise
   const { ref: prevRef, bestE1RM: allTimeBestE1RM } = await buildPrevReference(programId, session.id, today());
+  if (stale()) return;
 
   app.innerHTML = `
     <h1>${dayData.focus || dayData.day_name}</h1>
-    <div class="muted">${program.name || program.program_name || program.id} · Wk ${week}, Day ${day}</div>
-    <div class="btn-row" style="margin:10px 0">
+    <div class="muted">${program.name || program.program_name || program.id} · ${program.days && !program.weeks
+      ? `Day ${(day_index ?? 0) + 1} of ${program.days.length}`
+      : `Wk ${week}, Day ${day}`}</div>
+    ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
-    </div>
+    </div>` : ''}
     ${warmup ? _warmupBlockHtml(warmup, exMap) : ''}
     <div id="exercises"></div>
     <div class="btn-row" style="margin-top:14px">
@@ -173,8 +211,8 @@ export async function renderWorkout(app) {
     $ex.appendChild(node);
   });
 
-  app.querySelector('[data-action="prev"]').onclick = () => changeDay(-1);
-  app.querySelector('[data-action="next"]').onclick = () => changeDay(+1);
+  app.querySelector('[data-action="prev"]')?.addEventListener('click', () => changeDay(-1));
+  app.querySelector('[data-action="next"]')?.addEventListener('click', () => changeDay(+1));
   app.querySelector('#add-ex').onclick = async () => {
     const picked = await pickExerciseFromLibrary(allExercises);
     if (!picked) return;
@@ -185,22 +223,35 @@ export async function renderWorkout(app) {
       sets: [],
       added: true,
     });
-    await put('sessions', session);
+    await saveSession(session);
     renderWorkout(app);
   };
-  app.querySelector('#finish').onclick = async () => {
+  let finishing = false;
+  app.querySelector('#finish').onclick = async (e) => {
+    if (finishing) return;
+    finishing = true;
+    e.currentTarget.disabled = true;
+    const wasDone = session.done;   // re-finishing an edited workout must not skip a day
     session.done = true;
-    await put('sessions', session);
-    if (today_w.mode === 'follow') await advanceCursor(programId, 'follow');
+    await saveSession(session);
+    if (today_w.mode === 'follow' && !wasDone) await advanceCursor(programId, 'follow');
     const allSessions = await getAll('sessions');
     const stats = computeSessionStats(session, allSessions);
     renderWorkoutComplete(app, session, stats, program, week, day);
   };
-  app.querySelector('#skip-workout').onclick = async () => {
+  app.querySelector('#skip-workout').onclick = async (e) => {
+    if (finishing) return;
+    const logged = session.exercises.some(x => (x.sets || []).some(st => st?.done));
+    if (!confirm(logged
+      ? 'Skip this workout? Sets you logged stay saved, and the program moves to the next day.'
+      : 'Skip this workout and move to the next day?')) return;
+    finishing = true;
+    e.currentTarget.disabled = true;
+    const wasDone = session.done;
     session.done = true;
     session.skipped = true;
-    await put('sessions', session);
-    if (today_w.mode === 'follow') await advanceCursor(programId, 'follow');
+    await saveSession(session);
+    if (today_w.mode === 'follow' && !wasDone) await advanceCursor(programId, 'follow');
     stopRestTimer();
     toast('Workout skipped');
     navigate('home');
@@ -213,14 +264,13 @@ export async function renderWorkout(app) {
     const i = +card.dataset.i;
     const setIdx = +e.target.dataset.set;
     const field = e.target.dataset.field;
-    if (!session.exercises[i].sets[setIdx]) session.exercises[i].sets[setIdx] = {};
-    session.exercises[i].sets[setIdx][field] = +e.target.value || null;
-    await put('sessions', session);
+    setAt(session.exercises[i], setIdx)[field] = +e.target.value || null;
+    await saveSession(session);
   });
   $ex.addEventListener('click', async e => {
     // Compact re-expansion: tap anywhere on a compact card except action buttons
     const compactCard = e.target.closest('.exercise--compact');
-    if (compactCard && !e.target.matches('.check, .inc-btn, .rpe-btn, .ex-menu')) {
+    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop')) {
       compactCard.classList.remove('exercise--compact');
       const $sum = compactCard.querySelector('.exercise-summary');
       if ($sum) $sum.style.display = 'none';
@@ -234,16 +284,15 @@ export async function renderWorkout(app) {
       const wInput = e.target.closest('.set-row').querySelector('[data-field="weight"]');
       const newVal = Math.round(((+wInput.value || 0) + 5) * 10) / 10;
       wInput.value = newVal;
-      if (!session.exercises[i].sets[setIdx]) session.exercises[i].sets[setIdx] = {};
-      session.exercises[i].sets[setIdx].weight = newVal;
-      await put('sessions', session);
+      setAt(session.exercises[i], setIdx).weight = newVal;
+      await saveSession(session);
     }
 
     if (e.target.matches('.check')) {
       const card = e.target.closest('.exercise');
       const i = +card.dataset.i;
       const setIdx = +e.target.dataset.set;
-      const set = session.exercises[i].sets[setIdx] = session.exercises[i].sets[setIdx] || {};
+      const set = setAt(session.exercises[i], setIdx);
 
       // Reconcile pre-filled inputs that were never explicitly typed (input event never fired)
       if (!set.done) {
@@ -252,9 +301,33 @@ export async function renderWorkout(app) {
         if (!set.reps)   { const v = +row.querySelector('[data-field="reps"]')?.value;   if (v) set.reps   = v; }
       }
 
+      // An empty set inherits the set above it — checking ○ on set 2 means "same again".
+      if (!set.done && !set.weight && !set.reps && setIdx > 0) {
+        const above = session.exercises[i].sets[setIdx - 1];
+        if (above?.weight || above?.reps) {
+          set.weight = above.weight ?? null;
+          set.reps = above.reps ?? null;
+          const row = e.target.closest('.set-row');
+          if (set.weight) row.querySelector('[data-field="weight"]').value = set.weight;
+          if (set.reps) row.querySelector('[data-field="reps"]').value = set.reps;
+        }
+      }
+
       set.done = !set.done;
-      await put('sessions', session);
+      await saveSession(session);
       e.target.closest('.set-row').classList.toggle('done', !!set.done);
+
+      // Carry this set's numbers into the next empty row so the next set is one tap.
+      if (set.done) {
+        const nextRow = card.querySelectorAll('.set-row')[setIdx + 1];
+        const nextSet = session.exercises[i].sets[setIdx + 1];
+        if (nextRow && !nextSet?.done) {
+          const $w = nextRow.querySelector('[data-field="weight"]');
+          const $r = nextRow.querySelector('[data-field="reps"]');
+          if ($w && !$w.value && set.weight) $w.value = set.weight;
+          if ($r && !$r.value && set.reps) $r.value = set.reps;
+        }
+      }
 
       // Update e1RM display inline — no re-render needed
       const ex = session.exercises[i];
@@ -264,7 +337,7 @@ export async function renderWorkout(app) {
         if (doneSets.length) {
           const bestE = Math.max(...doneSets.map(s => rpeE1RM(s.weight, s.reps, s.rpe)));
           if (bestE > 0) {
-            const isPR = bestE > (allTimeBestE1RM[ex.name] ?? 0);
+            const isPR = (allTimeBestE1RM[ex.name] ?? 0) > 0 && bestE > allTimeBestE1RM[ex.name];
             $e1rm.innerHTML = isPR
               ? `<span style="color:var(--accent)">~${bestE} lb e1RM ★ PR</span>`
               : `<span style="color:var(--fg-dim)">~${bestE} lb e1RM</span>`;
@@ -276,8 +349,8 @@ export async function renderWorkout(app) {
         startRestTimer(card);
         applyCompactState(card, ex);
       } else {
-        // Un-check: clear timer on this card and remove compact if present
-        stopRestTimer();
+        // Un-check: clear the timer only if it is running on this card
+        if (card.querySelector('.rest-timer-text')) stopRestTimer();
         card.classList.remove('exercise--compact');
         const $sum = card.querySelector('.exercise-summary');
         if ($sum) $sum.style.display = 'none';
@@ -420,17 +493,23 @@ async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, titl
   });
 }
 
+/**
+ * Swap key for a program day. Week-based programs key on the day number alone so a
+ * saved swap holds every week ("every time on this day"), not just the week it was made.
+ */
 function _sessionDayKey(session) {
   if (session.day_index != null) return `di${session.day_index}`;
-  if (session.week != null && session.day != null) return `wk${session.week}_d${session.day}`;
+  if (session.day != null) return `d${session.day}`;
   return null;
 }
 
-function _applySwaps(exercises, programId, dayKey, allSwaps) {
-  const daySwaps = allSwaps?.[programId]?.[dayKey] || {};
+function _applySwaps(exercises, programId, dayKey, allSwaps, { week, day } = {}) {
+  const forProgram = allSwaps?.[programId] || {};
+  // Swaps saved before v58 were per week (wk{w}_d{d}); they still apply to that week.
+  const daySwaps = { ...(forProgram[`wk${week}_d${day}`] || {}), ...(forProgram[dayKey] || {}) };
   if (!Object.keys(daySwaps).length) return exercises;
   return exercises.map(ex => {
-    const newName = daySwaps[ex.name];
+    const newName = daySwaps[ex.orig_name || ex.name];
     return newName ? { ...ex, name: newName, swapped: true } : ex;
   });
 }
@@ -449,7 +528,9 @@ function _offerPermanentSwap(originalName, newName, session) {
     renderWorkout(document.getElementById('app'));
     return;
   }
-  openSheet((s, closeOffer) => {
+  openSheet((s, closeOffer, hooks) => {
+    // However the prompt closes (buttons, backdrop, back gesture), redraw the swapped card.
+    hooks.onClose = () => renderWorkout(document.getElementById('app'));
     s.innerHTML = `
       <div style="margin-bottom:16px">
         <div style="font-weight:600;font-size:15px">Save this swap?</div>
@@ -464,11 +545,9 @@ function _offerPermanentSwap(originalName, newName, session) {
       await _saveSwap(session.program_id, dayKey, originalName, newName);
       closeOffer();
       toast('Swap saved');
-      renderWorkout(document.getElementById('app'));
     };
     s.querySelector('#swap-no').onclick = () => {
       closeOffer();
-      renderWorkout(document.getElementById('app'));
     };
   });
 }
@@ -553,14 +632,24 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           <div id="ex-filter-results"></div>
         `;
         const doSwap = async (name) => {
-          const originalName = ex.name;
-          ex.name = name;
-          ex.swapped = true;
-          await put('sessions', session);
+          // Key saved swaps on the program's own name, so re-swapping a swap still sticks.
+          const originalName = ex.orig_name || ex.name;
+          if ((ex.sets || []).some(st => st?.done)) {
+            // Logged sets belong to the old movement — keep it, add the swap after it.
+            session.exercises.splice(i + 1, 0, {
+              ...ex, name, orig_name: originalName, swapped: true, sets: [],
+            });
+          } else {
+            ex.orig_name = originalName;
+            ex.name = name;
+            ex.swapped = true;
+            ex.sets = [];
+          }
+          await saveSession(session);
           // The save-this-swap prompt opens straight after — close without syncing history,
           // or the back-navigation dismisses that prompt the moment it appears.
           close2(!(session.program_id && _sessionDayKey(session)));
-          _offerPermanentSwap(originalName, ex.name, session);
+          _offerPermanentSwap(originalName, name, session);
         };
         s2.querySelectorAll('.list-item[data-name]').forEach(item => {
           item.onclick = () => doSwap(item.dataset.name);
@@ -585,7 +674,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
 
     sheet.querySelector('#add-set').onclick = async () => {
       ex.target_sets = (parseInt(ex.target_sets) || ex.sets.length) + 1;
-      await put('sessions', session);
+      await saveSession(session);
       close();
       renderWorkout(document.getElementById('app'));
     };
@@ -595,7 +684,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         ex.target_sets = parseInt(ex.target_sets) - 1;
         if (ex.sets.length > ex.target_sets) ex.sets.length = ex.target_sets;
       }
-      await put('sessions', session);
+      await saveSession(session);
       close();
       renderWorkout(document.getElementById('app'));
     };
@@ -619,7 +708,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           const newSets = parseInt(s2.querySelector('#t-sets').value);
           if (newReps) ex.target_reps = newReps;
           if (newSets > 0) ex.target_sets = newSets;
-          await put('sessions', session);
+          await saveSession(session);
           close2();
           close();
           renderWorkout(document.getElementById('app'));
@@ -641,7 +730,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         s2.querySelector('#cancel-rm').onclick = close2;
         s2.querySelector('#confirm-rm').onclick = async () => {
           session.exercises.splice(i, 1);
-          await put('sessions', session);
+          await saveSession(session);
           close2();
           close();
           renderWorkout(document.getElementById('app'));
@@ -756,7 +845,7 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
     if (!s.done || s.id === currentSessionId) continue;
     for (const ex of (s.exercises || [])) {
       for (const set of (ex.sets || [])) {
-        if (!set?.weight || !set?.reps) continue;
+        if (!set?.done || !set.weight || !set.reps) continue;
         const e = rpeE1RM(set.weight, set.reps, set.rpe);
         if (e > (bestE1RM[ex.name] ?? 0)) bestE1RM[ex.name] = e;
       }
@@ -765,16 +854,17 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
 
   // Most recent same-program sets per exercise (for the "Last: …" reference display)
   const past = all
-    .filter(s => s.program_id === programId && s.id !== currentSessionId && s.date < todayStr && s.done)
+    .filter(s => s.program_id === programId && s.id !== currentSessionId && s.date < todayStr && s.done && !s.skipped)
     .sort((a, b) => b.date.localeCompare(a.date));
 
   const ref = {};
   for (const s of past) {
     for (const ex of (s.exercises || [])) {
       if (ref[ex.name]) continue;
-      const doneSets = (ex.sets || []).filter(s => s && (s.weight || s.reps));
-      if (doneSets.length) {
-        ref[ex.name] = { sets: doneSets, date: s.date };
+      // Keep set positions so last time's set 2 pre-fills set 2; only sets actually done.
+      const sets = (ex.sets || []).map(st => (st?.done && (st.weight || st.reps)) ? st : {});
+      if (sets.some(st => st.weight || st.reps)) {
+        ref[ex.name] = { sets, date: s.date };
       }
     }
   }
@@ -833,7 +923,7 @@ function applyCompactState(card, ex) {
 }
 
 function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
-  const sets = Math.max(parseInt(ex.target_sets) || 3, ex.sets.length, 3);
+  const sets = Math.max(parseInt(ex.target_sets) || 3, ex.sets.length);
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   const _ytId = ytVideoId(lookup?.video_url);
@@ -875,7 +965,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   if (existingDone.length) {
     const bestE = Math.max(...existingDone.map(s => rpeE1RM(s.weight, s.reps, s.rpe)));
     if (bestE > 0) {
-      const isPR = bestE > (allTimeBestE1RM[ex.name] ?? 0);
+      const isPR = (allTimeBestE1RM[ex.name] ?? 0) > 0 && bestE > allTimeBestE1RM[ex.name];
       initialE1RM = isPR
         ? `<span style="color:var(--accent)">~${bestE} lb e1RM ★ PR</span>`
         : `<span style="color:var(--fg-dim)">~${bestE} lb e1RM</span>`;
@@ -937,9 +1027,9 @@ async function openRPEPicker(card, setIdx, session, i) {
     `;
     sheet.querySelectorAll('button[data-rpe]').forEach(b => {
       b.onclick = async () => {
-        const set = session.exercises[i].sets[setIdx] = session.exercises[i].sets[setIdx] || {};
+        const set = setAt(session.exercises[i], setIdx);
         set.rpe = +b.dataset.rpe;
-        await put('sessions', session);
+        await saveSession(session);
         const btn = card.querySelector(`button.rpe-btn[data-set="${setIdx}"]`);
         if (btn) btn.textContent = `@${set.rpe}`;
         close();
@@ -991,7 +1081,7 @@ function computeSessionStats(session, allSessions) {
     if (!s.done || s.id === session.id) continue;
     for (const ex of (s.exercises || [])) {
       for (const set of (ex.sets || [])) {
-        if (!set?.weight || !set?.reps) continue;
+        if (!set?.done || !set.weight || !set.reps) continue;
         const e = rpeE1RM(set.weight, set.reps, set.rpe);
         if (e > (allTimeBest[ex.name] ?? 0)) allTimeBest[ex.name] = e;
       }
@@ -1002,9 +1092,14 @@ function computeSessionStats(session, allSessions) {
   const exerciseSummaries = [], prs = [];
 
   for (const ex of session.exercises) {
-    const doneSets = (ex.sets || []).filter(s => s?.done && (s.weight || s.reps));
-    if (!doneSets.length) continue;
-    totalSets += doneSets.length;
+    const checked = (ex.sets || []).filter(s => s?.done);
+    if (!checked.length) continue;
+    totalSets += checked.length;
+    const doneSets = checked.filter(s => s.weight || s.reps);
+    if (!doneSets.length) {
+      exerciseSummaries.push({ name: ex.name, bestSet: null, bestE1RM: 0, setsCompleted: checked.length });
+      continue;
+    }
     totalVolume += doneSets.reduce((sum, s) => sum + (s.weight || 0) * (s.reps || 0), 0);
 
     let bestSet = null, bestE1RM = 0;
@@ -1026,7 +1121,9 @@ function computeSessionStats(session, allSessions) {
 
 function renderWorkoutComplete(app, session, stats, program, week, day) {
   const programLabel = program.name || program.program_name || program.id;
-  const weekDayLabel = (week && day) ? `Wk ${week}, Day ${day}` : '';
+  const weekDayLabel = program?.days && !program.weeks
+    ? `Day ${(session.day_index ?? 0) + 1} of ${program.days.length}`
+    : (week && day) ? `Wk ${week}, Day ${day}` : '';
   const prNames = new Set(stats.prs.map(p => p.name));
 
   const prSection = stats.prs.length ? `
@@ -1080,31 +1177,44 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
         <button class="btn" id="done-home">Back to today</button>
         <button class="btn ghost" id="done-body">Log weight</button>
       </div>
+      ${session.skipped ? '' : `<button class="btn ghost" id="done-next" style="margin-top:8px;font-size:13px">
+        Do the next workout today →</button>`}
     </div>
   `;
 
   app.querySelector('#done-home').onclick = () => navigate('home');
   app.querySelector('#done-body').onclick = () => navigate('body');
+  app.querySelector('#done-next')?.addEventListener('click', () => {
+    allowNextWorkoutToday();
+    renderWorkout(app);
+  });
 }
 
 async function changeDay(delta) {
-  // Manually move the program cursor (only works for "follow" mode current programs).
+  // Manually move the program cursor (follow mode only — the buttons are hidden otherwise).
   const today_w = await todaysWorkout();
-  if (today_w.type !== 'program') return;
-  const programId = today_w.program.id;
+  if (today_w.type !== 'program' || today_w.mode !== 'follow') return;
   const program = today_w.program;
-  const cur = (await pref(`cursor:${programId}`)) || { week: 1, day: 1, day_index: 0 };
+  const programId = program.id;
+  // Browsing days means moving on from anything already finished today.
+  allowNextWorkoutToday();
   if (program.weeks) {
-    let { week, day } = cur;
-    week = week || today_w.week;
-    day = (day || today_w.day) + delta;
-    const wk = program.weeks.find(w => w.week_num === week);
-    const maxDay = wk?.days?.length || 6;
-    if (day > maxDay) { day = 1; week = Math.min(week + 1, program.weeks.length); }
-    if (day < 1)      { week = Math.max(1, week - 1); day = program.weeks.find(w => w.week_num === week)?.days?.length || 1; }
+    let week = today_w.week || 1;
+    let day = (today_w.day || 1) + delta;
+    const daysIn = (w) => program.weeks.find(x => x.week_num === w)?.days?.length || 1;
+    if (day > daysIn(week)) {
+      if (week >= program.weeks.length) { toast('That is the last day of the program'); return; }
+      week += 1; day = 1;
+    }
+    if (day < 1) {
+      if (week <= 1) { toast('That is the first day of the program'); return; }
+      week -= 1; day = daysIn(week);
+    }
     await pref(`cursor:${programId}`, { week, day });
   } else if (program.days) {
-    const di = (((cur.day_index ?? 0) + delta) % program.days.length + program.days.length) % program.days.length;
+    // Rotations loop by design.
+    const n = program.days.length;
+    const di = (((today_w.day_index ?? 0) + delta) % n + n) % n;
     await pref(`cursor:${programId}`, { day_index: di });
   }
   renderWorkout(document.getElementById('app'));
