@@ -1,13 +1,791 @@
 {
-  "generated_for": 1,
+  "generated_for": 21,
   "max_seconds": 360,
   "exercises": [
+    {
+      "id": "wu-walk",
+      "name": "Walk or Easy Bike",
+      "section": "warmup",
+      "query": "brisk walking warm up 5 minutes before workout low impact",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "WBhmNTykYiE",
+          "title": "3 best walking warm up exercises to walk easier ✅",
+          "channel": "Alyssa Kuhn, Arthritis Adventure",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/WBhmNTykYiE",
+          "score": 2.39
+        },
+        {
+          "videoId": "7yOxOrdE9aU",
+          "title": "How-To Warm Up Before A Long Walk",
+          "channel": "Justin Agustin",
+          "seconds": 58,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/7yOxOrdE9aU",
+          "score": 1.84
+        },
+        {
+          "videoId": "CGQqj-OOfHY",
+          "title": "5 minute pre-run warm up | Bupa Health",
+          "channel": "Bupa Health",
+          "seconds": 316,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/CGQqj-OOfHY",
+          "score": 0.12
+        }
+      ]
+    },
+    {
+      "id": "pr-bench-hip-lift",
+      "name": "Bench Hip Lift with Roller Squeeze",
+      "section": "pelvic-reset",
+      "query": "90 90 hip lift feet on bench foam roller between knees",
+      "approved": "19lMsh8mSoE",
+      "candidates": [
+        {
+          "videoId": "19lMsh8mSoE",
+          "title": "90/90 Hip Lift with Roller squeeze",
+          "channel": "Nathane Jackson",
+          "url": "https://youtu.be/19lMsh8mSoE",
+          "manual": true
+        },
+        {
+          "videoId": "kW8VKdtI3RA",
+          "title": "Quadruped Bench Supported Hip Internal Rotation 90-90 Abducted Position and Knee Elevated PALS RALS",
+          "channel": "AccelerateSP",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/kW8VKdtI3RA",
+          "score": 1.97
+        },
+        {
+          "videoId": "36sXb4s0vxk",
+          "title": "Quadruped Bench Supported Hip Lift Off From 90-90 Abducted Position and Knee Elevated",
+          "channel": "AccelerateSP",
+          "seconds": 13,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/36sXb4s0vxk",
+          "score": 1.96
+        },
+        {
+          "videoId": "ktgtEWGhFd8",
+          "title": "How to PROPERLY Perform the Kneeling Hip Flexor Stretch With Good Form (For Tight Hip Flexors)",
+          "channel": "Gerardi Performance",
+          "seconds": 20,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/ktgtEWGhFd8",
+          "score": 1.44
+        }
+      ]
+    },
+    {
+      "id": "pr-sidelying-grounding",
+      "name": "Sidelying Grounding",
+      "section": "pelvic-reset",
+      "query": "Pinnacle Performance sidelying grounding",
+      "approved": "BGFncg-ayT0",
+      "candidates": [
+        {
+          "videoId": "BGFncg-ayT0",
+          "title": "Side Lying Grounding  - Pelvic Mobility - Self Manual Release",
+          "channel": "Jacobs Fitness",
+          "url": "https://youtu.be/BGFncg-ayT0",
+          "manual": true
+        },
+        {
+          "videoId": "wqiDZZbaas8",
+          "title": "Relieve Pelvic Girdle Pain With 5 Exercises! #pregnancy",
+          "channel": "Pregnancy and Postpartum TV",
+          "seconds": 20,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/wqiDZZbaas8",
+          "score": 1.44
+        },
+        {
+          "videoId": "5tsqg7DVWHg",
+          "title": "🦵 Front Foot and Back Foot Elevated Hip Flexor: Deepening Your Flexibility & Strength 🦵",
+          "channel": "Prepare For Performance",
+          "seconds": 50,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/5tsqg7DVWHg",
+          "score": 0.86
+        }
+      ]
+    },
+    {
+      "id": "pr-ppt-breathing",
+      "name": "Posterior Pelvic Tilt Breathing",
+      "section": "pelvic-reset",
+      "query": "Dr Devon Hoffman forced posterior pelvic tilt breathing",
+      "approved": "xilrUEE8F8o",
+      "candidates": [
+        {
+          "videoId": "xilrUEE8F8o",
+          "title": "90/90 Breathing with Posterior Tilt",
+          "channel": "Movement As Medicine",
+          "url": "https://youtu.be/xilrUEE8F8o",
+          "manual": true
+        },
+        {
+          "videoId": "alMkuAASpgY",
+          "title": "Tight Upper Traps! Try this #stretch #workout",
+          "channel": "Devon Hoffman",
+          "seconds": 21,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/alMkuAASpgY",
+          "score": 0.94
+        }
+      ]
+    },
+    {
+      "id": "pr-ball-series",
+      "name": "Supine Ball Squeeze Series",
+      "section": "pelvic-reset",
+      "query": "Anytime Mobility hip rotation extension frog leg lift ball",
+      "approved": "iXJ72Yq7AOU",
+      "candidates": [
+        {
+          "videoId": "iXJ72Yq7AOU",
+          "title": "3 moves to make your hips and back feel amazing! Grab any lightweight ball and follow along.",
+          "channel": "Anytime Mobility",
+          "url": "https://youtu.be/iXJ72Yq7AOU",
+          "manual": true
+        },
+        {
+          "videoId": "f_G7dd3uCwc",
+          "title": "Sciatica Pain Relief in 2 Minutes (3 SAFE Moves)",
+          "channel": "Precision Movement",
+          "seconds": 79,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/f_G7dd3uCwc",
+          "score": 3.78
+        },
+        {
+          "videoId": "n22WtkC_kGo",
+          "title": "How to fix your Clicking Hips - Hip Clicking and Pain Relief #chiropractictips",
+          "channel": "Get Adjusted Now with Dr. Justin Lewis",
+          "seconds": 10,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/n22WtkC_kGo",
+          "score": 1.47
+        },
+        {
+          "videoId": "gy8BQPPAW_o",
+          "title": "How to quickly fix hip pinching! #hippain #hipflexor #hipmobility #lowbackpain #hipexercises",
+          "channel": "Conor Harris",
+          "seconds": 58,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/gy8BQPPAW_o",
+          "score": 1.34
+        }
+      ]
+    },
+    {
+      "id": "mrc-distraction-ir",
+      "name": "Banded Distraction for Hip IR",
+      "section": "session-a",
+      "query": "banded hip distraction internal rotation mobilization",
+      "approved": "vR7mmNJwNgE",
+      "candidates": [
+        {
+          "videoId": "mDUrMKDZS-U",
+          "title": "Banded Anterior Hip Opener Mobilization",
+          "channel": "Movement Physio",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mDUrMKDZS-U",
+          "score": 4.97
+        },
+        {
+          "videoId": "vR7mmNJwNgE",
+          "title": "Banded Hip Internal Rotation Mobilization",
+          "channel": "Movement Physio",
+          "seconds": 13,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/vR7mmNJwNgE",
+          "score": 4.96
+        },
+        {
+          "videoId": "99pb0NnE4Kw",
+          "title": "Banded Joint Mobilization for The Hip",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/99pb0NnE4Kw",
+          "score": 4.83
+        }
+      ]
+    },
+    {
+      "id": "mrc-distraction-er",
+      "name": "Banded Distraction for Hip ER",
+      "section": "session-a",
+      "query": "banded hip distraction external rotation mobilization",
+      "approved": "99pb0NnE4Kw",
+      "candidates": [
+        {
+          "videoId": "mDUrMKDZS-U",
+          "title": "Banded Anterior Hip Opener Mobilization",
+          "channel": "Movement Physio",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mDUrMKDZS-U",
+          "score": 4.97
+        },
+        {
+          "videoId": "fmBTuB86HUo",
+          "title": "Banded Hip Distraction",
+          "channel": "Vital Force Physio",
+          "seconds": 10,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/fmBTuB86HUo",
+          "score": 4.97
+        },
+        {
+          "videoId": "99pb0NnE4Kw",
+          "title": "Banded Joint Mobilization for The Hip",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/99pb0NnE4Kw",
+          "score": 4.83
+        }
+      ]
+    },
+    {
+      "id": "mrc-seated-banded-ir",
+      "name": "Seated Banded Hip IR",
+      "section": "session-a",
+      "query": "seated banded hip internal rotation",
+      "approved": "6sYTrwpgQuE",
+      "candidates": [
+        {
+          "videoId": "6sYTrwpgQuE",
+          "title": "Seated Banded Hip Internal Rotation - strengthening Exercise",
+          "channel": "Rehab Hero",
+          "seconds": 18,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/6sYTrwpgQuE",
+          "score": 5.45
+        },
+        {
+          "videoId": "YA8iHKyyX5g",
+          "title": "Seated Hip Internal Rotation with Band",
+          "channel": "Physio Room Co",
+          "seconds": 35,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/YA8iHKyyX5g",
+          "score": 4.9
+        },
+        {
+          "videoId": "rgEKw8vB19A",
+          "title": "Banded Hip Internal Rotation (Seated) #hipmobility #exercise #glutes",
+          "channel": "The Movement Collective",
+          "seconds": 11,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/rgEKw8vB19A",
+          "score": 2.47
+        }
+      ]
+    },
+    {
+      "id": "mrc-tfl-ir-stretch",
+      "name": "TFL / Hip IR Stretch",
+      "section": "session-a",
+      "query": "TFL hip internal rotation stretch lying",
+      "approved": "Q9HF6G04L04",
+      "candidates": [
+        {
+          "videoId": "Q9HF6G04L04",
+          "title": "TFL Stretch",
+          "channel": "Movement Physio",
+          "seconds": 12,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Q9HF6G04L04",
+          "score": 4.97
+        },
+        {
+          "videoId": "tTdVOSVqpxw",
+          "title": "TFL stretch",
+          "channel": "Delta Physio",
+          "seconds": 35,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/tTdVOSVqpxw",
+          "score": 4.9
+        },
+        {
+          "videoId": "LbQCbA0F218",
+          "title": "How to (Actually) Stretch Your Tensor Fasciae Latae (TFL) | Snapping Hip & IT Band Syndrome",
+          "channel": "QED Fitness",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/LbQCbA0F218",
+          "score": 2.39
+        }
+      ]
+    },
+    {
+      "id": "mrc-elevated-ham-bridge",
+      "name": "Elevated Hamstring Bridge",
+      "section": "session-a",
+      "query": "elevated hamstring bridge heels on box",
+      "approved": "n6FqbFAt_Kk",
+      "candidates": [
+        {
+          "videoId": "4E19NDrEmV0",
+          "title": "Single leg hamstring bridge hold weighted + heels elevated",
+          "channel": "HanPhysio",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/4E19NDrEmV0",
+          "score": 4.96
+        },
+        {
+          "videoId": "zrsNPYjtKDU",
+          "title": "Eccentric Hamstring Box Bridge",
+          "channel": "Vital Force Physio",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/zrsNPYjtKDU",
+          "score": 3.97
+        },
+        {
+          "videoId": "n6FqbFAt_Kk",
+          "title": "Feet Elevated Hamstring Bridge Iso",
+          "channel": "Shannon Smith",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/n6FqbFAt_Kk",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "mrc-side-plank-clamshell",
+      "name": "Banded Side Plank Clamshell",
+      "section": "session-a",
+      "query": "banded side plank clamshell",
+      "approved": "X5fufzpGbpA",
+      "candidates": [
+        {
+          "videoId": "X5fufzpGbpA",
+          "title": "Banded Side Plank Clamshell",
+          "channel": "E3 Rehab Exercise Library",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/X5fufzpGbpA",
+          "score": 4.96
+        },
+        {
+          "videoId": "Y1vuVuP754M",
+          "title": "MUST DO Glute Exercise!",
+          "channel": "Squat University",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Y1vuVuP754M",
+          "score": 4.34
+        },
+        {
+          "videoId": "BL0nv5YyuK0",
+          "title": "The BEST Glute Exercise EVER!😳",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/BL0nv5YyuK0",
+          "score": 4.33
+        }
+      ]
+    },
+    {
+      "id": "mrc-monster-walk",
+      "name": "Mini Band Monster Walk",
+      "section": "session-a",
+      "query": "mini band monster walk",
+      "approved": "aX5zg0LYYI0",
+      "candidates": [
+        {
+          "videoId": "kqkzFCCkflc",
+          "title": "Mini band lateral monster walk",
+          "channel": "Action Ready Training Club",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/kqkzFCCkflc",
+          "score": 1.98
+        },
+        {
+          "videoId": "aX5zg0LYYI0",
+          "title": "Mini Band Monster Walk",
+          "channel": "Alex LaRochelle",
+          "seconds": 10,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/aX5zg0LYYI0",
+          "score": 1.97
+        },
+        {
+          "videoId": "lHD8s1o9vKI",
+          "title": "Mini Band Monster Walk",
+          "channel": "DJ Melgar Hofstra Strength",
+          "seconds": 11,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/lHD8s1o9vKI",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "mrc-quadruped-hip-hike",
+      "name": "Quadruped Hip Hikes",
+      "section": "session-a",
+      "query": "quadruped hip hike exercise",
+      "approved": "l1RvnLPSlyc",
+      "candidates": [
+        {
+          "videoId": "bEF5OKTllBQ",
+          "title": "Introduction to Quadrupedal Hikes: Multifidi Activation Tutorial!",
+          "channel": "The Doctors of Physical Therapy",
+          "seconds": 60,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/bEF5OKTllBQ",
+          "score": 2.33
+        },
+        {
+          "videoId": "GVr-_lMT8SM",
+          "title": "Quadruped Hip Hike",
+          "channel": "RCVRY Injury Clinic",
+          "seconds": 8,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/GVr-_lMT8SM",
+          "score": 1.98
+        },
+        {
+          "videoId": "l1RvnLPSlyc",
+          "title": "Quadruped Hip Hike",
+          "channel": "Altus Performance Physical Therapy",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/l1RvnLPSlyc",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "mrc-hip-flexor-march",
+      "name": "Banded Hip Flexor March",
+      "section": "session-a",
+      "query": "banded hip flexor march wall",
+      "approved": "Za5Vu_uK084",
+      "candidates": [
+        {
+          "videoId": "7_cK3XVqN9M",
+          "title": "Train Your Damn Hip Flexors!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7_cK3XVqN9M",
+          "score": 3.83
+        },
+        {
+          "videoId": "Za5Vu_uK084",
+          "title": "Hip Flexion March - At Wall, Banded",
+          "channel": "BEFORM Performance Physical Therapy",
+          "seconds": 10,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Za5Vu_uK084",
+          "score": 1.97
+        },
+        {
+          "videoId": "87WwFpe_-hI",
+          "title": "Banded march",
+          "channel": "HIDEF Physical Therapy",
+          "seconds": 10,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/87WwFpe_-hI",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "mrc-copenhagen-knee",
+      "name": "Copenhagen Side Plank (Knee)",
+      "section": "session-b",
+      "query": "copenhagen side plank knee short lever",
+      "approved": "nhGK-DxiGBE",
+      "candidates": [
+        {
+          "videoId": "nhGK-DxiGBE",
+          "title": "Short Lever Adductor Copenhagen Plank  | Step-by-Step Tutorial",
+          "channel": "Physio Plus Fitness",
+          "seconds": 52,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/nhGK-DxiGBE",
+          "score": 5.36
+        },
+        {
+          "videoId": "AFvaVr1lwFo",
+          "title": "Copenhagen Side Plank Short Lever",
+          "channel": "Dr. John Rusin",
+          "seconds": 14,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/AFvaVr1lwFo",
+          "score": 4.96
+        },
+        {
+          "videoId": "OESM2L1z5hg",
+          "title": "Her Missing Exercise!🔥",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/OESM2L1z5hg",
+          "score": 4.34
+        }
+      ]
+    },
+    {
+      "id": "mrc-standing-hip-hike",
+      "name": "Standing Hip Hikes",
+      "section": "session-b",
+      "query": "standing elevated hip hike exercise",
+      "approved": "TTENeiJ8IYk",
+      "candidates": [
+        {
+          "videoId": "AXDy-GrK4Ww",
+          "title": "Standing Hip Hike | RPI Physical Therapy",
+          "channel": "Rehabilitation Professionals, Inc.",
+          "seconds": 67,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/AXDy-GrK4Ww",
+          "score": 2.31
+        },
+        {
+          "videoId": "c4b2YXPRW08",
+          "title": "Hip Hiking Exercise",
+          "channel": "Espitalia",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/c4b2YXPRW08",
+          "score": 1.49
+        },
+        {
+          "videoId": "TTENeiJ8IYk",
+          "title": "The \"hip hike\" exercise for building hip strength",
+          "channel": "Harvard Health Publishing",
+          "seconds": 34,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/TTENeiJ8IYk",
+          "score": 1.41
+        }
+      ]
+    },
+    {
+      "id": "mrc-hip-airplane",
+      "name": "SL Hip Airplane w/ Foam Roller",
+      "section": "session-b",
+      "query": "single leg hip airplane foam roller",
+      "approved": "oux3NARXtHI",
+      "candidates": [
+        {
+          "videoId": "DqD6PlBmUaE",
+          "title": "SL Hip Airplane (wall support): Progressive Mobility Physio & Performance",
+          "channel": "Progressive Mobility Physio & Performance",
+          "seconds": 77,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/DqD6PlBmUaE",
+          "score": 4.79
+        },
+        {
+          "videoId": "UuMsRgUkNf4",
+          "title": "foam roller hip airplane",
+          "channel": "Body in Motion",
+          "seconds": 18,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/UuMsRgUkNf4",
+          "score": 0.95
+        },
+        {
+          "videoId": "oux3NARXtHI",
+          "title": "Hip Airplanes with Foam Roller",
+          "channel": "Paul Glowacki",
+          "seconds": 21,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/oux3NARXtHI",
+          "score": 0.94
+        }
+      ]
+    },
+    {
+      "id": "mrc-adductor-slider-lunge",
+      "name": "Adductor Slider Lunge",
+      "section": "session-b",
+      "query": "adductor slider lateral lunge",
+      "approved": "SkH6Da-M9Zo",
+      "candidates": [
+        {
+          "videoId": "0z23N-7cV40",
+          "title": "Lateral lunge with adductor slide",
+          "channel": "Evolution Physical Therapy & Fitness",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/0z23N-7cV40",
+          "score": 1.98
+        },
+        {
+          "videoId": "SkH6Da-M9Zo",
+          "title": "Slider lateral lunge (adductor focus)",
+          "channel": "Kenny Esquivel",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/SkH6Da-M9Zo",
+          "score": 1.98
+        },
+        {
+          "videoId": "I5bmkGM7tQU",
+          "title": "Lateral Lunge w/ Adductor Plate Slide",
+          "channel": "POLARISPTPHX",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/I5bmkGM7tQU",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "pm-hip-circles",
+      "name": "Hip Circles",
+      "section": "pool-mobility",
+      "query": "aquatic therapy hip range of motion exercises pool wall standing",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Ij62eXy_qQA",
+          "title": "Aquatics - Hip Abduction ABD",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Ij62eXy_qQA",
+          "score": 4.96
+        },
+        {
+          "videoId": "G_hz954kSxQ",
+          "title": "5 Gentle Hip Water Exercises for Beginners",
+          "channel": "Justin Agustin",
+          "seconds": 50,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/G_hz954kSxQ",
+          "score": 2.36
+        },
+        {
+          "videoId": "RmNYutuhZBw",
+          "title": "Aquatic Exercise (Demonstration)",
+          "channel": "Dr. Alex  PT, DPT",
+          "seconds": 16,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/RmNYutuhZBw",
+          "score": 1.46
+        }
+      ]
+    },
+    {
+      "id": "pm-front-back-swings",
+      "name": "Front/Back Leg Swings",
+      "section": "pool-mobility",
+      "query": "pool leg swing exercise hip flexion extension water therapy",
+      "approved": "6Q1eGj8_IDM",
+      "candidates": [
+        {
+          "videoId": "Nr3EuVs5j5c",
+          "title": "Hydrotherapy / Aquatic Therapy Exercises for Lower Limb Rehab: SL Squat",
+          "channel": "Nottingham Physio",
+          "seconds": 24,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Nr3EuVs5j5c",
+          "score": 4.43
+        },
+        {
+          "videoId": "6Q1eGj8_IDM",
+          "title": "Aquatics - Hip Extension",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 15,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/6Q1eGj8_IDM",
+          "score": 3.96
+        },
+        {
+          "videoId": "Ij62eXy_qQA",
+          "title": "Aquatics - Hip Abduction ABD",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 16,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Ij62eXy_qQA",
+          "score": 3.96
+        }
+      ]
+    },
     {
       "id": "pm-side-swings",
       "name": "Side-to-Side Leg Swings",
       "section": "pool-mobility",
       "query": "pool water leg abduction swing side hip aquatic exercise",
-      "approved": null,
+      "approved": "Ij62eXy_qQA",
       "candidates": [
         {
           "videoId": "Ij62eXy_qQA",
@@ -38,26 +816,6 @@
           "embeddable": true,
           "url": "https://youtu.be/wc-so8ruNvQ",
           "score": 3.94
-        },
-        {
-          "videoId": "AT1sCirKNF4",
-          "title": "Aquatic exercise- Squats + Lunges",
-          "channel": "Dr. Dania Qutishat",
-          "seconds": 48,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/AT1sCirKNF4",
-          "score": 1.37
-        },
-        {
-          "videoId": "G_hz954kSxQ",
-          "title": "5 Gentle Hip Water Exercises for Beginners",
-          "channel": "Justin Agustin",
-          "seconds": 50,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/G_hz954kSxQ",
-          "score": 1.36
         }
       ]
     }
