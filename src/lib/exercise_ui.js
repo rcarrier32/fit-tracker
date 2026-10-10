@@ -123,13 +123,37 @@ export function wireExerciseRows(root, h) {
   });
 }
 
+/**
+ * Level switcher right under the name — the mid-workout control. One tap to the easier or
+ * harder version; the full ladder (with the readiness note) sits further down.
+ */
+function levelBarHTML(l, accent) {
+  const n = l.steps.length;
+  const btn = (step, label, on) => `<button data-step="${step}" ${on ? '' : 'disabled'}
+    style="flex-shrink:0;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;
+      cursor:${on ? 'pointer' : 'default'};opacity:${on ? 1 : 0.3};
+      background:transparent;border:1px solid ${accent}55;color:${accent}">${label}</button>`;
+  return `
+    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:8px;border-radius:10px;
+      background:${l.ready ? accent + '14' : 'rgba(255,255,255,0.03)'};
+      border:1px solid ${l.ready ? accent + '88' : 'rgba(255,255,255,0.08)'}">
+      ${btn(l.current - 1, '‹ Easier', l.current > 0)}
+      <div style="flex:1;min-width:0;text-align:center">
+        <div style="font-size:10px;letter-spacing:0.1em;color:${accent};font-weight:700">LEVEL ${l.current + 1} OF ${n}</div>
+        ${l.ready ? `<div style="font-size:10.5px;color:${accent};margin-top:1px">Ready to move up ↑</div>`
+          : `<div style="font-size:10.5px;color:#64748b;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(l.name)}</div>`}
+      </div>
+      ${btn(l.current + 1, 'Harder ›', l.current < n - 1)}
+    </div>`;
+}
+
 /** Progression ladder: every step tappable, current one highlighted, harder ones to the right. */
 function ladderHTML(l, accent) {
   return `
     <div style="margin-top:16px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);
       border:1px solid ${l.ready ? accent + '66' : 'rgba(255,255,255,0.08)'}">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
-        <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700">PROGRESSION</div>
+        <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700">ALL VERSIONS</div>
         <div style="font-size:10.5px;color:#64748b">${esc(l.name)}</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px">
@@ -207,6 +231,7 @@ export function openExerciseDetail(ex, o = {}) {
           border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
       </div>
 
+      ${o.ladder ? levelBarHTML(o.ladder, accent) : ''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px">
         ${rx ? `<button id="ex-rx" ${o.editRx ? '' : 'disabled'} style="font-size:11px;padding:4px 9px;border-radius:6px;
           ${o.editRx ? 'cursor:pointer;' : ''}background:rgba(255,255,255,0.06);border:1px solid transparent;color:#cbd5e1">

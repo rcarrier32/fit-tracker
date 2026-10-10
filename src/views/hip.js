@@ -419,8 +419,12 @@ export async function renderHip(app) {
   const cardHTML = (ex, section) => exerciseRowHTML(ex, {
     accent: section.accent, rx: rxFor(ex), edited: !!rx[ex.id],
     done: !!completed[ex.id], sets: setsFor(ex),
-    badge: HIP_LADDERS[ex.id] && levels[ex.id]?.step
-      ? `LEVEL ${levels[ex.id].step + 1} OF ${HIP_LADDERS[ex.id].steps.length}` : '',
+    badge: (() => {
+      const l = ladderFor(ex);
+      if (!l) return '';
+      const lvl = l.current ? `LEVEL ${l.current + 1} OF ${l.steps.length}` : '';
+      return [lvl, l.ready ? '↑ READY TO MOVE UP' : ''].filter(Boolean).join(' · ');
+    })(),
   });
 
   function ladderFor(ex) {
