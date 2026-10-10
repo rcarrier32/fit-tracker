@@ -554,7 +554,9 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           ex.name = name;
           ex.swapped = true;
           await put('sessions', session);
-          close2();
+          // The save-this-swap prompt opens straight after — close without syncing history,
+          // or the back-navigation dismisses that prompt the moment it appears.
+          close2(!(session.program_id && _sessionDayKey(session)));
           _offerPermanentSwap(originalName, ex.name, session);
         };
         s2.querySelectorAll('.list-item[data-name]').forEach(item => {
