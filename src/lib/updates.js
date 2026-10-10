@@ -1,8 +1,12 @@
 /**
  * In-app update check via version.json only (avoids SW reload loops).
- * Bump `window.__FIT_V` in index.html, version.json `v`, and sw.js CACHE together.
+ *
+ * The running build's version is whatever version.json said when this page booted — app
+ * code always loads from the network (sw.js), so the page and that first read match.
+ * Comparing against a hand-bumped constant instead is what left "Update now" showing
+ * forever when index.html's __FIT_V fell behind version.json (36 vs 57).
  */
-export const LOCAL_V = 33; // keep in sync with index.html window.__FIT_V
+export const LOCAL_V = 33; // floor only; window.__FIT_V and the boot-time read win
 
 const VERSION_URL = new URL('version.json', location.href).href;
 const RELOAD_GUARD_KEY = 'fit-update-reload-ts';
@@ -10,11 +14,12 @@ const CHECK_INTERVAL_MS = 5 * 60 * 1000;
 
 let _banner = null;
 let _lastCheck = 0;
+let _bootV = null;   // version.json `v` as of this page load
 
 function getLocalV() {
   const htmlV = Number(window.__FIT_V);
-  if (Number.isFinite(htmlV) && htmlV > 0) return htmlV;
-  return LOCAL_V;
+  const floor = Number.isFinite(htmlV) && htmlV > 0 ? htmlV : LOCAL_V;
+  return Math.max(floor, _bootV ?? 0);
 }
 
 function showUpdateBanner() {
@@ -49,6 +54,8 @@ export async function checkForAppUpdate() {
 
   try {
     const remote = await fetchRemoteVersion();
+    // First successful read is the build this page is running.
+    if (_bootV == null && remote?.v != null) _bootV = Number(remote.v);
     const localV = getLocalV();
     if (remote?.v != null && Number(remote.v) > localV) {
       const reloadedAt = Number(sessionStorage.getItem(RELOAD_GUARD_KEY) || 0);

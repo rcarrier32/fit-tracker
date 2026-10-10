@@ -111,19 +111,30 @@ if (APPLY) {
       : null;
     if (!pick) { skipped++; continue; }
 
-    // Replace the `videoId: null,` line inside this exercise's object literal.
-    const idAnchor = new RegExp(`(id:\\s*'${entry.id}'[\\s\\S]*?)videoId:\\s*(?:null|'[^']*')(,?)`, 'm');
-    if (!idAnchor.test(src)) {
+    // Work inside this exercise's own object literal only — from its `id:` to the next
+    // exercise's `id:`. An unbounded search used to run past an entry with no videoId
+    // line and overwrite the NEXT exercise's video, and re-applying duplicated titles.
+    const start = src.search(new RegExp(`id:\\s*'${entry.id}'`));
+    if (start < 0) {
       console.warn(`  ! could not locate ${entry.id} in hip_protocol.js`);
       skipped++;
       continue;
     }
+    const nextId = src.slice(start + 4).search(/\n\s*id:\s*'/);
+    const end = nextId < 0 ? src.length : start + 4 + nextId;
+    let block = src.slice(start, end);
     const meta = [
       `videoId: '${pick.videoId}'`,
       pick.title   ? `videoTitle: ${JSON.stringify(pick.title)}` : null,
       pick.channel ? `channel: ${JSON.stringify(pick.channel)}`  : null,
-    ].filter(Boolean).join(',\n        ');
-    src = src.replace(idAnchor, `$1${meta}$2`);
+    ].filter(Boolean).map(l => `        ${l},`).join('\n');
+    // Drop any existing video fields, then write fresh ones just before `search:`
+    // (or before the block's closing brace when there is no search line).
+    block = block.replace(/\n\s*(?:videoId|videoTitle|channel):[^\n]*/g, '');
+    block = /\n\s*search:/.test(block)
+      ? block.replace(/(\n)(\s*search:)/, `\n${meta}$1$2`)
+      : block.replace(/(\n\s*\},?\s*)$/, `\n${meta}$1`);
+    src = src.slice(0, start) + block + src.slice(end);
     patched++;
   }
 

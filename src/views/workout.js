@@ -8,6 +8,7 @@ import { todaysWorkout, advanceCursor } from './schedule.js';
 import { loadCatalogs } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
+import { openExerciseDetail } from '../lib/exercise_ui.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -26,20 +27,19 @@ function ytVideoId(url) {
   return m ? m[1] : null;
 }
 
-function toggleYtPlayer(btn, videoId, title) {
-  const anchor = btn.parentElement;
-  const existing = anchor.nextElementSibling?.classList.contains('yt-inline-player')
-    ? anchor.nextElementSibling : null;
-  if (existing) { existing.remove(); btn.textContent = btn.dataset.ytname ? '▶ Video' : '▶'; return; }
-  const wrap = document.createElement('div');
-  wrap.className = 'yt-inline-player';
-  wrap.style.cssText = 'aspect-ratio:16/9;background:#000;margin-top:8px;border-radius:8px;overflow:hidden';
-  wrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen title="${title || ''}"
-    style="width:100%;height:100%;border:none;display:block"></iframe>`;
-  anchor.insertAdjacentElement('afterend', wrap);
-  btn.textContent = '✕ Close';
+/**
+ * Video buttons open the shared exercise detail (video on top, prescription and notes below).
+ * Set logging stays inline on the Lift card, where the weight/rep inputs live.
+ */
+function openLiftDetail(btn) {
+  const d = btn.dataset;
+  openExerciseDetail({
+    name: d.ytname || 'Exercise',
+    videoId: d.ytid,
+    sets: d.target || '',
+    subtitle: d.last || '',
+    notes: d.notes || '',
+  });
 }
 
 export async function renderWorkout(app) {
@@ -155,7 +155,7 @@ export async function renderWorkout(app) {
   if ($warmupCard) {
     $warmupCard.addEventListener('click', e => {
       const btn = e.target.closest('button.video-link.has-video[data-ytid]');
-      if (btn) toggleYtPlayer(btn, btn.dataset.ytid, btn.dataset.ytname);
+      if (btn) openLiftDetail(btn);
     });
   }
 
@@ -297,7 +297,7 @@ export async function renderWorkout(app) {
     }
 
     if (e.target.matches('button.video-link.has-video[data-ytid]')) {
-      toggleYtPlayer(e.target, e.target.dataset.ytid, e.target.dataset.ytname);
+      openLiftDetail(e.target);
     }
   });
 }
@@ -325,8 +325,11 @@ function _warmupBlockHtml(warmup, exMap) {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
     const _wNameEsc = ex.name.replace(/"/g, '&quot;');
+    const _attr = (v) => String(v ?? '').replace(/"/g, '&quot;');
     const videoHtml = _wYtId
-      ? `<button class="video-link has-video" data-ytid="${_wYtId}" data-ytname="${_wNameEsc}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</button>`
+      ? `<button class="video-link has-video" data-ytid="${_wYtId}" data-ytname="${_wNameEsc}"
+          data-target="${_attr([ex.sets ? ex.sets + ' ×' : '', ex.reps || ex.time || ''].join(' ').trim())}"
+          data-notes="${_attr(ex.notes)}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</button>`
       : lookup?.video_url
         ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</a>`
         : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">🔍</a>`;
@@ -835,7 +838,10 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   const _ytId = ytVideoId(lookup?.video_url);
   const videoLink = _ytId
-    ? `<button class="video-link has-video" data-ytid="${_ytId}" data-ytname="${ex.name.replace(/"/g, '&quot;')}">▶ Video</button>`
+    ? `<button class="video-link has-video" data-ytid="${_ytId}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
+        data-target="${formatTarget(ex).replace(/"/g, '&quot;')}"
+        data-last="${prevRef[ex.name] ? ('Last: ' + formatPrevSets(prevRef[ex.name].sets) + ' (' + prevRef[ex.name].date + ')').replace(/"/g, '&quot;') : ''}"
+        data-notes="${String(ex.notes || '').replace(/"/g, '&quot;')}">▶ Video</button>`
     : lookup?.video_url
       ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
       : `<a class="video-link" href="${lookup?.fallback_search || ytSearch}" target="_blank">🔍 Find</a>`;

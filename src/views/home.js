@@ -264,6 +264,7 @@ export async function renderHome(app) {
               <div style="font-size:11px;color:var(--fg-dim)">
                 ${hip.strength ? '' : `${hip.sectionLabel} · `}${hip.done} of ${hip.total} done
               </div>
+              ${hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
             </div>
             <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>

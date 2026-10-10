@@ -247,6 +247,24 @@ const SOURCE_SECTIONS = [
         search: 'single leg stance balance exercise physical therapy',
       },
       {
+        id: 'pt-sl-balance-pad',
+        name: 'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds',
+        subtitle: 'Unstable surface plus a moving load — the progression past flat-ground stance',
+        sets: '3 × 5 passes each direction per leg',
+        freq: '3× / week',
+        cues: [
+          'Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL.',
+          'Pass a light kettlebell, med ball, or plate around your waist hand to hand — 5 one way, 5 the other.',
+          'Keep the stance hip still while the weight travels. The trunk turns; the pelvis does not drop or twist.',
+          'Progress: figure-8 between the legs, then overhead pass-arounds, then heavier. Regress: pad with no weight.',
+        ],
+        warning: 'Pinching in the front of the hip or the pelvis dropping means go back to the pad with no weight, or flat ground.',
+        videoId: '8iNEMOzxdcQ',
+        videoTitle: "Single Leg Balance w KB Pass",
+        channel: "PhysioWRX",
+        search: 'single leg balance bosu weight pass around',
+      },
+      {
         id: 'pt-bridge-squeeze',
         name: 'Bridge with Ball Squeeze',
         subtitle: 'Glute bridge with adductor co-contraction — stabilizes the pelvis',
@@ -425,24 +443,26 @@ const SOURCE_SECTIONS = [
       },
       {
         id: 'pt-step-ups',
-        name: 'Step Ups',
-        subtitle: 'Functional single-leg loading in the sagittal plane',
+        name: 'Step Up with Leg Raise',
+        subtitle: 'Step up, then drive the free knee to hip height and hold — single-leg balance on top',
         sets: '3 × 10 per leg',
         freq: '3× / week',
         cues: [
           'Start with a low step (4–6"). Height goes up only when the pelvis stays level.',
           'Drive through the whole foot of the top leg — do not push off the bottom foot.',
+          'At the top, lift the free knee to hip height and hold 1–2 s, standing tall on the step.',
           'Lower with control over 2–3 s. The eccentric is the point.',
         ],
-        videoId: 'wfhXnLILqdk',
-        videoTitle: "Step Up Exercise | Osteoarthritis Physiotherapy",
-        channel: "Cornerstone Physiotherapy",
-        search: 'step up exercise physical therapy proper form',
+        warning: 'If the knee raise pinches the front of the hip, stop at standing tall and skip the raise.',
+        videoId: 'eXmSTwD1iAs',
+        videoTitle: "Step up with knee drive (low step) - Fit Family Physical Therapy",
+        channel: "Fit Family Physical Therapy",
+        search: 'step up with knee drive exercise',
       },
       {
         id: 'pt-lateral-step-ups',
-        name: 'Lateral Step Ups',
-        subtitle: 'Frontal-plane loading — directly challenges the hip abductors under load',
+        name: 'Side Step-Ups',
+        subtitle: 'Lateral step-up — frontal-plane loading — directly challenges the hip abductors under load',
         sets: '3 × 10 per leg',
         freq: '3× / week',
         cues: [
@@ -516,7 +536,7 @@ const SOURCE_SECTIONS = [
       {
         id: 'mrc-quadruped-hip-hike',
         name: 'Quadruped Hip Hikes',
-        subtitle: 'On hands and knees, hike one hip toward the ribs',
+        subtitle: 'Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs',
         sets: '2 × 8',
         freq: 'Per Motion RC plan',
         cues: [
@@ -1082,7 +1102,8 @@ export const EXERCISE_INDEX = Object.fromEntries(
 );
 
 const sourceSection = (id) => SOURCE_SECTIONS.find(s => s.id === id);
-const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'pt-sls'];
+const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+  'mrc-quadruped-hip-hike', 'pt-sl-balance-pad', 'mrc-copenhagen-knee'];
 
 /** Pull exercises from the catalog, tagged with where they came from and which session(s). */
 function pick(session, ids) {
@@ -1102,7 +1123,9 @@ const SESSION_CRITERIA = sourceSection('pt').criteria;
 
 /**
  * Merged PT + Motion RC plan. One exercise per movement slot per session; where the two
- * programs overlapped, one version sits in A and the other in B. Dropped as duplicates:
+ * programs overlapped, one version sits in A and the other in B. Exceptions done every
+ * session (BOTH): the mobility prep, quadruped hip hikes as the pelvic-rotation warm-up,
+ * the BOSU/pad single-leg balance (replaced flat-ground stance), and the Copenhagen. Dropped as duplicates:
  * Modified Side Plank (covered by the side plank clamshell) and Band Walks (Monster Walk).
  */
 const SESSION_A = {
@@ -1115,11 +1138,12 @@ const SESSION_A = {
   criteria: SESSION_CRITERIA,
   exercises: pick('A', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
-    'pt-sls',
+    'mrc-quadruped-hip-hike',
+    'pt-sl-balance-pad',
     'mrc-elevated-ham-bridge',
     'mrc-side-plank-clamshell',
+    'mrc-copenhagen-knee',
     'mrc-monster-walk', 'pt-fire-hydrant',
-    'mrc-quadruped-hip-hike',
     'pt-sl-rdl',
     'mrc-hip-flexor-march',
     'pt-prone-ext', 'pt-bird-dog',
@@ -1138,7 +1162,8 @@ const SESSION_B = {
   criteria: SESSION_CRITERIA,
   exercises: pick('B', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
-    'pt-sls',
+    'mrc-quadruped-hip-hike',
+    'pt-sl-balance-pad',
     'pt-bridge-squeeze',
     'mrc-copenhagen-knee',
     'mrc-standing-hip-hike',

@@ -13,10 +13,9 @@ import {
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE, FLARE,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
+import { esc, setCount, exerciseRowHTML, wireExerciseRows, openExerciseDetail } from '../lib/exercise_ui.js';
 
 const todayKey = () => localDateStr();
-const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const PAIN_COLORS = ['#34d399', '#34d399', '#34d399', '#a3e635', '#fbbf24', '#fbbf24',
                      '#fb923c', '#fb923c', '#f87171', '#f87171', '#ef4444'];
@@ -25,7 +24,7 @@ export async function renderHip(app) {
   const day = todayKey();
 
   // ── Persisted state ────────────────────────────────────────────────────────
-  const [savedProgress, allLogs, savedRx, allPain, allNotes, savedFlare, savedPaused, savedCustom] = await Promise.all([
+  const [savedProgress, allLogs, savedRx, allPain, allNotes, savedFlare, savedPaused, savedCustom, allSets] = await Promise.all([
     pref('hip_progress'),
     pref('hip_logs').then(v => v || {}),
     pref('hip_prescriptions').then(v => v || {}),
@@ -34,6 +33,7 @@ export async function renderHip(app) {
     pref('hip_flare'),
     pref('hip_paused').then(v => v || {}),
     pref('hip_custom').then(v => v || []),
+    pref('hip_sets').then(v => v || {}),
   ]);
   let surgeryDate = (await pref('hip_surgery_date')) || '';
   let surgerySide = (await pref('hip_surgery_side')) || '';        // 'left' | 'right' | ''
@@ -42,6 +42,7 @@ export async function renderHip(app) {
   let started    = savedProgress?.started || null;
   let activeId   = SECTIONS[0].id;
   let completed  = { ...(allLogs[day] || {}) };
+  let setsDone   = { ...(allSets[day] || {}) };   // exercise id → [bool per set], today only
   let rx         = { ...savedRx };          // exercise id → custom "sets" string
   let flare      = savedFlare || null;      // { since } while flare mode is on
   let paused     = { ...savedPaused };      // exercise id → { since, reason }
@@ -64,12 +65,30 @@ export async function renderHip(app) {
     await pref('hip_progress', { started: day });
   }
 
-  async function toggle(exId) {
-    completed[exId] = !completed[exId];
+  /** Check an exercise off (or back on) for today; celebrates the last one in a section. */
+  async function setDone(exId, value) {
+    const section = SECTIONS.find(s => s.id === activeId);
+    const live = sectionItems(section).filter(e => !paused[e.id]);
+    const wasComplete = live.length && live.every(e => completed[e.id]);
+    completed[exId] = value;
     const logs = (await pref('hip_logs')) || {};
-    logs[day] = { ...(logs[day] || {}), [exId]: completed[exId] };
+    logs[day] = { ...(logs[day] || {}), [exId]: value };
     await pref('hip_logs', logs);
+    if (!value && setsDone[exId]?.every(Boolean)) await saveSets(exId, setsDone[exId].map(() => false));
     mount();
+    if (!wasComplete && live.length && live.every(e => completed[e.id])) {
+      toast(`🎉 ${section.label} complete`, 2600);
+    }
+  }
+
+  const toggle = (exId) => setDone(exId, !completed[exId]);
+
+  async function saveSets(exId, arr) {
+    setsDone[exId] = arr;
+    const all = (await pref('hip_sets')) || {};
+    // Only today's entry is ever read back, so older days are dropped on write.
+    all[day] = { ...(all[day] || {}), [exId]: arr };
+    await pref('hip_sets', { [day]: all[day] });
   }
 
   async function setRx(exId, value) {
@@ -349,118 +368,76 @@ export async function renderHip(app) {
       </button>`;
   }
 
-  function thumbHTML(ex) {
-    if (ex.link) {
-      return `
-        <a href="${esc(ex.link)}" target="_blank" rel="noopener noreferrer"
-          style="flex-shrink:0;width:130px;height:90px;display:flex;flex-direction:column;
-            align-items:center;justify-content:center;gap:4px;background:#0f172a;
-            text-decoration:none;color:#64748b;border-right:1px solid rgba(255,255,255,0.06)">
-          <span style="font-size:16px">▶</span>
-          <span style="font-size:9px;letter-spacing:0.06em">OPEN LINK</span>
-        </a>`;
-    }
-    if (ex.videoId) {
-      return `
-        <a href="https://www.youtube.com/watch?v=${ex.videoId}" target="_blank" rel="noopener noreferrer"
-          style="position:relative;flex-shrink:0;width:130px;display:block;overflow:hidden;
-            background:#0f172a;text-decoration:none">
-          <img src="https://img.youtube.com/vi/${ex.videoId}/mqdefault.jpg" alt="" loading="lazy"
-            style="width:130px;height:90px;object-fit:cover;display:block">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
-            width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,0.65);
-            display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;
-            border:1px solid rgba(255,255,255,0.3)">▶</div>
-          ${ex.videoTitle ? `<div style="position:absolute;bottom:0;left:0;right:0;padding:3px 5px;
-            font-size:9px;line-height:1.3;color:#cbd5e1;background:rgba(0,0,0,0.75);
-            white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(ex.videoTitle)}</div>` : ''}
-        </a>`;
-    }
-    const q = encodeURIComponent(ex.search || ex.name);
-    return `
-      <a href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener noreferrer"
-        style="flex-shrink:0;width:130px;height:90px;display:flex;flex-direction:column;
-          align-items:center;justify-content:center;gap:4px;background:#0f172a;
-          text-decoration:none;color:#475569;border-right:1px solid rgba(255,255,255,0.06)">
-        <span style="font-size:16px">▶</span>
-        <span style="font-size:9px;letter-spacing:0.06em">SEARCH YOUTUBE</span>
-      </a>`;
+  function setsFor(ex) {
+    const n = setCount(rxFor(ex));
+    const saved = setsDone[ex.id] || [];
+    const arr = Array.from({ length: n }, (_, i) => !!saved[i]);
+    return completed[ex.id] ? arr.map(() => true) : arr;
   }
 
-  function cardHTML(ex, section) {
-    const done = !!completed[ex.id];
-    const edited = !!rx[ex.id];
+  const cardHTML = (ex, section) => exerciseRowHTML(ex, {
+    accent: section.accent, rx: rxFor(ex), edited: !!rx[ex.id],
+    done: !!completed[ex.id], sets: setsFor(ex),
+  });
+
+  /** FKH-style exercise detail: video on top, then sets, then how-to. */
+  function openExerciseSheet(exId) {
+    const section = SECTIONS.find(s => s.id === activeId);
+    const list = () => sectionItems(section).filter(e => !paused[e.id]);
+    const ex = list().find(e => e.id === exId);
+    if (!ex) return;
+    openExerciseDetail(ex, {
+      accent: section.accent,
+      rx: rxFor(ex),
+      editRx: async () => {
+        const v = prompt(`Sets / reps for ${ex.name}`, rxFor(ex));
+        if (v === null) return null;
+        const t = v.trim();
+        // Clearing the field (or typing the original) drops back to the default.
+        await setRx(ex.id, t && t !== ex.sets ? t : '');
+        mount();
+        return rxFor(ex);
+      },
+      sets: { get: () => setsDone[ex.id] || [], save: (arr) => saveSets(ex.id, arr) },
+      isDone: () => !!completed[ex.id],
+      setDone: (v) => setDone(ex.id, v),
+      next: () => {
+        const items = list();
+        const i = items.findIndex(e => e.id === ex.id);
+        const n = [...items.slice(i + 1), ...items.slice(0, i)].find(e => !completed[e.id]);
+        return n ? { name: n.name, open: () => openExerciseSheet(n.id) } : null;
+      },
+      completeLabel: `${section.label} complete`,
+      actions: [
+        { label: 'Pause — it provokes the hip', onClick: (close) => {
+          const reason = prompt(`Pause ${ex.name}? Why (optional)`, 'Provokes the hip');
+          if (reason === null) return;
+          close();
+          setPaused(ex.id, reason.trim());
+        } },
+        ...(ex.custom ? [{ label: 'Remove', danger: true, onClick: (close) => {
+          const c = custom.find(x => x.id === ex.id);
+          if (!c || !confirm(`Remove ${c.name}?`)) return;
+          close();
+          saveCustom(custom.filter(x => x.id !== c.id));
+        } }] : []),
+      ],
+    });
+  }
+
+  /** Shown above the list once every live exercise in the section is checked off. */
+  function completeHTML(section, total) {
+    const isToday = hipToday({ flare, paused, custom }).sectionId === section.id;
     return `
-      <div style="background:rgba(255,255,255,0.03);
-        border:1px solid ${done ? section.accent : 'rgba(255,255,255,0.08)'};
-        border-radius:12px;overflow:hidden;display:flex;flex-direction:row;
-        transition:border-color 0.2s ease;${done ? 'opacity:0.65' : ''}">
-
-        ${thumbHTML(ex)}
-
-        <div style="flex:1;padding:10px 12px;min-width:0">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px">
-            <div style="min-width:0">
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-                <div style="font-size:13px;font-weight:700;color:#f1f5f9;line-height:1.3">${esc(ex.name)}</div>
-                ${ex.optional ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
-                  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
-                  color:#475569;letter-spacing:0.06em;flex-shrink:0">CAUTION</span>` : ''}
-                ${ex.source ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
-                  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
-                  color:#64748b;letter-spacing:0.04em;flex-shrink:0;white-space:nowrap">${esc(ex.source)}</span>` : ''}
-              </div>
-              <div style="font-size:11px;color:#64748b;line-height:1.35">${esc(ex.subtitle)}</div>
-            </div>
-            <button data-exid="${ex.id}"
-              style="flex-shrink:0;width:26px;height:26px;border-radius:50%;
-                border:1.5px solid ${done ? section.accent : 'rgba(255,255,255,0.25)'};
-                background:${done ? section.accent : 'transparent'};
-                color:${done ? '#0f172a' : 'rgba(255,255,255,0.4)'};
-                display:flex;align-items:center;justify-content:center;cursor:pointer;
-                font-size:12px;font-weight:700">${done ? '✓' : '○'}</button>
-          </div>
-
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <button data-editrx="${ex.id}" style="font-size:10px;padding:2px 7px;
-              background:rgba(255,255,255,${edited ? '0.09' : '0.05'});border-radius:4px;
-              color:${edited ? section.accent : '#94a3b8'};letter-spacing:0.02em;cursor:pointer;
-              border:1px solid ${edited ? section.accent + '55' : 'transparent'};text-align:left">
-              <span style="opacity:0.55">SETS </span>${esc(rxFor(ex))}
-              <span style="opacity:0.5;margin-left:3px">✎</span>
-            </button>
-            <span style="font-size:10px;padding:2px 7px;background:rgba(255,255,255,0.05);
-              border-radius:4px;color:#94a3b8;letter-spacing:0.02em">
-              <span style="opacity:0.55">FREQ </span>${esc(ex.freq)}
-            </span>
-            <button data-pause="${ex.id}" style="font-size:10px;padding:2px 7px;margin-left:auto;
-              background:transparent;border:1px solid rgba(255,255,255,0.12);border-radius:4px;
-              color:#64748b;letter-spacing:0.02em;cursor:pointer">Pause</button>
-            ${ex.custom ? `<button data-remove="${ex.id}" style="font-size:10px;padding:2px 7px;
-              background:transparent;border:1px solid rgba(239,68,68,0.3);border-radius:4px;
-              color:#fca5a5;letter-spacing:0.02em;cursor:pointer">Remove</button>` : ''}
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:3px">
-            ${ex.cues.map(c => `
-              <div style="font-size:11.5px;color:#94a3b8;display:flex;gap:5px;line-height:1.4">
-                <span style="flex-shrink:0;font-weight:700;color:${section.accent};margin-top:1px">→</span>
-                <span>${esc(c)}</span>
-              </div>`).join('')}
-          </div>
-
-          ${ex.warning ? `
-            <div style="margin-top:8px;font-size:11px;padding:5px 9px;
-              background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);
-              border-radius:6px;color:#fca5a5;line-height:1.4">${esc(ex.warning)}</div>` : ''}
-
-          ${ex.askPt ? `
-            <div style="margin-top:8px;font-size:11px;padding:5px 9px;
-              background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.22);
-              border-radius:6px;color:#7dd3fc;line-height:1.4">
-              <span style="font-weight:700;letter-spacing:0.04em">ASK YOUR PT · </span>${esc(ex.askPt)}
-            </div>` : ''}
-        </div>
+      <div style="padding:14px;border-radius:12px;text-align:center;
+        background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3)">
+        <div style="font-size:26px;line-height:1">🎉</div>
+        <div style="font-size:15px;font-weight:700;color:#22c55e;margin-top:6px">
+          ${isToday ? "Today's session complete" : `${esc(section.label)} complete`}</div>
+        <div style="font-size:11.5px;color:#94a3b8;margin-top:4px;line-height:1.45">
+          ${total} exercise${total === 1 ? '' : 's'} done. Log how the hip feels below — that is what guides next time.</div>
+        <button id="hip-to-pain" class="btn ghost" style="width:auto;margin-top:10px;padding:6px 14px;font-size:12px">
+          Log pain ↓</button>
       </div>`;
   }
 
@@ -519,7 +496,7 @@ export async function renderHip(app) {
         <div style="font-size:11.5px;color:#94a3b8;line-height:1.45">${esc(FLARE.summary)}</div>
         <div style="font-size:11px;color:#64748b;line-height:1.45;margin-top:5px">
           Psoas theory is on hold until this is reassessed.
-          ${pausedHere ? `${pausedHere} exercise${pausedHere === 1 ? '' : 's'} paused — tap Pause on any card that provokes it.` : ''}
+          ${pausedHere ? `${pausedHere} exercise${pausedHere === 1 ? '' : 's'} paused — open any exercise that provokes it and tap Pause.` : ''}
         </div>
 
         <details style="margin-top:8px">
@@ -571,7 +548,7 @@ export async function renderHip(app) {
     }).join('');
 
     return `
-      <div style="padding:12px 14px;background:rgba(255,255,255,0.03);
+      <div id="hip-pain" style="padding:12px 14px;background:rgba(255,255,255,0.03);
         border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px">
           <div style="min-width:0">
@@ -938,7 +915,8 @@ export async function renderHip(app) {
 
       ${sectionVideoHTML(section)}
 
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+        ${total && done === total ? completeHTML(section, total) : ''}
         ${items.map(ex => cardHTML(ex, section)).join('')}
         ${pausedItems.map(pausedCardHTML).join('')}
         ${(section.guidance || []).map(g => guidanceHTML(g, section)).join('')}
@@ -983,8 +961,9 @@ export async function renderHip(app) {
       btn.onclick = () => { activeId = btn.dataset.section; window.scrollTo(0, 0); mount(); };
     });
 
-    app.querySelectorAll('[data-exid]').forEach(btn => {
-      btn.onclick = () => toggle(btn.dataset.exid);
+    wireExerciseRows(app, { open: openExerciseSheet, check: toggle });
+    app.querySelector('#hip-to-pain')?.addEventListener('click', () => {
+      app.querySelector('#hip-pain')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     app.querySelector('#flare-on')?.addEventListener('click', () => {
@@ -996,23 +975,7 @@ export async function renderHip(app) {
       setFlare(false);
     });
 
-    app.querySelectorAll('[data-pause]').forEach(btn => {
-      btn.onclick = () => {
-        const ex = sectionItems(section).find(e => e.id === btn.dataset.pause);
-        if (!ex) return;
-        const reason = prompt(`Pause ${ex.name}? Why (optional)`, 'Provokes the hip');
-        if (reason === null) return;
-        setPaused(ex.id, reason.trim());
-      };
-    });
     app.querySelector('#hip-add')?.addEventListener('click', () => openAddSheet(section));
-    app.querySelectorAll('[data-remove]').forEach(btn => {
-      btn.onclick = () => {
-        const c = custom.find(x => x.id === btn.dataset.remove);
-        if (!c || !confirm(`Remove ${c.name}?`)) return;
-        saveCustom(custom.filter(x => x.id !== c.id));
-      };
-    });
 
     app.querySelectorAll('[data-resume]').forEach(btn => {
       btn.onclick = () => {
@@ -1073,17 +1036,6 @@ export async function renderHip(app) {
       mount();
     });
 
-    app.querySelectorAll('[data-editrx]').forEach(btn => {
-      btn.onclick = () => {
-        const ex = sectionItems(section).find(e => e.id === btn.dataset.editrx);
-        if (!ex) return;
-        const next = prompt(`Sets / reps for ${ex.name}`, rxFor(ex));
-        if (next === null) return;
-        const trimmed = next.trim();
-        // Clearing the field (or typing the original) drops back to the default.
-        setRx(ex.id, trimmed && trimmed !== ex.sets ? trimmed : '').then(mount);
-      };
-    });
   }
 
   mount();

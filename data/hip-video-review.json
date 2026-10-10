@@ -818,6 +818,84 @@
           "score": 3.94
         }
       ]
+    },
+    {
+      "id": "pt-step-ups",
+      "name": "Step Up with Leg Raise",
+      "section": "session-a",
+      "query": "step up with knee drive exercise",
+      "approved": "eXmSTwD1iAs",
+      "candidates": [
+        {
+          "videoId": "eXmSTwD1iAs",
+          "title": "Step up with knee drive (low step) - Fit Family Physical Therapy",
+          "channel": "Fit Family Physical Therapy",
+          "seconds": 16,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/eXmSTwD1iAs",
+          "score": 2.46
+        },
+        {
+          "videoId": "ZC_HVjGgvUA",
+          "title": "Exercise Alert: Step up Knee Drive why we use it here at Rehab 2 Perform:",
+          "channel": "Rehab 2 Perform",
+          "seconds": 24,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/ZC_HVjGgvUA",
+          "score": 2.43
+        },
+        {
+          "videoId": "U0I8sw4_LCg",
+          "title": "How To Do A STEP UP WITH KNEE DRIVE | Exercise Demonstration Video and Guide",
+          "channel": "Live Lean TV Daily Exercises",
+          "seconds": 32,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/U0I8sw4_LCg",
+          "score": 2.41
+        }
+      ]
+    },
+    {
+      "id": "pt-sl-balance-pad",
+      "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+      "section": "session-a",
+      "query": "single leg balance bosu weight pass around",
+      "approved": "8iNEMOzxdcQ",
+      "candidates": [
+        {
+          "videoId": "WRfWHHT7IWk",
+          "title": "BOSU Ball Single Leg Balance - ankle sprain rehab and proprioception exercise",
+          "channel": "Rehab Hero",
+          "seconds": 14,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/WRfWHHT7IWk",
+          "score": 4.46
+        },
+        {
+          "videoId": "8iNEMOzxdcQ",
+          "title": "Single Leg Balance w KB Pass",
+          "channel": "PhysioWRX",
+          "seconds": 5,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/8iNEMOzxdcQ",
+          "score": 3.99
+        },
+        {
+          "videoId": "yPNbVUzm-rs",
+          "title": "Single leg balance with weight transfer - Fit Family Physical Therapy",
+          "channel": "Fit Family Physical Therapy",
+          "seconds": 16,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/yPNbVUzm-rs",
+          "score": 1.46
+        }
+      ]
     }
   ]
 }

@@ -4,6 +4,7 @@
 import { pref } from '../db.js';
 import { toast, openSheet } from '../app.js';
 import { loadCatalogs } from '../lib/static_data.js';
+import { exerciseRowHTML, wireExerciseRows, openExerciseDetail } from '../lib/exercise_ui.js';
 
 async function getLog(dateKey) {
   const all = (await pref('mobility_logs')) || {};
@@ -34,6 +35,7 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
   let log = await getLog(dateKey);
   const completed = new Set(log.completed || []);
   let extra = [...(log.extra || [])];
+  let expanded = false;   // survives re-mounts so checking an item doesn't collapse the list
 
   function allItems() {
     return [
@@ -50,9 +52,9 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
       <div class="card" style="margin-bottom:12px;padding:12px 14px">
         <div class="mob-toggle card-row" style="cursor:pointer">
           <h2 style="margin:0;font-size:${compact ? '15px' : '17px'}">Daily mobility</h2>
-          <span style="font-size:12px;color:var(--fg-dim)">${doneCount}/${items.length} <span class="mob-chevron">▼</span></span>
+          <span style="font-size:12px;color:var(--fg-dim)">${doneCount}/${items.length} <span class="mob-chevron">${expanded ? '▲' : '▼'}</span></span>
         </div>
-        <div class="mob-body" style="display:none">
+        <div class="mob-body" style="${expanded ? '' : 'display:none'}">
           ${routine.note ? `<div class="muted" style="font-size:12px;margin:8px 0 10px">${routine.note}</div>` : ''}
           <div id="mob-list"></div>
           <div class="btn-row" style="margin-top:10px;margin-bottom:0">
@@ -69,80 +71,53 @@ export async function renderDailyMobility(el, dateKey, { compact = false } = {})
     if ($toggle && $body) {
       $toggle.onclick = () => {
         const open = $body.style.display === 'none';
+        expanded = open;
         $body.style.display = open ? '' : 'none';
         if ($chevron) $chevron.textContent = open ? '▲' : '▼';
       };
     }
 
     const $list = el.querySelector('#mob-list');
-    $list.innerHTML = items.map(ex => {
-      const done = completed.has(ex.id);
+    // Catalog entry supplies the video; the routine supplies dose + notes.
+    const asExercise = (ex) => {
       const lookup = exerciseByName.get(ex.name?.toLowerCase());
-      const target = ex.reps || ex.time || '';
-      const ytHtml = (() => {
-        if (!lookup?.video_url) return '';
-        const m = lookup.video_url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/);
-        const vid = m ? m[1] : null;
-        return vid
-          ? `<button type="button" class="pill mob-yt" data-ytid="${vid}" data-ytname="${ex.name.replace(/"/g, '&quot;')}" style="flex-shrink:0">▶</button>`
-          : `<a href="${lookup.video_url}" target="_blank" class="pill" style="flex-shrink:0" onclick="event.stopPropagation()">▶</a>`;
-      })();
-      return `
-        <div class="list-item mob-row" data-id="${ex.id}" style="cursor:pointer;padding:10px 0;margin:0;gap:10px;align-items:flex-start;display:flex">
-          <input type="checkbox" data-id="${ex.id}" ${done ? 'checked' : ''} style="width:auto;min-height:auto;margin-top:3px;cursor:pointer">
-          <div style="flex:1;min-width:0;pointer-events:none">
-            <div style="font-size:14px;font-weight:500;${done ? 'opacity:0.55;text-decoration:line-through' : ''}">${ex.name}</div>
-            ${ex.notes ? `<div class="muted" style="font-size:12px">${ex.notes}</div>` : ''}
-          </div>
-          ${target ? `<span class="muted" style="font-size:12px;white-space:nowrap;pointer-events:none">${target}</span>` : ''}
-          ${ytHtml}
-          ${!ex.builtin ? `<button type="button" class="btn ghost mob-del" data-id="${ex.id}" style="width:auto;padding:4px 8px">✕</button>` : ''}
-        </div>
-      `;
-    }).join('');
+      return { ...ex, sets: ex.reps || ex.time || '', video_url: lookup?.video_url, subtitle: ex.notes, notes: undefined };
+    };
+    $list.innerHTML = `<div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+      ${items.map(ex => exerciseRowHTML(asExercise(ex), { key: ex.id, done: completed.has(ex.id) })).join('')}
+    </div>`;
 
-    // Row click toggles checkbox (row is a div now, not label)
-    $list.querySelectorAll('.mob-row').forEach(row => {
-      row.onclick = async (e) => {
-        if (e.target.closest('.mob-del') || e.target.closest('.mob-yt') || e.target.tagName === 'A') return;
-        const cb = row.querySelector('input[type="checkbox"]');
-        if (!cb) return;
-        cb.checked = !cb.checked;
-        if (cb.checked) completed.add(cb.dataset.id);
-        else completed.delete(cb.dataset.id);
-        await saveLog(dateKey, { completed: [...completed], extra });
-        mount();
-      };
-    });
+    async function setDone(id, on) {
+      if (on) completed.add(id); else completed.delete(id);
+      await saveLog(dateKey, { completed: [...completed], extra });
+      mount();
+    }
 
-    $list.querySelectorAll('.mob-del').forEach(btn => {
-      btn.onclick = async (e) => {
-        e.stopPropagation();
-        const id = btn.dataset.id;
-        const idx = extra.findIndex((_, i) => `extra-${i}` === id);
-        if (idx >= 0) extra.splice(idx, 1);
-        completed.delete(id);
-        await saveLog(dateKey, { completed: [...completed], extra });
-        mount();
-      };
-    });
+    function openItem(id) {
+      const ex = allItems().find(e => e.id === id);
+      if (!ex) return;
+      openExerciseDetail(asExercise(ex), {
+        isDone: () => completed.has(ex.id),
+        setDone: (v) => setDone(ex.id, v),
+        next: () => {
+          const list = allItems();
+          const i = list.findIndex(e => e.id === ex.id);
+          const n = [...list.slice(i + 1), ...list.slice(0, i)].find(e => !completed.has(e.id));
+          return n ? { name: n.name, open: () => openItem(n.id) } : null;
+        },
+        completeLabel: 'Daily mobility complete',
+        actions: ex.builtin ? [] : [{ label: 'Remove', danger: true, onClick: async (close) => {
+          const idx = extra.findIndex((_, i) => `extra-${i}` === ex.id);
+          if (idx >= 0) extra.splice(idx, 1);
+          completed.delete(ex.id);
+          await saveLog(dateKey, { completed: [...completed], extra });
+          close();
+          mount();
+        } }],
+      });
+    }
 
-    $list.querySelectorAll('.mob-yt').forEach(btn => {
-      btn.onclick = (e) => {
-        e.stopPropagation();
-        const row = btn.closest('.mob-row');
-        const existing = row.nextElementSibling?.classList.contains('yt-inline-player') ? row.nextElementSibling : null;
-        if (existing) { existing.remove(); btn.textContent = '▶'; return; }
-        const w = document.createElement('div');
-        w.className = 'yt-inline-player';
-        w.style.cssText = 'aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;margin:4px 0';
-        w.innerHTML = `<iframe src="https://www.youtube.com/embed/${btn.dataset.ytid}?autoplay=1&playsinline=1&rel=0&modestbranding=1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>`;
-        row.insertAdjacentElement('afterend', w);
-        btn.textContent = '✕';
-      };
-    });
+    wireExerciseRows($list, { open: openItem, check: (id) => setDone(id, !completed.has(id)) });
 
     el.querySelector('#mob-add').onclick = () => openAddSheet();
     el.querySelector('#mob-done-all')?.addEventListener('click', async () => {

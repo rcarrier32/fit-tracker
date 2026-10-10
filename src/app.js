@@ -138,6 +138,7 @@ export function openSheet(contentBuilder) {
 if (FIRST_COPY) (async () => {
   const { initUpdates } = await import(`./lib/updates.js?v=${window.__FIT_V ?? ''}`);
   initUpdates();
+  import('./lib/wake_lock.js').then(m => m.initWakeLock()).catch(() => {});
   requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();

@@ -3,8 +3,9 @@
  * Standalone view at #/tos — accessible from Programs → Rehab Protocols.
  */
 import { pref } from '../db.js';
-import { navigate } from '../app.js';
+import { navigate, toast } from '../app.js';
 import { localDateStr } from '../lib/date.js';
+import { setCount, exerciseRowHTML, wireExerciseRows, openExerciseDetail } from '../lib/exercise_ui.js';
 
 const PHASES = [
   {
@@ -373,6 +374,8 @@ export async function renderTOS(app) {
   let currentStarted = saved?.started || null;   // ISO date they started it
   let activePhase    = currentPhase   || 'phase1'; // tab currently viewed
   let completed      = { ...(allLogs[todayKey] || {}) }; // today's checkboxes
+  const allSets      = (await pref('tos_sets')) || {};
+  let setsDone       = { ...(allSets[todayKey] || {}) };  // exercise id → [bool per set]
 
   async function saveProgress(phaseId) {
     const p = PHASES.find(ph => ph.id === phaseId);
@@ -387,12 +390,48 @@ export async function renderTOS(app) {
     });
   }
 
-  async function toggle(id) {
-    completed[id] = !completed[id];
+  async function setDone(id, value) {
+    const phase = PHASES.find(p => p.id === activePhase);
+    const wasComplete = phase.exercises.every(e => completed[e.id]);
+    completed[id] = value;
     const logs = (await pref('tos_logs')) || {};
-    logs[todayKey] = { ...(logs[todayKey] || {}), [id]: completed[id] };
+    logs[todayKey] = { ...(logs[todayKey] || {}), [id]: value };
     await pref('tos_logs', logs);
+    if (!value && setsDone[id]?.every(Boolean)) await saveSets(id, setsDone[id].map(() => false));
     mount();
+    if (!wasComplete && phase.exercises.every(e => completed[e.id])) toast(`🎉 ${phase.label} complete`, 2600);
+  }
+
+  const toggle = (id) => setDone(id, !completed[id]);
+
+  async function saveSets(id, arr) {
+    setsDone[id] = arr;
+    // Only today's entry is ever read back.
+    await pref('tos_sets', { [todayKey]: setsDone });
+  }
+
+  function setsFor(ex) {
+    const arr = Array.from({ length: setCount(ex.sets) }, (_, i) => !!(setsDone[ex.id] || [])[i]);
+    return completed[ex.id] ? arr.map(() => true) : arr;
+  }
+
+  function openExercise(id) {
+    const phase = PHASES.find(p => p.id === activePhase);
+    const ex = phase.exercises.find(e => e.id === id);
+    if (!ex) return;
+    openExerciseDetail(ex, {
+      accent: phase.accent,
+      sets: { get: () => setsDone[ex.id] || [], save: (arr) => saveSets(ex.id, arr) },
+      isDone: () => !!completed[ex.id],
+      setDone: (v) => setDone(ex.id, v),
+      next: () => {
+        const items = phase.exercises;
+        const i = items.findIndex(e => e.id === ex.id);
+        const n = [...items.slice(i + 1), ...items.slice(0, i)].find(e => !completed[e.id]);
+        return n ? { name: n.name, open: () => openExercise(n.id) } : null;
+      },
+      completeLabel: `${phase.label} complete`,
+    });
   }
 
   function weekInPhase() {
@@ -422,80 +461,9 @@ export async function renderTOS(app) {
       </button>`;
   }
 
-  function cardHTML(ex, phase) {
-    const done        = !!completed[ex.id];
-    const checkBg     = done ? phase.accent : 'transparent';
-    const checkBorder = done ? phase.accent : 'rgba(255,255,255,0.25)';
-    const checkColor  = done ? '#0f172a'    : 'rgba(255,255,255,0.4)';
-    return `
-      <div style="background:rgba(255,255,255,0.03);border:1px solid ${done ? phase.accent : 'rgba(255,255,255,0.08)'};
-        border-radius:12px;overflow:hidden;display:flex;flex-direction:row;
-        transition:border-color 0.2s ease;${done ? 'opacity:0.65' : ''}">
-
-        <a href="https://www.youtube.com/watch?v=${ex.videoId}" target="_blank" rel="noopener noreferrer"
-          style="position:relative;flex-shrink:0;width:130px;display:block;overflow:hidden;
-            background:#0f172a;text-decoration:none">
-          <img src="https://img.youtube.com/vi/${ex.videoId}/mqdefault.jpg"
-            alt="" loading="lazy"
-            style="width:130px;height:90px;object-fit:cover;display:block">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
-            width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,0.65);
-            display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;
-            border:1px solid rgba(255,255,255,0.3)">▶</div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:3px 5px;
-            font-size:9px;line-height:1.3;color:#cbd5e1;background:rgba(0,0,0,0.75)">
-            ${ex.videoTitle}
-          </div>
-        </a>
-
-        <div style="flex:1;padding:10px 12px;min-width:0">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px">
-            <div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-                <div style="font-size:13px;font-weight:700;color:#f1f5f9;line-height:1.3">${ex.name}</div>
-                ${ex.optional ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
-                  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
-                  color:#475569;letter-spacing:0.06em;flex-shrink:0">OPTIONAL</span>` : ''}
-              </div>
-              <div style="font-size:11px;color:#64748b;line-height:1.35">${ex.subtitle}</div>
-            </div>
-            <button data-exid="${ex.id}"
-              style="flex-shrink:0;width:26px;height:26px;border-radius:50%;
-                border:1.5px solid ${checkBorder};background:${checkBg};color:${checkColor};
-                display:flex;align-items:center;justify-content:center;cursor:pointer;
-                font-size:12px;font-weight:700">
-              ${done ? '✓' : '○'}
-            </button>
-          </div>
-
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:10px;padding:2px 7px;background:rgba(255,255,255,0.05);
-              border-radius:4px;color:#94a3b8;letter-spacing:0.02em">
-              <span style="opacity:0.55">SETS </span>${ex.sets}
-            </span>
-            <span style="font-size:10px;padding:2px 7px;background:rgba(255,255,255,0.05);
-              border-radius:4px;color:#94a3b8;letter-spacing:0.02em">
-              <span style="opacity:0.55">FREQ </span>${ex.freq}
-            </span>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:3px">
-            ${ex.cues.map(c => `
-              <div style="font-size:11.5px;color:#94a3b8;display:flex;gap:5px;line-height:1.4">
-                <span style="flex-shrink:0;font-weight:700;color:${phase.accent};margin-top:1px">→</span>
-                <span>${c}</span>
-              </div>`).join('')}
-          </div>
-
-          ${ex.warning ? `
-            <div style="margin-top:8px;font-size:11px;padding:5px 9px;
-              background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);
-              border-radius:6px;color:#fca5a5;line-height:1.4">
-              ${ex.warning}
-            </div>` : ''}
-        </div>
-      </div>`;
-  }
+  const cardHTML = (ex, phase) => exerciseRowHTML(ex, {
+    accent: phase.accent, done: !!completed[ex.id], sets: setsFor(ex),
+  });
 
   // ── Main render ──────────────────────────────────────────────────────────
   function mount() {
@@ -573,7 +541,10 @@ export async function renderTOS(app) {
       </div>
 
       <!-- Cards -->
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+        ${total && done === total ? `<div style="padding:12px;border-radius:12px;text-align:center;
+          background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);color:#22c55e;
+          font-weight:700;font-size:14px">🎉 ${phase.label} complete for today</div>` : ''}
         ${phase.exercises.map(ex => cardHTML(ex, phase)).join('')}
       </div>
 
@@ -623,9 +594,7 @@ export async function renderTOS(app) {
       });
     });
 
-    app.querySelectorAll('[data-exid]').forEach(btn => {
-      btn.addEventListener('click', () => toggle(btn.dataset.exid));
-    });
+    wireExerciseRows(app, { open: openExercise, check: toggle });
   }
 
   mount();
