@@ -1,6 +1,6 @@
 {
   "source": "pjf",
-  "generated_for": 75,
+  "generated_for": 165,
   "max_seconds": 300,
   "exercises": [
     {
@@ -384,8 +384,13 @@
     {
       "id": "altitude-drop-progressions",
       "name": "Altitude Drop Progressions",
-      "approved": "0yC7HOmh6NU",
+      "approved": "ol4VhEANoQs",
       "candidates": [
+        {
+          "videoId": "ol4VhEANoQs",
+          "title": "Depth Drop Landing — Landing Mechanics",
+          "channel": "via FKH library"
+        },
         {
           "videoId": "0yC7HOmh6NU",
           "title": "Single-Leg Altitude Drops | Technique Tutorial",
@@ -2573,6 +2578,2275 @@
           "score": 1.46
         }
       ]
+    },
+    {
+      "id": "full-range-motion-rdl",
+      "name": "Full Range Motion RDL",
+      "approved": "d-hn_0sEpRQ",
+      "candidates": [
+        {
+          "videoId": "d-hn_0sEpRQ",
+          "title": "How to Romanian Deadlift (RDL) WITHOUT Back Pain",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/d-hn_0sEpRQ",
+          "score": 4.3
+        },
+        {
+          "videoId": "ecuZtKTNI9U",
+          "title": "How To Romanian Deadlift (RDL): Number One Form Tip",
+          "channel": "Bodybuilding.com",
+          "seconds": 35,
+          "embeddable": true,
+          "url": "https://youtu.be/ecuZtKTNI9U",
+          "score": 1.38
+        },
+        {
+          "videoId": "EXHvZ-_sKyY",
+          "title": "How to perfect your RDL (finally)",
+          "channel": "Coach MattJFit",
+          "seconds": 42,
+          "embeddable": true,
+          "url": "https://youtu.be/EXHvZ-_sKyY",
+          "score": 1.36
+        }
+      ]
+    },
+    {
+      "id": "griffith-wall-rotations",
+      "name": "Griffith Wall Rotations",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "AkFVDd-NU90",
+          "title": "Improve your Hip Mobility with this drill!",
+          "channel": "Vernon Griffith II",
+          "seconds": 37,
+          "embeddable": true,
+          "url": "https://youtu.be/AkFVDd-NU90",
+          "score": 1.38
+        },
+        {
+          "videoId": "O3Dudt2-OQ4",
+          "title": "4 MOVES to Improve HIP MOBILITY",
+          "channel": "Vernon Griffith II",
+          "seconds": 21,
+          "embeddable": true,
+          "url": "https://youtu.be/O3Dudt2-OQ4",
+          "score": 0.93
+        },
+        {
+          "videoId": "u9tP-C1BTO0",
+          "title": "Improve your Mobility and Get out of Pain with this Move!",
+          "channel": "Vernon Griffith II",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/u9tP-C1BTO0",
+          "score": 0.92
+        }
+      ]
+    },
+    {
+      "id": "half-kneeling-hip-flexor-stretch",
+      "name": "Half Kneeling Hip Flexor Stretch",
+      "approved": "bfJabpwvP-g",
+      "candidates": [
+        {
+          "videoId": "mzPvzMivukw",
+          "title": "Back Exercises to Strengthen and Stretch (Half-Kneeling Hip Flexor Stretch) | HSS",
+          "channel": "Hospital for Special Surgery",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/mzPvzMivukw",
+          "score": 2.42
+        },
+        {
+          "videoId": "bfJabpwvP-g",
+          "title": "Half Kneeling Hip Flexor Stretch",
+          "channel": "The Movement Therapy Institute",
+          "seconds": 27,
+          "embeddable": true,
+          "url": "https://youtu.be/bfJabpwvP-g",
+          "score": 1.91
+        },
+        {
+          "videoId": "bnVfloe6yTo",
+          "title": "Half Kneeling Hip Flexor Stretch",
+          "channel": "Pursuit Fitness",
+          "seconds": 33,
+          "embeddable": true,
+          "url": "https://youtu.be/bnVfloe6yTo",
+          "score": 1.89
+        }
+      ]
+    },
+    {
+      "id": "half-kneeling-lift-off",
+      "name": "Half Kneeling Lift Off",
+      "approved": "7-m4YRsNQjw",
+      "candidates": [
+        {
+          "videoId": "7-m4YRsNQjw",
+          "title": "How To: Half Kneeling Hip Flexor Lift Off - Form & Technique | The Movement Blueprint",
+          "channel": "The Movement Blueprint",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/7-m4YRsNQjw",
+          "score": 2.42
+        },
+        {
+          "videoId": "HbGRE-EzrNM",
+          "title": "Half Kneeling T Spine Rotation",
+          "channel": "Ian Perry",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/HbGRE-EzrNM",
+          "score": 1.98
+        },
+        {
+          "videoId": "QxUP6xyNbQE",
+          "title": "Half-Kneeling Hip Flexion Lift-Offs",
+          "channel": "Petroski Physio",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/QxUP6xyNbQE",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "hamstring-floss",
+      "name": "Hamstring Floss",
+      "approved": "72WKiKdmn0U",
+      "candidates": [
+        {
+          "videoId": "2MdKehqZKL4",
+          "title": "Hamstring Flossing",
+          "channel": "Elon Sport Performance",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/2MdKehqZKL4",
+          "score": 1.98
+        },
+        {
+          "videoId": "72WKiKdmn0U",
+          "title": "Hamstring Flossing",
+          "channel": "Explore Movement ",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/72WKiKdmn0U",
+          "score": 1.96
+        },
+        {
+          "videoId": "aWBov7-DLYc",
+          "title": "Hamstring Flossing",
+          "channel": "Villanova Sports Performance Training",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/aWBov7-DLYc",
+          "score": 1.96
+        }
+      ]
+    },
+    {
+      "id": "hamstring-walk-outs",
+      "name": "Hamstring Walk Outs",
+      "approved": "-hOjIXN79zI",
+      "candidates": [
+        {
+          "videoId": "-hOjIXN79zI",
+          "title": "Hamstring Walkouts Explained #fitnesstips #gymtip #hamstrings #glutesworkout #gymexercises #fit",
+          "channel": "Pipfitcoaching",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/-hOjIXN79zI",
+          "score": 2.45
+        },
+        {
+          "videoId": "PbMC5bMp_DE",
+          "title": "6 awesome hamstring exercises that you can do at home!",
+          "channel": "The Modern Fit Girl",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/PbMC5bMp_DE",
+          "score": 2.45
+        },
+        {
+          "videoId": "6yeyt5mUo94",
+          "title": "Glute Bridge into Hamstring Walkout Tutorial - Proper Form and Technique",
+          "channel": "Runna",
+          "seconds": 25,
+          "embeddable": true,
+          "url": "https://youtu.be/6yeyt5mUo94",
+          "score": 2.42
+        }
+      ]
+    },
+    {
+      "id": "hanging-w-breathing-emphasis",
+      "name": "Hanging w/ Breathing Emphasis",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "hYbhQ2nbq90",
+          "title": "99% of people can’t hang this long. Can you?",
+          "channel": "Jeff Nippard",
+          "seconds": 51,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/hYbhQ2nbq90",
+          "score": 3.83
+        },
+        {
+          "videoId": "lf7OgvrRbQQ",
+          "title": "Abdominal Breathing Exercise | 8 Seconds Cycle | Belly Fat Loss & Flat Stomach (腹式呼吸 减肚子)",
+          "channel": "Fit Fab & Flawless",
+          "seconds": 8,
+          "embeddable": true,
+          "url": "https://youtu.be/lf7OgvrRbQQ",
+          "score": 1.47
+        },
+        {
+          "videoId": "dv4UpL_yLKM",
+          "title": "Diaphragmatic Breathing For Postpartum Recovery #health #education #mom #exercise #fyp",
+          "channel": "The Belly Whisperer",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/dv4UpL_yLKM",
+          "score": 1.46
+        }
+      ]
+    },
+    {
+      "id": "heels-elevated-narrow-squat",
+      "name": "Heels Elevated Narrow Squat",
+      "approved": "A8q5eEktLAw",
+      "candidates": [
+        {
+          "videoId": "EkSiBLlsaCQ",
+          "title": "Is Squatting Like Sam Sulek Good?",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/EkSiBLlsaCQ",
+          "score": 3.8
+        },
+        {
+          "videoId": "A8q5eEktLAw",
+          "title": "EXERCISE TUTORIAL: High Bar Back Squat - Heels Elevated",
+          "channel": "Josh Bowers",
+          "seconds": 31,
+          "embeddable": true,
+          "url": "https://youtu.be/A8q5eEktLAw",
+          "score": 2.4
+        },
+        {
+          "videoId": "UPeQpDPRWOg",
+          "title": "Squat: Elevated Heels vs Toes (KNOW THE DIFFERENCE!)",
+          "channel": "Andrew Kwong (DeltaBolic)",
+          "seconds": 6,
+          "embeddable": true,
+          "url": "https://youtu.be/UPeQpDPRWOg",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "hindu-oscillating-squat",
+      "name": "Hindu Oscillating Squat",
+      "approved": "ecJUgbYU7jg",
+      "candidates": [
+        {
+          "videoId": "ecJUgbYU7jg",
+          "title": "Hindu Squat",
+          "channel": "Calvin Dietz",
+          "seconds": 3,
+          "embeddable": true,
+          "url": "https://youtu.be/ecJUgbYU7jg",
+          "score": 1.99
+        },
+        {
+          "videoId": "lbmiJ-7piAQ",
+          "title": "Single Leg Dumbbell Hindu Squat Oscillatory",
+          "channel": "Calvin Dietz",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/lbmiJ-7piAQ",
+          "score": 1.98
+        },
+        {
+          "videoId": "yh-iudT5bUE",
+          "title": "Hindu Squat Drop Pause Jump",
+          "channel": "Calvin Dietz",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/yh-iudT5bUE",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "hip-bridge-horizontal-press",
+      "name": "Hip Bridge Horizontal Press",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Dq4S7vUvGCg",
+          "title": "Here Are 4 of My Favorite Glute Exercises That You Can Incorporate Into Your Next Glute Workout! 🍑",
+          "channel": "Bret Contreras Glute Guy",
+          "seconds": 14,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Dq4S7vUvGCg",
+          "score": 4.45
+        },
+        {
+          "videoId": "FPlHiEykiy8",
+          "title": "Ultimate Hip Thrust Tutorial: 1 Exercise 3 Muscle Groups",
+          "channel": "Laci Renee ",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/FPlHiEykiy8",
+          "score": 2.48
+        },
+        {
+          "videoId": "RrU4zx4ysnI",
+          "title": "🍑 How to Do Hip Bridges the RIGHT Way | Glutes, Not Hamstrings! 💪",
+          "channel": "Go with JO FITNESS",
+          "seconds": 8,
+          "embeddable": true,
+          "url": "https://youtu.be/RrU4zx4ysnI",
+          "score": 2.47
+        }
+      ]
+    },
+    {
+      "id": "hip-flexor-length-under-load",
+      "name": "Hip Flexor Length Under Load",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "7_cK3XVqN9M",
+          "title": "Train Your Damn Hip Flexors!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7_cK3XVqN9M",
+          "score": 4.8
+        },
+        {
+          "videoId": "cCn0oNWtDLQ",
+          "title": "BEST FIX For Tight/Painful Hip Flexors!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/cCn0oNWtDLQ",
+          "score": 4.8
+        },
+        {
+          "videoId": "rjlBMD4VYaA",
+          "title": "Train your hip flexors with these strengthening exercises",
+          "channel": "[P]rehab",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/rjlBMD4VYaA",
+          "score": 2.44
+        }
+      ]
+    },
+    {
+      "id": "hip-flexor-tilt",
+      "name": "Hip Flexor Tilt",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "ktgtEWGhFd8",
+          "title": "How to PROPERLY Perform the Kneeling Hip Flexor Stretch With Good Form (For Tight Hip Flexors)",
+          "channel": "Gerardi Performance",
+          "seconds": 20,
+          "embeddable": true,
+          "url": "https://youtu.be/ktgtEWGhFd8",
+          "score": 2.43
+        },
+        {
+          "videoId": "7lGIfjasuNo",
+          "title": "Hip Flexor Stretch | exercise for hips | physiotherapy stretch | hip stretch",
+          "channel": "Good Living Medical Centre",
+          "seconds": 23,
+          "embeddable": true,
+          "url": "https://youtu.be/7lGIfjasuNo",
+          "score": 2.42
+        },
+        {
+          "videoId": "ZQXGUfGmgKc",
+          "title": "Stretch The Hip Flexors Correctly",
+          "channel": "Dr. Kristie Ennis",
+          "seconds": 28,
+          "embeddable": true,
+          "url": "https://youtu.be/ZQXGUfGmgKc",
+          "score": 2.41
+        }
+      ]
+    },
+    {
+      "id": "hip-flexorquad-bridge",
+      "name": "Hip Flexor/Quad Bridge",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "7_cK3XVqN9M",
+          "title": "Train Your Damn Hip Flexors!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7_cK3XVqN9M",
+          "score": 4.8
+        },
+        {
+          "videoId": "ktgtEWGhFd8",
+          "title": "How to PROPERLY Perform the Kneeling Hip Flexor Stretch With Good Form (For Tight Hip Flexors)",
+          "channel": "Gerardi Performance",
+          "seconds": 20,
+          "embeddable": true,
+          "url": "https://youtu.be/ktgtEWGhFd8",
+          "score": 2.43
+        },
+        {
+          "videoId": "7lGIfjasuNo",
+          "title": "Hip Flexor Stretch | exercise for hips | physiotherapy stretch | hip stretch",
+          "channel": "Good Living Medical Centre",
+          "seconds": 23,
+          "embeddable": true,
+          "url": "https://youtu.be/7lGIfjasuNo",
+          "score": 2.42
+        }
+      ]
+    },
+    {
+      "id": "hip-hinge-ankle-rocker",
+      "name": "Hip Hinge Ankle Rocker",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Kkc1RQVGFgE",
+          "title": "Unlock Your Hips - 4 Hip Mobility Exercises",
+          "channel": "Dr. Caleb Burgess, DPT",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/Kkc1RQVGFgE",
+          "score": 2.48
+        },
+        {
+          "videoId": "sSwoU1DjTuU",
+          "title": "Beginner Standing Hips Mobility Exercises",
+          "channel": "Justin Agustin",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/sSwoU1DjTuU",
+          "score": 2.47
+        },
+        {
+          "videoId": "fDC2KC1XqY8",
+          "title": "Beginner Hip Mobility Exercises",
+          "channel": "Justin Agustin",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/fDC2KC1XqY8",
+          "score": 2.44
+        }
+      ]
+    },
+    {
+      "id": "hip-loaded-diagonal-jumps",
+      "name": "Hip Loaded Diagonal Jumps",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "XezcynKU8YI",
+          "title": "Hip Mobility Hack THAT WORKS!",
+          "channel": "Squat University",
+          "seconds": 21,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/XezcynKU8YI",
+          "score": 4.93
+        },
+        {
+          "videoId": "ANSfFCnG68g",
+          "title": "How To Get The Most Out Of The Watson Multi Hip!",
+          "channel": "Watson Gym Equipment",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/ANSfFCnG68g",
+          "score": 2.46
+        },
+        {
+          "videoId": "gMShBRRuK1I",
+          "title": "Top 4 Landmine Exercise for Explosiveness & Coordination",
+          "channel": "Nick Leyden",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/gMShBRRuK1I",
+          "score": 1.45
+        }
+      ]
+    },
+    {
+      "id": "hip-mobility-band-freestyle",
+      "name": "Hip Mobility Band Freestyle",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Kkc1RQVGFgE",
+          "title": "Unlock Your Hips - 4 Hip Mobility Exercises",
+          "channel": "Dr. Caleb Burgess, DPT",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/Kkc1RQVGFgE",
+          "score": 2.48
+        },
+        {
+          "videoId": "fDC2KC1XqY8",
+          "title": "Beginner Hip Mobility Exercises",
+          "channel": "Justin Agustin",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/fDC2KC1XqY8",
+          "score": 2.44
+        },
+        {
+          "videoId": "t4Zz6-aG8Iw",
+          "title": "90 90 Hip Stretch (Best Hip Mobility Exercise!)",
+          "channel": "Jack Hanrahan Fitness ",
+          "seconds": 61,
+          "embeddable": true,
+          "url": "https://youtu.be/t4Zz6-aG8Iw",
+          "score": 2.3
+        }
+      ]
+    },
+    {
+      "id": "hip-mobility-erir-skips",
+      "name": "Hip Mobility ER/IR Skips",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "LNIB-2-Iv48",
+          "title": "Try This Exercise To Improve Hip Rotation!",
+          "channel": "Pain Academy",
+          "seconds": 25,
+          "embeddable": true,
+          "url": "https://youtu.be/LNIB-2-Iv48",
+          "score": 2.42
+        },
+        {
+          "videoId": "gy8BQPPAW_o",
+          "title": "How to quickly fix hip pinching! #hippain #hipflexor #hipmobility #lowbackpain #hipexercises",
+          "channel": "Conor Harris",
+          "seconds": 58,
+          "embeddable": true,
+          "url": "https://youtu.be/gy8BQPPAW_o",
+          "score": 2.31
+        },
+        {
+          "videoId": "JirE04VEyc8",
+          "title": "Hip internal rotation (Hip IR) with lateral band distraction",
+          "channel": "Athletes' Potential",
+          "seconds": 20,
+          "embeddable": true,
+          "url": "https://youtu.be/JirE04VEyc8",
+          "score": 1.93
+        }
+      ]
+    },
+    {
+      "id": "hip-shift-squat",
+      "name": "Hip Shift Squat",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "5mPnB1xL3Qw",
+          "title": "How To Fix A Hip Shift",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/5mPnB1xL3Qw",
+          "score": 5.31
+        },
+        {
+          "videoId": "dEZR0Mo_f6g",
+          "title": "How to Fix a Hip Shift (AMAZING CHANGES)",
+          "channel": "Squat University",
+          "seconds": 127,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/dEZR0Mo_f6g",
+          "score": 5.08
+        },
+        {
+          "videoId": "5F2dfBl9hmY",
+          "title": "Fixing The Squat Hip Shift (INSTANTLY!)",
+          "channel": "Squat University",
+          "seconds": 57,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/5F2dfBl9hmY",
+          "score": 4.81
+        }
+      ]
+    },
+    {
+      "id": "hip-thrust",
+      "name": "Hip Thrust",
+      "approved": "pF17m_CXfL0",
+      "candidates": [
+        {
+          "videoId": "f7tT19NOE4c",
+          "title": "How to set up for hip thrust￼",
+          "channel": "loldarbyfit",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/f7tT19NOE4c",
+          "score": 2.45
+        },
+        {
+          "videoId": "pF17m_CXfL0",
+          "title": "Hip Thrust Tutorial - Proper Form and Technique",
+          "channel": "Runna",
+          "seconds": 27,
+          "embeddable": true,
+          "url": "https://youtu.be/pF17m_CXfL0",
+          "score": 2.41
+        },
+        {
+          "videoId": "W86oVlnLqY4",
+          "title": "How to Properly Perform Barbell Hip Thrusts With Good Form (Perfect Set Up And Exercise Tutorial)",
+          "channel": "Gerardi Performance",
+          "seconds": 37,
+          "embeddable": true,
+          "url": "https://youtu.be/W86oVlnLqY4",
+          "score": 2.38
+        }
+      ]
+    },
+    {
+      "id": "incline-bench-press",
+      "name": "Incline Bench Press",
+      "approved": "L9UKMQw1Nss",
+      "candidates": [
+        {
+          "videoId": "5orOHJL2qS4",
+          "title": "How to do a Dumbbell Incline Chest Press!",
+          "channel": "Elite Performance",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/5orOHJL2qS4",
+          "score": 2.44
+        },
+        {
+          "videoId": "L9UKMQw1Nss",
+          "title": "How to do an Incline Barbell Chest Press!",
+          "channel": "Elite Performance",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/L9UKMQw1Nss",
+          "score": 2.42
+        },
+        {
+          "videoId": "IP4oeKh1Sd4",
+          "title": "How to do the INCLINE DUMBBELL BENCH PRESS! | 2 Minute Tutorial",
+          "channel": "Max Euceda",
+          "seconds": 120,
+          "embeddable": true,
+          "url": "https://youtu.be/IP4oeKh1Sd4",
+          "score": 2.1
+        }
+      ]
+    },
+    {
+      "id": "inverted-row",
+      "name": "Inverted Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "EfE7JeD8o6Y",
+          "title": "How to do an Inverted Row",
+          "channel": "Rogith23",
+          "seconds": 11,
+          "embeddable": true,
+          "url": "https://youtu.be/EfE7JeD8o6Y",
+          "score": 2.46
+        },
+        {
+          "videoId": "11F_O_sZ1Z4",
+          "title": "How to Perform the Inverted Row | Back | Exercise Tutorial",
+          "channel": "Buff Dudes Workouts",
+          "seconds": 76,
+          "embeddable": true,
+          "url": "https://youtu.be/11F_O_sZ1Z4",
+          "score": 2.25
+        },
+        {
+          "videoId": "vZy_Eu_Z0WA",
+          "title": "Barbell Inverted Row",
+          "channel": "Propel Fitness Center",
+          "seconds": 11,
+          "embeddable": true,
+          "url": "https://youtu.be/vZy_Eu_Z0WA",
+          "score": 1.96
+        }
+      ]
+    },
+    {
+      "id": "kb-swing-box-jump-contrast",
+      "name": "KB Swing + Box Jump Contrast",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "6CZeZxHpmiA",
+          "title": "Contrast Deadlift to KB Swing",
+          "channel": "Fitcure",
+          "seconds": 37,
+          "embeddable": true,
+          "url": "https://youtu.be/6CZeZxHpmiA",
+          "score": 1.88
+        },
+        {
+          "videoId": "VEltNc2Evrk",
+          "title": "Contrast training - KB deadlift to box jump",
+          "channel": "Coleman PT & Performance",
+          "seconds": 52,
+          "embeddable": true,
+          "url": "https://youtu.be/VEltNc2Evrk",
+          "score": 1.83
+        },
+        {
+          "videoId": "O7dLcHXOQ1c",
+          "title": "How to: Resistance Band Kettlebell Swings",
+          "channel": "Ashley | Get Mom Strong",
+          "seconds": 23,
+          "embeddable": true,
+          "url": "https://youtu.be/O7dLcHXOQ1c",
+          "score": 1.42
+        }
+      ]
+    },
+    {
+      "id": "kickstand-rdl",
+      "name": "Kickstand RDL",
+      "approved": "-ULvnca_WMs",
+      "candidates": [
+        {
+          "videoId": "6gD8TAvAD58",
+          "title": "Kickstand RDL Technique   Less Back and More Glutes!",
+          "channel": "DocJenFit",
+          "seconds": 30,
+          "embeddable": true,
+          "url": "https://youtu.be/6gD8TAvAD58",
+          "score": 2.4
+        },
+        {
+          "videoId": "-ULvnca_WMs",
+          "title": "How to Perform a Kickstand Dumbbell Romanian Deadlift",
+          "channel": "Fitness Pain Free",
+          "seconds": 55,
+          "embeddable": true,
+          "url": "https://youtu.be/-ULvnca_WMs",
+          "score": 2.32
+        },
+        {
+          "videoId": "SOeQozdDkeQ",
+          "title": "Kickstand RDL",
+          "channel": "Melissa Kendter",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/SOeQozdDkeQ",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "knee-pumps",
+      "name": "Knee Pumps",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "rq71X62KwvA",
+          "title": "The SECRET To Strong Pain-Free Knees!😍",
+          "channel": "Squat University",
+          "seconds": 56,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/rq71X62KwvA",
+          "score": 4.81
+        },
+        {
+          "videoId": "Am8ErAf6iw0",
+          "title": "Knee Replacement Exercises",
+          "channel": "Dr. Caleb Burgess, DPT",
+          "seconds": 6,
+          "embeddable": true,
+          "url": "https://youtu.be/Am8ErAf6iw0",
+          "score": 2.48
+        },
+        {
+          "videoId": "A1gB6POkvAo",
+          "title": "3 Simple Knee Exercises at Home to Boost Strength, Flexibility, and Joint Health",
+          "channel": "Fitness Happy Time",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/A1gB6POkvAo",
+          "score": 2.46
+        }
+      ]
+    },
+    {
+      "id": "knee-step-overs",
+      "name": "Knee Step Overs",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "FHBlnU3UNAA",
+          "title": "4 Exercises to Prevent Knee Injuries #shorts",
+          "channel": "RicFit- FIFA Football Agent",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/FHBlnU3UNAA",
+          "score": 2.46
+        },
+        {
+          "videoId": "ucT9G2-ScAI",
+          "title": "Knee Pain Exercises: Beginner vs Advanced",
+          "channel": "[P]rehab",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/ucT9G2-ScAI",
+          "score": 2.46
+        },
+        {
+          "videoId": "UDcefgQe8ds",
+          "title": "Correct valgus knees with this simple exercise! #valgus #knockknees #legalignment #legexercises",
+          "channel": "Alina Fit",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/UDcefgQe8ds",
+          "score": 2.46
+        }
+      ]
+    },
+    {
+      "id": "landmine-or-dumbbell-dip-press",
+      "name": "Landmine or Dumbbell Dip Press",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "0efz8srgH7c",
+          "title": "Stability Meets Range Of Motion With These Landmine Exercises #SHORT",
+          "channel": "Marcus Filly",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/0efz8srgH7c",
+          "score": 2.47
+        },
+        {
+          "videoId": "acN8W_Ng0mE",
+          "title": "The easiest way to do landmine exercises at home",
+          "channel": "Dad Tried It",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/acN8W_Ng0mE",
+          "score": 2.45
+        },
+        {
+          "videoId": "s4teaNf9ung",
+          "title": "Add these landmine exercises to your routine #athlete #explosive",
+          "channel": "Athlete Academy",
+          "seconds": 14,
+          "embeddable": true,
+          "url": "https://youtu.be/s4teaNf9ung",
+          "score": 2.45
+        }
+      ]
+    },
+    {
+      "id": "landmine-or-dumbbell-rotational-row",
+      "name": "Landmine or Dumbbell Rotational Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "0efz8srgH7c",
+          "title": "Stability Meets Range Of Motion With These Landmine Exercises #SHORT",
+          "channel": "Marcus Filly",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/0efz8srgH7c",
+          "score": 2.47
+        },
+        {
+          "videoId": "acN8W_Ng0mE",
+          "title": "The easiest way to do landmine exercises at home",
+          "channel": "Dad Tried It",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/acN8W_Ng0mE",
+          "score": 2.45
+        },
+        {
+          "videoId": "s4teaNf9ung",
+          "title": "Add these landmine exercises to your routine #athlete #explosive",
+          "channel": "Athlete Academy",
+          "seconds": 14,
+          "embeddable": true,
+          "url": "https://youtu.be/s4teaNf9ung",
+          "score": 2.45
+        }
+      ]
+    },
+    {
+      "id": "lat-pull-down-or-pull-up",
+      "name": "Lat Pull-Down OR Pull Up",
+      "approved": "lmatGLlm1qs",
+      "candidates": [
+        {
+          "videoId": "hnSqbBk15tw",
+          "title": "Stop Messing Up Your Lat Pulldowns",
+          "channel": "Jeff Nippard",
+          "seconds": 48,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/hnSqbBk15tw",
+          "score": 4.84
+        },
+        {
+          "videoId": "8d6d46pGdQM",
+          "title": "How to do Lat Pulldowns CORRECTLY",
+          "channel": "Train with Dave ",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/8d6d46pGdQM",
+          "score": 2.46
+        },
+        {
+          "videoId": "lmatGLlm1qs",
+          "title": "How to Do Lat Pulldown",
+          "channel": "Andrew Kwong (DeltaBolic)",
+          "seconds": 17,
+          "embeddable": true,
+          "url": "https://youtu.be/lmatGLlm1qs",
+          "score": 2.44
+        }
+      ]
+    },
+    {
+      "id": "lateral-ankle-slant-board-cooker",
+      "name": "Lateral Ankle Slant Board Cooker",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "zbsDtdXHW18",
+          "title": "Backstroke leg kick basics. Or Why am I swimming slowly? #swimtechnique #swimming",
+          "channel": "Alena | Swim",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/zbsDtdXHW18",
+          "score": 1.46
+        },
+        {
+          "videoId": "Ed0BjBEh5sE",
+          "title": "Healthier feet are just 4 exercises away!",
+          "channel": "The Barefoot Sprinter",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/Ed0BjBEh5sE",
+          "score": 1.45
+        },
+        {
+          "videoId": "l0w-3xfoa48",
+          "title": "How to Get Rid of Plantar Fasciitis FAST!",
+          "channel": "Posture Guy",
+          "seconds": 18,
+          "embeddable": true,
+          "url": "https://youtu.be/l0w-3xfoa48",
+          "score": 1.44
+        }
+      ]
+    },
+    {
+      "id": "lateral-crossover-sled-drag-fatiguecoordination",
+      "name": "Lateral Crossover Sled Drag Fatigue/Coordination",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "LJMrXG_vPQ8",
+          "title": "How to correctly perform The High Knee Drill #sprints #tips",
+          "channel": "Lyfestyle Athletics ",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/LJMrXG_vPQ8",
+          "score": 1.42
+        },
+        {
+          "videoId": "BiBRdhN6d9A",
+          "title": "Free leg Abduction stance leg extension",
+          "channel": "Bijai Jones",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/BiBRdhN6d9A",
+          "score": 0.95
+        },
+        {
+          "videoId": "F9Ao-OWUoU8",
+          "title": "Best way to learn Freestyle swimming",
+          "channel": "SwimUp",
+          "seconds": 25,
+          "embeddable": true,
+          "url": "https://youtu.be/F9Ao-OWUoU8",
+          "score": 0.92
+        }
+      ]
+    },
+    {
+      "id": "lateral-landing-progressions",
+      "name": "Lateral Landing Progressions",
+      "approved": "WcAzOUYlaB8",
+      "candidates": [
+        {
+          "videoId": "zFSpRmK_MBA",
+          "title": "Lateral Depth Drop To Lateral Jump Onto Box #exercise",
+          "channel": "Highland Park HPI",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/zFSpRmK_MBA",
+          "score": 2.48
+        },
+        {
+          "videoId": "Rs1zxDgyUXA",
+          "title": "How to get more out of your lateral bounds",
+          "channel": "Coach Griffin",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/Rs1zxDgyUXA",
+          "score": 2.46
+        },
+        {
+          "videoId": "WcAzOUYlaB8",
+          "title": "AFL Power Exercise - Lateral Jump & Stick the Landing",
+          "channel": "High Performance Content for AFL Staff & Athletes ",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/WcAzOUYlaB8",
+          "score": 2.45
+        }
+      ]
+    },
+    {
+      "id": "lateral-line-stretch",
+      "name": "Lateral Line Stretch",
+      "approved": "TQXy0A5lWv4",
+      "candidates": [
+        {
+          "videoId": "gunRQiU4E_U",
+          "title": "Hips And Lateral Line Stretch Series 1 of 3 - Stick Mobility Exercise",
+          "channel": "Stick Mobility",
+          "seconds": 157,
+          "embeddable": true,
+          "url": "https://youtu.be/gunRQiU4E_U",
+          "score": 1.98
+        },
+        {
+          "videoId": "TQXy0A5lWv4",
+          "title": "ITB & Lateral Line Stretching",
+          "channel": "The Physio Channel",
+          "seconds": 65,
+          "embeddable": true,
+          "url": "https://youtu.be/TQXy0A5lWv4",
+          "score": 1.78
+        },
+        {
+          "videoId": "JptRRvpL4ss",
+          "title": "QUADRATUS LUMBORUM – Standing Lateral Line Stretch",
+          "channel": "LearnMuscles.com",
+          "seconds": 88,
+          "embeddable": true,
+          "url": "https://youtu.be/JptRRvpL4ss",
+          "score": 1.71
+        }
+      ]
+    },
+    {
+      "id": "lateral-lunge-length-under-load",
+      "name": "Lateral Lunge Length Under Load",
+      "approved": "liSlYIYX_zM",
+      "candidates": [
+        {
+          "videoId": "liSlYIYX_zM",
+          "title": "Lateral Lunges: Unloaded Deepen Range / Loaded Less Depth",
+          "channel": "Ana Eyssimont",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/liSlYIYX_zM",
+          "score": 1.96
+        },
+        {
+          "videoId": "ztSrtEISvNA",
+          "title": "Walking Lateral Lunge w/ Slider",
+          "channel": "Sol Fitness",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/ztSrtEISvNA",
+          "score": 1.95
+        },
+        {
+          "videoId": "N1mgewtz7qg",
+          "title": "Plyometric lateral lunge",
+          "channel": "Injury prevention exercises NCFC youth",
+          "seconds": 17,
+          "embeddable": true,
+          "url": "https://youtu.be/N1mgewtz7qg",
+          "score": 1.94
+        }
+      ]
+    },
+    {
+      "id": "lateral-oblique-flexion",
+      "name": "Lateral Oblique Flexion",
+      "approved": "VwLXMuL_30Q",
+      "candidates": [
+        {
+          "videoId": "EPn6NKisjvg",
+          "title": "22 Lateral Oblique Torso Flexion",
+          "channel": "Todd Fluck M.Ac., L.Ac., Dipl.Ac. - Acupuncture for Pain and Stress Management",
+          "seconds": 29,
+          "embeddable": true,
+          "url": "https://youtu.be/EPn6NKisjvg",
+          "score": 1.9
+        },
+        {
+          "videoId": "VwLXMuL_30Q",
+          "title": "The Dumbbell Side Bend is a great Waist exercise - Save and try your next workout",
+          "channel": "Lyfta",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/VwLXMuL_30Q",
+          "score": 1.47
+        },
+        {
+          "videoId": "aj2aGn_va20",
+          "title": "Cable core exercises #shortsfeed #shortsvideo #shorts",
+          "channel": "Recharge Body",
+          "seconds": 8,
+          "embeddable": true,
+          "url": "https://youtu.be/aj2aGn_va20",
+          "score": 1.47
+        }
+      ]
+    },
+    {
+      "id": "loaded-lateral-line-stretch",
+      "name": "Loaded Lateral Line Stretch",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "JgXZ5btP9mc",
+          "title": "Hips And Lateral Line Stretch Series 2 of 3 - Stick Mobility Exercise",
+          "channel": "Stick Mobility",
+          "seconds": 95,
+          "embeddable": true,
+          "url": "https://youtu.be/JgXZ5btP9mc",
+          "score": 1.18
+        },
+        {
+          "videoId": "fsOLtairPRI",
+          "title": "Hips And Lateral Line Stretch Series 3 of 3 - Stick Mobility Exercise",
+          "channel": "Stick Mobility",
+          "seconds": 121,
+          "embeddable": true,
+          "url": "https://youtu.be/fsOLtairPRI",
+          "score": 1.1
+        },
+        {
+          "videoId": "gunRQiU4E_U",
+          "title": "Hips And Lateral Line Stretch Series 1 of 3 - Stick Mobility Exercise",
+          "channel": "Stick Mobility",
+          "seconds": 157,
+          "embeddable": true,
+          "url": "https://youtu.be/gunRQiU4E_U",
+          "score": 0.98
+        }
+      ]
+    },
+    {
+      "id": "long-duration-jump",
+      "name": "Long Duration Jump",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "BnLH4RHW7sc",
+          "title": "Long Jump | #7 Drills & Progressions - The run up",
+          "channel": "Athletics3D",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/BnLH4RHW7sc",
+          "score": 2.46
+        },
+        {
+          "videoId": "Z-lLzlFExmI",
+          "title": "Long Jump Technique || Hybrid (Hang - Hitch Kick) #trackandfield #longjump",
+          "channel": "Jumpers Junction",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/Z-lLzlFExmI",
+          "score": 2.45
+        },
+        {
+          "videoId": "WkpPl29jDI4",
+          "title": "Long Jump Technique - The Full Approach",
+          "channel": "Outperform",
+          "seconds": 157,
+          "embeddable": true,
+          "url": "https://youtu.be/WkpPl29jDI4",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "long-length-hamstring-rapid-loading",
+      "name": "Long Length Hamstring Rapid Loading",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "HJckiujT904",
+          "title": "The BEST Hamstring Exercise You Need!",
+          "channel": "Squat University",
+          "seconds": 54,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/HJckiujT904",
+          "score": 4.32
+        },
+        {
+          "videoId": "aPry6gsMU5I",
+          "title": "How To Build MASSIVE Hamstrings! 😳",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/aPry6gsMU5I",
+          "score": 4.3
+        },
+        {
+          "videoId": "70X6nujeHiM",
+          "title": "Hamstring Mobility Exercise #hamstringexercise #hamstrings #mobilityexercises",
+          "channel": "Claire DeFitt",
+          "seconds": 10,
+          "embeddable": true,
+          "url": "https://youtu.be/70X6nujeHiM",
+          "score": 1.47
+        }
+      ]
+    },
+    {
+      "id": "low-row",
+      "name": "Low Row",
+      "approved": "0ncjdn9NkEQ",
+      "candidates": [
+        {
+          "videoId": "0ncjdn9NkEQ",
+          "title": "How to Machine Low Row Properly",
+          "channel": "TylerPath",
+          "seconds": 10,
+          "embeddable": true,
+          "url": "https://youtu.be/0ncjdn9NkEQ",
+          "score": 2.47
+        },
+        {
+          "videoId": "Y_F7NlVoJqY",
+          "title": "How to do the Machine Low Row for Lats Growth",
+          "channel": "TylerPath",
+          "seconds": 18,
+          "embeddable": true,
+          "url": "https://youtu.be/Y_F7NlVoJqY",
+          "score": 2.44
+        },
+        {
+          "videoId": "nXfYNAwB_Lo",
+          "title": "How to Perform The TRX LOW ROW",
+          "channel": "CORE Strong Fitness",
+          "seconds": 54,
+          "embeddable": true,
+          "url": "https://youtu.be/nXfYNAwB_Lo",
+          "score": 2.32
+        }
+      ]
+    },
+    {
+      "id": "mb-high-tossextensive-jumps-contrast",
+      "name": "MB High Toss/Extensive Jumps Contrast",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "zgufVBWx9yM",
+          "title": "How to do a Drop Jump into Hurdle Hop (large)",
+          "channel": "APEC - Athletic Performance Education Company",
+          "seconds": 4,
+          "embeddable": true,
+          "url": "https://youtu.be/zgufVBWx9yM",
+          "score": 1.49
+        },
+        {
+          "videoId": "L7gBXyNIiVQ",
+          "title": "MED BALL SLAM WITH A STICK  | Progression - Med Ball Slam With a Stick Into a Jump",
+          "channel": "Bodymass Gym",
+          "seconds": 66,
+          "embeddable": true,
+          "url": "https://youtu.be/L7gBXyNIiVQ",
+          "score": 1.28
+        },
+        {
+          "videoId": "GBtUnTyG5I4",
+          "title": "【没病吧?你和食人魔谈什么善良?】穿越无尽荒漠的戈尔金，已是食人魔酋长，炖魔兽是他的日常。可就在他安稳度日时，蓝星人类全民降临此界。外来者挣扎求生，畏惧荒漠与土著，戈尔金却一脸淡然：活着很难吗？",
+          "channel": "呦呦声漫",
+          "seconds": 0,
+          "embeddable": true,
+          "url": "https://youtu.be/GBtUnTyG5I4",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": "mb-rapid-lateral-toss",
+      "name": "MB Rapid Lateral Toss",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "metronome-decels",
+      "name": "Metronome Decels",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "metronome-dot-drill",
+      "name": "Metronome Dot Drill",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "MtY0Nc2w9N4",
+          "title": "Curious HOW to Practice with a Metronome? Do This",
+          "channel": "jayfelay",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/MtY0Nc2w9N4",
+          "score": 2.45
+        },
+        {
+          "videoId": "huOlIWVrsDs",
+          "title": "Metronome Running Drill - Developing Cadence for Pose Running",
+          "channel": "Atlanta Sports Recovery",
+          "seconds": 21,
+          "embeddable": true,
+          "url": "https://youtu.be/huOlIWVrsDs",
+          "score": 2.43
+        },
+        {
+          "videoId": "bX78dhIbAvQ",
+          "title": "How to actually use the metronome",
+          "channel": "Brandon D'Eon",
+          "seconds": 60,
+          "embeddable": true,
+          "url": "https://youtu.be/bX78dhIbAvQ",
+          "score": 2.3
+        }
+      ]
+    },
+    {
+      "id": "modified-polique-step-up-progressions",
+      "name": "Modified Polique Step Up Progressions",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "E1dSOHLrRsE",
+          "title": "How To Improve Your Running Form #running #runningadvice",
+          "channel": "The Running Channel",
+          "seconds": 42,
+          "embeddable": true,
+          "url": "https://youtu.be/E1dSOHLrRsE",
+          "score": 1.36
+        },
+        {
+          "videoId": "X82mNZtdp-c",
+          "title": "Single Leg Squat Test… 🤔 Can You Do This? #shorts",
+          "channel": "The Peak Pursuit",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/X82mNZtdp-c",
+          "score": 0.96
+        },
+        {
+          "videoId": "YNOim029rgA",
+          "title": "Best Way To Tie Your Laces! #runninggear #runningadvice",
+          "channel": "The Running Channel",
+          "seconds": 31,
+          "embeddable": true,
+          "url": "https://youtu.be/YNOim029rgA",
+          "score": 0.9
+        }
+      ]
+    },
+    {
+      "id": "mutli-direction-bounds",
+      "name": "Mutli-direction Bounds",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "nasal-breathing-cardio-warm-up",
+      "name": "Nasal Breathing Cardio Warm Up",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Q53MlfU5pbc",
+          "title": "Nasal Breathing During Exercise Start Here🧘🏻‍♀️#breathe #breathwork #exercise #endurance #workout",
+          "channel": "Breathe Well Coaching",
+          "seconds": 50,
+          "embeddable": true,
+          "url": "https://youtu.be/Q53MlfU5pbc",
+          "score": 2.33
+        },
+        {
+          "videoId": "CjDjSgpvTgM",
+          "title": "Nasal Breathing - low intensity cardio",
+          "channel": "Fitbliss Fitness",
+          "seconds": 25,
+          "embeddable": true,
+          "url": "https://youtu.be/CjDjSgpvTgM",
+          "score": 1.92
+        },
+        {
+          "videoId": "gWAtCM8coLw",
+          "title": "5 Benefits of Nose Breathing During Exercise",
+          "channel": "Zuzka Light",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/gWAtCM8coLw",
+          "score": 1.44
+        }
+      ]
+    },
+    {
+      "id": "one-leg-rdl-rotation-w-toes-off",
+      "name": "One Leg RDL Rotation w/ Toes Off",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "_e7OFsxJMfU",
+          "title": "The BEST Split-Stance RDL Tutorial",
+          "channel": "Squat University",
+          "seconds": 57,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/_e7OFsxJMfU",
+          "score": 4.31
+        },
+        {
+          "videoId": "thIX7PZjoJo",
+          "title": "Single Leg RDL (Don’t Make THIS MISTAKE)",
+          "channel": "Squat University",
+          "seconds": 56,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/thIX7PZjoJo",
+          "score": 3.81
+        },
+        {
+          "videoId": "J0bEKhnP-Mw",
+          "title": "Fixing The Single Leg RDL Problem (INCREDIBLE CHANGES)",
+          "channel": "Squat University",
+          "seconds": 117,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/J0bEKhnP-Mw",
+          "score": 3.61
+        }
+      ]
+    },
+    {
+      "id": "optional-downward-frog",
+      "name": "Optional Downward Frog",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "optional-foam-roll-circuit",
+      "name": "Optional Foam Roll Circuit",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "eLMwlABZ7dA",
+          "title": "Arch Hollow Foam Roller Core Strength Drill",
+          "channel": "SHIFT Movement Science and Gymnastics Education",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/eLMwlABZ7dA",
+          "score": 1.44
+        },
+        {
+          "videoId": "nwfsKIHBz0Y",
+          "title": "Foam Roller Partner Bear Crawl   SD 480p",
+          "channel": "pro1fit",
+          "seconds": 26,
+          "embeddable": true,
+          "url": "https://youtu.be/nwfsKIHBz0Y",
+          "score": 0.91
+        },
+        {
+          "videoId": "B-FmzhZfMaw",
+          "title": "Mobility & Core Home Workout w/Foam Roller",
+          "channel": "Laura Marcoux",
+          "seconds": 94,
+          "embeddable": true,
+          "url": "https://youtu.be/B-FmzhZfMaw",
+          "score": 0.69
+        }
+      ]
+    },
+    {
+      "id": "optional-pigeon-length-under-load",
+      "name": "Optional Pigeon Length Under Load",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "optional-static-stretch",
+      "name": "Optional Static Stretch",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "cr5yz-3vHO4",
+          "title": "Optional Static Stretch",
+          "channel": "Competitor Performance Academy",
+          "seconds": 41,
+          "embeddable": true,
+          "url": "https://youtu.be/cr5yz-3vHO4",
+          "score": 1.86
+        },
+        {
+          "videoId": "70X6nujeHiM",
+          "title": "Hamstring Mobility Exercise #hamstringexercise #hamstrings #mobilityexercises",
+          "channel": "Claire DeFitt",
+          "seconds": 10,
+          "embeddable": true,
+          "url": "https://youtu.be/70X6nujeHiM",
+          "score": 1.47
+        },
+        {
+          "videoId": "NP4PrPHpQIE",
+          "title": "Learn how to align your body in cobra 🖤 #stretches #flexible #stretchitapp",
+          "channel": "STRETCHIT - Stretching & Mobility",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/NP4PrPHpQIE",
+          "score": 1.45
+        }
+      ]
+    },
+    {
+      "id": "optional-zone-4-cardio",
+      "name": "Optional Zone 4 Cardio",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "overcoming-glute-isometric",
+      "name": "Overcoming Glute Isometric",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "5DjzmjjcbMI",
+          "title": "MIND-BLOWING Exercise For Strong Legs!🤯",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/5DjzmjjcbMI",
+          "score": 4.31
+        },
+        {
+          "videoId": "hnBa9J_7g_A",
+          "title": "How to Program Overcoming Isometrics For Building Muscle or Strength",
+          "channel": "The Red Delta Project",
+          "seconds": 155,
+          "embeddable": true,
+          "url": "https://youtu.be/hnBa9J_7g_A",
+          "score": 1.98
+        },
+        {
+          "videoId": "mNl-9XMMk8E",
+          "title": "5 isometric hip flexor strengthening exercises from a physiotherapist",
+          "channel": "Pain Free Health Clinic",
+          "seconds": 17,
+          "embeddable": true,
+          "url": "https://youtu.be/mNl-9XMMk8E",
+          "score": 1.44
+        }
+      ]
+    },
+    {
+      "id": "penultimate-box-jumps-optional",
+      "name": "Penultimate Box Jumps (Optional)",
+      "approved": "xMPHSmXC6YI",
+      "candidates": [
+        {
+          "videoId": "xMPHSmXC6YI",
+          "title": "Penultimate step technique box jumps",
+          "channel": "Ayo’Jamal",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/xMPHSmXC6YI",
+          "score": 2.45
+        },
+        {
+          "videoId": "Wmfz4LiRmYI",
+          "title": "2-Step Approach Box Jumps for Athletes #fitness #athlete #volleyballdrills #gym #volleyball",
+          "channel": "Aidan Broyles",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/Wmfz4LiRmYI",
+          "score": 1.45
+        },
+        {
+          "videoId": "6adbNIUNELQ",
+          "title": "How to Clean Up Your Box Jumps for Max Power",
+          "channel": "Chris Perry",
+          "seconds": 105,
+          "embeddable": true,
+          "url": "https://youtu.be/6adbNIUNELQ",
+          "score": 1.15
+        }
+      ]
+    },
+    {
+      "id": "post-delt-row",
+      "name": "Post Delt Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Nqh7q3zDCoQ",
+          "title": "The PERFECT Barbell Row (5 Steps)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 53,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Nqh7q3zDCoQ",
+          "score": 3.82
+        },
+        {
+          "videoId": "dpYI8K6e-jE",
+          "title": "Technique tips ✅ Bent over row! #shorts",
+          "channel": "LisaFiitt Workouts",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/dpYI8K6e-jE",
+          "score": 1.47
+        },
+        {
+          "videoId": "mSMJ3rwYMu0",
+          "title": "A great rear delt exercise!",
+          "channel": "Brandon Flihan",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/mSMJ3rwYMu0",
+          "score": 1.44
+        }
+      ]
+    },
+    {
+      "id": "posterior-lateral-lunge",
+      "name": "Posterior Lateral Lunge",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "push-ups",
+      "name": "Push Ups",
+      "approved": "c-lBErfxszs",
+      "candidates": [
+        {
+          "videoId": "c-lBErfxszs",
+          "title": "Perfect Push-Ups (Chest to Floor)",
+          "channel": "via FKH library"
+        }
+      ]
+    },
+    {
+      "id": "qb1-spiral-line",
+      "name": "QB1 Spiral Line",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "rdl-row-w-rotation",
+      "name": "RDL Row w/ Rotation",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "A0BEnLmGbrE",
+          "title": "RDL vs SDL #youtubeshorts #viral #trending #fitness #onlinecoach #shorts #rdl #sdl #tutorial",
+          "channel": "Bianca G",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/A0BEnLmGbrE",
+          "score": 2.47
+        },
+        {
+          "videoId": "PPz0x59s080",
+          "title": "How to feel your Glutes in Romanian Deadlifts 🍑 #rdl #gymtips #glutesworkout #gluteexercises #gym",
+          "channel": "Bellabooty",
+          "seconds": 24,
+          "embeddable": true,
+          "url": "https://youtu.be/PPz0x59s080",
+          "score": 2.42
+        },
+        {
+          "videoId": "aQ5mUYB2BkY",
+          "title": "B-Stance RDL: Perfect Your Form for Stronger Legs & Glutes #rdl #gymrat #fitnesstips #gymtips",
+          "channel": "Diana Alexandrova",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/aQ5mUYB2BkY",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "rdl-or-cable-pullthrough",
+      "name": "RDL or Cable Pullthrough",
+      "approved": "EXHvZ-_sKyY",
+      "candidates": [
+        {
+          "videoId": "EXHvZ-_sKyY",
+          "title": "How to perfect your RDL (finally)",
+          "channel": "Coach MattJFit",
+          "seconds": 42,
+          "embeddable": true,
+          "url": "https://youtu.be/EXHvZ-_sKyY",
+          "score": 2.36
+        },
+        {
+          "videoId": "5rIqP63yWFg",
+          "title": "RDL Tutorial: 3 Simple Steps",
+          "channel": "Davis Diley",
+          "seconds": 47,
+          "embeddable": true,
+          "url": "https://youtu.be/5rIqP63yWFg",
+          "score": 2.34
+        },
+        {
+          "videoId": "t9AhVo2d5QA",
+          "title": "How to do RDL’s for your glutes",
+          "channel": "Tashana Charles",
+          "seconds": 54,
+          "embeddable": true,
+          "url": "https://youtu.be/t9AhVo2d5QA",
+          "score": 2.32
+        }
+      ]
+    },
+    {
+      "id": "rfess-progessions",
+      "name": "RFESS Progessions",
+      "approved": "3FHQ1toKVPY",
+      "candidates": [
+        {
+          "videoId": "UFckL6lyUuE",
+          "title": "RFESS ECCentric Tutorial",
+          "channel": "Parkes Performance",
+          "seconds": 28,
+          "embeddable": true,
+          "url": "https://youtu.be/UFckL6lyUuE",
+          "score": 2.41
+        },
+        {
+          "videoId": "3FHQ1toKVPY",
+          "title": "RFESS Progression",
+          "channel": "Performance Unlimited",
+          "seconds": 36,
+          "embeddable": true,
+          "url": "https://youtu.be/3FHQ1toKVPY",
+          "score": 2.38
+        },
+        {
+          "videoId": "zQr2nbVCwi4",
+          "title": "Single legged exercise: The Rear-Foot Elevated Split Squat (RFESS) or \"Bulgarian Slit Squat\"",
+          "channel": "The SPORTLab: Movement matters",
+          "seconds": 48,
+          "embeddable": true,
+          "url": "https://youtu.be/zQr2nbVCwi4",
+          "score": 2.34
+        }
+      ]
+    },
+    {
+      "id": "rapid-forward-decels",
+      "name": "Rapid Forward Decels",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "razor-curl-progressions",
+      "name": "Razor Curl Progressions",
+      "approved": "wTl9IeOeA6w",
+      "candidates": [
+        {
+          "videoId": "wTl9IeOeA6w",
+          "title": "Razor Curls - An advanced hamstring exercise",
+          "channel": "Coach Griffin",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/wTl9IeOeA6w",
+          "score": 2.47
+        },
+        {
+          "videoId": "MuFy049nMa0",
+          "title": "Razor curls: Technique video",
+          "channel": "Mathew Hawkes",
+          "seconds": 112,
+          "embeddable": true,
+          "url": "https://youtu.be/MuFy049nMa0",
+          "score": 2.13
+        },
+        {
+          "videoId": "3-pJ_w-kJHA",
+          "title": "Razor Curls + Progression - Demonstration",
+          "channel": "Strength-Forge",
+          "seconds": 121,
+          "embeddable": true,
+          "url": "https://youtu.be/3-pJ_w-kJHA",
+          "score": 2.1
+        }
+      ]
+    },
+    {
+      "id": "resisted-ankle-circles",
+      "name": "Resisted Ankle Circles",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "resisted-sprint",
+      "name": "Resisted Sprint",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "reverse-12-crunch",
+      "name": "Reverse 1/2 Crunch",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "reverse-flys-optional",
+      "name": "Reverse Flys (Optional)",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "rock-back-breathing",
+      "name": "Rock Back Breathing",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "rolling-arm-bar-w-screwdriver-rotation",
+      "name": "Rolling Arm Bar w/ Screwdriver Rotation",
+      "approved": "w2-yOWhsysE",
+      "candidates": [
+        {
+          "videoId": "yHk-JW0LzSQ",
+          "title": "Hip mobility with this Rolling Arm Bar #shorts",
+          "channel": "Unlimited Training Systems",
+          "seconds": 17,
+          "embeddable": true,
+          "url": "https://youtu.be/yHk-JW0LzSQ",
+          "score": 1.94
+        },
+        {
+          "videoId": "rfuEzHjiGro",
+          "title": "Rolling Armbar",
+          "channel": "Next Level Physical Therapy",
+          "seconds": 84,
+          "embeddable": true,
+          "url": "https://youtu.be/rfuEzHjiGro",
+          "score": 1.72
+        },
+        {
+          "videoId": "w2-yOWhsysE",
+          "title": "Shoulder Mobility Unlocked with One Move: Hooklying Arm Bar with Screwdriver Exercise",
+          "channel": "Unlimited Training Systems",
+          "seconds": 29,
+          "embeddable": true,
+          "url": "https://youtu.be/w2-yOWhsysE",
+          "score": 1.4
+        }
+      ]
+    },
+    {
+      "id": "rotational-landing-progressions",
+      "name": "Rotational Landing Progressions",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "rotational-rdl-length-under-load",
+      "name": "Rotational RDL Length Under Load",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "rotational-row",
+      "name": "Rotational Row",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "scalable-impact-durability",
+      "name": "Scalable Impact Durability",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "short-acceldecel-progressions",
+      "name": "Short Accel/Decel Progressions",
+      "approved": "WVmGIlxUMLU",
+      "candidates": [
+        {
+          "videoId": "SG2ELlShY_k",
+          "title": "Return to Running Drills: Two Point Start Acceleration/Deceleration",
+          "channel": "Jay Kasthuri",
+          "seconds": 5,
+          "embeddable": true,
+          "url": "https://youtu.be/SG2ELlShY_k",
+          "score": 1.48
+        },
+        {
+          "videoId": "WVmGIlxUMLU",
+          "title": "Basic Acceleration to Deceleration drill",
+          "channel": "EARTHSTRONG TRAINING ",
+          "seconds": 8,
+          "embeddable": true,
+          "url": "https://youtu.be/WVmGIlxUMLU",
+          "score": 1.47
+        },
+        {
+          "videoId": "ha1J-Rx-_0w",
+          "title": "Deceleration Technique",
+          "channel": "Parisi Speed School",
+          "seconds": 45,
+          "embeddable": true,
+          "url": "https://youtu.be/ha1J-Rx-_0w",
+          "score": 1.35
+        }
+      ]
+    },
+    {
+      "id": "shoulder-mb-rapid-loading",
+      "name": "Shoulder MB Rapid Loading",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "61ZRnjg3ajo",
+          "title": "Ultimate Shoulder Workout: Only Dumbbells Needed for Massive Gains!",
+          "channel": "Fitness Boy",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/61ZRnjg3ajo",
+          "score": 1.98
+        },
+        {
+          "videoId": "n1m3kPuWiZM",
+          "title": "Blast your abs, shoulders, and lungs with the kneeling ball slam✅ #abs",
+          "channel": "JTM_FIT",
+          "seconds": 8,
+          "embeddable": true,
+          "url": "https://youtu.be/n1m3kPuWiZM",
+          "score": 1.97
+        },
+        {
+          "videoId": "32YeDj9js-Q",
+          "title": "Top 9 Dumbbell Exercises for Chest\"#workout #chestworkout",
+          "channel": "SK SABAR LIVE ",
+          "seconds": 6,
+          "embeddable": true,
+          "url": "https://youtu.be/32YeDj9js-Q",
+          "score": 1.48
+        }
+      ]
+    },
+    {
+      "id": "shoulder-mobility-pullovers",
+      "name": "Shoulder Mobility Pullovers",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "side-plankmodified-side-plank",
+      "name": "Side Plank/Modified Side Plank",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "single-arm-tricep-extension-optional",
+      "name": "Single Arm Tricep Extension (Optional)",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "single-leg-full-range-step-downs-or-leg-press",
+      "name": "Single Leg Full Range Step Downs or Leg Press",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "single-leg-hip-irer",
+      "name": "Single Leg Hip IR/ER",
+      "approved": "iNs0q4iLpdY",
+      "candidates": [
+        {
+          "videoId": "XezcynKU8YI",
+          "title": "Hip Mobility Hack THAT WORKS!",
+          "channel": "Squat University",
+          "seconds": 21,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/XezcynKU8YI",
+          "score": 3.93
+        },
+        {
+          "videoId": "iNs0q4iLpdY",
+          "title": "Standing Single Leg Hip Internal External Rotation (foamroll)",
+          "channel": "Martins Druvkalns Training",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/iNs0q4iLpdY",
+          "score": 1.96
+        },
+        {
+          "videoId": "I6lLJGMlVYU",
+          "title": "Single leg hip IR/ER mobility assessment",
+          "channel": "Brian Schwabe",
+          "seconds": 33,
+          "embeddable": true,
+          "url": "https://youtu.be/I6lLJGMlVYU",
+          "score": 1.89
+        }
+      ]
+    },
+    {
+      "id": "single-leg-lateral-tilts",
+      "name": "Single Leg Lateral Tilts",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "single-leg-motor-control-squatcalf-raise",
+      "name": "Single Leg Motor Control Squat/Calf Raise",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "slant-board-isometric-progressions",
+      "name": "Slant Board Isometric Progressions",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "sled-march-or-band-pull-through",
+      "name": "Sled March or Band Pull Through",
+      "approved": "nB0rVNr0AFU",
+      "candidates": [
+        {
+          "videoId": "WQBZ703-u0s",
+          "title": "Sled Pushes are Overrated",
+          "channel": "Renaissance Periodization",
+          "seconds": 44,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/WQBZ703-u0s",
+          "score": 4.85
+        },
+        {
+          "videoId": "QaTrePoCT4g",
+          "title": "The ULTIMATE Sled Push/Pull Tutorial",
+          "channel": "Squat University",
+          "seconds": 221,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/QaTrePoCT4g",
+          "score": 4.76
+        },
+        {
+          "videoId": "nB0rVNr0AFU",
+          "title": "Sled March #exercise #legdayworkouts",
+          "channel": "FarmFedYinzer",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/nB0rVNr0AFU",
+          "score": 2.46
+        }
+      ]
+    },
+    {
+      "id": "sled-push-fatiguecoordination",
+      "name": "Sled Push Fatigue/Coordination",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "soleus-raise",
+      "name": "Soleus Raise",
+      "approved": "u45C0NByqF8",
+      "candidates": [
+        {
+          "videoId": "baEXLy09Ncc",
+          "title": "Get NOTICEABLY BIGGER Calves With This Technique",
+          "channel": "Jeff Nippard",
+          "seconds": 57,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/baEXLy09Ncc",
+          "score": 4.31
+        },
+        {
+          "videoId": "u45C0NByqF8",
+          "title": "Seated Soleus Muscle Strengthening Exercise Tutorial (Level 1) - ONLINE PHYSIO EXERCISES",
+          "channel": "Online Physio Expert",
+          "seconds": 79,
+          "embeddable": true,
+          "url": "https://youtu.be/u45C0NByqF8",
+          "score": 2.24
+        },
+        {
+          "videoId": "KogqCeFHhbE",
+          "title": "Seated Soleus Muscle Strengthening Exercise Tutorial (Level 2) - ONLINE PHYSIO EXERCISES",
+          "channel": "Online Physio Expert",
+          "seconds": 79,
+          "embeddable": true,
+          "url": "https://youtu.be/KogqCeFHhbE",
+          "score": 2.24
+        }
+      ]
+    },
+    {
+      "id": "split-stance-cable-press",
+      "name": "Split Stance Cable Press",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "split-stance-lat-pull-down",
+      "name": "Split Stance Lat Pull Down",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "split-stance-loaded-hip-rotations",
+      "name": "Split Stance Loaded Hip Rotations",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "sprint-10sjog-20swalk-40s",
+      "name": "Sprint 10s/Jog 20s/Walk 40s",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "H3iPiweaQqQ",
+          "title": "Sprint Drills that ACTUALLY Increase Speed",
+          "channel": "Lyfestyle Athletics ",
+          "seconds": 29,
+          "embeddable": true,
+          "url": "https://youtu.be/H3iPiweaQqQ",
+          "score": 2.4
+        },
+        {
+          "videoId": "Z_ciNFaNpvs",
+          "title": "Hill Sprint Training",
+          "channel": "ALL THINGS PRIMAL",
+          "seconds": 9,
+          "embeddable": true,
+          "url": "https://youtu.be/Z_ciNFaNpvs",
+          "score": 1.97
+        },
+        {
+          "videoId": "IJzi1mfgh70",
+          "title": "Sprinting for Beginners",
+          "channel": "Swain_Performance",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/IJzi1mfgh70",
+          "score": 1.96
+        }
+      ]
+    },
+    {
+      "id": "sprint-accelerations",
+      "name": "Sprint Accelerations",
+      "approved": "bIsKXTp3nA0",
+      "candidates": [
+        {
+          "videoId": "bIsKXTp3nA0",
+          "title": "Sprinter Acceleration Drills",
+          "channel": "via FKH library"
+        }
+      ]
+    },
+    {
+      "id": "euro-step-freestyles",
+      "name": "euro-step-freestyles",
+      "candidates": [
+        {
+          "videoId": "-7ONK1hiZ2A",
+          "title": "How To Euro Step The Safe Way — ShotMechanics",
+          "channel": "via FKH library"
+        }
+      ],
+      "approved": "-7ONK1hiZ2A"
     }
   ]
 }
