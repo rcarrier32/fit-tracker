@@ -23,6 +23,7 @@ import { loadCatalogs } from '../lib/static_data.js';
 import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
+import { hipToday } from '../lib/hip_protocol.js';
 
 const today = () => localDateStr();
 
@@ -185,6 +186,17 @@ export async function renderHome(app) {
     pref('tos_progress'),
     pref('tos_logs'),
   ]);
+  const [hipProgress, hipLogs, hipFlare, hipPaused, hipCustom] = await Promise.all([
+    pref('hip_progress'),
+    pref('hip_logs').then(v => v || {}),
+    pref('hip_flare'),
+    pref('hip_paused').then(v => v || {}),
+    pref('hip_custom').then(v => v || []),
+  ]);
+  // Only once the hip plan is in use — started, flaring, or anything ever checked off.
+  const hip = (hipProgress || hipFlare || Object.keys(hipLogs).length)
+    ? hipToday({ flare: hipFlare, paused: hipPaused, custom: hipCustom, done: hipLogs[today()] || {} })
+    : null;
 
   const tosDoneToday = tosProgress
     ? Object.values((tosLogs || {})[today()] || {}).filter(Boolean).length
@@ -244,6 +256,18 @@ export async function renderHome(app) {
             <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>
         </div>` : ''}
+      ${hip ? `
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div>
+              <div style="font-size:12px;font-weight:600;color:${hipFlare ? '#fdba74' : 'var(--fg)'}">Hip · ${hip.label}</div>
+              <div style="font-size:11px;color:var(--fg-dim)">
+                ${hip.strength ? '' : `${hip.sectionLabel} · `}${hip.done} of ${hip.total} done
+              </div>
+            </div>
+            <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
+          </div>
+        </div>` : ''}
     </div>
 
     <div class="card">
@@ -264,6 +288,8 @@ export async function renderHome(app) {
   app.querySelector('[data-action="log-meal"]').onclick = () => navigate('meals');
   const openTosBtn = app.querySelector('#open-tos');
   if (openTosBtn) openTosBtn.onclick = () => navigate('tos');
+  const openHipBtn = app.querySelector('#open-hip');
+  if (openHipBtn) openHipBtn.onclick = () => navigate('hip');
   app.querySelector('[data-action="log-activity"]').onclick = () => navigate('cardio');
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {

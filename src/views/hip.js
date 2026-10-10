@@ -8,8 +8,9 @@
 import { pref } from '../db.js';
 import { navigate, toast, openSheet } from '../app.js';
 import {
-  SECTIONS, WEEKLY_SCHEDULE, AEROBIC_PROGRESSION, POST_POOL,
-  PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE,
+  SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, sideHipCount, plannedSideHip,
+  AEROBIC_PROGRESSION, POST_POOL,
+  PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE, FLARE,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
 
@@ -24,12 +25,15 @@ export async function renderHip(app) {
   const day = todayKey();
 
   // ── Persisted state ────────────────────────────────────────────────────────
-  const [savedProgress, allLogs, savedRx, allPain, allNotes] = await Promise.all([
+  const [savedProgress, allLogs, savedRx, allPain, allNotes, savedFlare, savedPaused, savedCustom] = await Promise.all([
     pref('hip_progress'),
     pref('hip_logs').then(v => v || {}),
     pref('hip_prescriptions').then(v => v || {}),
     pref('hip_pain').then(v => v || {}),
     pref('hip_notes').then(v => v || {}),
+    pref('hip_flare'),
+    pref('hip_paused').then(v => v || {}),
+    pref('hip_custom').then(v => v || []),
   ]);
   let surgeryDate = (await pref('hip_surgery_date')) || '';
   let surgerySide = (await pref('hip_surgery_side')) || '';        // 'left' | 'right' | ''
@@ -39,6 +43,9 @@ export async function renderHip(app) {
   let activeId   = SECTIONS[0].id;
   let completed  = { ...(allLogs[day] || {}) };
   let rx         = { ...savedRx };          // exercise id → custom "sets" string
+  let flare      = savedFlare || null;      // { since } while flare mode is on
+  let paused     = { ...savedPaused };      // exercise id → { since, reason }
+  let custom     = [...savedCustom];        // your own exercises: { id, sectionId, name, sets, link, notes, sideHip }
   // The pain/note card can step back through history to backfill a missed day. Exercise
   // check-offs always apply to today — only this log is date-navigable.
   let logDate    = day;
@@ -46,9 +53,10 @@ export async function renderHip(app) {
   let note       = allNotes[logDate] || '';    // free-text symptom note
 
   // Open on the section that matches today's schedule, when there is one.
-  const todaySched = WEEKLY_SCHEDULE[new Date().getDay()];
-  const firstToday = todaySched.sections.find(id => SECTIONS.some(s => s.id === id));
-  if (firstToday) activeId = firstToday;
+  const week7 = weeklySchedule(new Date());
+  const todaySched = week7[new Date().getDay()];
+  // Open on today's main work: the strength session, or Pelvic Reset on easy/flare days.
+  activeId = hipToday({ flare, paused, custom }).sectionId;
 
   // ── Persistence ────────────────────────────────────────────────────────────
   async function begin() {
@@ -69,6 +77,98 @@ export async function renderHip(app) {
     if (value) all[exId] = value; else delete all[exId];
     rx = all;
     await pref('hip_prescriptions', all);
+  }
+
+  /** Turning flare mode on seeds the known aggravators; turning it off leaves pauses alone. */
+  async function setFlare(on) {
+    flare = on ? { since: day } : null;
+    await pref('hip_flare', flare);
+    if (on) {
+      for (const p of FLARE.defaultPauses) {
+        if (!paused[p.id]) paused[p.id] = { since: day, reason: p.reason };
+      }
+      await pref('hip_paused', paused);
+    }
+    mount();
+  }
+
+  async function setPaused(exId, reason) {
+    if (reason === null) delete paused[exId];
+    else paused[exId] = { since: day, reason };
+    await pref('hip_paused', paused);
+    mount();
+  }
+
+  /** A custom entry shaped like a protocol exercise so the normal card renders it. */
+  function customEx(c) {
+    return {
+      id: c.id, name: c.name, subtitle: 'Your exercise', sets: c.sets || '—', freq: 'Your addition',
+      cues: (c.notes || '').split('\n').map(t => t.trim()).filter(Boolean),
+      link: c.link || null, search: c.name, source: 'Custom', custom: true,
+    };
+  }
+
+  /** A section's protocol exercises plus any you've added to it. */
+  const sectionItems = (section) => [
+    ...(section.exercises || []),
+    ...custom.filter(c => c.sectionId === section.id).map(customEx),
+  ];
+
+  const nameOf = (exId) => EXERCISE_INDEX[exId]?.name || custom.find(c => c.id === exId)?.name || exId;
+
+  async function saveCustom(next) {
+    custom = next;
+    await pref('hip_custom', custom);
+    mount();
+  }
+
+  /** Only http(s) links are kept — anything else is dropped rather than rendered as a href. */
+  function safeLink(raw) {
+    try {
+      const u = new URL(raw.trim());
+      return u.protocol === 'https:' || u.protocol === 'http:' ? u.href : null;
+    } catch { return null; }
+  }
+
+  function openAddSheet(section) {
+    openSheet((sheet, close) => {
+      sheet.innerHTML = `
+        <h2>Add to ${esc(section.label)}</h2>
+        <label>Name</label>
+        <input type="text" id="cx-name" autocomplete="off" placeholder="e.g. Sidelying grounding">
+        <label>Sets / reps (optional)</label>
+        <input type="text" id="cx-sets" placeholder="e.g. 3 × 5 breaths">
+        <label>Video or post link (optional)</label>
+        <input type="url" id="cx-link" placeholder="https://…">
+        <label>Notes / cues (optional, one per line)</label>
+        <textarea id="cx-notes" rows="3" style="width:100%;background:var(--bg-input);border:1px solid var(--border);
+          border-radius:8px;padding:8px;color:var(--fg);font-family:inherit;font-size:13px"></textarea>
+        <label style="display:flex;gap:8px;align-items:center;margin-top:10px">
+          <input type="checkbox" id="cx-side" style="width:auto"> Side-hip work (counts toward the weekly side-hip total)
+        </label>
+        <button class="btn" id="cx-save" style="margin-top:14px">Add</button>
+      `;
+      sheet.querySelector('#cx-name').focus();
+      sheet.querySelector('#cx-save').onclick = async () => {
+        const name = sheet.querySelector('#cx-name').value.trim();
+        if (!name) { toast('Give it a name'); return; }
+        const rawLink = sheet.querySelector('#cx-link').value;
+        const link = rawLink.trim() ? safeLink(rawLink) : null;
+        if (rawLink.trim() && !link) { toast('That link needs to start with http:// or https://'); return; }
+        const entry = {
+          id: `custom-${Date.now().toString(36)}`,
+          sectionId: section.id,
+          name,
+          sets: sheet.querySelector('#cx-sets').value.trim(),
+          link,
+          notes: sheet.querySelector('#cx-notes').value.trim(),
+          sideHip: sheet.querySelector('#cx-side').checked,
+        };
+        close();
+        await saveCustom([...custom, entry]);
+        toast(`Added to ${section.label}`);
+      };
+    });
   }
 
   async function setPain(score) {
@@ -126,6 +226,21 @@ export async function renderHip(app) {
     if (start) lines.push(`Protocol started ${started} (week ${weekNum()})`);
     lines.push('');
 
+    if (flare) {
+      lines.push(`FLARE MODE — on since ${flare.since}`);
+      lines.push('  ' + FLARE.summary);
+      lines.push('');
+    }
+    const pausedIds = Object.keys(paused);
+    if (pausedIds.length) {
+      lines.push('PAUSED EXERCISES');
+      for (const exId of pausedIds) {
+        const ex = { name: nameOf(exId) };
+        lines.push(`  ${ex ? ex.name : exId} — since ${paused[exId].since}${paused[exId].reason ? `: ${paused[exId].reason}` : ''}`);
+      }
+      lines.push('');
+    }
+
     if (painDates.length) {
       const vals = painDates.map(d => allPain[d]);
       const avg = (vals.reduce((s, v) => s + v, 0) / vals.length).toFixed(1);
@@ -159,7 +274,7 @@ export async function renderHip(app) {
       }
       const named = Object.entries(tally)
         .map(([exId, n]) => {
-          const ex = SECTIONS.flatMap(s => s.exercises || []).find(e => e.id === exId);
+          const ex = { name: nameOf(exId) };
           return [ex ? ex.name : exId, n];
         })
         .sort((a, b) => b[1] - a[1]);
@@ -178,7 +293,7 @@ export async function renderHip(app) {
     if (edited.length) {
       lines.push('PRESCRIPTIONS CHANGED FROM DEFAULT');
       for (const exId of edited) {
-        const ex = SECTIONS.flatMap(s => s.exercises || []).find(e => e.id === exId);
+        const ex = { name: nameOf(exId) };
         lines.push(`  ${ex ? ex.name : exId}: ${rx[exId]}`);
       }
       lines.push('');
@@ -235,6 +350,16 @@ export async function renderHip(app) {
   }
 
   function thumbHTML(ex) {
+    if (ex.link) {
+      return `
+        <a href="${esc(ex.link)}" target="_blank" rel="noopener noreferrer"
+          style="flex-shrink:0;width:130px;height:90px;display:flex;flex-direction:column;
+            align-items:center;justify-content:center;gap:4px;background:#0f172a;
+            text-decoration:none;color:#64748b;border-right:1px solid rgba(255,255,255,0.06)">
+          <span style="font-size:16px">▶</span>
+          <span style="font-size:9px;letter-spacing:0.06em">OPEN LINK</span>
+        </a>`;
+    }
     if (ex.videoId) {
       return `
         <a href="https://www.youtube.com/watch?v=${ex.videoId}" target="_blank" rel="noopener noreferrer"
@@ -281,6 +406,9 @@ export async function renderHip(app) {
                 ${ex.optional ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
                   background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
                   color:#475569;letter-spacing:0.06em;flex-shrink:0">CAUTION</span>` : ''}
+                ${ex.source ? `<span style="font-size:9px;padding:1px 5px;border-radius:3px;
+                  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+                  color:#64748b;letter-spacing:0.04em;flex-shrink:0;white-space:nowrap">${esc(ex.source)}</span>` : ''}
               </div>
               <div style="font-size:11px;color:#64748b;line-height:1.35">${esc(ex.subtitle)}</div>
             </div>
@@ -305,6 +433,12 @@ export async function renderHip(app) {
               border-radius:4px;color:#94a3b8;letter-spacing:0.02em">
               <span style="opacity:0.55">FREQ </span>${esc(ex.freq)}
             </span>
+            <button data-pause="${ex.id}" style="font-size:10px;padding:2px 7px;margin-left:auto;
+              background:transparent;border:1px solid rgba(255,255,255,0.12);border-radius:4px;
+              color:#64748b;letter-spacing:0.02em;cursor:pointer">Pause</button>
+            ${ex.custom ? `<button data-remove="${ex.id}" style="font-size:10px;padding:2px 7px;
+              background:transparent;border:1px solid rgba(239,68,68,0.3);border-radius:4px;
+              color:#fca5a5;letter-spacing:0.02em;cursor:pointer">Remove</button>` : ''}
           </div>
 
           <div style="display:flex;flex-direction:column;gap:3px">
@@ -326,6 +460,82 @@ export async function renderHip(app) {
               border-radius:6px;color:#7dd3fc;line-height:1.4">
               <span style="font-weight:700;letter-spacing:0.04em">ASK YOUR PT · </span>${esc(ex.askPt)}
             </div>` : ''}
+        </div>
+      </div>`;
+  }
+
+  function pausedDays(since) {
+    const n = Math.round((new Date(day + 'T12:00:00') - new Date(since + 'T12:00:00')) / 864e5);
+    return n <= 0 ? 'Paused today' : `Paused ${n} day${n === 1 ? '' : 's'}`;
+  }
+
+  /** Collapsed card for a paused exercise — out of the session, one tap to resume. */
+  function pausedCardHTML(ex) {
+    const p = paused[ex.id];
+    return `
+      <div style="background:rgba(255,255,255,0.02);border:1px dashed rgba(251,146,60,0.35);
+        border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px">
+            <span style="font-size:13px;font-weight:700;color:#94a3b8;line-height:1.3">${esc(ex.name)}</span>
+            <span style="font-size:9px;padding:1px 5px;border-radius:3px;letter-spacing:0.06em;
+              background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.3);color:#fdba74">
+              PAUSED · ${esc(p.since.slice(5))}</span>
+          </div>
+          ${p.reason ? `<div style="font-size:11px;color:#64748b;line-height:1.4">${esc(p.reason)}</div>` : ''}
+          <div style="font-size:10.5px;color:#64748b;line-height:1.4;margin-top:4px">
+            <span style="color:#94a3b8;font-weight:600">${pausedDays(p.since)} · </span>${esc(FLARE.returnRule)}
+          </div>
+        </div>
+        <button data-resume="${ex.id}" style="flex-shrink:0;font-size:11px;padding:5px 10px;
+          border-radius:6px;cursor:pointer;background:transparent;border:1px solid rgba(255,255,255,0.15);
+          color:#94a3b8">Resume</button>
+      </div>`;
+  }
+
+  function flareListHTML(label, items, color) {
+    return `
+      <div style="font-size:10px;letter-spacing:0.1em;color:${color};font-weight:700;margin:10px 0 5px">${label}</div>
+      ${items.map(i => `
+        <div style="font-size:11.5px;color:#94a3b8;display:flex;gap:5px;line-height:1.45;margin-bottom:4px">
+          <span style="flex-shrink:0;font-weight:700;color:${color}">→</span>
+          <span><span style="color:#e2e8f0;font-weight:600">${esc(i.title)}.</span> ${esc(i.detail)}</span>
+        </div>`).join('')}`;
+  }
+
+  /** Replaces the working-theory banner while flare mode is on. */
+  function flareHTML() {
+    const pausedHere = Object.keys(paused).length;
+    return `
+      <div style="padding:11px 13px;background:rgba(251,146,60,0.07);
+        border:1px solid rgba(251,146,60,0.3);border-radius:8px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px">
+          <div style="font-size:10px;letter-spacing:0.1em;color:#fdba74;font-weight:700">
+            FLARE MODE · SINCE ${esc(flare.since.slice(5))}
+          </div>
+          <button id="flare-off" style="font-size:10px;padding:2px 8px;border-radius:5px;cursor:pointer;
+            background:transparent;border:1px solid rgba(255,255,255,0.12);color:#64748b">End flare</button>
+        </div>
+        <div style="font-size:11.5px;color:#94a3b8;line-height:1.45">${esc(FLARE.summary)}</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.45;margin-top:5px">
+          Psoas theory is on hold until this is reassessed.
+          ${pausedHere ? `${pausedHere} exercise${pausedHere === 1 ? '' : 's'} paused — tap Pause on any card that provokes it.` : ''}
+        </div>
+
+        <details style="margin-top:8px">
+          <summary style="font-size:11px;color:#fdba74;cursor:pointer;font-weight:600">
+            Calm-down plan · pelvis & positions</summary>
+          ${flareListHTML('CALM IT DOWN', FLARE.calm, '#fdba74')}
+          ${flareListHTML('PELVIS & POSITIONS', FLARE.positions, '#fdba74')}
+        </details>
+
+        <div style="margin-top:10px;font-size:11px;padding:6px 9px;background:rgba(239,68,68,0.08);
+          border:1px solid rgba(239,68,68,0.22);border-radius:6px;color:#fca5a5;line-height:1.45">
+          <span style="font-weight:700;letter-spacing:0.04em">STOP IF · </span>${esc(FLARE.stopIf)}
+        </div>
+        <div style="margin-top:6px;font-size:11px;padding:6px 9px;background:rgba(239,68,68,0.12);
+          border:1px solid rgba(239,68,68,0.35);border-radius:6px;color:#fecaca;line-height:1.45">
+          <span style="font-weight:700;letter-spacing:0.04em">GET SEEN · </span>${esc(FLARE.urgent)}
         </div>
       </div>`;
   }
@@ -600,6 +810,27 @@ export async function renderHip(app) {
       </div>`;
   }
 
+  /** This week's side-hip exercises vs last week and vs the A/B plan. */
+  function sideHipHTML() {
+    const extra = custom.filter(c => c.sideHip).map(c => c.id);
+    // allLogs is the load-time snapshot; overlay today's live check-offs.
+    const logs = { ...allLogs, [day]: completed };
+    const now = new Date();
+    const lastWeek = new Date(now); lastWeek.setDate(now.getDate() - 7);
+    const thisN = sideHipCount(logs, now, extra);
+    const lastN = sideHipCount(logs, lastWeek, extra);
+    const planned = plannedSideHip(now);
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+        padding:2px 0 10px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06)">
+        <div style="font-size:11.5px;color:#94a3b8;line-height:1.4">
+          <span style="color:#f1f5f9;font-weight:600">Side-hip exercises this week</span><br>
+          <span style="font-size:10.5px;color:#64748b">Last week ${lastN} · plan ~${planned}${flare ? ' · flaring: stay below last week' : ''}</span>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:${flare && lastN && thisN > lastN ? '#fdba74' : '#e2e8f0'}">${thisN}</div>
+      </div>`;
+  }
+
   function scheduleHTML() {
     const dow = new Date().getDay();
     return `
@@ -608,7 +839,10 @@ export async function renderHip(app) {
         <div style="font-size:11px;font-weight:700;color:#cbd5e1;letter-spacing:0.05em;margin-bottom:8px">
           WEEKLY SCHEDULE
         </div>
-        ${WEEKLY_SCHEDULE.map((d, i) => `
+        ${sideHipHTML()}
+        ${flare ? `<div style="font-size:11px;color:#fdba74;line-height:1.45;margin-bottom:6px">
+          Flare mode: today is Pelvic Reset + a short easy walk, whatever the schedule says.</div>` : ''}
+        ${week7.map((d, i) => `
           <div style="display:flex;gap:9px;align-items:baseline;padding:3px 0;
             ${i === dow ? 'color:#f1f5f9;font-weight:600' : 'color:#64748b'}">
             <span style="width:30px;flex-shrink:0;font-size:11px;
@@ -622,7 +856,9 @@ export async function renderHip(app) {
   // ── Main render ────────────────────────────────────────────────────────────
   function mount() {
     const section = SECTIONS.find(s => s.id === activeId);
-    const items   = section.exercises || [];
+    const all     = sectionItems(section);
+    const items   = all.filter(e => !paused[e.id]);
+    const pausedItems = all.filter(e => paused[e.id]);
     const done    = items.filter(e => completed[e.id]).length;
     const total   = items.length;
     const pct     = total ? Math.round((done / total) * 100) : 0;
@@ -635,21 +871,26 @@ export async function renderHip(app) {
           <div>
             <h1 style="margin:0;font-size:20px">Hip Recovery</h1>
             <div style="font-size:11px;color:var(--fg-dim);margin-top:1px">
-              PT program · Pool progression · Driving strategy${week ? ` · Week ${week}` : ''}
+              Sessions A/B · Pelvic Reset · Driving strategy${week ? ` · Week ${week}` : ''}
             </div>
           </div>
         </div>
 
         <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:10px">
-          ${['Pool-Based Aerobic', 'Psoas Focus', 'Pain Guides Load'].map(t =>
+          ${['3× / week · A/B', flare ? 'Flare — Calm Down' : 'Psoas Focus', 'Pain Guides Load'].map(t =>
             `<span class="pill" style="font-size:10px;padding:2px 8px">${t}</span>`
           ).join('')}
         </div>
 
+        ${flare ? flareHTML() : `
         <div style="padding:9px 12px;background:rgba(56,189,248,0.07);
           border:1px solid rgba(56,189,248,0.2);border-radius:8px;margin-bottom:10px">
-          <div style="font-size:10px;letter-spacing:0.1em;color:#7dd3fc;font-weight:700;margin-bottom:3px">
-            WORKING THEORY
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:3px">
+            <div style="font-size:10px;letter-spacing:0.1em;color:#7dd3fc;font-weight:700">
+              WORKING THEORY
+            </div>
+            <button id="flare-on" style="font-size:10px;padding:2px 8px;border-radius:5px;cursor:pointer;
+              background:transparent;border:1px solid rgba(251,146,60,0.35);color:#fdba74">Flare mode</button>
           </div>
           <div style="font-size:11.5px;color:#94a3b8;line-height:1.45">
             PT thinks a tight psoas is driving this. That makes the hip flexor stretches the
@@ -657,7 +898,7 @@ export async function renderHip(app) {
             psoas worth a conversation. Surgeon said to come back if it is still bothering you at
             three months; the pain log below is what you bring to that visit.
           </div>
-        </div>
+        </div>`}
 
         <div id="hip-tabs" style="display:flex;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none;
           -webkit-overflow-scrolling:touch">
@@ -699,7 +940,12 @@ export async function renderHip(app) {
 
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
         ${items.map(ex => cardHTML(ex, section)).join('')}
+        ${pausedItems.map(pausedCardHTML).join('')}
         ${(section.guidance || []).map(g => guidanceHTML(g, section)).join('')}
+        ${section.exercises?.length ? `
+          <button id="hip-add" style="width:100%;padding:9px;border-radius:10px;cursor:pointer;
+            background:transparent;border:1px dashed rgba(255,255,255,0.18);color:#94a3b8;
+            font-size:12px;font-weight:600">+ Add your own exercise to ${esc(section.label)}</button>` : ''}
       </div>
 
       ${section.benchmarks ? benchmarksHTML(section) : ''}
@@ -716,8 +962,8 @@ export async function renderHip(app) {
 
       <div style="padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
         <div style="font-size:11px;color:#475569;line-height:1.55">
-          From your Comprehensive Hip Recovery Playbook v4. Sets and reps are starting defaults —
-          tap any SETS chip to match what your PT prescribed. Pain above 3/10 during or after a
+          From your Comprehensive Hip Recovery Playbook v4, merged with your Motion RC plan into
+          Sessions A and B. Tap any SETS chip to match what your PT or coach prescribed. Pain above 3/10 during or after a
           session means reduce load, not push through. Follow your physical therapist over this app.
         </div>
       </div>
@@ -739,6 +985,42 @@ export async function renderHip(app) {
 
     app.querySelectorAll('[data-exid]').forEach(btn => {
       btn.onclick = () => toggle(btn.dataset.exid);
+    });
+
+    app.querySelector('#flare-on')?.addEventListener('click', () => {
+      setFlare(true);
+      toast('Flare mode on — known aggravators paused');
+    });
+    app.querySelector('#flare-off')?.addEventListener('click', () => {
+      if (!confirm('End flare mode? Paused exercises stay paused until you resume each one.')) return;
+      setFlare(false);
+    });
+
+    app.querySelectorAll('[data-pause]').forEach(btn => {
+      btn.onclick = () => {
+        const ex = sectionItems(section).find(e => e.id === btn.dataset.pause);
+        if (!ex) return;
+        const reason = prompt(`Pause ${ex.name}? Why (optional)`, 'Provokes the hip');
+        if (reason === null) return;
+        setPaused(ex.id, reason.trim());
+      };
+    });
+    app.querySelector('#hip-add')?.addEventListener('click', () => openAddSheet(section));
+    app.querySelectorAll('[data-remove]').forEach(btn => {
+      btn.onclick = () => {
+        const c = custom.find(x => x.id === btn.dataset.remove);
+        if (!c || !confirm(`Remove ${c.name}?`)) return;
+        saveCustom(custom.filter(x => x.id !== c.id));
+      };
+    });
+
+    app.querySelectorAll('[data-resume]').forEach(btn => {
+      btn.onclick = () => {
+        const ex = sectionItems(section).find(e => e.id === btn.dataset.resume);
+        if (!ex) return;
+        if (!confirm(`Resume ${ex.name}? Best once your PT has OK'd it or the flare has settled.`)) return;
+        setPaused(ex.id, null);
+      };
     });
 
     app.querySelectorAll('[data-pain]').forEach(btn => {
@@ -793,7 +1075,7 @@ export async function renderHip(app) {
 
     app.querySelectorAll('[data-editrx]').forEach(btn => {
       btn.onclick = () => {
-        const ex = (section.exercises || []).find(e => e.id === btn.dataset.editrx);
+        const ex = sectionItems(section).find(e => e.id === btn.dataset.editrx);
         if (!ex) return;
         const next = prompt(`Sets / reps for ${ex.name}`, rxFor(ex));
         if (next === null) return;

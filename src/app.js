@@ -27,6 +27,12 @@ const ROUTES = {
 
 export const $app = document.getElementById('app');
 
+// index.html loads app.js?v=N (cache-busting) while every view imports '../app.js', so the
+// browser evaluates this module twice. Only the first copy wires listeners and boots —
+// otherwise each screen renders twice, and the workout screen creates duplicate sessions.
+const FIRST_COPY = !window.__fitAppBooted;
+window.__fitAppBooted = true;
+
 export function navigate(route) {
   location.hash = `#/${route}`;
 }
@@ -46,11 +52,12 @@ async function render() {
   }
 }
 
-document.querySelectorAll('#tabbar .tab').forEach(b => {
-  b.addEventListener('click', () => navigate(b.dataset.route));
-});
-
-window.addEventListener('hashchange', render);
+if (FIRST_COPY) {
+  document.querySelectorAll('#tabbar .tab').forEach(b => {
+    b.addEventListener('click', () => navigate(b.dataset.route));
+  });
+  window.addEventListener('hashchange', render);
+}
 
 // Toast helper
 export function toast(msg, ms = 1800) {
@@ -128,17 +135,23 @@ export function openSheet(contentBuilder) {
 }
 
 // Boot
-(async () => {
+if (FIRST_COPY) (async () => {
   const { initUpdates } = await import(`./lib/updates.js?v=${window.__FIT_V ?? ''}`);
   initUpdates();
   requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await offerBackupRestore();
+  // One-time merge of duplicate workout sessions left by the old double boot.
+  try {
+    const { dedupeSessions } = await import('./lib/session_dedupe.js');
+    const removed = await dedupeSessions();
+    if (removed) toast(`Merged ${removed} duplicate workout session${removed === 1 ? '' : 's'}`, 3000);
+  } catch (err) { console.error('[boot] session dedupe failed', err); }
   if (!location.hash) location.hash = '#/home';
   await render();
   scheduleLocalBackup();
 })();
 
-document.addEventListener('visibilitychange', () => {
+if (FIRST_COPY) document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') scheduleLocalBackup();
 });

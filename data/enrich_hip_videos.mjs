@@ -13,6 +13,7 @@
  *   node data/enrich_hip_videos.mjs --section pt           # one section id
  *   node data/enrich_hip_videos.mjs --only pt-bird-dog     # one exercise id
  *   node data/enrich_hip_videos.mjs --top 5 --max-seconds 420
+ *   node data/enrich_hip_videos.mjs --missing              # only exercises with no videoId yet
  *   node data/enrich_hip_videos.mjs --apply                # write approved picks into hip_protocol.js
  *
  * Review flow:
@@ -41,6 +42,7 @@ const ONLY        = opt('only', null);
 const TOP         = parseInt(opt('top', '3'), 10);
 const MAX_SECONDS = parseInt(opt('max-seconds', '360'), 10);  // rehab demos run longer than drill clips
 const APPLY       = args.includes('--apply');
+const MISSING     = args.includes('--missing');   // only exercises with no vetted video yet
 
 /**
  * Trusted rehab channels — channelTitle substrings that BOOST a result. These are the
@@ -87,7 +89,10 @@ const KEY = process.env.YOUTUBE_API_KEY === 'PASTE_YOUR_KEY_HERE'
 const targets = SECTIONS
   .filter(s => !SECTION || s.id === SECTION)
   .flatMap(s => (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id, sectionLabel: s.label })))
-  .filter(ex => !ONLY || ex.id === ONLY);
+  .filter(ex => !ONLY || ex.id === ONLY)
+  .filter(ex => !MISSING || !ex.videoId)
+  // Sessions A and B share exercises (mobility prep, single leg stance) — search each once.
+  .filter((ex, i, all) => all.findIndex(e => e.id === ex.id) === i);
 
 // ── apply mode: patch approved ids into hip_protocol.js, no API needed ──
 if (APPLY) {

@@ -3,6 +3,8 @@
  * and cached in memory. NOT stored in IndexedDB — they're large and read-only.
  */
 
+import { HIP_CATALOG_ENTRIES, movementTags } from './hip_protocol.js';
+
 let _cache = null;
 let _loading = null;
 
@@ -19,6 +21,20 @@ export async function loadCatalogs() {
       ...lib.programs.pjf.map(p => ({ ...p, source: 'PJF' })),
       ...lib.programs.bws.map(p => ({ ...p, source: 'BWS' })),
     ];
+    // One catalog: hip-tab exercises join the library (skipping any name it already has),
+    // and every entry gets movement-type tags for hip-friendly swaps.
+    const libByName = new Map(lib.exercises.map(e => [e.name.toLowerCase(), e]));
+    // Same-named library entries without a video borrow the hip tab's vetted one.
+    for (const h of HIP_CATALOG_ENTRIES) {
+      const dup = libByName.get(h.name.toLowerCase());
+      if (dup && !dup.video_url && h.video_url) dup.video_url = h.video_url;
+    }
+    const libNames = new Set(libByName.keys());
+    lib.exercises = [
+      ...lib.exercises,
+      ...HIP_CATALOG_ENTRIES.filter(e => !libNames.has(e.name.toLowerCase())),
+    ];
+    for (const e of lib.exercises) e.tags = movementTags(e.name);
     const exerciseById = new Map(lib.exercises.map(e => [e.id, e]));
     const exerciseByName = new Map(lib.exercises.map(e => [e.name.toLowerCase(), e]));
     // Also index by aliases so variant name formats resolve to the same entry

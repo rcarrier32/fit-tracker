@@ -13,7 +13,13 @@
  * the card falls back to a search link built from `search`.
  */
 
-export const SECTIONS = [
+/**
+ * Source catalog — the playbook's sections plus the Motion RC plan, as written. The
+ * PT Program and Motion RC sections are not shown directly: they're merged into
+ * Session A / Session B below. Exercise ids are stable, so logs, custom sets and pauses
+ * carry across the merge.
+ */
+const SOURCE_SECTIONS = [
   {
     id: 'warmup',
     label: 'Warm-Up',
@@ -132,6 +138,73 @@ export const SECTIONS = [
         videoTitle: "Supine Hamstring Stretch w/Strap Exercise",
         channel: "Physical Therapy San Pedro",
         search: 'hamstring stretch physical therapy supine strap',
+      },
+    ],
+  },
+
+  {
+    id: 'pelvic-reset',
+    label: 'Pelvic Reset',
+    tag: 'Daily · Flare-friendly',
+    accent: '#a3e635',
+    bg: 'rgba(101,163,13,0.10)',
+    description: 'Lying-down pelvic positioning — tilt the pelvis back and hold it there with the hamstrings and deep abs, using long exhales. No end-range stretching, so these are the gentle-movement option on flare days. Stop any that reproduce the burning.',
+    exercises: [
+      {
+        id: 'pr-bench-hip-lift',
+        name: 'Bench Hip Lift with Roller Squeeze',
+        subtitle: 'Feet on a bench, foam roller between the knees — not the seated 90/90 stretch',
+        sets: '3 × 5 breaths',
+        freq: 'Daily',
+        cues: [
+          'On your back, heels on a bench with hips and knees around 90°. Roller between the knees, gentle squeeze.',
+          'Dig the heels down and back until the hamstrings switch on and the tailbone just curls off the floor. Low back stays flat.',
+          'Breathe in through the nose, long full exhale through the mouth, pause 3–4 s before the next breath.',
+        ],
+        videoId: null,
+        search: '90 90 hip lift feet on bench foam roller between knees',
+      },
+      {
+        id: 'pr-sidelying-grounding',
+        name: 'Sidelying Grounding',
+        subtitle: 'Side-lying, feet on the wall, ball between the knees — Pinnacle Performance',
+        sets: '3 × 5 breaths',
+        freq: 'Daily',
+        cues: [
+          'Lie on your side, head on a pillow, hips and knees bent, both feet flat on the wall, ball between the knees.',
+          'Light press of the feet into the wall and a gentle ball squeeze — feel the bottom hip and ribs settle into the floor.',
+          'Slow breathing with long exhales. Do not lie on the sore side if it presses on the painful spot.',
+        ],
+        videoId: null,
+        search: 'Pinnacle Performance sidelying grounding',
+      },
+      {
+        id: 'pr-ppt-breathing',
+        name: 'Posterior Pelvic Tilt Breathing',
+        subtitle: 'Low back pressed into the floor with breathing — Dr. Devon Hoffman',
+        sets: '3 × 5 breaths',
+        freq: 'Daily',
+        cues: [
+          'On your back, knees bent. Tilt the pelvis back and push the low back firmly into the floor.',
+          'Lift one foot (toes up) while the low back stays pinned — if it arches, lower the foot.',
+          'Exhale: press the low back down. Inhale: feel it in the front of the hip without losing the tilt.',
+        ],
+        videoId: null,
+        search: 'Dr Devon Hoffman forced posterior pelvic tilt breathing',
+      },
+      {
+        id: 'pr-ball-series',
+        name: 'Supine Ball Squeeze Series',
+        subtitle: 'Rotation · extension · frog leg lift with a ball between the knees — Anytime Mobility',
+        sets: '8 each',
+        freq: 'Daily',
+        cues: [
+          'On your back, ball between the knees, back flat. Work through rotation, extension, then the frog leg lift.',
+          'Small, controlled range — keep the squeeze on the ball the whole time.',
+          'Frog leg lift: knees open only as far as is comfortable; nothing forced.',
+        ],
+        videoId: null,
+        search: 'Anytime Mobility hip rotation extension frog leg lift ball',
       },
     ],
   },
@@ -373,6 +446,189 @@ export const SECTIONS = [
         videoTitle: "Lateral Step-up",
         channel: "Movement Physio",
         search: 'lateral step up exercise physical therapy',
+      },
+    ],
+  },
+
+  {
+    id: 'motion-rc',
+    label: 'Motion RC',
+    tag: 'Hip plan · From Motion RC',
+    accent: '#e879f9',
+    bg: 'rgba(192,38,211,0.10)',
+    description: 'Your Motion RC hip plan, sets as prescribed. It is heavy on side-hip work (hip hikes, side plank clamshell, Copenhagen, monster walks, airplanes) on top of the side plank and side-lying abduction in the PT program. Each is fine on its own — if the outer hip keeps flaring, trimming the total side-hip volume is the first lever, before dropping any one exercise.',
+    exercises: [
+      {
+        id: 'mrc-distraction-ir',
+        name: 'Banded Distraction for Hip IR',
+        subtitle: 'Band pulls the hip joint apart while you rotate the thigh inward',
+        sets: '2 × 10',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Band high around the top of the thigh, anchored so it pulls the hip sideways/back.',
+          'Turn the thigh inward slowly and return — the band should make it feel freer, not pinchy.',
+        ],
+        askPt: 'Joint distraction after a labral repair — worth confirming with your PT that it still fits while the side of the hip is irritated.',
+        videoId: null,
+        search: 'banded hip distraction internal rotation mobilization',
+      },
+      {
+        id: 'mrc-distraction-er',
+        name: 'Banded Distraction for Hip ER',
+        subtitle: 'Band distraction while rotating the thigh outward',
+        sets: '2 × 10',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Same band setup as the IR version.',
+          'Let the knee open outward slowly and return under control.',
+        ],
+        askPt: 'Same as the IR version — confirm with your PT while this flare is active.',
+        videoId: null,
+        search: 'banded hip distraction external rotation mobilization',
+      },
+      {
+        id: 'mrc-monster-walk',
+        name: 'Mini Band Monster Walk',
+        subtitle: 'Banded walking in a quarter squat — glute medius',
+        sets: '2 × 15',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Band around the knees or ankles, quarter squat, chest up.',
+          'Step out on a diagonal and keep tension on the band — knees do not cave in.',
+        ],
+        videoId: null,
+        search: 'mini band monster walk',
+      },
+      {
+        id: 'mrc-quadruped-hip-hike',
+        name: 'Quadruped Hip Hikes',
+        subtitle: 'On hands and knees, hike one hip toward the ribs',
+        sets: '2 × 8',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Hands and knees, one knee on a pad.',
+          'Hike the free hip up toward the ribs without rotating the trunk, then lower slowly.',
+        ],
+        videoId: null,
+        search: 'quadruped hip hike exercise',
+      },
+      {
+        id: 'mrc-standing-hip-hike',
+        name: 'Standing Hip Hikes',
+        subtitle: 'Stand on a step, lower and lift the free hip',
+        sets: '2 × 10 @ 10 lb',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand.',
+          'Let the free hip drop slightly, then lift it level by driving up through the standing hip — knees straight.',
+        ],
+        videoId: null,
+        search: 'standing elevated hip hike exercise',
+      },
+      {
+        id: 'mrc-hip-airplane',
+        name: 'SL Hip Airplane w/ Foam Roller',
+        subtitle: 'Single-leg hinge with trunk rotation — roller for support',
+        sets: '2 × 8–10',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Hinge on one leg holding a foam roller upright for balance.',
+          'Rotate the pelvis open and closed over the standing hip — slow, controlled, no wobble.',
+        ],
+        videoId: null,
+        search: 'single leg hip airplane foam roller',
+      },
+      {
+        id: 'mrc-side-plank-clamshell',
+        name: 'Banded Side Plank Clamshell',
+        subtitle: 'Side plank with a band clamshell on top',
+        sets: '3 × 10',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Side plank from the knees, band around the knees.',
+          'Open the top knee against the band without letting the hips sag or roll back.',
+        ],
+        videoId: null,
+        search: 'banded side plank clamshell',
+      },
+      {
+        id: 'mrc-hip-flexor-march',
+        name: 'Banded Hip Flexor March',
+        subtitle: 'Hands on a wall, march against a band around the feet',
+        sets: '2 × 25 s',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Lean into a wall, band around the feet.',
+          'Drive one knee up against the band and hold — pelvis level, no leaning back.',
+        ],
+        videoId: null,
+        search: 'banded hip flexor march wall',
+      },
+      {
+        id: 'mrc-tfl-ir-stretch',
+        name: 'TFL / Hip IR Stretch',
+        subtitle: 'Lying stretch into hip internal rotation',
+        sets: '3 × 10 s',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Lying down, let the knee drop inward to a gentle stretch on the outside of the hip.',
+          'Hold lightly — stretch, not pinch.',
+        ],
+        askPt: 'This pulls on the outside of the hip, where the new burning is. Ask your PT whether to keep it while the flare settles; back off if it reproduces the burn.',
+        videoId: null,
+        search: 'TFL hip internal rotation stretch lying',
+      },
+      {
+        id: 'mrc-seated-banded-ir',
+        name: 'Seated Banded Hip IR',
+        subtitle: 'Seated, rotate the shin outward against a band',
+        sets: '2 × 10–12',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Sit tall on a box, band around the ankle pulling inward.',
+          'Swing the foot out (hip rotates in) against the band and return slowly. Thigh stays still.',
+        ],
+        videoId: null,
+        search: 'seated banded hip internal rotation',
+      },
+      {
+        id: 'mrc-adductor-slider-lunge',
+        name: 'Adductor Slider Lunge',
+        subtitle: 'Lateral slide on a slider while loaded',
+        sets: '3 × 10 @ 20 lb',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Standing leg bent, other foot on a slider.',
+          'Slide the foot out to the side and pull it back in with the inner thigh.',
+        ],
+        videoId: null,
+        search: 'adductor slider lateral lunge',
+      },
+      {
+        id: 'mrc-elevated-ham-bridge',
+        name: 'Elevated Hamstring Bridge',
+        subtitle: 'Heels on a box, bridge up',
+        sets: '3 × 10',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'On your back, heels on a box.',
+          'Drive through the heels and lift the hips — ribs down, no low back arch.',
+        ],
+        videoId: null,
+        search: 'elevated hamstring bridge heels on box',
+      },
+      {
+        id: 'mrc-copenhagen-knee',
+        name: 'Copenhagen Side Plank (Knee)',
+        subtitle: 'Short-lever Copenhagen — top knee on a bench',
+        sets: '3 × 30 s',
+        freq: 'Per Motion RC plan',
+        cues: [
+          'Side plank with the top knee on a bench, bottom leg free.',
+          'Squeeze the top leg into the bench and keep the hips stacked and lifted.',
+        ],
+        videoId: null,
+        search: 'copenhagen side plank knee short lever',
       },
     ],
   },
@@ -782,6 +1038,99 @@ export const SECTIONS = [
   },
 ];
 
+/** Every exercise by id — including ones dropped in the merge, so old logs keep names. */
+export const EXERCISE_INDEX = Object.fromEntries(
+  SOURCE_SECTIONS.flatMap(s => (s.exercises || []).map(ex => [ex.id, ex]))
+);
+
+const sourceSection = (id) => SOURCE_SECTIONS.find(s => s.id === id);
+const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'pt-sls'];
+
+/** Pull exercises from the catalog, tagged with where they came from and which session(s). */
+function pick(session, ids) {
+  return ids.map(id => {
+    const ex = EXERCISE_INDEX[id];
+    if (!ex) throw new Error(`hip_protocol: unknown exercise ${id}`);
+    return {
+      ...ex,
+      source: id.startsWith('mrc-') ? 'Motion RC' : 'PT',
+      freq: BOTH.includes(id) ? 'Sessions A & B' : `Session ${session}`,
+      ...(id === 'mrc-tfl-ir-stretch' ? { optional: true } : {}),
+    };
+  });
+}
+
+const SESSION_CRITERIA = sourceSection('pt').criteria;
+
+/**
+ * Merged PT + Motion RC plan. One exercise per movement slot per session; where the two
+ * programs overlapped, one version sits in A and the other in B. Dropped as duplicates:
+ * Modified Side Plank (covered by the side plank clamshell) and Band Walks (Monster Walk).
+ */
+const SESSION_A = {
+  id: 'session-a',
+  label: 'Session A',
+  tag: 'Strength · Alternates with B',
+  accent: '#22d3ee',
+  bg: 'rgba(2,132,199,0.10)',
+  description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  criteria: SESSION_CRITERIA,
+  exercises: pick('A', [
+    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+    'pt-sls',
+    'mrc-elevated-ham-bridge',
+    'mrc-side-plank-clamshell',
+    'mrc-monster-walk', 'pt-fire-hydrant',
+    'mrc-quadruped-hip-hike',
+    'pt-sl-rdl',
+    'mrc-hip-flexor-march',
+    'pt-prone-ext', 'pt-bird-dog',
+    'pt-step-ups',
+    'pt-posterior-lunge',
+  ]),
+};
+
+const SESSION_B = {
+  id: 'session-b',
+  label: 'Session B',
+  tag: 'Strength · Alternates with A',
+  accent: '#e879f9',
+  bg: 'rgba(192,38,211,0.10)',
+  description: 'Merged PT + Motion RC plan — the partner to Session A, with the other version of each movement slot. Same mobility prep. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  criteria: SESSION_CRITERIA,
+  exercises: pick('B', [
+    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+    'pt-sls',
+    'pt-bridge-squeeze',
+    'mrc-copenhagen-knee',
+    'mrc-standing-hip-hike',
+    'pt-side-lying-abduction',
+    'mrc-hip-airplane',
+    'pt-slr',
+    'pt-prone-ext-bent',
+    'pt-lateral-step-ups',
+    'mrc-adductor-slider-lunge',
+  ]),
+};
+
+/** Pool work isn't happening right now — kept at the end, marked optional. */
+const optionalPool = (id) => {
+  const s = sourceSection(id);
+  return { ...s, tag: `Optional · ${s.tag.split('·').slice(1).join('·').trim() || s.tag}` };
+};
+
+export const SECTIONS = [
+  sourceSection('warmup'),
+  sourceSection('pelvic-reset'),
+  SESSION_A,
+  SESSION_B,
+  sourceSection('recovery'),
+  sourceSection('benchmarks'),
+  optionalPool('pool-mobility'),
+  optionalPool('pool-strength'),
+  optionalPool('aerobic'),
+];
+
 /**
  * Published benchmarks from the Mass General Brigham Sports Medicine "Rehabilitation Protocol
  * for Hip Arthroscopy for Femoroacetabular Impingement" (rev. 07/2024).
@@ -912,17 +1261,194 @@ export const POST_POOL = [
 ];
 
 /** Weekly schedule from the playbook. Index 0 = Sunday, matching Date#getDay(). */
-export const WEEKLY_SCHEDULE = [
-  { day: 'Sun', focus: 'Recovery + Stretching',        sections: ['warmup'] },
-  { day: 'Mon', focus: 'PT + Pool Walk + Swim',        sections: ['warmup', 'pt', 'pool-mobility', 'aerobic'] },
-  { day: 'Tue', focus: 'Pool Mobility + Deep Water Running', sections: ['warmup', 'pool-mobility', 'aerobic'] },
-  { day: 'Wed', focus: 'PT + Pool Intervals',          sections: ['warmup', 'pt', 'aerobic'] },
-  { day: 'Thu', focus: 'Pool Recovery + Balance',      sections: ['warmup', 'pool-mobility', 'pool-strength'] },
-  { day: 'Fri', focus: 'PT + Deep Water Running',      sections: ['warmup', 'pt', 'aerobic'] },
-  { day: 'Sat', focus: 'Easy Swim + Mobility',         sections: ['warmup', 'pool-mobility', 'aerobic'] },
-];
+// Monday of a known week — anchors the A/B alternation so it's stable across reloads.
+const AB_EPOCH = new Date(2026, 9, 5, 12);   // Mon 5 Oct 2026 — an "A-first" week
+
+const STRENGTH = ['warmup', 'pelvic-reset'];
+const OFF_DAY = { focus: 'Easy walk or bike + Pelvic Reset', sections: ['warmup', 'pelvic-reset'] };
+
+/**
+ * The week containing `date`, Sun–Sat. Mon/Wed/Fri are strength days alternating A and B:
+ * A-first weeks run A·B·A, the next week B·A·B. Everything else is an easy day.
+ */
+export function weeklySchedule(date = new Date()) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+  const monday = new Date(d);
+  monday.setDate(d.getDate() - d.getDay() + 1);   // the Monday of this Sun–Sat week
+  const weeks = Math.round((monday - AB_EPOCH) / (7 * 864e5));
+  const aFirst = ((weeks % 2) + 2) % 2 === 0;
+  const session = (isA) => isA
+    ? { focus: 'Session A', sections: [...STRENGTH, 'session-a'] }
+    : { focus: 'Session B', sections: [...STRENGTH, 'session-b'] };
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const plan = [OFF_DAY, session(aFirst), OFF_DAY, session(!aFirst), OFF_DAY, session(aFirst), OFF_DAY];
+  return plan.map((p, i) => ({ day: days[i], ...p }));
+}
+
+/**
+ * What today's hip work is: the main section (the strength session on Mon/Wed/Fri,
+ * Pelvic Reset otherwise or during a flare) and how much of it is checked off.
+ * Shared by the Hip tab (which tab to open), the Home card and the Plans card.
+ */
+export function hipToday({ flare = null, paused = {}, done = {}, custom = [], date = new Date() } = {}) {
+  const day = weeklySchedule(date)[date.getDay()];
+  const sectionId = flare ? 'pelvic-reset' : day.sections[day.sections.length - 1];
+  const section = SECTIONS.find(s => s.id === sectionId);
+  const items = [...(section.exercises || []), ...custom.filter(c => c.sectionId === sectionId)]
+    .filter(e => !paused[e.id]);
+  return {
+    sectionId,
+    sectionLabel: section.label,
+    label: flare ? 'Flare day · Pelvic Reset + short walk' : day.focus,
+    strength: !flare && sectionId.startsWith('session-'),
+    done: items.filter(e => done[e.id]).length,
+    total: items.length,
+  };
+}
 
 /** Flat lookup of every exercise across sections. */
-export const ALL_EXERCISES = SECTIONS.flatMap(s =>
+export const ALL_EXERCISES = SOURCE_SECTIONS.flatMap(s =>
   (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id }))
 );
+
+/**
+ * Flare mode — new burning/pinching on the side and back of the hip (Oct 2026), which
+ * started after a pulling sensation in a 90/90 stretch. Cause not established; this is
+ * load management while it settles, not a diagnosis. Hip tab only — it deliberately
+ * does not touch the lifting programs or daily mobility.
+ *
+ * `defaultPauses` are seeded into pref('hip_paused') when flare mode is switched on.
+ * Pauses persist independently of the flag and are resumed one at a time by hand.
+ */
+export const FLARE = {
+  summary: 'Burning/pinching on the side and back of the hip, glute and outer-thigh tightness. Started after a pull in a 90/90 stretch; lunges, sitting, and the forward-driving hip flexor stretch make it worse. Lying down eases it. Cause not established yet — so calm it down rather than stretch or strengthen through it.',
+  defaultPauses: [
+    { id: 'wu-half-kneel-flexor', reason: 'Forward-driving hip flexor stretch — a known aggravator of this flare.' },
+    { id: 'pt-posterior-lunge', reason: 'Lunges currently provoke the symptoms.' },
+    { id: 'mrc-adductor-slider-lunge', reason: 'Lunge pattern — lunges currently provoke the symptoms.' },
+  ],
+  calm: [
+    { title: 'Unload when it burns', detail: 'On your back with a pillow under the knees. Skip it if that position is not comfortable.' },
+    { title: 'Short, easy walks', detail: 'Only while it stays mild and does not build during or after. Stop before you start to limp — do not walk through the burning.' },
+    { title: 'Gentle range only', detail: 'Move within what is comfortable. Nothing forced to end range, no deep hip rotation, no seated 90/90 positions. The Pelvic Reset tab is the go-to here.' },
+    { title: 'Ice if it helps', detail: '10–15 min with a towel between ice and skin. Skip it if it does not help.' },
+  ],
+  positions: [
+    { title: 'Keep the pelvis level', detail: 'Stand on both feet evenly — no hanging on one hip. In single-leg work, if the opposite hip drops or hikes, end the set.' },
+    { title: 'Sitting', detail: 'Feet flat, knees no higher than hips, no crossed legs. Get up every 30–45 min.' },
+    { title: 'Sleeping', detail: 'Not on the sore side. On the other side, a pillow between the knees so the top leg does not drop across.' },
+  ],
+  returnRule: 'Bring it back once the hip has been settled 2–3 days with no worse next morning: do it at about half the volume. If the next morning is fine, return to full. If it flares again, re-pause and give it longer.',
+  stopIf: 'Stop the exercise if you get a sharp pinch, burning that builds during the set, new tingling or numbness, weakness, or a limp. Write what happened in the note below — do not swap in something harder.',
+  urgent: 'Same-day care if you cannot put weight on the leg, have significant new weakness, a fever with a hot or swollen hip, or one leg swells. Emergency care for any loss of bowel or bladder control, or numbness in the groin/saddle area.',
+};
+
+/**
+ * Side-hip (lateral hip / abductor) exercises — the load that lands on the sore area.
+ * Counted per week so total volume is visible, which matters more than any one exercise.
+ */
+export const SIDE_HIP_IDS = new Set([
+  'pt-side-lying-abduction', 'pt-side-plank', 'pt-band-walks', 'pt-fire-hydrant',
+  'mrc-monster-walk', 'mrc-quadruped-hip-hike', 'mrc-standing-hip-hike',
+  'mrc-side-plank-clamshell', 'mrc-copenhagen-knee', 'ps-abduction',
+]);
+
+/** Side-hip exercises checked off in the Sun–Sat week containing `date`. */
+export function sideHipCount(logs, date = new Date(), extraIds = []) {
+  const ids = new Set([...SIDE_HIP_IDS, ...extraIds]);
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+  d.setDate(d.getDate() - d.getDay());
+  let n = 0;
+  for (let i = 0; i < 7; i++) {
+    const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    for (const [id, done] of Object.entries(logs[k] || {})) if (done && ids.has(id)) n++;
+    d.setDate(d.getDate() + 1);
+  }
+  return n;
+}
+
+/** Planned side-hip exercises per week on the A/B schedule (A·B·A or B·A·B). */
+export function plannedSideHip(date = new Date()) {
+  const per = (id) => (SECTIONS.find(s => s.id === id)?.exercises || []).filter(e => SIDE_HIP_IDS.has(e.id)).length;
+  return weeklySchedule(date).reduce((n, d) => {
+    const sid = d.sections.find(x => x.startsWith('session-'));
+    return n + (sid ? per(sid) : 0);
+  }, 0);
+}
+
+/**
+ * Movement-type tags from an exercise name. Name-based so they apply across the whole
+ * catalog (PJF, BWS, hip) without hand-tagging every entry.
+ */
+const PATTERN_RULES = [
+  ['deep-rotation',       /90\s*\/\s*90|mermaid/i],
+  ['hip-forward-stretch', /hip flexor\s*\/\s*quad bridge|couch stretch|hip flexor stretch|kneeling hip flexor|thomas/i],
+  ['lunge',               /lunge|split squat/i],
+  ['side-lying-load',     /side plank|side-lying|sidelying|clamshell|copenhagen/i],
+  ['hinge',               /\brdl\b|romanian|deadlift|hinge|good morning|airplane/i],
+  ['bridge',              /bridge|hip thrust|hip lift/i],
+  ['squat',               /squat|leg press/i],
+  ['step',                /step[- ]?up|step down/i],
+];
+
+export function movementTags(name) {
+  return PATTERN_RULES.filter(([, re]) => re.test(name || '')).map(([tag]) => tag);
+}
+
+/**
+ * Which tags overlap with what flared the hip, and what to try instead. Used for a
+ * caution badge and swap suggestions while flare mode is on — never to pause or remove
+ * anything outside the Hip tab. Swap names are filtered against the live catalog.
+ */
+const CAUTION = {
+  'deep-rotation': {
+    reason: 'Seated 90/90-type rotation — the position the flare started in.',
+    swaps: ['Bench Hip Lift with Roller Squeeze', 'Supine Ball Squeeze Series', 'Sidelying Grounding', 'Cat Cow', 'Dead Bug'],
+  },
+  'hip-forward-stretch': {
+    reason: 'Hip-forward stretch — a known aggravator right now.',
+    swaps: ['Posterior Pelvic Tilt Breathing', 'Bench Hip Lift with Roller Squeeze', 'Pelvic Tilts', 'Hamstring Stretch', 'Dead Bug'],
+  },
+  'lunge': {
+    reason: 'Lunge pattern — lunges currently provoke the hip.',
+    swaps: ['Weighted Step-Ups', 'Step Ups', 'Box Squat', 'Dumbbell Goblet Squat', 'Hip Thrust', 'Dumbbell Romanian Deadlift', 'Bridge with Ball Squeeze'],
+  },
+};
+// The Thomas stretch is tagged hip-forward for search, but it stays in the warm-up
+// unflagged — only the half-kneeling stretch was named as an aggravator.
+const NOT_FLAGGED = /thomas/i;
+
+function cautionTag(name) {
+  if (NOT_FLAGGED.test(name || '')) return null;
+  return movementTags(name).find(t => CAUTION[t]) || null;
+}
+
+export function hipCaution(name) {
+  const tag = cautionTag(name);
+  return tag ? CAUTION[tag].reason : null;
+}
+
+/** Hip-friendly alternatives for a flagged move (empty if it isn't flagged). */
+export function hipSwaps(name) {
+  const tag = cautionTag(name);
+  return tag ? CAUTION[tag].swaps : [];
+}
+
+/**
+ * Hip-tab exercises shaped like library entries, so lifting search, swaps, the add-
+ * exercise picker and video lookup all see them. Ids are prefixed so they can't collide
+ * with library ids (the library already has e.g. "hip-thrust").
+ */
+export const HIP_CATALOG_ENTRIES = Object.values(EXERCISE_INDEX).map(ex => {
+  const tags = movementTags(ex.name);
+  return {
+    id: `hiprx-${ex.id}`,
+    name: ex.name,
+    primary_muscle: tags.includes('bridge') ? 'glutes' : tags.includes('hinge') ? 'hamstrings' : 'hips',
+    muscles: [],
+    video_url: ex.videoId ? `https://www.youtube.com/watch?v=${ex.videoId}` : null,
+    fallback_search: `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`,
+    sources: ['hip'],
+    aliases: [],
+  };
+});
