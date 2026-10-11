@@ -45,8 +45,8 @@ MUSCLE = {
 RPE8 = ("Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps "
         "in the tank. Not true failure.")
 RPE9 = ("Aim for RPE 9/10: a huge burn in the target muscles without compromising form.")
-SETUP = ("Not sure how to set up the band? Watch the category overview video in the band "
-         "database.")
+SETUP = ("Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise "
+         "Database: each category starts with a START HERE setup video.")
 
 # (name, sets, reps, time, notes, superset)
 P1_A = [
@@ -193,13 +193,15 @@ def main():
     lib = json.loads(LIB.read_text())
     band = json.loads(BAND.read_text())
 
+    # Videos approved later (enrich_program_videos.mjs --apply) win over the PDF's links.
+    kept = {x["id"]: x.get("video_url") for x in lib["exercises"] if "band" in x.get("sources", [])}
     entries = []
     for e in band["exercises"]:
         name = e["name"]
         entry = {
             "id": "band-" + slugify(name),
             "name": name,
-            "video_url": e["video_url"],
+            "video_url": kept.get("band-" + slugify(name)) or e["video_url"],
             "sources": ["pjf", "band"],
             "aliases": [],
             "fallback_search": None,

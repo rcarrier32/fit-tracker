@@ -29016,7 +29016,7 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                    "notes": "Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise Database: each category starts with a START HERE setup video."
                   },
                   {
                     "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
@@ -29400,7 +29400,7 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                    "notes": "Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise Database: each category starts with a START HERE setup video."
                   },
                   {
                     "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
@@ -29519,7 +29519,7 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                    "notes": "Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise Database: each category starts with a START HERE setup video."
                   },
                   {
                     "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
@@ -29903,7 +29903,7 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                    "notes": "Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise Database: each category starts with a START HERE setup video."
                   },
                   {
                     "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
@@ -35002,7 +35002,7 @@
   },
   "stats": {
     "total_exercises": 496,
-    "with_video": 326,
+    "with_video": 365,
     "pjf_only": 211,
     "bws_only": 121,
     "shared": 1,
