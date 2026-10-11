@@ -734,7 +734,7 @@ export async function renderHip(app) {
           background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
           border-radius:10px;text-decoration:none">
         <div style="position:relative;flex-shrink:0">
-          <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy"
+          <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'"
             style="width:86px;height:60px;object-fit:cover;border-radius:6px;display:block">
           <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
             width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,0.65);
