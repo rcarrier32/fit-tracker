@@ -45,12 +45,11 @@ MUSCLE = {
 RPE8 = ("Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps "
         "in the tank. Not true failure.")
 RPE9 = ("Aim for RPE 9/10: a huge burn in the target muscles without compromising form.")
-SETUP = ("Not sure how to set up the band? Plans > PJF Performance > Extended Band Exercise "
-         "Database: each category starts with a START HERE setup video.")
+# The PDF's "how to set up the band" note is replaced by Lift's Band setup links under the title.
 
 # (name, sets, reps, time, notes, superset)
 P1_A = [
-    ("3-Way Hip Hinge with Band Distraction", 2, "5 each way", None, SETUP, None),
+    ("3-Way Hip Hinge with Band Distraction", 2, "5 each way", None, None, None),
     ("Split Stance Hip Flexor 2-Way Reach with Band Distraction", 2, "5 each way", None, None, None),
     ("First Step Acceleration Hip Before Knee", 2, "8", None, None, None),
     ("Resisted Skips", 4, "50 ft", None, None, None),

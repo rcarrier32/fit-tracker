@@ -42,6 +42,11 @@ function parseSecs(t) {
 }
 const fmtSecs = (n) => `${Math.floor(n / 60)}:${String(Math.round(n % 60)).padStart(2, '0')}`;
 
+const BAND_SHORT = {
+  'Stretching/Mobility': 'Mobility', 'Lower Body Strength': 'Lower Body',
+  'Full Body Integrated Strength': 'Full Body', 'Agility/Change of Direction': 'Agility',
+};
+
 /** A timed exercise (hold, interval, carry) logs a duration instead of weight × reps. */
 const isTimed = (ex) => parseSecs(ex.time) > 0 && !ex.target_reps;
 
@@ -180,12 +185,17 @@ export async function renderWorkout(app) {
   }
 
   // Look up video URLs for each exercise
-  const { exercises: allExercises, exerciseByName, warmups } = await loadCatalogs();
+  const { exercises: allExercises, exerciseByName, warmups, bandOverviews } = await loadCatalogs();
   if (stale()) return;
   const exMap = {};
   for (const [k, v] of exerciseByName) exMap[k] = v;
 
   const warmup = _pickWarmup(dayData.focus || dayData.day_name, warmups);
+  // Band workouts: one tap to each category's band-setup overview, in workout order.
+  const bandCats = [...new Set(session.exercises
+    .map(x => exMap[x.name.toLowerCase()])
+    .filter(e => e?.sources?.includes('band') && bandOverviews[e.category])
+    .map(e => e.category))];
 
   // Build last-session reference weights + all-time best e1RM per exercise
   const { ref: prevRef, bestE1RM: allTimeBestE1RM } = await buildPrevReference(programId, session.id, today());
@@ -195,6 +205,8 @@ export async function renderWorkout(app) {
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
+    ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
+      `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
@@ -243,6 +255,11 @@ export async function renderWorkout(app) {
     $ex.appendChild(node);
   });
 
+  app.querySelectorAll('[data-band-cat]').forEach(b => b.onclick = () => {
+    const c = b.dataset.bandCat;
+    openExerciseDetail({ name: `${c}: band setup`, video_url: bandOverviews[c],
+      subtitle: 'How to anchor the band for these exercises', source: 'PJF band' });
+  });
   app.querySelector('[data-action="prev"]')?.addEventListener('click', () => changeDay(-1));
   app.querySelector('[data-action="next"]')?.addEventListener('click', () => changeDay(+1));
   app.querySelector('#add-ex').onclick = async () => {
