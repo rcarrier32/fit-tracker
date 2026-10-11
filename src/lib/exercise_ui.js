@@ -215,11 +215,45 @@ function videoBlockHTML(ex) {
  *           ready?: boolean, onChange: (step: number, close: Function) => void }} [o.ladder]
  *                                    progression ladder — easier/harder versions of this exercise
  */
+/**
+ * Turn the phone sideways while a demo plays and the video fills the screen; turn it back
+ * and it returns to the card. When the app itself rotates, CSS (.ex-video in styles.css)
+ * does it. When the app stays portrait (rotation lock, or an installed app still locked to
+ * portrait), the motion sensor says which way gravity points and the video is turned 90°.
+ */
+let _gravitySign = 0;   // +1 spec (Android), -1 iOS: the sign of y when held upright
+
+function startSidewaysVideo(sheet) {
+  const box = sheet.querySelector('.ex-video');
+  if (!box || !('DeviceMotionEvent' in window)) return () => {};
+  const onMotion = (e) => {
+    const g = e.accelerationIncludingGravity;
+    if (!g || g.x == null) return;
+    const ax = Math.abs(g.x), ay = Math.abs(g.y);
+    const appPortrait = window.innerHeight > window.innerWidth;
+    if (ay > 7 && ay > ax + 3) {                 // upright
+      _gravitySign = Math.sign(g.y) || _gravitySign;
+      box.classList.remove('sideways');
+    } else if (ax > 7 && ax > ay + 3 && appPortrait) {   // on its side, app didn't rotate
+      // Top of the phone toward the left → turn the video clockwise, and vice versa.
+      const cw = Math.sign(g.x) * (_gravitySign || 1) > 0;
+      box.style.setProperty('--turn', cw ? '90deg' : '-90deg');
+      box.classList.add('sideways');
+    }
+    if (!appPortrait) box.classList.remove('sideways');   // the CSS landscape rule has it
+  };
+  // iOS asks once for motion access; this runs inside the tap that opened the video.
+  const DME = window.DeviceMotionEvent;
+  if (typeof DME.requestPermission === 'function') DME.requestPermission().catch(() => {});
+  window.addEventListener('devicemotion', onMotion);
+  return () => window.removeEventListener('devicemotion', onMotion);
+}
+
 export function openExerciseDetail(ex, o = {}) {
   const accent = o.accent || '#38bdf8';
   let rx = o.rx ?? ex.sets ?? '';
 
-  openSheet((sheet, close) => {
+  openSheet((sheet, close, hooks) => {
     sheet.innerHTML = `
       ${videoBlockHTML(ex)}
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:12px">
@@ -269,6 +303,10 @@ export function openExerciseDetail(ex, o = {}) {
             style="flex:1;font-size:12px;padding:8px;${a.danger ? 'color:#fca5a5' : ''}">${esc(a.label)}</button>`).join('')}
         </div>` : ''}
     `;
+
+    const stopSideways = startSidewaysVideo(sheet);
+    const prevClose = hooks.onClose;
+    hooks.onClose = () => { stopSideways(); prevClose?.(); };
 
     const getSets = () => {
       const n = setCount(rx);

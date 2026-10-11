@@ -346,6 +346,20 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   border-radius: 10px;
   overflow: hidden;
 }
+/* Phone on its side but the app stayed portrait: turn the video to fill the screen. */
+.sheet .ex-video.sideways {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vh;
+  width: 100dvh;
+  height: 100vw;
+  aspect-ratio: auto;
+  border-radius: 0;
+  z-index: 500;
+  transform: translate(-50%, -50%) rotate(var(--turn, 90deg));
+}
+.sheet:has(.ex-video.sideways) { overflow: hidden; }
 @media (orientation: landscape) and (max-height: 540px) {
   .sheet .ex-video {
     position: fixed;
