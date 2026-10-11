@@ -80,6 +80,7 @@ export async function loadCatalogs() {
       programById,
       mealItems,
       warmups: lib.warmups || {},
+      bandOverviews: lib.band_overviews || {},
       warmupSetsProtocol: lib.warmup_sets_protocol || null,
     };
     return _cache;

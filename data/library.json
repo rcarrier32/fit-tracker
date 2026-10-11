@@ -5354,6 +5354,1764 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=90%20Degree%20Knee%20ISOs"
+    },
+    {
+      "id": "band-3-way-hip-hinge-with-band-distraction",
+      "name": "3-Way Hip Hinge with Band Distraction",
+      "video_url": "https://youtu.be/RH_CcXAMEf8",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-split-stance-hip-flexor-2-way-reach-with-band-distraction",
+      "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+      "video_url": "https://youtu.be/vREyr4rh034",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-lunge-adductor-stretch",
+      "name": "Lateral Lunge Adductor Stretch",
+      "video_url": "https://youtu.be/eUlTD0angHM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-step-back-hip-hinge",
+      "name": "Step Back Hip Hinge",
+      "video_url": "https://youtu.be/RVmoP52r8x4",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-back-linefront-line-stretch",
+      "name": "Back Line/Front Line Stretch",
+      "video_url": "https://youtu.be/tCHuXkRVnsY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-floating-toes-dorsiflexion-with-band-distraction",
+      "name": "Floating Toes Dorsiflexion with Band Distraction",
+      "video_url": "https://youtu.be/v0dW2XTKyXY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-supine-long-length-hamstring-raise",
+      "name": "Supine Long Length Hamstring Raise",
+      "video_url": "https://youtu.be/xQeii137IvI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-half-kneel-underhand-press-with-band-distraction",
+      "name": "Half Kneel Underhand Press with Band Distraction",
+      "video_url": "https://youtu.be/BsR5hbAqFlU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-curtsy-hinge-to-step-through",
+      "name": "Curtsy Hinge to Step Through",
+      "video_url": "https://youtu.be/a_EApaMrycA",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-eccentric-forward-step-with-reach",
+      "name": "Eccentric Forward Step with Reach",
+      "video_url": "https://youtu.be/XIDTBBFDUko",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-band-around-the-back-ankle-circles",
+      "name": "Band Around the Back Ankle Circles",
+      "video_url": "https://youtu.be/P_bVUzQvLXc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-band-around-the-back-plantar-flexion",
+      "name": "Band Around the Back Plantar Flexion",
+      "video_url": "https://youtu.be/Ke-qjw0Fowc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Stretching/Mobility",
+      "equipment": "band"
+    },
+    {
+      "id": "band-maximal-overcoming-hamstring-isometric",
+      "name": "Maximal Overcoming Hamstring Isometric",
+      "video_url": "https://youtu.be/U2OOuxFBCMc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-maximal-overcoming-hamstringhip-flexor-bridge-isometric",
+      "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+      "video_url": "https://youtu.be/e5UsVNY-jKw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [
+        "Maximal Overcoming Hamstring/Hip Flexor Isometric"
+      ],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-supine-quad-extension-iso",
+      "name": "Supine Quad Extension Iso",
+      "video_url": "https://youtu.be/l4WnkB5qprs",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-supine-hamstring-curl",
+      "name": "Supine Hamstring Curl",
+      "video_url": "https://youtu.be/XxDi4-awoiI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-band-resisted-rfess",
+      "name": "Band Resisted RFESS",
+      "video_url": "https://youtu.be/GiSwo_UioI4",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-1-leg-rdl-with-hand-support",
+      "name": "1 Leg RDL with Hand Support",
+      "video_url": "https://youtu.be/HML2pHgSNQE",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-maximal-post-chain-isometric",
+      "name": "Maximal Post Chain Isometric",
+      "video_url": "https://youtu.be/yi95-GMu-oo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-forward-lunge-isometric",
+      "name": "Forward Lunge Isometric",
+      "video_url": "https://youtu.be/1tf10lXtYbQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-2-leg-tke",
+      "name": "2 Leg TKE",
+      "video_url": "https://youtu.be/kUGr0M6FUao",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-2-leg-full-range-tke",
+      "name": "2 Leg Full Range TKE",
+      "video_url": "https://youtu.be/_Lo63VOMjUU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-1-leg-supported-tke",
+      "name": "1 Leg Supported TKE",
+      "video_url": "https://youtu.be/fTpu5C3Uw2U",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-1-leg-tke-squat",
+      "name": "1 Leg TKE Squat",
+      "video_url": "https://youtu.be/0FM_v_WRW0w",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-stationary-1-leg-hamstring-curl",
+      "name": "Stationary 1 Leg Hamstring Curl",
+      "video_url": "https://youtu.be/9b1hrHKtvws",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-stationary-sprinter-cycles",
+      "name": "Stationary Sprinter Cycles",
+      "video_url": "https://youtu.be/uQ83lgAnMI8",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-stationary-hip-flexor-raise",
+      "name": "Stationary Hip Flexor Raise",
+      "video_url": "https://youtu.be/O5wHDzHtkas",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips"
+      ]
+    },
+    {
+      "id": "band-adductor-step-overs",
+      "name": "Adductor Step Overs",
+      "video_url": "https://youtu.be/tE89pswzJus",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips"
+      ]
+    },
+    {
+      "id": "band-abductor-raises",
+      "name": "Abductor Raises",
+      "video_url": "https://youtu.be/WnvwYhKKkYY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ]
+    },
+    {
+      "id": "band-abductor-lateral-tilts",
+      "name": "Abductor Lateral Tilts",
+      "video_url": "https://youtu.be/FYG65E08zsc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ]
+    },
+    {
+      "id": "band-adductor-lateral-tilts",
+      "name": "Adductor Lateral Tilts",
+      "video_url": "https://youtu.be/lG2sXyRWfyU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips"
+      ]
+    },
+    {
+      "id": "band-rdl-step-back-hip-flexor-raise",
+      "name": "RDL Step Back Hip Flexor Raise",
+      "video_url": "https://youtu.be/8-wtN1T5hgY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips"
+      ]
+    },
+    {
+      "id": "band-slider-lunge",
+      "name": "Slider Lunge",
+      "video_url": "https://youtu.be/R7Q0soR61tw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-lateral-lunge",
+      "name": "Lateral Lunge",
+      "video_url": "https://youtu.be/AwYTWPKTxmo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-3d-lateral-lunge",
+      "name": "3D Lateral Lunge",
+      "video_url": "https://youtu.be/bOiQvHH4iDY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads"
+      ]
+    },
+    {
+      "id": "band-3d-split-stance-rotation-hinge",
+      "name": "3D Split Stance Rotation Hinge",
+      "video_url": "https://youtu.be/-qBMp1Y1QBc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3d-1-leg-rdl-with-hand-support",
+      "name": "3D 1 Leg RDL with Hand Support",
+      "video_url": "https://youtu.be/pCBIb23Yc5Q",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-3d-1-leg-rdl",
+      "name": "3D 1 Leg RDL",
+      "video_url": "https://youtu.be/NfWp9_6VdLY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "band-3d-explosive-rotation-punch",
+      "name": "3D Explosive Rotation Punch",
+      "video_url": "https://youtu.be/VCcsjzi8nfs",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-hip-flexor-rotational-shoulder-press",
+      "name": "Hip Flexor + Rotational Shoulder Press",
+      "video_url": "https://youtu.be/hxXvq1CLhxs",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-rotational-shoulder-raise",
+      "name": "Rotational Shoulder Raise",
+      "video_url": "https://youtu.be/P67IG_ymH98",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3d-rotation-with-er-isometric",
+      "name": "3D Rotation with ER Isometric",
+      "video_url": "https://youtu.be/soskjdEZFi0",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-arm-anchored-leg-raises",
+      "name": "Arm Anchored Leg Raises",
+      "video_url": "https://youtu.be/qvUvLO3Ty9Q",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-arm-anchored-hip-bridge-with-leg-swing",
+      "name": "Arm Anchored Hip Bridge with Leg Swing",
+      "video_url": "https://youtu.be/XHdLtmm67tY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-split-stance-lunge-rotational-row",
+      "name": "Split Stance Lunge Rotational Row",
+      "video_url": "https://youtu.be/bspvPRgd-1Q",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-split-stance-lunge-rotational-press",
+      "name": "Split Stance Lunge Rotational Press",
+      "video_url": "https://youtu.be/9Dr6hj9fM1I",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-split-stance-lunge-overhead-reach-with-rotation",
+      "name": "Split Stance Lunge Overhead Reach with Rotation",
+      "video_url": "https://youtu.be/HG7Sz9h9BOQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-rip-through",
+      "name": "Lateral Rip Through",
+      "video_url": "https://youtu.be/o286cs6Dgf0",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-diagonal-split-rotational-reach-to-crash-through",
+      "name": "Diagonal Split Rotational Reach to Crash Through",
+      "video_url": "https://youtu.be/49rgZTb9TYo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3d-diagonal-split-elbow-to-knee-step-through",
+      "name": "3D Diagonal Split Elbow to Knee Step Through",
+      "video_url": "https://youtu.be/xDzSidP77f4",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Full Body Integrated Strength",
+      "equipment": "band"
+    },
+    {
+      "id": "band-linear-deceleration",
+      "name": "Linear Deceleration",
+      "video_url": "https://youtu.be/5JEm0wCzaTg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lunge-rapid-switches",
+      "name": "Lunge Rapid Switches",
+      "video_url": "https://youtu.be/SH0yZNwwTO4",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-split-stance-rapid-switches",
+      "name": "Lateral Split Stance Rapid Switches",
+      "video_url": "https://youtu.be/VCZU40OJzqo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [
+        "Lateral Split Stance Rapid Switching"
+      ],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-diagonal-split-lateral-jumps",
+      "name": "Diagonal Split Lateral Jumps",
+      "video_url": "https://youtu.be/Ms6oBMLNF8I",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-bounds",
+      "name": "Lateral Bounds",
+      "video_url": "https://youtu.be/f3lz0RI03Co",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-linear-extensive-split",
+      "name": "Linear Extensive Split",
+      "video_url": "https://youtu.be/yf1IOILlDRo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-linear-1-leg-forward-hops",
+      "name": "Linear 1 Leg Forward Hops",
+      "video_url": "https://youtu.be/12oGPrA5q_k",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-forward-extensive-split",
+      "name": "Forward Extensive Split",
+      "video_url": "https://youtu.be/iUcu4GUYI_Y",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-extensive-negative-step",
+      "name": "Extensive Negative Step",
+      "video_url": "https://youtu.be/1XxtZren9Fg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3d-posterior-lateral-lunge",
+      "name": "3D Posterior Lateral Lunge",
+      "video_url": "https://youtu.be/iS2svmpIBxc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-half-kneel-lateral-jump",
+      "name": "Half Kneel Lateral Jump",
+      "video_url": "https://youtu.be/34ykvm-iLY0",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-cross-step-change-of-direction",
+      "name": "Cross Step Change of Direction",
+      "video_url": "https://youtu.be/6j4T8ED2LfA",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-cross-step-lateral-push-out",
+      "name": "Cross Step Lateral Push Out",
+      "video_url": "https://youtu.be/C53AKXtPosg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-posterior-lateral-change-of-direction",
+      "name": "Posterior Lateral Change of Direction",
+      "video_url": "https://youtu.be/jDNv8-paMFw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-eccentric-linear-decels",
+      "name": "Eccentric Linear Decels",
+      "video_url": "https://youtu.be/do-Z_VRLvJo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-split-stance-decels",
+      "name": "Lateral Split Stance Decels",
+      "video_url": "https://youtu.be/hJqZaIUzFaQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-diagonal-split-floor-touches",
+      "name": "Diagonal Split Floor Touches",
+      "video_url": "https://youtu.be/8m3EsszPPnM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-linear-line-hops",
+      "name": "Linear Line Hops",
+      "video_url": "https://youtu.be/0YX0evUKMQM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-step-backs",
+      "name": "Resisted Step Backs",
+      "video_url": "https://www.youtube.com/watch?v=oV-CgcyD5gU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-punch-side-steps",
+      "name": "Resisted Punch Side Steps",
+      "video_url": "https://youtu.be/zo59e49f9c0",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-double-lateral-bound",
+      "name": "Resisted Double Lateral Bound",
+      "video_url": "https://youtu.be/8qns0pUEvsI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-3d-split-stance-rhythmic-push-outs",
+      "name": "Resisted 3D Split Stance Rhythmic Push Outs",
+      "video_url": "https://youtu.be/8PWkMNTJIZM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-partner-eccentric-lateral-split-drops",
+      "name": "Partner Eccentric Lateral Split Drops",
+      "video_url": "https://youtu.be/7uKPSeRCweM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-partner-eccentric-linear-split-drops",
+      "name": "Partner Eccentric Linear Split Drops",
+      "video_url": "https://youtu.be/FoVJ9Kzk8QI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-lateral-dead-start-push-outs",
+      "name": "Lateral Dead Start Push Outs",
+      "video_url": "https://youtu.be/8KAH32iJ80Y",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-back-pedal",
+      "name": "Resisted Back Pedal",
+      "video_url": "https://youtu.be/j-yq5BmDvtU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-cross-steps-on-the-move",
+      "name": "Resisted Cross Steps on the Move",
+      "video_url": "https://youtu.be/BWxRiYRGTnM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-back-peddle-skips",
+      "name": "Resisted Back Peddle Skips",
+      "video_url": "https://youtu.be/UrT-DZKwGTs",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Agility/Change of Direction",
+      "equipment": "band"
+    },
+    {
+      "id": "band-first-step-acceleration-hip-before-knee",
+      "name": "First Step Acceleration Hip Before Knee",
+      "video_url": "https://youtu.be/GZ5qK8kAMJY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-hand-assisted-marching",
+      "name": "Hand Assisted Marching",
+      "video_url": "https://youtu.be/3VWvLEbcLFU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3-point-start-first-step-explosiveness",
+      "name": "3 Point Start First Step Explosiveness",
+      "video_url": "https://youtu.be/r-cR4MiP7kQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-stationary-sprinting",
+      "name": "Stationary Sprinting",
+      "video_url": "https://youtu.be/N3yzDCW5_uU",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-stationary-1-leg-cycle-overs",
+      "name": "Stationary 1 Leg Cycle Overs",
+      "video_url": "https://youtu.be/fZthrdNIg40",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-stationary-triple-switch-cycle-overs",
+      "name": "Stationary Triple Switch Cycle Overs",
+      "video_url": "https://youtu.be/JzrlY2NYacI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-3d-linear-step-through",
+      "name": "3D Linear Step Through",
+      "video_url": "https://youtu.be/QlYgdzfxXyM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-straight-leg-bounds",
+      "name": "Resisted Straight Leg Bounds",
+      "video_url": "https://youtu.be/-ll5eDFggxg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-1-leg-cycle-overs",
+      "name": "Resisted 1 Leg Cycle Overs",
+      "video_url": "https://youtu.be/Y8WTWi4mYfY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-triple-switch-cycle-overs",
+      "name": "Resisted Triple Switch Cycle Overs",
+      "video_url": "https://youtu.be/HugwGOwYYY8",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-skips",
+      "name": "Resisted Skips",
+      "video_url": "https://youtu.be/8nIpJTNop6c",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-2-step-acceleration",
+      "name": "Resisted 2 Step Acceleration",
+      "video_url": "https://youtu.be/c-K_BD5Zi74",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-acceleration",
+      "name": "Resisted Acceleration",
+      "video_url": "https://youtu.be/nVYWuVcT9xw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Speed",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-broad-jumps",
+      "name": "Resisted Broad Jumps",
+      "video_url": "https://youtu.be/dh7KTBJndNY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-triple-broad-jumps",
+      "name": "Resisted Triple Broad Jumps",
+      "video_url": "https://youtu.be/GfZNTiWrP7U",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-pogos",
+      "name": "Resisted Pogos",
+      "video_url": "https://youtu.be/EgDlPE_dyvA",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-split-stance-pogos",
+      "name": "Resisted Split Stance Pogos",
+      "video_url": "https://youtu.be/6tQeWWxeFVo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-repeat-jumps",
+      "name": "Resisted Repeat Jumps",
+      "video_url": "https://youtu.be/98YTGx9SkW0",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-pause-jumps",
+      "name": "Resisted Pause Jumps",
+      "video_url": "https://youtu.be/fAOEW-DDMts",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-rfess-jumps",
+      "name": "Resisted RFESS Jumps",
+      "video_url": "https://youtu.be/BfK9-NWWInY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-rfess-pogos",
+      "name": "Resisted RFESS Pogos",
+      "video_url": "https://youtu.be/4PeBetL5GfQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-step-in-jumps",
+      "name": "Resisted Step in Jumps",
+      "video_url": "https://youtu.be/2rOUgjCVEdo",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-split-stance-rapid-switches",
+      "name": "Resisted Split Stance Rapid Switches",
+      "video_url": "https://youtu.be/l6wQDPjK-Ho",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-split-stance-pause-jumps",
+      "name": "Resisted Split Stance Pause Jumps",
+      "video_url": "https://youtu.be/-_-XE9L4rso",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-resisted-rotational-pogos",
+      "name": "Resisted Rotational Pogos",
+      "video_url": "https://youtu.be/3559h8K7ZBg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Jumping",
+      "equipment": "band"
+    },
+    {
+      "id": "band-front-raise",
+      "name": "Front Raise",
+      "video_url": "https://youtu.be/UrwWNahPtFw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "shoulders",
+      "muscles": [
+        "shoulders"
+      ]
+    },
+    {
+      "id": "band-shoulder-press",
+      "name": "Shoulder Press",
+      "video_url": "https://youtu.be/DFrB0NSSlXc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "shoulders",
+      "muscles": [
+        "shoulders"
+      ]
+    },
+    {
+      "id": "band-1-arm-shoulder-press",
+      "name": "1 Arm Shoulder Press",
+      "video_url": "https://youtu.be/8s7xBw-bpvE",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "shoulders",
+      "muscles": [
+        "shoulders"
+      ]
+    },
+    {
+      "id": "band-front-raise-with-lateral-step",
+      "name": "Front Raise with Lateral Step",
+      "video_url": "https://youtu.be/KlVClSLR-V8",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "shoulders",
+      "muscles": [
+        "shoulders"
+      ]
+    },
+    {
+      "id": "band-tricep-extension",
+      "name": "Tricep Extension",
+      "video_url": "https://youtu.be/RMCr0yDAjqs",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "triceps",
+      "muscles": [
+        "triceps"
+      ]
+    },
+    {
+      "id": "band-bicep-curl",
+      "name": "Bicep Curl",
+      "video_url": "https://youtu.be/NhPElxRZhmM",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "biceps",
+      "muscles": [
+        "biceps"
+      ]
+    },
+    {
+      "id": "band-lateral-raise",
+      "name": "Lateral Raise",
+      "video_url": "https://youtu.be/WrXTOWJw9_k",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "side_delts",
+      "muscles": [
+        "side_delts"
+      ]
+    },
+    {
+      "id": "band-bent-over-cross-body-row",
+      "name": "Bent Over Cross Body Row",
+      "video_url": "https://youtu.be/wG6thfKTQbg",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "upper_back",
+      "muscles": [
+        "upper_back"
+      ]
+    },
+    {
+      "id": "band-bent-over-1-arm-row",
+      "name": "Bent Over 1 Arm Row",
+      "video_url": "https://youtu.be/gx3u3lQsl24",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats"
+      ]
+    },
+    {
+      "id": "band-double-arm-press",
+      "name": "Double Arm Press",
+      "video_url": "https://youtu.be/BcV_v5i76cY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "shoulders",
+      "muscles": [
+        "shoulders"
+      ]
+    },
+    {
+      "id": "band-double-arm-fly",
+      "name": "Double Arm Fly",
+      "video_url": "https://youtu.be/yuNiamUKTpY",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "chest",
+      "muscles": [
+        "chest"
+      ]
+    },
+    {
+      "id": "band-band-pull-apart",
+      "name": "Band Pull Apart",
+      "video_url": "https://youtu.be/I0YMsxYaGbc",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "rear_delts",
+      "muscles": [
+        "rear_delts"
+      ]
+    },
+    {
+      "id": "band-max-iso-bicep-curls",
+      "name": "Max Iso Bicep Curls",
+      "video_url": "https://youtu.be/eCYXL7cnyNI",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "biceps",
+      "muscles": [
+        "biceps"
+      ]
+    },
+    {
+      "id": "band-band-resisted-push-up",
+      "name": "Band Resisted Push Up",
+      "video_url": "https://youtu.be/OcmKYUBV78k",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "chest",
+      "muscles": [
+        "chest"
+      ]
+    },
+    {
+      "id": "band-defensive-shoulder-raises",
+      "name": "Defensive Shoulder Raises",
+      "video_url": "https://youtu.be/Uy2qfY9qjNw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "side_delts",
+      "muscles": [
+        "side_delts"
+      ]
+    },
+    {
+      "id": "band-max-iso-triceps",
+      "name": "Max Iso Triceps",
+      "video_url": "https://youtu.be/oItwd_5af_w",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "triceps",
+      "muscles": [
+        "triceps"
+      ]
+    },
+    {
+      "id": "band-split-stance-1-arm-rotational-press",
+      "name": "Split Stance 1 Arm Rotational Press",
+      "video_url": "https://youtu.be/9Dr6hj9fM1I",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "chest",
+      "muscles": [
+        "chest"
+      ]
+    },
+    {
+      "id": "band-band-pullover",
+      "name": "Band Pullover",
+      "video_url": "https://youtu.be/aCZoZeyw8Aw",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats"
+      ]
+    },
+    {
+      "id": "band-half-kneel-rotational-row",
+      "name": "Half Kneel Rotational Row",
+      "video_url": "https://youtu.be/0Cocc5Woeto",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Upper Body",
+      "equipment": "band",
+      "primary_muscle": "upper_back",
+      "muscles": [
+        "upper_back"
+      ]
     }
   ],
   "programs": {
@@ -27233,6 +28991,3034 @@
           }
         ],
         "id": "pjf_fat_dont_fly_phase3"
+      },
+      {
+        "program_name": "Extended Band: 6-Week Athleticism",
+        "source": "PJF Performance",
+        "description": "Extended-length band only. Three 2-week phases of mobility, speed, change of direction, jumping and band strength, 5 days a week. Already lifting? Drop the strength work and keep the mobility, speed, agility and jumps.",
+        "sessions_per_week": 5,
+        "level": "Band only",
+        "weeks": [
+          {
+            "week_num": 1,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 1 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "3-Way Hip Hinge with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                  },
+                  {
+                    "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "First Step Acceleration Hip Before Knee",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Skips",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear Deceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Punch Side Steps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step Backs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "1 Leg Supported TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (9/10 quad burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 1 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Diagonal Split Rotational Reach to Crash Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Half Kneel Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Lateral Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 1 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Lateral Lunge Adductor Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Half Kneel Underhand Press with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Hand Assisted Marching",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Stationary Sprinting",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:20",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Resisted Split Stance Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Pause Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Maximal Overcoming Hamstring Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:08",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Supine Quad Extension Iso",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:08",
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 1 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Diagonal Split Rotational Reach to Crash Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Half Kneel Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Lateral Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 1 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "3-Way Hip Hinge with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                  },
+                  {
+                    "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "First Step Acceleration Hip Before Knee",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Skips",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear Deceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Punch Side Steps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step Backs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "1 Leg Supported TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (9/10 quad burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 2,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 1 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "3-Way Hip Hinge with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                  },
+                  {
+                    "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "First Step Acceleration Hip Before Knee",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Skips",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear Deceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Punch Side Steps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step Backs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "1 Leg Supported TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (9/10 quad burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 1 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Diagonal Split Rotational Reach to Crash Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Half Kneel Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Lateral Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 1 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Lateral Lunge Adductor Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Half Kneel Underhand Press with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Hand Assisted Marching",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Stationary Sprinting",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:20",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Resisted Split Stance Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Pause Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Maximal Overcoming Hamstring Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:08",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Supine Quad Extension Iso",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:08",
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 1 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Diagonal Split Rotational Reach to Crash Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Half Kneel Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Lateral Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (8/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 8/10: a solid burn in the target muscles while leaving several reps in the tank. Not true failure."
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 1 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "3-Way Hip Hinge with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Not sure how to set up the band? Watch the category overview video in the band database."
+                  },
+                  {
+                    "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "First Step Acceleration Hip Before Knee",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Skips",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear Deceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Punch Side Steps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step Backs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "50 ft each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "1 Leg Supported TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "AMRAP (9/10 quad burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 3,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 2 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Step Back Hip Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Ankle Circles",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": "30 seconds each way."
+                  },
+                  {
+                    "name": "Resisted Straight Leg Bounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 2 Step Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lunge Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Decels",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D Lateral Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL with Hand Support",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 2 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "3D Rotation with ER Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 2 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Supine Long Length Hamstring Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Floating Toes Dorsiflexion with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cross Step Change of Direction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Floor Touches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Repeat Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Pogos",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Lunge Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:45",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Adductor Step Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 2 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "3D Rotation with ER Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 2 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Step Back Hip Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Ankle Circles",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": "30 seconds each way."
+                  },
+                  {
+                    "name": "Resisted Straight Leg Bounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 2 Step Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lunge Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Decels",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D Lateral Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL with Hand Support",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 4,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 2 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Step Back Hip Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Ankle Circles",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": "30 seconds each way."
+                  },
+                  {
+                    "name": "Resisted Straight Leg Bounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 2 Step Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lunge Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Decels",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D Lateral Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL with Hand Support",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 2 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "3D Rotation with ER Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 2 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Supine Long Length Hamstring Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Floating Toes Dorsiflexion with Band Distraction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cross Step Change of Direction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Floor Touches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Repeat Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Pogos",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Lunge Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:00:45",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Adductor Step Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 2 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "3D Rotation with ER Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Bicep Curl",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Tricep Extension",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 2 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Step Back Hip Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Ankle Circles",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": "30 seconds each way."
+                  },
+                  {
+                    "name": "Resisted Straight Leg Bounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 2 Step Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lunge Rapid Switches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Lateral Split Stance Decels",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D Lateral Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL with Hand Support",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 5,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 3 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Back Line/Front Line Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Curtsy Hinge to Step Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Triple Switch Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 1 Leg Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 6,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Lateral Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear 1 Leg Forward Hops",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Resisted RFESS",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 3 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Hip Flexor + Rotational Shoulder Press",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Press",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Double Arm Fly",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Pullover",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise with Lateral Step",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Bicep Curls",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Triceps",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 3 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Eccentric Forward Step with Reach",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Plantar Flexion",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Half Kneel Lateral Jump",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step in Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "4",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted RFESS Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted RFESS Pogos",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "20",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "2 Leg Full Range TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 3 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Hip Flexor + Rotational Shoulder Press",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Press",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Double Arm Fly",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Pullover",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise with Lateral Step",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Bicep Curls",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Triceps",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 3 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Back Line/Front Line Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Curtsy Hinge to Step Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Triple Switch Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 1 Leg Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 6,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Lateral Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear 1 Leg Forward Hops",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Resisted RFESS",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 6,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Phase 3 · Mon: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Back Line/Front Line Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Curtsy Hinge to Step Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Triple Switch Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 1 Leg Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 6,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Lateral Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear 1 Leg Forward Hops",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Resisted RFESS",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Phase 3 · Tue: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Hip Flexor + Rotational Shoulder Press",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Press",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Double Arm Fly",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Pullover",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise with Lateral Step",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Bicep Curls",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Triceps",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Phase 3 · Wed: Jumps, Mobility & Isos",
+                "exercises": [
+                  {
+                    "name": "Eccentric Forward Step with Reach",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Around the Back Plantar Flexion",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "00:01:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Half Kneel Lateral Jump",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Step in Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "4",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted RFESS Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted RFESS Pogos",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "20",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "2 Leg Full Range TKE",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  }
+                ]
+              },
+              {
+                "day_num": 4,
+                "focus": "Phase 3 · Thu: Rotation & Arms (Band)",
+                "exercises": [
+                  {
+                    "name": "Hip Flexor + Rotational Shoulder Press",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Row",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Split Stance Lunge Rotational Press",
+                    "round_group": "Superset 2",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Double Arm Fly",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Pullover",
+                    "round_group": "Superset 3",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Front Raise with Lateral Step",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Bicep Curls",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Max Iso Triceps",
+                    "round_group": "Superset 4",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 × 4-sec max hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              },
+              {
+                "day_num": 5,
+                "focus": "Phase 3 · Fri: Speed, Agility & Strength",
+                "exercises": [
+                  {
+                    "name": "Back Line/Front Line Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Curtsy Hinge to Step Through",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Triple Switch Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted 1 Leg Cycle Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Resisted Acceleration",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 6,
+                    "reps": "50 ft",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Diagonal Split Lateral Jumps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Linear 1 Leg Forward Hops",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "3D 1 Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "AMRAP (9/10 burn)",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "Aim for RPE 9/10: a huge burn in the target muscles without compromising form."
+                  },
+                  {
+                    "name": "Band Resisted RFESS",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": null
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pjf_extended_band_6wk"
       }
     ],
     "bws": [
@@ -30215,13 +35001,14 @@
     ]
   },
   "stats": {
-    "total_exercises": 317,
-    "with_video": 118,
-    "pjf_only": 195,
+    "total_exercises": 496,
+    "with_video": 326,
+    "pjf_only": 211,
     "bws_only": 121,
     "shared": 1,
-    "pjf_programs": 4,
-    "bws_programs": 10
+    "pjf_programs": 5,
+    "bws_programs": 10,
+    "band": 122
   },
   "warmups": {
     "bws_upper_warmup": {
@@ -30411,5 +35198,14 @@
       }
     ],
     "note": "Only for first upper and lower body exercise of the session. 1 optional warm-up set for remaining exercises."
+  },
+  "band_overviews": {
+    "Stretching/Mobility": "https://youtu.be/Wy8okoXGzKE",
+    "Lower Body Strength": "https://youtu.be/13riOY7dKFY",
+    "Full Body Integrated Strength": "https://youtu.be/2RbwrXl-Ymg",
+    "Agility/Change of Direction": "https://youtu.be/ZlOF8A_0hj8",
+    "Speed": "https://youtu.be/B40RB6rjftA",
+    "Jumping": "https://youtu.be/VfaUYh_DSZI",
+    "Upper Body": "https://youtu.be/KiohwZgz7oY"
   }
 }

@@ -9,9 +9,10 @@ import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/p
 import { pref } from '../db.js';
 import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
+import { openBandDatabase } from './band_db.js';
 
 export async function renderPrograms(app) {
-  const [{ programs }, activePlan, tosProgress, hipProgress, hipFlare, customPrograms] = await Promise.all([
+  const [{ programs, exercises }, activePlan, tosProgress, hipProgress, hipFlare, customPrograms] = await Promise.all([
     loadCatalogs(),
     getActivePlan(),
     pref('tos_progress'),
@@ -26,6 +27,7 @@ export async function renderPrograms(app) {
 
   const bws = programs.filter(p => p.source === 'BWS');
   const pjf = programs.filter(p => p.source === 'PJF');
+  const bandCount = exercises.filter(e => e.sources?.includes('band')).length;
 
   app.innerHTML = `
     <h1>Programs</h1>
@@ -74,6 +76,19 @@ export async function renderPrograms(app) {
     <div id="bws-list"></div>
 
     <div class="group-label">PJF Performance</div>
+    <div class="card" style="padding:12px 14px;border-color:rgba(34,197,94,0.3);cursor:pointer;margin-bottom:10px" id="band-db-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-weight:600;margin-bottom:2px">Extended Band Exercise Database</div>
+          <div class="muted" style="font-size:12px">
+            Mobility · strength · agility · speed · jumping · upper body, each with its PJF demo
+          </div>
+        </div>
+        <span class="pill" style="color:#22c55e;border-color:rgba(34,197,94,0.4);flex-shrink:0;margin-left:8px">
+          ${bandCount} videos
+        </span>
+      </div>
+    </div>
     <div id="pjf-list"></div>
   `;
 
@@ -86,6 +101,7 @@ export async function renderPrograms(app) {
 
   app.querySelector('#tos-card').onclick = () => navigate('tos');
   app.querySelector('#hip-card').onclick = () => navigate('hip');
+  app.querySelector('#band-db-card').onclick = () => openBandDatabase();
 
   app.querySelector('#build-plan').onclick = async () => {
     const { exercises } = await loadCatalogs();

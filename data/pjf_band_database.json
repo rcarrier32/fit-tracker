@@ -1,0 +1,624 @@
+{
+  "source": "PJF Extended Length Band: Exercise Database V.4",
+  "overviews": {
+    "Stretching/Mobility": "https://youtu.be/Wy8okoXGzKE",
+    "Lower Body Strength": "https://youtu.be/13riOY7dKFY",
+    "Full Body Integrated Strength": "https://youtu.be/2RbwrXl-Ymg",
+    "Agility/Change of Direction": "https://youtu.be/ZlOF8A_0hj8",
+    "Speed": "https://youtu.be/B40RB6rjftA",
+    "Jumping": "https://youtu.be/VfaUYh_DSZI",
+    "Upper Body": "https://youtu.be/KiohwZgz7oY"
+  },
+  "exercises": [
+    {
+      "name": "3-Way Hip Hinge with Band Distraction",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/RH_CcXAMEf8"
+    },
+    {
+      "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/vREyr4rh034"
+    },
+    {
+      "name": "Lateral Lunge Adductor Stretch",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/eUlTD0angHM"
+    },
+    {
+      "name": "Step Back Hip Hinge",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/RVmoP52r8x4"
+    },
+    {
+      "name": "Back Line/Front Line Stretch",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/tCHuXkRVnsY"
+    },
+    {
+      "name": "Floating Toes Dorsiflexion with Band Distraction",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/v0dW2XTKyXY"
+    },
+    {
+      "name": "Supine Long Length Hamstring Raise",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/xQeii137IvI"
+    },
+    {
+      "name": "Half Kneel Underhand Press with Band Distraction",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/BsR5hbAqFlU"
+    },
+    {
+      "name": "Curtsy Hinge to Step Through",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/a_EApaMrycA"
+    },
+    {
+      "name": "Eccentric Forward Step with Reach",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/XIDTBBFDUko"
+    },
+    {
+      "name": "Band Around the Back Ankle Circles",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/P_bVUzQvLXc"
+    },
+    {
+      "name": "Band Around the Back Plantar Flexion",
+      "category": "Stretching/Mobility",
+      "video_url": "https://youtu.be/Ke-qjw0Fowc"
+    },
+    {
+      "name": "Maximal Overcoming Hamstring Isometric",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/U2OOuxFBCMc"
+    },
+    {
+      "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/e5UsVNY-jKw"
+    },
+    {
+      "name": "Supine Quad Extension Iso",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/l4WnkB5qprs"
+    },
+    {
+      "name": "Supine Hamstring Curl",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/XxDi4-awoiI"
+    },
+    {
+      "name": "Band Resisted RFESS",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/GiSwo_UioI4"
+    },
+    {
+      "name": "1 Leg RDL with Hand Support",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/HML2pHgSNQE"
+    },
+    {
+      "name": "Maximal Post Chain Isometric",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/yi95-GMu-oo"
+    },
+    {
+      "name": "Forward Lunge Isometric",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/1tf10lXtYbQ"
+    },
+    {
+      "name": "2 Leg TKE",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/kUGr0M6FUao"
+    },
+    {
+      "name": "2 Leg Full Range TKE",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/_Lo63VOMjUU"
+    },
+    {
+      "name": "1 Leg Supported TKE",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/fTpu5C3Uw2U"
+    },
+    {
+      "name": "1 Leg TKE Squat",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/0FM_v_WRW0w"
+    },
+    {
+      "name": "Stationary 1 Leg Hamstring Curl",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/9b1hrHKtvws"
+    },
+    {
+      "name": "Stationary Sprinter Cycles",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/uQ83lgAnMI8"
+    },
+    {
+      "name": "Stationary Hip Flexor Raise",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/O5wHDzHtkas"
+    },
+    {
+      "name": "Adductor Step Overs",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/tE89pswzJus"
+    },
+    {
+      "name": "Abductor Raises",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/WnvwYhKKkYY"
+    },
+    {
+      "name": "Abductor Lateral Tilts",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/FYG65E08zsc"
+    },
+    {
+      "name": "Adductor Lateral Tilts",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/lG2sXyRWfyU"
+    },
+    {
+      "name": "RDL Step Back Hip Flexor Raise",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/8-wtN1T5hgY"
+    },
+    {
+      "name": "Slider Lunge",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/R7Q0soR61tw"
+    },
+    {
+      "name": "Lateral Lunge",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/AwYTWPKTxmo"
+    },
+    {
+      "name": "3D Lateral Lunge",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/bOiQvHH4iDY"
+    },
+    {
+      "name": "3D Split Stance Rotation Hinge",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/-qBMp1Y1QBc"
+    },
+    {
+      "name": "3D 1 Leg RDL with Hand Support",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/pCBIb23Yc5Q"
+    },
+    {
+      "name": "3D 1 Leg RDL",
+      "category": "Lower Body Strength",
+      "video_url": "https://youtu.be/NfWp9_6VdLY"
+    },
+    {
+      "name": "3D Explosive Rotation Punch",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/VCcsjzi8nfs"
+    },
+    {
+      "name": "Hip Flexor + Rotational Shoulder Press",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/hxXvq1CLhxs"
+    },
+    {
+      "name": "Rotational Shoulder Raise",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/P67IG_ymH98"
+    },
+    {
+      "name": "3D Rotation with ER Isometric",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/soskjdEZFi0"
+    },
+    {
+      "name": "Arm Anchored Leg Raises",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/qvUvLO3Ty9Q"
+    },
+    {
+      "name": "Arm Anchored Hip Bridge with Leg Swing",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/XHdLtmm67tY"
+    },
+    {
+      "name": "Split Stance Lunge Rotational Row",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/bspvPRgd-1Q"
+    },
+    {
+      "name": "Split Stance Lunge Rotational Press",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/9Dr6hj9fM1I"
+    },
+    {
+      "name": "Split Stance Lunge Overhead Reach with Rotation",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/HG7Sz9h9BOQ"
+    },
+    {
+      "name": "Lateral Rip Through",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/o286cs6Dgf0"
+    },
+    {
+      "name": "Diagonal Split Rotational Reach to Crash Through",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/49rgZTb9TYo"
+    },
+    {
+      "name": "3D Diagonal Split Elbow to Knee Step Through",
+      "category": "Full Body Integrated Strength",
+      "video_url": "https://youtu.be/xDzSidP77f4"
+    },
+    {
+      "name": "Linear Deceleration",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/5JEm0wCzaTg"
+    },
+    {
+      "name": "Lunge Rapid Switches",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/SH0yZNwwTO4"
+    },
+    {
+      "name": "Lateral Split Stance Rapid Switches",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/VCZU40OJzqo"
+    },
+    {
+      "name": "Diagonal Split Lateral Jumps",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/Ms6oBMLNF8I"
+    },
+    {
+      "name": "Lateral Bounds",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/f3lz0RI03Co"
+    },
+    {
+      "name": "Linear Extensive Split",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/yf1IOILlDRo"
+    },
+    {
+      "name": "Linear 1 Leg Forward Hops",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/12oGPrA5q_k"
+    },
+    {
+      "name": "Forward Extensive Split",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/iUcu4GUYI_Y"
+    },
+    {
+      "name": "Extensive Negative Step",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/1XxtZren9Fg"
+    },
+    {
+      "name": "3D Posterior Lateral Lunge",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/iS2svmpIBxc"
+    },
+    {
+      "name": "Half Kneel Lateral Jump",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/34ykvm-iLY0"
+    },
+    {
+      "name": "Cross Step Change of Direction",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/6j4T8ED2LfA"
+    },
+    {
+      "name": "Cross Step Lateral Push Out",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/C53AKXtPosg"
+    },
+    {
+      "name": "Posterior Lateral Change of Direction",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/jDNv8-paMFw"
+    },
+    {
+      "name": "Eccentric Linear Decels",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/do-Z_VRLvJo"
+    },
+    {
+      "name": "Lateral Split Stance Decels",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/hJqZaIUzFaQ"
+    },
+    {
+      "name": "Diagonal Split Floor Touches",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/8m3EsszPPnM"
+    },
+    {
+      "name": "Linear Line Hops",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/0YX0evUKMQM"
+    },
+    {
+      "name": "Resisted Step Backs",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://www.youtube.com/watch?v=oV-CgcyD5gU"
+    },
+    {
+      "name": "Resisted Punch Side Steps",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/zo59e49f9c0"
+    },
+    {
+      "name": "Resisted Double Lateral Bound",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/8qns0pUEvsI"
+    },
+    {
+      "name": "Resisted 3D Split Stance Rhythmic Push Outs",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/8PWkMNTJIZM"
+    },
+    {
+      "name": "Partner Eccentric Lateral Split Drops",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/7uKPSeRCweM"
+    },
+    {
+      "name": "Partner Eccentric Linear Split Drops",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/FoVJ9Kzk8QI"
+    },
+    {
+      "name": "Lateral Dead Start Push Outs",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/8KAH32iJ80Y"
+    },
+    {
+      "name": "Resisted Back Pedal",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/j-yq5BmDvtU"
+    },
+    {
+      "name": "Resisted Cross Steps on the Move",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/BWxRiYRGTnM"
+    },
+    {
+      "name": "Resisted Back Peddle Skips",
+      "category": "Agility/Change of Direction",
+      "video_url": "https://youtu.be/UrT-DZKwGTs"
+    },
+    {
+      "name": "First Step Acceleration Hip Before Knee",
+      "category": "Speed",
+      "video_url": "https://youtu.be/GZ5qK8kAMJY"
+    },
+    {
+      "name": "Hand Assisted Marching",
+      "category": "Speed",
+      "video_url": "https://youtu.be/3VWvLEbcLFU"
+    },
+    {
+      "name": "3 Point Start First Step Explosiveness",
+      "category": "Speed",
+      "video_url": "https://youtu.be/r-cR4MiP7kQ"
+    },
+    {
+      "name": "Stationary Sprinting",
+      "category": "Speed",
+      "video_url": "https://youtu.be/N3yzDCW5_uU"
+    },
+    {
+      "name": "Stationary 1 Leg Cycle Overs",
+      "category": "Speed",
+      "video_url": "https://youtu.be/fZthrdNIg40"
+    },
+    {
+      "name": "Stationary Triple Switch Cycle Overs",
+      "category": "Speed",
+      "video_url": "https://youtu.be/JzrlY2NYacI"
+    },
+    {
+      "name": "3D Linear Step Through",
+      "category": "Speed",
+      "video_url": "https://youtu.be/QlYgdzfxXyM"
+    },
+    {
+      "name": "Resisted Straight Leg Bounds",
+      "category": "Speed",
+      "video_url": "https://youtu.be/-ll5eDFggxg"
+    },
+    {
+      "name": "Resisted 1 Leg Cycle Overs",
+      "category": "Speed",
+      "video_url": "https://youtu.be/Y8WTWi4mYfY"
+    },
+    {
+      "name": "Resisted Triple Switch Cycle Overs",
+      "category": "Speed",
+      "video_url": "https://youtu.be/HugwGOwYYY8"
+    },
+    {
+      "name": "Resisted Skips",
+      "category": "Speed",
+      "video_url": "https://youtu.be/8nIpJTNop6c"
+    },
+    {
+      "name": "Resisted 2 Step Acceleration",
+      "category": "Speed",
+      "video_url": "https://youtu.be/c-K_BD5Zi74"
+    },
+    {
+      "name": "Resisted Acceleration",
+      "category": "Speed",
+      "video_url": "https://youtu.be/nVYWuVcT9xw"
+    },
+    {
+      "name": "Resisted Broad Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/dh7KTBJndNY"
+    },
+    {
+      "name": "Resisted Triple Broad Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/GfZNTiWrP7U"
+    },
+    {
+      "name": "Resisted Pogos",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/EgDlPE_dyvA"
+    },
+    {
+      "name": "Resisted Split Stance Pogos",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/6tQeWWxeFVo"
+    },
+    {
+      "name": "Resisted Repeat Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/98YTGx9SkW0"
+    },
+    {
+      "name": "Resisted Pause Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/fAOEW-DDMts"
+    },
+    {
+      "name": "Resisted RFESS Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/BfK9-NWWInY"
+    },
+    {
+      "name": "Resisted RFESS Pogos",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/4PeBetL5GfQ"
+    },
+    {
+      "name": "Resisted Step in Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/2rOUgjCVEdo"
+    },
+    {
+      "name": "Resisted Split Stance Rapid Switches",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/l6wQDPjK-Ho"
+    },
+    {
+      "name": "Resisted Split Stance Pause Jumps",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/-_-XE9L4rso"
+    },
+    {
+      "name": "Resisted Rotational Pogos",
+      "category": "Jumping",
+      "video_url": "https://youtu.be/3559h8K7ZBg"
+    },
+    {
+      "name": "Front Raise",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/UrwWNahPtFw"
+    },
+    {
+      "name": "Shoulder Press",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/DFrB0NSSlXc"
+    },
+    {
+      "name": "1 Arm Shoulder Press",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/8s7xBw-bpvE"
+    },
+    {
+      "name": "Front Raise with Lateral Step",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/KlVClSLR-V8"
+    },
+    {
+      "name": "Tricep Extension",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/RMCr0yDAjqs"
+    },
+    {
+      "name": "Bicep Curl",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/NhPElxRZhmM"
+    },
+    {
+      "name": "Lateral Raise",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/WrXTOWJw9_k"
+    },
+    {
+      "name": "Bent Over Cross Body Row",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/wG6thfKTQbg"
+    },
+    {
+      "name": "Bent Over 1 Arm Row",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/gx3u3lQsl24"
+    },
+    {
+      "name": "Double Arm Press",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/BcV_v5i76cY"
+    },
+    {
+      "name": "Double Arm Fly",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/yuNiamUKTpY"
+    },
+    {
+      "name": "Band Pull Apart",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/I0YMsxYaGbc"
+    },
+    {
+      "name": "Max Iso Bicep Curls",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/eCYXL7cnyNI"
+    },
+    {
+      "name": "Band Resisted Push Up",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/OcmKYUBV78k"
+    },
+    {
+      "name": "Defensive Shoulder Raises",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/Uy2qfY9qjNw"
+    },
+    {
+      "name": "Max Iso Triceps",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/oItwd_5af_w"
+    },
+    {
+      "name": "Split Stance 1 Arm Rotational Press",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/9Dr6hj9fM1I"
+    },
+    {
+      "name": "Band Pullover",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/aCZoZeyw8Aw"
+    },
+    {
+      "name": "Half Kneel Rotational Row",
+      "category": "Upper Body",
+      "video_url": "https://youtu.be/0Cocc5Woeto"
+    }
+  ]
+}

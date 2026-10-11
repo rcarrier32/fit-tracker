@@ -522,11 +522,13 @@ async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, titl
         const filtered = (q ? sorted.filter(e =>
           e.name.toLowerCase().includes(q) ||
           (e.aliases || []).some(a => a.toLowerCase().includes(q)) ||
-          (e.primary_muscle || '').includes(q)
+          (e.primary_muscle || '').includes(q) ||
+          (e.category || '').toLowerCase().includes(q) ||
+          (e.equipment || '') === q
         ) : sorted).slice(0, 80);
         $list.innerHTML = filtered.map(e => {
           const isMatch = filterMuscle && e.primary_muscle === filterMuscle;
-          const muscle = e.primary_muscle ? e.primary_muscle.replace(/_/g, ' ') : null;
+          const muscle = e.primary_muscle ? e.primary_muscle.replace(/_/g, ' ') : (e.category || null);
           return `
             <div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}">
               <div style="flex:1">
