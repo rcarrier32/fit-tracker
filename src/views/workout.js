@@ -8,7 +8,7 @@ import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, posit
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
-import { openExerciseDetail } from '../lib/exercise_ui.js';
+import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -242,8 +242,13 @@ export async function renderWorkout(app) {
   }
 
   const $ex = app.querySelector('#exercises');
+  // Band days have nothing to weigh, so they use the FKH layout like Hip and TOS: a row
+  // with the video thumbnail, tap it for the video on top with the sets under it.
+  const bandDay = dayData.exercises.length > 0 && dayData.exercises
+    .every(x => exMap[String(x.name).toLowerCase()]?.sources?.includes('band'));
+  if (bandDay) renderBandList($ex, session, exMap);
   let lastGroup = null;
-  session.exercises.forEach((ex, i) => {
+  if (!bandDay) session.exercises.forEach((ex, i) => {
     const grp = ex.round_group;
     if (grp && grp !== lastGroup) {
       $ex.insertAdjacentHTML('beforeend', `<div class="group-label">${prettyGroup(grp)}</div>`);
@@ -1090,6 +1095,80 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   applyCompactState(card, ex);
   return card;
 }
+
+/** "2 × 5 each way", "5 × 0:08", "4 × 50 ft": what the FKH row and detail show. */
+function bandRx(ex) {
+  const n = +ex.target_sets || 1;
+  const secs = isTimed(ex) ? parseSecs(ex.time) : 0;
+  return `${n} × ${secs ? fmtSecs(secs) : (ex.target_reps || 'Done')}`;
+}
+
+const bandSetsDone = (ex) => Array.from({ length: +ex.target_sets || 1 }, (_, k) => !!ex.sets?.[k]?.done);
+
+function renderBandList($ex, session, exMap) {
+  const asEx = (ex, i) => {
+    const lib = exMap[ex.name.toLowerCase()] || {};
+    return { id: `b${i}`, name: ex.name, video_url: lib.video_url, subtitle: lib.category,
+      notes: ex.notes, source: 'PJF band' };
+  };
+  const paint = () => {
+    let html = '', lastGroup = null;
+    session.exercises.forEach((ex, i) => {
+      const grp = ex.round_group;
+      if (grp && grp !== lastGroup) html += `<div class="group-label">${prettyGroup(grp)}</div>`;
+      lastGroup = grp || null;
+      const sets = bandSetsDone(ex);
+      html += `<div style="margin-bottom:8px">${exerciseRowHTML(asEx(ex, i), {
+        key: String(i), rx: bandRx(ex), sets, done: sets.every(Boolean), accent: '#22c55e' })}</div>`;
+    });
+    $ex.innerHTML = html;
+    wireExerciseRows($ex, { open: (k) => openDetail(+k), check: (k) => toggleAll(+k) });
+  };
+  const setAll = async (i, v) => {
+    const ex = session.exercises[i];
+    for (let k = 0; k < (+ex.target_sets || 1); k++) setAt(ex, k).done = v;
+    await saveSession(session);
+  };
+  const toggleAll = async (i) => { await setAll(i, !bandSetsDone(session.exercises[i]).every(Boolean)); paint(); };
+  function openDetail(i) {
+    const ex = session.exercises[i];
+    const secs = isTimed(ex) ? parseSecs(ex.time) : 0;
+    openExerciseDetail(asEx(ex, i), {
+      accent: '#22c55e',
+      rx: bandRx(ex),
+      sets: {
+        get: () => bandSetsDone(ex),
+        save: async (arr) => { arr.forEach((d, k) => { setAt(ex, k).done = d; }); await saveSession(session); paint(); },
+      },
+      isDone: () => bandSetsDone(ex).every(Boolean),
+      setDone: async (v) => { await setAll(i, v); paint(); },
+      next: () => {
+        const order = [...session.exercises.keys()];
+        const j = [...order.slice(i + 1), ...order.slice(0, i)]
+          .find(k => !bandSetsDone(session.exercises[k]).every(Boolean));
+        return j == null ? null : { name: session.exercises[j].name, open: () => openDetail(j) };
+      },
+      completeLabel: 'Every exercise done. Tap Finish workout',
+      extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}</button>` : '',
+    });
+  }
+  paint();
+}
+
+// Hold / interval countdown inside a band exercise's detail sheet.
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.hold-timer');
+  if (!btn) return;
+  if (btn._t) { clearInterval(btn._t); btn._t = null; btn.textContent = `▶ Start ${fmtSecs(+btn.dataset.secs)}`; return; }
+  let left = +btn.dataset.secs;
+  btn.textContent = `■ ${fmtSecs(left)}`;
+  btn._t = setInterval(() => {
+    left--;
+    if (!btn.isConnected) { clearInterval(btn._t); return; }
+    if (left <= 0) { clearInterval(btn._t); btn._t = null; beep(); btn.textContent = `✓ Done · ▶ again`; return; }
+    btn.textContent = `■ ${fmtSecs(left)}`;
+  }, 1000);
+});
 
 function formatTarget(ex) {
   const parts = [];
