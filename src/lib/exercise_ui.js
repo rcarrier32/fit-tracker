@@ -177,7 +177,7 @@ function videoBlockHTML(ex) {
   const vid = videoOf(ex);
   if (vid) {
     return `
-      <div style="position:relative;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden">
+      <div class="ex-video">
         <iframe src="https://www.youtube.com/embed/${vid}?playsinline=1&rel=0&modestbranding=1"
           title="${esc(ex.videoTitle || ex.name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>

@@ -329,6 +329,30 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   animation: slide-up 0.25s;
 }
 @keyframes fade { from { opacity: 0; } }
+
+/* Exercise demo video. Rotate a phone to landscape and it fills the screen; rotate back
+   and it returns to the card. Pure CSS so the YouTube player keeps playing, no reload. */
+.ex-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+@media (orientation: landscape) and (max-height: 540px) {
+  .sheet .ex-video {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  /* Keep the page behind still while the video is up. */
+  .sheet:has(.ex-video) { overflow: hidden; }
+}
 @keyframes slide-up { from { transform: translateY(100%); } }
 
 .update-banner {
