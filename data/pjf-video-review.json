@@ -1,6 +1,6 @@
 {
   "source": "pjf",
-  "generated_for": 231,
+  "generated_for": 235,
   "max_seconds": 300,
   "exercises": [
     {
@@ -7761,7 +7761,7 @@
     {
       "id": "band-1-leg-rdl-with-hand-support",
       "name": "1 Leg RDL with Hand Support",
-      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per minute' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
       "approved": null,
       "candidates": []
     },
@@ -7832,6 +7832,90 @@
           "score": 1.45
         }
       ]
+    },
+    {
+      "id": "band-2-leg-tke",
+      "name": "2 Leg TKE",
+      "approved": "WEcLkuvcMZc",
+      "candidates": [
+        {
+          "videoId": "CNEXyR1fPZo",
+          "title": "STOP Doing This To Fix Knee Pain",
+          "channel": "Squat University",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/CNEXyR1fPZo",
+          "score": 2.8
+        },
+        {
+          "videoId": "Am8ErAf6iw0",
+          "title": "Knee Replacement Exercises",
+          "channel": "Dr. Caleb Burgess, DPT",
+          "seconds": 6,
+          "embeddable": true,
+          "url": "https://youtu.be/Am8ErAf6iw0",
+          "score": 2.48
+        },
+        {
+          "videoId": "WEcLkuvcMZc",
+          "title": "How To: Banded Terminal Knee Extension (TKE)",
+          "channel": "Live Lean TV Daily Exercises",
+          "seconds": 52,
+          "embeddable": true,
+          "url": "https://youtu.be/WEcLkuvcMZc",
+          "score": 2.33
+        }
+      ]
+    },
+    {
+      "id": "band-2-leg-full-range-tke",
+      "name": "2 Leg Full Range TKE",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "band-1-leg-supported-tke",
+      "name": "1 Leg Supported TKE",
+      "approved": "WEcLkuvcMZc",
+      "candidates": [
+        {
+          "videoId": "CNEXyR1fPZo",
+          "title": "STOP Doing This To Fix Knee Pain",
+          "channel": "Squat University",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/CNEXyR1fPZo",
+          "score": 2.8
+        },
+        {
+          "videoId": "wVhTyEmqz8E",
+          "title": "TKE Exercise with Heels Down (Terminal Knee Extension): Gym Shorts (How To)",
+          "channel": "Barbell Logic",
+          "seconds": 51,
+          "embeddable": true,
+          "url": "https://youtu.be/wVhTyEmqz8E",
+          "score": 2.33
+        },
+        {
+          "videoId": "WEcLkuvcMZc",
+          "title": "How To: Banded Terminal Knee Extension (TKE)",
+          "channel": "Live Lean TV Daily Exercises",
+          "seconds": 52,
+          "embeddable": true,
+          "url": "https://youtu.be/WEcLkuvcMZc",
+          "score": 2.33
+        }
+      ]
+    },
+    {
+      "id": "band-1-leg-tke-squat",
+      "name": "1 Leg TKE Squat",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
     }
   ]
 }
