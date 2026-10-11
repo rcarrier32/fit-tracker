@@ -27,7 +27,7 @@ export async function renderPrograms(app) {
 
   const bws = programs.filter(p => p.source === 'BWS');
   const pjf = programs.filter(p => p.source === 'PJF');
-  const bandCount = exercises.filter(e => e.sources?.includes('band')).length;
+  const bandCount = exercises.filter(e => e.sources?.includes('band') && !e.program_only).length;
 
   app.innerHTML = `
     <h1>Programs</h1>

@@ -10,7 +10,7 @@ const ACCENT = '#22c55e';
 
 export async function openBandDatabase() {
   const { exercises, bandOverviews } = await loadCatalogs();
-  const band = exercises.filter(e => e.sources?.includes('band'));
+  const band = exercises.filter(e => e.sources?.includes('band') && !e.program_only);
   const categories = [...new Set(band.map(e => e.category))];
 
   openSheet((sheet) => {

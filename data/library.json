@@ -5371,7 +5371,7 @@
     {
       "id": "band-split-stance-hip-flexor-2-way-reach-with-band-distraction",
       "name": "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
-      "video_url": "https://youtu.be/V3W3Puunj9c",
+      "video_url": "https://youtu.be/vREyr4rh034",
       "sources": [
         "pjf",
         "band"
@@ -5384,7 +5384,7 @@
     {
       "id": "band-lateral-lunge-adductor-stretch",
       "name": "Lateral Lunge Adductor Stretch",
-      "video_url": "https://youtu.be/pwqnnNwu-0s",
+      "video_url": "https://youtu.be/eUlTD0angHM",
       "sources": [
         "pjf",
         "band"
@@ -5397,7 +5397,7 @@
     {
       "id": "band-step-back-hip-hinge",
       "name": "Step Back Hip Hinge",
-      "video_url": "https://youtu.be/j-pui2Q8qXA",
+      "video_url": "https://youtu.be/RVmoP52r8x4",
       "sources": [
         "pjf",
         "band"
@@ -5501,7 +5501,7 @@
     {
       "id": "band-band-around-the-back-plantar-flexion",
       "name": "Band Around the Back Plantar Flexion",
-      "video_url": "https://youtu.be/5UwM3ZbOPjE",
+      "video_url": "https://youtu.be/Ke-qjw0Fowc",
       "sources": [
         "pjf",
         "band"
@@ -5536,9 +5536,7 @@
         "pjf",
         "band"
       ],
-      "aliases": [
-        "Maximal Overcoming Hamstring/Hip Flexor Isometric"
-      ],
+      "aliases": [],
       "fallback_search": null,
       "category": "Lower Body Strength",
       "equipment": "band"
@@ -5563,7 +5561,7 @@
     {
       "id": "band-supine-hamstring-curl",
       "name": "Supine Hamstring Curl",
-      "video_url": "https://youtu.be/quOo1hI-Y6Y",
+      "video_url": "https://youtu.be/XxDi4-awoiI",
       "sources": [
         "pjf",
         "band"
@@ -5580,7 +5578,7 @@
     {
       "id": "band-band-resisted-rfess",
       "name": "Band Resisted RFESS",
-      "video_url": "https://youtu.be/ROj-4fdiNkg",
+      "video_url": "https://youtu.be/GiSwo_UioI4",
       "sources": [
         "pjf",
         "band"
@@ -5648,7 +5646,7 @@
     {
       "id": "band-2-leg-tke",
       "name": "2 Leg TKE",
-      "video_url": "https://youtu.be/WEcLkuvcMZc",
+      "video_url": "https://youtu.be/kUGr0M6FUao",
       "sources": [
         "pjf",
         "band"
@@ -5682,7 +5680,7 @@
     {
       "id": "band-1-leg-supported-tke",
       "name": "1 Leg Supported TKE",
-      "video_url": "https://youtu.be/WEcLkuvcMZc",
+      "video_url": "https://youtu.be/fTpu5C3Uw2U",
       "sources": [
         "pjf",
         "band"
@@ -7111,6 +7109,25 @@
       "primary_muscle": "upper_back",
       "muscles": [
         "upper_back"
+      ]
+    },
+    {
+      "id": "band-maximal-overcoming-hamstringhip-flexor-isometric",
+      "name": "Maximal Overcoming Hamstring/Hip Flexor Isometric",
+      "video_url": "https://youtu.be/VkDcEDzVHfQ",
+      "sources": [
+        "pjf",
+        "band"
+      ],
+      "aliases": [],
+      "fallback_search": null,
+      "category": "Lower Body Strength",
+      "equipment": "band",
+      "program_only": true,
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "hips"
       ]
     }
   ],
@@ -31235,7 +31252,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+                    "name": "Maximal Overcoming Hamstring/Hip Flexor Isometric",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -31774,7 +31791,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric",
+                    "name": "Maximal Overcoming Hamstring/Hip Flexor Isometric",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -35001,14 +35018,14 @@
     ]
   },
   "stats": {
-    "total_exercises": 496,
-    "with_video": 365,
+    "total_exercises": 497,
+    "with_video": 366,
     "pjf_only": 211,
     "bws_only": 121,
     "shared": 1,
     "pjf_programs": 5,
     "bws_programs": 10,
-    "band": 122
+    "band": 123
   },
   "warmups": {
     "bws_upper_warmup": {

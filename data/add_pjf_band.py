@@ -135,8 +135,7 @@ P3_C = [
     ("Resisted Step in Jumps", 3, "4", None, None, None),
     ("Resisted RFESS Jumps", 3, "12", None, None, None),
     ("Resisted RFESS Pogos", 3, "20", None, None, None),
-    # Named "Maximal Overcoming Hamstring/Hip Flexor Isometric" in the program table.
-    ("Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric", 3, "3 × 4-sec max hold", None, None, None),
+    ("Maximal Overcoming Hamstring/Hip Flexor Isometric", 3, "3 × 4-sec max hold", None, None, None),
     ("2 Leg Full Range TKE", 3, "AMRAP (9/10 burn)", None, RPE9, None),
 ]
 
@@ -192,15 +191,14 @@ def main():
     lib = json.loads(LIB.read_text())
     band = json.loads(BAND.read_text())
 
-    # Videos approved later (enrich_program_videos.mjs --apply) win over the PDF's links.
-    kept = {x["id"]: x.get("video_url") for x in lib["exercises"] if "band" in x.get("sources", [])}
+    # One video per exercise, exactly as linked in the PDF. Never replaced by search results.
     entries = []
     for e in band["exercises"]:
         name = e["name"]
         entry = {
             "id": "band-" + slugify(name),
             "name": name,
-            "video_url": kept.get("band-" + slugify(name)) or e["video_url"],
+            "video_url": e["video_url"],
             "sources": ["pjf", "band"],
             "aliases": [],
             "fallback_search": None,
@@ -213,8 +211,17 @@ def main():
         entries.append(entry)
     by_name = {x["name"]: x for x in entries}
     by_name["Lateral Split Stance Rapid Switches"]["aliases"].append("Lateral Split Stance Rapid Switching")
-    by_name["Maximal Overcoming Hamstring/Hip Flexor Bridge Isometric"]["aliases"].append(
-        "Maximal Overcoming Hamstring/Hip Flexor Isometric")
+    # In the sample program only (not a database row), with its own video on the program page.
+    extra = {
+        "id": "band-maximal-overcoming-hamstringhip-flexor-isometric",
+        "name": "Maximal Overcoming Hamstring/Hip Flexor Isometric",
+        "video_url": "https://youtu.be/VkDcEDzVHfQ",
+        "sources": ["pjf", "band"], "aliases": [], "fallback_search": None,
+        "category": "Lower Body Strength", "equipment": "band", "program_only": True,
+        "primary_muscle": "hamstrings", "muscles": ["hamstrings", "hips"],
+    }
+    entries.append(extra)
+    by_name[extra["name"]] = extra
 
     program = build_program()
     missing = {x["name"] for w in program["weeks"] for d in w["days"] for x in d["exercises"]} - set(by_name)

@@ -104,6 +104,8 @@ const lib = JSON.parse(readFileSync(LIBRARY_PATH, 'utf8'));
 // ── target selection ──
 const allTargets = lib.exercises
   .filter(e => (e.sources || []).includes(SOURCE))
+  // Band exercises already have PJF's own demo, one per exercise, from the band database PDF.
+  .filter(e => !(e.sources || []).includes('band'))
   .filter(e => !ONLY || e.name === ONLY);
 
 // ── apply mode: patch approved video_urls into library.json, no API needed ──
@@ -124,6 +126,7 @@ if (APPLY) {
     if (!pick) { skipped++; continue; }
     const ex = byId.get(entry.id);
     if (!ex) { console.warn(`  ! ${entry.id} no longer in library.json`); skipped++; continue; }
+    if ((ex.sources || []).includes('band')) { skipped++; continue; }   // PDF video stays
     ex.video_url = `https://youtu.be/${pick.videoId}`;
     patched++;
   }
