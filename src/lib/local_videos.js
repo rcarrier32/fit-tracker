@@ -12,6 +12,7 @@ import { pref } from '../db.js';
 
 let _byName = new Map();   // normalized name → { v, notes, alts: [names] }
 let _names = [];           // normalized names, for prefix matching of truncated catalog names
+let _dayNotes = [];        // { program, week, day, note, exercises: [normalized names] }
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
 
@@ -27,6 +28,29 @@ function index(data) {
     });
   }
   _names = [..._byName.keys()].sort((a, b) => b.length - a.length);
+  _dayNotes = (data?.dayNotes || []).map(d => ({ ...d, exercises: (d.exercises || []).map(norm) }));
+}
+
+/**
+ * PJF's notes for a workout day. PJF numbers its workouts differently from the app (some
+ * days hold two workouts), so a note belongs to the app day whose exercises it shares.
+ * dayNum (the app's day in the week) rules out a matching note from an earlier day.
+ */
+export function dayNotesFor(programName, week, exerciseNames, dayNum = 0) {
+  const p = norm(programName);
+  const mine = new Set(exerciseNames.map(norm));
+  // Repeating A/B days carry near-identical notes; keep only the best-matching one of those.
+  const seen = new Set();
+  return _dayNotes
+    .filter(d => norm(d.program) === p && d.week === week && d.note && d.exercises.length)
+    // PJF splits some app days into two workouts, so its number is never below the app's.
+    .filter(d => !dayNum || (d.day >= dayNum && d.day <= dayNum * 2))
+    .map(d => ({ d, score: d.exercises.filter(n => mine.has(n)).length / d.exercises.length }))
+    .filter(x => x.score >= 0.5)
+    .sort((a, b) => b.score - a.score || Math.abs(a.d.day - b.d.day))
+    .filter(({ d }) => { const k = norm(d.note).slice(0, 60); return !seen.has(k) && seen.add(k); })
+    .sort((a, b) => a.d.day - b.d.day)
+    .map(({ d }) => d.note);
 }
 
 /** Load the stored file into memory. Called once at boot; cheap when nothing is stored. */

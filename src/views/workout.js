@@ -9,7 +9,7 @@ import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
-import { localFor } from '../lib/local_videos.js';
+import { localFor, dayNotesFor } from '../lib/local_videos.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -206,6 +206,7 @@ export async function renderWorkout(app) {
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
+    ${pjfDayNotesHtml(program, week, day, dayData)}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
@@ -476,6 +477,22 @@ function _pickWarmup(focus, warmups) {
     if (w.day_types.some(t => f.includes(t))) return w;
   }
   return null;
+}
+
+/** PJF's own notes for this day (imported on this device), collapsed under the title. */
+function pjfDayNotesHtml(program, week, day, dayData) {
+  if (!week) return '';
+  const notes = dayNotesFor(program.program_name || program.name || '', week, dayData.exercises.map(e => e.name), day);
+  if (!notes.length) return '';
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  // PJF writes "-Do this -Then that"; give each point its own line.
+  const lines = notes.flatMap(n => n.split(/\s(?=-[A-Z])/).map(t => t.replace(/^-/, '').trim())).filter(Boolean);
+  return `
+    <details class="pjf-day-notes" style="margin:10px 0;padding:8px 12px;border-radius:10px;
+      background:rgba(56,189,248,0.07);border:1px solid rgba(56,189,248,0.2)">
+      <summary style="cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.04em;color:#7dd3fc">PJF NOTES FOR TODAY</summary>
+      ${lines.map(l => `<p style="font-size:13px;color:#cbd5e1;line-height:1.45;margin:8px 0 0">${esc(l)}</p>`).join('')}
+    </details>`;
 }
 
 function _warmupBlockHtml(warmup, exMap) {
