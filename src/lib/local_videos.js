@@ -35,7 +35,12 @@ export async function loadLocalVideos() {
 }
 
 /** Is this a local-videos export rather than a full app backup? */
-export const isLocalVideosFile = (data) => data?.source === 'pjf' && data?.kind === 'mux' && !!data.videos;
+export const isLocalVideosFile = (data) => {
+  if (!data?.videos || data.sessions || data.prefs) return false;
+  if (data.source === 'pjf') return true;
+  const first = Object.values(data.videos)[0];   // older exports had no source/kind labels
+  return !!first && typeof first.name === 'string' && 'v' in first;
+};
 
 export async function importLocalVideos(data) {
   await pref('local_videos', data);
