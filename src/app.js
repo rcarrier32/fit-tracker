@@ -141,6 +141,7 @@ if (FIRST_COPY) (async () => {
   import('./lib/wake_lock.js').then(m => m.initWakeLock()).catch(() => {});
   requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
+  await import('./lib/local_videos.js').then(m => m.loadLocalVideos()).catch(() => {});
   await offerBackupRestore();
   // One-time merge of duplicate workout sessions left by the old double boot.
   try {

@@ -332,6 +332,12 @@ export async function renderHome(app) {
       try {
         const text = await file.text();
         const data = JSON.parse(text);
+        const lv = await import('../lib/local_videos.js');
+        if (lv.isLocalVideosFile(data)) {   // PJF demo videos + notes, kept on this device only
+          const n = await lv.importLocalVideos(data);
+          toast(`${n} PJF videos added on this device`);
+          return;
+        }
         if (!data.sessions && !data.meals && !data.prefs) throw new Error('Invalid backup file');
         if (!confirm('This will replace all current data with the backup. Continue?')) return;
         await importAllData(data);

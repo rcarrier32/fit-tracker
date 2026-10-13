@@ -11,6 +11,7 @@
  *     videoId? | video_url?, videoTitle?, link?, search?, source?, optional? }
  */
 import { openSheet } from '../app.js';
+import { localFor, muxThumb, attachMuxVideos } from './local_videos.js';
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -40,11 +41,12 @@ export function perSetLabel(rx) {
 
 function thumbHTML(ex) {
   const vid = videoOf(ex);
+  const mux = localFor(ex.name)?.v;
   const box = 'flex-shrink:0;width:104px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;position:relative;background:#0f172a';
-  if (vid) {
+  if (vid || mux) {
     return `
       <div style="${box}">
-        <img src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'"
+        <img src="${mux ? muxThumb(mux) : `https://img.youtube.com/vi/${vid}/mqdefault.jpg`}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"
           style="width:100%;height:100%;object-fit:cover;display:block">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
           width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.65);
@@ -174,6 +176,16 @@ function ladderHTML(l, accent) {
 }
 
 function videoBlockHTML(ex) {
+  // The user's own PJF demo (stored on this device only) beats a stand-in YouTube video.
+  const mux = localFor(ex.name)?.v;
+  if (mux) {
+    return `
+      <div class="ex-video">
+        <video data-mux="${esc(mux)}" controls playsinline preload="metadata" poster="${muxThumb(mux)}"
+          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
+      </div>
+      <div style="font-size:10.5px;color:#64748b;margin-top:5px">PJF Performance demo</div>`;
+  }
   const vid = videoOf(ex);
   if (vid) {
     return `
@@ -193,6 +205,25 @@ function videoBlockHTML(ex) {
         border:1px dashed rgba(255,255,255,0.15);color:#94a3b8;text-decoration:none;font-size:12px">
       ▶ ${ex.link || ex.video_url ? 'Open video link' : 'Search YouTube for a demo'}
     </a>`;
+}
+
+/** PJF's own coaching notes and easier alternates, when the user imported them. */
+function pjfNotesHTML(ex, accent) {
+  const l = localFor(ex.name);
+  if (!l || (!l.notes.length && !l.alts.length)) return '';
+  // PJF writes "-Do this -Then that" and "Level 1 = … Level 2 = …"; give each its own line.
+  const lines = l.notes.flatMap(n => n.split(/\s(?=-[A-Z])|\s(?=Level \d+ =)/).map(t => t.replace(/^-/, '').trim()))
+    .filter(Boolean);
+  return `
+    <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700;margin:16px 0 6px">PJF COACHING NOTES</div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      ${lines.map(c => `
+        <div style="font-size:13px;color:#cbd5e1;display:flex;gap:7px;line-height:1.45">
+          <span style="flex-shrink:0;font-weight:700;color:${accent}">→</span><span>${esc(c)}</span>
+        </div>`).join('')}
+      ${l.alts.length ? `<div style="font-size:12px;color:#94a3b8;margin-top:4px">
+        <span style="font-weight:700">EASIER OPTION · </span>${l.alts.map(esc).join(', ')}</div>` : ''}
+    </div>`;
 }
 
 /**
@@ -286,6 +317,7 @@ export function openExerciseDetail(ex, o = {}) {
               <span style="flex-shrink:0;font-weight:700;color:${accent}">→</span><span>${esc(c)}</span>
             </div>`).join('')}
         </div>` : ''}
+      ${pjfNotesHTML(ex, accent)}
       ${ex.notes && !ex.cues?.length ? `<div style="font-size:13px;color:#cbd5e1;margin-top:12px;line-height:1.45">${esc(ex.notes)}</div>` : ''}
 
       ${ex.warning ? `
@@ -304,6 +336,7 @@ export function openExerciseDetail(ex, o = {}) {
         </div>` : ''}
     `;
 
+    attachMuxVideos(sheet);
     const stopSideways = startSidewaysVideo(sheet);
     const prevClose = hooks.onClose;
     hooks.onClose = () => { stopSideways(); prevClose?.(); };

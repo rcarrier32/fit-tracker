@@ -9,6 +9,7 @@ import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
+import { localFor } from '../lib/local_videos.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -481,10 +482,11 @@ function _warmupBlockHtml(warmup, exMap) {
   const rows = warmup.exercises.map(ex => {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
+    const _wLocal = localFor(ex.name)?.v;
     const _wNameEsc = ex.name.replace(/"/g, '&quot;');
     const _attr = (v) => String(v ?? '').replace(/"/g, '&quot;');
-    const videoHtml = _wYtId
-      ? `<button class="video-link has-video" data-ytid="${_wYtId}" data-ytname="${_wNameEsc}"
+    const videoHtml = _wYtId || _wLocal
+      ? `<button class="video-link has-video" data-ytid="${_wYtId || ''}" data-ytname="${_wNameEsc}"
           data-target="${_attr([ex.sets ? ex.sets + ' ×' : '', ex.reps || ex.time || ''].join(' ').trim())}"
           data-notes="${_attr(ex.notes)}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</button>`
       : lookup?.video_url
@@ -1013,8 +1015,8 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   const _ytId = ytVideoId(lookup?.video_url);
-  const videoLink = _ytId
-    ? `<button class="video-link has-video" data-ytid="${_ytId}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
+  const videoLink = _ytId || localFor(ex.name)?.v
+    ? `<button class="video-link has-video" data-ytid="${_ytId || ''}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
         data-target="${formatTarget(ex).replace(/"/g, '&quot;')}"
         data-last="${prevRef[ex.name] ? ('Last: ' + formatPrevSets(prevRef[ex.name].sets) + ' (' + prevRef[ex.name].date + ')').replace(/"/g, '&quot;') : ''}"
         data-notes="${String(ex.notes || '').replace(/"/g, '&quot;')}">▶ Video</button>`
