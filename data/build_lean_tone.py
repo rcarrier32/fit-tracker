@@ -159,6 +159,22 @@ def days(wk):
     ]
 
 
+def superset_rest(day):
+    """In a superset only the last exercise rests: A1 → straight to A2 (≤15 s), rest after A2."""
+    ex_ = day['exercises']
+    for i, x in enumerate(ex_):
+        g = x.get('round_group') or ''
+        nxt = ex_[i + 1] if i + 1 < len(ex_) else None
+        if g.startswith('Superset') and nxt and nxt.get('round_group') == g:
+            x['rest'] = '0-15s'
+            x['notes'] = ' '.join(filter(None, [x.get('notes'), f'Go straight into the next exercise; rest after the pair.']))
+    return day
+
+
+def days_with_rest(wk):
+    return [superset_rest(d) for d in days(wk)]
+
+
 program = {
     'id': 'lean_tone_home_6wk',
     'program_name': 'Lean & Tone: Home Full Body',
@@ -169,7 +185,7 @@ program = {
     'sessions_per_week': 4, 'session_length_min': 45, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
     'goal': 'Lose fat, keep muscle, look and move athletic.',
-    'weeks': expand_weeks(6, days),
+    'weeks': expand_weeks(6, days_with_rest),
 }
 lib.set_programs('lean_tone', [program])
 lib.save()
