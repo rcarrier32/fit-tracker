@@ -260,6 +260,12 @@ function openStartPlanSheet(program, onConfirm) {
 
       <div id="end-date-preview" class="muted" style="margin-top:6px;font-size:13px"></div>
 
+      ${program.suggested_week ? `
+        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14px;color:var(--fg)">
+          <input type="checkbox" id="use-week" checked style="width:auto;margin-top:3px">
+          <span><strong>Set up my week</strong><br><span class="muted" style="font-size:12px">${suggestedWeekLabel(program.suggested_week)}</span></span>
+        </label>` : ''}
+
       <button class="btn" id="confirm-btn" style="margin-top:18px">Start plan</button>
       <button class="btn ghost" id="cancel-btn" style="margin-top:8px">Cancel</button>
     `;
@@ -290,6 +296,14 @@ function openStartPlanSheet(program, onConfirm) {
       // Starting (or restarting) always begins at Week 1, Day 1 and makes this today's program.
       if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $start.value);
+      // Optional companion week (e.g. Recovery & Mobility on off days) as a Mixed Week schedule.
+      if (program.suggested_week && sheet.querySelector('#use-week')?.checked) {
+        const sw = program.suggested_week;
+        const slots = sw.days.map(d => d === 'train' ? { program_id: program.id, mode: 'follow' }
+          : d === 'rest' ? { label: 'Rest' }
+          : { program_id: d, mode: 'follow' });
+        await pref('schedule', { type: 'weekly', slots });
+      }
       toast(`${programName(program)} started — Week 1 of ${w}`);
       close();
       onConfirm();
@@ -309,6 +323,14 @@ export function programGuideHtml(p) {
   for (const g of p.guide || []) parts.push(`<div class="group-label">${esc(g.title)}</div>
     <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.5">${g.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`);
   return parts.join('');
+}
+
+/** "Mon Tue Thu Fri: train · Wed Sat: Recovery & Mobility · Sun: rest" for a suggested_week. */
+function suggestedWeekLabel(sw) {
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const groups = new Map();
+  sw.days.forEach((d, i) => { const k = d === 'train' ? 'train' : d === 'rest' ? 'rest' : (sw.labels?.[d] || d); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(DOW[i]); });
+  return [...groups].map(([k, days]) => `${days.join(' ')}: ${k}`).join(' · ') + '. Change it any time in Mixed Week.';
 }
 
 function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {

@@ -255,6 +255,9 @@ program = {
     'sessions_per_week': 4, 'session_length_min': 50, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
     'goal': 'Lose fat, keep muscle, look and move athletic.',
+    # Sun..Sat: 4 training days, Recovery & Mobility on 2 off days, 1 full rest day.
+    'suggested_week': {'days': ['rest', 'train', 'train', 'move30_recovery_mobility', 'train', 'train', 'move30_recovery_mobility'],
+                       'labels': {'move30_recovery_mobility': 'Recovery & Mobility'}},
     'weeks': expand_weeks(6, days_with_rest),
 }
 lib.set_programs('lean_tone', [program])

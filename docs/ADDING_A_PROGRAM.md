@@ -47,7 +47,9 @@ that fit the plan's equipment) and `video_url` (the row's own video, `&t=` for a
 Progression across weeks (more rounds, more reps) goes in the script's per-week loop.
 
 **Two programs at once** (e.g. strength Mon/Wed/Fri plus agility Tue/Thu): say so in the
-description. The person sets it up with Today → Set up Mixed Week, and each program keeps
+description, and give the program a `suggested_week` (`days`: 7 entries Sun..Sat, each `'train'`,
+`'rest'` or another program id; `labels`: names for those ids). The Start sheet then offers
+"Set up my week" and writes the Mixed Week schedule in one tap. The person sets it up with Today → Set up Mixed Week, and each program keeps
 its own progress.
 
 **Names.** Reuse an existing catalog name when the movement already exists, so its vetted

@@ -53885,6 +53885,20 @@
           "Treadmill"
         ],
         "goal": "Lose fat, keep muscle, look and move athletic.",
+        "suggested_week": {
+          "days": [
+            "rest",
+            "train",
+            "train",
+            "move30_recovery_mobility",
+            "train",
+            "train",
+            "move30_recovery_mobility"
+          ],
+          "labels": {
+            "move30_recovery_mobility": "Recovery & Mobility"
+          }
+        },
         "weeks": [
           {
             "week_num": 1,
