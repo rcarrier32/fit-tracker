@@ -3037,8 +3037,7 @@
    "pattern": "pull_horizontal",
    "role": "accessory",
    "equipment": [
-    "dumbbell",
-    "cable"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -7534,6 +7533,42 @@
    "level": 2,
    "unilateral": false,
    "plane": "frontal",
+   "hip_focus": false
+  },
+  "lean-kettlebell-swing": {
+   "name": "Kettlebell Swing",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings",
+    "lower_back"
+   ],
+   "pattern": "hinge",
+   "role": "power",
+   "equipment": [
+    "kettlebell"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-med-ball-slam": {
+   "name": "Med Ball Slam",
+   "primary_muscle": "full_body",
+   "muscles": [
+    "full_body",
+    "lats",
+    "abs"
+   ],
+   "pattern": "plyo_jump",
+   "role": "power",
+   "equipment": [
+    "med_ball"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
    "hip_focus": false
   },
   "leg-press-calf-raise": {

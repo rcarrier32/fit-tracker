@@ -79,7 +79,11 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
 
   // Weekly sets per primary muscle, filled as picks are made, so later slots balance volume.
   const weekly = {};
-  const addVol = (e, sets) => { weekly[e.primary_muscle] = (weekly[e.primary_muscle] || 0) + sets; };
+  // Primary muscle gets full credit, the others half (a step-up still trains quads).
+  const addVol = (e, sets) => {
+    weekly[e.primary_muscle] = (weekly[e.primary_muscle] || 0) + sets;
+    for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) weekly[m] = (weekly[m] || 0) + sets / 2;
+  };
 
   function candidates(slot, usedToday, usedWeek, avoid) {
     const roles = ROLE_FALLBACK[slot.role] || [slot.role];
@@ -268,8 +272,11 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const summary = {};
   for (const d of weeks[0].days) for (const x of d.exercises) {
     const e = pool.find(q => q.name === x.name);
-    if (e) summary[e.primary_muscle] = (summary[e.primary_muscle] || 0) + (x.sets || 0);
+    if (!e) continue;
+    summary[e.primary_muscle] = (summary[e.primary_muscle] || 0) + (x.sets || 0);
+    for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) summary[m] = (summary[m] || 0) + (x.sets || 0) / 2;
   }
+  for (const k of Object.keys(summary)) summary[k] = Math.round(summary[k]);
   const goalLabel = goal.label;
   return {
     id: `gen-${Date.now().toString(36)}`,

@@ -14,13 +14,24 @@ GROUP = 'Move Like 30'
 # Every catalog name, including Hip tab exercises (tagged in exercise_tags.json).
 KNOWN = {e['name'].lower() for e in lib.data['exercises']} | {t['name'].lower() for t in lib.tags['tags'].values()}
 
+# Moves this plan adds to the catalog (videos via enrich_program_videos.mjs --source lean).
+NEW = {
+    'Kettlebell Swing': {'primary_muscle': 'glutes', 'muscles': ['glutes', 'hamstrings', 'lower_back'], 'pattern': 'hinge', 'role': 'power',
+                         'equipment': ['kettlebell'], 'level': 2, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+    'Med Ball Slam': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'lats', 'abs'], 'pattern': 'plyo_jump', 'role': 'power',
+                      'equipment': ['med_ball'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+}
+for n, t in NEW.items():
+    lib.ensure_exercise(n, 'lean', tags=t, search=f'{n} how to')
+KNOWN |= {n.lower() for n in NEW}
+
 ALTS = {
     'Dumbbell Goblet Squat': ['Heel Elevated Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
     'Heel Elevated Goblet Squat': ['Dumbbell Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
     'Dumbbell Bench Press': ['Low Incline Dumbbell Press', 'Neutral Grip DB Press', 'Push Ups', 'Band Resisted Push Up'],
     'Dumbbell Romanian Deadlift': ['Single-Leg RDL with Kettlebell', 'Staggered Stance RDL w/ Same Side Load', 'B-Stance RDL', 'Kickstand RDL'],
     'Chest Supported DB Row (lat focus)': ['3 Point Dumbbell Row', 'DB Chest Supported Row (mid/upper back)', 'Bent Over 1 Arm Row'],
-    'Reverse Lunges': ['Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
+    'Reverse Lunges': ['Slider Lunge', 'Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
     'Curtsy Lunge': ['Reverse Lunges', 'Deficit Reverse Lunge', 'Dumbbell Lateral Lunge'],
     'Standing Dumbbell Shoulder Press': ['Arnold Press', 'Seated Dumbbell Shoulder Press', 'Shoulder Press'],
     'Palloff Press': ['Core Rotation Pallof Press', 'Anti Rotation ABC\'s'],
@@ -39,7 +50,7 @@ ALTS = {
     'Zone 2 Low Impact': ['Brisk Walk'],
     'Bulgarian Split Squat': ['Heel Elevated Split Squat', 'Reverse Lunges', 'Front Foot Elevated Reverse Lunge'],
     'Band Resisted Push Up': ['Push Ups', 'Dumbbell Bench Press'],
-    'Dumbbell Lateral Lunge': ['Lateral Lunge', 'Curtsy Lunge', 'Adductor Slider Lunge'],
+    'Dumbbell Lateral Lunge': ['Adductor Slider Lunge', 'Lateral Lunge', 'Curtsy Lunge'],
     'Bent Over 1 Arm Row': ['3 Point Dumbbell Row', 'Bent Over Cross Body Row'],
     'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds': ['Single-Leg Pad Balance + Ball Catches', 'Weighted Hip Airplane'],
     'Weighted Hip Airplane': ['Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds', 'Hip Airplane (No Support)'],
@@ -51,6 +62,12 @@ ALTS = {
     'Mini Band Monster Walk': ['Resistance Band Side Steps'],
     'Band Pull-Aparts': ['Bent Over Dumbbell Face Pulls', 'Band Pull Apart'],
     'Dumbbell Sumo Squat': ['Dumbbell Goblet Squat', '1¼ Goblet Squat'],
+    'Band Pullover': ['Band Pull-Aparts', 'Bent Over 1 Arm Row'],
+    'Slider Hamstring Curl': ['Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
+    'Single-Leg Slider Hamstring Curl': ['Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
+    'Kettlebell Swing': ['Dumbbell Sumo Squat', 'Single-Leg RDL with Kettlebell'],
+    'Med Ball Slam': ['MB Rapid Lateral Toss'],
+    'MB Rapid Lateral Toss': ['Med Ball Slam'],
 }
 
 
@@ -114,11 +131,13 @@ def days(wk):
             r('Low Incline Dumbbell Press', main, sets=S, rest=rest, group='Superset B'),
             r('Single-Leg Hip Thrust', '12 each leg', sets=s, rest=rest, group='Superset C', notes='Shoulders on the bench.'),
             r('Dumbbell Lateral Raise', '15', sets=s, rest=rest, group='Superset C'),
-            r('Dead Bug', '10 each side', sets=2, rest='30s', group='Superset D'),
-            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Superset D'),
+            r('Band Pullover', '12', sets=s, rest=rest, group='Superset D', notes='PJF heavy band anchored high: your vertical pull (no pull-up bar).'),
+            r('Single-Leg Slider Hamstring Curl' if p == 3 else 'Slider Hamstring Curl', '8 each leg' if p == 3 else '10', sets=s, rest=rest, group='Superset D'),
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
         {'focus': 'Day 3 · Stability + Bands', 'warmup': WARM_UPPER, 'notes': notes, 'exercises': [
+            r('MB Rapid Lateral Toss' if p == 3 else 'Med Ball Slam', '6 each side' if p == 3 else '8', sets=3, rest='45s', group='Power',
+              notes='Full effort, then rest. Toss into a wall.' if p == 3 else 'Full effort, then rest.'),
             r('Bulgarian Split Squat', '8 each leg', sets=S, rest=rest, group='Superset A'),
             r('Band Resisted Push Up', '10', sets=S, rest=rest, group='Superset A', notes='PJF heavy band across the back.'),
             r('Dumbbell Lateral Lunge', '8 each side', sets=S, rest=rest, group='Superset B'),
@@ -135,7 +154,7 @@ def days(wk):
             r('Banded Glute Bridge', '15', sets=s, rest='0s', group='Band circuit'),
             r('Mini Band Monster Walk', '10 each way', sets=s, rest='0s', group='Band circuit'),
             r('Band Pull-Aparts', '15', sets=s, rest='0s', group='Band circuit'),
-            r('Dumbbell Sumo Squat', '12', sets=s, rest='60s', group='Band circuit'),
+            r('Kettlebell Swing', '15', sets=s, rest='60s', group='Band circuit', notes='Hinge, snap the hips, float the bell to chest height.'),
         ]},
     ]
 

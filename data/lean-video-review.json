@@ -1,0 +1,78 @@
+{
+  "source": "lean",
+  "generated_for": 2,
+  "max_seconds": 300,
+  "exercises": [
+    {
+      "id": "lean-kettlebell-swing",
+      "name": "Kettlebell Swing",
+      "approved": "aSYap2yhW8s",
+      "candidates": [
+        {
+          "videoId": "aSYap2yhW8s",
+          "title": "The BEST Kettlebell Swing Tutorial",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/aSYap2yhW8s",
+          "score": 5.31
+        },
+        {
+          "videoId": "2gXtvqLa_T8",
+          "title": "Correctly Perform Kettlebell Swings!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/2gXtvqLa_T8",
+          "score": 5.3
+        },
+        {
+          "videoId": "LBhaLLc153A",
+          "title": "The Kettlebell Swing Technique Everyone Gets WRONG!",
+          "channel": "Squat University",
+          "seconds": 232,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/LBhaLLc153A",
+          "score": 4.73
+        }
+      ]
+    },
+    {
+      "id": "lean-med-ball-slam",
+      "name": "Med Ball Slam",
+      "approved": "cgKqNn90MEo",
+      "candidates": [
+        {
+          "videoId": "xoMtIlmLGWk",
+          "title": "How to Do Med Ball Slams Correctly",
+          "channel": "Motiv8 Fitness",
+          "seconds": 7,
+          "embeddable": true,
+          "url": "https://youtu.be/xoMtIlmLGWk",
+          "score": 2.48
+        },
+        {
+          "videoId": "CkO1mfSBvv4",
+          "title": "How To Med Ball Slam",
+          "channel": "Third Space London",
+          "seconds": 11,
+          "embeddable": true,
+          "url": "https://youtu.be/CkO1mfSBvv4",
+          "score": 2.46
+        },
+        {
+          "videoId": "cgKqNn90MEo",
+          "title": "How to Properly Perform Medicine Ball Slams (Exercise Demonstration) (STOP MAKING THIS MISTAKE)",
+          "channel": "Gerardi Performance",
+          "seconds": 19,
+          "embeddable": true,
+          "url": "https://youtu.be/cgKqNn90MEo",
+          "score": 2.44
+        }
+      ]
+    }
+  ]
+}

@@ -1141,7 +1141,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 8.0,
+   "exercises_per_day": 8.2,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
     "Day 2 · Full Body B: Hinge, Single-Leg, Press",
@@ -1151,41 +1151,41 @@
    "week1_sets_by_muscle": {
     "glutes": 16,
     "quads": 12,
+    "lats": 12,
     "chest": 9,
-    "lats": 9,
-    "hamstrings": 6,
+    "hamstrings": 9,
     "front_delts": 6,
-    "abs": 4,
+    "full_body": 6,
     "side_delts": 3,
-    "full_body": 3,
     "abductors": 3,
     "upper_back": 3,
+    "abs": 2,
     "adductors": 2,
-    "obliques": 2,
     "biceps": 2,
     "triceps": 2
    },
    "week1_sets_by_pattern": {
-    "hinge": 12,
+    "hinge": 15,
     "pull_horizontal": 12,
     "lunge_single_leg": 12,
     "push_horizontal": 9,
     "isolation_upper": 7,
-    "squat": 6,
     "push_vertical": 6,
+    "isolation_lower": 6,
     "conditioning": 4,
+    "squat": 3,
+    "pull_vertical": 3,
+    "plyo_jump": 3,
     "balance": 3,
-    "isolation_lower": 3,
     "anti_rotation": 2,
-    "isometric": 2,
-    "anti_extension": 2,
-    "lateral_flexion": 2
+    "isometric": 2
    },
    "roles": {
     "secondary": 17,
-    "accessory": 6,
-    "core": 4,
+    "accessory": 7,
     "conditioning": 4,
+    "core": 2,
+    "power": 2,
     "main": 1
    },
    "equipment": [
@@ -1195,7 +1195,9 @@
     "box",
     "dumbbell",
     "kettlebell",
-    "mini_band"
+    "med_ball",
+    "mini_band",
+    "slider"
    ],
    "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher, heavier each phase, week 6 deload. Every exercise has swap alternatives."
   }

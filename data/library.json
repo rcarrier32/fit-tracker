@@ -1255,8 +1255,7 @@
       "pattern": "pull_horizontal",
       "role": "accessory",
       "equipment": [
-        "dumbbell",
-        "cable"
+        "dumbbell"
       ],
       "level": 2,
       "unilateral": false,
@@ -13687,6 +13686,56 @@
       "role": "accessory",
       "equipment": [
         "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-kettlebell-swing",
+      "name": "Kettlebell Swing",
+      "video_url": "https://youtu.be/aSYap2yhW8s",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Kettlebell+Swing+how+to",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings",
+        "lower_back"
+      ],
+      "pattern": "hinge",
+      "role": "power",
+      "equipment": [
+        "kettlebell"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-med-ball-slam",
+      "name": "Med Ball Slam",
+      "video_url": "https://youtu.be/cgKqNn90MEo",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Med+Ball+Slam+how+to",
+      "primary_muscle": "full_body",
+      "muscles": [
+        "full_body",
+        "lats",
+        "abs"
+      ],
+      "pattern": "plyo_jump",
+      "role": "power",
+      "equipment": [
+        "med_ball"
       ],
       "level": 1,
       "unilateral": false,
@@ -53807,6 +53856,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
@@ -54015,35 +54065,36 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each side",
+                    "sets": 3,
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Single-Leg Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -54097,6 +54148,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Med Ball Slam",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest.",
+                    "alternates": [
+                      "MB Rapid Lateral Toss"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -54141,9 +54207,9 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -54329,19 +54395,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
@@ -54466,6 +54532,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
@@ -54674,35 +54741,36 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each side",
+                    "sets": 3,
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Single-Leg Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -54756,6 +54824,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Med Ball Slam",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest.",
+                    "alternates": [
+                      "MB Rapid Lateral Toss"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -54800,9 +54883,9 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -54988,19 +55071,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
@@ -55125,6 +55208,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
@@ -55333,35 +55417,36 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each side",
+                    "sets": 3,
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Single-Leg Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -55415,6 +55500,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Med Ball Slam",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest.",
+                    "alternates": [
+                      "MB Rapid Lateral Toss"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -55459,9 +55559,9 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -55647,19 +55747,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
@@ -55784,6 +55884,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
@@ -55992,35 +56093,36 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each side",
+                    "sets": 3,
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Single-Leg Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -56074,6 +56176,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Med Ball Slam",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest.",
+                    "alternates": [
+                      "MB Rapid Lateral Toss"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -56118,9 +56235,9 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -56306,19 +56423,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
@@ -56650,35 +56767,35 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each side",
+                    "sets": 3,
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single-Leg Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "8 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls"
                     ]
                   },
                   {
@@ -56732,6 +56849,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "MB Rapid Lateral Toss",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest. Toss into a wall.",
+                    "alternates": [
+                      "Med Ball Slam"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -56776,9 +56908,9 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -56964,19 +57096,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
@@ -57308,35 +57440,35 @@
                     ]
                   },
                   {
-                    "name": "Dead Bug",
+                    "name": "Band Pullover",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10 each side",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
-                    "notes": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar).",
                     "alternates": [
-                      "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "Band Pull-Aparts",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single-Leg Slider Hamstring Curl",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "8 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "30s",
+                    "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Slider Hamstring Curl",
+                      "Dumbbell Lying Leg Curls"
                     ]
                   },
                   {
@@ -57390,6 +57522,21 @@
                 ],
                 "exercises": [
                   {
+                    "name": "MB Rapid Lateral Toss",
+                    "round_group": "Power",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "6 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Full effort, then rest. Toss into a wall.",
+                    "alternates": [
+                      "Med Ball Slam"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
@@ -57434,9 +57581,9 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
+                      "Adductor Slider Lunge",
                       "Lateral Lunge",
-                      "Curtsy Lunge",
-                      "Adductor Slider Lunge"
+                      "Curtsy Lunge"
                     ]
                   },
                   {
@@ -57622,19 +57769,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Kettlebell Swing",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "Hinge, snap the hips, float the bell to chest height.",
                     "alternates": [
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   }
                 ],
