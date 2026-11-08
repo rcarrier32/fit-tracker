@@ -4,6 +4,7 @@
  */
 
 import { HIP_CATALOG_ENTRIES, movementTags } from './hip_protocol.js';
+import { loadLocalVideos, localSources } from './local_videos.js';
 
 let _cache = null;
 let _loading = null;
@@ -12,6 +13,7 @@ export async function loadCatalogs() {
   if (_cache) return _cache;
   if (_loading) return _loading;
   _loading = (async () => {
+    await loadLocalVideos().catch(() => {});
     const [lib, meals, foods] = await Promise.all([
       fetch('data/library.json').then(r => r.json()),
       fetch('data/meal_library.json').then(r => r.json()).catch(() => ({ recipes: [] })),
@@ -23,6 +25,9 @@ export async function loadCatalogs() {
       // Any other key (home, athletic, …) is a program group built by a data/build_*.py script.
       ...Object.entries(lib.programs).filter(([k]) => k !== 'pjf' && k !== 'bws')
         .flatMap(([k, list]) => list.map(p => ({ ...p, source: p.source || k }))),
+      // Programs from private on-device imports (TrainHeroic, …): never in the repo.
+      ...Object.entries(localSources()).flatMap(([src, f]) => (f.programs || [])
+        .map(p => ({ ...p, source: `private:${src}`, group: p.group || 'Private · this phone', private: true }))),
     ];
     // One catalog: hip-tab exercises join the library (skipping any name it already has),
     // and every entry gets movement-type tags for hip-friendly swaps.
@@ -37,6 +42,16 @@ export async function loadCatalogs() {
       ...lib.exercises,
       ...HIP_CATALOG_ENTRIES.filter(e => !libNames.has(e.name.toLowerCase())),
     ];
+    // Exercises only a private import knows (with tags) join the catalog on this device.
+    const known = new Set(lib.exercises.map(e => e.name.toLowerCase()));
+    for (const [src, f] of Object.entries(localSources())) {
+      for (const o of Object.values(f.videos || {})) {
+        if (!o?.name || !o.tags || known.has(o.name.toLowerCase())) continue;
+        known.add(o.name.toLowerCase());
+        lib.exercises.push({ id: `private-${src}-${o.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name: o.name,
+          sources: [src], aliases: [], video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags });
+      }
+    }
     // Taxonomy tags for hip-tab entries live in library.json `extra_tags` (data/tag_exercises.py).
     for (const e of lib.exercises) {
       const t = lib.extra_tags?.[e.id];

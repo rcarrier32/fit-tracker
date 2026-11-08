@@ -335,7 +335,11 @@ export async function renderHome(app) {
         const lv = await import('../lib/local_videos.js');
         if (lv.isLocalVideosFile(data)) {   // PJF demo videos + notes, kept on this device only
           const n = await lv.importLocalVideos(data);
-          toast(`${n} PJF videos added on this device`);
+          const label = data.source === 'pjf' ? 'PJF' : data.source === 'trainheroic' ? 'TrainHeroic' : data.source;
+          const progs = (data.programs || []).length;
+          toast(`${n} ${label} videos${progs ? ` and ${progs} program${progs > 1 ? 's' : ''}` : ''} added on this device`);
+          // Private programs and exercises join the catalog at load: reload to pick them up.
+          if (progs || Object.values(data.videos).some(o => o.tags)) setTimeout(() => location.reload(), 1200);
           return;
         }
         if (!data.sessions && !data.meals && !data.prefs) throw new Error('Invalid backup file');

@@ -22,12 +22,13 @@ const LOCAL = flags.includes('--local') ? flags[flags.indexOf('--local') + 1] : 
 const isHeaderRow = (n) => /^(daily overview|start of workout.*overview|superset|circuit|combo cardio)\b/i.test(String(n || '').trim());
 // Mirrors local_videos.js localFor: exact normalized name, or a prefix for long names.
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
-let localNames = [];
+let localNames = [], localFile = null;
 if (LOCAL) {
   const buf = readFileSync(LOCAL.replace(/^~/, process.env.HOME));
   let txt = buf.toString('utf8');
   if (txt.includes('\uFFFD')) txt = buf.toString('latin1');
-  localNames = Object.values(JSON.parse(txt).videos || {}).filter(o => o?.v && o.name).map(o => norm(o.name));
+  localFile = JSON.parse(txt);
+  localNames = Object.values(localFile.videos || {}).filter(o => (o?.v || o?.url || o?.yt) && o.name).map(o => norm(o.name));
 }
 const hasLocal = (name) => {
   const n = norm(name);
@@ -48,7 +49,11 @@ for (const h of HIP_CATALOG_ENTRIES) {
   else if (!dup.video_url && h.video_url) dup.video_url = h.video_url;
 }
 
-const all = Object.values(lib.programs).flat();
+// Private on-device files can carry their own programs and tagged exercises.
+for (const o of Object.values(localFile?.videos || {})) {
+  if (o?.name && o.tags && !byName.has(o.name.toLowerCase())) byName.set(o.name.toLowerCase(), { name: o.name, video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags });
+}
+const all = [...Object.values(lib.programs).flat(), ...(localFile?.programs || [])];
 const p = all.find(x => x.id === id);
 if (!p) { console.error(`No program with id "${id}". Known: ${all.map(x => x.id).filter(Boolean).join(', ')}`); process.exit(1); }
 

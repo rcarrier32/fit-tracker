@@ -2,7 +2,7 @@
  * Exercise taxonomy helpers for the UI: labels, tag chips, and "similar exercise" ranking.
  * Values and meanings: docs/EXERCISE_TAXONOMY.md. Tags come from data/exercise_tags.json.
  */
-import { localFor } from './local_videos.js';
+import { localFor, playable } from './local_videos.js';
 
 export const PATTERN_LABEL = {
   squat: 'Squat', hinge: 'Hinge', lunge_single_leg: 'Single-leg', push_horizontal: 'Horizontal push',
@@ -34,7 +34,7 @@ export const TYPE_GROUPS = {
   'Mobility & balance': ['mobility', 'balance', 'isometric'], Cardio: ['conditioning'],
 };
 
-export const hasVideo = (e) => !!(e?.video_url || localFor(e?.name)?.v);
+export const hasVideo = (e) => !!(e?.video_url || playable(localFor(e?.name)));
 
 /** Small chips: primary muscle, other muscles, pattern, equipment. Empty for untagged entries. */
 export function tagChipsHTML(e) {

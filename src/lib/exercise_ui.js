@@ -11,7 +11,7 @@
  *     videoId? | video_url?, videoTitle?, link?, search?, source?, optional? }
  */
 import { openSheet } from '../app.js';
-import { localFor, muxThumb, attachMuxVideos } from './local_videos.js';
+import { localFor, muxThumb, attachMuxVideos, playable } from './local_videos.js';
 import { tagChipsHTML } from './taxonomy.js';
 import { getCachedSync } from './static_data.js';
 
@@ -42,13 +42,14 @@ export function perSetLabel(rx) {
 }
 
 function thumbHTML(ex) {
-  const vid = videoOf(ex);
-  const mux = localFor(ex.name)?.v;
+  const l = localFor(ex.name);
+  const mux = l?.v;
+  const vid = l?.yt || videoOf(ex);
   const box = 'flex-shrink:0;width:104px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;position:relative;background:#0f172a';
-  if (vid || mux) {
+  if (vid || mux || l?.url) {
     return `
       <div style="${box}">
-        <img src="${mux ? muxThumb(mux) : `https://img.youtube.com/vi/${vid}/mqdefault.jpg`}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"
+        <img src="${mux ? muxThumb(mux) : vid ? `https://img.youtube.com/vi/${vid}/mqdefault.jpg` : ''}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"
           style="width:100%;height:100%;object-fit:cover;display:block">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
           width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.65);
@@ -178,17 +179,28 @@ function ladderHTML(l, accent) {
 }
 
 function videoBlockHTML(ex) {
-  // The user's own PJF demo (stored on this device only) beats a stand-in YouTube video.
-  const mux = localFor(ex.name)?.v;
-  if (mux) {
+  // The user's own program demos (PJF, TrainHeroic: stored on this device only) beat a
+  // stand-in YouTube video.
+  const l = localFor(ex.name);
+  const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l ? 'Your program\'s demo' : '';
+  if (l?.v) {
     return `
       <div class="ex-video">
-        <video data-mux="${esc(mux)}" controls playsinline preload="metadata" poster="${muxThumb(mux)}"
+        <video data-mux="${esc(l.v)}" controls playsinline preload="metadata" poster="${muxThumb(l.v)}"
           style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
       </div>
-      <div style="font-size:10.5px;color:#64748b;margin-top:5px">PJF Performance demo</div>`;
+      <div style="font-size:10.5px;color:#64748b;margin-top:5px">${label}</div>`;
   }
-  const vid = videoOf(ex);
+  if (l?.url) {
+    const hls = /\.m3u8(\?|$)/i.test(l.url);
+    return `
+      <div class="ex-video">
+        <video ${hls ? `data-hls="${esc(l.url)}"` : `src="${esc(l.url)}"`} controls playsinline preload="metadata"
+          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
+      </div>
+      <div style="font-size:10.5px;color:#64748b;margin-top:5px">${label}</div>`;
+  }
+  const vid = l?.yt || videoOf(ex);
   if (vid) {
     return `
       <div class="ex-video">
@@ -217,7 +229,7 @@ function pjfNotesHTML(ex, accent) {
   const lines = l.notes.flatMap(n => n.split(/\s(?=-[A-Z])|\s(?=Level \d+ =)/).map(t => t.replace(/^-/, '').trim()))
     .filter(Boolean);
   return `
-    <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700;margin:16px 0 6px">PJF COACHING NOTES</div>
+    <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700;margin:16px 0 6px">${l.source === "trainheroic" ? "TRAINHEROIC" : l.source === "pjf" ? "PJF" : "PROGRAM"} COACHING NOTES</div>
     <div style="display:flex;flex-direction:column;gap:5px">
       ${lines.map(c => `
         <div style="font-size:13px;color:#cbd5e1;display:flex;gap:7px;line-height:1.45">

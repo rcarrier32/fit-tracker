@@ -5,31 +5,52 @@
  * Home → Import data. They live only in this device's IndexedDB (pref 'local_videos') —
  * never in the repo, because the repo and the GitHub Pages site are public.
  *
- * File shape: { source: 'pjf', kind: 'mux', videos: { slug: { name, v, notes[], alts[] } } }
- * where v is a Mux playback id (https://stream.mux.com/<v>.m3u8).
+ * File shape: { source: 'pjf' | 'trainheroic' | …, videos: { slug: { name, v?, url?, yt?, notes[], alts[], tags? } },
+ *               programs?: [...], dayNotes?: [...] }
+ *   v   Mux playback id (https://stream.mux.com/<v>.m3u8)   — PJF
+ *   url a direct video file or HLS stream URL                  — e.g. TrainHeroic
+ *   yt  a YouTube video id
+ *   tags taxonomy tags (docs/EXERCISE_TAXONOMY.md) for exercises the public catalog doesn't have
+ * Each source is stored separately in pref('local_sources'), so importing one never wipes another.
+ * Programs in a file show under "Private · this phone" (merged in static_data.js).
  */
 import { pref } from '../db.js';
 
-let _byName = new Map();   // normalized name → { v, notes, alts: [names] }
+let _byName = new Map();   // normalized name → { v, url, yt, source, notes, alts: [names], tags }
+let _sources = {};         // source → imported file
 let _names = [];           // normalized names, for prefix matching of truncated catalog names
 let _dayNotes = [];        // { program, week, day, note, exercises: [normalized names] }
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
 
-function index(data) {
+// PJF first: its demos are the closest match for PJF program names.
+const ORDER = (a, b) => (a === 'pjf' ? -1 : b === 'pjf' ? 1 : a.localeCompare(b));
+
+function index(sources) {
+  _sources = sources || {};
   _byName = new Map();
-  const videos = data?.videos || {};
-  for (const o of Object.values(videos)) {
-    if (!o?.name) continue;
-    _byName.set(norm(o.name), {
-      v: o.v || null,
-      notes: o.notes || [],
-      alts: (o.alts || []).map(s => videos[s]?.name).filter(Boolean),
-    });
+  _dayNotes = [];
+  for (const src of Object.keys(_sources).sort(ORDER)) {
+    const data = _sources[src];
+    const videos = data?.videos || {};
+    for (const o of Object.values(videos)) {
+      if (!o?.name || _byName.has(norm(o.name))) continue;
+      _byName.set(norm(o.name), {
+        v: o.v || null, url: o.url || null, yt: o.yt || null, source: src, name: o.name,
+        notes: o.notes || [],
+        alts: (o.alts || []).map(s => videos[s]?.name).filter(Boolean),
+        tags: o.tags || null,
+      });
+    }
+    _dayNotes.push(...(data?.dayNotes || []).map(d => ({ ...d, exercises: (d.exercises || []).map(norm) })));
   }
   _names = [..._byName.keys()].sort((a, b) => b.length - a.length);
-  _dayNotes = (data?.dayNotes || []).map(d => ({ ...d, exercises: (d.exercises || []).map(norm) }));
 }
+
+/** Every imported private source (for catalog merging): { source: file }. */
+export const localSources = () => _sources;
+/** Does this on-device entry have something playable? */
+export const playable = (l) => !!(l && (l.v || l.url || l.yt));
 
 /**
  * PJF's notes for a workout day. PJF numbers its workouts differently from the app (some
@@ -55,21 +76,32 @@ export function dayNotesFor(programName, week, exerciseNames, dayNum = 0) {
 
 /** Load the stored file into memory. Called once at boot; cheap when nothing is stored. */
 export async function loadLocalVideos() {
-  try { index(await pref('local_videos')); } catch { /* storage unavailable: no local videos */ }
+  try {
+    let sources = await pref('local_sources');
+    if (!sources) {                              // before v81 one PJF file lived in 'local_videos'
+      const old = await pref('local_videos');
+      sources = old ? { [old.source || 'pjf']: old } : {};
+      if (old) await pref('local_sources', sources);
+    }
+    index(sources);
+  } catch { /* storage unavailable: no local videos */ }
 }
 
 /** Is this a local-videos export rather than a full app backup? */
 export const isLocalVideosFile = (data) => {
   if (!data?.videos || data.sessions || data.prefs) return false;
-  if (data.source === 'pjf') return true;
+  if (typeof data.source === 'string') return true;
   const first = Object.values(data.videos)[0];   // older exports had no source/kind labels
   return !!first && typeof first.name === 'string' && 'v' in first;
 };
 
+/** Store one source's file (replacing that source only) and re-index. Returns playable count. */
 export async function importLocalVideos(data) {
-  await pref('local_videos', data);
-  index(data);
-  return Object.values(data.videos).filter(o => o.v).length;
+  const src = data.source || 'pjf';
+  const sources = { ...((await pref('local_sources')) || _sources), [src]: data };
+  await pref('local_sources', sources);
+  index(sources);
+  return Object.values(data.videos).filter(o => o.v || o.url || o.yt).length;
 }
 
 /** PJF video + notes for an exercise name, or null. Handles catalog names cut short at import. */
@@ -94,8 +126,8 @@ let _hls = null;   // hls.js loader, only for browsers without native HLS (deskt
  * support in canPlayType and then fail to play it.
  */
 export function attachMuxVideos(root) {
-  for (const el of root.querySelectorAll('video[data-mux]')) {
-    const src = muxSrc(el.dataset.mux);
+  for (const el of root.querySelectorAll('video[data-mux], video[data-hls]')) {
+    const src = el.dataset.mux ? muxSrc(el.dataset.mux) : el.dataset.hls;
     if (!window.MediaSource && el.canPlayType('application/vnd.apple.mpegurl')) { el.src = src; continue; }
     _hls ??= new Promise((resolve, reject) => {
       const s = document.createElement('script');

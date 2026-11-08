@@ -9,7 +9,7 @@ import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
-import { localFor, dayNotesFor } from '../lib/local_videos.js';
+import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
 import { tagLine, rankSimilar, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 
@@ -535,7 +535,7 @@ function _warmupBlockHtml(warmup, exMap) {
   const rows = warmup.exercises.map(ex => {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
-    const _wLocal = localFor(ex.name)?.v;
+    const _wLocal = playable(localFor(ex.name));
     const _wNameEsc = ex.name.replace(/"/g, '&quot;');
     const _attr = (v) => String(v ?? '').replace(/"/g, '&quot;');
     const videoHtml = _wYtId || _wLocal
@@ -1100,7 +1100,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   const _ytId = ytVideoId(lookup?.video_url);
-  const videoLink = _ytId || localFor(ex.name)?.v
+  const videoLink = _ytId || playable(localFor(ex.name))
     ? `<button class="video-link has-video" data-ytid="${_ytId || ''}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
         data-target="${formatTarget(ex).replace(/"/g, '&quot;')}"
         data-last="${prevRef[ex.name] ? ('Last: ' + formatPrevSets(prevRef[ex.name].sets) + ' (' + prevRef[ex.name].date + ')').replace(/"/g, '&quot;') : ''}"
