@@ -27,6 +27,12 @@ export function ytId(v) {
 }
 
 const videoOf = (ex) => ytId(ex.videoId) || ytId(ex.video_url);
+/** Start offset in seconds from ex.start or a ?t= / &start= on the video URL (0 if none). */
+export function ytStart(ex) {
+  if (ex?.start) return +ex.start || 0;
+  const m = String(ex?.video_url || '').match(/[?&](?:t|start)=(\d+)/);
+  return m ? +m[1] : 0;
+}
 
 /** Set circles for "3 × 10 per leg" → 3; timed or one-off work → 1. */
 export function setCount(rx) {
@@ -181,7 +187,7 @@ function ladderHTML(l, accent) {
 function videoBlockHTML(ex) {
   // The user's own program demos (PJF, TrainHeroic: stored on this device only) beat a
   // stand-in YouTube video.
-  const l = localFor(ex.name);
+  const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
   const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l ? 'Your program\'s demo' : '';
   if (l?.v) {
     return `
@@ -204,7 +210,7 @@ function videoBlockHTML(ex) {
   if (vid) {
     return `
       <div class="ex-video">
-        <iframe src="https://www.youtube.com/embed/${vid}?playsinline=1&rel=0&modestbranding=1"
+        <iframe src="https://www.youtube.com/embed/${vid}?playsinline=1&rel=0&modestbranding=1${ytStart(ex) ? `&start=${ytStart(ex)}` : ''}"
           title="${esc(ex.videoTitle || ex.name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
       </div>

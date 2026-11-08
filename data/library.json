@@ -13232,6 +13232,466 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "home-dumbbell-hip-thrust",
+      "name": "Dumbbell Hip Thrust",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Hip+Thrust+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-hip-thrust-hold",
+      "name": "Hip Thrust Hold",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=88",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hip+Thrust+Hold+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-hip-thrust-pulses",
+      "name": "Hip Thrust Pulses",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=148",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hip+Thrust+Pulses+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ],
+      "pattern": "hinge",
+      "role": "accessory",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-single-leg-hip-thrust-hold",
+      "name": "Single-Leg Hip Thrust Hold",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=508",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single-Leg+Hip+Thrust+Hold+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-single-leg-hip-thrust-pulses",
+      "name": "Single-Leg Hip Thrust Pulses",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=628",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single-Leg+Hip+Thrust+Pulses+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ],
+      "pattern": "hinge",
+      "role": "accessory",
+      "equipment": [
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-glute-bridge",
+      "name": "Glute Bridge",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=748",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Glute+Bridge+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-kneeling-hip-thrust",
+      "name": "Kneeling Hip Thrust",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1108",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Kneeling+Hip+Thrust+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-half-kneeling-hip-thrust",
+      "name": "Half-Kneeling Hip Thrust",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1168",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Half-Kneeling+Hip+Thrust+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-b-stance-rdl",
+      "name": "B-Stance RDL",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=B-Stance+RDL+form",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "glutes",
+        "lower_back"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-glute-rainbows",
+      "name": "Glute Rainbows",
+      "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1888",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Glute+Rainbows+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-banded-squat",
+      "name": "Banded Squat",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=25",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Squat+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "abductors"
+      ],
+      "pattern": "squat",
+      "role": "warmup",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-banded-lateral-walk",
+      "name": "Banded Lateral Walk",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=85",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Lateral+Walk+form",
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-banded-glute-kickback",
+      "name": "Banded Glute Kickback",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=145",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Glute+Kickback+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-dumbbell-lateral-lunge",
+      "name": "Dumbbell Lateral Lunge",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=505",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Lateral+Lunge+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "adductors",
+        "quads"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-curtsy-lunge",
+      "name": "Curtsy Lunge",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=625",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Curtsy+Lunge+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "quads",
+        "abductors"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-1-goblet-squat",
+      "name": "1¼ Goblet Squat",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=805",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=1¼+Goblet+Squat+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "squat",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-squat-hold",
+      "name": "Squat Hold",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=865",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Squat+Hold+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-banded-bridge-hold-abductions",
+      "name": "Banded Bridge Hold Abductions",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Bridge+Hold+Abductions+form",
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "home-glute-bridge-hold",
+      "name": "Glute Bridge Hold",
+      "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1165",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Glute+Bridge+Hold+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -41190,77 +41650,212 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Squat",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Dumbbell Hip Thrust",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10-12",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Shoulders on a bench or couch, dumbbell on the hips.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28"
                   },
                   {
-                    "name": "Banded Glute Bridge",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Hip Thrust Hold",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=88"
+                  },
+                  {
+                    "name": "Hip Thrust Pulses",
+                    "round_group": "Hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=148"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=388"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Hold",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=508"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Pulses",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=628"
+                  },
+                  {
+                    "name": "Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=748"
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=808"
+                  },
+                  {
+                    "name": "Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1108"
+                  },
+                  {
+                    "name": "Half-Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1168"
                   },
                   {
                     "name": "Dumbbell Romanian Deadlift",
-                    "round_group": "Circuit · 2 rounds",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Soft knees, push hips back, flat back."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1468"
                   },
                   {
-                    "name": "Resistance Band Side Steps",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "B-Stance RDL",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each direction",
+                    "sets": 4,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528"
                   },
                   {
-                    "name": "Standing Glute Kickback",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Fire Hydrants",
+                    "round_group": "Finisher · each side",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each leg",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1828"
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1858"
+                  },
+                  {
+                    "name": "Glute Rainbows",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1888"
                   }
+                ],
+                "notes": [
+                  "Week 1: learn the moves. Light dumbbells; pause the video between blocks if you need to.",
+                  "Before your first workout: take your starting measurements and photos.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "30-Minute At-Home Dumbbell Glute Workout",
                   "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
                 },
                 "day_num": 1,
-                "progress_check": "Take starting measurements & photos",
-                "notes": [
-                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Before your first workout: take your starting measurements and photos."
-                ]
+                "progress_check": "Take starting measurements & photos"
               },
               {
                 "focus": "Tue · Lower Belly & Core",
@@ -41430,87 +42025,236 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Sumo Squat",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Banded Squat",
+                    "round_group": "Band activation",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=25"
+                  },
+                  {
+                    "name": "Banded Lateral Walk",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=85"
+                  },
+                  {
+                    "name": "Banded Glute Kickback",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=145"
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=265"
+                  },
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=325"
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=385"
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=445"
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=505"
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=565"
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=625"
+                  },
+                  {
+                    "name": "B-Stance RDL",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=685"
+                  },
+                  {
+                    "name": "1¼ Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "All the way down, a quarter up, back down, then stand.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=805"
+                  },
+                  {
+                    "name": "Squat Hold",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=865"
                   },
                   {
                     "name": "Dumbbell Glute Bridge",
-                    "round_group": "Circuit · 2 rounds",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "15",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=925"
                   },
                   {
-                    "name": "Donkey Kicks",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Banded Bridge Hold Abductions",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985"
                   },
                   {
-                    "name": "Fire Hydrants",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "On the mat",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each leg",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1045"
                   },
                   {
-                    "name": "Side-Lying Leg Raise",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Glute Bridge Hold",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "15 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Banded Clamshell",
-                    "round_group": "Circuit · 2 rounds",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1165"
                   }
+                ],
+                "notes": [
+                  "Week 1: learn the moves. Light dumbbells; pause the video between blocks if you need to.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "20-Minute Dumbbell Lower Body Workout",
                   "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
                 },
-                "day_num": 4,
-                "notes": [
-                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises."
-                ]
+                "day_num": 4
               },
               {
                 "focus": "Fri · Full Body & Waist",
@@ -41695,76 +42439,210 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Squat",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Dumbbell Hip Thrust",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10-12",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Shoulders on a bench or couch, dumbbell on the hips.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28"
                   },
                   {
-                    "name": "Banded Glute Bridge",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Hip Thrust Hold",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=88"
+                  },
+                  {
+                    "name": "Hip Thrust Pulses",
+                    "round_group": "Hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=148"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=388"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Hold",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=508"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Pulses",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=628"
+                  },
+                  {
+                    "name": "Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=748"
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=808"
+                  },
+                  {
+                    "name": "Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1108"
+                  },
+                  {
+                    "name": "Half-Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1168"
                   },
                   {
                     "name": "Dumbbell Romanian Deadlift",
-                    "round_group": "Circuit · 2 rounds",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Soft knees, push hips back, flat back."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1468"
                   },
                   {
-                    "name": "Resistance Band Side Steps",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "B-Stance RDL",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "10 each direction",
+                    "sets": 4,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528"
                   },
                   {
-                    "name": "Standing Glute Kickback",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Fire Hydrants",
+                    "round_group": "Finisher · each side",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each leg",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1828"
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1858"
+                  },
+                  {
+                    "name": "Glute Rainbows",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1888"
                   }
+                ],
+                "notes": [
+                  "Week 2: same video. Rest less between blocks.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "30-Minute At-Home Dumbbell Glute Workout",
                   "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
                 },
-                "day_num": 1,
-                "notes": [
-                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 1
               },
               {
                 "focus": "Tue · Lower Belly & Core",
@@ -41935,88 +42813,236 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Sumo Squat",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Banded Squat",
+                    "round_group": "Band activation",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=25"
+                  },
+                  {
+                    "name": "Banded Lateral Walk",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=85"
+                  },
+                  {
+                    "name": "Banded Glute Kickback",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=145"
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=265"
+                  },
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=325"
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=385"
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=445"
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=505"
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=565"
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=625"
+                  },
+                  {
+                    "name": "B-Stance RDL",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=685"
+                  },
+                  {
+                    "name": "1¼ Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "All the way down, a quarter up, back down, then stand.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=805"
+                  },
+                  {
+                    "name": "Squat Hold",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=865"
                   },
                   {
                     "name": "Dumbbell Glute Bridge",
-                    "round_group": "Circuit · 2 rounds",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "15",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=925"
                   },
                   {
-                    "name": "Donkey Kicks",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Banded Bridge Hold Abductions",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985"
                   },
                   {
-                    "name": "Fire Hydrants",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "On the mat",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each leg",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1045"
                   },
                   {
-                    "name": "Side-Lying Leg Raise",
-                    "round_group": "Circuit · 2 rounds",
+                    "name": "Glute Bridge Hold",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 2,
-                    "reps": "15 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Banded Clamshell",
-                    "round_group": "Circuit · 2 rounds",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1165"
                   }
+                ],
+                "notes": [
+                  "Week 2: same video. Rest less between blocks.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "20-Minute Dumbbell Lower Body Workout",
                   "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
                 },
-                "day_num": 4,
-                "notes": [
-                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 4
               },
               {
                 "focus": "Fri · Full Body & Waist",
@@ -42202,76 +43228,210 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Squat",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Dumbbell Hip Thrust",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10-12",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Shoulders on a bench or couch, dumbbell on the hips.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28"
                   },
                   {
-                    "name": "Banded Glute Bridge",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Hip Thrust Hold",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=88"
+                  },
+                  {
+                    "name": "Hip Thrust Pulses",
+                    "round_group": "Hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=148"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=388"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Hold",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=508"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Pulses",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=628"
+                  },
+                  {
+                    "name": "Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=748"
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=808"
+                  },
+                  {
+                    "name": "Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1108"
+                  },
+                  {
+                    "name": "Half-Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1168"
                   },
                   {
                     "name": "Dumbbell Romanian Deadlift",
-                    "round_group": "Circuit · 3 rounds",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Soft knees, push hips back, flat back."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1468"
                   },
                   {
-                    "name": "Resistance Band Side Steps",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "B-Stance RDL",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each direction",
+                    "sets": 4,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528"
                   },
                   {
-                    "name": "Standing Glute Kickback",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Fire Hydrants",
+                    "round_group": "Finisher · each side",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1828"
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1858"
+                  },
+                  {
+                    "name": "Glute Rainbows",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1888"
                   }
+                ],
+                "notes": [
+                  "Week 3: go a little heavier on the dumbbells.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "30-Minute At-Home Dumbbell Glute Workout",
                   "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
                 },
-                "day_num": 1,
-                "notes": [
-                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 1
               },
               {
                 "focus": "Tue · Lower Belly & Core",
@@ -42442,88 +43602,236 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Sumo Squat",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Banded Squat",
+                    "round_group": "Band activation",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=25"
+                  },
+                  {
+                    "name": "Banded Lateral Walk",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=85"
+                  },
+                  {
+                    "name": "Banded Glute Kickback",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=145"
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=265"
+                  },
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=325"
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=385"
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=445"
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=505"
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=565"
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=625"
+                  },
+                  {
+                    "name": "B-Stance RDL",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=685"
+                  },
+                  {
+                    "name": "1¼ Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "All the way down, a quarter up, back down, then stand.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=805"
+                  },
+                  {
+                    "name": "Squat Hold",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=865"
                   },
                   {
                     "name": "Dumbbell Glute Bridge",
-                    "round_group": "Circuit · 3 rounds",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=925"
                   },
                   {
-                    "name": "Donkey Kicks",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Banded Bridge Hold Abductions",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985"
                   },
                   {
-                    "name": "Fire Hydrants",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1045"
                   },
                   {
-                    "name": "Side-Lying Leg Raise",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Glute Bridge Hold",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Banded Clamshell",
-                    "round_group": "Circuit · 3 rounds",
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1165"
                   }
+                ],
+                "notes": [
+                  "Week 3: go a little heavier on the dumbbells.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "20-Minute Dumbbell Lower Body Workout",
                   "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
                 },
-                "day_num": 4,
-                "notes": [
-                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 4
               },
               {
                 "focus": "Fri · Full Body & Waist",
@@ -42709,76 +44017,210 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Squat",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Dumbbell Hip Thrust",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10-12",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Shoulders on a bench or couch, dumbbell on the hips.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28"
                   },
                   {
-                    "name": "Banded Glute Bridge",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Hip Thrust Hold",
+                    "round_group": "Hip thrusts · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=88"
+                  },
+                  {
+                    "name": "Hip Thrust Pulses",
+                    "round_group": "Hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=148"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=388"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Hold",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=508"
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust Pulses",
+                    "round_group": "Single-leg hip thrusts",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=628"
+                  },
+                  {
+                    "name": "Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=748"
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "Bridges · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=808"
+                  },
+                  {
+                    "name": "Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1108"
+                  },
+                  {
+                    "name": "Half-Kneeling Hip Thrust",
+                    "round_group": "Kneeling hip thrusts · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1168"
                   },
                   {
                     "name": "Dumbbell Romanian Deadlift",
-                    "round_group": "Circuit · 3 rounds",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": "Soft knees, push hips back, flat back."
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1468"
                   },
                   {
-                    "name": "Resistance Band Side Steps",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "B-Stance RDL",
+                    "round_group": "RDLs · 2 rounds",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each direction",
+                    "sets": 4,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "Right, then left, each round.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528"
                   },
                   {
-                    "name": "Standing Glute Kickback",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Fire Hydrants",
+                    "round_group": "Finisher · each side",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": "Right side, then left.",
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1828"
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1858"
+                  },
+                  {
+                    "name": "Glute Rainbows",
+                    "round_group": "Finisher · each side",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "0s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1888"
                   }
+                ],
+                "notes": [
+                  "Week 4: heavier again, slow and controlled.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "30-Minute At-Home Dumbbell Glute Workout",
                   "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
                 },
-                "day_num": 1,
-                "notes": [
-                  "Week 4: 3 rounds, slow and controlled.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 1
               },
               {
                 "focus": "Tue · Lower Belly & Core",
@@ -42949,88 +44391,236 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Dumbbell Sumo Squat",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Banded Squat",
+                    "round_group": "Band activation",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=25"
+                  },
+                  {
+                    "name": "Banded Lateral Walk",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=85"
+                  },
+                  {
+                    "name": "Banded Glute Kickback",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=145"
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band activation",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=265"
+                  },
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=325"
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=385"
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=445"
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=505"
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=565"
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=625"
+                  },
+                  {
+                    "name": "B-Stance RDL",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=685"
+                  },
+                  {
+                    "name": "1¼ Goblet Squat",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "All the way down, a quarter up, back down, then stand.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=805"
+                  },
+                  {
+                    "name": "Squat Hold",
+                    "round_group": "Standing",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=865"
                   },
                   {
                     "name": "Dumbbell Glute Bridge",
-                    "round_group": "Circuit · 3 rounds",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=925"
                   },
                   {
-                    "name": "Donkey Kicks",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Banded Bridge Hold Abductions",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985"
                   },
                   {
-                    "name": "Fire Hydrants",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each leg",
+                    "sets": 2,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": "One side, then the other.",
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1045"
                   },
                   {
-                    "name": "Side-Lying Leg Raise",
-                    "round_group": "Circuit · 3 rounds",
+                    "name": "Glute Bridge Hold",
+                    "round_group": "On the mat",
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": "15 each leg",
+                    "sets": 1,
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Banded Clamshell",
-                    "round_group": "Circuit · 3 rounds",
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45-60s",
-                    "notes": null
+                    "time": "40s",
+                    "rest": "20s",
+                    "notes": null,
+                    "video_url": "https://www.youtube.com/watch?v=z-lsr8cVuqo&t=1165"
                   }
+                ],
+                "notes": [
+                  "Week 4: heavier again, slow and controlled.",
+                  "Follow along with the video: 40 seconds on, 20 off. Tap ▶ Video on any exercise to jump to that part."
                 ],
                 "video": {
                   "title": "20-Minute Dumbbell Lower Body Workout",
                   "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
                 },
-                "day_num": 4,
-                "notes": [
-                  "Week 4: 3 rounds, slow and controlled.",
-                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
-                  "Don't raise weight and reps in the same week. Progress one at a time."
-                ]
+                "day_num": 4
               },
               {
                 "focus": "Fri · Full Body & Waist",

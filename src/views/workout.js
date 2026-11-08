@@ -93,6 +93,8 @@ function openLiftDetail(btn) {
   openExerciseDetail({
     name: d.ytname || 'Exercise',
     videoId: d.ytid,
+    start: d.start || 0,
+    rowVideo: d.row === '1',
     sets: d.target || '',
     subtitle: d.last || '',
     notes: d.notes || '',
@@ -167,6 +169,7 @@ export async function renderWorkout(app) {
       rest: ex.rest,
       round_group: ex.round_group || ex.group || ex.superset || null,
       notes: ex.notes,
+      video_url: ex.video_url || null,   // a plan can point a row at its own video (and start time)
       sets: [],
     }));
     session = {
@@ -1099,8 +1102,13 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const sets = Math.max(parseInt(ex.target_sets) || 3, ex.sets.length);
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
-  const _ytId = ytVideoId(lookup?.video_url);
-  const videoLink = _ytId || playable(localFor(ex.name))
+  // A row's own video (e.g. the follow-along it comes from) wins, unless the exercise was swapped.
+  const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+  const _ytId = ytVideoId(rowVideo || lookup?.video_url);
+  const _start = (String(rowVideo || '').match(/[?&](?:t|start)=(\d+)/) || [])[1] || '';
+  const videoLink = (rowVideo && _ytId) ? `<button class="video-link has-video" data-row="1" data-ytid="${_ytId}" data-start="${_start}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
+        data-target="${formatTarget(ex).replace(/"/g, '&quot;')}" data-notes="${String(ex.notes || '').replace(/"/g, '&quot;')}">▶ Video</button>`
+    : _ytId || playable(localFor(ex.name))
     ? `<button class="video-link has-video" data-ytid="${_ytId || ''}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"
         data-target="${formatTarget(ex).replace(/"/g, '&quot;')}"
         data-last="${prevRef[ex.name] ? ('Last: ' + formatPrevSets(prevRef[ex.name].sets) + ' (' + prevRef[ex.name].date + ')').replace(/"/g, '&quot;') : ''}"

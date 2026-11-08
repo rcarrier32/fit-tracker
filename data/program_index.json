@@ -897,7 +897,7 @@
    "kind": "progression",
    "weeks": 4,
    "days_per_week": 6,
-   "exercises_per_day": 4.5,
+   "exercises_per_day": 8.0,
    "day_focus": [
     "Mon · Glutes & Legs",
     "Tue · Lower Belly & Core",
@@ -907,11 +907,11 @@
     "Sat · Walking & Stretching"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 16,
+    "glutes": 40,
+    "hamstrings": 11,
+    "quads": 7,
     "abs": 6,
     "obliques": 6,
-    "quads": 4,
-    "hamstrings": 4,
     "hip_flexors": 4,
     "full_body": 4,
     "abductors": 2,
@@ -919,26 +919,29 @@
     "front_delts": 2
    },
    "week1_sets_by_pattern": {
-    "isolation_lower": 12,
-    "hinge": 8,
-    "squat": 6,
+    "hinge": 35,
+    "isolation_lower": 10,
+    "isometric": 6,
     "anti_extension": 6,
+    "squat": 6,
     "mobility": 4,
     "lateral_flexion": 4,
     "conditioning": 4,
+    "lunge_single_leg": 3,
     "pull_horizontal": 2,
     "push_vertical": 2,
     "flexion": 2
    },
    "roles": {
-    "secondary": 9,
-    "accessory": 6,
+    "secondary": 23,
+    "accessory": 12,
     "core": 6,
-    "warmup": 2,
+    "warmup": 3,
     "conditioning": 2,
     "cooldown": 2
    },
    "equipment": [
+    "bench",
     "dumbbell",
     "mini_band"
    ],

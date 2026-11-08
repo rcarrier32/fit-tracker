@@ -81,7 +81,7 @@ weeks.forEach((w, wi) => {
     const check = (ex, where) => {
       const hit = byName.get(String(ex.name).toLowerCase());
       if (!hit) errors.push(`${at} ${where}: "${ex.name}" doesn't resolve to a catalog exercise`);
-      else if (!hit.video_url && !hasLocal(ex.name)) errors.push(`${at} ${where}: "${ex.name}" has no video (shows 🔍 Find)`);
+      else if (!hit.video_url && !ex.video_url && !hasLocal(ex.name)) errors.push(`${at} ${where}: "${ex.name}" has no video (shows 🔍 Find)`);
       if (hit && tagErrors(hit).length) errors.push(`${at} ${where}: "${ex.name}" isn't tagged (${tagErrors(hit)[0]}): classify it in data/exercise_tags.json`);
       const target = ex.reps || ex.time || ex.distance || ex.set_targets?.length;
       if (!target) warns.push(`${at} ${where}: "${ex.name}" has no reps/time/distance target`);

@@ -6384,6 +6384,58 @@
    "plane": "sagittal",
    "hip_focus": true
   },
+  "home-1-goblet-squat": {
+   "name": "1¼ Goblet Squat",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes"
+   ],
+   "pattern": "squat",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-b-stance-rdl": {
+   "name": "B-Stance RDL",
+   "primary_muscle": "hamstrings",
+   "muscles": [
+    "hamstrings",
+    "glutes",
+    "lower_back"
+   ],
+   "pattern": "hinge",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-banded-bridge-hold-abductions": {
+   "name": "Banded Bridge Hold Abductions",
+   "primary_muscle": "abductors",
+   "muscles": [
+    "abductors",
+    "glutes"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "mini_band"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
   "home-banded-clamshell": {
    "name": "Banded Clamshell",
    "primary_muscle": "glutes",
@@ -6410,6 +6462,57 @@
    ],
    "pattern": "hinge",
    "role": "secondary",
+   "equipment": [
+    "mini_band"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-banded-glute-kickback": {
+   "name": "Banded Glute Kickback",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "mini_band"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-banded-lateral-walk": {
+   "name": "Banded Lateral Walk",
+   "primary_muscle": "abductors",
+   "muscles": [
+    "abductors",
+    "glutes"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "mini_band"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
+  "home-banded-squat": {
+   "name": "Banded Squat",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes",
+    "abductors"
+   ],
+   "pattern": "squat",
+   "role": "warmup",
    "equipment": [
     "mini_band"
    ],
@@ -6449,6 +6552,24 @@
    "level": 1,
    "unilateral": false,
    "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-curtsy-lunge": {
+   "name": "Curtsy Lunge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "quads",
+    "abductors"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
    "hip_focus": false
   },
   "home-donkey-kicks": {
@@ -6520,6 +6641,42 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "home-dumbbell-hip-thrust": {
+   "name": "Dumbbell Hip Thrust",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "hinge",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-dumbbell-lateral-lunge": {
+   "name": "Dumbbell Lateral Lunge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "adductors",
+    "quads"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": false
+  },
   "home-dumbbell-squat": {
    "name": "Dumbbell Squat",
    "primary_muscle": "quads",
@@ -6588,6 +6745,74 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "home-glute-bridge": {
+   "name": "Glute Bridge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "hinge",
+   "role": "secondary",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-glute-bridge-hold": {
+   "name": "Glute Bridge Hold",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "isometric",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-glute-rainbows": {
+   "name": "Glute Rainbows",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "abductors"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": false
+  },
+  "home-half-kneeling-hip-thrust": {
+   "name": "Half-Kneeling Hip Thrust",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "hinge",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "home-heel-slides": {
    "name": "Heel Slides",
    "primary_muscle": "abs",
@@ -6620,6 +6845,58 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true
+  },
+  "home-hip-thrust-hold": {
+   "name": "Hip Thrust Hold",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "isometric",
+   "role": "accessory",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-hip-thrust-pulses": {
+   "name": "Hip Thrust Pulses",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes"
+   ],
+   "pattern": "hinge",
+   "role": "accessory",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-kneeling-hip-thrust": {
+   "name": "Kneeling Hip Thrust",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "hinge",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
   },
   "home-leg-swings": {
    "name": "Leg Swings",
@@ -6687,6 +6964,56 @@
    "level": 1,
    "unilateral": true,
    "plane": "frontal",
+   "hip_focus": false
+  },
+  "home-single-leg-hip-thrust-hold": {
+   "name": "Single-Leg Hip Thrust Hold",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "isometric",
+   "role": "accessory",
+   "equipment": [
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-single-leg-hip-thrust-pulses": {
+   "name": "Single-Leg Hip Thrust Pulses",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes"
+   ],
+   "pattern": "hinge",
+   "role": "accessory",
+   "equipment": [
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "home-squat-hold": {
+   "name": "Squat Hold",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes"
+   ],
+   "pattern": "isometric",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
    "hip_focus": false
   },
   "home-standing-glute-kickback": {
