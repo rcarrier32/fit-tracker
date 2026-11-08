@@ -61,11 +61,11 @@ ALTS = {
     'Banded Glute Bridge': ['Dumbbell Glute Bridge', 'Single-Leg Glute Bridge'],
     'Mini Band Monster Walk': ['Resistance Band Side Steps'],
     'Band Pull-Aparts': ['Bent Over Dumbbell Face Pulls', 'Band Pull Apart'],
-    'Dumbbell Sumo Squat': ['Dumbbell Goblet Squat', '1¼ Goblet Squat'],
+    'Dumbbell Sumo Squat': ['Kettlebell Swing', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'],
     'Band Pullover': ['Band Pull-Aparts', 'Bent Over 1 Arm Row'],
     'Slider Hamstring Curl': ['Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
     'Single-Leg Slider Hamstring Curl': ['Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
-    'Kettlebell Swing': ['Dumbbell Sumo Squat', 'Single-Leg RDL with Kettlebell'],
+    'Kettlebell Swing': ['Med Ball Slam', 'Single-Leg RDL with Kettlebell'],
     'Med Ball Slam': ['MB Rapid Lateral Toss'],
     'MB Rapid Lateral Toss': ['Med Ball Slam'],
 }
@@ -136,8 +136,8 @@ def days(wk):
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
         {'focus': 'Day 3 · Stability + Bands', 'warmup': WARM_UPPER, 'notes': notes, 'exercises': [
-            r('MB Rapid Lateral Toss' if p == 3 else 'Med Ball Slam', '6 each side' if p == 3 else '8', sets=3, rest='45s', group='Power',
-              notes='Full effort, then rest. Toss into a wall.' if p == 3 else 'Full effort, then rest.'),
+            r('Kettlebell Swing', '12' if p == 3 else '10', sets=3, rest='45s', group='Power',
+              notes='Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).'),
             r('Bulgarian Split Squat', '8 each leg', sets=S, rest=rest, group='Superset A'),
             r('Band Resisted Push Up', '10', sets=S, rest=rest, group='Superset A', notes='PJF heavy band across the back.'),
             r('Dumbbell Lateral Lunge', '8 each side', sets=S, rest=rest, group='Superset B'),
@@ -154,7 +154,7 @@ def days(wk):
             r('Banded Glute Bridge', '15', sets=s, rest='0s', group='Band circuit'),
             r('Mini Band Monster Walk', '10 each way', sets=s, rest='0s', group='Band circuit'),
             r('Band Pull-Aparts', '15', sets=s, rest='0s', group='Band circuit'),
-            r('Kettlebell Swing', '15', sets=s, rest='60s', group='Band circuit', notes='Hinge, snap the hips, float the bell to chest height.'),
+            r('Dumbbell Sumo Squat', '12', sets=s, rest='60s', group='Band circuit'),
         ]},
     ]
 

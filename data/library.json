@@ -54148,18 +54148,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Med Ball Slam",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "MB Rapid Lateral Toss"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -54395,19 +54396,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],
@@ -54824,18 +54826,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Med Ball Slam",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "MB Rapid Lateral Toss"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -55071,19 +55074,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],
@@ -55500,18 +55504,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Med Ball Slam",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "MB Rapid Lateral Toss"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -55747,19 +55752,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],
@@ -56176,18 +56182,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Med Ball Slam",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "MB Rapid Lateral Toss"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -56423,19 +56430,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],
@@ -56849,18 +56857,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "MB Rapid Lateral Toss",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest. Toss into a wall.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "Med Ball Slam"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -57096,19 +57105,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],
@@ -57522,18 +57532,19 @@
                 ],
                 "exercises": [
                   {
-                    "name": "MB Rapid Lateral Toss",
+                    "name": "Kettlebell Swing",
                     "round_group": "Power",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Full effort, then rest. Toss into a wall.",
+                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
                     "alternates": [
-                      "Med Ball Slam"
+                      "Med Ball Slam",
+                      "Single-Leg RDL with Kettlebell"
                     ]
                   },
                   {
@@ -57769,19 +57780,20 @@
                     ]
                   },
                   {
-                    "name": "Kettlebell Swing",
+                    "name": "Dumbbell Sumo Squat",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "15",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hinge, snap the hips, float the bell to chest height.",
+                    "notes": null,
                     "alternates": [
-                      "Dumbbell Sumo Squat",
-                      "Single-Leg RDL with Kettlebell"
+                      "Kettlebell Swing",
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
                     ]
                   }
                 ],

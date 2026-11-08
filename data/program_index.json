@@ -1149,14 +1149,14 @@
     "Day 4 · Conditioning + Glutes"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 16,
+    "glutes": 19,
     "quads": 12,
     "lats": 12,
     "chest": 9,
     "hamstrings": 9,
     "front_delts": 6,
-    "full_body": 6,
     "side_delts": 3,
+    "full_body": 3,
     "abductors": 3,
     "upper_back": 3,
     "abs": 2,
@@ -1170,23 +1170,22 @@
     "lunge_single_leg": 12,
     "push_horizontal": 9,
     "isolation_upper": 7,
+    "squat": 6,
     "push_vertical": 6,
     "isolation_lower": 6,
     "conditioning": 4,
-    "squat": 3,
     "pull_vertical": 3,
-    "plyo_jump": 3,
     "balance": 3,
     "anti_rotation": 2,
     "isometric": 2
    },
    "roles": {
-    "secondary": 17,
+    "secondary": 18,
     "accessory": 7,
     "conditioning": 4,
     "core": 2,
-    "power": 2,
-    "main": 1
+    "main": 1,
+    "power": 1
    },
    "equipment": [
     "band",
@@ -1195,7 +1194,6 @@
     "box",
     "dumbbell",
     "kettlebell",
-    "med_ball",
     "mini_band",
     "slider"
    ],
