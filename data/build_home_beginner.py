@@ -205,6 +205,21 @@ program = {
     'session_length_min': 40,
     'level': 'Beginner',
     'equipment': ['Exercise mat', 'Light dumbbells', 'Resistance bands', 'Walking shoes'],
+    'goal': 'Get stronger, build my glutes, strengthen my core, and feel confident in my body.',
+    'guide': [
+        {'title': 'Daily habits for fat loss', 'items': [
+            'Eat protein with every meal.',
+            'Drink plenty of water.',
+            'Walk regularly.',
+            'Get enough sleep.',
+            'Keep a sustainable calorie deficit if weight loss is the goal.',
+            'Give your muscles time to recover.',
+        ]},
+        {'title': 'Remember', 'items': [
+            "Ab exercises strengthen your stomach, but they can't burn fat from one spot. "
+            'Lower-belly and love-handle fat comes off with overall fat loss, strength training and consistency.',
+        ]},
+    ],
     'safety': 'Stop any exercise that hurts. If you notice abdominal doming, pelvic heaviness or leaking, pause that move and consider a pelvic floor physical therapist.',
     'weeks': weeks,
 }

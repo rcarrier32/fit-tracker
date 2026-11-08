@@ -510,7 +510,7 @@ function dayInfoHtml(program, dayData) {
   const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const notes = dayData.notes || [];
   const v = dayData.video;
-  if (!notes.length && !v && !program.safety && !dayData.progress_check) return '';
+  if (!notes.length && !v && !program.safety && !dayData.progress_check && !program.guide) return '';
   const video = !v ? '' : ytVideoId(v.url)
     ? `<button class="btn secondary" data-follow-along style="margin-top:10px">▶ Follow along: ${esc(v.title)}</button>`
     : `<a class="btn secondary" href="${esc(v.url)}" target="_blank" rel="noopener" style="margin-top:10px;display:block;text-align:center;text-decoration:none">▶ Follow along: ${esc(v.title)} ↗</a>`;
@@ -521,6 +521,10 @@ function dayInfoHtml(program, dayData) {
       ${v?.note ? `<p class="muted" style="font-size:12px;margin:0">${esc(v.note)}</p>` : ''}
       ${video}
       ${dayData.progress_check ? `<button class="btn secondary" data-progress-check style="margin-top:8px">📏 ${esc(dayData.progress_check)}</button>` : ''}
+      ${program.guide?.length ? `<details style="margin-top:8px"><summary class="muted" style="font-size:12px;cursor:pointer">Habits & reminders</summary>
+        ${program.guide.map(g => `<div style="font-size:12px;font-weight:600;margin:8px 0 2px">${esc(g.title)}</div>
+          <ul class="muted" style="margin:0;padding-left:18px;font-size:12px;line-height:1.45">${g.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`).join('')}
+      </details>` : ''}
       ${program.safety ? `<details style="margin-top:8px"><summary class="muted" style="font-size:12px;cursor:pointer">Safety</summary>
         <p class="muted" style="font-size:12px;line-height:1.45;margin:6px 0 0">${esc(program.safety)}</p></details>` : ''}
     </div>`;
@@ -550,6 +554,7 @@ function _warmupBlockHtml(warmup, exMap) {
           ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
         </div>
         <div style="font-size:12px;color:var(--fg-dim);white-space:nowrap">${setsStr}${target}</div>
+        ${!ex.reps && parseSecs(ex.time) ? `<button class="video-link hold-timer" data-secs="${parseSecs(ex.time)}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶ ${fmtSecs(parseSecs(ex.time))}</button>` : ''}
         ${videoHtml}
       </div>`;
   }).join('');

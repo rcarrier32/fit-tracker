@@ -229,6 +229,8 @@ function openStartPlanSheet(program, onConfirm) {
         </div>
       </div>
 
+      ${programGuideHtml(program)}
+
       <div class="group-label">Duration</div>
       <div class="muted" style="margin-bottom:8px">
         ${program.weeks
@@ -282,6 +284,18 @@ function openStartPlanSheet(program, onConfirm) {
 
     sheet.querySelector('#cancel-btn').onclick = close;
   });
+}
+
+/** Equipment, goal and guide sections a program can carry (home plans). */
+export function programGuideHtml(p) {
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const parts = [];
+  if (p.equipment?.length) parts.push(`<div class="group-label">Equipment</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px">${p.equipment.map(e => `<span class="pill">${esc(e)}</span>`).join('')}</div>`);
+  if (p.goal) parts.push(`<div class="group-label">Goal</div><div style="font-size:14px">${esc(p.goal)}</div>`);
+  for (const g of p.guide || []) parts.push(`<div class="group-label">${esc(g.title)}</div>
+    <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.5">${g.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`);
+  return parts.join('');
 }
 
 function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {

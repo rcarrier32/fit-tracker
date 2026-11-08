@@ -40,5 +40,6 @@ A plan only stores state and hands callbacks to `openExerciseDetail`:
 - `completeLabel`: shown when nothing is left. The list also shows a 🎉 complete card.
 - `actions`: plan-specific buttons such as Pause and Remove.
 
-New multi-week programs (hip function, total body, plyo/agility) should use this exercise
-shape and render through these three functions. They don't need any new UI.
+Rehab and band-only plans use this exercise shape and render through these three functions.
+Strength programs, including home dumbbell plans, stay on the Lift card so people can log
+weight and reps. See [ADDING_A_PROGRAM.md](ADDING_A_PROGRAM.md).
