@@ -17,3 +17,18 @@ Follow [docs/ADDING_A_PROGRAM.md](../../../docs/ADDING_A_PROGRAM.md) step by ste
 7. **`node data/check_catalog.mjs` and `node data/check_program.mjs <id> --net` must pass** before you check it in the preview.
 8. **Preview at phone size** and step through every day. Then bump the version in 3 places and push as rcarrier32. Ask before pushing unless the user already said to.
 9. **Public repo:** generic program names, no personal names or data.
+
+## Designing a new plan (no source document)
+
+When the user asks for a plan by goal ("build me a 4-day athletic plan") instead of handing over a document:
+
+1. Draft with the same engine the app uses:
+   `node data/generate_plan.mjs --goal <strength|muscle|fat_loss|athletic|durability> --days N --minutes M --weeks W --equipment a,b,c [--focus Glutes,Core] [--plyo] [--level 1-3] --seed S`
+   Add `--json > /tmp/draft.json` for the full program. Try a few seeds and pick the best one.
+2. Review it against [docs/PROGRAM_DESIGN.md](../../../docs/PROGRAM_DESIGN.md) and similar programs in `data/program_index.json`: weekly sets per muscle, session order, phase changes, time per session, and the user's hip rules.
+3. Hand-tune: swap picks, adjust doses, and add the day notes and warm-up cues the generator doesn't write. Then write `data/build_<plan>.py` using `program_builder` (copy `build_athletic_programs.py`), giving it a `group`.
+4. Validate (`check_catalog`, `check_program --net`), preview at phone size, bump the version, ship.
+
+If the user just wants a plan for themselves on their phone, point them to **Plans → Generate a plan** instead.
+
+When the generator's choices look wrong across many plans, fix the rules (`data/design_rules.json`, and the matching doc) or the tags (`data/exercise_tags.json`), not the individual plan. Re-run `node data/generate_plan.mjs --sanity` afterwards.

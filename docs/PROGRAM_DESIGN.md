@@ -62,3 +62,14 @@ mostly supersets, and cut isolation first (BWS express versions drop about 25% o
 - Substitutions stay in the same pattern and the same primary muscle. BWS alternates match the primary muscle 90% of the time.
 - **Athletic and durability goals** add hip-building work every session: Copenhagen, single-leg balance, rotation, lateral lunge, landing and deceleration (`hip_focus`). This builds the hip up; nothing is excluded for it.
 - No exercise repeats within a day. Main lifts stay the same within a phase, and accessories rotate between phases.
+
+## Generator
+
+`src/lib/generator.js` turns these rules into plans, both in the app (Plans → Generate a plan)
+and in node (`node data/generate_plan.mjs`). `--sanity` runs every goal × days × minutes ×
+equipment combination and checks for:
+- repeated exercises within a day
+- exercises without a video
+- equipment you don't have
+- sessions over the time box
+- big muscles under half their weekly target
