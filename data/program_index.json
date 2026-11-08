@@ -1141,7 +1141,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 9.0,
+   "exercises_per_day": 12.8,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
     "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
@@ -1154,20 +1154,22 @@
     "lats": 12,
     "chest": 9,
     "hamstrings": 9,
+    "abs": 8,
     "front_delts": 6,
-    "abs": 4,
+    "adductors": 6,
+    "hip_flexors": 5,
+    "upper_back": 5,
     "side_delts": 3,
     "full_body": 3,
     "calves": 3,
     "abductors": 3,
-    "upper_back": 3,
-    "adductors": 2,
     "obliques": 2,
     "biceps": 2,
     "triceps": 2
    },
    "week1_sets_by_pattern": {
     "hinge": 15,
+    "mobility": 15,
     "lunge_single_leg": 12,
     "push_horizontal": 9,
     "pull_horizontal": 9,
@@ -1186,9 +1188,11 @@
    },
    "roles": {
     "secondary": 18,
+    "cooldown": 13,
     "accessory": 7,
     "core": 4,
     "conditioning": 4,
+    "warmup": 2,
     "power": 2,
     "main": 1
    },
@@ -1202,7 +1206,51 @@
     "mini_band",
     "slider"
    ],
-   "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
+   "description": "4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
+  },
+  {
+   "id": "move30_recovery_mobility",
+   "name": "Recovery & Mobility",
+   "group": "Move Like 30",
+   "kind": "rotation",
+   "weeks": null,
+   "days_per_week": 2,
+   "exercises_per_day": 8.5,
+   "day_focus": [
+    "Recovery A · Foam roll, correctives, easy cardio",
+    "Recovery B · Daily mobility, prehab, reset"
+   ],
+   "week1_sets_by_muscle": {
+    "hip_flexors": 8,
+    "rear_delts": 4,
+    "full_body": 3,
+    "adductors": 3,
+    "quads": 3,
+    "upper_back": 3,
+    "abs": 2,
+    "glutes": 2
+   },
+   "week1_sets_by_pattern": {
+    "mobility": 18,
+    "anti_extension": 2,
+    "agility_cod": 2,
+    "lunge_single_leg": 2,
+    "conditioning": 2,
+    "isolation_lower": 2
+   },
+   "roles": {
+    "warmup": 8,
+    "cooldown": 4,
+    "conditioning": 2,
+    "core": 1,
+    "secondary": 1,
+    "accessory": 1
+   },
+   "equipment": [
+    "dumbbell",
+    "mini_band"
+   ],
+   "description": "Two off-day sessions (30-45 min) from PJF's recovery day and BWS daily mobility + prehab, plus easy cardio. Pair it with a training plan through Today → Set up Mixed Week."
   }
  ]
 }

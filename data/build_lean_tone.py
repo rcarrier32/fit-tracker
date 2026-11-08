@@ -16,6 +16,14 @@ KNOWN = {e['name'].lower() for e in lib.data['exercises']} | {t['name'].lower() 
 
 # Moves this plan adds to the catalog (videos via enrich_program_videos.mjs --source lean).
 NEW = {
+    'Outdoor Sprint Intervals': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'hamstrings', 'glutes'], 'pattern': 'conditioning', 'role': 'conditioning',
+                                 'equipment': ['bodyweight'], 'level': 2, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+    'Bike Intervals': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'quads'], 'pattern': 'conditioning', 'role': 'conditioning',
+                       'equipment': ['bodyweight'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+    'Easy Bike Ride': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'quads'], 'pattern': 'conditioning', 'role': 'conditioning',
+                       'equipment': ['bodyweight'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+    'Easy Outdoor Run': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'calves'], 'pattern': 'conditioning', 'role': 'conditioning',
+                         'equipment': ['bodyweight'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
     'Banded Lat Pulldown': {'primary_muscle': 'lats', 'muscles': ['lats', 'biceps', 'upper_back'], 'pattern': 'pull_vertical', 'role': 'secondary',
                             'equipment': ['band'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
     'Single-Arm Banded Lat Pulldown': {'primary_muscle': 'lats', 'muscles': ['lats', 'biceps', 'obliques'], 'pattern': 'pull_vertical', 'role': 'secondary',
@@ -41,7 +49,7 @@ ALTS = {
     'Palloff Press': ['Core Rotation Pallof Press', 'Anti Rotation ABC\'s'],
     'Copenhagen Side Plank (Knee)': ['Copenhagen Side Plank (Long Lever)', 'Side Plank with Top-Leg Raise'],
     'Copenhagen Side Plank (Long Lever)': ['Copenhagen Side Plank (Knee)', 'Side Plank with Top-Leg Raise'],
-    'Sprint 10s/Jog 20s/Walk 40s': ['Zone 4 Workout'],
+    'Sprint 10s/Jog 20s/Walk 40s': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Zone 4 Workout'],
     'Weighted Step-Ups': ['Weighted Step Up with Leg Raise', 'Weighted Side Step-Ups', 'High Box Step Up', 'Lateral Step-Down'],
     '3 Point Dumbbell Row': ['Chest Supported DB Row (lat focus)', 'DB Split Stance Row', 'Bent Over 1 Arm Row'],
     'Single-Leg RDL with Kettlebell': ['Single-Leg RDL to Knee Drive', 'Kickstand RDL', 'Dumbbell Romanian Deadlift'],
@@ -51,7 +59,7 @@ ALTS = {
     'Dumbbell Lateral Raise': ['Lean In Lateral Raise', 'Lateral Raise'],
     'Dead Bug': ['Bird Dog with Ankle Weight or Band', 'RKC Plank'],
     'Side Plank with Top-Leg Raise': ['Copenhagen Side Plank (Knee)', 'Banded Side Plank Clamshell'],
-    'Zone 2 Low Impact': ['Brisk Walk'],
+    'Zone 2 Low Impact': ['Brisk Walk', 'Easy Outdoor Run', 'Easy Bike Ride'],
     'Bulgarian Split Squat': ['Heel Elevated Split Squat', 'Reverse Lunges', 'Front Foot Elevated Reverse Lunge'],
     'Band Resisted Push Up': ['Push Ups', 'Dumbbell Bench Press'],
     'Dumbbell Lateral Lunge': ['Adductor Slider Lunge', 'Lateral Lunge', 'Curtsy Lunge'],
@@ -61,7 +69,15 @@ ALTS = {
     'Arnold Press': ['Standing Dumbbell Shoulder Press', 'Seated Dumbbell Shoulder Press'],
     'Hammer Curls': ['Seated Dumbbell Curls', 'Incline Dumbbell Curls', 'Bicep Curl'],
     'Incline DB Overhead Extensions': ['Tricep Extension', 'Close-Grip Push-Ups'],
-    'Zone 4 Workout': ['Sprint 10s/Jog 20s/Walk 40s'],
+    'Zone 4 Workout': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Sprint 10s/Jog 20s/Walk 40s'],
+    'Hip Flexor Length Under Load': ['Half-Kneeling Hip Flexor Stretch', 'Optional Static Stretch'],
+    'Lateral Lunge Length Under Load': ['Optional Adductor Stretch Progressions', 'Wide Stance Length Under Load'],
+    'Optional Pigeon Length Under Load': ['Brettzel Stretch', '90/90 Hip Opener'],
+    'Wide Stance Length Under Load': ['Lateral Lunge Length Under Load', 'Optional Adductor Stretch Progressions'],
+    'Rotational RDL Length Under Load': ['Optional Post Chain Stretch', 'Hamstring Floss'],
+    "World's Greatest Stretch": ['Front Chain Stretch w/ Reach and Tu', 'Half Kneeling Thoracic Rotations'],
+    'Half Kneeling Thoracic Rotations': ["World's Greatest Stretch", 'Lateral Line Stretch'],
+    '7/11 Breathing': ['Posterior Pelvic Tilt Breathing', 'Sidelying Grounding'],
     'Banded Glute Bridge': ['Dumbbell Glute Bridge', 'Single-Leg Glute Bridge'],
     'Mini Band Monster Walk': ['Resistance Band Side Steps'],
     'Band Pull-Aparts': ['Bent Over Dumbbell Face Pulls', 'Band Pull Apart'],
@@ -185,6 +201,34 @@ def days(wk):
     ]
 
 
+FINISHER_NOTE = 'Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.'
+COOLDOWN = {
+    1: [('Hip Flexor Length Under Load', '45s', 'Each side. Slow breaths, sink a little deeper each exhale.'),
+        ('Wide Stance Length Under Load', '45s', None),
+        ('Half Kneeling Thoracic Rotations', '30s', 'Each side.')],
+    2: [('Optional Pigeon Length Under Load', '45s', 'Each side.'),
+        ('Rotational RDL Length Under Load', '45s', 'Each side.'),
+        ('Lateral Lunge Length Under Load', '45s', 'Each side.')],
+    3: [("World's Greatest Stretch", '30s', 'Each side.'),
+        ('Half Kneeling Thoracic Rotations', '30s', 'Each side.'),
+        ('Lateral Lunge Length Under Load', '45s', 'Each side.')],
+    4: [('Hip Flexor Length Under Load', '45s', 'Each side.'),
+        ('Wide Stance Length Under Load', '45s', None)],
+}
+
+
+def add_cooldown(day, n):
+    """PJF closes every session the same way: 1-3 length-under-load holds, then 3 min of 7/11 breathing."""
+    for name, t, note in COOLDOWN[n]:
+        day['exercises'].append(r(name, time=t, sets=1, rest=None, group='Cooldown', notes=note))
+    day['exercises'].append(r('7/11 Breathing', time='3:00', sets=1, rest=None, group='Cooldown',
+                              notes='Lie on your back: in through the nose for 7, out for 11.'))
+    for x in day['exercises']:
+        if (x.get('round_group') or '').lower().startswith('treadmill'):
+            x['notes'] = ' '.join(filter(None, [x.get('notes'), FINISHER_NOTE]))
+    return day
+
+
 def superset_rest(day):
     """In a superset only the last exercise rests: A1 → straight to A2 (≤15 s), rest after A2."""
     ex_ = day['exercises']
@@ -198,7 +242,7 @@ def superset_rest(day):
 
 
 def days_with_rest(wk):
-    return [superset_rest(d) for d in days(wk)]
+    return [add_cooldown(superset_rest(d), i) for i, d in enumerate(days(wk), 1)]
 
 
 program = {
@@ -206,9 +250,9 @@ program = {
     'program_name': 'Lean & Tone: Home Full Body',
     'group': GROUP,
     'source': 'Athletic',
-    'description': '4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
+    'description': '4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
                    'Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.',
-    'sessions_per_week': 4, 'session_length_min': 45, 'level': 'Intermediate',
+    'sessions_per_week': 4, 'session_length_min': 50, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
     'goal': 'Lose fat, keep muscle, look and move athletic.',
     'weeks': expand_weeks(6, days_with_rest),

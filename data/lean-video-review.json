@@ -1,6 +1,6 @@
 {
   "source": "lean",
-  "generated_for": 4,
+  "generated_for": 8,
   "max_seconds": 300,
   "exercises": [
     {
@@ -139,6 +139,151 @@
           "embeddable": true,
           "url": "https://youtu.be/eVJtlpkqO_M",
           "score": 1.29
+        }
+      ]
+    },
+    {
+      "id": "lean-outdoor-sprint-intervals",
+      "name": "Outdoor Sprint Intervals",
+      "approved": "6m_fjNhRhkY",
+      "candidates": [
+        {
+          "videoId": "6m_fjNhRhkY",
+          "title": "Proper Sprinting Form In 3 Steps",
+          "channel": "Outperform",
+          "seconds": 334,
+          "embeddable": true,
+          "url": "https://youtu.be/6m_fjNhRhkY",
+          "score": 9
+        },
+        {
+          "videoId": "IJzi1mfgh70",
+          "title": "Sprinting for Beginners",
+          "channel": "Swain_Performance",
+          "seconds": 12,
+          "embeddable": true,
+          "url": "https://youtu.be/IJzi1mfgh70",
+          "score": 0.96
+        },
+        {
+          "videoId": "4v5NkM_8T00",
+          "title": "MUST DO Hill Sprint Routine For Boxing",
+          "channel": "Boxingholic",
+          "seconds": 26,
+          "embeddable": true,
+          "url": "https://youtu.be/4v5NkM_8T00",
+          "score": 0.91
+        },
+        {
+          "videoId": "D0OTseu5e5o",
+          "title": "Sprinting For Muscle Building (Guide and Routine)",
+          "channel": "Life Fit Journey",
+          "seconds": 192,
+          "embeddable": true,
+          "url": "https://youtu.be/D0OTseu5e5o",
+          "score": 0.36
+        }
+      ]
+    },
+    {
+      "id": "lean-bike-intervals",
+      "name": "Bike Intervals",
+      "approved": "Rh8VswzWDow",
+      "candidates": [
+        {
+          "videoId": "Rh8VswzWDow",
+          "title": "How To Do A HIIT On An Exercise Bike",
+          "channel": "The Body Coach TV",
+          "seconds": 122,
+          "embeddable": true,
+          "url": "https://youtu.be/Rh8VswzWDow",
+          "score": 9
+        }
+      ]
+    },
+    {
+      "id": "lean-easy-bike-ride",
+      "name": "Easy Bike Ride",
+      "approved": "1RqY5EYOM0k",
+      "candidates": [
+        {
+          "videoId": "1RqY5EYOM0k",
+          "title": "This is what Zone 2 training looks like",
+          "channel": "Peter Attia MD",
+          "seconds": 170,
+          "embeddable": true,
+          "url": "https://youtu.be/1RqY5EYOM0k",
+          "score": 9
+        },
+        {
+          "videoId": "7zMOvVXGmH0",
+          "title": "Learn How to Ride a Bike | Easy Guide for Beginners",
+          "channel": "Schwinn Bikes",
+          "seconds": 267,
+          "embeddable": true,
+          "url": "https://youtu.be/7zMOvVXGmH0",
+          "score": 1.61
+        },
+        {
+          "videoId": "dieOsJlsvpM",
+          "title": "How to use spin bike for beginners.#indoorcycling #spinclass #spinbike #workouttips",
+          "channel": "mobifitness global",
+          "seconds": 20,
+          "embeddable": true,
+          "url": "https://youtu.be/dieOsJlsvpM",
+          "score": 1.43
+        },
+        {
+          "videoId": "V-zzsFqmPWo",
+          "title": "Build your endurance with short rides! \ud83d\udcaa",
+          "channel": "Global Cycling Network",
+          "seconds": 35,
+          "embeddable": true,
+          "url": "https://youtu.be/V-zzsFqmPWo",
+          "score": 0.88
+        }
+      ]
+    },
+    {
+      "id": "lean-easy-outdoor-run",
+      "name": "Easy Outdoor Run",
+      "approved": "1RqY5EYOM0k",
+      "candidates": [
+        {
+          "videoId": "1RqY5EYOM0k",
+          "title": "This is what Zone 2 training looks like",
+          "channel": "Peter Attia MD",
+          "seconds": 170,
+          "embeddable": true,
+          "url": "https://youtu.be/1RqY5EYOM0k",
+          "score": 9
+        },
+        {
+          "videoId": "4gVN6S4Pe1Y",
+          "title": "How to warm up before a run \ud83c\udfc3\u200d\u2642\ufe0f",
+          "channel": "London Fitness Guy",
+          "seconds": 21,
+          "embeddable": true,
+          "url": "https://youtu.be/4gVN6S4Pe1Y",
+          "score": 1.43
+        },
+        {
+          "videoId": "WBhmNTykYiE",
+          "title": "3 best walking warm up exercises to walk easier \u2705",
+          "channel": "Alyssa Kuhn, Arthritis Adventure",
+          "seconds": 38,
+          "embeddable": true,
+          "url": "https://youtu.be/WBhmNTykYiE",
+          "score": 1.37
+        },
+        {
+          "videoId": "tZ2kEbbsDw8",
+          "title": "3-Minute Beginner \"Run With Me\" Workout | Easy Outdoor Running",
+          "channel": "Fun, Faith, Fitness",
+          "seconds": 222,
+          "embeddable": true,
+          "url": "https://youtu.be/tZ2kEbbsDw8",
+          "score": 1.26
         }
       ]
     }

@@ -7537,6 +7537,57 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "lean-bike-intervals": {
+   "name": "Bike Intervals",
+   "primary_muscle": "full_body",
+   "muscles": [
+    "full_body",
+    "quads"
+   ],
+   "pattern": "conditioning",
+   "role": "conditioning",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-easy-bike-ride": {
+   "name": "Easy Bike Ride",
+   "primary_muscle": "full_body",
+   "muscles": [
+    "full_body",
+    "quads"
+   ],
+   "pattern": "conditioning",
+   "role": "conditioning",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-easy-outdoor-run": {
+   "name": "Easy Outdoor Run",
+   "primary_muscle": "full_body",
+   "muscles": [
+    "full_body",
+    "calves"
+   ],
+   "pattern": "conditioning",
+   "role": "conditioning",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "lean-in-lateral-raise": {
    "name": "Lean In Lateral Raise",
    "primary_muscle": "side_delts",
@@ -7585,6 +7636,24 @@
     "med_ball"
    ],
    "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-outdoor-sprint-intervals": {
+   "name": "Outdoor Sprint Intervals",
+   "primary_muscle": "full_body",
+   "muscles": [
+    "full_body",
+    "hamstrings",
+    "glutes"
+   ],
+   "pattern": "conditioning",
+   "role": "conditioning",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false

@@ -13791,6 +13791,103 @@
       "unilateral": true,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "lean-outdoor-sprint-intervals",
+      "name": "Outdoor Sprint Intervals",
+      "video_url": "https://youtu.be/6m_fjNhRhkY",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Outdoor+Sprint+Intervals+how+to",
+      "primary_muscle": "full_body",
+      "muscles": [
+        "full_body",
+        "hamstrings",
+        "glutes"
+      ],
+      "pattern": "conditioning",
+      "role": "conditioning",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-bike-intervals",
+      "name": "Bike Intervals",
+      "video_url": "https://youtu.be/Rh8VswzWDow",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Bike+Intervals+how+to",
+      "primary_muscle": "full_body",
+      "muscles": [
+        "full_body",
+        "quads"
+      ],
+      "pattern": "conditioning",
+      "role": "conditioning",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-easy-bike-ride",
+      "name": "Easy Bike Ride",
+      "video_url": "https://youtu.be/1RqY5EYOM0k",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Easy+Bike+Ride+how+to",
+      "primary_muscle": "full_body",
+      "muscles": [
+        "full_body",
+        "quads"
+      ],
+      "pattern": "conditioning",
+      "role": "conditioning",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-easy-outdoor-run",
+      "name": "Easy Outdoor Run",
+      "video_url": "https://youtu.be/1RqY5EYOM0k",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Easy+Outdoor+Run+how+to",
+      "primary_muscle": "full_body",
+      "muscles": [
+        "full_body",
+        "calves"
+      ],
+      "pattern": "conditioning",
+      "role": "conditioning",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -53775,9 +53872,9 @@
         "program_name": "Lean & Tone: Home Full Body",
         "group": "Move Like 30",
         "source": "Athletic",
-        "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.",
+        "description": "4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.",
         "sessions_per_week": 4,
-        "session_length_min": 45,
+        "session_length_min": 50,
         "level": "Intermediate",
         "equipment": [
           "Dumbbells",
@@ -53972,9 +54069,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -54189,9 +54352,75 @@
                     "distance": null,
                     "time": "10:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -54405,9 +54634,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -54444,9 +54739,11 @@
                     "distance": null,
                     "time": "25:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -54511,6 +54808,54 @@
                       "Kettlebell Swing",
                       "Dumbbell Goblet Squat",
                       "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -54701,9 +55046,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -54918,9 +55329,75 @@
                     "distance": null,
                     "time": "10:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55134,9 +55611,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55173,9 +55716,11 @@
                     "distance": null,
                     "time": "25:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -55240,6 +55785,54 @@
                       "Kettlebell Swing",
                       "Dumbbell Goblet Squat",
                       "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55430,9 +56023,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55647,9 +56306,75 @@
                     "distance": null,
                     "time": "12:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55863,9 +56588,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -55902,9 +56693,11 @@
                     "distance": null,
                     "time": "30:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -55969,6 +56762,54 @@
                       "Kettlebell Swing",
                       "Dumbbell Goblet Squat",
                       "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -56159,9 +57000,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -56376,9 +57283,75 @@
                     "distance": null,
                     "time": "12:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -56592,9 +57565,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -56631,9 +57670,11 @@
                     "distance": null,
                     "time": "30:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -56698,6 +57739,54 @@
                       "Kettlebell Swing",
                       "Dumbbell Goblet Squat",
                       "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -56885,9 +57974,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -57099,9 +58254,75 @@
                     "distance": null,
                     "time": "15:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -57314,9 +58535,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -57353,9 +58640,11 @@
                     "distance": null,
                     "time": "30:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -57419,6 +58708,54 @@
                     "alternates": [
                       "Dumbbell Sumo Squat",
                       "Dumbbell Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -57606,9 +58943,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "notes": "10 s fast, 20 s jog, 40 s walk. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Zone 4 Workout"
+                    ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -57820,9 +59223,75 @@
                     "distance": null,
                     "time": "8:00",
                     "rest": null,
-                    "notes": "Incline walk, conversational pace.",
+                    "notes": "Incline walk, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
+                    ]
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -58035,9 +59504,75 @@
                     "distance": null,
                     "time": null,
                     "rest": null,
-                    "notes": "1 min hard, 1 min easy.",
+                    "notes": "1 min hard, 1 min easy. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
+                      "Outdoor Sprint Intervals",
+                      "Bike Intervals",
                       "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  },
+                  {
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
                     ]
                   }
                 ],
@@ -58074,9 +59609,11 @@
                     "distance": null,
                     "time": "20:00",
                     "rest": null,
-                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "notes": "Incline walk or easy jog, conversational pace. Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.",
                     "alternates": [
-                      "Brisk Walk"
+                      "Brisk Walk",
+                      "Easy Outdoor Run",
+                      "Easy Bike Ride"
                     ]
                   },
                   {
@@ -58141,9 +59678,313 @@
                       "Dumbbell Sumo Squat",
                       "Dumbbell Goblet Squat"
                     ]
+                  },
+                  {
+                    "name": "Hip Flexor Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side.",
+                    "alternates": [
+                      "Half-Kneeling Hip Flexor Stretch",
+                      "Optional Static Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Wide Stance Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge Length Under Load",
+                      "Optional Adductor Stretch Progressions"
+                    ]
+                  },
+                  {
+                    "name": "7/11 Breathing",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "3:00",
+                    "rest": null,
+                    "notes": "Lie on your back: in through the nose for 7, out for 11.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing",
+                      "Sidelying Grounding"
+                    ]
                   }
                 ],
                 "day_num": 4
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recovery": [
+      {
+        "id": "move30_recovery_mobility",
+        "name": "Recovery & Mobility",
+        "program_name": "Recovery & Mobility",
+        "group": "Move Like 30",
+        "source": "Athletic",
+        "description": "Two off-day sessions (30-45 min) from PJF's recovery day and BWS daily mobility + prehab, plus easy cardio. Pair it with a training plan through Today → Set up Mixed Week.",
+        "sessions_per_week": 2,
+        "session_length_min": 40,
+        "level": "All levels",
+        "recommended_weeks": 6,
+        "rotation_note": "use on off days, alternate A and B",
+        "days": [
+          {
+            "day_name": "Recovery A · Foam roll, correctives, easy cardio",
+            "notes": [
+              "From PJF's recovery day. Everything easy: you should feel better at the end than the start.",
+              "Easy cardio: walk, bike or easy jog, conversational pace."
+            ],
+            "exercises": [
+              {
+                "name": "Optional Foam Roll Circuit",
+                "round_group": "Release",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "5:00",
+                "rest": null,
+                "notes": "Quads, glutes, calves, lats, upper back.",
+                "alternates": [
+                  "Foam Roller Circuit"
+                ]
+              },
+              {
+                "name": "Supine Cross Connect",
+                "round_group": "Correctives",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Rolling Arm Bar w/ Screwdriver Rotation",
+                "round_group": "Correctives",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Walking Sprinters Mobility",
+                "round_group": "Locomotion",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "8 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Extensive Locomotion Cariocas",
+                "round_group": "Locomotion",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Easy rhythm, both directions."
+              },
+              {
+                "name": "Back Leg Lunge (Peterson Lunge)",
+                "round_group": "Locomotion",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "5 each leg",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Wide Stance Length Under Load",
+                "round_group": "Hold",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Brisk Walk",
+                "round_group": "Easy cardio",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "25:00",
+                "rest": null,
+                "notes": "Or bike/easy run: Swap to log it. Bike about 30 min.",
+                "alternates": [
+                  "Easy Bike Ride",
+                  "Easy Outdoor Run",
+                  "Zone 2 Low Impact"
+                ]
+              }
+            ]
+          },
+          {
+            "day_name": "Recovery B · Daily mobility, prehab, reset",
+            "notes": [
+              "BWS daily mobility + prehab, then your Hip tab's Pelvic Reset breathing.",
+              "Easy cardio: walk, bike or easy jog, conversational pace."
+            ],
+            "exercises": [
+              {
+                "name": "Cat Cow",
+                "round_group": "Daily mobility",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "round_group": "Daily mobility",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30s",
+                "rest": null,
+                "notes": "Each side."
+              },
+              {
+                "name": "Asian Squat",
+                "round_group": "Daily mobility",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "30 s hold, then 30 s side to side."
+              },
+              {
+                "name": "Half Kneeling Thoracic Rotations",
+                "round_group": "Daily mobility",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30s",
+                "rest": null,
+                "notes": "Each side."
+              },
+              {
+                "name": "Wall Slides",
+                "round_group": "Daily mobility",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "12",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "(Weighted) Prone Arm Circles",
+                "round_group": "Prehab",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "12",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Banded Hip Abductions",
+                "round_group": "Prehab",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "15",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Posterior Pelvic Tilt Breathing",
+                "round_group": "Reset",
+                "is_alternate": false,
+                "sets": 3,
+                "reps": "5 breaths",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "7/11 Breathing",
+                  "Sidelying Grounding"
+                ]
+              },
+              {
+                "name": "Easy Bike Ride",
+                "round_group": "Easy cardio",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30:00",
+                "rest": null,
+                "notes": "Or walk/easy run: Swap to log it.",
+                "alternates": [
+                  "Brisk Walk",
+                  "Easy Outdoor Run",
+                  "Zone 2 Low Impact"
+                ]
               }
             ]
           }

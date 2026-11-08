@@ -508,7 +508,7 @@ export function positionLabel(today_w) {
     const wk = p.weeks.find(w => w.week_num === today_w.week);
     return `Progression · Week ${today_w.week} of ${p.weeks.length} · Day ${today_w.day} of ${wk?.days?.length || '?'}`;
   }
-  return `Rotation · Day ${(today_w.day_index ?? 0) + 1} of ${p.days.length} · repeats — add weight as it gets easy`;
+  return `Rotation · Day ${(today_w.day_index ?? 0) + 1} of ${p.days.length} · ${p.rotation_note || 'repeats — add weight as it gets easy'}`;
 }
 
 /** Start-of-program cursor. Week-based programs never carry a day_index. */
