@@ -1,0 +1,180 @@
+{
+  "_doc": "Machine-readable program design rules. Human version: docs/PROGRAM_DESIGN.md (keep both in sync). Read by src/lib/generator.js (in the app and in node).",
+  "goals": {
+    "strength":   { "label": "Strength",            "main_reps": ["6-8", "5-6", "4-5"], "secondary_reps": "8-10", "accessory_reps": "10-12", "power": false, "conditioning": false },
+    "muscle":     { "label": "Build muscle",        "main_reps": ["8-10", "6-8", "6-8"], "secondary_reps": "10-12", "accessory_reps": "12-15", "power": false, "conditioning": false },
+    "fat_loss":   { "label": "Lose fat",            "main_reps": ["8-10", "8-10", "6-8"], "secondary_reps": "10-12", "accessory_reps": "12-15", "power": false, "conditioning": true, "superset_accessories": true },
+    "athletic":   { "label": "Athletic / court",    "main_reps": ["6-8", "5-6", "4-5"], "secondary_reps": "8-10", "accessory_reps": "10-12", "power": true,  "conditioning": false, "hip_focus": true },
+    "durability": { "label": "Durability & hip",    "main_reps": ["8-10", "6-8", "6-8"], "secondary_reps": "8-12", "accessory_reps": "10-15", "power": false, "conditioning": false, "hip_focus": true }
+  },
+  "roles": {
+    "warmup":      { "sets": 1, "reps": "8",      "rest": null,      "secs_per_set": 40,  "count": 4 },
+    "power":       { "sets": 3, "reps": "4",      "rest": "60-90s",  "secs_per_set": 20,  "rest_secs": 75 },
+    "main":        { "sets": 3, "reps": "6-8",    "rest": "2-3 min", "secs_per_set": 40,  "rest_secs": 150 },
+    "secondary":   { "sets": 3, "reps": "8-12",   "rest": "90s",     "secs_per_set": 40,  "rest_secs": 90 },
+    "accessory":   { "sets": 3, "reps": "10-15",  "rest": "60s",     "secs_per_set": 35,  "rest_secs": 60 },
+    "core":        { "sets": 2, "reps": "10-12",  "rest": "45s",     "secs_per_set": 35,  "rest_secs": 45, "hold": "30s" },
+    "conditioning":{ "sets": 1, "reps": null,     "rest": null,      "time": "10:00", "secs_per_set": 600, "rest_secs": 0 },
+    "cooldown":    { "sets": 1, "reps": null,     "rest": null,      "time": "45s",   "secs_per_set": 45, "rest_secs": 0 }
+  },
+  "volume_targets": {
+    "chest": [9, 15], "quads": [9, 15], "hamstrings": [9, 15], "glutes": [9, 15], "lats": [6, 12], "upper_back": [6, 12],
+    "side_delts": [6, 8], "rear_delts": [4, 8], "front_delts": [0, 6], "biceps": [6, 8], "triceps": [6, 8], "calves": [0, 8],
+    "abs": [2, 6], "obliques": [2, 6], "adductors": [0, 6], "abductors": [0, 6]
+  },
+  "splits": {
+    "2": { "name": "Full body A/B",              "days": ["full_a", "full_b"] },
+    "3": { "name": "Full body A/B/C",            "days": ["full_a", "full_b", "full_c"] },
+    "4": { "name": "Upper / Lower",              "days": ["lower_quad", "upper_a", "lower_hinge", "upper_b"] },
+    "5": { "name": "Upper / Lower / Push / Pull / Lower", "days": ["upper_a", "lower_quad", "push", "pull", "lower_hinge"] },
+    "6": { "name": "Lower / Upper ×3",           "days": ["lower_quad", "upper_a", "lower_hinge", "upper_b", "lower_single", "full_c"] }
+  },
+  "athletic_splits": {
+    "2": { "name": "Full body + speed",           "days": ["full_a", "speed_lateral"] },
+    "3": { "name": "2 full body + speed/agility", "days": ["full_a", "speed_linear", "full_b"] },
+    "4": { "name": "Lower power / Upper / Lower / Upper + agility", "days": ["lower_power", "upper_a", "lower_hinge", "upper_agility"] },
+    "5": { "name": "3 strength + 2 speed/agility","days": ["full_a", "speed_linear", "full_b", "speed_lateral", "full_c"] },
+    "6": { "name": "Strength + speed alternating","days": ["lower_power", "upper_a", "speed_linear", "lower_hinge", "upper_b", "speed_lateral"] }
+  },
+  "days": {
+    "full_a": { "focus": "Full Body A", "slots": [
+      { "role": "power",     "patterns": ["plyo_jump"], "if": "power" },
+      { "role": "main",      "patterns": ["squat"] },
+      { "role": "secondary", "patterns": ["push_horizontal"] },
+      { "role": "secondary", "patterns": ["pull_horizontal"] },
+      { "role": "secondary", "patterns": ["hinge"], "unilateral": true },
+      { "role": "accessory", "muscles": ["side_delts"] },
+      { "role": "accessory", "muscles": ["biceps", "triceps"] },
+      { "role": "core",      "patterns": ["anti_extension", "anti_rotation"] }
+    ]},
+    "full_b": { "focus": "Full Body B", "slots": [
+      { "role": "power",     "patterns": ["plyo_bound_hop", "plyo_jump"], "if": "power" },
+      { "role": "main",      "patterns": ["hinge"] },
+      { "role": "secondary", "patterns": ["push_vertical"] },
+      { "role": "secondary", "patterns": ["pull_vertical"] },
+      { "role": "secondary", "patterns": ["lunge_single_leg"] },
+      { "role": "accessory", "muscles": ["rear_delts", "upper_back"] },
+      { "role": "accessory", "muscles": ["triceps", "biceps"] },
+      { "role": "core",      "patterns": ["rotation", "anti_rotation", "lateral_flexion"] }
+    ]},
+    "full_c": { "focus": "Full Body C", "slots": [
+      { "role": "power",     "patterns": ["plyo_jump", "speed_accel"], "if": "power" },
+      { "role": "main",      "patterns": ["lunge_single_leg", "squat"] },
+      { "role": "secondary", "patterns": ["push_horizontal", "push_vertical"] },
+      { "role": "secondary", "patterns": ["pull_horizontal", "pull_vertical"] },
+      { "role": "secondary", "patterns": ["hinge"] },
+      { "role": "accessory", "muscles": ["glutes", "adductors", "abductors"] },
+      { "role": "accessory", "muscles": ["calves", "side_delts"] },
+      { "role": "core",      "patterns": ["anti_extension", "lateral_flexion"] }
+    ]},
+    "upper_a": { "focus": "Upper A", "slots": [
+      { "role": "main",      "patterns": ["push_horizontal"] },
+      { "role": "main",      "patterns": ["pull_vertical"] },
+      { "role": "secondary", "patterns": ["push_vertical"] },
+      { "role": "secondary", "patterns": ["pull_horizontal"] },
+      { "role": "accessory", "muscles": ["side_delts"] },
+      { "role": "accessory", "muscles": ["biceps"] },
+      { "role": "accessory", "muscles": ["triceps"] },
+      { "role": "core",      "patterns": ["anti_rotation", "rotation"] }
+    ]},
+    "upper_b": { "focus": "Upper B", "slots": [
+      { "role": "main",      "patterns": ["push_vertical"] },
+      { "role": "main",      "patterns": ["pull_horizontal"] },
+      { "role": "secondary", "patterns": ["push_horizontal"] },
+      { "role": "secondary", "patterns": ["pull_vertical"] },
+      { "role": "accessory", "muscles": ["rear_delts"] },
+      { "role": "accessory", "muscles": ["triceps"] },
+      { "role": "accessory", "muscles": ["biceps"] },
+      { "role": "core",      "patterns": ["anti_extension"] }
+    ]},
+    "push": { "focus": "Push", "slots": [
+      { "role": "main",      "patterns": ["push_horizontal"] },
+      { "role": "secondary", "patterns": ["push_vertical"] },
+      { "role": "secondary", "patterns": ["push_horizontal"] },
+      { "role": "accessory", "muscles": ["side_delts"] },
+      { "role": "accessory", "muscles": ["triceps"] },
+      { "role": "accessory", "muscles": ["chest"] },
+      { "role": "core",      "patterns": ["anti_extension"] }
+    ]},
+    "pull": { "focus": "Pull", "slots": [
+      { "role": "main",      "patterns": ["pull_vertical"] },
+      { "role": "secondary", "patterns": ["pull_horizontal"] },
+      { "role": "secondary", "patterns": ["pull_horizontal", "pull_vertical"] },
+      { "role": "accessory", "muscles": ["rear_delts"] },
+      { "role": "accessory", "muscles": ["biceps"] },
+      { "role": "accessory", "muscles": ["biceps", "forearms"] },
+      { "role": "core",      "patterns": ["rotation", "anti_rotation"] }
+    ]},
+    "lower_quad": { "focus": "Lower · Quad", "slots": [
+      { "role": "power",     "patterns": ["plyo_jump"], "if": "power" },
+      { "role": "main",      "patterns": ["squat"] },
+      { "role": "secondary", "patterns": ["lunge_single_leg"] },
+      { "role": "secondary", "patterns": ["hinge"] },
+      { "role": "accessory", "muscles": ["quads"] },
+      { "role": "accessory", "muscles": ["adductors", "abductors", "glutes"] },
+      { "role": "accessory", "muscles": ["calves"] },
+      { "role": "core",      "patterns": ["anti_extension", "lateral_flexion"] }
+    ]},
+    "lower_hinge": { "focus": "Lower · Glute & Hinge", "slots": [
+      { "role": "power",     "patterns": ["plyo_bound_hop"], "if": "power" },
+      { "role": "main",      "patterns": ["hinge"] },
+      { "role": "secondary", "patterns": ["squat", "lunge_single_leg"] },
+      { "role": "secondary", "muscles": ["glutes"] },
+      { "role": "accessory", "muscles": ["hamstrings"] },
+      { "role": "accessory", "muscles": ["adductors", "abductors"] },
+      { "role": "accessory", "muscles": ["calves"] },
+      { "role": "core",      "patterns": ["anti_rotation", "rotation"] }
+    ]},
+    "lower_single": { "focus": "Lower · Single-Leg", "slots": [
+      { "role": "main",      "patterns": ["lunge_single_leg"] },
+      { "role": "secondary", "patterns": ["hinge"], "unilateral": true },
+      { "role": "secondary", "patterns": ["lunge_single_leg", "squat"] },
+      { "role": "accessory", "patterns": ["balance"] },
+      { "role": "accessory", "muscles": ["adductors", "abductors"] },
+      { "role": "core",      "patterns": ["lateral_flexion", "anti_rotation"] }
+    ]},
+    "lower_power": { "focus": "Lower · Power", "slots": [
+      { "role": "power",     "patterns": ["plyo_jump"] },
+      { "role": "power",     "patterns": ["speed_accel", "plyo_bound_hop"] },
+      { "role": "main",      "patterns": ["squat", "hinge"] },
+      { "role": "secondary", "patterns": ["lunge_single_leg"] },
+      { "role": "accessory", "muscles": ["hamstrings", "glutes"] },
+      { "role": "accessory", "muscles": ["calves"] },
+      { "role": "core",      "patterns": ["anti_rotation"] }
+    ]},
+    "upper_agility": { "focus": "Upper + Agility", "slots": [
+      { "role": "power",     "patterns": ["agility_cod"] },
+      { "role": "power",     "patterns": ["deceleration_landing"] },
+      { "role": "main",      "patterns": ["push_horizontal", "push_vertical"] },
+      { "role": "secondary", "patterns": ["pull_horizontal", "pull_vertical"] },
+      { "role": "accessory", "muscles": ["rear_delts", "side_delts"] },
+      { "role": "core",      "patterns": ["rotation"] }
+    ]},
+    "speed_linear": { "focus": "Speed · Linear", "slots": [
+      { "role": "power",     "patterns": ["deceleration_landing"] },
+      { "role": "power",     "patterns": ["plyo_jump"] },
+      { "role": "power",     "patterns": ["plyo_bound_hop"] },
+      { "role": "power",     "patterns": ["speed_accel"] },
+      { "role": "accessory", "patterns": ["balance"] },
+      { "role": "core",      "patterns": ["anti_rotation", "rotation"] }
+    ]},
+    "speed_lateral": { "focus": "Agility · Lateral", "slots": [
+      { "role": "power",     "patterns": ["deceleration_landing"] },
+      { "role": "power",     "patterns": ["plyo_bound_hop"] },
+      { "role": "power",     "patterns": ["agility_cod"] },
+      { "role": "power",     "patterns": ["agility_cod", "speed_accel"] },
+      { "role": "accessory", "muscles": ["adductors", "abductors"] },
+      { "role": "core",      "patterns": ["lateral_flexion", "rotation"] }
+    ]}
+  },
+  "hip_focus_slot": { "role": "core", "hip_focus": true, "patterns": ["lateral_flexion", "isometric", "balance", "rotation"], "note": "Athletic and durability goals add one hip-building move to every strength day (Copenhagen, airplanes, single-leg balance, lateral work)." },
+  "phases": {
+    "length_weeks": 2,
+    "week2": { "reps_add": 1, "hold_add_secs": 5 },
+    "change": "Keep main lifts, rotate secondary and accessory picks, move to the next main_reps step, effort 8/10 -> 9/10.",
+    "deload": { "when": "last week of a 6+ week plan", "sets_factor": 0.5 }
+  },
+  "session_minutes": { "30": { "max_exercises": 5, "superset_accessories": true, "warmup_count": 3 },
+                       "45": { "max_exercises": 6, "superset_accessories": true, "warmup_count": 4 },
+                       "60": { "max_exercises": 8, "superset_accessories": false, "warmup_count": 4 } }
+}

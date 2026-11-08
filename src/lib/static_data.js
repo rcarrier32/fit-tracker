@@ -37,7 +37,12 @@ export async function loadCatalogs() {
       ...lib.exercises,
       ...HIP_CATALOG_ENTRIES.filter(e => !libNames.has(e.name.toLowerCase())),
     ];
-    for (const e of lib.exercises) e.tags = movementTags(e.name);
+    // Taxonomy tags for hip-tab entries live in library.json `extra_tags` (data/tag_exercises.py).
+    for (const e of lib.exercises) {
+      const t = lib.extra_tags?.[e.id];
+      if (t) Object.assign(e, t);
+      e.tags = movementTags(e.name);
+    }
     const exerciseById = new Map(lib.exercises.map(e => [e.id, e]));
     const exerciseByName = new Map(lib.exercises.map(e => [e.name.toLowerCase(), e]));
     // Also index by aliases so variant name formats resolve to the same entry

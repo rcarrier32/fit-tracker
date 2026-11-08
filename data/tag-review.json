@@ -1,0 +1,65 @@
+{
+ "_doc": "Low-confidence tags for a human to check. Edit data/exercise_tags.json, then delete the entry here.",
+ "items": [
+  {
+   "id": "copy-dot-rhythm",
+   "name": "Copy Dot Rhythm",
+   "guess": "plyo_bound_hop / power / calves",
+   "question": "PJF drill name; guessed a foot-speed hop drill."
+  },
+  {
+   "id": "scalable-impact-durability",
+   "name": "Scalable Impact Durability",
+   "guess": "plyo_bound_hop / power / calves",
+   "question": "PJF; guessed low-level hop/impact prep."
+  },
+  {
+   "id": "proprioception-progressions",
+   "name": "Proprioception Progressions",
+   "guess": "balance / accessory / calves",
+   "question": "PJF; guessed a balance progression."
+  },
+  {
+   "id": "complex-landmine-or-db",
+   "name": "Complex (Landmine or DB)",
+   "guess": "push_vertical / secondary / full_body",
+   "question": "PJF complex; guessed full-body push-led complex."
+  },
+  {
+   "id": "curved-tempo-runs",
+   "name": "Curved Tempo Runs",
+   "guess": "conditioning / conditioning / full_body",
+   "question": "Tempo running: conditioning vs speed."
+  },
+  {
+   "id": "qb1-spiral-line",
+   "name": "QB1 Spiral Line",
+   "guess": "mobility / warmup / obliques",
+   "question": "PJF; guessed a rotational mobility drill."
+  },
+  {
+   "id": "hip-shift-mechanics",
+   "name": "Hip Shift Mechanics",
+   "guess": "mobility / warmup / glutes",
+   "question": "PJF; guessed hip-shift mobility."
+  },
+  {
+   "id": "half-kneeling-lift-off",
+   "name": "Half Kneeling Lift Off",
+   "guess": "mobility / warmup / hip_flexors",
+   "question": "PJF; guessed hip flexor mobility/activation."
+  },
+  {
+   "id": "slant-board-isometric-progressions",
+   "name": "Slant Board Isometric Progressions",
+   "guess": "isometric / accessory / adductors",
+   "question": "Which muscle: adductors (guess) or calves/ankles?"
+  },
+  {
+   "id": "60-degree-knee-isos",
+   "name": "60 Degree Knee ISOs",
+   "guess": "isometric / accessory / quads",
+   "question": "Quad isometric (guess)."
+  }
+ ]
+}

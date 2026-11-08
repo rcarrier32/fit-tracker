@@ -12,6 +12,8 @@
  */
 import { openSheet } from '../app.js';
 import { localFor, muxThumb, attachMuxVideos } from './local_videos.js';
+import { tagChipsHTML } from './taxonomy.js';
+import { getCachedSync } from './static_data.js';
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -296,6 +298,8 @@ export function openExerciseDetail(ex, o = {}) {
           border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
       </div>
 
+      ${(() => { const c = ex.pattern ? ex : getCachedSync()?.exerciseByName?.get(String(ex.name).toLowerCase());
+        const h = tagChipsHTML(c); return h ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">${h}</div>` : ''; })()}
       ${o.ladder ? levelBarHTML(o.ladder, accent) : ''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px">
         ${rx ? `<button id="ex-rx" ${o.editRx ? '' : 'disabled'} style="font-size:11px;padding:4px 9px;border-radius:6px;

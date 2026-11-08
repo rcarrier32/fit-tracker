@@ -231,7 +231,7 @@ court_program = {
 }
 
 # Warm-up/plan names not in the library proper but in the hip tab resolve at runtime.
-lib.ensure_exercise('Bodyweight Squat', 'quads', ['quads', 'glutes'], source='home')
+lib.ensure_exercise('Bodyweight Squat', 'home')  # already in the catalog; no-op
 lib.set_programs('athletic', [hip_program, tb_program, court_program])
 lib.save()
 print('wrote', ', '.join(p['id'] for p in (hip_program, tb_program, court_program)))

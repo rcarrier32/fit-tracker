@@ -12,6 +12,7 @@
  */
 import { readFileSync } from 'fs';
 import path from 'path';
+import { tagErrors } from './check_catalog.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const [id, ...flags] = process.argv.slice(2);
@@ -43,7 +44,7 @@ for (const e of lib.exercises) byName.set(e.name.toLowerCase(), e);
 for (const e of lib.exercises) for (const a of e.aliases || []) if (!byName.has(a.toLowerCase())) byName.set(a.toLowerCase(), e);
 for (const h of HIP_CATALOG_ENTRIES) {
   const dup = byName.get(h.name.toLowerCase());
-  if (!dup) byName.set(h.name.toLowerCase(), h);
+  if (!dup) byName.set(h.name.toLowerCase(), { ...h, ...(lib.extra_tags?.[h.id] || {}) });
   else if (!dup.video_url && h.video_url) dup.video_url = h.video_url;
 }
 
@@ -76,6 +77,7 @@ weeks.forEach((w, wi) => {
       const hit = byName.get(String(ex.name).toLowerCase());
       if (!hit) errors.push(`${at} ${where}: "${ex.name}" doesn't resolve to a catalog exercise`);
       else if (!hit.video_url && !hasLocal(ex.name)) errors.push(`${at} ${where}: "${ex.name}" has no video (shows 🔍 Find)`);
+      if (hit && tagErrors(hit).length) errors.push(`${at} ${where}: "${ex.name}" isn't tagged (${tagErrors(hit)[0]}): classify it in data/exercise_tags.json`);
       const target = ex.reps || ex.time || ex.distance || ex.set_targets?.length;
       if (!target) warns.push(`${at} ${where}: "${ex.name}" has no reps/time/distance target`);
       if (!ex.reps && ex.time && !parseSecs(ex.time)) errors.push(`${at} ${where}: "${ex.name}" time "${ex.time}" won't run a timer`);
@@ -105,5 +107,5 @@ const days = weeks.reduce((n, w) => n + w.days.length, 0);
 console.log(`${p.program_name || p.name} (${id}): ${weeks.length} week(s), ${days} day(s)`);
 for (const w of [...new Set(warns)]) console.log('  warn ', w);
 for (const e of [...new Set(errors)]) console.log('  ERROR', e);
-console.log(errors.length ? `\n${new Set(errors).size} error(s). Fix before shipping.` : '\nOK: every name resolves, every exercise has a video, every timed move has a timer.');
+console.log(errors.length ? `\n${new Set(errors).size} error(s). Fix before shipping.` : '\nOK: every name resolves and is tagged, every exercise has a video, every timed move has a timer.');
 process.exit(errors.length ? 1 : 0);

@@ -10,6 +10,7 @@ import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor } from '../lib/local_videos.js';
+import { tagLine, rankSimilar, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
@@ -573,6 +574,15 @@ function _warmupBlockHtml(warmup, exMap) {
     </div>`;
 }
 
+/** Equipment filters in the picker: true if the exercise needs only what the filter allows. */
+const EQ_FILTERS = {
+  Bodyweight: (eq) => eq.every(q => ['bodyweight', 'bench', 'box', 'pullup_bar'].includes(q)),
+  Dumbbell: (eq) => eq.includes('dumbbell') || eq.includes('kettlebell'),
+  Barbell: (eq) => eq.some(q => ['barbell', 'trap_bar', 'landmine', 'smith'].includes(q)),
+  Band: (eq) => eq.includes('band') || eq.includes('mini_band'),
+  'Cable & machine': (eq) => eq.includes('cable') || eq.includes('machine'),
+};
+
 async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, title = 'Pick exercise' } = {}) {
   return new Promise(resolve => {
     openSheet((sheet, close) => {
@@ -581,8 +591,22 @@ async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, titl
         <h2>${title}</h2>
         ${muscleLabel ? `<div class="muted" style="margin-bottom:8px">Showing ${muscleLabel} exercises first</div>` : ''}
         <div class="search-bar"><input type="text" id="ex-search" placeholder="Search exercises…" autocomplete="off"></div>
+        ${[['m', 'Muscle', MUSCLE_GROUPS], ['t', 'Type', TYPE_GROUPS], ['q', 'Equipment', EQ_FILTERS]].map(([k, label, groups]) => `
+          <div class="ex-filter" data-group="${k}" style="display:flex;gap:5px;overflow-x:auto;margin:6px 0;padding-bottom:2px">
+            <span class="muted" style="font-size:11px;align-self:center;flex-shrink:0;width:62px">${label}</span>
+            ${Object.keys(groups).map(g => `<button class="pill" data-val="${g}" style="flex-shrink:0;cursor:pointer;font-size:11px">${g}</button>`).join('')}
+          </div>`).join('')}
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;margin:2px 0 8px"><input type="checkbox" id="ex-video" checked style="width:auto"> With video only</label>
         <div id="ex-list"></div>
       `;
+      const pick = { m: null, t: null, q: null };
+      sheet.querySelectorAll('.ex-filter button').forEach(b => b.onclick = () => {
+        const k = b.parentElement.dataset.group;
+        pick[k] = pick[k] === b.dataset.val ? null : b.dataset.val;
+        b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('accent', x.dataset.val === pick[k]));
+        render();
+      });
+      sheet.querySelector('#ex-video').onchange = () => render();
       const $list = sheet.querySelector('#ex-list');
       const $search = sheet.querySelector('#ex-search');
       const sorted = [...allExercises].sort((a, b) => {
@@ -596,21 +620,28 @@ async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, titl
       });
       function render() {
         const q = $search.value.trim().toLowerCase();
-        const filtered = (q ? sorted.filter(e =>
+        const videoOnly = sheet.querySelector('#ex-video').checked;
+        const pool = sorted.filter(e =>
+          (!pick.m || MUSCLE_GROUPS[pick.m].includes(e.primary_muscle)) &&
+          (!pick.t || TYPE_GROUPS[pick.t].includes(e.pattern)) &&
+          (!pick.q || EQ_FILTERS[pick.q](e.equipment || [])) &&
+          (!videoOnly || hasVideo(e)));
+        const filtered = (q ? pool.filter(e =>
           e.name.toLowerCase().includes(q) ||
           (e.aliases || []).some(a => a.toLowerCase().includes(q)) ||
           (e.primary_muscle || '').includes(q) ||
           (e.category || '').toLowerCase().includes(q) ||
-          (e.equipment || '') === q
-        ) : sorted).slice(0, 80);
+          (e.pattern || '').includes(q) ||
+          (e.equipment || []).some(x => x.includes(q))
+        ) : pool).slice(0, 80);
         $list.innerHTML = filtered.map(e => {
           const isMatch = filterMuscle && e.primary_muscle === filterMuscle;
-          const muscle = e.primary_muscle ? e.primary_muscle.replace(/_/g, ' ') : (e.category || null);
+          const muscle = e.pattern ? tagLine(e) : e.primary_muscle ? e.primary_muscle.replace(/_/g, ' ') : (e.category || null);
           return `
             <div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}">
               <div style="flex:1">
                 <div class="list-item-title">${e.name}</div>
-                <div class="list-item-meta">${muscle ? muscle + ' · ' : ''}${(e.sources || []).join(', ')}${e.video_url ? ' · ▶' : ''}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${muscle || ''}${hasVideo(e) ? ' · ▶' : ''}</div>
               </div>
               ${isMatch ? '<span class="pill accent" style="font-size:10px">same</span>' : ''}
             </div>
@@ -722,9 +753,10 @@ function openExerciseMenu(session, i, allExercises, exMap) {
     sheet.querySelector('#swap-all').onclick = () => {
       close(false);
       openSheet((s2, close2) => {
-        const similarExercises = primaryMuscle
-          ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name)
-          : [];
+        // Same movement pattern first, then same main muscle (data/exercise_tags.json).
+        const similarExercises = lookup?.pattern
+          ? rankSimilar(lookup, allExercises)
+          : primaryMuscle ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name) : [];
         const bwsSection = bwsAlts.length ? `
           <div class="group-label" style="margin:0 0 6px">BWS alternates</div>
           ${bwsAlts.map(name => {
@@ -738,12 +770,12 @@ function openExerciseMenu(session, i, allExercises, exMap) {
             </div>`;
           }).join('')}` : '';
         const similarSection = similarExercises.length ? `
-          <div class="group-label" style="margin:12px 0 6px">${muscleLabel || 'Similar'}</div>
+          <div class="group-label" style="margin:12px 0 6px">${lookup?.pattern ? 'Similar movement' : (muscleLabel || 'Similar')}</div>
           ${similarExercises.slice(0, 12).map(e =>
             `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
                 <div class="list-item-title">${e.name}</div>
-                <div class="list-item-meta">${e.primary_muscle?.replace(/_/g, ' ') || ''}${e.video_url ? ' · ▶' : ''}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${e.pattern ? tagLine(e) : (e.primary_muscle?.replace(/_/g, ' ') || '')}${hasVideo(e) ? ' · ▶' : ''}</div>
               </div>
             </div>`
           ).join('')}` : '';
@@ -1132,6 +1164,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     <div class="exercise-header">
       <div style="flex:1">
         <div class="exercise-name">${ex.name}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}</div>
+        ${lookup?.pattern ? `<div style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
         ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}

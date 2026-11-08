@@ -8,68 +8,32 @@ Re-run safely: replaces the program and upserts its catalog entries by id.
 Videos: entries start with a vetted URL where the library already has one for the
 same movement; the rest go through enrich_program_videos.mjs --source home.
 """
-import json, re
-from pathlib import Path
+import json
+from program_builder import Library
 
-LIB = Path(__file__).with_name('library.json')
-lib = json.loads(LIB.read_text())
-by_name = {e['name'].lower(): e for e in lib['exercises']}
+lib = Library()
 
-def slug(s):
-    return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
-
-# name -> (primary muscle, muscles, video borrowed from an existing vetted entry or None)
-def borrow(name):
-    e = by_name.get(name.lower())
-    return e and e.get('video_url')
-
+# Names this plan adds to the catalog (tags live in data/exercise_tags.json once added),
+# with the existing entry to borrow a vetted video from, where there is one.
 CATALOG = {
-    'March in Place':                  ('cardio',     ['cardio', 'hip_flexors'], None),
-    'Hip Circles':                     ('hips',       ['hips'], None),
-    'Bodyweight Squat':                ('quads',      ['quads', 'glutes'], None),
-    'Leg Swings':                      ('hips',       ['hips', 'hamstrings'], borrow('Forward Leg Swings')),
-    'Dumbbell Squat':                  ('quads',      ['quads', 'glutes'], borrow('Dumbbell Goblet Squat')),
-    'Banded Glute Bridge':             ('glutes',     ['glutes', 'hamstrings'], None),
-    'Resistance Band Side Steps':      ('glutes',     ['glutes', 'abductors'], None),
-    'Standing Glute Kickback':         ('glutes',     ['glutes'], None),
-    'Heel Slides':                     ('abs',        ['abs'], None),
-    'Standing Side Crunch':            ('obliques',   ['obliques', 'abs'], None),
-    'Dumbbell Sumo Squat':             ('glutes',     ['glutes', 'adductors', 'quads'], None),
-    'Dumbbell Glute Bridge':           ('glutes',     ['glutes', 'hamstrings'], None),
-    'Donkey Kicks':                    ('glutes',     ['glutes'], None),
-    'Fire Hydrants':                   ('glutes',     ['glutes', 'abductors'], None),
-    'Side-Lying Leg Raise':            ('glutes',     ['glutes', 'abductors'], borrow('Side Lying Leg Raise')),
-    'Banded Clamshell':                ('glutes',     ['glutes', 'abductors'], None),
-    'Dumbbell Bent-Over Row':          ('back',       ['back', 'biceps', 'rear_delts'], None),
-    'Dumbbell Deadlift':               ('hamstrings', ['hamstrings', 'glutes', 'back'], None),
-    'Standing Knee-to-Elbow Crunch':   ('obliques',   ['obliques', 'abs', 'hip_flexors'], None),
-    'Brisk Walk':                      ('cardio',     ['cardio'], None),
-    'Gentle Full-Body Stretch':        ('mobility',   ['mobility'], None),
+    'March in Place': None, 'Hip Circles': None, 'Bodyweight Squat': None,
+    'Leg Swings': 'Forward Leg Swings', 'Dumbbell Squat': 'Dumbbell Goblet Squat',
+    'Banded Glute Bridge': None, 'Resistance Band Side Steps': None, 'Standing Glute Kickback': None,
+    'Heel Slides': None, 'Standing Side Crunch': None, 'Dumbbell Sumo Squat': None,
+    'Dumbbell Glute Bridge': None, 'Donkey Kicks': None, 'Fire Hydrants': None,
+    'Side-Lying Leg Raise': 'Side Lying Leg Raise', 'Banded Clamshell': None,
+    'Dumbbell Bent-Over Row': None, 'Dumbbell Deadlift': None, 'Standing Knee-to-Elbow Crunch': None,
+    'Brisk Walk': None, 'Gentle Full-Body Stretch': None,
 }
-# Already in the library or the hip tab with vetted videos — referenced by exact name:
+# Already in the library or the hip tab with vetted videos, referenced by exact name:
 # Dumbbell Romanian Deadlift, Dead Bug, Bird Dog, Standing Dumbbell Shoulder Press,
 # Pelvic Tilts, Cat-Cow, Modified Side Plank.
-
 SEARCH = {
     'Brisk Walk': '30 minute beginner indoor walking workout',
     'Gentle Full-Body Stretch': '10 minute gentle full body stretch beginner',
 }
-
-for name, (prim, muscles, video) in CATALOG.items():
-    eid = 'home-' + slug(name)
-    entry = by_name.get(name.lower())
-    if entry and 'home' not in entry.get('sources', []):
-        raise SystemExit(f'{name} already exists in the library; reference it instead')
-    if entry is None:
-        entry = {'id': eid, 'name': name, 'video_url': None, 'sources': ['home'], 'aliases': []}
-        lib['exercises'].append(entry)
-        by_name[name.lower()] = entry
-    entry.update({
-        'fallback_search': 'https://www.youtube.com/results?search_query=' + SEARCH.get(name, name + ' beginner form').replace(' ', '+'),
-        'primary_muscle': prim, 'muscles': muscles,
-    })
-    if video and not entry.get('video_url'):
-        entry['video_url'] = video
+for name, borrow in CATALOG.items():
+    lib.ensure_exercise(name, 'home', video_from=borrow, search=SEARCH.get(name, name + ' beginner form'))
 
 # ── program ─────────────────────────────────────────────────────────────────
 REST = '45-60s'
@@ -225,7 +189,6 @@ program = {
     'weeks': weeks,
 }
 
-lib['programs']['home'] = [program]
-LIB.write_text(json.dumps(lib, indent=2, ensure_ascii=False) + "\n")
-print('wrote', program['id'], sum(len(w['days']) for w in weeks), 'days;',
-      sum(1 for e in lib['exercises'] if 'home' in e['sources']), 'home catalog entries')
+lib.set_programs('home', [program])
+lib.save()
+print('wrote', program['id'], sum(len(w['days']) for w in weeks), 'days')

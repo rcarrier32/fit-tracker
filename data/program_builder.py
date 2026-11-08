@@ -2,17 +2,23 @@
 
     from program_builder import Library, ex, w
     lib = Library()
-    lib.ensure_exercise('Brisk Walk', 'cardio', ['cardio'], source='home')   # only for new names
+    lib.ensure_exercise('Brisk Walk', 'home', tags={'pattern': 'conditioning', 'role': 'conditioning', ...})
     lib.set_programs('athletic', [program, ...])
     lib.save()
 
 Programs go in library.json under programs.<key>. Any key other than pjf/bws is
 picked up automatically and listed under the program's `group` on the Programs screen.
 """
-import json, re
+import json, re, sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from suggest_tags import suggest  # noqa: E402
+import tag_exercises  # noqa: E402
+
 LIB_PATH = Path(__file__).with_name('library.json')
+TAGS_PATH = Path(__file__).with_name('exercise_tags.json')
+TAG_FIELDS = ['primary_muscle', 'muscles', 'pattern', 'role', 'equipment', 'level', 'unilateral', 'plane', 'hip_focus']
 
 
 def slug(s):
@@ -33,6 +39,7 @@ def w(name, reps=None, time=None, notes=None):
 class Library:
     def __init__(self):
         self.data = json.loads(LIB_PATH.read_text())
+        self.tags = json.loads(TAGS_PATH.read_text())
         self.by_name = {}
         for e in self.data['exercises']:
             for n in [e['name']] + (e.get('aliases') or []):
@@ -41,8 +48,12 @@ class Library:
     def has(self, name):
         return name.lower() in self.by_name
 
-    def ensure_exercise(self, name, primary, muscles, source, video_from=None, search=None):
-        """Add a catalog entry for a new movement (no-op if the name exists).
+    def ensure_exercise(self, name, source, tags=None, video_from=None, search=None):
+        """Add a catalog entry for a new movement, classified (no-op for names that exist).
+
+        tags: taxonomy fields (docs/EXERCISE_TAXONOMY.md): primary_muscle, muscles, pattern,
+        role, equipment, level, unilateral, plane, hip_focus. Anything left out is filled
+        from data/suggest_tags.py and printed as REVIEW, so a guess never lands silently.
         video_from: borrow the vetted video of an existing entry with that name."""
         e = self.by_name.get(name.lower())
         if e is None:
@@ -50,8 +61,16 @@ class Library:
                  'sources': [source], 'aliases': []}
             self.data['exercises'].append(e)
             self.by_name[name.lower()] = e
-        e.setdefault('primary_muscle', primary)
-        e.setdefault('muscles', muscles)
+        if e['id'] not in self.tags['tags']:
+            guess = suggest(name, [source])
+            given = tags or {}
+            missing = [k for k in TAG_FIELDS if k not in given]
+            if missing:
+                print(f'REVIEW tags for "{name}": guessed {", ".join(f"{k}={guess.get(k)}" for k in missing)}')
+            t = {k: given.get(k, guess.get(k)) for k in TAG_FIELDS}
+            if t['primary_muscle'] not in t['muscles']:
+                t['muscles'] = [t['primary_muscle']] + list(t['muscles'])
+            self.tags['tags'][e['id']] = {'name': name, **t}
         q = (search or f'{name} form').replace(' ', '+')
         e.setdefault('fallback_search', f'https://www.youtube.com/results?search_query={q}')
         if video_from and not e.get('video_url'):
@@ -64,7 +83,11 @@ class Library:
         self.data['programs'][key] = programs
 
     def save(self):
+        """Write library.json and exercise_tags.json, then merge tags and rebuild program_index.json."""
         LIB_PATH.write_text(json.dumps(self.data, indent=2, ensure_ascii=False) + '\n')
+        self.tags['tags'] = dict(sorted(self.tags['tags'].items()))
+        TAGS_PATH.write_text(json.dumps(self.tags, indent=1, ensure_ascii=False))
+        tag_exercises.main()
 
 
 def expand_weeks(n_weeks, days_for_week):

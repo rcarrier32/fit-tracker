@@ -47,7 +47,15 @@ its own progress.
 
 **Names.** Reuse an existing catalog name when the movement already exists, so its vetted
 video comes with it (check `library.json` and the hip tab's `HIP_CATALOG_ENTRIES`).
-Otherwise add a catalog entry with `sources: ['<tag>']` so the video pipeline finds it.
+Otherwise add it with `lib.ensure_exercise(name, '<source tag>', tags={...})`.
+
+**Classify every new exercise** ([EXERCISE_TAXONOMY.md](EXERCISE_TAXONOMY.md)): pass
+`primary_muscle, muscles, pattern, role, equipment, level, unilateral, plane, hip_focus` in
+`tags`. Anything you leave out is guessed by `data/suggest_tags.py` and printed as `REVIEW`, so
+check those lines and fix the guesses in `data/exercise_tags.json`. `lib.save()` merges the tags
+into `library.json` and rebuilds `data/program_index.json` (the summary of every program
+that plan design reads). To edit tags by hand, change `exercise_tags.json` and run
+`python3 data/tag_exercises.py`.
 
 ## 3. Videos: every exercise gets one
 
@@ -66,6 +74,13 @@ node data/enrich_program_videos.mjs --source <tag> --apply
 - Check every link from the source document still works (the validator's `--net` flag does this).
 
 ## 4. Validate. It must pass before shipping.
+
+```bash
+node data/check_catalog.mjs
+```
+
+Every catalog exercise must be tagged with taxonomy values.
+
 
 ```bash
 node data/check_program.mjs <program_id> --net
