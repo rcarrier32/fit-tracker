@@ -14,6 +14,7 @@ Follow [docs/ADDING_A_PROGRAM.md](../../../docs/ADDING_A_PROGRAM.md) step by ste
    - Prefer catalog names that already have vetted videos (library.json, plus `HIP_CATALOG_ENTRIES` in `src/lib/hip_protocol.js`). For the user's own hip, follow the hip rules in memory: Copenhagen in every hip session, advanced single-leg balance, and pain governs rehab work.
 5. **Classify every new exercise** against [docs/EXERCISE_TAXONOMY.md](../../../docs/EXERCISE_TAXONOMY.md): pass `tags={...}` to `ensure_exercise`, fix any `REVIEW` guesses in `data/exercise_tags.json`, and make sure `lib.save()` ran (it merges tags and rebuilds `data/program_index.json`).
 6. **Design from the knowledge layer:** follow [docs/PROGRAM_DESIGN.md](../../../docs/PROGRAM_DESIGN.md) (rules taken from PJF and BWS) and compare against similar programs in `data/program_index.json`.
+6b. **Alternatives:** give each exercise row 2–4 `alternates` that fit the plan's equipment (see `data/build_lean_tone.py`).
 7. **`node data/check_catalog.mjs` and `node data/check_program.mjs <id> --net` must pass** before you check it in the preview.
 8. **Preview at phone size** and step through every day. Then bump the version in 3 places and push as rcarrier32. Ask before pushing unless the user already said to.
 9. **Public repo:** generic program names, no personal names or data.

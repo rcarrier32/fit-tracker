@@ -53669,6 +53669,3981 @@
           }
         ]
       }
+    ],
+    "lean_tone": [
+      {
+        "id": "lean_tone_home_6wk",
+        "program_name": "Lean & Tone: Home Full Body",
+        "group": "Move Like 30",
+        "source": "Athletic",
+        "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher, heavier each phase, week 6 deload. Every exercise has swap alternatives.",
+        "sessions_per_week": 4,
+        "session_length_min": 45,
+        "level": "Intermediate",
+        "equipment": [
+          "Dumbbells",
+          "Bench",
+          "Step / box",
+          "Mini band + long band (PJF heavy band)",
+          "BOSU",
+          "Treadmill"
+        ],
+        "goal": "Lose fat, keep muscle, look and move athletic.",
+        "weeks": [
+          {
+            "week_num": 1,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Curtsy Lunge",
+                      "Deficit Reverse Lunge",
+                      "Front Foot Elevated Reverse Lunge",
+                      "Walking Lunges (quad focus)"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Long Lever)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "8 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL to Knee Drive",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "On the BOSU.",
+                    "alternates": [
+                      "Single-Leg Pad Balance + Ball Catches",
+                      "Weighted Hip Airplane"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "5 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          },
+          {
+            "week_num": 2,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Curtsy Lunge",
+                      "Deficit Reverse Lunge",
+                      "Front Foot Elevated Reverse Lunge",
+                      "Walking Lunges (quad focus)"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Long Lever)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "8 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL to Knee Drive",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "On the BOSU.",
+                    "alternates": [
+                      "Single-Leg Pad Balance + Ball Catches",
+                      "Weighted Hip Airplane"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "5 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          },
+          {
+            "week_num": 3,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Curtsy Lunge",
+                      "Deficit Reverse Lunge",
+                      "Front Foot Elevated Reverse Lunge",
+                      "Walking Lunges (quad focus)"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Long Lever)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "10 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL to Knee Drive",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "12:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "On the BOSU.",
+                    "alternates": [
+                      "Single-Leg Pad Balance + Ball Catches",
+                      "Weighted Hip Airplane"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "6 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          },
+          {
+            "week_num": 4,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Reverse Lunges",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Curtsy Lunge",
+                      "Deficit Reverse Lunge",
+                      "Front Foot Elevated Reverse Lunge",
+                      "Walking Lunges (quad focus)"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Long Lever)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "10 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL to Knee Drive",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "12:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "On the BOSU.",
+                    "alternates": [
+                      "Single-Leg Pad Balance + Ball Catches",
+                      "Weighted Hip Airplane"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "6 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          },
+          {
+            "week_num": 5,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Harder variations and shorter rests. Push the pace."
+                ],
+                "exercises": [
+                  {
+                    "name": "Heel Elevated Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Reverse Lunges",
+                      "Deficit Reverse Lunge",
+                      "Dumbbell Lateral Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "12 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Harder variations and shorter rests. Push the pace."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL to Knee Drive",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "15:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Harder variations and shorter rests. Push the pace."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 4,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Weighted Hip Airplane",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Slow open and close, pelvis level.",
+                    "alternates": [
+                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                      "Hip Airplane (No Support)"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "8 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Harder variations and shorter rests. Push the pace.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          },
+          {
+            "week_num": 6,
+            "days": [
+              {
+                "focus": "Day 1 · Full Body A: Squat, Push, Pull",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Deload week: half the sets, same weights. Leave fresh."
+                ],
+                "exercises": [
+                  {
+                    "name": "Heel Elevated Goblet Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "Dumbbell Sumo Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Bench Press",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Low Incline Dumbbell Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups",
+                      "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Staggered Stance RDL w/ Same Side Load",
+                      "B-Stance RDL",
+                      "Kickstand RDL"
+                    ]
+                  },
+                  {
+                    "name": "Chest Supported DB Row (lat focus)",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Bench on an incline.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "DB Chest Supported Row (mid/upper back)",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Curtsy Lunge",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Reverse Lunges",
+                      "Deficit Reverse Lunge",
+                      "Dumbbell Lateral Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Arnold Press",
+                      "Seated Dumbbell Shoulder Press",
+                      "Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Palloff Press",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Anchor the band at chest height.",
+                    "alternates": [
+                      "Core Rotation Pallof Press",
+                      "Anti Rotation ABC's"
+                    ]
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "Each side, top leg on the bench.",
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Side Plank with Top-Leg Raise"
+                    ]
+                  },
+                  {
+                    "name": "Sprint 10s/Jog 20s/Walk 40s",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "6 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "10 s fast, 20 s jog, 40 s walk.",
+                    "alternates": [
+                      "Zone 4 Workout"
+                    ]
+                  }
+                ],
+                "day_num": 1
+              },
+              {
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Deload week: half the sets, same weights. Leave fresh."
+                ],
+                "exercises": [
+                  {
+                    "name": "Weighted Step-Ups",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Weighted Step Up with Leg Raise",
+                      "Weighted Side Step-Ups",
+                      "High Box Step Up",
+                      "Lateral Step-Down"
+                    ]
+                  },
+                  {
+                    "name": "3 Point Dumbbell Row",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
+                      "Bent Over 1 Arm Row"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg RDL to Knee Drive",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Single-Leg RDL with Kettlebell",
+                      "Kickstand RDL",
+                      "Dumbbell Romanian Deadlift"
+                    ]
+                  },
+                  {
+                    "name": "Low Incline Dumbbell Press",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8-10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Bench Press",
+                      "Neutral Grip DB Press",
+                      "Push Ups"
+                    ]
+                  },
+                  {
+                    "name": "Single-Leg Hip Thrust",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Shoulders on the bench.",
+                    "alternates": [
+                      "Dumbbell Hip Thrust",
+                      "Single-Leg Glute Bridge",
+                      "Dumbbell Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Raise",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Lean In Lateral Raise",
+                      "Lateral Raise"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
+                    ]
+                  },
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "8:00",
+                    "rest": null,
+                    "notes": "Incline walk, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  }
+                ],
+                "day_num": 2
+              },
+              {
+                "focus": "Day 3 · Stability + Bands",
+                "warmup": [
+                  {
+                    "name": "Arm Circles",
+                    "reps": "10 each way",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Over-and-Backs",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Deload week: half the sets, same weights. Leave fresh."
+                ],
+                "exercises": [
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Heel Elevated Split Squat",
+                      "Reverse Lunges",
+                      "Front Foot Elevated Reverse Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Band Resisted Push Up",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band across the back.",
+                    "alternates": [
+                      "Push Ups",
+                      "Dumbbell Bench Press"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Lateral Lunge",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Lateral Lunge",
+                      "Curtsy Lunge",
+                      "Adductor Slider Lunge"
+                    ]
+                  },
+                  {
+                    "name": "Bent Over 1 Arm Row",
+                    "round_group": "Superset B",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each arm",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "PJF heavy band.",
+                    "alternates": [
+                      "3 Point Dumbbell Row",
+                      "Bent Over Cross Body Row"
+                    ]
+                  },
+                  {
+                    "name": "Weighted Hip Airplane",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "5 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": "Slow open and close, pelvis level.",
+                    "alternates": [
+                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                      "Hip Airplane (No Support)"
+                    ]
+                  },
+                  {
+                    "name": "Arnold Press",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null,
+                    "alternates": [
+                      "Standing Dumbbell Shoulder Press",
+                      "Seated Dumbbell Shoulder Press"
+                    ]
+                  },
+                  {
+                    "name": "Hammer Curls",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Seated Dumbbell Curls",
+                      "Incline Dumbbell Curls",
+                      "Bicep Curl"
+                    ]
+                  },
+                  {
+                    "name": "Incline DB Overhead Extensions",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Tricep Extension",
+                      "Close-Grip Push-Ups"
+                    ]
+                  },
+                  {
+                    "name": "Zone 4 Workout",
+                    "round_group": "Treadmill finisher",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": "4 rounds",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": null,
+                    "notes": "1 min hard, 1 min easy.",
+                    "alternates": [
+                      "Sprint 10s/Jog 20s/Walk 40s"
+                    ]
+                  }
+                ],
+                "day_num": 3
+              },
+              {
+                "focus": "Day 4 · Conditioning + Glutes",
+                "warmup": [
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Forward Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Deload week: half the sets, same weights. Leave fresh.",
+                  "Treadmill first, then the band circuit 3 times through."
+                ],
+                "exercises": [
+                  {
+                    "name": "Zone 2 Low Impact",
+                    "round_group": "Treadmill",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20:00",
+                    "rest": null,
+                    "notes": "Incline walk or easy jog, conversational pace.",
+                    "alternates": [
+                      "Brisk Walk"
+                    ]
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Glute Bridge",
+                      "Single-Leg Glute Bridge"
+                    ]
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Resistance Band Side Steps"
+                    ]
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0s",
+                    "notes": null,
+                    "alternates": [
+                      "Bent Over Dumbbell Face Pulls",
+                      "Band Pull Apart"
+                    ]
+                  },
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Band circuit",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": null,
+                    "alternates": [
+                      "Dumbbell Goblet Squat",
+                      "1¼ Goblet Squat"
+                    ]
+                  }
+                ],
+                "day_num": 4
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "stats": {

@@ -41,6 +41,9 @@ script and re-run it instead of hand-editing `library.json`.
 
 Each exercise: `name`, `sets`, `reps` **or** `time` (`"30:00"`, `"15s"`), `rest`
 (shown as the target, e.g. `"45-60s"`. The rest timer counts up from 0 after each set), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
+Optional per exercise: `alternates` (a list of catalog names, shown first under **Plan
+alternatives** in the Lift card's Swap menu, like BWS alternates; give every strength slot 2–4
+that fit the plan's equipment) and `video_url` (the row's own video, `&t=` for a start time).
 Progression across weeks (more rounds, more reps) goes in the script's per-week loop.
 
 **Two programs at once** (e.g. strength Mon/Wed/Fri plus agility Tue/Thu): say so in the

@@ -170,6 +170,7 @@ export async function renderWorkout(app) {
       round_group: ex.round_group || ex.group || ex.superset || null,
       notes: ex.notes,
       video_url: ex.video_url || null,   // a plan can point a row at its own video (and start time)
+      alternates: ex.alternates || null, // a plan's own swap list, like BWS alternates
       sets: [],
     }));
     session = {
@@ -733,6 +734,9 @@ function openExerciseMenu(session, i, allExercises, exMap) {
   const primaryMuscle = lookup?.primary_muscle || null;
   const muscleLabel = primaryMuscle ? primaryMuscle.replace(/_/g, ' ') : null;
   const bwsAlts = lookup?.bws_alternates || [];
+  // The plan's own alternatives for this slot (plus the original, once swapped away from it).
+  const planAlts = [...new Set([...(ex.swapped && ex.orig_name ? [ex.orig_name] : []), ...(ex.alternates || [])])]
+    .filter(n => n !== ex.name && exMap[n.toLowerCase()]);
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${ex.name}</h2>
@@ -760,6 +764,17 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         const similarExercises = lookup?.pattern
           ? rankSimilar(lookup, allExercises)
           : primaryMuscle ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name) : [];
+        const planSection = planAlts.length ? `
+          <div class="group-label" style="margin:0 0 6px">Plan alternatives</div>
+          ${planAlts.map(name => {
+            const alt = exMap[name.toLowerCase()];
+            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1">
+                <div class="list-item-title">${name}${name === ex.orig_name ? ' <span class="pill" style="font-size:10px">original</span>' : ''}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${alt?.pattern ? tagLine(alt) : (alt?.primary_muscle || '').replace(/_/g, ' ')}${hasVideo(alt) ? ' · ▶' : ''}</div>
+              </div>
+            </div>`;
+          }).join('')}` : '';
         const bwsSection = bwsAlts.length ? `
           <div class="group-label" style="margin:0 0 6px">BWS alternates</div>
           ${bwsAlts.map(name => {
@@ -800,6 +815,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           <div style="height:10px"></div>` : '';
         s2.innerHTML = `
           <h2>Swap: ${ex.name}</h2>
+          ${planSection}
           ${hipSection}
           ${bwsSection}
           ${similarSection}
