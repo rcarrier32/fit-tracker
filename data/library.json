@@ -43192,54 +43192,56 @@
         "program_name": "Hip Function: 6 Weeks",
         "group": "Move Like 30",
         "source": "Athletic",
-        "description": "Past rehab: a hip that hinges, rotates, and handles single-leg and lateral load. Copenhagen in every session; advanced balance work; three 2-week phases.",
+        "description": "Built on your Motion RC and PT hip exercises (hamstring bridge to single-leg bench bridge, adductor slider lunge, airplanes, hip hikes, side plank clamshell, Copenhagen), progressed over three 2-week phases.",
         "sessions_per_week": 3,
         "session_length_min": 45,
         "level": "Intermediate",
         "equipment": [
           "Dumbbells or kettlebell",
           "Bench or box",
-          "Mini band",
+          "Slider",
+          "Mini band + long band",
+          "Foam roller",
           "BOSU or balance pad",
           "Ankle weight (optional)"
         ],
         "goal": "Move like 30: a strong, mobile hip that is ready for the court.",
-        "safety": "Hip rule: pain up to 3/10 that settles by the next morning is fine. Above that, or worse the next day: repeat the previous phase, or use ⋯ → Swap for a hip-friendly option. Stop anything sharp or pinchy in the front of the hip.",
+        "safety": null,
         "weeks": [
           {
             "week_num": 1,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -43255,6 +43257,18 @@
                     "notes": "Hips square to the floor. Reach long through the back heel."
                   },
                   {
+                    "name": "Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": null,
                     "is_alternate": false,
@@ -43267,7 +43281,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Hip Airplane (No Support)",
+                    "name": "SL Hip Airplane w/ Foam Roller",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -43276,19 +43290,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Knee)",
@@ -43303,55 +43305,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Banded Hip Flexor March",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -43360,7 +43374,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Side Step-Ups",
@@ -43375,23 +43389,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Banded Side Plank Clamshell",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43411,63 +43437,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -43507,11 +43521,11 @@
                     "notes": null
                   },
                   {
-                    "name": "Single-Leg Hip Thrust",
+                    "name": "Bridge with Ball Squeeze",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43543,11 +43557,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43563,36 +43577,36 @@
             "week_num": 2,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -43608,6 +43622,18 @@
                     "notes": "Hips square to the floor. Reach long through the back heel."
                   },
                   {
+                    "name": "Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": null,
                     "is_alternate": false,
@@ -43620,7 +43646,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Hip Airplane (No Support)",
+                    "name": "SL Hip Airplane w/ Foam Roller",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -43629,19 +43655,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Knee)",
@@ -43656,55 +43670,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Banded Hip Flexor March",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -43713,7 +43739,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Side Step-Ups",
@@ -43728,23 +43754,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Banded Side Plank Clamshell",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43764,63 +43802,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 1 (weeks 1-2): own the positions. Pick a load you could lift 3-4 more reps with.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -43860,11 +43886,11 @@
                     "notes": null
                   },
                   {
-                    "name": "Single-Leg Hip Thrust",
+                    "name": "Bridge with Ball Squeeze",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43896,11 +43922,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -43916,36 +43942,36 @@
             "week_num": 3,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -43961,6 +43987,18 @@
                     "notes": "Hips square to the floor. Reach long through the back heel."
                   },
                   {
+                    "name": "Single-Leg Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": null,
                     "is_alternate": false,
@@ -43973,7 +44011,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Weighted Hip Airplane",
+                    "name": "Hip Airplane (No Support)",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -43982,19 +44020,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Long Lever)",
@@ -44009,55 +44035,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -44066,7 +44104,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -44081,23 +44119,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44117,63 +44167,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -44249,11 +44287,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44269,36 +44307,36 @@
             "week_num": 4,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -44314,6 +44352,18 @@
                     "notes": "Hips square to the floor. Reach long through the back heel."
                   },
                   {
+                    "name": "Single-Leg Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": null,
                     "is_alternate": false,
@@ -44326,7 +44376,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Weighted Hip Airplane",
+                    "name": "Hip Airplane (No Support)",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -44335,19 +44385,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Long Lever)",
@@ -44362,55 +44400,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
@@ -44419,7 +44469,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -44434,23 +44484,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44470,63 +44532,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 2 (weeks 3-4): add load or the harder version. Leave 2 reps in the tank.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -44602,11 +44652,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44622,36 +44672,36 @@
             "week_num": 5,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -44665,6 +44715,18 @@
                     "time": null,
                     "rest": "90s",
                     "notes": "Hips square to the floor. Reach long through the back heel."
+                  },
+                  {
+                    "name": "Single-Leg Slider Hamstring Curl",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
                   },
                   {
                     "name": "Bulgarian Split Squat",
@@ -44688,19 +44750,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Long Lever)",
@@ -44715,55 +44765,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 4,
@@ -44772,7 +44834,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -44787,23 +44849,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44823,63 +44897,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -44955,11 +45017,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -44975,36 +45037,36 @@
             "week_num": 6,
             "days": [
               {
-                "focus": "Day 1 · Hinge & Single-Leg",
+                "focus": "Day 1 · Hinge & Posterior Chain",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -45018,6 +45080,18 @@
                     "time": null,
                     "rest": "90s",
                     "notes": "Hips square to the floor. Reach long through the back heel."
+                  },
+                  {
+                    "name": "Single-Leg Slider Hamstring Curl",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on a bench or box. Ribs down, squeeze the glutes at the top."
                   },
                   {
                     "name": "Bulgarian Split Squat",
@@ -45041,19 +45115,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Slow open and close. Hold a wall lightly if you need to."
-                  },
-                  {
-                    "name": "Single-Leg Glute Bridge",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 3,
-                    "reps": "10 each leg",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "45s",
-                    "notes": null
+                    "notes": "Slow open and close, pelvis level."
                   },
                   {
                     "name": "Copenhagen Side Plank (Long Lever)",
@@ -45068,55 +45130,67 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
+                    "sets": 2,
                     "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
                   }
                 ],
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Rotation & Lateral",
+                "focus": "Day 2 · Lateral & Adductors",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
-                    "name": "Lateral Lunge",
+                    "name": "Adductor Slider Lunge",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 4,
@@ -45125,7 +45199,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "75s",
-                    "notes": "Sit into the hip and keep the other leg straight."
+                    "notes": "Standing leg bends, the slider leg stays straight."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -45140,23 +45214,35 @@
                     "notes": null
                   },
                   {
-                    "name": "Split Stance Loaded Hip Rotations",
+                    "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null
+                    "rest": "45s",
+                    "notes": "Level the pelvis, then hike the free side."
                   },
                   {
-                    "name": "Single Leg Hip IR/ER",
+                    "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "6 each way",
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -45176,63 +45262,51 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Side Plank with Top-Leg Raise",
+                    "name": "Single Leg Hip IR/ER",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "6 each way",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null
-                  },
-                  {
-                    "name": "Seated Banded Hip IR",
-                    "round_group": null,
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "12 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
                     "notes": null
                   }
                 ],
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability & Strength",
+                "focus": "Day 3 · Single-Leg Strength & Balance",
                 "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": "Motion RC prep"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "12 each side",
+                    "time": null,
+                    "notes": null
+                  },
                   {
                     "name": "Quadruped Hip Hikes",
                     "reps": "10 each side",
                     "time": null,
                     "notes": "Pelvic rotation warm-up"
-                  },
-                  {
-                    "name": "90/90 Hip Opener",
-                    "reps": "5 each side",
-                    "time": null,
-                    "notes": null
-                  },
-                  {
-                    "name": "Half-Kneeling Hip Flexor Stretch",
-                    "reps": null,
-                    "time": "30s",
-                    "notes": "Each side. Squeeze the glute of the down knee."
-                  },
-                  {
-                    "name": "Banded Hip Flexor March",
-                    "reps": "10 each side",
-                    "time": null,
-                    "notes": null
                   }
                 ],
                 "notes": [
                   "Phase 3 (weeks 5-6): heaviest and most athletic. Leave 1-2 reps in the tank, crisp reps only.",
-                  "Copenhagen is in every session. Do the side planks each side."
+                  "Your Motion RC and PT exercises, progressed each phase. Copenhagen every session; do the side work each side."
                 ],
                 "exercises": [
                   {
@@ -45308,11 +45382,11 @@
                     "notes": "Each side."
                   },
                   {
-                    "name": "Bird Dog with Ankle Weight or Band",
+                    "name": "Prone Hip Extension",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -45331,7 +45405,7 @@
         "program_name": "Total Body Strength: 6 Weeks",
         "group": "Move Like 30",
         "source": "Athletic",
-        "description": "Three full-body days a week: trap bar, box squat and single-leg work instead of hip-pinching depth, plus press, pull and core. Heavier each phase; week 6 deloads.",
+        "description": "Three full-body days a week: trap bar, box squat and single-leg work, plus press, pull and core. Heavier each phase; week 6 deloads.",
         "sessions_per_week": 3,
         "session_length_min": 55,
         "level": "Intermediate",
@@ -45339,7 +45413,7 @@
           "Gym: trap bar, barbell, box, bench, dumbbells, cable/landmine, pull-up bar"
         ],
         "goal": "Full-body strength that carries over to the court, without beating up the hip.",
-        "safety": "Hip rule: pain up to 3/10 that settles by the next morning is fine. Above that, or worse the next day: repeat the previous phase, or use ⋯ → Swap for a hip-friendly option. Stop anything sharp or pinchy in the front of the hip.",
+        "safety": null,
         "weeks": [
           {
             "week_num": 1,
@@ -47585,7 +47659,7 @@
           "Cones or a line"
         ],
         "goal": "First step, stops and cuts that feel like 30 again.",
-        "safety": "Hip rule: pain up to 3/10 that settles by the next morning is fine. Above that, or worse the next day: repeat the previous phase, or use ⋯ → Swap for a hip-friendly option. Stop anything sharp or pinchy in the front of the hip. Land softly; skip any jump that makes the hip pinch, and use the Phase 1 version instead.",
+        "safety": null,
         "weeks": [
           {
             "week_num": 1,

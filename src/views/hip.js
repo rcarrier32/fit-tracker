@@ -433,19 +433,16 @@ export async function renderHip(app) {
     const step = levels[ex.id]?.step || 0;
     const last = step >= ladder.steps.length - 1;
     const n = sessionsAtLevel(ex.id);
-    const ready = !flare && !last && n >= LADDER_UNLOCK_SESSIONS;
+    const ready = !last && n >= LADDER_UNLOCK_SESSIONS;   // a suggestion only: every level is open
     return {
       name: ladder.name,
       current: step,
       steps: ladder.steps.map(id => ({ name: EXERCISE_INDEX[id]?.name || id })),
       ready,
-      note: flare ? 'Flare mode — stay at this level (or drop one) until it settles.'
-        : last ? 'Top of this ladder. Progress with load, range, or slower tempo.'
-        : ready ? `${n} pain-free sessions at this level — ready to try the next one if it feels right (and your PT agrees).`
-        : `${n} of ${LADDER_UNLOCK_SESSIONS} pain-free sessions at this level before moving up. Drop back any time it hurts.`,
+      note: last ? 'Top of this ladder. Progress with load, range, or slower tempo.'
+        : 'Pick any level. Move up whenever you want more challenge.',
       onChange: async (next, close) => {
         const target = EXERCISE_INDEX[ladder.steps[next]]?.name;
-        if (next > step && !confirm(`Move up to ${target}? Go back down if it hurts above 3/10.`)) return;
         close(false);
         await setLevel(ex.id, next);
         openExerciseSheet(ex.id);
@@ -928,7 +925,7 @@ export async function renderHip(app) {
         </div>
 
         <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:10px">
-          ${['3× / week · A/B', flare ? 'Flare — Calm Down' : 'Psoas Focus', 'Pain Guides Load'].map(t =>
+          ${['3× / week · A/B', 'Psoas Focus', 'Build the Hip'].map(t =>
             `<span class="pill" style="font-size:10px;padding:2px 8px">${t}</span>`
           ).join('')}
         </div>
@@ -940,8 +937,7 @@ export async function renderHip(app) {
             <div style="font-size:10px;letter-spacing:0.1em;color:#7dd3fc;font-weight:700">
               WORKING THEORY
             </div>
-            <button id="flare-on" style="font-size:10px;padding:2px 8px;border-radius:5px;cursor:pointer;
-              background:transparent;border:1px solid rgba(251,146,60,0.35);color:#fdba74">Flare mode</button>
+
           </div>
           <div style="font-size:11.5px;color:#94a3b8;line-height:1.45">
             PT thinks a tight psoas is driving this. That makes the hip flexor stretches the

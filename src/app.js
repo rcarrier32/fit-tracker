@@ -2,6 +2,7 @@
  * Main app: hash router, view loader, global state.
  */
 import { loadCatalogs } from './lib/static_data.js';
+import { pref } from './db.js';
 import { renderHome } from './views/home.js';
 import { renderWorkout } from './views/workout.js';
 import { renderMeals } from './views/meals.js';
@@ -140,6 +141,13 @@ if (FIRST_COPY) (async () => {
   initUpdates();
   import('./lib/wake_lock.js').then(m => m.initWakeLock()).catch(() => {});
   requestPersistence();   // ask iOS to stop evicting our storage (fire-and-forget)
+  // v82: no hip restrictions (the user's call). Clear flare mode and its paused exercises once.
+  pref('hip_restrictions_off').then(async (done) => {
+    if (done) return;
+    await pref('hip_flare', null);
+    await pref('hip_paused', {});
+    await pref('hip_restrictions_off', true);
+  }).catch(() => {});
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
   await import('./lib/local_videos.js').then(m => m.loadLocalVideos()).catch(() => {});
   await offerBackupRestore();

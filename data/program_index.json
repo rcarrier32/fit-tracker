@@ -951,46 +951,46 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 6.7,
+   "exercises_per_day": 7.0,
    "day_focus": [
-    "Day 1 · Hinge & Single-Leg",
-    "Day 2 · Rotation & Lateral",
-    "Day 3 · Stability & Strength"
+    "Day 1 · Hinge & Posterior Chain",
+    "Day 2 · Lateral & Adductors",
+    "Day 3 · Single-Leg Strength & Balance"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 26,
+    "glutes": 15,
+    "adductors": 12,
     "quads": 9,
-    "adductors": 9,
-    "abs": 5,
-    "hamstrings": 3,
-    "full_body": 3,
-    "obliques": 2
+    "hamstrings": 8,
+    "abductors": 8,
+    "hip_flexors": 2,
+    "abs": 2,
+    "full_body": 2
    },
    "week1_sets_by_pattern": {
     "lunge_single_leg": 18,
-    "hinge": 9,
+    "hinge": 11,
     "isometric": 9,
+    "isolation_lower": 9,
     "balance": 6,
-    "isolation_lower": 5,
-    "anti_rotation": 3,
-    "mobility": 3,
-    "lateral_flexion": 2,
+    "lateral_flexion": 3,
     "anti_extension": 2
    },
    "roles": {
-    "secondary": 9,
-    "core": 6,
-    "accessory": 4,
-    "warmup": 1
+    "secondary": 10,
+    "accessory": 6,
+    "core": 5
    },
    "equipment": [
     "band",
     "bench",
     "bosu_pad",
     "box",
-    "kettlebell"
+    "kettlebell",
+    "mini_band",
+    "slider"
    ],
-   "description": "Past rehab: a hip that hinges, rotates, and handles single-leg and lateral load. Copenhagen in every session; advanced balance work; three 2-week phases."
+   "description": "Built on your Motion RC and PT hip exercises (hamstring bridge to single-leg bench bridge, adductor slider lunge, airplanes, hip hikes, side plank clamshell, Copenhagen), progressed over three 2-week phases."
   },
   {
    "id": "move30_total_body_6wk",
@@ -1048,7 +1048,7 @@
     "pullup_bar",
     "trap_bar"
    ],
-   "description": "Three full-body days a week: trap bar, box squat and single-leg work instead of hip-pinching depth, plus press, pull and core. Heavier each phase; week 6 deloads."
+   "description": "Three full-body days a week: trap bar, box squat and single-leg work, plus press, pull and core. Heavier each phase; week 6 deloads."
   },
   {
    "id": "move30_court_ready_6wk",
