@@ -65,8 +65,8 @@ ALTS = {
     'Band Pullover': ['Band Pull-Aparts', 'Bent Over 1 Arm Row'],
     'Slider Hamstring Curl': ['Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
     'Single-Leg Slider Hamstring Curl': ['Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
-    'Kettlebell Swing': ['Med Ball Slam', 'Single-Leg RDL with Kettlebell'],
-    'Med Ball Slam': ['MB Rapid Lateral Toss'],
+    'Kettlebell Swing': ['Med Ball Slam', 'Penultimate Box Jumps (Optional)', 'KB Swing + Box Jump Contrast', 'Single-Leg RDL with Kettlebell'],
+    'Med Ball Slam': ['Kettlebell Swing', 'Penultimate Box Jumps (Optional)', 'MB Rapid Lateral Toss'],
     'MB Rapid Lateral Toss': ['Med Ball Slam'],
 }
 
