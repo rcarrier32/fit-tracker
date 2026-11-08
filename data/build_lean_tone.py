@@ -16,6 +16,10 @@ KNOWN = {e['name'].lower() for e in lib.data['exercises']} | {t['name'].lower() 
 
 # Moves this plan adds to the catalog (videos via enrich_program_videos.mjs --source lean).
 NEW = {
+    'Banded Lat Pulldown': {'primary_muscle': 'lats', 'muscles': ['lats', 'biceps', 'upper_back'], 'pattern': 'pull_vertical', 'role': 'secondary',
+                            'equipment': ['band'], 'level': 1, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
+    'Single-Arm Banded Lat Pulldown': {'primary_muscle': 'lats', 'muscles': ['lats', 'biceps', 'obliques'], 'pattern': 'pull_vertical', 'role': 'secondary',
+                            'equipment': ['band'], 'level': 1, 'unilateral': True, 'plane': 'sagittal', 'hip_focus': False},
     'Kettlebell Swing': {'primary_muscle': 'glutes', 'muscles': ['glutes', 'hamstrings', 'lower_back'], 'pattern': 'hinge', 'role': 'power',
                          'equipment': ['kettlebell'], 'level': 2, 'unilateral': False, 'plane': 'sagittal', 'hip_focus': False},
     'Med Ball Slam': {'primary_muscle': 'full_body', 'muscles': ['full_body', 'lats', 'abs'], 'pattern': 'plyo_jump', 'role': 'power',
@@ -62,7 +66,19 @@ ALTS = {
     'Mini Band Monster Walk': ['Resistance Band Side Steps'],
     'Band Pull-Aparts': ['Bent Over Dumbbell Face Pulls', 'Band Pull Apart'],
     'Dumbbell Sumo Squat': ['Kettlebell Swing', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'],
-    'Band Pullover': ['Band Pull-Aparts', 'Bent Over 1 Arm Row'],
+    'Band Pullover': ['Banded Lat Pulldown', 'Single-Arm Banded Lat Pulldown', 'Bent Over 1 Arm Row'],
+    'Banded Lat Pulldown': ['Single-Arm Banded Lat Pulldown', 'Band Pullover'],
+    'Single-Arm Banded Lat Pulldown': ['Banded Lat Pulldown', 'Band Pullover'],
+    'Lateral Bounds': ['Lateral Hops', 'Double Lateral Extensive Hops', 'Mutli-direction Bounds'],
+    'Mutli-direction Bounds': ['Lateral Bounds', 'Lateral Hops'],
+    '1¼ Goblet Squat': ['Dumbbell Goblet Squat', 'Heel Elevated Goblet Squat', 'Bulgarian Split Squat'],
+    'B-Stance RDL': ['Single-Leg RDL with Kettlebell', 'Dumbbell Romanian Deadlift', 'Staggered Stance RDL w/ Same Side Load'],
+    'DB Split Stance Row': ['3 Point Dumbbell Row', 'Bent Over 1 Arm Row'],
+    'Weighted Step Up with Leg Raise': ['Weighted Step-Ups', 'Weighted Side Step-Ups', 'Lateral Step-Down'],
+    'Lean In Lateral Raise': ['Dumbbell Lateral Raise', 'Lateral Raise'],
+    'Banded Bridge Hold Abductions': ['Glute Bridge Hold', 'Banded Glute Bridge'],
+    'Single-Leg Hip Thrust Hold': ['Glute Bridge Hold', 'Single-Leg Hip Thrust'],
+    'Squat Hold': ['Dumbbell Sumo Squat', 'Dumbbell Goblet Squat'],
     'Slider Hamstring Curl': ['Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
     'Single-Leg Slider Hamstring Curl': ['Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
     'Kettlebell Swing': ['Med Ball Slam', 'Penultimate Box Jumps (Optional)', 'KB Swing + Box Jump Contrast', 'Single-Leg RDL with Kettlebell'],
@@ -88,73 +104,83 @@ def phase(wk):
 
 
 NOTE = {
-    1: 'Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair.',
-    2: 'Heavier than weeks 1–2 at slightly lower reps. Finishers get longer.',
-    3: 'Harder variations and shorter rests. Push the pace.',
+    1: 'Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.',
+    2: 'Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression.',
+    3: 'Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier.',
 }
+PAUSE = '3-second pause at the bottom of every rep.'
 
 
 def days(wk):
     p = phase(wk)
     deload = wk == 6
-    S = 2 if deload else (4 if p == 3 else 3)          # sets on the main pairs
-    s = 2 if deload else 3                              # sets on accessory pairs
-    main = {1: '10-12', 2: '8-10', 3: '8-10'}[p]
+    S = 2 if deload else 3
+    s = 2 if deload else 3
+    reps = {1: '10-12', 2: '12-15', 3: '12-15'}[p]
+    each = {1: '10 each', 2: '12 each', 3: '12 each'}[p]
+    pause = PAUSE if p == 2 else None
     rest = '45s' if p == 3 else '60s'
     sprint_rounds = {1: 8, 2: 10, 3: 12}[p] if not deload else 6
     walk = {1: '10:00', 2: '12:00', 3: '15:00'}[p] if not deload else '8:00'
     intervals = {1: 5, 2: 6, 3: 8}[p] if not deload else 4
     z2 = {1: '25:00', 2: '30:00', 3: '30:00'}[p] if not deload else '20:00'
-    squat = 'Heel Elevated Goblet Squat' if p == 3 else 'Dumbbell Goblet Squat'
-    lunge = 'Curtsy Lunge' if p == 3 else 'Reverse Lunges'
-    cop = 'Copenhagen Side Plank (Long Lever)' if p == 3 else 'Copenhagen Side Plank (Knee)'
-    slrdl = 'Single-Leg RDL to Knee Drive' if p == 3 else 'Single-Leg RDL with Kettlebell'
-    balance = 'Weighted Hip Airplane' if p == 3 else 'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds'
+    hold = {1: '20s', 2: '25s', 3: '30s'}[p]
+    alt_iso = 'Alternate arms: one dumbbell holds locked out (isometric) while the other works.'
     notes = ['Deload week: half the sets, same weights. Leave fresh.' if deload else NOTE[p]]
+    pick = lambda a, b, c: (a, b, c)[p - 1]
     return [
         {'focus': 'Day 1 · Full Body A: Squat, Push, Pull', 'warmup': WARM_LOWER, 'notes': notes, 'exercises': [
-            r(squat, main, sets=S, rest=rest, group='Superset A'),
-            r('Dumbbell Bench Press', main, sets=S, rest=rest, group='Superset A'),
-            r('Dumbbell Romanian Deadlift', main, sets=S, rest=rest, group='Superset B'),
-            r('Chest Supported DB Row (lat focus)', '10-12', sets=S, rest=rest, group='Superset B', notes='Bench on an incline.'),
-            r(lunge, '10 each leg', sets=s, rest=rest, group='Superset C'),
-            r('Standing Dumbbell Shoulder Press', '10', sets=s, rest=rest, group='Superset C'),
+            r(pick('Dumbbell Goblet Squat', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'), reps, sets=S, rest=rest, group='Superset A', notes=pause),
+            r('Dumbbell Bench Press', reps, sets=S, rest=rest, group='Superset A', notes=alt_iso if p == 3 else pause),
+            r(pick('Dumbbell Romanian Deadlift', 'Dumbbell Romanian Deadlift', 'B-Stance RDL'), reps if p < 3 else each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
+            r(pick('Chest Supported DB Row (lat focus)', 'Chest Supported DB Row (lat focus)', '3 Point Dumbbell Row'), reps if p < 3 else each + ' arm', sets=S, rest=rest,
+              group='Superset B', notes='Bench on an incline.' if p < 3 else '2-second hold at the top.'),
+            r(pick('Reverse Lunges', 'Reverse Lunges', 'Curtsy Lunge'), each + ' leg', sets=s, rest=rest, group='Superset C', notes=pause),
+            r('Standing Dumbbell Shoulder Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
             r('Palloff Press', '12 each side', sets=2, rest='30s', group='Superset D', notes='Anchor the band at chest height.'),
-            r(cop, time='20s', sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
-            r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher',
-              notes='10 s fast, 20 s jog, 40 s walk.'),
+            r('Copenhagen Side Plank (Long Lever)' if p == 3 else 'Copenhagen Side Plank (Knee)', time=hold, sets=2, rest='30s', group='Superset D',
+              notes='Each side, top leg on the bench.'),
+            r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
-        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Press', 'warmup': WARM_LOWER, 'notes': notes, 'exercises': [
-            r('Weighted Step-Ups', '10 each leg', sets=S, rest=rest, group='Superset A'),
-            r('3 Point Dumbbell Row', '10 each arm', sets=S, rest=rest, group='Superset A'),
-            r(slrdl, '8 each leg', sets=S, rest=rest, group='Superset B'),
-            r('Low Incline Dumbbell Press', main, sets=S, rest=rest, group='Superset B'),
-            r('Single-Leg Hip Thrust', '12 each leg', sets=s, rest=rest, group='Superset C', notes='Shoulders on the bench.'),
-            r('Dumbbell Lateral Raise', '15', sets=s, rest=rest, group='Superset C'),
-            r('Band Pullover', '12', sets=s, rest=rest, group='Superset D', notes='PJF heavy band anchored high: your vertical pull (no pull-up bar).'),
-            r('Single-Leg Slider Hamstring Curl' if p == 3 else 'Slider Hamstring Curl', '8 each leg' if p == 3 else '10', sets=s, rest=rest, group='Superset D'),
+        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': WARM_LOWER, 'notes': notes, 'exercises': [
+            r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
+            r('DB Split Stance Row' if p == 3 else '3 Point Dumbbell Row', each + ' arm', sets=S, rest=rest, group='Superset A'),
+            r('Single-Leg RDL to Knee Drive' if p == 3 else 'Single-Leg RDL with Kettlebell', each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
+            r('Low Incline Dumbbell Press', reps, sets=S, rest=rest, group='Superset B', notes=alt_iso if p == 3 else pause),
+            r('Single-Leg Hip Thrust', each + ' leg', sets=s, rest=rest, group='Superset C',
+              notes='Shoulders on the bench.' + (' 3-second squeeze at the top.' if p >= 2 else '')),
+            r('Lean In Lateral Raise' if p == 3 else 'Dumbbell Lateral Raise', '15' if p < 3 else '15 each arm', sets=s, rest=rest, group='Superset C'),
+            r('Single-Arm Banded Lat Pulldown' if p == 3 else 'Banded Lat Pulldown', '12-15' if p < 3 else '12 each arm', sets=s, rest=rest, group='Superset D',
+              notes='Band anchored high in the garage, kneeling. Your vertical pull.'),
+            r('Single-Leg Slider Hamstring Curl' if p == 3 else 'Slider Hamstring Curl', each + ' leg' if p == 3 else '12', sets=s, rest=rest, group='Superset D'),
+            r('Dead Bug', '10 each side', sets=2, rest='30s', group='Superset E'),
+            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Superset E'),
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
-        {'focus': 'Day 3 · Stability + Bands', 'warmup': WARM_UPPER, 'notes': notes, 'exercises': [
-            r('Kettlebell Swing', '12' if p == 3 else '10', sets=3, rest='45s', group='Power',
-              notes='Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).'),
-            r('Bulgarian Split Squat', '8 each leg', sets=S, rest=rest, group='Superset A'),
-            r('Band Resisted Push Up', '10', sets=S, rest=rest, group='Superset A', notes='PJF heavy band across the back.'),
-            r('Dumbbell Lateral Lunge', '8 each side', sets=S, rest=rest, group='Superset B'),
-            r('Bent Over 1 Arm Row', '12 each arm', sets=S, rest=rest, group='Superset B', notes='PJF heavy band.'),
-            r(balance, time='30s' if p < 3 else None, reps='5 each leg' if p == 3 else None, sets=s, rest='30s', group='Superset C',
-              notes='On the BOSU.' if p < 3 else 'Slow open and close, pelvis level.'),
-            r('Arnold Press', '10', sets=s, rest=rest, group='Superset C'),
-            r('Hammer Curls', '12', sets=2, rest='30s', group='Superset D'),
-            r('Incline DB Overhead Extensions', '12', sets=2, rest='30s', group='Superset D'),
+        {'focus': 'Day 3 · Power, Stability + Bands', 'warmup': WARM_UPPER, 'notes': notes, 'exercises': [
+            r('Kettlebell Swing', '12' if p == 3 else '10', sets=3, rest='0-15s', group='Superset P',
+              notes='Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).'),
+            r('Mutli-direction Bounds' if p == 3 else 'Lateral Bounds', '3 each direction' if p == 3 else ('4 each side' if p == 1 else '5 each side'),
+              sets=3, rest='60s', group='Superset P', notes='Stick each landing for a 1-count. Quiet feet.'),
+            r('Bulgarian Split Squat', each + ' leg', sets=S, rest=rest, group='Superset A', notes=pause),
+            r('Band Resisted Push Up', reps, sets=S, rest=rest, group='Superset A', notes='PJF heavy band across the back.' + (' 3-second hold at the bottom.' if p >= 2 else '')),
+            r('Dumbbell Lateral Lunge', each + ' side', sets=S, rest=rest, group='Superset B'),
+            r('Band Pullover', '12-15', sets=S, rest=rest, group='Superset B', notes='PJF heavy band anchored high. Second vertical pull.'),
+            r('Weighted Hip Airplane' if p == 3 else 'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds',
+              time=None if p == 3 else '30s', reps='5 each leg' if p == 3 else None, sets=s, rest='30s', group='Superset C',
+              notes='Slow open and close, pelvis level.' if p == 3 else 'On the BOSU.'),
+            r('Arnold Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
+            r('Hammer Curls', '12-15', sets=2, rest='30s', group='Superset D'),
+            r('Incline DB Overhead Extensions', '12-15', sets=2, rest='30s', group='Superset D'),
             r('Zone 4 Workout', f'{intervals} rounds', sets=1, rest=None, group='Treadmill finisher', notes='1 min hard, 1 min easy.'),
         ]},
         {'focus': 'Day 4 · Conditioning + Glutes', 'warmup': WARM_LOWER[:2], 'notes': notes + ['Treadmill first, then the band circuit 3 times through.'], 'exercises': [
             r('Zone 2 Low Impact', time=z2, sets=1, rest=None, group='Treadmill', notes='Incline walk or easy jog, conversational pace.'),
-            r('Banded Glute Bridge', '15', sets=s, rest='0s', group='Band circuit'),
+            r(pick('Banded Glute Bridge', 'Banded Bridge Hold Abductions', 'Single-Leg Hip Thrust Hold'), '15' if p == 1 else None,
+              time=None if p == 1 else hold, sets=s, rest='0s', group='Band circuit', notes=None if p < 3 else 'Each leg.'),
             r('Mini Band Monster Walk', '10 each way', sets=s, rest='0s', group='Band circuit'),
             r('Band Pull-Aparts', '15', sets=s, rest='0s', group='Band circuit'),
-            r('Dumbbell Sumo Squat', '12', sets=s, rest='60s', group='Band circuit'),
+            r('Squat Hold' if p == 3 else 'Dumbbell Sumo Squat', None if p == 3 else '15', time=hold if p == 3 else None, sets=s, rest='60s', group='Band circuit'),
         ]},
     ]
 
@@ -181,7 +207,7 @@ program = {
     'group': GROUP,
     'source': 'Athletic',
     'description': '4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
-                   'Paired supersets plus a treadmill finisher, heavier each phase, week 6 deload. Every exercise has swap alternatives.',
+                   'Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.',
     'sessions_per_week': 4, 'session_length_min': 45, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
     'goal': 'Lose fat, keep muscle, look and move athletic.',

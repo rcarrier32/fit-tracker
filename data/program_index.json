@@ -1141,11 +1141,11 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 8.2,
+   "exercises_per_day": 9.0,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
-    "Day 2 · Full Body B: Hinge, Single-Leg, Press",
-    "Day 3 · Stability + Bands",
+    "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
+    "Day 3 · Power, Stability + Bands",
     "Day 4 · Conditioning + Glutes"
    ],
    "week1_sets_by_muscle": {
@@ -1155,37 +1155,42 @@
     "chest": 9,
     "hamstrings": 9,
     "front_delts": 6,
+    "abs": 4,
     "side_delts": 3,
     "full_body": 3,
+    "calves": 3,
     "abductors": 3,
     "upper_back": 3,
-    "abs": 2,
     "adductors": 2,
+    "obliques": 2,
     "biceps": 2,
     "triceps": 2
    },
    "week1_sets_by_pattern": {
     "hinge": 15,
-    "pull_horizontal": 12,
     "lunge_single_leg": 12,
     "push_horizontal": 9,
+    "pull_horizontal": 9,
     "isolation_upper": 7,
     "squat": 6,
     "push_vertical": 6,
+    "pull_vertical": 6,
     "isolation_lower": 6,
     "conditioning": 4,
-    "pull_vertical": 3,
+    "plyo_bound_hop": 3,
     "balance": 3,
     "anti_rotation": 2,
-    "isometric": 2
+    "isometric": 2,
+    "anti_extension": 2,
+    "lateral_flexion": 2
    },
    "roles": {
     "secondary": 18,
     "accessory": 7,
+    "core": 4,
     "conditioning": 4,
-    "core": 2,
-    "main": 1,
-    "power": 1
+    "power": 2,
+    "main": 1
    },
    "equipment": [
     "band",
@@ -1197,7 +1202,7 @@
     "mini_band",
     "slider"
    ],
-   "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher, heavier each phase, week 6 deload. Every exercise has swap alternatives."
+   "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
   }
  ]
 }

@@ -7519,6 +7519,24 @@
    "plane": "frontal",
    "hip_focus": false
   },
+  "lean-banded-lat-pulldown": {
+   "name": "Banded Lat Pulldown",
+   "primary_muscle": "lats",
+   "muscles": [
+    "lats",
+    "biceps",
+    "upper_back"
+   ],
+   "pattern": "pull_vertical",
+   "role": "secondary",
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "lean-in-lateral-raise": {
    "name": "Lean In Lateral Raise",
    "primary_muscle": "side_delts",
@@ -7568,6 +7586,24 @@
    ],
    "level": 1,
    "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-single-arm-banded-lat-pulldown": {
+   "name": "Single-Arm Banded Lat Pulldown",
+   "primary_muscle": "lats",
+   "muscles": [
+    "lats",
+    "biceps",
+    "obliques"
+   ],
+   "pattern": "pull_vertical",
+   "role": "secondary",
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false
   },

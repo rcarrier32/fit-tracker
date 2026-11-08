@@ -1,6 +1,6 @@
 {
   "source": "lean",
-  "generated_for": 2,
+  "generated_for": 4,
   "max_seconds": 300,
   "exercises": [
     {
@@ -71,6 +71,74 @@
           "embeddable": true,
           "url": "https://youtu.be/cgKqNn90MEo",
           "score": 2.44
+        }
+      ]
+    },
+    {
+      "id": "lean-banded-lat-pulldown",
+      "name": "Banded Lat Pulldown",
+      "approved": "MDAk3N1wEfI",
+      "candidates": [
+        {
+          "videoId": "MDAk3N1wEfI",
+          "title": "Banded Lat Pulldown - OPEX Exercise Library",
+          "channel": "OPEX Fitness",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/MDAk3N1wEfI",
+          "score": 2.46
+        },
+        {
+          "videoId": "XFUHrs8pnx8",
+          "title": "Banded Lat Pulldown - home exercise to engage the Latissimus Dorsi muscle",
+          "channel": "Rehab Hero",
+          "seconds": 16,
+          "embeddable": true,
+          "url": "https://youtu.be/XFUHrs8pnx8",
+          "score": 2.45
+        },
+        {
+          "videoId": "JnegprcGkkg",
+          "title": "Banded Lat Pulldowns #beginnerfitness #beginnerworkout #beginnerexercise",
+          "channel": "Huge Fat Loser",
+          "seconds": 60,
+          "embeddable": true,
+          "url": "https://youtu.be/JnegprcGkkg",
+          "score": 2.3
+        }
+      ]
+    },
+    {
+      "id": "lean-single-arm-banded-lat-pulldown",
+      "name": "Single-Arm Banded Lat Pulldown",
+      "approved": "s0MDw2_2Zs8",
+      "candidates": [
+        {
+          "videoId": "s0MDw2_2Zs8",
+          "title": "Banded Single Arm Lat Pulldown - OPEX Exercise Library",
+          "channel": "OPEX Fitness",
+          "seconds": 13,
+          "embeddable": true,
+          "url": "https://youtu.be/s0MDw2_2Zs8",
+          "score": 1.46
+        },
+        {
+          "videoId": "wYy32uk4Bu8",
+          "title": "The BEST Exercise For Lower Lat Growth (MUST- TRY Single Arm 1/2 Kneeling Lat Pulldown)",
+          "channel": "Gerardi Performance",
+          "seconds": 15,
+          "embeddable": true,
+          "url": "https://youtu.be/wYy32uk4Bu8",
+          "score": 1.45
+        },
+        {
+          "videoId": "eVJtlpkqO_M",
+          "title": "How to do a Single Arm Band Pulldown",
+          "channel": "Get Strong with Emily",
+          "seconds": 63,
+          "embeddable": true,
+          "url": "https://youtu.be/eVJtlpkqO_M",
+          "score": 1.29
         }
       ]
     }

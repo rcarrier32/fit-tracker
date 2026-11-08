@@ -13741,6 +13741,56 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "lean-banded-lat-pulldown",
+      "name": "Banded Lat Pulldown",
+      "video_url": "https://youtu.be/MDAk3N1wEfI",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Lat+Pulldown+how+to",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats",
+        "biceps",
+        "upper_back"
+      ],
+      "pattern": "pull_vertical",
+      "role": "secondary",
+      "equipment": [
+        "band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-single-arm-banded-lat-pulldown",
+      "name": "Single-Arm Banded Lat Pulldown",
+      "video_url": "https://youtu.be/s0MDw2_2Zs8",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single-Arm+Banded+Lat+Pulldown+how+to",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats",
+        "biceps",
+        "obliques"
+      ],
+      "pattern": "pull_vertical",
+      "role": "secondary",
+      "equipment": [
+        "band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -53725,7 +53775,7 @@
         "program_name": "Lean & Tone: Home Full Body",
         "group": "Move Like 30",
         "source": "Athletic",
-        "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher, heavier each phase, week 6 deload. Every exercise has swap alternatives.",
+        "description": "4 days a week, ~45 min, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.",
         "sessions_per_week": 4,
         "session_length_min": 45,
         "level": "Intermediate",
@@ -53771,7 +53821,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
@@ -53868,7 +53918,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -53931,7 +53981,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -53959,7 +54009,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
@@ -54002,7 +54052,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54036,7 +54086,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54065,19 +54115,19 @@
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Single-Arm Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -54085,7 +54135,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54095,6 +54145,38 @@
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
                       "Single-Leg Hip Thrust"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -54116,7 +54198,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -54144,20 +54226,20 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -54166,11 +54248,27 @@
                     ]
                   },
                   {
+                    "name": "Lateral Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "4 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Double Lateral Extensive Hops",
+                      "Mutli-direction Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54187,7 +54285,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54203,7 +54301,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54216,19 +54314,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each arm",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -54252,7 +54351,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54268,7 +54367,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54285,7 +54384,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54331,7 +54430,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair.",
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -54402,7 +54501,7 @@
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54451,7 +54550,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
@@ -54548,7 +54647,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54611,7 +54710,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -54639,7 +54738,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
@@ -54682,7 +54781,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54716,7 +54815,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54745,19 +54844,19 @@
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Single-Arm Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -54765,7 +54864,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54775,6 +54874,38 @@
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
                       "Single-Leg Hip Thrust"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -54796,7 +54927,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -54824,20 +54955,20 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
                 ],
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -54846,11 +54977,27 @@
                     ]
                   },
                   {
+                    "name": "Lateral Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "4 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Double Lateral Extensive Hops",
+                      "Mutli-direction Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "10 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54867,7 +55014,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54883,7 +55030,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54896,19 +55043,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each arm",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -54932,7 +55080,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "10-12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54948,7 +55096,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -54965,7 +55113,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55011,7 +55159,7 @@
                   }
                 ],
                 "notes": [
-                  "Working weights from day one: pick loads that leave 1–2 reps in the tank. Pairs run back to back, rest after the pair.",
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -55082,7 +55230,7 @@
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55131,7 +55279,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
@@ -55139,12 +55287,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -55156,12 +55304,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
@@ -55174,12 +55322,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -55192,7 +55340,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10-12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55209,12 +55357,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Slider Lunge",
                       "Curtsy Lunge",
@@ -55228,7 +55376,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55264,7 +55412,7 @@
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
+                    "time": "25s",
                     "rest": "30s",
                     "notes": "Each side, top leg on the bench.",
                     "alternates": [
@@ -55291,7 +55439,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -55319,7 +55467,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
@@ -55327,7 +55475,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55345,7 +55493,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each arm",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55362,12 +55510,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
@@ -55379,12 +55527,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
@@ -55401,7 +55549,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -55425,19 +55573,19 @@
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Single-Arm Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -55445,7 +55593,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55455,6 +55603,38 @@
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
                       "Single-Leg Hip Thrust"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -55476,7 +55656,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -55504,20 +55684,20 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -55526,16 +55706,32 @@
                     ]
                   },
                   {
+                    "name": "Lateral Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Double Lateral Extensive Hops",
+                      "Mutli-direction Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Heel Elevated Split Squat",
                       "Reverse Lunges",
@@ -55547,12 +55743,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band across the back.",
+                    "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
                       "Push Ups",
                       "Dumbbell Bench Press"
@@ -55563,7 +55759,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each side",
+                    "reps": "12 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55576,19 +55772,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each arm",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -55612,7 +55809,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55628,7 +55825,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55645,7 +55842,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55691,7 +55888,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer.",
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression.",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -55711,19 +55908,19 @@
                     ]
                   },
                   {
-                    "name": "Banded Glute Bridge",
+                    "name": "Banded Bridge Hold Abductions",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "25s",
                     "rest": "0s",
                     "notes": null,
                     "alternates": [
-                      "Dumbbell Glute Bridge",
-                      "Single-Leg Glute Bridge"
+                      "Glute Bridge Hold",
+                      "Banded Glute Bridge"
                     ]
                   },
                   {
@@ -55762,7 +55959,7 @@
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55811,7 +56008,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
@@ -55819,12 +56016,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -55836,12 +56033,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
@@ -55854,12 +56051,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -55872,7 +56069,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10-12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55889,12 +56086,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Slider Lunge",
                       "Curtsy Lunge",
@@ -55908,7 +56105,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -55944,7 +56141,7 @@
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
+                    "time": "25s",
                     "rest": "30s",
                     "notes": "Each side, top leg on the bench.",
                     "alternates": [
@@ -55971,7 +56168,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -55999,7 +56196,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
@@ -56007,7 +56204,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56025,7 +56222,7 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each arm",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56042,12 +56239,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
@@ -56059,12 +56256,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": null,
+                    "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
@@ -56081,7 +56278,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -56105,19 +56302,19 @@
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Single-Arm Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -56125,7 +56322,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56135,6 +56332,38 @@
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
                       "Single-Leg Hip Thrust"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -56156,7 +56385,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -56184,20 +56413,20 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer."
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression."
                 ],
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "10",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -56206,16 +56435,32 @@
                     ]
                   },
                   {
+                    "name": "Lateral Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Double Lateral Extensive Hops",
+                      "Mutli-direction Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Heel Elevated Split Squat",
                       "Reverse Lunges",
@@ -56227,12 +56472,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band across the back.",
+                    "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
                       "Push Ups",
                       "Dumbbell Bench Press"
@@ -56243,7 +56488,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each side",
+                    "reps": "12 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56256,19 +56501,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12 each arm",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -56292,7 +56538,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56308,7 +56554,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56325,7 +56571,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56371,7 +56617,7 @@
                   }
                 ],
                 "notes": [
-                  "Heavier than weeks 1–2 at slightly lower reps. Finishers get longer.",
+                  "Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression.",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -56391,19 +56637,19 @@
                     ]
                   },
                   {
-                    "name": "Banded Glute Bridge",
+                    "name": "Banded Bridge Hold Abductions",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "25s",
                     "rest": "0s",
                     "notes": null,
                     "alternates": [
-                      "Dumbbell Glute Bridge",
-                      "Single-Leg Glute Bridge"
+                      "Glute Bridge Hold",
+                      "Banded Glute Bridge"
                     ]
                   },
                   {
@@ -56442,7 +56688,7 @@
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56491,15 +56737,15 @@
                   }
                 ],
                 "notes": [
-                  "Harder variations and shorter rests. Push the pace."
+                  "Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier."
                 ],
                 "exercises": [
                   {
-                    "name": "Heel Elevated Goblet Squat",
+                    "name": "1¼ Goblet Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8-10",
+                    "sets": 3,
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56507,21 +56753,21 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Goblet Squat",
-                      "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "Heel Elevated Goblet Squat",
+                      "Bulgarian Split Squat"
                     ]
                   },
                   {
                     "name": "Dumbbell Bench Press",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8-10",
+                    "sets": 3,
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
@@ -56530,11 +56776,11 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Romanian Deadlift",
+                    "name": "B-Stance RDL",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8-10",
+                    "sets": 3,
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56542,25 +56788,24 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
-                      "Staggered Stance RDL w/ Same Side Load",
-                      "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Dumbbell Romanian Deadlift",
+                      "Staggered Stance RDL w/ Same Side Load"
                     ]
                   },
                   {
-                    "name": "Chest Supported DB Row (lat focus)",
+                    "name": "3 Point Dumbbell Row",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "10-12",
+                    "sets": 3,
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Bench on an incline.",
+                    "notes": "2-second hold at the top.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "DB Chest Supported Row (mid/upper back)",
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
                     ]
                   },
@@ -56569,7 +56814,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56586,12 +56831,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
@@ -56622,7 +56867,7 @@
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
+                    "time": "30s",
                     "rest": "30s",
                     "notes": "Each side, top leg on the bench.",
                     "alternates": [
@@ -56649,7 +56894,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -56677,41 +56922,39 @@
                   }
                 ],
                 "notes": [
-                  "Harder variations and shorter rests. Push the pace."
+                  "Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier."
                 ],
                 "exercises": [
                   {
-                    "name": "Weighted Step-Ups",
+                    "name": "Weighted Step Up with Leg Raise",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "10 each leg",
+                    "sets": 3,
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Weighted Step Up with Leg Raise",
+                      "Weighted Step-Ups",
                       "Weighted Side Step-Ups",
-                      "High Box Step Up",
                       "Lateral Step-Down"
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "DB Split Stance Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "10 each arm",
+                    "sets": 3,
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
+                      "3 Point Dumbbell Row",
                       "Bent Over 1 Arm Row"
                     ]
                   },
@@ -56719,8 +56962,8 @@
                     "name": "Single-Leg RDL to Knee Drive",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8 each leg",
+                    "sets": 3,
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56736,13 +56979,13 @@
                     "name": "Low Incline Dumbbell Press",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8-10",
+                    "sets": 3,
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
@@ -56759,7 +57002,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -56767,35 +57010,35 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Lateral Raise",
+                    "name": "Lean In Lateral Raise",
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": "15 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Lean In Lateral Raise",
+                      "Dumbbell Lateral Raise",
                       "Lateral Raise"
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Single-Arm Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -56803,7 +57046,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56812,6 +57055,38 @@
                     "alternates": [
                       "Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -56833,7 +57108,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -56861,20 +57136,20 @@
                   }
                 ],
                 "notes": [
-                  "Harder variations and shorter rests. Push the pace."
+                  "Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier."
                 ],
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -56883,11 +57158,26 @@
                     ]
                   },
                   {
+                    "name": "Mutli-direction Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Lateral Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8 each leg",
+                    "sets": 3,
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56903,13 +57193,13 @@
                     "name": "Band Resisted Push Up",
                     "round_group": "Superset A",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "10",
+                    "sets": 3,
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "PJF heavy band across the back.",
+                    "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
                       "Push Ups",
                       "Dumbbell Bench Press"
@@ -56919,8 +57209,8 @@
                     "name": "Dumbbell Lateral Lunge",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "8 each side",
+                    "sets": 3,
+                    "reps": "12 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -56933,19 +57223,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
-                    "sets": 4,
-                    "reps": "12 each arm",
+                    "sets": 3,
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -56969,12 +57260,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Standing Dumbbell Shoulder Press",
                       "Seated Dumbbell Shoulder Press"
@@ -56985,7 +57276,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57002,7 +57293,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57048,7 +57339,7 @@
                   }
                 ],
                 "notes": [
-                  "Harder variations and shorter rests. Push the pace.",
+                  "Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier.",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -57068,19 +57359,19 @@
                     ]
                   },
                   {
-                    "name": "Banded Glute Bridge",
+                    "name": "Single-Leg Hip Thrust Hold",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "30s",
                     "rest": "0s",
-                    "notes": null,
+                    "notes": "Each leg.",
                     "alternates": [
-                      "Dumbbell Glute Bridge",
-                      "Single-Leg Glute Bridge"
+                      "Glute Bridge Hold",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -57115,20 +57406,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Squat Hold",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "30s",
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Kettlebell Swing",
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Dumbbell Goblet Squat"
                     ]
                   }
                 ],
@@ -57172,11 +57462,11 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Heel Elevated Goblet Squat",
+                    "name": "1¼ Goblet Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57184,8 +57474,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Goblet Squat",
-                      "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "Heel Elevated Goblet Squat",
+                      "Bulgarian Split Squat"
                     ]
                   },
                   {
@@ -57193,12 +57483,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
@@ -57207,11 +57497,11 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Romanian Deadlift",
+                    "name": "B-Stance RDL",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8-10",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57219,25 +57509,24 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
-                      "Staggered Stance RDL w/ Same Side Load",
-                      "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Dumbbell Romanian Deadlift",
+                      "Staggered Stance RDL w/ Same Side Load"
                     ]
                   },
                   {
-                    "name": "Chest Supported DB Row (lat focus)",
+                    "name": "3 Point Dumbbell Row",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10-12",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Bench on an incline.",
+                    "notes": "2-second hold at the top.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "DB Chest Supported Row (mid/upper back)",
+                      "Chest Supported DB Row (lat focus)",
+                      "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
                     ]
                   },
@@ -57246,7 +57535,7 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57263,12 +57552,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
@@ -57299,7 +57588,7 @@
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
+                    "time": "30s",
                     "rest": "30s",
                     "notes": "Each side, top leg on the bench.",
                     "alternates": [
@@ -57326,7 +57615,7 @@
                 "day_num": 1
               },
               {
-                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Press",
+                "focus": "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
                 "warmup": [
                   {
                     "name": "Hip Circles",
@@ -57358,37 +57647,35 @@
                 ],
                 "exercises": [
                   {
-                    "name": "Weighted Step-Ups",
+                    "name": "Weighted Step Up with Leg Raise",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Weighted Step Up with Leg Raise",
+                      "Weighted Step-Ups",
                       "Weighted Side Step-Ups",
-                      "High Box Step Up",
                       "Lateral Step-Down"
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "DB Split Stance Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10 each arm",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
+                      "3 Point Dumbbell Row",
                       "Bent Over 1 Arm Row"
                     ]
                   },
@@ -57397,7 +57684,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57414,12 +57701,12 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8-10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
@@ -57436,7 +57723,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -57444,35 +57731,35 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Lateral Raise",
+                    "name": "Lean In Lateral Raise",
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "15",
+                    "reps": "15 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Lean In Lateral Raise",
+                      "Dumbbell Lateral Raise",
                       "Lateral Raise"
                     ]
                   },
                   {
-                    "name": "Band Pullover",
+                    "name": "Single-Arm Banded Lat Pulldown",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "PJF heavy band anchored high: your vertical pull (no pull-up bar). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Band Pull-Aparts",
-                      "Bent Over 1 Arm Row"
+                      "Banded Lat Pulldown",
+                      "Band Pullover"
                     ]
                   },
                   {
@@ -57480,7 +57767,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57489,6 +57776,38 @@
                     "alternates": [
                       "Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null,
+                    "alternates": [
+                      "Copenhagen Side Plank (Knee)",
+                      "Banded Side Plank Clamshell"
                     ]
                   },
                   {
@@ -57510,7 +57829,7 @@
                 "day_num": 2
               },
               {
-                "focus": "Day 3 · Stability + Bands",
+                "focus": "Day 3 · Power, Stability + Bands",
                 "warmup": [
                   {
                     "name": "Arm Circles",
@@ -57543,15 +57862,15 @@
                 "exercises": [
                   {
                     "name": "Kettlebell Swing",
-                    "round_group": "Power",
+                    "round_group": "Superset P",
                     "is_alternate": false,
                     "sets": 3,
                     "reps": "12",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Full effort, then rest. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).",
+                    "rest": "0-15s",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -57560,11 +57879,26 @@
                     ]
                   },
                   {
+                    "name": "Mutli-direction Bounds",
+                    "round_group": "Superset P",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "3 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stick each landing for a 1-count. Quiet feet.",
+                    "alternates": [
+                      "Lateral Bounds"
+                    ]
+                  },
+                  {
                     "name": "Bulgarian Split Squat",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each leg",
+                    "reps": "12 each leg",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57581,12 +57915,12 @@
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "PJF heavy band across the back.",
+                    "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
                       "Push Ups",
                       "Dumbbell Bench Press"
@@ -57597,7 +57931,7 @@
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "8 each side",
+                    "reps": "12 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57610,19 +57944,20 @@
                     ]
                   },
                   {
-                    "name": "Bent Over 1 Arm Row",
+                    "name": "Band Pullover",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each arm",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "PJF heavy band.",
+                    "notes": "PJF heavy band anchored high. Second vertical pull.",
                     "alternates": [
-                      "3 Point Dumbbell Row",
-                      "Bent Over Cross Body Row"
+                      "Banded Lat Pulldown",
+                      "Single-Arm Banded Lat Pulldown",
+                      "Bent Over 1 Arm Row"
                     ]
                   },
                   {
@@ -57646,12 +57981,12 @@
                     "round_group": "Superset C",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "10",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": null,
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
                       "Standing Dumbbell Shoulder Press",
                       "Seated Dumbbell Shoulder Press"
@@ -57662,7 +57997,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57679,7 +58014,7 @@
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": "12-15",
                     "weight": null,
                     "distance": null,
                     "time": null,
@@ -57745,19 +58080,19 @@
                     ]
                   },
                   {
-                    "name": "Banded Glute Bridge",
+                    "name": "Single-Leg Hip Thrust Hold",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "15",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "30s",
                     "rest": "0s",
-                    "notes": null,
+                    "notes": "Each leg.",
                     "alternates": [
-                      "Dumbbell Glute Bridge",
-                      "Single-Leg Glute Bridge"
+                      "Glute Bridge Hold",
+                      "Single-Leg Hip Thrust"
                     ]
                   },
                   {
@@ -57792,20 +58127,19 @@
                     ]
                   },
                   {
-                    "name": "Dumbbell Sumo Squat",
+                    "name": "Squat Hold",
                     "round_group": "Band circuit",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12",
+                    "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": null,
+                    "time": "30s",
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Kettlebell Swing",
-                      "Dumbbell Goblet Squat",
-                      "1¼ Goblet Squat"
+                      "Dumbbell Sumo Squat",
+                      "Dumbbell Goblet Squat"
                     ]
                   }
                 ],
