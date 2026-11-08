@@ -16,7 +16,7 @@ export const PATTERN_LABEL = {
 export const EQUIPMENT_LABEL = {
   bodyweight: 'Bodyweight', dumbbell: 'Dumbbell', kettlebell: 'Kettlebell', barbell: 'Barbell', trap_bar: 'Trap bar',
   band: 'Band', mini_band: 'Mini band', cable: 'Cable', machine: 'Machine', bench: 'Bench', box: 'Box', med_ball: 'Med ball',
-  sled: 'Sled', slider: 'Slider', bosu_pad: 'BOSU / pad', pullup_bar: 'Pull-up bar', landmine: 'Landmine', smith: 'Smith',
+  sled: 'Sled', slider: 'Slider', bosu_pad: 'BOSU / pad', pullup_bar: 'Pull-up bar', landmine: 'Landmine', smith: 'Smith', suspension: 'Suspension (TRX)',
 };
 export const muscleLabel = (m) => String(m || '').replace(/_/g, ' ').replace(/\bdelts\b/, 'delts');
 

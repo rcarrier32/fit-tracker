@@ -109,7 +109,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (avoid?.has(e.name)) s -= 3;                          // rotate accessories between phases
       if ((e.level || 2) === p.level) s += 0.4;
       if (goal.hip_focus && e.hip_focus) s += 0.8;
-      if (goal.hip_focus && slot.role !== 'main' && e.sources?.includes('hip')) s += 1;   // the user's own PT + Motion RC exercises
+      if (goal.hip_focus && slot.role !== 'main' && e.sources?.some(x => x === 'hip' || x === 'trainheroic')) s += 1;   // the user's own PT/Motion RC + TrainHeroic hip-plan exercises
       const lifting = p.goal === 'strength' || p.goal === 'muscle' || p.goal === 'fat_loss';
       const loadable = e.equipment?.some(q => !['bodyweight', 'band', 'mini_band', 'bench', 'box', 'bosu_pad', 'slider'].includes(q));
       if (loadable) s += lifting ? 1 : 0.3;                       // load beats bodyweight/band for strength work

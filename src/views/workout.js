@@ -584,7 +584,7 @@ const EQ_FILTERS = {
   Dumbbell: (eq) => eq.includes('dumbbell') || eq.includes('kettlebell'),
   Barbell: (eq) => eq.some(q => ['barbell', 'trap_bar', 'landmine', 'smith'].includes(q)),
   Band: (eq) => eq.includes('band') || eq.includes('mini_band'),
-  'Cable & machine': (eq) => eq.includes('cable') || eq.includes('machine'),
+  'Cable & machine': (eq) => eq.some(q => ['cable', 'machine', 'suspension'].includes(q)),
 };
 
 async function pickExerciseFromLibrary(allExercises, { filterMuscle = null, title = 'Pick exercise' } = {}) {

@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v92';
+const CACHE = 'fit-tracker-v93';
 
 self.addEventListener('install', e => {
   self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload

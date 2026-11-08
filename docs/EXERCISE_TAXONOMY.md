@@ -34,7 +34,7 @@ lower_back, neck, full_body.
 | Other | balance, mobility, isometric, conditioning |
 
 **Equipment:** bodyweight, dumbbell, kettlebell, barbell, trap_bar, band, mini_band, cable,
-machine, bench, box, med_ball, sled, slider, bosu_pad, pullup_bar, landmine, smith.
+machine, bench, box, med_ball, sled, slider, bosu_pad, pullup_bar, landmine, smith, suspension (TRX and other straps).
 
 ## Classifying a new exercise
 
