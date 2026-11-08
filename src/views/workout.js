@@ -253,9 +253,13 @@ export async function renderWorkout(app) {
   // with the video thumbnail, tap it for the video on top with the sets under it.
   const bandDay = dayData.exercises.length > 0 && dayData.exercises
     .every(x => exMap[String(x.name).toLowerCase()]?.sources?.includes('band'));
-  if (bandDay) renderBandList($ex, session, exMap);
+  // Home plans are follow-along circuits: same row-and-detail layout, video per exercise.
+  const listDay = bandDay || program.source === 'Home';
+  if (listDay) renderBandList($ex, session, exMap, bandDay
+    ? { accent: '#22c55e', source: 'PJF band' }
+    : { accent: '#f472b6', source: programName(program) });
   let lastGroup = null;
-  if (!bandDay) session.exercises.forEach((ex, i) => {
+  if (!listDay) session.exercises.forEach((ex, i) => {
     const grp = ex.round_group;
     if (grp && grp !== lastGroup) {
       $ex.insertAdjacentHTML('beforeend', `<div class="group-label">${prettyGroup(grp)}</div>`);
@@ -1155,11 +1159,13 @@ function bandRx(ex) {
 
 const bandSetsDone = (ex) => Array.from({ length: +ex.target_sets || 1 }, (_, k) => !!ex.sets?.[k]?.done);
 
-function renderBandList($ex, session, exMap) {
+function renderBandList($ex, session, exMap, { accent = '#22c55e', source = 'PJF band' } = {}) {
   const asEx = (ex, i) => {
     const lib = exMap[ex.name.toLowerCase()] || {};
-    return { id: `b${i}`, name: ex.name, video_url: lib.video_url, subtitle: lib.category,
-      notes: ex.notes, source: 'PJF band' };
+    const muscle = lib.primary_muscle && lib.primary_muscle.replace(/_/g, ' ');
+    return { id: `b${i}`, name: ex.name, video_url: lib.video_url,
+      subtitle: lib.category || (muscle && muscle[0].toUpperCase() + muscle.slice(1)),
+      notes: ex.notes, source, search: lib.video_url ? undefined : ex.name };
   };
   const paint = () => {
     let html = '', lastGroup = null;
@@ -1169,7 +1175,7 @@ function renderBandList($ex, session, exMap) {
       lastGroup = grp || null;
       const sets = bandSetsDone(ex);
       html += `<div style="margin-bottom:8px">${exerciseRowHTML(asEx(ex, i), {
-        key: String(i), rx: bandRx(ex), sets, done: sets.every(Boolean), accent: '#22c55e' })}</div>`;
+        key: String(i), rx: bandRx(ex), sets, done: sets.every(Boolean), accent })}</div>`;
     });
     $ex.innerHTML = html;
     wireExerciseRows($ex, { open: (k) => openDetail(+k), check: (k) => toggleAll(+k) });
@@ -1184,7 +1190,7 @@ function renderBandList($ex, session, exMap) {
     const ex = session.exercises[i];
     const secs = isTimed(ex) ? parseSecs(ex.time) : 0;
     openExerciseDetail(asEx(ex, i), {
-      accent: '#22c55e',
+      accent,
       rx: bandRx(ex),
       sets: {
         get: () => bandSetsDone(ex),
