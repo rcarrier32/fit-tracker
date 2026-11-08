@@ -27,7 +27,13 @@ export async function renderPrograms(app) {
 
   const bws = programs.filter(p => p.source === 'BWS');
   const pjf = programs.filter(p => p.source === 'PJF');
-  const home = programs.filter(p => p.source === 'Home');
+  // Built program groups (home, athletic, …), listed under each program's `group` label.
+  const groups = new Map();
+  for (const p of programs.filter(p => p.source !== 'BWS' && p.source !== 'PJF')) {
+    const g = p.group || p.source;
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(p);
+  }
   const bandCount = exercises.filter(e => e.sources?.includes('band') && !e.program_only).length;
 
   app.innerHTML = `
@@ -73,7 +79,7 @@ export async function renderPrograms(app) {
       </div>
     </div>
 
-    ${home.length ? `<div class="group-label">At-Home Beginner</div><div id="home-list"></div>` : ''}
+    ${[...groups.keys()].map((g, i) => `<div class="group-label">${g}</div><div id="group-list-${i}"></div>`).join('')}
 
     <div class="group-label">BWS Strength</div>
     <div id="bws-list"></div>
@@ -97,7 +103,8 @@ export async function renderPrograms(app) {
 
   renderProgramList(app.querySelector('#bws-list'), bws, activePlan, () => renderPrograms(app));
   renderProgramList(app.querySelector('#pjf-list'), pjf, activePlan, () => renderPrograms(app));
-  if (home.length) renderProgramList(app.querySelector('#home-list'), home, activePlan, () => renderPrograms(app));
+  [...groups.values()].forEach((list, i) =>
+    renderProgramList(app.querySelector(`#group-list-${i}`), list, activePlan, () => renderPrograms(app)));
 
   if (customPrograms.length) {
     renderCustomProgramList(app.querySelector('#custom-list'), customPrograms, activePlan, () => renderPrograms(app));

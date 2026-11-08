@@ -20,7 +20,9 @@ export async function loadCatalogs() {
     const programs = [
       ...lib.programs.pjf.map(p => ({ ...p, source: 'PJF' })),
       ...lib.programs.bws.map(p => ({ ...p, source: 'BWS' })),
-      ...(lib.programs.home || []).map(p => ({ ...p, source: 'Home' })),
+      // Any other key (home, athletic, …) is a program group built by a data/build_*.py script.
+      ...Object.entries(lib.programs).filter(([k]) => k !== 'pjf' && k !== 'bws')
+        .flatMap(([k, list]) => list.map(p => ({ ...p, source: p.source || k }))),
     ];
     // One catalog: hip-tab exercises join the library (skipping any name it already has),
     // and every entry gets movement-type tags for hip-friendly swaps.

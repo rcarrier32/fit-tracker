@@ -300,6 +300,13 @@ function describe(slot, programs) {
 function openSlotPicker(programs, current, onPick) {
   openSheet((sheet, close) => {
     const custom = programs.filter(p => p.source === 'custom');
+    // Built program groups (home, athletic, …) by their `group` label.
+    const built = new Map();
+    for (const p of programs.filter(p => !['custom', 'PJF', 'BWS'].includes(p.source))) {
+      const g = p.group || p.source;
+      if (!built.has(g)) built.set(g, []);
+      built.get(g).push(p);
+    }
     sheet.innerHTML = `
       <h2>Choose workout</h2>
       <div class="group-label">Quick options</div>
@@ -307,6 +314,7 @@ function openSlotPicker(programs, current, onPick) {
       <div class="card list-item" data-pick="cardio">🏃 Zone 2 / cardio (untracked)</div>
       <div class="card list-item" data-pick="custom">✏️ Free-form (log whatever)</div>
       ${custom.length ? `<div class="group-label">My plans</div><div id="custom-list"></div>` : ''}
+      ${[...built.keys()].map((g, i) => `<div class="group-label">${g}</div><div id="built-list-${i}"></div>`).join('')}
       <div class="group-label">PJF programs</div>
       <div id="pjf-list"></div>
       <div class="group-label">BWS programs</div>
@@ -324,6 +332,7 @@ function openSlotPicker(programs, current, onPick) {
     const bws = programs.filter(p => p.source === 'BWS');
     const groups = [
       [custom, sheet.querySelector('#custom-list')],
+      ...[...built.values()].map((list, i) => [list, sheet.querySelector(`#built-list-${i}`)]),
       [pjf, sheet.querySelector('#pjf-list')],
       [bws, sheet.querySelector('#bws-list')],
     ];

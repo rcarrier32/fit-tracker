@@ -200,6 +200,7 @@ program = {
     'id': 'home_beginner_4wk',
     'program_name': 'Beginner At-Home: 4 Weeks',
     'source': 'Home',
+    'group': 'At-Home Beginner',
     'description': 'Glutes, lower core, waist and fat loss for a complete beginner. Dumbbells, bands and a mat, 30-45 minutes. Two walking days, Sunday off.',
     'sessions_per_week': 6,
     'session_length_min': 40,

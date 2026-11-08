@@ -1,7 +1,9 @@
 # Adding a workout program
 
 How a plan document (a PDF, a pasted doc, a coach's sheet) becomes a program in the app.
-`data/build_home_beginner.py` is the worked example. Copy it.
+Worked examples: `data/build_athletic_programs.py` (three 6-week programs, built from
+existing catalog exercises) and `data/build_home_beginner.py` (one plan, new exercises).
+Both use the helpers in `data/program_builder.py`.
 
 ## 1. Pick the screen it plays on
 
@@ -15,11 +17,16 @@ a strength plan to rows. People need to log their weights.
 
 ## 2. Write a build script: `data/build_<program>.py`
 
+Import `Library, ex, w, expand_weeks` from `program_builder.py`. Save the programs under a
+new key with `lib.set_programs('<key>', [...])`. Any key other than `pjf`/`bws` shows up on
+the Programs screen and in the Mixed Week picker, listed under each program's `group`.
+No app code change is needed.
+
 The script owns the program and its new catalog entries. It's safe to re-run, so edit the
 script and re-run it instead of hand-editing `library.json`.
 
 **Program fields** (shown on the Programs card and the Start sheet):
-`id`, `program_name`, `source` (the group it lists under), `description`,
+`id`, `program_name`, `group` (the heading it lists under), `source`, `description`,
 `sessions_per_week`, `session_length_min`, `level`, plus optional `equipment[]`, `goal`,
 `guide[]` (`{title, items[]}`: habits, nutrition, reminders) and `safety`.
 
@@ -31,8 +38,12 @@ script and re-run it instead of hand-editing `library.json`.
 - `progress_check`: button label that opens the weekly check-in (start of the plan, and before each rest day).
 
 Each exercise: `name`, `sets`, `reps` **or** `time` (`"30:00"`, `"15s"`), `rest`
-(`"45-60s"` starts a 45 s rest timer), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
+(shown as the target, e.g. `"45-60s"`. The rest timer counts up from 0 after each set), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
 Progression across weeks (more rounds, more reps) goes in the script's per-week loop.
+
+**Two programs at once** (e.g. strength Mon/Wed/Fri plus agility Tue/Thu): say so in the
+description. The person sets it up with Today → Set up Mixed Week, and each program keeps
+its own progress.
 
 **Names.** Reuse an existing catalog name when the movement already exists, so its vetted
 video comes with it (check `library.json` and the hip tab's `HIP_CATALOG_ENTRIES`).

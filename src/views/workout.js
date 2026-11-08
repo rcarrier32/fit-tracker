@@ -251,7 +251,7 @@ export async function renderWorkout(app) {
   const $ex = app.querySelector('#exercises');
   // Band days have nothing to weigh, so they use the FKH layout like Hip and TOS: a row
   // with the video thumbnail, tap it for the video on top with the sets under it.
-  const bandDay = dayData.exercises.length > 0 && dayData.exercises
+  const bandDay = program.source === 'PJF' && dayData.exercises.length > 0 && dayData.exercises
     .every(x => exMap[String(x.name).toLowerCase()]?.sources?.includes('band'));
   if (bandDay) renderBandList($ex, session, exMap);
   let lastGroup = null;
