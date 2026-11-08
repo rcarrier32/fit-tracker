@@ -50483,6 +50483,3192 @@
           }
         ]
       }
+    ],
+    "hip": [
+      {
+        "id": "hip_plan_pt_motion_rc",
+        "program_name": "Hip Plan: PT + Motion RC",
+        "group": "Your Hip Plan",
+        "source": "Hip",
+        "description": "Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week with your PT and Motion RC exercises, and every 2 weeks each exercise moves up its progression (single-leg bench bridge, long-lever Copenhagen, unsupported airplanes…).",
+        "sessions_per_week": 3,
+        "session_length_min": 45,
+        "level": "Your plan",
+        "equipment": [
+          "Long band",
+          "Mini band",
+          "Bench or box",
+          "Slider",
+          "Foam roller",
+          "BOSU or pad",
+          "Dumbbell or kettlebell"
+        ],
+        "goal": "Build the hip: strength, control and range, then load it.",
+        "weeks": [
+          {
+            "week_num": 1,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 1: your PT and Motion RC exercises as prescribed.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Side Plank Clamshell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the knees, band around the knees."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge at the hip, back flat, stance knee softly bent."
+                  },
+                  {
+                    "name": "Banded Hip Flexor March",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25s",
+                    "rest": "30s",
+                    "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Extend opposite arm and leg — keep the pelvis absolutely square to the floor."
+                  },
+                  {
+                    "name": "Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Start with a low step (4–6\"). Height goes up only when the pelvis stays level."
+                  },
+                  {
+                    "name": "Posterior Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Step BACK, not forward — front shin stays close to vertical."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 1: your PT and Motion RC exercises as prescribed.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "SL Hip Airplane w/ Foam Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8–10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg holding a foam roller upright for balance."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand beside the step, step up sideways onto it."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 1: your PT and Motion RC exercises as prescribed.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Side Plank Clamshell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the knees, band around the knees."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge at the hip, back flat, stance knee softly bent."
+                  },
+                  {
+                    "name": "Banded Hip Flexor March",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25s",
+                    "rest": "30s",
+                    "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Extend opposite arm and leg — keep the pelvis absolutely square to the floor."
+                  },
+                  {
+                    "name": "Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Start with a low step (4–6\"). Height goes up only when the pelvis stays level."
+                  },
+                  {
+                    "name": "Posterior Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Step BACK, not forward — front shin stays close to vertical."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 2,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 2: your PT and Motion RC exercises as prescribed.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "SL Hip Airplane w/ Foam Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8–10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg holding a foam roller upright for balance."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand beside the step, step up sideways onto it."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 2: your PT and Motion RC exercises as prescribed.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Side Plank Clamshell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the knees, band around the knees."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge at the hip, back flat, stance knee softly bent."
+                  },
+                  {
+                    "name": "Banded Hip Flexor March",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25s",
+                    "rest": "30s",
+                    "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Extend opposite arm and leg — keep the pelvis absolutely square to the floor."
+                  },
+                  {
+                    "name": "Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Start with a low step (4–6\"). Height goes up only when the pelvis stays level."
+                  },
+                  {
+                    "name": "Posterior Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Step BACK, not forward — front shin stays close to vertical."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 1 of 3, week 2: your PT and Motion RC exercises as prescribed.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 passes each direction per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Knee)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "Side plank with the top knee on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "SL Hip Airplane w/ Foam Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8–10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg holding a foam roller upright for balance."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand beside the step, step up sideways onto it."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 3,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Single-Leg Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Kettlebell or dumbbell in the opposite hand."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "Weighted Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Dumbbells at the sides, same low step to start."
+                  },
+                  {
+                    "name": "Deficit Reverse Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Front foot on a 2–4\" step, step the other foot back."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Hip Airplane (No Support)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg, arms out, trunk parallel to the floor."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Lateral Step-Down",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand sideways on a low step on one leg."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Single-Leg Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Kettlebell or dumbbell in the opposite hand."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "Weighted Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Dumbbells at the sides, same low step to start."
+                  },
+                  {
+                    "name": "Deficit Reverse Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Front foot on a 2–4\" step, step the other foot back."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 4,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Hip Airplane (No Support)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg, arms out, trunk parallel to the floor."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Lateral Step-Down",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand sideways on a low step on one leg."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Single-Leg Elevated Hamstring Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL with Kettlebell",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Kettlebell or dumbbell in the opposite hand."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "Weighted Step Up with Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Dumbbells at the sides, same low step to start."
+                  },
+                  {
+                    "name": "Deficit Reverse Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Front foot on a 2–4\" step, step the other foot back."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 2 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Clock Reaches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 reaches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Bridge with Ball Squeeze",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Ball or pillow between the knees, squeeze it gently and hold that squeeze."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Hip Airplane (No Support)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hinge on one leg, arms out, trunk parallel to the floor."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Lateral Step-Down",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand sideways on a low step on one leg."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 5,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Slider Hamstring Curl",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL to Knee Drive",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "High Box Step Up",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Box around knee height."
+                  },
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Rear foot on a bench, front foot far enough forward that the shin stays fairly upright."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Weighted Hip Airplane",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same airplane, light weight held at the chest."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Weighted Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same side step-up, weight held goblet-style or at the sides."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 1: every exercise moved one step up its progression.",
+                  "Log the load you use so next week starts from it."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Slider Hamstring Curl",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL to Knee Drive",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "High Box Step Up",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Box around knee height."
+                  },
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Rear foot on a bench, front foot far enough forward that the shin stays fairly upright."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "week_num": 6,
+            "days": [
+              {
+                "day_num": 1,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Weighted Hip Airplane",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same airplane, light weight held at the chest."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Weighted Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same side step-up, weight held goblet-style or at the sides."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              },
+              {
+                "day_num": 2,
+                "focus": "Session A · Posterior & Single-Leg",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Slider Hamstring Curl",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
+                  },
+                  {
+                    "name": "Side Plank with Top-Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Side plank from the elbow and feet (or knees to start)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Mini Band Monster Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the knees or ankles, quarter squat, chest up."
+                  },
+                  {
+                    "name": "Standing Fire Hydrant",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Hold support, lift the knee to hip height, then open it out to the side."
+                  },
+                  {
+                    "name": "Single-Leg RDL to Knee Drive",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
+                  },
+                  {
+                    "name": "Standing Banded March (No Wall)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Prone Hip Extension",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Face down, pillow under the hips to keep the low back neutral."
+                  },
+                  {
+                    "name": "Bird Dog with Ankle Weight or Band",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Light ankle weight, or a band from the hand to the opposite foot."
+                  },
+                  {
+                    "name": "High Box Step Up",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Box around knee height."
+                  },
+                  {
+                    "name": "Bulgarian Split Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Rear foot on a bench, front foot far enough forward that the shin stays fairly upright."
+                  }
+                ]
+              },
+              {
+                "day_num": 3,
+                "focus": "Session B · Lateral & Adductors",
+                "warmup": [
+                  {
+                    "name": "Banded Distraction for Hip IR",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band pulls the hip joint apart while you rotate the thigh inward"
+                  },
+                  {
+                    "name": "Banded Distraction for Hip ER",
+                    "reps": "10",
+                    "time": null,
+                    "notes": "Band distraction while rotating the thigh outward"
+                  },
+                  {
+                    "name": "Seated Banded Hip IR",
+                    "reps": "10–12",
+                    "time": null,
+                    "notes": "Seated, rotate the shin outward against a band"
+                  },
+                  {
+                    "name": "TFL / Hip IR Stretch",
+                    "reps": null,
+                    "time": "10s",
+                    "notes": "Lying stretch into hip internal rotation"
+                  },
+                  {
+                    "name": "Quadruped Hip Hikes",
+                    "reps": "8",
+                    "time": null,
+                    "notes": "Warm-up for pelvic rotation — hands and knees, hike one hip toward the ribs"
+                  }
+                ],
+                "notes": [
+                  "Phase 3 of 3, week 2: every exercise moved one step up its progression.",
+                  "Same exercises as last week: add a rep, a few seconds, or a little load."
+                ],
+                "exercises": [
+                  {
+                    "name": "Single-Leg Pad Balance + Ball Catches",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 catches per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
+                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "30s",
+                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                  },
+                  {
+                    "name": "Standing Hip Hikes",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 10 lb Stand on a step on one leg, free leg hanging off the edge, weight in the opposite hand."
+                  },
+                  {
+                    "name": "Side-Lying Hip Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Weighted Hip Airplane",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "6 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same airplane, light weight held at the chest."
+                  },
+                  {
+                    "name": "Straight Leg Raise",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Opposite knee bent, foot flat — protects the low back."
+                  },
+                  {
+                    "name": "Prone Hip Extension (Knee Bent)",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Weighted Side Step-Ups",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Same side step-up, weight held goblet-style or at the sides."
+                  },
+                  {
+                    "name": "Adductor Slider Lunge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "stats": {

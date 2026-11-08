@@ -3,7 +3,9 @@
 How a plan document (a PDF, a pasted doc, a coach's sheet) becomes a program in the app.
 Worked examples: `data/build_athletic_programs.py` (three 6-week programs, built from
 existing catalog exercises) and `data/build_home_beginner.py` (one plan, new exercises).
-Both use the helpers in `data/program_builder.py`.
+Both use the helpers in `data/program_builder.py`. `data/build_hip_program.mjs` builds the user's
+hip plan straight from the Hip tab's data (`src/lib/hip_protocol.js`): re-run it after changing the
+Hip tab's sessions, then `python3 data/tag_exercises.py`.
 
 ## 1. Pick the screen it plays on
 

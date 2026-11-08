@@ -75,11 +75,11 @@ export async function renderPrograms(app) {
         <div>
           <div style="font-weight:600;margin-bottom:2px">Hip Recovery Playbook</div>
           <div class="muted" style="font-size:12px">
-            Sessions A/B (PT + Motion RC) · Pelvic Reset · Flare mode
+            Warm-up · Pelvic Reset · Recovery · Pool (strength runs in Your Hip Plan)
           </div>
         </div>
         <span class="pill" style="color:#38bdf8;border-color:rgba(56,189,248,0.4);flex-shrink:0;margin-left:8px">
-          ${hipFlare ? 'Flare mode' : hipWeek ? `Week ${hipWeek}` : 'A/B plan'}
+          ${hipWeek ? `Week ${hipWeek}` : 'Reference'}
         </span>
       </div>
     </div>

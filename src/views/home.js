@@ -260,11 +260,11 @@ export async function renderHome(app) {
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
             <div>
-              <div style="font-size:12px;font-weight:600;color:${hipFlare ? '#fdba74' : 'var(--fg)'}">Hip · ${hip.label}</div>
+              <div style="font-size:12px;font-weight:600">Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}</div>
               <div style="font-size:11px;color:var(--fg-dim)">
-                ${hip.strength ? '' : `${hip.sectionLabel} · `}${hip.done} of ${hip.total} done
+                ${hip.strength ? 'Strength (Session A/B) runs in Your Hip Plan on the Lift screen' : `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`}
               </div>
-              ${hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
+              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
             </div>
             <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>

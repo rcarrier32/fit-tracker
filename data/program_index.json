@@ -1086,6 +1086,53 @@
     "med_ball"
    ],
    "description": "Two short sessions a week for basketball: learn to land and stop, then get springy, then move at game speed. Pairs with Total Body or Hip Function on a Mixed Week schedule."
+  },
+  {
+   "id": "hip_plan_pt_motion_rc",
+   "name": "Hip Plan: PT + Motion RC",
+   "group": "Your Hip Plan",
+   "kind": "progression",
+   "weeks": 6,
+   "days_per_week": 3,
+   "exercises_per_day": 11.3,
+   "day_focus": [
+    "Session A · Posterior & Single-Leg",
+    "Session B · Lateral & Adductors",
+    "Session A · Posterior & Single-Leg"
+   ],
+   "week1_sets_by_muscle": {
+    "glutes": 23,
+    "hamstrings": 21,
+    "abductors": 21,
+    "adductors": 12,
+    "abs": 9,
+    "quads": 6,
+    "hip_flexors": 4
+   },
+   "week1_sets_by_pattern": {
+    "hinge": 24,
+    "isolation_lower": 19,
+    "lunge_single_leg": 18,
+    "balance": 11,
+    "isometric": 9,
+    "lateral_flexion": 6,
+    "anti_extension": 6,
+    "flexion": 3
+   },
+   "roles": {
+    "secondary": 14,
+    "accessory": 12,
+    "core": 8
+   },
+   "equipment": [
+    "band",
+    "bench",
+    "bosu_pad",
+    "box",
+    "mini_band",
+    "slider"
+   ],
+   "description": "Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week with your PT and Motion RC exercises, and every 2 weeks each exercise moves up its progression (single-leg bench bridge, long-lever Copenhagen, unsupported airplanes…)."
   }
  ]
 }

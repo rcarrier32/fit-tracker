@@ -14,6 +14,9 @@ import {
   HIP_LADDERS, LADDER_UNLOCK_SESSIONS,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
+
+const STRENGTH_IN_PLANS = new Set(['session-a', 'session-b']);
+const HIP_PROGRAM_ID = 'hip_plan_pt_motion_rc';
 import { esc, setCount, exerciseRowHTML, wireExerciseRows, openExerciseDetail } from '../lib/exercise_ui.js';
 
 const todayKey = () => localDateStr();
@@ -61,6 +64,8 @@ export async function renderHip(app) {
   const todaySched = week7[new Date().getDay()];
   // Open on today's main work: the strength session, or Pelvic Reset on easy/flare days.
   activeId = hipToday({ flare, paused, custom }).sectionId;
+  // Strength sessions A/B run as a program on the Lift screen now (Plans → Your Hip Plan).
+  if (STRENGTH_IN_PLANS.has(activeId)) activeId = 'warmup';
 
   // ── Persistence ────────────────────────────────────────────────────────────
   async function begin() {
@@ -925,7 +930,7 @@ export async function renderHip(app) {
         </div>
 
         <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:10px">
-          ${['3× / week · A/B', 'Psoas Focus', 'Build the Hip'].map(t =>
+          ${['Warm-up · Reset · Recovery · Pool', 'Build the Hip'].map(t =>
             `<span class="pill" style="font-size:10px;padding:2px 8px">${t}</span>`
           ).join('')}
         </div>
@@ -947,9 +952,13 @@ export async function renderHip(app) {
           </div>
         </div>`}
 
+        <button id="hip-program" class="btn" style="margin-bottom:10px;text-align:left;padding:10px 12px">
+          <div style="font-weight:700">🏋️ Strength: Your Hip Plan</div>
+          <div style="font-size:12px;font-weight:400;opacity:0.85">Sessions A & B now run on the Lift screen with weights, reps, timers and weekly progressions.</div>
+        </button>
         <div id="hip-tabs" style="display:flex;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none;
           -webkit-overflow-scrolling:touch">
-          ${SECTIONS.map(tabHTML).join('')}
+          ${SECTIONS.filter(s => !STRENGTH_IN_PLANS.has(s.id)).map(tabHTML).join('')}
         </div>
       </div>
 
@@ -1036,6 +1045,13 @@ export async function renderHip(app) {
       app.querySelector('#hip-pain')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
+    app.querySelector('#hip-program')?.addEventListener('click', async () => {
+      // Already running it (alone or in a Mixed Week)? Go lift. Otherwise open Plans to start it.
+      const sched = await pref('schedule');
+      const running = (await pref('active_program')) === HIP_PROGRAM_ID || sched?.slots?.some(sl => sl?.program_id === HIP_PROGRAM_ID);
+      navigate(running ? 'workout' : 'programs');
+      if (!running) toast('Start "Hip Plan: PT + Motion RC" under Your Hip Plan');
+    });
     app.querySelector('#flare-on')?.addEventListener('click', () => {
       setFlare(true);
       toast('Flare mode on — known aggravators paused');
