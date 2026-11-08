@@ -7517,8 +7517,8 @@
         "hamstrings",
         "quads"
       ],
-      "pattern": "speed_accel",
-      "role": "power",
+      "pattern": "conditioning",
+      "role": "conditioning",
       "equipment": [
         "bodyweight"
       ],

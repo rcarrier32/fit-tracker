@@ -250,28 +250,28 @@
    "week1_sets_by_pattern": {
     "mobility": 28,
     "isolation_upper": 18,
-    "speed_accel": 16,
+    "speed_accel": 14,
     "push_horizontal": 14,
     "plyo_jump": 12,
     "anti_extension": 12,
     "pull_horizontal": 11,
     "lunge_single_leg": 10,
     "pull_vertical": 9,
+    "conditioning": 6,
     "lateral_flexion": 6,
     "push_vertical": 6,
-    "conditioning": 4,
     "squat": 4,
     "hinge": 3
    },
    "roles": {
     "warmup": 13,
     "secondary": 12,
-    "power": 10,
+    "power": 8,
     "cooldown": 7,
+    "conditioning": 6,
     "core": 6,
     "accessory": 6,
-    "main": 4,
-    "conditioning": 4
+    "main": 4
    },
    "equipment": [
     "band",

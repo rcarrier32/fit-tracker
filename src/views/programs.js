@@ -10,6 +10,8 @@ import { pref } from '../db.js';
 import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 import { openBandDatabase } from './band_db.js';
+import { generatePlan, swapInPlan, estimateMinutes, FOCUS_GROUPS } from '../lib/generator.js';
+import { hasVideo, rankSimilar, tagLine, EQUIPMENT_LABEL, muscleLabel } from '../lib/taxonomy.js';
 
 export async function renderPrograms(app) {
   const [{ programs, exercises }, activePlan, tosProgress, hipProgress, hipFlare, customPrograms] = await Promise.all([
@@ -44,8 +46,11 @@ export async function renderPrograms(app) {
 
     <div class="card" style="padding:12px 14px">
       <div style="font-weight:600;margin-bottom:2px">Build My Own Plan</div>
-      <div class="muted" style="font-size:12px;margin-bottom:10px">Custom split from the exercise database · add ab finishers to any day</div>
-      <button class="btn" id="build-plan" style="width:100%">Build</button>
+      <div class="muted" style="font-size:12px;margin-bottom:10px">Generate a multi-week plan from every exercise in the app, or pick each exercise yourself</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="gen-plan" style="flex:2">✨ Generate a plan</button>
+        <button class="btn secondary" id="build-plan" style="flex:1">Manual</button>
+      </div>
     </div>
 
     ${customPrograms.length ? `<div class="group-label">My Plans</div><div id="custom-list"></div>` : ''}
@@ -114,6 +119,7 @@ export async function renderPrograms(app) {
   app.querySelector('#hip-card').onclick = () => navigate('hip');
   app.querySelector('#band-db-card').onclick = () => openBandDatabase();
 
+  app.querySelector('#gen-plan').onclick = () => openGeneratorWizard(() => renderPrograms(app));
   app.querySelector('#build-plan').onclick = async () => {
     const { exercises } = await loadCatalogs();
     openPlanBuilder(exercises, () => renderPrograms(app));
@@ -317,7 +323,9 @@ function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {
           <div style="font-weight:600;font-size:16px">${p.name}
             ${isActive ? `<span class="pill accent" style="margin-left:6px;font-size:10px">Active</span>` : ''}
           </div>
-          <div class="muted" style="font-size:13px;margin-top:3px">${p.days.length}-day rotation · Custom</div>
+          <div class="muted" style="font-size:13px;margin-top:3px">${p.weeks
+            ? `${p.weeks.length}-week progression · ${p.sessions_per_week || p.weeks[0].days.length} days/wk · ${p.generated ? 'Generated' : 'Custom'}`
+            : `${p.days.length}-day rotation · Custom`}</div>
         </div>
       </div>
       <div style="margin-top:10px;display:flex;gap:8px">
@@ -352,10 +360,12 @@ async function openStartCustomPlanSheet(program, onConfirm) {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${program.name}</h2>
-      <div class="muted" style="margin-bottom:12px">Rotation — these ${program.days.length} workouts in order, then back to the first. You progress by adding weight, not by moving through weeks.</div>
+      <div class="muted" style="margin-bottom:12px">${program.weeks
+        ? `Progression: ${program.weeks.length} weeks, and each workout you finish moves you to the next day.`
+        : `Rotation — these ${program.days.length} workouts in order, then back to the first. You progress by adding weight, not by moving through weeks.`}</div>
       <div class="group-label">Duration</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-        <input type="number" id="weeks-input" value="8" min="1" max="52" inputmode="numeric" style="flex:1">
+        <input type="number" id="weeks-input" value="${program.weeks?.length || 8}" min="1" max="52" inputmode="numeric" style="flex:1">
         <span class="muted">weeks</span>
       </div>
       <div class="group-label">Start date</div>
@@ -558,4 +568,138 @@ function infoBox(value, label) {
       <div class="muted" style="font-size:11px">${label}</div>
     </div>
   `;
+}
+
+
+// ── Plan generator (src/lib/generator.js, rules in data/design_rules.json) ──────────────
+
+const GEN_EQUIPMENT = ['dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'bench', 'box', 'pullup_bar', 'cable', 'machine',
+  'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'sled', 'smith'];
+let _rules = null;
+const loadRules = async () => (_rules ||= await fetch('data/design_rules.json').then(r => r.json()));
+
+async function openGeneratorWizard(onSaved) {
+  const rules = await loadRules();
+  const saved = (await pref('gen_settings')) || {};
+  const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band'];
+  const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], ...saved, equipment };
+  openSheet((sheet, close) => {
+    const chips = (key, options, multi = false) => options.map(([val, label]) => {
+      const on = multi ? st[key].includes(val) : st[key] === val;
+      return `<button class="pill ${on ? 'accent' : ''}" data-k="${key}" data-v="${val}" data-multi="${multi ? 1 : ''}" style="cursor:pointer;font-size:12px;padding:6px 10px">${label}</button>`;
+    }).join('');
+    const paint = () => {
+      sheet.innerHTML = `
+        <h2>Generate a plan</h2>
+        <div class="muted" style="margin-bottom:6px">Built from every exercise in the app with a video, using the PJF and BWS design rules.</div>
+        <div class="group-label">Goal</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('goal', Object.entries(rules.goals).map(([k, g]) => [k, g.label]))}</div>
+        <div class="group-label">Days per week</div>
+        <div style="display:flex;gap:6px">${chips('days', [2, 3, 4, 5, 6].map(n => [n, n]))}</div>
+        <div class="group-label">Minutes per session</div>
+        <div style="display:flex;gap:6px">${chips('minutes', [[30, '30'], [45, '45'], [60, '60']])}</div>
+        <div class="group-label">Weeks</div>
+        <div style="display:flex;gap:6px">${chips('weeks', [[4, '4'], [6, '6'], [8, '8']])}</div>
+        <div class="group-label">Level</div>
+        <div style="display:flex;gap:6px">${chips('level', [[1, 'Beginner'], [2, 'Intermediate'], [3, 'Advanced']])}</div>
+        <div class="group-label">Focus (optional)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('focus', Object.keys(FOCUS_GROUPS).map(f => [f, f]), true)}</div>
+        <div class="group-label">Equipment you have</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('equipment', GEN_EQUIPMENT.map(q => [q, EQUIPMENT_LABEL[q]]), true)}</div>
+        <label style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px">
+          <input type="checkbox" id="g-plyo" ${st.plyo ? 'checked' : ''} style="width:auto"> Add jumps, sprints & agility</label>
+        <button class="btn" id="g-go" style="margin-top:16px">Generate</button>
+        <button class="btn ghost" id="g-cancel" style="margin-top:8px">Cancel</button>`;
+      sheet.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
+        const k = b.dataset.k, raw = b.dataset.v, v = isNaN(+raw) ? raw : +raw;
+        if (b.dataset.multi) st[k] = st[k].includes(v) ? st[k].filter(x => x !== v) : [...st[k], v];
+        else st[k] = v;
+        paint();
+      });
+      sheet.querySelector('#g-plyo').onchange = (e) => { st.plyo = e.target.checked; };
+      sheet.querySelector('#g-cancel').onclick = close;
+      sheet.querySelector('#g-go').onclick = async () => {
+        await pref('equipment', st.equipment);
+        const { equipment: _e, ...rest } = st;
+        await pref('gen_settings', rest);
+        close(false);   // a follow-up sheet opens next
+        const { exercises } = await loadCatalogs();
+        const plan = generatePlan({ ...st, seed: Date.now() % 100000 }, { exercises, rules, hasVideo });
+        openGeneratedPreview(plan, { exercises, rules }, onSaved);
+      };
+    };
+    paint();
+  });
+}
+
+function openGeneratedPreview(plan, ctx, onSaved) {
+  const { exercises, rules } = ctx;
+  const byName = new Map(exercises.map(e => [e.name, e]));
+  let week = 1;
+  openSheet((sheet, close) => {
+    const paint = () => {
+      const w = plan.weeks.find(x => x.week_num === week);
+      const summary = Object.entries(plan.summary).sort((a, b) => b[1] - a[1])
+        .map(([m, n]) => `<span class="pill" style="font-size:11px;text-transform:capitalize">${muscleLabel(m)} ${n}</span>`).join('');
+      sheet.innerHTML = `
+        <input type="text" id="gp-name" value="${plan.name.replace(/"/g, '&quot;')}" style="font-size:17px;font-weight:600">
+        <div class="muted" style="margin:6px 0">${plan.description}</div>
+        <div class="muted" style="font-size:11px;margin-bottom:4px">Week 1 working sets per muscle</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">${summary}</div>
+        <div style="display:flex;gap:4px;overflow-x:auto;margin:12px 0 4px">
+          ${plan.weeks.map(x => `<button class="pill ${x.week_num === week ? 'accent' : ''}" data-week="${x.week_num}" style="cursor:pointer;flex-shrink:0">Wk ${x.week_num}</button>`).join('')}
+        </div>
+        ${w.days.map(d => `
+          <div class="card" style="padding:10px 12px;margin-bottom:8px">
+            <div class="card-row"><div style="font-weight:600">Day ${d.day_num} · ${d.focus}</div>
+              <span class="muted" style="font-size:11px">~${estimateMinutes(d, rules)} min</span></div>
+            <div class="muted" style="font-size:11px;margin:2px 0 6px">${d.notes[0]}</div>
+            <div class="muted" style="font-size:11px;margin-bottom:4px">Warm-up: ${d.warmup.map(x => x.name).join(', ')}</div>
+            ${d.exercises.map(x => {
+              const e = byName.get(x.name);
+              return `<div class="list-item" data-day="${d.day_num}" data-name="${x.name.replace(/"/g, '&quot;')}" style="cursor:pointer;padding:6px 0">
+                <div style="flex:1;min-width:0">
+                  <div class="list-item-title" style="font-size:14px">${x.round_group ? `<span class="muted" style="font-size:10px">${x.round_group} · </span>` : ''}${x.name}</div>
+                  <div class="list-item-meta">${x.sets} × ${x.reps || x.time}${x.rest ? ' · rest ' + x.rest : ''}${e ? ` · <span style="text-transform:capitalize">${tagLine(e)}</span>` : ''}</div>
+                </div><span class="muted" style="font-size:12px">⇄</span></div>`;
+            }).join('')}
+          </div>`).join('')}
+        <div class="muted" style="font-size:11px;margin:4px 0 10px">Tap an exercise to swap it (changes that day in every week).</div>
+        <button class="btn" id="gp-save">Save & start</button>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn secondary" id="gp-again" style="flex:1">Regenerate</button>
+          <button class="btn ghost" id="gp-cancel" style="flex:1">Discard</button>
+        </div>`;
+      sheet.querySelectorAll('[data-week]').forEach(b => b.onclick = () => { plan.name = sheet.querySelector('#gp-name').value; week = +b.dataset.week; paint(); });
+      sheet.querySelectorAll('[data-name]').forEach(r => r.onclick = () => {
+        plan.name = sheet.querySelector('#gp-name').value;
+        const cur = byName.get(r.dataset.name);
+        const have = plan.generated.equipment;
+        const alts = rankSimilar(cur, exercises.filter(e => (e.equipment || []).every(q => q === 'bodyweight' || have.includes(q))), { have, limit: 15 });
+        openSheet((s2, close2) => {
+          s2.innerHTML = `<h2>Swap ${r.dataset.name}</h2><div class="muted" style="margin-bottom:8px">Same movement first, then same muscle · your equipment</div>
+            ${alts.map(e => `<div class="list-item" data-alt="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1"><div class="list-item-title">${e.name}</div><div class="list-item-meta" style="text-transform:capitalize">${tagLine(e)}</div></div></div>`).join('') || '<div class="empty">No close matches with your equipment</div>'}`;
+          s2.querySelectorAll('[data-alt]').forEach(a => a.onclick = () => { swapInPlan(plan, +r.dataset.day, r.dataset.name, a.dataset.alt); close2(); paint(); });
+        });
+      });
+      sheet.querySelector('#gp-again').onclick = () => {
+        const g = plan.generated;
+        const fresh = generatePlan({ ...g, seed: (g.seed || 1) + 1 }, { exercises, rules, hasVideo });
+        Object.assign(plan, fresh, { name: sheet.querySelector('#gp-name').value });
+        paint();
+      };
+      sheet.querySelector('#gp-cancel').onclick = close;
+      sheet.querySelector('#gp-save').onclick = async () => {
+        plan.name = sheet.querySelector('#gp-name').value.trim() || plan.name;
+        const { summary, pool_size, ...program } = plan;
+        const all = (await pref('custom_programs')) || [];
+        await pref('custom_programs', [...all, program]);
+        toast('Plan saved');
+        close(false);
+        openStartCustomPlanSheet(program, onSaved);
+      };
+    };
+    paint();
+  });
 }
