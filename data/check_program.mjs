@@ -3,6 +3,8 @@
  *
  *   node data/check_program.mjs home_beginner_4wk          # structure + names + videos
  *   node data/check_program.mjs home_beginner_4wk --net    # also checks follow-along links respond
+ *   node data/check_program.mjs pjf_durability_code_prime --local ~/Documents/fit-tracker-private/pjf-local-videos.json
+ *       # counts the on-device PJF videos (never committed) as covered, like the user's phone does
  *
  * Fails (exit 1) on anything that would show up wrong on the Lift screen: a name that
  * doesn't resolve to a catalog entry, an exercise with no video ("🔍 Find"), a timed
@@ -14,6 +16,22 @@ import path from 'path';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const [id, ...flags] = process.argv.slice(2);
 const NET = flags.includes('--net');
+const LOCAL = flags.includes('--local') ? flags[flags.indexOf('--local') + 1] : null;
+// Mirrors static_data.js isHeaderRow: section headers in PJF sheets aren't exercises.
+const isHeaderRow = (n) => /^(daily overview|start of workout.*overview|superset|circuit|combo cardio)\b/i.test(String(n || '').trim());
+// Mirrors local_videos.js localFor: exact normalized name, or a prefix for long names.
+const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
+let localNames = [];
+if (LOCAL) {
+  const buf = readFileSync(LOCAL.replace(/^~/, process.env.HOME));
+  let txt = buf.toString('utf8');
+  if (txt.includes('\uFFFD')) txt = buf.toString('latin1');
+  localNames = Object.values(JSON.parse(txt).videos || {}).filter(o => o?.v && o.name).map(o => norm(o.name));
+}
+const hasLocal = (name) => {
+  const n = norm(name);
+  return !!n && (localNames.includes(n) || (n.length >= 12 && localNames.some(k => k.startsWith(n))));
+};
 if (!id) { console.error('Usage: node data/check_program.mjs <program_id> [--net]'); process.exit(1); }
 
 const lib = JSON.parse(readFileSync(path.join(ROOT, 'data/library.json'), 'utf8'));
@@ -57,14 +75,16 @@ weeks.forEach((w, wi) => {
     const check = (ex, where) => {
       const hit = byName.get(String(ex.name).toLowerCase());
       if (!hit) errors.push(`${at} ${where}: "${ex.name}" doesn't resolve to a catalog exercise`);
-      else if (!hit.video_url) errors.push(`${at} ${where}: "${ex.name}" has no video (shows 🔍 Find)`);
-      if (!ex.reps && !ex.time) errors.push(`${at} ${where}: "${ex.name}" has neither reps nor time`);
+      else if (!hit.video_url && !hasLocal(ex.name)) errors.push(`${at} ${where}: "${ex.name}" has no video (shows 🔍 Find)`);
+      const target = ex.reps || ex.time || ex.distance || ex.set_targets?.length;
+      if (!target) warns.push(`${at} ${where}: "${ex.name}" has no reps/time/distance target`);
       if (!ex.reps && ex.time && !parseSecs(ex.time)) errors.push(`${at} ${where}: "${ex.name}" time "${ex.time}" won't run a timer`);
     };
     (d.warmup || []).forEach(ex => check(ex, 'warm-up'));
-    (d.exercises || []).forEach(ex => {
+    // The app hides header rows and alternates (workout.js), so they aren't checked.
+    (d.exercises || []).filter(ex => !ex.is_alternate && !isHeaderRow(ex.name)).forEach(ex => {
       check(ex, 'exercise');
-      if (!(+ex.sets >= 1)) errors.push(`${at}: "${ex.name}" sets is ${ex.sets}`);
+      if (!(+ex.sets >= 1) && !ex.set_targets?.length) warns.push(`${at}: "${ex.name}" has no set count (app defaults to 3)`);
       if (ex.round_group && !ex.rest) warns.push(`${at}: "${ex.name}" is in a circuit with no rest (no rest timer)`);
     });
     if (d.video && !/^https?:\/\//.test(d.video.url || '')) errors.push(`${at}: follow-along video has no URL`);

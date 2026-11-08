@@ -71,6 +71,9 @@ node data/enrich_program_videos.mjs --source <tag> --apply
 node data/check_program.mjs <program_id> --net
 ```
 
+For PJF programs, add `--local ~/Documents/fit-tracker-private/pjf-local-videos.json`
+to count the on-device PJF videos, the same way the phone does.
+
 It fails on names that don't resolve, exercises with no video (they'd show "🔍 Find"), timed
 moves without a parseable time, missing sets/reps, and dead follow-along links.
 
