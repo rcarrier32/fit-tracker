@@ -4,7 +4,7 @@
  */
 // NOTE: use a fresh DB name to avoid upgrade-blocked issues from prior versions
 const DB_NAME = 'fit-tracker-v2';
-const DB_VER = 3;
+const DB_VER = 4;
 const STORES = {
   sessions:   { keyPath: 'id', autoIncrement: true, indexes: [['date', 'date']] },
   meals:      { keyPath: 'id', autoIncrement: true, indexes: [['date', 'date']] },
@@ -13,7 +13,10 @@ const STORES = {
   prefs:      { keyPath: 'key' },
   cardio:     { keyPath: 'id', autoIncrement: true, indexes: [['date', 'date']] },
   plans:      { keyPath: 'id', autoIncrement: true },
+  photos:     { keyPath: 'id', autoIncrement: true },   // progress photos — device only
 };
+// Image blobs don't fit the localStorage backup or a JSON export.
+const NO_EXPORT = new Set(['photos']);
 
 let _db = null;
 let _opening = null;
@@ -105,7 +108,7 @@ export async function pref(key, value) {
 }
 
 export async function exportAllData() {
-  const storeNames = Object.keys(STORES);
+  const storeNames = Object.keys(STORES).filter(n => !NO_EXPORT.has(n));
   const out = { version: DB_VER, exported_at: new Date().toISOString() };
   for (const name of storeNames) {
     out[name] = await getAll(name);
@@ -114,7 +117,7 @@ export async function exportAllData() {
 }
 
 export async function importAllData(data) {
-  const storeNames = Object.keys(STORES);
+  const storeNames = Object.keys(STORES).filter(n => !NO_EXPORT.has(n));
   for (const name of storeNames) {
     if (!data[name]) continue;
     const s = await tx(name, 'readwrite');

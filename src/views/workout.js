@@ -10,6 +10,7 @@ import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor } from '../lib/local_videos.js';
+import { openProgressCheck } from './progress.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
 let _hipFlare = null;
@@ -191,7 +192,10 @@ export async function renderWorkout(app) {
   const exMap = {};
   for (const [k, v] of exerciseByName) exMap[k] = v;
 
-  const warmup = _pickWarmup(dayData.focus || dayData.day_name, warmups);
+  // A day can carry its own warm-up (home plans); otherwise pick one by focus.
+  const warmup = dayData.warmup?.length
+    ? { name: 'Warm-Up · 5 min', exercises: dayData.warmup }
+    : _pickWarmup(dayData.focus || dayData.day_name, warmups);
   // Band workouts: one tap to each category's band-setup overview, in workout order.
   const bandCats = [...new Set(session.exercises
     .map(x => exMap[x.name.toLowerCase()])
@@ -207,6 +211,7 @@ export async function renderWorkout(app) {
     <div class="muted">${programName(program)}</div>
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
     ${pjfDayNotesHtml(program, week, day, dayData)}
+    ${dayInfoHtml(program, dayData)}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
@@ -262,6 +267,11 @@ export async function renderWorkout(app) {
     $ex.appendChild(node);
   });
 
+  app.querySelector('[data-progress-check]')?.addEventListener('click', () => openProgressCheck());
+  app.querySelector('[data-follow-along]')?.addEventListener('click', () => {
+    const v = dayData.video;
+    openExerciseDetail({ name: v.title, video_url: v.url, subtitle: v.note || 'Follow-along workout', source: programName(program) });
+  });
   app.querySelectorAll('[data-band-cat]').forEach(b => b.onclick = () => {
     const c = b.dataset.bandCat;
     openExerciseDetail({ name: `${c}: band setup`, video_url: bandOverviews[c],
@@ -493,6 +503,27 @@ function pjfDayNotesHtml(program, week, day, dayData) {
       <summary style="cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.04em;color:#7dd3fc">PJF NOTES FOR TODAY</summary>
       ${lines.map(l => `<p style="font-size:13px;color:#cbd5e1;line-height:1.45;margin:8px 0 0">${esc(l)}</p>`).join('')}
     </details>`;
+}
+
+/** Day notes, a follow-along video and the safety line, for plans that author them per day. */
+function dayInfoHtml(program, dayData) {
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const notes = dayData.notes || [];
+  const v = dayData.video;
+  if (!notes.length && !v && !program.safety && !dayData.progress_check) return '';
+  const video = !v ? '' : ytVideoId(v.url)
+    ? `<button class="btn secondary" data-follow-along style="margin-top:10px">▶ Follow along: ${esc(v.title)}</button>`
+    : `<a class="btn secondary" href="${esc(v.url)}" target="_blank" rel="noopener" style="margin-top:10px;display:block;text-align:center;text-decoration:none">▶ Follow along: ${esc(v.title)} ↗</a>`;
+  return `
+    <div class="day-info" style="margin:10px 0;padding:10px 12px;border-radius:10px;
+      background:rgba(244,114,182,0.07);border:1px solid rgba(244,114,182,0.22)">
+      ${notes.map(n => `<p style="font-size:13px;line-height:1.45;margin:0 0 6px">${esc(n)}</p>`).join('')}
+      ${v?.note ? `<p class="muted" style="font-size:12px;margin:0">${esc(v.note)}</p>` : ''}
+      ${video}
+      ${dayData.progress_check ? `<button class="btn secondary" data-progress-check style="margin-top:8px">📏 ${esc(dayData.progress_check)}</button>` : ''}
+      ${program.safety ? `<details style="margin-top:8px"><summary class="muted" style="font-size:12px;cursor:pointer">Safety</summary>
+        <p class="muted" style="font-size:12px;line-height:1.45;margin:6px 0 0">${esc(program.safety)}</p></details>` : ''}
+    </div>`;
 }
 
 function _warmupBlockHtml(warmup, exMap) {

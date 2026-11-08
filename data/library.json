@@ -7129,6 +7129,319 @@
         "hamstrings",
         "hips"
       ]
+    },
+    {
+      "id": "home-march-in-place",
+      "name": "March in Place",
+      "video_url": "https://youtu.be/MSMchjG98-U",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=March+in+Place+beginner+form",
+      "primary_muscle": "cardio",
+      "muscles": [
+        "cardio",
+        "hip_flexors"
+      ]
+    },
+    {
+      "id": "home-hip-circles",
+      "name": "Hip Circles",
+      "video_url": "https://youtu.be/jUft857xWzw",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hip+Circles+beginner+form",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips"
+      ]
+    },
+    {
+      "id": "home-bodyweight-squat",
+      "name": "Bodyweight Squat",
+      "video_url": "https://youtu.be/l83R5PblSMA",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Bodyweight+Squat+beginner+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ]
+    },
+    {
+      "id": "home-leg-swings",
+      "name": "Leg Swings",
+      "video_url": "https://www.youtube.com/watch?v=MJm9bYsNNRg",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Leg+Swings+beginner+form",
+      "primary_muscle": "hips",
+      "muscles": [
+        "hips",
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "home-dumbbell-squat",
+      "name": "Dumbbell Squat",
+      "video_url": "https://youtu.be/nYDEYFXN2Rs",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Squat+beginner+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ]
+    },
+    {
+      "id": "home-banded-glute-bridge",
+      "name": "Banded Glute Bridge",
+      "video_url": "https://youtu.be/4oRkPYWV0B8",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Glute+Bridge+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "home-resistance-band-side-steps",
+      "name": "Resistance Band Side Steps",
+      "video_url": "https://youtu.be/9Mda-LOoCXw",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Resistance+Band+Side+Steps+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ]
+    },
+    {
+      "id": "home-standing-glute-kickback",
+      "name": "Standing Glute Kickback",
+      "video_url": "https://youtu.be/9YZMkQwG5wo",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Glute+Kickback+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ]
+    },
+    {
+      "id": "home-heel-slides",
+      "name": "Heel Slides",
+      "video_url": "https://youtu.be/6-anByqnKp8",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Heel+Slides+beginner+form",
+      "primary_muscle": "abs",
+      "muscles": [
+        "abs"
+      ]
+    },
+    {
+      "id": "home-standing-side-crunch",
+      "name": "Standing Side Crunch",
+      "video_url": "https://youtu.be/dsK2L5ifOvg",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Side+Crunch+beginner+form",
+      "primary_muscle": "obliques",
+      "muscles": [
+        "obliques",
+        "abs"
+      ]
+    },
+    {
+      "id": "home-dumbbell-sumo-squat",
+      "name": "Dumbbell Sumo Squat",
+      "video_url": "https://youtu.be/Zt4WwH1Rx_E",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Sumo+Squat+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "adductors",
+        "quads"
+      ]
+    },
+    {
+      "id": "home-dumbbell-glute-bridge",
+      "name": "Dumbbell Glute Bridge",
+      "video_url": "https://youtu.be/glnPonx06P0",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Glute+Bridge+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ]
+    },
+    {
+      "id": "home-donkey-kicks",
+      "name": "Donkey Kicks",
+      "video_url": "https://youtu.be/YoOlLusFMYU",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Donkey+Kicks+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes"
+      ]
+    },
+    {
+      "id": "home-fire-hydrants",
+      "name": "Fire Hydrants",
+      "video_url": "https://youtu.be/AzAZ0myMpZ0",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Fire+Hydrants+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ]
+    },
+    {
+      "id": "home-side-lying-leg-raise",
+      "name": "Side-Lying Leg Raise",
+      "video_url": "https://youtu.be/ht3Ayrre2HA",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Side-Lying+Leg+Raise+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ]
+    },
+    {
+      "id": "home-banded-clamshell",
+      "name": "Banded Clamshell",
+      "video_url": "https://youtu.be/Hj-2r7OlXuE",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Clamshell+beginner+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ]
+    },
+    {
+      "id": "home-dumbbell-bent-over-row",
+      "name": "Dumbbell Bent-Over Row",
+      "video_url": "https://youtu.be/6gvmcqr226U",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Bent-Over+Row+beginner+form",
+      "primary_muscle": "back",
+      "muscles": [
+        "back",
+        "biceps",
+        "rear_delts"
+      ]
+    },
+    {
+      "id": "home-dumbbell-deadlift",
+      "name": "Dumbbell Deadlift",
+      "video_url": "https://youtu.be/gLogcYIvgRA",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Deadlift+beginner+form",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "glutes",
+        "back"
+      ]
+    },
+    {
+      "id": "home-standing-knee-to-elbow-crunch",
+      "name": "Standing Knee-to-Elbow Crunch",
+      "video_url": "https://youtu.be/z1fwSujYhX8",
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Knee-to-Elbow+Crunch+beginner+form",
+      "primary_muscle": "obliques",
+      "muscles": [
+        "obliques",
+        "abs",
+        "hip_flexors"
+      ]
+    },
+    {
+      "id": "home-brisk-walk",
+      "name": "Brisk Walk",
+      "video_url": null,
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=30+minute+beginner+indoor+walking+workout",
+      "primary_muscle": "cardio",
+      "muscles": [
+        "cardio"
+      ]
+    },
+    {
+      "id": "home-gentle-full-body-stretch",
+      "name": "Gentle Full-Body Stretch",
+      "video_url": null,
+      "sources": [
+        "home"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=10+minute+gentle+full+body+stretch+beginner",
+      "primary_muscle": "mobility",
+      "muscles": [
+        "mobility"
+      ]
     }
   ],
   "programs": {
@@ -35014,6 +35327,2052 @@
         "sessions_per_week": 3,
         "session_length_min": 60,
         "level": "Intermediate"
+      }
+    ],
+    "home": [
+      {
+        "id": "home_beginner_4wk",
+        "program_name": "Beginner At-Home: 4 Weeks",
+        "source": "Home",
+        "description": "Glutes, lower core, waist and fat loss for a complete beginner. Dumbbells, bands and a mat, 30-45 minutes. Two walking days, Sunday off.",
+        "sessions_per_week": 6,
+        "session_length_min": 40,
+        "level": "Beginner",
+        "equipment": [
+          "Exercise mat",
+          "Light dumbbells",
+          "Resistance bands",
+          "Walking shoes"
+        ],
+        "safety": "Stop any exercise that hurts. If you notice abdominal doming, pelvic heaviness or leaking, pause that move and consider a pelvic floor physical therapist.",
+        "weeks": [
+          {
+            "week_num": 1,
+            "days": [
+              {
+                "focus": "Mon · Glutes & Legs",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Soft knees, push hips back, flat back."
+                  },
+                  {
+                    "name": "Resistance Band Side Steps",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Glute Kickback",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute At-Home Dumbbell Glute Workout",
+                  "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
+                },
+                "day_num": 1,
+                "progress_check": "Take starting measurements & photos",
+                "notes": [
+                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Before your first workout: take your starting measurements and photos."
+                ]
+              },
+              {
+                "focus": "Tue · Lower Belly & Core",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": "Gentle pace"
+                  },
+                  {
+                    "name": "Pelvic Tilts",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cat-Cow",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
+                  "Go through every exercise once, then repeat. Rest 30 seconds between exercises.",
+                  "Move slowly and breathe. Keep your back comfortable and don't let it arch."
+                ],
+                "exercises": [
+                  {
+                    "name": "Pelvic Tilts",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Heel Slides",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Side Crunch",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Modified Side Plank",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "15s",
+                    "rest": "30s",
+                    "notes": "Each side. Knees down."
+                  }
+                ],
+                "video": {
+                  "title": "12-Minute Beginner Deep Core Workout",
+                  "url": "https://notbroken.io/videos/beginner-deep-core-workout-floor-or-bed/index.html"
+                },
+                "day_num": 2
+              },
+              {
+                "focus": "Wed · Walking & Recovery",
+                "notes": [
+                  "Comfortable pace: you should still be able to hold a conversation."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Indoors or outside."
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "5:00",
+                    "rest": null,
+                    "notes": "5-10 minutes."
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute Beginner Walking Workout",
+                  "url": "https://www.notbroken.io/videos/walk-at-home-fast-30-minute-walk/"
+                },
+                "day_num": 3
+              },
+              {
+                "focus": "Thu · Glute Lift & Shaping",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Glute Bridge",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Fire Hydrants",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Side-Lying Leg Raise",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Clamshell",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "20-Minute Dumbbell Lower Body Workout",
+                  "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
+                },
+                "day_num": 4,
+                "notes": [
+                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises."
+                ]
+              },
+              {
+                "focus": "Fri · Full Body & Waist",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Bent-Over Row",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Deadlift",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Knee-to-Elbow Crunch",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "March in Place",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "2:00",
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "Beginner Full-Body Strength Workouts",
+                  "url": "https://www.erikakehrwaldfitness.com/free-workouts",
+                  "note": "Pick a beginner-level routine."
+                },
+                "day_num": 5,
+                "notes": [
+                  "Week 1: learn the form. 1 round is fine; do 2 if it feels good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises."
+                ]
+              },
+              {
+                "focus": "Sat · Walking & Stretching",
+                "notes": [
+                  "Optional: add 10 minutes of gentle glute activation (bridges, clamshells, side steps) if you feel recovered.",
+                  "Sunday is rest. Do your progress check (button below, or Body tab): measurements, energy, how clothes fit, photos."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": null
+                  }
+                ],
+                "day_num": 6,
+                "progress_check": "Sunday progress check"
+              }
+            ]
+          },
+          {
+            "week_num": 2,
+            "days": [
+              {
+                "focus": "Mon · Glutes & Legs",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Soft knees, push hips back, flat back."
+                  },
+                  {
+                    "name": "Resistance Band Side Steps",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Glute Kickback",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute At-Home Dumbbell Glute Workout",
+                  "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
+                },
+                "day_num": 1,
+                "notes": [
+                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Tue · Lower Belly & Core",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": "Gentle pace"
+                  },
+                  {
+                    "name": "Pelvic Tilts",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cat-Cow",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
+                  "Go through every exercise once, then repeat. Rest 30 seconds between exercises.",
+                  "Move slowly and breathe. Keep your back comfortable and don't let it arch.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ],
+                "exercises": [
+                  {
+                    "name": "Pelvic Tilts",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Heel Slides",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Side Crunch",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Modified Side Plank",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "15s",
+                    "rest": "30s",
+                    "notes": "Each side. Knees down."
+                  }
+                ],
+                "video": {
+                  "title": "12-Minute Beginner Deep Core Workout",
+                  "url": "https://notbroken.io/videos/beginner-deep-core-workout-floor-or-bed/index.html"
+                },
+                "day_num": 2
+              },
+              {
+                "focus": "Wed · Walking & Recovery",
+                "notes": [
+                  "Comfortable pace: you should still be able to hold a conversation."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Indoors or outside."
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "5:00",
+                    "rest": null,
+                    "notes": "5-10 minutes."
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute Beginner Walking Workout",
+                  "url": "https://www.notbroken.io/videos/walk-at-home-fast-30-minute-walk/"
+                },
+                "day_num": 3
+              },
+              {
+                "focus": "Thu · Glute Lift & Shaping",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Glute Bridge",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Fire Hydrants",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Side-Lying Leg Raise",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "15 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Clamshell",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "20-Minute Dumbbell Lower Body Workout",
+                  "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
+                },
+                "day_num": 4,
+                "notes": [
+                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Fri · Full Body & Waist",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Bent-Over Row",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Deadlift",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Knee-to-Elbow Crunch",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "March in Place",
+                    "round_group": "Circuit · 2 rounds",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "2:00",
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "Beginner Full-Body Strength Workouts",
+                  "url": "https://www.erikakehrwaldfitness.com/free-workouts",
+                  "note": "Pick a beginner-level routine."
+                },
+                "day_num": 5,
+                "notes": [
+                  "Week 2: 2 rounds. Aim for consistency, all six sessions.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Sat · Walking & Stretching",
+                "notes": [
+                  "Optional: add 10 minutes of gentle glute activation (bridges, clamshells, side steps) if you feel recovered.",
+                  "Sunday is rest. Do your progress check (button below, or Body tab): measurements, energy, how clothes fit, photos."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": null
+                  }
+                ],
+                "day_num": 6,
+                "progress_check": "Sunday progress check"
+              }
+            ]
+          },
+          {
+            "week_num": 3,
+            "days": [
+              {
+                "focus": "Mon · Glutes & Legs",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Soft knees, push hips back, flat back."
+                  },
+                  {
+                    "name": "Resistance Band Side Steps",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Glute Kickback",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute At-Home Dumbbell Glute Workout",
+                  "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
+                },
+                "day_num": 1,
+                "notes": [
+                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Tue · Lower Belly & Core",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": "Gentle pace"
+                  },
+                  {
+                    "name": "Pelvic Tilts",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cat-Cow",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
+                  "Go through every exercise once, then repeat. Rest 30 seconds between exercises.",
+                  "Move slowly and breathe. Keep your back comfortable and don't let it arch.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ],
+                "exercises": [
+                  {
+                    "name": "Pelvic Tilts",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Heel Slides",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Side Crunch",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Modified Side Plank",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "15s",
+                    "rest": "30s",
+                    "notes": "Each side. Knees down."
+                  }
+                ],
+                "video": {
+                  "title": "12-Minute Beginner Deep Core Workout",
+                  "url": "https://notbroken.io/videos/beginner-deep-core-workout-floor-or-bed/index.html"
+                },
+                "day_num": 2
+              },
+              {
+                "focus": "Wed · Walking & Recovery",
+                "notes": [
+                  "Comfortable pace: you should still be able to hold a conversation."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Indoors or outside."
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "5:00",
+                    "rest": null,
+                    "notes": "5-10 minutes."
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute Beginner Walking Workout",
+                  "url": "https://www.notbroken.io/videos/walk-at-home-fast-30-minute-walk/"
+                },
+                "day_num": 3
+              },
+              {
+                "focus": "Thu · Glute Lift & Shaping",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Glute Bridge",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Fire Hydrants",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Side-Lying Leg Raise",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Clamshell",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "20-Minute Dumbbell Lower Body Workout",
+                  "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
+                },
+                "day_num": 4,
+                "notes": [
+                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Fri · Full Body & Waist",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Bent-Over Row",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Deadlift",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Knee-to-Elbow Crunch",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "March in Place",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "2:00",
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "Beginner Full-Body Strength Workouts",
+                  "url": "https://www.erikakehrwaldfitness.com/free-workouts",
+                  "note": "Pick a beginner-level routine."
+                },
+                "day_num": 5,
+                "notes": [
+                  "Week 3: 2-3 rounds. Only add the 3rd round if you feel good.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Sat · Walking & Stretching",
+                "notes": [
+                  "Optional: add 10 minutes of gentle glute activation (bridges, clamshells, side steps) if you feel recovered.",
+                  "Sunday is rest. Do your progress check (button below, or Body tab): measurements, energy, how clothes fit, photos."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": null
+                  }
+                ],
+                "day_num": 6,
+                "progress_check": "Sunday progress check"
+              }
+            ]
+          },
+          {
+            "week_num": 4,
+            "days": [
+              {
+                "focus": "Mon · Glutes & Legs",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10-12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Hold one dumbbell at your chest, or one in each hand."
+                  },
+                  {
+                    "name": "Banded Glute Bridge",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": "Soft knees, push hips back, flat back."
+                  },
+                  {
+                    "name": "Resistance Band Side Steps",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each direction",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Glute Kickback",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute At-Home Dumbbell Glute Workout",
+                  "url": "https://www.youtube.com/watch?v=3D7vdq1pvOw"
+                },
+                "day_num": 1,
+                "notes": [
+                  "Week 4: 3 rounds, slow and controlled.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Tue · Lower Belly & Core",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": "Gentle pace"
+                  },
+                  {
+                    "name": "Pelvic Tilts",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Cat-Cow",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "notes": [
+                  "Week 4: 3 rounds, slow and controlled.",
+                  "Go through every exercise once, then repeat. Rest 30 seconds between exercises.",
+                  "Move slowly and breathe. Keep your back comfortable and don't let it arch.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ],
+                "exercises": [
+                  {
+                    "name": "Pelvic Tilts",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Heel Slides",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bird Dog",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Side Crunch",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "30s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Modified Side Plank",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "15s",
+                    "rest": "30s",
+                    "notes": "Each side. Knees down."
+                  }
+                ],
+                "video": {
+                  "title": "12-Minute Beginner Deep Core Workout",
+                  "url": "https://notbroken.io/videos/beginner-deep-core-workout-floor-or-bed/index.html"
+                },
+                "day_num": 2
+              },
+              {
+                "focus": "Wed · Walking & Recovery",
+                "notes": [
+                  "Comfortable pace: you should still be able to hold a conversation."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": "Indoors or outside."
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "5:00",
+                    "rest": null,
+                    "notes": "5-10 minutes."
+                  }
+                ],
+                "video": {
+                  "title": "30-Minute Beginner Walking Workout",
+                  "url": "https://www.notbroken.io/videos/walk-at-home-fast-30-minute-walk/"
+                },
+                "day_num": 3
+              },
+              {
+                "focus": "Thu · Glute Lift & Shaping",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Sumo Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Glute Bridge",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Donkey Kicks",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Fire Hydrants",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Side-Lying Leg Raise",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "15 each leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Clamshell",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "20-Minute Dumbbell Lower Body Workout",
+                  "url": "https://www.youtube.com/watch?v=z-lsr8cVuqo"
+                },
+                "day_num": 4,
+                "notes": [
+                  "Week 4: 3 rounds, slow and controlled.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Fri · Full Body & Waist",
+                "warmup": [
+                  {
+                    "name": "March in Place",
+                    "reps": null,
+                    "time": "2 min",
+                    "notes": null
+                  },
+                  {
+                    "name": "Hip Circles",
+                    "reps": null,
+                    "time": "30 sec",
+                    "notes": null
+                  },
+                  {
+                    "name": "Bodyweight Squat",
+                    "reps": "10",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Leg Swings",
+                    "reps": "10 each leg",
+                    "time": null,
+                    "notes": null
+                  }
+                ],
+                "exercises": [
+                  {
+                    "name": "Dumbbell Squat",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Bent-Over Row",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Dumbbell Deadlift",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "Standing Knee-to-Elbow Crunch",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45-60s",
+                    "notes": null
+                  },
+                  {
+                    "name": "March in Place",
+                    "round_group": "Circuit · 3 rounds",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "2:00",
+                    "rest": "45-60s",
+                    "notes": null
+                  }
+                ],
+                "video": {
+                  "title": "Beginner Full-Body Strength Workouts",
+                  "url": "https://www.erikakehrwaldfitness.com/free-workouts",
+                  "note": "Pick a beginner-level routine."
+                },
+                "day_num": 5,
+                "notes": [
+                  "Week 4: 3 rounds, slow and controlled.",
+                  "Go through every exercise once, then repeat. Rest 45-60 seconds between exercises.",
+                  "Don't raise weight and reps in the same week. Progress one at a time."
+                ]
+              },
+              {
+                "focus": "Sat · Walking & Stretching",
+                "notes": [
+                  "Optional: add 10 minutes of gentle glute activation (bridges, clamshells, side steps) if you feel recovered.",
+                  "Sunday is rest. Do your progress check (button below, or Body tab): measurements, energy, how clothes fit, photos."
+                ],
+                "exercises": [
+                  {
+                    "name": "Brisk Walk",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30:00",
+                    "rest": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Gentle Full-Body Stretch",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "10:00",
+                    "rest": null,
+                    "notes": null
+                  }
+                ],
+                "day_num": 6,
+                "progress_check": "Sunday progress check"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

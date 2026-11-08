@@ -5,6 +5,7 @@ import { put, get, getAll, pref } from '../db.js';
 import { profile, actualTdeeForWeek, bfPctNavy, bmiFromImperial, bmiCategory } from '../lib/tdee.js';
 import { toast, openSheet } from '../app.js';
 import { localDateStr } from '../lib/date.js';
+import { renderProgressCard } from './progress.js';
 
 const todayStr = () => localDateStr();
 const ymd = (d) => localDateStr(d);
@@ -66,6 +67,8 @@ export async function renderBody(app, date) {
     ${all.length >= 2 ? renderTrendCard(all, userProfile) : ''}
     ${all.length >= 7 ? await renderWeeklyCard(all) : ''}
 
+    <div id="progress-check"></div>
+
     <h2 style="margin-top:16px">Body Fat Estimate</h2>
     <div class="card">
       <div class="muted" style="margin-bottom:10px">Navy circumference method. Measure in inches, relaxed, morning.</div>
@@ -92,6 +95,8 @@ export async function renderBody(app, date) {
     <h2>History</h2>
     <div id="history">${renderHistory(all)}</div>
   `;
+
+  renderProgressCard(app.querySelector('#progress-check'), () => renderBody(app));
 
   let pendingNotes = todayLog?.notes ?? '';
 

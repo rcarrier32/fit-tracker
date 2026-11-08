@@ -20,6 +20,7 @@ export async function loadCatalogs() {
     const programs = [
       ...lib.programs.pjf.map(p => ({ ...p, source: 'PJF' })),
       ...lib.programs.bws.map(p => ({ ...p, source: 'BWS' })),
+      ...(lib.programs.home || []).map(p => ({ ...p, source: 'Home' })),
     ];
     // One catalog: hip-tab exercises join the library (skipping any name it already has),
     // and every entry gets movement-type tags for hip-friendly swaps.
