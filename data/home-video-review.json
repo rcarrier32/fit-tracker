@@ -655,7 +655,7 @@
     {
       "id": "home-brisk-walk",
       "name": "Brisk Walk",
-      "approved": null,
+      "approved": "jUiI5DlRmO4",
       "candidates": [
         {
           "videoId": "bdGfD6XnBgU",
@@ -664,7 +664,7 @@
           "seconds": 5,
           "embeddable": true,
           "url": "https://youtu.be/bdGfD6XnBgU",
-          "score": 2.48
+          "score": 2.5
         },
         {
           "videoId": "BM7o5fODEA8",
@@ -673,24 +673,52 @@
           "seconds": 48,
           "embeddable": true,
           "url": "https://youtu.be/BM7o5fODEA8",
-          "score": 1.84
+          "score": 1.98
         },
         {
-          "videoId": "WBhmNTykYiE",
-          "title": "3 best walking warm up exercises to walk easier ✅",
-          "channel": "Alyssa Kuhn, Arthritis Adventure",
-          "seconds": 38,
+          "videoId": "jUiI5DlRmO4",
+          "title": "1 Mile Brisk Walk | 15 Minute Walking Workout | Walk at Home",
+          "channel": "Walk at Home",
+          "seconds": 992,
           "embeddable": true,
-          "url": "https://youtu.be/WBhmNTykYiE",
-          "score": 1.37
+          "url": "https://youtu.be/jUiI5DlRmO4",
+          "score": 1.59
         }
       ]
     },
     {
       "id": "home-gentle-full-body-stretch",
       "name": "Gentle Full-Body Stretch",
-      "approved": null,
-      "candidates": []
+      "approved": "9wl-O_H9q5M",
+      "candidates": [
+        {
+          "videoId": "lNPaDikuRhU",
+          "title": "15 Minute Gentle Full Body Stretch",
+          "channel": "Jessica Valant",
+          "seconds": 913,
+          "embeddable": true,
+          "url": "https://youtu.be/lNPaDikuRhU",
+          "score": 1.24
+        },
+        {
+          "videoId": "Y8vJqiePu1I",
+          "title": "15 min Gentle Morning Yoga - Full Body Stretch",
+          "channel": "Yoga with Kassandra",
+          "seconds": 1006,
+          "embeddable": true,
+          "url": "https://youtu.be/Y8vJqiePu1I",
+          "score": 1.16
+        },
+        {
+          "videoId": "9wl-O_H9q5M",
+          "title": "5 min. DAILY Full Body Stretch",
+          "channel": "Kaleigh Cohen Strength",
+          "seconds": 369,
+          "embeddable": true,
+          "url": "https://youtu.be/9wl-O_H9q5M",
+          "score": 0.69
+        }
+      ]
     }
   ]
 }
