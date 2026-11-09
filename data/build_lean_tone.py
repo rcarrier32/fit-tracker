@@ -178,7 +178,7 @@ def r(name, reps=None, time=None, sets=3, rest='60s', notes=None, group=None):
 
 
 # Griffith-style prep, 2 rounds, progressing like his plan: band-assisted → active control → loaded/dynamic.
-PREP_NOTE = '2 rounds, easy pace: this is the mobility work, built into every session.'
+PREP_NOTE = 'Easy pace: this is the mobility work, built into every session.'
 PREP = {
     'lower': {
         1: [w('Banded Hip Distraction Pulling Into Hip Flexion', reps='3 x 5s hold each side', notes=PREP_NOTE),
@@ -200,6 +200,10 @@ PREP = {
         3: [w('Star Toe Tap', reps='6 each leg', notes=PREP_NOTE), w('Shin Box Reach And Row', reps='8'), w('Push Up To Shoulder Airplane', reps='5 each side'), w('Lateral Hops', reps='30')],
     },
 }
+for _kind in PREP.values():          # Griffith's prep: 2 rounds of each move
+    for _moves in _kind.values():
+        for _m in _moves:
+            _m['sets'] = 2
 
 
 def phase(wk):
@@ -247,7 +251,7 @@ def days(wk):
               time=None if p == 3 else hold, sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
-        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], w('Banded Lat Pulldown', reps='10 light', notes='Band anchored high: wakes up the lats before the rows and pulldowns.')], 'notes': notes, 'exercises': [
+        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], {**w('Banded Lat Pulldown', reps='10 light', notes='Band anchored high: wakes up the lats before the rows and pulldowns.'), 'sets': 2}], 'notes': notes, 'exercises': [
             r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
             r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'Contralateral Single Leg Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
             r(pick('Single-Leg RDL with Kettlebell', 'Hand Supported SLDL Loaded', 'SLDL With Loaded Hip Flexion'), each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),

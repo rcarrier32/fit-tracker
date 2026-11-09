@@ -422,3 +422,8 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   z-index: 50;
   margin-bottom: 6px;
 }
+
+/* Warm-up cards: same card as an exercise, one check-off instead of set rows. */
+.warmup-ex.done { opacity: 0.6; }
+.warmup-ex.done .check { background: var(--accent); color: #06140a; border-color: var(--accent); }
+.warmup-ex .check { flex-shrink: 0; width: 40px; height: 36px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px; font-size: 18px; color: var(--fg-dim); }

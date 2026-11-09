@@ -224,6 +224,7 @@ export async function renderWorkout(app) {
       <button class="btn ghost" data-action="next">Day →</button>
     </div>` : ''}
     ${warmup ? _warmupBlockHtml(warmup, exMap) : ''}
+    ${warmup ? '<div class="group-label" style="margin-top:14px">💪 Workout</div>' : ''}
     <div id="exercises"></div>
     <div class="btn-row" style="margin-top:14px">
       <button class="btn secondary" id="add-ex">+ Add exercise</button>
@@ -232,24 +233,19 @@ export async function renderWorkout(app) {
     </div>
   `;
 
-  // Warmup block toggle
-  const $warmupToggle = app.querySelector('.warmup-toggle');
-  if ($warmupToggle) {
-    $warmupToggle.onclick = () => {
-      const $body = app.querySelector('.warmup-body');
-      const $chevron = app.querySelector('.warmup-chevron');
-      const open = $body.style.display === 'none';
-      $body.style.display = open ? '' : 'none';
-      $chevron.textContent = open ? '▲' : '▼';
-    };
-  }
-
-  // Warmup video buttons (delegated)
-  const $warmupCard = app.querySelector('.warmup-body');
+  // Warm-up section: video buttons and check-offs (delegated). Check-offs last for today's session.
+  const $warmupCard = app.querySelector('.warmup-section');
   if ($warmupCard) {
     $warmupCard.addEventListener('click', e => {
       const btn = e.target.closest('button.video-link.has-video[data-ytid]');
-      if (btn) openLiftDetail(btn);
+      if (btn) return openLiftDetail(btn);
+      const chk = e.target.closest('.warmup-check');
+      if (chk) {
+        const on = chk.textContent.trim() !== '✓';
+        chk.textContent = on ? '✓' : '○';
+        chk.closest('.warmup-ex').classList.toggle('done', on);
+        try { sessionStorage.setItem(`wu:${today()}:${chk.dataset.wu}`, on ? '1' : '0'); } catch {}
+      }
     });
   }
 
@@ -535,46 +531,51 @@ function dayInfoHtml(program, dayData) {
     </div>`;
 }
 
+/**
+ * The warm-up as its own section, laid out like the workout's exercises: a section heading,
+ * then one card per move with its target, ▶ Video and a check-off (no weights to log).
+ */
 function _warmupBlockHtml(warmup, exMap) {
-  const rows = warmup.exercises.map(ex => {
+  const key = (n) => `wu:${today()}:${n}`;
+  const done = (n) => { try { return sessionStorage.getItem(key(n)) === '1'; } catch { return false; } };
+  const cards = warmup.exercises.map(ex => {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
     const _wLocal = playable(localFor(ex.name));
     const _wNameEsc = ex.name.replace(/"/g, '&quot;');
     const _attr = (v) => String(v ?? '').replace(/"/g, '&quot;');
+    const target = [ex.sets ? `${ex.sets} ×` : '', ex.reps || ex.time || ''].join(' ').trim();
     const videoHtml = _wYtId || _wLocal
       ? `<button class="video-link has-video" data-ytid="${_wYtId || ''}" data-ytname="${_wNameEsc}"
-          data-target="${_attr([ex.sets ? ex.sets + ' ×' : '', ex.reps || ex.time || ''].join(' ').trim())}"
-          data-notes="${_attr(ex.notes)}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</button>`
+          data-target="${_attr(target)}" data-notes="${_attr(ex.notes)}">▶ Video</button>`
       : lookup?.video_url
-        ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶</a>`
-        : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank" style="font-size:11px;padding:4px 8px;flex-shrink:0">🔍</a>`;
-    const setsStr = ex.sets ? `${ex.sets}×` : '';
-    const target = ex.reps || ex.time || '';
+        ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
+        : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank">🔍 Find</a>`;
+    const secs = !ex.reps && parseSecs(ex.time);
+    const isDone = done(ex.name);
     return `
-      <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
-        <div style="flex:1;min-width:0">
-          <div style="font-size:14px;font-weight:500">${ex.name}</div>
-          ${hipCautionHtml(ex.name)}
-          ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
+      <div class="exercise warmup-ex${isDone ? ' done' : ''}" style="padding:12px 14px">
+        <div class="exercise-header" style="align-items:center">
+          <div style="flex:1;min-width:0">
+            <div class="exercise-name" style="font-size:16px">${ex.name}</div>
+            ${lookup?.pattern ? `<div style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
+            ${hipCautionHtml(ex.name)}
+            ${target ? `<div class="exercise-target">${target}</div>` : ''}
+            ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            ${secs ? `<button class="video-link hold-timer" data-secs="${secs}">▶ ${fmtSecs(secs)}</button>` : ''}
+            ${videoHtml}
+            <button class="check warmup-check" data-wu="${_wNameEsc}" aria-label="Done">${isDone ? '✓' : '○'}</button>
+          </div>
         </div>
-        <div style="font-size:12px;color:var(--fg-dim);white-space:nowrap">${setsStr}${target}</div>
-        ${!ex.reps && parseSecs(ex.time) ? `<button class="video-link hold-timer" data-secs="${parseSecs(ex.time)}" style="font-size:11px;padding:4px 8px;flex-shrink:0">▶ ${fmtSecs(parseSecs(ex.time))}</button>` : ''}
-        ${videoHtml}
       </div>`;
   }).join('');
   return `
-    <div class="card" style="margin-bottom:12px;padding:12px 14px">
-      <div class="warmup-toggle" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px">
-        <span style="font-weight:600;font-size:14px">🔥 ${warmup.name}</span>
-        <span style="font-size:12px;color:var(--fg-dim)">${warmup.exercises.length} exercises <span class="warmup-chevron">▼</span></span>
-      </div>
-      <div class="warmup-body" style="display:none">
-        <div style="margin-top:10px">
-          ${rows}
-        </div>
-        ${warmup.note ? `<div class="muted" style="font-size:12px;margin-top:8px">${warmup.note}</div>` : ''}
-      </div>
+    <div class="warmup-section">
+      <div class="group-label" style="display:flex;justify-content:space-between"><span>🔥 ${warmup.name}</span><span>${warmup.exercises.length} moves</span></div>
+      ${cards}
+      ${warmup.note ? `<div class="muted" style="font-size:12px;margin:-2px 0 8px">${warmup.note}</div>` : ''}
     </div>`;
 }
 
