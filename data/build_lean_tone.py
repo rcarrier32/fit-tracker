@@ -7,6 +7,7 @@ paired supersets (A1/A2 …) with a treadmill finisher. Starts at working weight
 in the Lift card's Swap menu, like BWS alternates). Validate with:
     node data/check_program.mjs lean_tone_home_6wk --net
 """
+import re
 from program_builder import Library, ex, w, expand_weeks
 
 lib = Library()
@@ -51,9 +52,17 @@ GRIFFITH = {
     'Half Kneeling Lateral Bend': ('_JQT4q4nxHM', {"primary_muscle": "obliques", "muscles": ["obliques", "abs", "glutes"], "pattern": "lateral_flexion", "role": "core", "equipment": ["dumbbell"], "level": 1, "unilateral": False, "plane": "frontal", "hip_focus": True}),
     'Pogos': ('P9VR9_Buz48', {"primary_muscle": "calves", "muscles": ["calves", "quads"], "pattern": "plyo_bound_hop", "role": "warmup", "equipment": ["bodyweight"], "level": 1, "unilateral": False, "plane": "sagittal", "hip_focus": False}),
 }
+# These now live in the TrainHeroic provider file (data/providers/trainheroic.json) with Griffith's
+# levels and videos, so drop the old library copies and use them by name (program_builder knows them).
+drop = {f'lean-{re.sub(r"[^a-z0-9]+", "-", n.lower()).strip("-")}' for n in GRIFFITH}
+lib.data['exercises'] = [e for e in lib.data['exercises'] if e['id'] not in drop]
+for i in drop:
+    lib.tags['tags'].pop(i, None)
+lib.by_name = {k: v for k, v in lib.by_name.items() if v.get('id') not in drop}
 for n, (yt, t) in GRIFFITH.items():
-    e = lib.ensure_exercise(n, 'lean', tags=t)
-    e['video_url'] = f'https://youtu.be/{yt}'
+    if lib.provider(n) is None:          # not in the provider file: keep a library entry
+        e = lib.ensure_exercise(n, 'lean', tags=t)
+        e['video_url'] = f'https://youtu.be/{yt}'
 KNOWN |= {n.lower() for n in GRIFFITH}
 
 ALTS = {

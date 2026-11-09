@@ -25,6 +25,7 @@ export const TAXONOMY = {
   equipment: ['bodyweight', 'dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'band', 'mini_band', 'cable', 'machine', 'bench', 'box',
     'med_ball', 'sled', 'slider', 'bosu_pad', 'pullup_bar', 'landmine', 'smith', 'suspension'],
   plane: ['sagittal', 'frontal', 'transverse'],
+  progresses_by: ['load', 'variation'],   // optional; otherwise derived (src/lib/taxonomy.js progressesBy)
 };
 
 export function tagErrors(e) {
@@ -39,6 +40,7 @@ export function tagErrors(e) {
   if (typeof e.unilateral !== 'boolean') errs.push('unilateral');
   if (!T.plane.includes(e.plane)) errs.push(`plane "${e.plane}"`);
   if (typeof e.hip_focus !== 'boolean') errs.push('hip_focus');
+  if (e.progresses_by != null && !T.progresses_by.includes(e.progresses_by)) errs.push(`progresses_by "${e.progresses_by}"`);
   return errs;
 }
 

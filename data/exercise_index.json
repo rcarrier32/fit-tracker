@@ -4048,7 +4048,7 @@
    "equipment": [
     "band"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -4741,7 +4741,7 @@
    "equipment": [
     "band"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -5133,7 +5133,7 @@
     "band",
     "med_ball"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -5181,7 +5181,7 @@
     "band",
     "bench"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -5254,7 +5254,7 @@
     "band",
     "dumbbell"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
@@ -5494,7 +5494,7 @@
     "barbell",
     "box"
    ],
-   "level": 3,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -5918,9 +5918,9 @@
   },
   {
    "name": "Birddog Dumbbell Row",
-   "id": "lean-birddog-dumbbell-row",
+   "id": "private-trainheroic-birddog-dumbbell-row",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "lats",
    "muscles": [
@@ -5935,7 +5935,7 @@
     "dumbbell",
     "bench"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
@@ -6756,9 +6756,9 @@
   },
   {
    "name": "Contralateral Single Leg Row",
-   "id": "lean-contralateral-single-leg-row",
+   "id": "private-trainheroic-contralateral-single-leg-row",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "lats",
    "muscles": [
@@ -6772,7 +6772,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -6887,7 +6887,7 @@
    "equipment": [
     "bench"
    ],
-   "level": 3,
+   "level": 2,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -7330,7 +7330,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
@@ -8162,9 +8162,9 @@
   },
   {
    "name": "Dumbbell Row From Single Leg",
-   "id": "lean-dumbbell-row-from-single-leg",
+   "id": "private-trainheroic-dumbbell-row-from-single-leg",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "lats",
    "muscles": [
@@ -8293,7 +8293,7 @@
    "equipment": [
     "bench"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -8316,7 +8316,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -8340,7 +8340,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -8364,7 +8364,7 @@
    "equipment": [
     "kettlebell"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
@@ -8598,7 +8598,7 @@
    "equipment": [
     "box"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -8786,7 +8786,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -8810,7 +8810,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -8859,7 +8859,7 @@
    "equipment": [
     "box"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -8906,7 +8906,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -9755,9 +9755,9 @@
   },
   {
    "name": "Half Kneeling Lateral Bend",
-   "id": "lean-half-kneeling-lateral-bend",
+   "id": "private-trainheroic-half-kneeling-lateral-bend",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "obliques",
    "muscles": [
@@ -9817,7 +9817,7 @@
    "equipment": [
     "cable"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -10514,7 +10514,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -10561,7 +10561,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -10920,9 +10920,9 @@
   },
   {
    "name": "Incline Alternating Arms Dumbbell Press",
-   "id": "lean-incline-alternating-arms-dumbbell-press",
+   "id": "private-trainheroic-incline-alternating-arms-dumbbell-press",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "chest",
    "muscles": [
@@ -10937,7 +10937,7 @@
     "dumbbell",
     "bench"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
@@ -11270,7 +11270,7 @@
    "equipment": [
     "cable"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": false,
    "plane": "transverse",
    "hip_focus": true,
@@ -11279,9 +11279,9 @@
   },
   {
    "name": "Kneeling Dumbbell Diagonal Chop",
-   "id": "lean-kneeling-dumbbell-diagonal-chop",
+   "id": "private-trainheroic-kneeling-dumbbell-diagonal-chop",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "obliques",
    "muscles": [
@@ -11294,7 +11294,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": false,
    "plane": "transverse",
    "hip_focus": true,
@@ -11388,7 +11388,7 @@
    "equipment": [
     "landmine"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
@@ -11583,7 +11583,7 @@
    "equipment": [
     "landmine"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -11608,7 +11608,7 @@
    "equipment": [
     "landmine"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
@@ -12132,7 +12132,7 @@
    "equipment": [
     "band"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -12400,9 +12400,9 @@
   },
   {
    "name": "Loaded Lateral Squat",
-   "id": "lean-loaded-lateral-squat",
+   "id": "private-trainheroic-loaded-lateral-squat",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "adductors",
    "muscles": [
@@ -12415,7 +12415,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -12438,7 +12438,7 @@
     "dumbbell",
     "box"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
@@ -12654,7 +12654,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -12819,7 +12819,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
@@ -13818,7 +13818,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 3,
+   "level": 2,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
@@ -13852,9 +13852,9 @@
   },
   {
    "name": "Pogos",
-   "id": "lean-pogos",
+   "id": "private-trainheroic-pogos",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "calves",
    "muscles": [
@@ -13913,7 +13913,7 @@
     "box",
     "band"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -14227,9 +14227,9 @@
   },
   {
    "name": "Push Up To Shoulder Airplane",
-   "id": "lean-push-up-to-shoulder-airplane",
+   "id": "private-trainheroic-push-up-to-shoulder-airplane",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "chest",
    "muscles": [
@@ -14243,7 +14243,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": false,
    "plane": "transverse",
    "hip_focus": false,
@@ -14339,7 +14339,7 @@
    "equipment": [
     "bench"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -15386,9 +15386,9 @@
   },
   {
    "name": "Reverse Step Back Lunge",
-   "id": "lean-reverse-step-back-lunge",
+   "id": "private-trainheroic-reverse-step-back-lunge",
    "sources": [
-    "lean"
+    "trainheroic"
    ],
    "primary_muscle": "quads",
    "muscles": [
@@ -15589,7 +15589,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": false,
    "plane": "transverse",
    "hip_focus": true,
@@ -16012,7 +16012,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
@@ -16036,7 +16036,7 @@
    "equipment": [
     "band"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -16176,7 +16176,7 @@
    "equipment": [
     "bench"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
@@ -16294,7 +16294,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": false,
@@ -16549,7 +16549,7 @@
    "equipment": [
     "box"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -16622,7 +16622,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -16668,7 +16668,7 @@
    "equipment": [
     "kettlebell"
    ],
-   "level": 3,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -17266,7 +17266,7 @@
    "equipment": [
     "dumbbell"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -17763,7 +17763,7 @@
    "equipment": [
     "cable"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -18130,7 +18130,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true,
@@ -18348,7 +18348,7 @@
     "box",
     "band"
    ],
-   "level": 1,
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": true,
@@ -18604,7 +18604,7 @@
    "equipment": [
     "suspension"
    ],
-   "level": 2,
+   "level": 3,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
@@ -18651,7 +18651,7 @@
    "equipment": [
     "bodyweight"
    ],
-   "level": 1,
+   "level": 3,
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,

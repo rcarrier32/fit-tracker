@@ -55,6 +55,24 @@ mostly supersets, and cut isolation first (BWS express versions drop about 25% o
 - **Deload:** neither source writes one. Our plans make the last week of a 6- or 8-week block a deload (sets halved, same weights).
 - **Moving up a level:** when a movement stops reaching an 8/10 effort and is pain-free, move to the next variation.
 
+## Progression by level (Griffith style)
+
+Griffith's 8-week TrainHeroic plan never explains its progressions, but they are consistent:
+
+1. **2-week blocks.** Each exercise runs twice; week 2 adds a little (10 s → 15 s holds, 8 → 12 reps, pogos 20 → 30, carries 40 → 50 → 60 ft).
+2. **Each new block moves the movement one step up:** isometric/supported → loaded → elevated or single-leg → dynamic or plyometric.
+   Split squat: landmine iso → Bulgarian → FFE dumbbell → FFE floating heel / KB drops. Adductors: side-bridge scissor → 90/90
+   Copenhagen → straight-leg Copenhagen → dynamic Copenhagen. Push: push-up to shoulder airplane → plyo push-up to pike →
+   plyo push-up to shoulder airplane.
+3. **Warm-ups progress too:** band-assisted (distractions, floss) → active control (Figure 4, wall hip circles) → loaded and
+   dynamic (loaded hip airplane, two-leg drop into split squat). Every day opens with 2–3 prep moves; later weeks add a mobility block.
+
+In the catalog this is the `level` tag (1 beginner, 2 intermediate, 3 advanced; Griffith's moves are levelled by the week
+they first appear: weeks 1–2, 3–6, 7–8) plus `progresses_by`. BWS-style lifts progress by load; variation moves progress by level.
+The generator moves variation slots up a level per phase so the last phase lands on the person's level, and the Swap menu
+offers the same movement one level harder or easier. A person can be at different levels on different movements: swap up
+wherever you're already there.
+
 ## Exercise choice
 
 - Pick by `pattern` and `role` first, then `primary_muscle`, then the equipment available

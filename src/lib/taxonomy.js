@@ -18,6 +18,19 @@ export const EQUIPMENT_LABEL = {
   band: 'Band', mini_band: 'Mini band', cable: 'Cable', machine: 'Machine', bench: 'Bench', box: 'Box', med_ball: 'Med ball',
   sled: 'Sled', slider: 'Slider', bosu_pad: 'BOSU / pad', pullup_bar: 'Pull-up bar', landmine: 'Landmine', smith: 'Smith', suspension: 'Suspension (TRX)',
 };
+export { LEVEL_LABEL, progressesBy } from './progression.js';
+import { progressesBy } from './progression.js';
+
+/** Same movement, one level easier / harder (for exercises that progress by variation). */
+export function levelNeighbors(ex, all) {
+  if (!ex?.pattern) return { easier: [], harder: [] };
+  const lv = ex.level || 2;
+  const same = all.filter(e => e.name !== ex.name && e.pattern === ex.pattern && hasVideo(e) &&
+    (e.primary_muscle === ex.primary_muscle || (e.muscles || []).includes(ex.primary_muscle)));
+  const near = (L) => rankSimilar(ex, same.filter(e => (e.level || 2) === L), { limit: 4 });
+  return { easier: lv > 1 ? near(lv - 1) : [], harder: lv < 3 ? near(lv + 1) : [] };
+}
+
 export const muscleLabel = (m) => String(m || '').replace(/_/g, ' ').replace(/\bdelts\b/, 'delts');
 
 /** Filter groups for the exercise picker: label → test on an exercise. */

@@ -14,6 +14,7 @@ are tagged in the same file and merged when the app loads (`src/lib/static_data.
 | `role` | warmup, power, main, secondary, accessory, core, conditioning, cooldown | Where it sits in a session (see [PROGRAM_DESIGN.md](PROGRAM_DESIGN.md)). |
 | `equipment` | list (below) | What you need. `bodyweight` means nothing. |
 | `level` | 1, 2, 3 | 1 beginner, 2 intermediate, 3 advanced (heavy barbell, intensive plyo, complex coordination). |
+| `progresses_by` | load, variation (optional) | How it gets harder. **load**: more weight or reps (BWS, most lifts). **variation**: move to the next level of the same movement (Griffith, mobility, plyo, core, bodyweight hip work). Left out, it's derived by `progressesBy()` in `src/lib/progression.js`: warm-up/cooldown roles, mobility/balance/isometric/plyo/rotation/core patterns, and unloaded hip-focus moves are `variation`. Griffith's moves set it explicitly. |
 | `unilateral` | true / false | One limb at a time. |
 | `plane` | sagittal, frontal, transverse | Main plane of motion. |
 | `hip_focus` | true / false | Builds hip strength, mobility or control (Copenhagen, airplanes, 90/90, lateral and rotational hip work). |

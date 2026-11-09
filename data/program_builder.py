@@ -51,7 +51,7 @@ class Library:
         for f in sorted((LIB_PATH.parent / 'providers').glob('*.json')):
             d = json.loads(f.read_text())
             for o in (d.get('videos') or {}).values():
-                if o.get('name') and o.get('tags') and o['name'].lower() not in self.by_name:
+                if o.get('name') and o.get('tags'):
                     vid = f"https://youtu.be/{o['yt']}" if o.get('yt') else o.get('url')
                     self.providers[o['name'].lower()] = {'name': o['name'], 'source': d.get('source'), 'video_url': vid, **o['tags']}
 

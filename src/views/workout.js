@@ -10,7 +10,7 @@ import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
-import { tagLine, rankSimilar, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
+import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 
 // Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
@@ -793,10 +793,23 @@ function openExerciseMenu(session, i, allExercises, exMap) {
             `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
                 <div class="list-item-title">${e.name}</div>
-                <div class="list-item-meta" style="text-transform:capitalize">${e.pattern ? tagLine(e) : (e.primary_muscle?.replace(/_/g, ' ') || '')}${hasVideo(e) ? ' · ▶' : ''}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${e.pattern ? tagLine(e) : (e.primary_muscle?.replace(/_/g, ' ') || '')}${e.level ? ` · ${LEVEL_LABEL[e.level]}` : ''}${hasVideo(e) ? ' · ▶' : ''}</div>
               </div>
             </div>`
           ).join('')}` : '';
+        // Moves that progress by variation (Griffith's way) offer the same movement one level easier / harder.
+        const lv = (e) => (e?.level ? ` · ${LEVEL_LABEL[e.level]}` : '');
+        const nb = progressesBy(lookup) === 'variation' ? levelNeighbors(lookup, allExercises) : { easier: [], harder: [] };
+        const stepRow = (e) => `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1">
+                <div class="list-item-title">${e.name}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${tagLine(e)}${lv(e)}${hasVideo(e) ? ' · ▶' : ''}</div>
+              </div>
+            </div>`;
+        const levelSection = (nb.harder.length || nb.easier.length) ? `
+          <div class="group-label" style="margin:0 0 6px">This move is ${LEVEL_LABEL[lookup.level || 2]} · progress with a harder version</div>
+          ${nb.harder.length ? `<div class="list-item-meta" style="margin:4px 0">Harder</div>${nb.harder.map(stepRow).join('')}` : ''}
+          ${nb.easier.length ? `<div class="list-item-meta" style="margin:8px 0 4px">Easier</div>${nb.easier.map(stepRow).join('')}` : ''}` : '';
         const hipAlts = _hipFlare
           ? hipSwaps(ex.name).filter(n => exMap[n.toLowerCase()] && n !== ex.name)
           : [];
@@ -816,6 +829,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         s2.innerHTML = `
           <h2>Swap: ${ex.name}</h2>
           ${planSection}
+          ${levelSection}
           ${hipSection}
           ${bwsSection}
           ${similarSection}

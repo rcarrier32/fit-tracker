@@ -9,6 +9,7 @@
  *   params: { goal, days, minutes, weeks, equipment[], focus[], plyo, level, seed }
  *   returns a program in the app's weeks format, plus `summary` (weekly sets per muscle).
  */
+import { progressesBy } from './progression.js';
 
 // Small seeded RNG (mulberry32) so a plan can be regenerated exactly, or varied by seed.
 function rng(seed) {
@@ -85,7 +86,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) weekly[m] = (weekly[m] || 0) + sets / 2;
   };
 
-  function candidates(slot, usedToday, usedWeek, avoid) {
+  function candidates(slot, usedToday, usedWeek, avoid, ph = 0) {
+    // Moves that progress by variation climb a level per phase and reach your level in the last phase.
+    const target = Math.max(1, Math.min(p.level, p.level - (nPhases - 1 - ph)));
     const roles = ROLE_FALLBACK[slot.role] || [slot.role];
     return pool.filter(e => {
       if (!roles.includes(e.role)) return false;
@@ -107,7 +110,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (t) { if (v < t[0]) s += 1.2; else if (v >= t[1]) s -= 2; }
       if (usedWeek.has(e.name)) s -= 2.5;
       if (avoid?.has(e.name)) s -= 3;                          // rotate accessories between phases
-      if ((e.level || 2) === p.level) s += 0.4;
+      if (progressesBy(e) === 'variation') {
+        const L = e.level || 2;
+        s += L === target ? 1.5 : L > target ? -1 : -0.6 * (target - L);
+      } else if ((e.level || 2) === p.level) s += 0.4;
       if (goal.hip_focus && e.hip_focus) s += 0.8;
       if (goal.hip_focus && slot.role !== 'main' && e.sources?.some(x => x === 'hip' || x === 'trainheroic')) s += 1;   // the user's own PT/Motion RC + TrainHeroic hip-plan exercises
       const lifting = p.goal === 'strength' || p.goal === 'muscle' || p.goal === 'fat_loss';
@@ -156,7 +162,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         if (prev && (slot.role === 'main' || slot.role === 'power' && ph === 1 && false)) e = prev;
         if (!e) {
           const avoid = prev ? new Set([prev.name]) : null;
-          e = candidates(slot, usedToday, usedWeek, avoid)[0] || null;
+          e = candidates(slot, usedToday, usedWeek, avoid, ph)[0] || null;
         }
         if (e) {
           usedToday.add(e.name); usedWeek.add(e.name);
