@@ -1303,8 +1303,8 @@
   },
   "ffe-dumbbell-split-squats": {
    "name": "FFE Dumbbell Split Squats",
-   "yt": "GCqepujO-Bg",
-   "video_from": "search",
+   "yt": "rQ82haw9Jdo",
+   "video_from": "griffith",
    "notes": [],
    "alts": [],
    "tags": {
@@ -1913,8 +1913,8 @@
   },
   "plyo-push-up-to-pike": {
    "name": "Plyo Push Up To Pike",
-   "yt": "5wbQtnPJw9g",
-   "video_from": "search",
+   "yt": "5uNVxh6WjbY",
+   "video_from": "griffith",
    "notes": [],
    "alts": [],
    "tags": {
@@ -2277,8 +2277,8 @@
   },
   "step-up-with-tke": {
    "name": "Step Up With TKE",
-   "yt": "ulw00IJtJmA",
-   "video_from": "search",
+   "yt": "NebpuGtRA8w",
+   "video_from": "griffith",
    "notes": [],
    "alts": [],
    "tags": {
@@ -2348,8 +2348,8 @@
   },
   "two-leg-drop-into-split-squat": {
    "name": "Two Leg Drop Into Split Squat",
-   "yt": "VZdIZPhCFJ4",
-   "video_from": "search",
+   "yt": "NhbIXTa0WUQ",
+   "video_from": "griffith",
    "notes": [],
    "alts": [],
    "tags": {
@@ -2443,5 +2443,2246 @@
    }
   }
  },
- "programs": []
+ "programs": [
+  {
+   "id": "th_runners_mobility_strength_8wk",
+   "program_name": "Runners Mobility & Strength (Griffith)",
+   "group": "TrainHeroic",
+   "description": "Vernon Griffith's 8-week TrainHeroic plan: 3 days a week of hip and knee mobility, single-leg strength, rotational and core work. Exercises run in lettered groups (A1/A2 …): go straight through a group, rest after it. Every exercise plays Griffith's own demo where he has one.",
+   "sessions_per_week": 3,
+   "session_length_min": 50,
+   "level": "Intermediate",
+   "equipment": [
+    "Dumbbells",
+    "Kettlebell",
+    "Bench",
+    "Box",
+    "Bands",
+    "Landmine",
+    "TRX",
+    "Cable"
+   ],
+   "goal": "Build the hips, single-leg strength and durability.",
+   "suggested_week": {
+    "days": [
+     "rest",
+     "train",
+     "rest",
+     "train",
+     "rest",
+     "train",
+     "rest"
+    ],
+    "labels": {}
+   },
+   "weeks": [
+    {
+     "week_num": 1,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Unilateral Lower Body + Lower Body & Upper Body Push",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Extension",
+         "sets": 1,
+         "reps": "3",
+         "notes": "Hold 3s each rep. Go straight into the next exercise; rest after the group.",
+         "round_group": "B · Prep",
+         "rest": "0-15s"
+        },
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+         "sets": 1,
+         "reps": "3",
+         "notes": "Hold 3s each rep.",
+         "round_group": "B · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Poliquin Step Down",
+         "sets": 1,
+         "reps": "8",
+         "round_group": "C · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Reverse Step Back Lunge",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Unilateral Lower Body",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Bridge Adductor Scissor",
+         "sets": 3,
+         "reps": "1",
+         "notes": "Hold 10s each rep.",
+         "round_group": "D · Unilateral Lower Body",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Tempo Goblet Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Lower Body & Upper Body Push",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Push Up To Shoulder Airplane",
+         "sets": 3,
+         "reps": "4",
+         "round_group": "E · Lower Body & Upper Body Push",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Split Squat Isometric",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "F · Lower Body & Upper Body Press",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Kneeling Press",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "F · Lower Body & Upper Body Press",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Calf ISO",
+         "sets": 2,
+         "time": "8s",
+         "round_group": "G · Lower Leg & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Standing Hip Flexion Supported With ISO Hold",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "G · Lower Leg & Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Sling & Hips + Pull & Pillar",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Hamstring Floss With Knee Flexion",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Single Leg Hinge To Hip Flexor Drive",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded Hamstring Floss",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Contralateral Single Leg Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Sling & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Sling & Hips",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Single Leg Hinge To Row Combo",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Pull & Pillar",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "40 ft",
+         "round_group": "C · Pull & Pillar",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "D · Posterior & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plank",
+         "sets": 3,
+         "time": "45s",
+         "round_group": "D · Posterior & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "On Bench Single Leg Glute Bridge",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Bridge With Abduction From Elbow",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "E · Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hips & Groin + Rotational Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Shin Box Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Push-Up To Pike",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Pogos",
+         "sets": 2,
+         "reps": "20",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Supported Lateral Squat",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hips & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Step To Adductor Pull-In",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hips & Groin",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Cable Sweeping Rotation",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Rotational Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Rotating Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Rotational Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Birddog Dumbbell Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Incline Alternating Arms Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Dumbbell Diagonal Chop",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Core Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Core Strength",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 2,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Unilateral Lower Body + Lower Body & Upper Body Push",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Extension",
+         "sets": 1,
+         "reps": "3",
+         "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
+         "round_group": "A · Prep",
+         "rest": "0-15s"
+        },
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+         "sets": 1,
+         "reps": "3",
+         "notes": "Hold 5s each rep.",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Poliquin Step Down",
+         "sets": 1,
+         "reps": "10",
+         "round_group": "B · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Reverse Step Back Lunge",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Unilateral Lower Body",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Bridge Adductor Scissor",
+         "sets": 3,
+         "reps": "1",
+         "notes": "Hold 15s each rep.",
+         "round_group": "C · Unilateral Lower Body",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Tempo Goblet Squat",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "D · Lower Body & Upper Body Push",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Push Up To Shoulder Airplane",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "D · Lower Body & Upper Body Push",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Split Squat Isometric",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "E · Lower Body & Upper Body Press",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Kneeling Press",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Lower Body & Upper Body Press",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Calf ISO",
+         "sets": 2,
+         "time": "12s",
+         "round_group": "F · Lower Leg & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Standing Hip Flexion Supported With ISO Hold",
+         "sets": 2,
+         "time": "15s",
+         "round_group": "F · Lower Leg & Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Sling & Hips + Pull & Pillar",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Hamstring Floss With Knee Flexion",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Single Leg Hinge To Hip Flexor Drive",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded Hamstring Floss",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Contralateral Single Leg Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Sling & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Sling & Hips",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Single Leg Hinge To Row Combo",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Pull & Pillar",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "40 ft",
+         "round_group": "C · Pull & Pillar",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "12",
+         "round_group": "D · Posterior & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plank",
+         "sets": 3,
+         "time": "45s",
+         "round_group": "D · Posterior & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "On Bench Single Leg Glute Bridge",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Bridge With Abduction From Elbow",
+         "sets": 2,
+         "time": "15s",
+         "round_group": "E · Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hips & Groin + Rotational Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Shin Box Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Push-Up To Pike",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Pogos",
+         "sets": 2,
+         "reps": "30",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Loaded Lateral Squat",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hips & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Step To Adductor Pull-In",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hips & Groin",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Cable Sweeping Rotation",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Rotational Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Rotating Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Rotational Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Birddog Dumbbell Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Incline Alternating Arms Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Dumbbell Diagonal Chop",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Core Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Core Strength",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 3,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Hip & Knee Mobility + Lower Strength",
+       "notes": [
+        "Starting the third week with variations on patterns and progressions. Day 1: pressing upper and lower body, emphasis on hips and groin."
+       ],
+       "exercises": [
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+         "sets": 2,
+         "reps": "3",
+         "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "0-15s"
+        },
+        {
+         "name": "Poliquin Step Down With TKE",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Kettlebell Loaded Hip Flexor Lift",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Bulgarian Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "90/90 Copenhagen",
+         "sets": 3,
+         "time": "10s",
+         "round_group": "B · Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Alternating Arms Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge To Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "C · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Split Squat Isometric",
+         "sets": 3,
+         "time": "15s",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Standing Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Single Leg Calf Raise",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Calf & Hip Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Flexor Fall-In",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Calf & Hip Mobility",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Hip, Row & Posture + Posterior Chain",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Single Hinge To Hip Flexor Flow From Elevated Surface",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Facing Wall Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Hip, Row & Posture",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "40 ft",
+         "round_group": "B · Hip, Row & Posture",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine SLDL",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Row",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "12",
+         "round_group": "D · Back & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Serratus Slides",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Back & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Marching Glute Bridge With Hips Up",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "E · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Bridge With Row",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips & Core",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hips & Lower Leg + Rotational Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Dynamic Groin Drift",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge Matrix",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Hops",
+         "sets": 2,
+         "reps": "30",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Goblet Squat Drop Step",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Rotational Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Pike Toe Tap From Push-Up",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Rotational Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Dumbbell Diagonal Chop",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Core & Lower Body Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Dynamic Rotational Split ISO",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Core & Lower Body Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Lateral Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Rotations",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Barbell FFE Zercher ISO Hold",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "E · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips & Core",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 4,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Hip & Knee Mobility + Lower Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+         "sets": 2,
+         "reps": "3",
+         "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "0-15s"
+        },
+        {
+         "name": "Adductor Grab Banded Pendulum Swing",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Kettlebell Loaded Hip Flexor Lift",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Hip & Knee Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Bulgarian Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "90/90 Copenhagen",
+         "sets": 3,
+         "time": "15s",
+         "round_group": "B · Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Alternating Arms Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge To Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "C · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Split Squat Isometric",
+         "sets": 3,
+         "time": "15s",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Standing Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Single Leg Calf Raise",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Calf & Hip Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Flexor Fall-In",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Calf & Hip Mobility",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Hip, Row & Posture + Posterior Chain",
+       "notes": [
+        "Some of this day was not captured from TrainHeroic: B1/B2 assumed same as week 3 (not captured)."
+       ],
+       "exercises": [
+        {
+         "name": "Single Hinge To Hip Flexor Flow From Elevated Surface",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Facing Wall Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Hip, Row & Posture",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "40 ft",
+         "round_group": "B · Hip, Row & Posture",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine SLDL",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Row",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "12",
+         "round_group": "D · Back & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Serratus Slides",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Back & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Marching Glute Bridge With Hips Up",
+         "sets": 2,
+         "reps": "7",
+         "round_group": "E · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Bridge With Row",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "E · Hips & Core",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hips & Lower Leg + Rotational Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Dynamic Groin Drift",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge Matrix",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lateral Hops",
+         "sets": 2,
+         "reps": "30",
+         "round_group": "A · Hips & Lower Leg",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Goblet Squat Drop Step",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Rotational Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Pike Toe Tap From Push-Up",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Rotational Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Kneeling Dumbbell Diagonal Chop",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Core & Lower Body Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Dynamic Rotational Split ISO",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Core & Lower Body Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Lateral Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Rotations",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Barbell FFE Zercher ISO Hold",
+         "sets": 2,
+         "time": "10s",
+         "round_group": "E · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips & Core",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 5,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Lower & Upper Power + Unilateral Strength & Groin",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Figure 4 Flow",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Step Up With TKE",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded Hip Flexion Using A Medicine Ball",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Two Leg Drop Into Split Squat",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Lower & Upper Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plyo Push Up To Pike",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Lower & Upper Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "FFE Dumbbell Split Squats",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Unilateral Strength & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "90/90 Copenhagen",
+         "sets": 3,
+         "time": "10s",
+         "round_group": "C · Unilateral Strength & Groin",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Dumbbell Chest Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge To Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dynamic Hip Flexor Rock Back",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "E · Hip Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Marching Glute Bridge With Hips Up",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "E · Hip Mobility",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Posterior Chain + Hips & Rows",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Single Leg Hinge To Hip Flexor Drive",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Loaded Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Hand Supported SLDL Loaded",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "12",
+         "round_group": "B · Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Rows",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Hips & Rows",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Posterior Bridge With Sagittal Leg Whip",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Core & Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "50 ft",
+         "round_group": "D · Core & Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Hamstring Curl",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hamstrings & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Deadbug",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "E · Hamstrings & Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Power & Mobility + Hips & Upper Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Star Toe Tap",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Shin Box Reach And Row",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Kneeling Cable Sweeping Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Single Leg Kettlebell Swing",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "B · Power & Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Rolling Shoulder Armbar",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "B · Power & Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Lateral Squat Drop In",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Upper Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Reverse Lunge To Overhead Press",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "C · Hips & Upper Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Biased IR Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Body Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "DNS Star",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Body Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Soleus Raise",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "E · Lower Leg & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Copenhagen Straight Leg",
+         "sets": 3,
+         "reps": "1",
+         "notes": "Hold 10s each rep.",
+         "round_group": "E · Lower Leg & Groin",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 6,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Lower & Upper Power + Unilateral Strength & Groin",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Figure 4 Flow",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Step Up With TKE",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded Hip Flexion Using A Medicine Ball",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Two Leg Drop Into Split Squat",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "B · Lower & Upper Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plyo Push Up To Pike",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Lower & Upper Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "FFE Dumbbell Split Squats",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Unilateral Strength & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "90/90 Copenhagen",
+         "sets": 3,
+         "time": "10s",
+         "round_group": "C · Unilateral Strength & Groin",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Dumbbell Chest Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Lunge To Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Upper & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dynamic Hip Flexor Rock Back",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "E · Hip Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Marching Glute Bridge With Hips Up",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "E · Hip Mobility",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Posterior Chain + Hips & Rows",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Single Leg Hinge To Hip Flexor Drive",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Loaded Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Hand Supported SLDL Loaded",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "TRX Row",
+         "sets": 3,
+         "reps": "12",
+         "round_group": "B · Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Rows",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Hips & Rows",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Posterior Bridge With Sagittal Leg Whip",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Core & Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "50 ft",
+         "round_group": "D · Core & Posterior Chain",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Hamstring Curl",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hamstrings & Hips",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Deadbug",
+         "sets": 2,
+         "reps": "5",
+         "round_group": "E · Hamstrings & Hips",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Power & Mobility + Hips & Upper Strength",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Star Toe Tap",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Shin Box Reach And Row",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Kneeling Cable Sweeping Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Single Leg Kettlebell Swing",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "B · Power & Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Rolling Shoulder Armbar",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "B · Power & Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Lateral Squat Drop In",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Upper Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Landmine Reverse Lunge To Overhead Press",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "C · Hips & Upper Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Biased IR Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Body Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "DNS Star",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Body Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Soleus Raise",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "E · Lower Leg & Groin",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Copenhagen Straight Leg",
+         "sets": 3,
+         "reps": "1",
+         "notes": "Hold 10s each rep.",
+         "round_group": "E · Lower Leg & Groin",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 7,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Power & Mobility + Strength/Power",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Facing Wall Hip Circle Rotations",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Two Leg Drop Into Split Squat",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Dynamic Copenhagen",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Dynamic Kettlebell Split Squat Drops",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Power & Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plyo Push Up To Shoulder Airplane",
+         "sets": 3,
+         "reps": "4",
+         "round_group": "B · Power & Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "FFE Floating Heel",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Staggered Adductor Grab From Punch",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Dumbbell Chest Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Lower Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Explosive Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Upper Strength & Lower Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Hip Flexor Rock Back",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "E · Hips & Glutes",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "On Bench Single Leg Glute Bridge",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips & Glutes",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Strength/Power + Hips & Rows",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "A · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Loaded Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "SLDL With Loaded Hip Flexion",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "B · Hips & Rows",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Rotating Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Hips & Rows",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Posterior Bridge With Sagittal Leg Whip",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Power & Posture",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "60 ft",
+         "round_group": "D · Power & Posture",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 2,
+         "reps": "12",
+         "round_group": "E · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suspended Hamstring Curl",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "E · Posterior Chain",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hip Mobility + Power & Shoulder Mobility",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Star Toe Tap",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Rotating Pike Twist To Cobra Flow",
+         "sets": 2,
+         "reps": "4",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Banded Incline Pigeon Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hip Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Single Leg Kettlebell Swing",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Power & Shoulder Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Lying T-Spine Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Power & Shoulder Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Squat Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Band Pulling Hip Hurdle",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Hips & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Biased IR Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Hips & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded March With Goblet Squat",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "E · Hips & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Single Leg Calf Raise",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "F · Lower Leg & Spine",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "T-Spine Wall Contour",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "F · Lower Leg & Spine",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "week_num": 8,
+     "days": [
+      {
+       "day_num": 1,
+       "focus": "Day 1 · Power & Mobility + Strength/Power",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Facing Wall Hip Circle Rotations",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Two Leg Drop Into Split Squat",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Dynamic Copenhagen",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Dynamic Kettlebell Split Squat Drops",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Power & Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Plyo Push Up To Shoulder Airplane",
+         "sets": 3,
+         "reps": "4",
+         "round_group": "B · Power & Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "FFE Floating Heel",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Staggered Adductor Grab From Punch",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Incline Dumbbell Chest Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Upper Strength & Lower Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Explosive Step Up",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Upper Strength & Lower Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Hip Flexor Rock Back",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "E · Hips & Glutes",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "On Bench Single Leg Glute Bridge",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "E · Hips & Glutes",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 2,
+       "focus": "Day 2 · Strength/Power + Hips & Rows",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "QL Hip Drop From A Bench",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "A · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Hip Hikes",
+         "sets": 2,
+         "reps": "10",
+         "round_group": "A · Strength/Power",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Loaded Hip Airplane",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Strength/Power",
+         "rest": "60-90s"
+        },
+        {
+         "name": "SLDL With Loaded Hip Flexion",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "B · Hips & Rows",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Rotating Row",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "B · Hips & Rows",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Dumbbell Row From Single Leg",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Core",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Half Kneeling Lateral Bend",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Hips & Core",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Posterior Bridge With Sagittal Leg Whip",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Power & Posture",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suitcase Carry",
+         "sets": 3,
+         "reps": "60 ft",
+         "round_group": "D · Power & Posture",
+         "rest": "60-90s"
+        },
+        {
+         "name": "TRX Row",
+         "sets": 2,
+         "reps": "12",
+         "round_group": "E · Posterior Chain",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Suspended Hamstring Curl",
+         "sets": 3,
+         "reps": "6",
+         "round_group": "E · Posterior Chain",
+         "rest": "60-90s"
+        }
+       ]
+      },
+      {
+       "day_num": 3,
+       "focus": "Day 3 · Hip Mobility + Power & Shoulder Mobility",
+       "notes": [],
+       "exercises": [
+        {
+         "name": "Star Toe Tap",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "A · Prep",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Rotating Pike Twist To Cobra Flow",
+         "sets": 2,
+         "reps": "4",
+         "round_group": "A · Prep",
+         "rest": "30s"
+        },
+        {
+         "name": "Banded Incline Pigeon Rotation",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "B · Hip Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Single Leg Kettlebell Swing",
+         "sets": 3,
+         "reps": "10",
+         "round_group": "C · Power & Shoulder Mobility",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Side Lying T-Spine Dumbbell Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "C · Power & Shoulder Mobility",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Landmine Squat Press",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "D · Hips & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Band Pulling Hip Hurdle",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "D · Hips & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Biased IR Split Squat",
+         "sets": 3,
+         "reps": "8",
+         "round_group": "E · Hips & Lower Strength",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "Banded March With Goblet Squat",
+         "sets": 3,
+         "reps": "5",
+         "round_group": "E · Hips & Lower Strength",
+         "rest": "60-90s"
+        },
+        {
+         "name": "Loaded Single Leg Calf Raise",
+         "sets": 2,
+         "reps": "8",
+         "round_group": "F · Lower Leg & Spine",
+         "rest": "0-15s",
+         "notes": "Go straight into the next exercise; rest after the group."
+        },
+        {
+         "name": "T-Spine Wall Contour",
+         "sets": 2,
+         "reps": "6",
+         "round_group": "F · Lower Leg & Spine",
+         "rest": "60-90s"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

@@ -67,13 +67,13 @@ export async function loadFullCatalog({ extra = [] } = {}) {
     for (const o of Object.values(providers[src].videos || {})) {
       if (!o?.name) continue;
       const url = providerVideo(o);
+      // Videos match loosely (local_videos.js localFor); catalog entries join by exact name (static_data.js).
       const hit = byName.get(o.name.toLowerCase()) || byNorm.get(norm(o.name));
       if (hit) {
         if (url && (!hit.video || hit.video.from === 'catalog')) hit.video = { url, from: src };
         hit.provider_notes ??= o.notes?.length ? o.notes : undefined;
-        continue;
       }
-      if (!o.tags) continue;
+      if (!o.tags || byName.has(o.name.toLowerCase())) continue;
       const e = { id: `private-${src}-${o.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name: o.name, sources: [src], aliases: [],
         video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags, video: url ? { url, from: src } : null };
       add(e);
