@@ -4,8 +4,8 @@
   "exercises": 715,
   "with_video": 687,
   "video_from": {
-   "catalog": 394,
-   "pjf": 192,
+   "catalog": 392,
+   "pjf": 194,
    "trainheroic": 101,
    "none": 28
   }
@@ -6471,8 +6471,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://www.youtube.com/watch?v=vuyUwtHl694",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/K9zgVBNj55732l8mA8aRGyih1Qgdrhkq01yfoPvitYl8.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Cat-Cow",
@@ -7340,8 +7340,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://www.youtube.com/watch?v=2vspW4N4BMs",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/mzReapDFeJWnzwUrHtts02SUlV1Gs4MzAhyyGrnMwsAs.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Deadbug",
