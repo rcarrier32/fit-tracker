@@ -66,6 +66,14 @@ that plan design reads). To edit tags by hand, change `exercise_tags.json` and r
 
 ## 3. Videos: every exercise gets one
 
+**Provider videos first, always.** Use this order, and when a better tier turns up later, swap it in:
+1. Our providers' own demos: PJF (The PJF System, PJF Performance, and on-device member videos), BWS
+   ("BWS Programs" / Jeremy Ethier), Griffith (TrainHeroic), and links the user sends from those apps.
+   Before searching, check whether any provider already has the same move under another name.
+2. A trusted expert channel (E3 Rehab, Squat University, Rehab Hero, Cressey, NASM, …; the
+   allowlists in `enrich_program_videos.mjs` and `enrich_hip_videos.mjs`).
+3. Anything else only as a stand-in, and a document's own follow-along videos stay as given.
+
 ```bash
 node data/enrich_program_videos.mjs --source <tag>
 ```

@@ -1,0 +1,275 @@
+{
+ "_doc": "Random-channel videos -> trusted expert-channel demos. Set approved true/false, then apply. App links from BWS/PJF replace these later.",
+ "items": {
+  "Band External Rotations": {
+   "plan": "bws",
+   "from": {
+    "id": "ybNV36DoRfY",
+    "channel": "Rehab My Patient",
+    "title": "Banded Shoulder External Rotation | Band | Strength and Conditioning Exercises"
+   },
+   "to": {
+    "id": "UyBb2-bP0CU",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Standing Banded External Rotation (Neutral)",
+    "seconds": 16
+   },
+   "approved": true
+  },
+  "Asian Squat": {
+   "plan": "bws",
+   "from": {
+    "id": "Ibgby16rlGw",
+    "channel": "Gymless Fitness",
+    "title": "Asian Squat Tutorial: How To Do It With Progressions (3 Variations Included)"
+   },
+   "to": {
+    "id": "b4D0jAQLtkY",
+    "channel": "Squat University",
+    "title": "How to “Asian Squat”",
+    "seconds": 59
+   },
+   "approved": true
+  },
+  "Half Kneeling Thoracic Rotations": {
+   "plan": "bws",
+   "from": {
+    "id": "bO4WtubrQqU",
+    "channel": "Rich Hill",
+    "title": "How To Do A Half Kneeling Thoracic Spine Rotation"
+   },
+   "to": {
+    "id": "VkGwj9ps4EA",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Half Kneeling Thoracic Rotation (Open / Wall)",
+    "seconds": 14
+   },
+   "approved": true
+  },
+  "Bodyweight Squat": {
+   "plan": "home",
+   "from": {
+    "id": "l83R5PblSMA",
+    "channel": "PureGym",
+    "title": "Leg exercise - How to bodyweight squat"
+   },
+   "to": {
+    "id": "AIZ8q1qruKw",
+    "channel": "Squat University",
+    "title": "How to Perform a PERFECT Squat",
+    "seconds": 60
+   },
+   "approved": true
+  },
+  "Heel Slides": {
+   "plan": "home",
+   "from": {
+    "id": "6-anByqnKp8",
+    "channel": "Children's Hospital Colorado",
+    "title": "Core Exercise: Heel Slide"
+   },
+   "to": {
+    "id": "BL68tDXi430",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Heel Slide",
+    "seconds": 17
+   },
+   "approved": true
+  },
+  "Fire Hydrants": {
+   "plan": "home",
+   "from": {
+    "id": "AzAZ0myMpZ0",
+    "channel": "Inclusive Movement ",
+    "title": "Fire hydrants on floor (glute exercise)"
+   },
+   "to": {
+    "id": "nt4DnYjP-Xo",
+    "channel": "Rehab Hero",
+    "title": "Fire Hydrant - Glute Strengthening Exercise",
+    "seconds": 17
+   },
+   "approved": true
+  },
+  "Resistance Band Side Steps": {
+   "plan": "home",
+   "from": {
+    "id": "9Mda-LOoCXw",
+    "channel": "Live Lean TV Daily Exercises",
+    "title": "How To: Resistance Band Side Step"
+   },
+   "to": {
+    "id": "MxSkSyJ1z7w",
+    "channel": "National Academy of Sports Medicine (NASM)",
+    "title": "How to Add Mini Band Side Steps to Your Workout",
+    "seconds": 50
+   },
+   "approved": true
+  },
+  "Dumbbell Bent-Over Row": {
+   "plan": "home",
+   "from": {
+    "id": "6gvmcqr226U",
+    "channel": "PureGym",
+    "title": "How To Do A Dumbbell Bent Over Row"
+   },
+   "to": {
+    "id": "5PoEksoJNaw",
+    "channel": "Renaissance Periodization",
+    "title": "Two Arm Dumbbell Row",
+    "seconds": 12
+   },
+   "approved": true
+  },
+  "Pelvic Tilts": {
+   "plan": "hip",
+   "from": {
+    "id": "zHfuVboAWVM",
+    "channel": "Hope Physical Therapy and Aquatics",
+    "title": "Posterior Pelvic Tilt"
+   },
+   "to": {
+    "id": "DqqUIfMuDX4",
+    "channel": "Rehab Hero",
+    "title": "Supine Pelvic Tilts - Posterior Pelvic Tilting exercise for Low Back Pain",
+    "seconds": 16
+   },
+   "approved": true
+  },
+  "Bridge with Ball Squeeze": {
+   "plan": "hip",
+   "from": {
+    "id": "a3OOr05HZUo",
+    "channel": "Physical Therapy First",
+    "title": "How to correctly perform a Glute Bridge with Ball Squeeze"
+   },
+   "to": {
+    "id": "y6kquy65vnc",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Glute Bridge with Adductor Squeeze",
+    "seconds": 18
+   },
+   "approved": true
+  },
+  "Modified Side Plank": {
+   "plan": "hip",
+   "from": {
+    "id": "1zpH0V32Vb8",
+    "channel": "START Physical Therapy",
+    "title": "Modified side plank (knees)"
+   },
+   "to": {
+    "id": "lvpPNjRQONQ",
+    "channel": "National Academy of Sports Medicine (NASM)",
+    "title": "How to Do a Modified Side Plank",
+    "seconds": 89
+   },
+   "approved": true
+  },
+  "Prone Hip Extension": {
+   "plan": "hip",
+   "from": {
+    "id": "Ck_afD5YBRA",
+    "channel": "The Physiobot",
+    "title": "Prone Hip Extension Exercise | Strengthen your Glute Muscles"
+   },
+   "to": {
+    "id": "7iQkDi7R3oM",
+    "channel": "Rehab Hero",
+    "title": "Prone Hip Extension - Gluteus Maximus and Hamstrings Activation Exercise",
+    "seconds": 16
+   },
+   "approved": true
+  },
+  "Banded Hip Flexor March": {
+   "plan": "hip",
+   "from": {
+    "id": "Za5Vu_uK084",
+    "channel": "BEFORM Performance Physical Therapy",
+    "title": "Hip Flexion March - At Wall, Banded"
+   },
+   "to": {
+    "id": "43biWt64RKQ",
+    "channel": "Rehab Hero",
+    "title": "Banded Hip March - Hip Flexor strengthening exercise for runners",
+    "seconds": 11
+   },
+   "approved": true
+  },
+  "Mini Band Monster Walk": {
+   "plan": "hip",
+   "from": {
+    "id": "aX5zg0LYYI0",
+    "channel": "Alex LaRochelle",
+    "title": "Mini Band Monster Walk"
+   },
+   "to": {
+    "id": "kfm8QOPfD9k",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Monster Walk (Band Above Knees)",
+    "seconds": 23
+   },
+   "approved": true
+  },
+  "Copenhagen Side Plank (Long Lever)": {
+   "plan": "hip",
+   "from": {
+    "id": "aGuAemGeyvA",
+    "channel": "Physio Plus Fitness",
+    "title": "Copenhagen Plank Long lever | Step-by-Step Tutorial"
+   },
+   "to": {
+    "id": "aDsaGBnvDQo",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Copenhagen Plank",
+    "seconds": 11
+   },
+   "approved": true
+  },
+  "Single-Leg RDL with Kettlebell": {
+   "plan": "hip",
+   "from": {
+    "id": "s32cCgmRV3I",
+    "channel": "Movement Physio",
+    "title": "Single Leg Kettlebell Romanian Deadlift (RDL)"
+   },
+   "to": {
+    "id": "ejaC0QxtzN0",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Contralateral Kettlebell Single Leg Deadlift",
+    "seconds": 13
+   },
+   "approved": true
+  },
+  "High Box Step Up": {
+   "plan": "hip",
+   "from": {
+    "id": "jcGbLEETLxs",
+    "channel": "Champion Physical Therapy and Performance",
+    "title": "How To Perform The High Box Step-up"
+   },
+   "to": {
+    "id": "RhYwWOd87dI",
+    "channel": "E3 Rehab Exercise Library",
+    "title": "Step Ups (High Box)",
+    "seconds": 16
+   },
+   "approved": true
+  },
+  "Adductor Slider Lunge": {
+   "plan": "hip",
+   "from": {
+    "id": "SkH6Da-M9Zo",
+    "channel": "Kenny Esquivel",
+    "title": "Slider lateral lunge (adductor focus)"
+   },
+   "to": {
+    "id": "CqbUjSW6n2M",
+    "channel": "Rehab Hero",
+    "title": "Eccentric Control Hip Adductor Exercise - Groin Sliders",
+    "seconds": 21
+   },
+   "approved": true
+  }
+ }
+}
