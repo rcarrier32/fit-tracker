@@ -7588,6 +7588,64 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "lean-ffe-goblet-split-squat-isometric": {
+   "name": "FFE Goblet Split Squat Isometric",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes",
+    "adductors",
+    "hip_flexors"
+   ],
+   "pattern": "isometric",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell",
+    "box"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
+  "lean-goblet-squat-to-press": {
+   "name": "Goblet Squat to Press",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes",
+    "front_delts",
+    "triceps"
+   ],
+   "pattern": "squat",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-half-kneeling-single-arm-dumbbell-press": {
+   "name": "Half Kneeling Single Arm Dumbbell Press",
+   "primary_muscle": "front_delts",
+   "muscles": [
+    "front_delts",
+    "triceps",
+    "obliques",
+    "glutes"
+   ],
+   "pattern": "push_vertical",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
   "lean-in-lateral-raise": {
    "name": "Lean In Lateral Raise",
    "primary_muscle": "side_delts",
@@ -7658,6 +7716,25 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "lean-reverse-lunge-to-single-arm-dumbbell-press": {
+   "name": "Reverse Lunge to Single Arm Dumbbell Press",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes",
+    "front_delts",
+    "triceps"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
   "lean-single-arm-banded-lat-pulldown": {
    "name": "Single-Arm Banded Lat Pulldown",
    "primary_muscle": "lats",
@@ -7672,6 +7749,24 @@
     "band"
    ],
    "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-split-stance-single-arm-dumbbell-press": {
+   "name": "Split Stance Single Arm Dumbbell Press",
+   "primary_muscle": "front_delts",
+   "muscles": [
+    "front_delts",
+    "triceps",
+    "obliques"
+   ],
+   "pattern": "push_vertical",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false

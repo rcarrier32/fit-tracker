@@ -1141,7 +1141,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 12.8,
+   "exercises_per_day": 13.0,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
     "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
@@ -1156,9 +1156,9 @@
     "hamstrings": 9,
     "abs": 8,
     "front_delts": 6,
-    "adductors": 6,
     "hip_flexors": 5,
     "upper_back": 5,
+    "adductors": 4,
     "side_delts": 3,
     "full_body": 3,
     "calves": 3,
@@ -1182,7 +1182,6 @@
     "plyo_bound_hop": 3,
     "balance": 3,
     "anti_rotation": 2,
-    "isometric": 2,
     "anti_extension": 2,
     "lateral_flexion": 2
    },
@@ -1190,8 +1189,8 @@
     "secondary": 18,
     "cooldown": 13,
     "accessory": 7,
-    "core": 4,
     "conditioning": 4,
+    "core": 3,
     "warmup": 2,
     "power": 2,
     "main": 1

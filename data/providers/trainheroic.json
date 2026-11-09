@@ -167,7 +167,7 @@
     "pattern": "pull_horizontal",
     "role": "secondary",
     "equipment": [
-     "cable"
+     "band"
     ],
     "level": 1,
     "unilateral": true,
@@ -268,7 +268,7 @@
     "pattern": "rotation",
     "role": "core",
     "equipment": [
-     "cable"
+     "band"
     ],
     "level": 1,
     "unilateral": false,
@@ -2334,7 +2334,7 @@
     "pattern": "rotation",
     "role": "core",
     "equipment": [
-     "cable"
+     "band"
     ],
     "level": 3,
     "unilateral": true,
@@ -2645,14 +2645,22 @@
          "time": "10s",
          "round_group": "F · Lower Body & Upper Body Press",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric",
+          "Forward Lunge Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Kneeling Press",
          "sets": 2,
          "reps": "8",
          "round_group": "F · Lower Body & Upper Body Press",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Half Kneeling Single Arm Dumbbell Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Loaded Calf ISO",
@@ -2735,7 +2743,12 @@
          "reps": "10",
          "round_group": "D · Posterior & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Plank",
@@ -2810,14 +2823,15 @@
          "reps": "8",
          "round_group": "C · Rotational Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "notes": "A band anchored at the same height works in place of the cable. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Half Kneeling Rotating Row",
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Birddog Dumbbell Row",
@@ -2921,14 +2935,22 @@
          "time": "10s",
          "round_group": "E · Lower Body & Upper Body Press",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric",
+          "Forward Lunge Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Kneeling Press",
          "sets": 2,
          "reps": "8",
          "round_group": "E · Lower Body & Upper Body Press",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Half Kneeling Single Arm Dumbbell Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Loaded Calf ISO",
@@ -3011,7 +3033,12 @@
          "reps": "12",
          "round_group": "D · Posterior & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Plank",
@@ -3086,14 +3113,15 @@
          "reps": "8",
          "round_group": "C · Rotational Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "notes": "A band anchored at the same height works in place of the cable. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Half Kneeling Rotating Row",
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Birddog Dumbbell Row",
@@ -3198,14 +3226,23 @@
          "time": "15s",
          "round_group": "D · Upper & Lower Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric",
+          "Forward Lunge Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Standing Press",
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Split Stance Single Arm Dumbbell Press",
+          "Standing Dumbbell Shoulder Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Loaded Single Leg Calf Raise",
@@ -3273,14 +3310,23 @@
          "reps": "8",
          "round_group": "C · Posterior Chain",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Single-Leg RDL with Kettlebell",
+          "Hand Supported SLDL Loaded"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Row",
          "sets": 3,
          "reps": "10",
          "round_group": "C · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "DB Split Stance Row",
+          "Dumbbell Row From Single Leg"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "TRX Row",
@@ -3288,7 +3334,12 @@
          "reps": "12",
          "round_group": "D · Back & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Serratus Slides",
@@ -3378,14 +3429,23 @@
          "reps": "8",
          "round_group": "D · Strength/Power",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Loaded Lateral Squat",
+          "Dumbbell Lateral Squat Drop In"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Rotations",
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Kneeling Dumbbell Diagonal Chop",
+          "3D Explosive Rotation Punch"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Barbell FFE Zercher ISO Hold",
@@ -3393,7 +3453,10 @@
          "time": "10s",
          "round_group": "E · Hips & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Half Kneeling Lateral Bend",
@@ -3473,14 +3536,23 @@
          "time": "15s",
          "round_group": "D · Upper & Lower Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric",
+          "Forward Lunge Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Standing Press",
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Split Stance Single Arm Dumbbell Press",
+          "Standing Dumbbell Shoulder Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Loaded Single Leg Calf Raise",
@@ -3548,14 +3620,23 @@
          "reps": "8",
          "round_group": "C · Posterior Chain",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Single-Leg RDL with Kettlebell",
+          "Hand Supported SLDL Loaded"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Row",
          "sets": 3,
          "reps": "10",
          "round_group": "C · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "DB Split Stance Row",
+          "Dumbbell Row From Single Leg"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "TRX Row",
@@ -3563,7 +3644,12 @@
          "reps": "12",
          "round_group": "D · Back & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Serratus Slides",
@@ -3653,14 +3739,23 @@
          "reps": "8",
          "round_group": "D · Strength/Power",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Loaded Lateral Squat",
+          "Dumbbell Lateral Squat Drop In"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Landmine Rotations",
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Kneeling Dumbbell Diagonal Chop",
+          "3D Explosive Rotation Punch"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Barbell FFE Zercher ISO Hold",
@@ -3668,7 +3763,10 @@
          "time": "10s",
          "round_group": "E · Hips & Core",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "FFE Goblet Split Squat Isometric"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Half Kneeling Lateral Bend",
@@ -3815,7 +3913,13 @@
          "sets": 3,
          "reps": "12",
          "round_group": "B · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Dumbbell Row From Single Leg",
@@ -3890,7 +3994,8 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
-         "rest": "30s"
+         "rest": "30s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Single Leg Kettlebell Swing",
@@ -3920,7 +4025,11 @@
          "sets": 3,
          "reps": "6",
          "round_group": "C · Hips & Upper Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Reverse Lunge to Single Arm Dumbbell Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Biased IR Split Squat",
@@ -4091,7 +4200,13 @@
          "sets": 3,
          "reps": "12",
          "round_group": "B · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Dumbbell Row From Single Leg",
@@ -4166,7 +4281,8 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
-         "rest": "30s"
+         "rest": "30s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Single Leg Kettlebell Swing",
@@ -4196,7 +4312,11 @@
          "sets": 3,
          "reps": "6",
          "round_group": "C · Hips & Upper Strength",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Reverse Lunge to Single Arm Dumbbell Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         },
         {
          "name": "Biased IR Split Squat",
@@ -4292,7 +4412,8 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Incline Dumbbell Chest Press",
@@ -4367,7 +4488,8 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hips & Rows",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Dumbbell Row From Single Leg",
@@ -4405,14 +4527,24 @@
          "reps": "12",
          "round_group": "E · Posterior Chain",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Suspended Hamstring Curl",
          "sets": 3,
          "reps": "6",
          "round_group": "E · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Single-Leg Slider Hamstring Curl",
+          "Slider Hamstring Curl"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         }
        ]
       },
@@ -4464,7 +4596,10 @@
          "reps": "8",
          "round_group": "D · Hips & Lower Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Goblet Squat to Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Band Pulling Hip Hurdle",
@@ -4566,7 +4701,8 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Incline Dumbbell Chest Press",
@@ -4641,7 +4777,8 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hips & Rows",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "notes": "A band anchored at the same height works in place of the cable."
         },
         {
          "name": "Dumbbell Row From Single Leg",
@@ -4679,14 +4816,24 @@
          "reps": "12",
          "round_group": "E · Posterior Chain",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Birddog Dumbbell Row",
+          "Inverted Row",
+          "Bent Over 1 Arm Row"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Suspended Hamstring Curl",
          "sets": 3,
          "reps": "6",
          "round_group": "E · Posterior Chain",
-         "rest": "60-90s"
+         "rest": "60-90s",
+         "alternates": [
+          "Single-Leg Slider Hamstring Curl",
+          "Slider Hamstring Curl"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
         }
        ]
       },
@@ -4738,7 +4885,10 @@
          "reps": "8",
          "round_group": "D · Hips & Lower Strength",
          "rest": "0-15s",
-         "notes": "Go straight into the next exercise; rest after the group."
+         "alternates": [
+          "Goblet Squat to Press"
+         ],
+         "notes": "No landmine/barbell/TRX at home? Swap to the first alternative. Go straight into the next exercise; rest after the group."
         },
         {
          "name": "Band Pulling Hip Hurdle",
