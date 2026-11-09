@@ -3,8 +3,8 @@
  "videos": {
   "banded-hamstring-floss": {
    "name": "Banded Hamstring Floss",
-   "yt": "72WKiKdmn0U",
-   "video_from": "reuse",
+   "yt": "8HY1TcknftY",
+   "video_from": "griffith",
    "notes": [],
    "alts": [],
    "tags": {
@@ -3502,9 +3502,7 @@
       {
        "day_num": 2,
        "focus": "Day 2 · Hip, Row & Posture + Posterior Chain",
-       "notes": [
-        "Some of this day was not captured from TrainHeroic: B1/B2 assumed same as week 3 (not captured)."
-       ],
+       "notes": [],
        "exercises": [
         {
          "name": "Single Hinge To Hip Flexor Flow From Elevated Surface",
@@ -3540,7 +3538,7 @@
         {
          "name": "Suitcase Carry",
          "sets": 3,
-         "reps": "40 ft",
+         "reps": "50 ft",
          "round_group": "B · Hip, Row & Posture",
          "rest": "60-90s"
         },
