@@ -52,6 +52,12 @@ description, and give the program a `suggested_week` (`days`: 7 entries Sun..Sat
 "Set up my week" and writes the Mixed Week schedule in one tap. The person sets it up with Today → Set up Mixed Week, and each program keeps
 its own progress.
 
+**Build from the exercise index.** `data/exercise_index.json` (rebuilt by `lib.save()` / `tag_exercises.py`
+via `data/catalog.mjs`) lists every exercise the phone has, from library, the Hip tab and provider files, with its muscles,
+pattern, role, equipment, level, its video and `video_from` (`pjf`, `trainheroic` = the provider's own demo;
+`catalog` = library.json's YouTube link). Fill each slot by muscle and pattern (`by_primary_muscle`, `by_muscle`,
+`by_pattern`) and the video comes with the exercise. The validators and `generate_plan.mjs` load the same catalog.
+
 **Names.** Reuse an existing catalog name when the movement already exists, so its vetted
 video comes with it (check `library.json` and the hip tab's `HIP_CATALOG_ENTRIES`).
 Otherwise add it with `lib.ensure_exercise(name, '<source tag>', tags={...})`.

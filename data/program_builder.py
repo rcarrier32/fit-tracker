@@ -44,9 +44,23 @@ class Library:
         for e in self.data['exercises']:
             for n in [e['name']] + (e.get('aliases') or []):
                 self.by_name.setdefault(n.lower(), e)
+        # Provider exercises (data/providers/*.json: TrainHeroic, PJF …) are part of the catalog on
+        # every phone, with their own videos, so plans can use them by name. They are never copied
+        # into library.json: the provider file owns them (see data/catalog.mjs).
+        self.providers = {}
+        for f in sorted((LIB_PATH.parent / 'providers').glob('*.json')):
+            d = json.loads(f.read_text())
+            for o in (d.get('videos') or {}).values():
+                if o.get('name') and o.get('tags') and o['name'].lower() not in self.by_name:
+                    vid = f"https://youtu.be/{o['yt']}" if o.get('yt') else o.get('url')
+                    self.providers[o['name'].lower()] = {'name': o['name'], 'source': d.get('source'), 'video_url': vid, **o['tags']}
+
+    def provider(self, name):
+        """The provider entry (tags + video) for a provider-only exercise, or None."""
+        return self.providers.get(name.lower())
 
     def has(self, name):
-        return name.lower() in self.by_name
+        return name.lower() in self.by_name or name.lower() in self.providers
 
     def ensure_exercise(self, name, source, tags=None, video_from=None, search=None):
         """Add a catalog entry for a new movement, classified (no-op for names that exist).
@@ -56,6 +70,8 @@ class Library:
         from data/suggest_tags.py and printed as REVIEW, so a guess never lands silently.
         video_from: borrow the vetted video of an existing entry with that name."""
         e = self.by_name.get(name.lower())
+        if e is None and self.provider(name):
+            return self.provider(name)   # already in the catalog via its provider file, with its video
         if e is None:
             e = {'id': f'{source}-{slug(name)}', 'name': name, 'video_url': None,
                  'sources': [source], 'aliases': []}

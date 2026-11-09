@@ -43,40 +43,19 @@ export function tagErrors(e) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const lib = JSON.parse(readFileSync(path.join(ROOT, 'data/library.json'), 'utf8'));
-  const { HIP_CATALOG_ENTRIES } = await import(path.join(ROOT, 'src/lib/hip_protocol.js'));
-  const names = new Set(lib.exercises.map(e => e.name.toLowerCase()));
-  const all = [
-    ...lib.exercises,
-    ...HIP_CATALOG_ENTRIES.filter(h => !names.has(h.name.toLowerCase())).map(h => ({ ...h, ...(lib.extra_tags?.[h.id] || {}) })),
-  ];
-  const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
-  let local = [];
-  if (LOCAL) {
-    const buf = readFileSync(LOCAL.replace(/^~/, process.env.HOME));
-    let txt = buf.toString('utf8');
-    if (txt.includes('�')) txt = buf.toString('latin1');
-    const vids = Object.values(JSON.parse(txt).videos || {}).filter(o => o?.name);
-    local = vids.filter(o => o.v || o.url || o.yt).map(o => norm(o.name));
-    // Private-only exercises (tagged in the file) join the catalog on the phone, so check them too.
-    const known = new Set(all.map(e => e.name.toLowerCase()));
-    for (const o of vids) {
-      if (!o.tags || known.has(o.name.toLowerCase())) continue;
-      known.add(o.name.toLowerCase());
-      all.push({ id: `private-${o.name}`, name: o.name, video_url: o.yt ? `https://youtu.be/${o.yt}` : o.url || null, ...o.tags });
-    }
-  }
-  const hasLocal = (n) => { const k = norm(n); return local.includes(k) || (k.length >= 12 && local.some(x => x.startsWith(k))); };
-
+  // Same catalog the phone sees: library + hip tab + data/providers/*.json (+ an optional extra file).
+  const { loadFullCatalog } = await import('./catalog.mjs');
+  const { exercises: all } = await loadFullCatalog({ extra: [LOCAL] });
+  const hasLocal = () => false;
   let errors = 0; const noVideo = [];
   for (const e of all) {
     const errs = tagErrors(e);
     if (errs.length) { errors++; console.log(`  ERROR ${e.id} "${e.name}": ${errs.join(', ')}`); }
-    if (!e.video_url && !hasLocal(e.name)) noVideo.push(e.name);
+    if (!e.video?.url && !hasLocal(e.name)) noVideo.push(e.name);
   }
   const by = (k) => all.reduce((m, e) => (m[e[k]] = (m[e[k]] || 0) + 1, m), {});
   console.log(`${all.length} exercises · patterns ${Object.keys(by('pattern')).length} · roles ${JSON.stringify(by('role'))}`);
-  if (noVideo.length) console.log(`  warn  ${noVideo.length} without a video${LOCAL ? '' : ' (add --local to count on-device PJF videos)'}: ${noVideo.slice(0, 12).join('; ')}${noVideo.length > 12 ? '…' : ''}`);
+  if (noVideo.length) console.log(`  warn  ${noVideo.length} without a video: ${noVideo.slice(0, 12).join('; ')}${noVideo.length > 12 ? '…' : ''}`);
   console.log(errors ? `\n${errors} exercise(s) with tag errors. Fix in data/exercise_tags.json, then run data/tag_exercises.py.` : '\nOK: every exercise is tagged with taxonomy values.');
   process.exit(errors ? 1 : 0);
 }

@@ -6,7 +6,7 @@
  *   node data/generate_plan.mjs ... --json > draft.json     # full program JSON
  *   node data/generate_plan.mjs --sanity                    # checks every goal × days × minutes
  *
- * Uses the same src/lib/generator.js the app runs, with library.json + hip-tab exercises.
+ * Uses the same src/lib/generator.js the app runs, on the same catalog (data/catalog.mjs).
  */
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -17,12 +17,11 @@ const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : d; };
 
 export async function loadCatalog() {
-  const lib = JSON.parse(readFileSync(path.join(ROOT, 'data/library.json'), 'utf8'));
   const rules = JSON.parse(readFileSync(path.join(ROOT, 'data/design_rules.json'), 'utf8'));
-  const { HIP_CATALOG_ENTRIES } = await import(path.join(ROOT, 'src/lib/hip_protocol.js'));
-  const names = new Set(lib.exercises.map(e => e.name.toLowerCase()));
-  const exercises = [...lib.exercises, ...HIP_CATALOG_ENTRIES.filter(h => !names.has(h.name.toLowerCase()))
-    .map(h => ({ ...h, ...(lib.extra_tags?.[h.id] || {}) }))];
+  // Same catalog the phone sees, provider exercises and provider videos included.
+  const { loadFullCatalog } = await import('./catalog.mjs');
+  const { exercises } = await loadFullCatalog();
+  for (const e of exercises) if (!e.video_url && e.video?.url) e.video_url = e.video.url;
   return { exercises, rules };
 }
 

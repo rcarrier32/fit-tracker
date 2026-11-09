@@ -13,6 +13,7 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 import { tagErrors } from './check_catalog.mjs';
+import { loadFullCatalog, norm } from './catalog.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const [id, ...flags] = process.argv.slice(2);
@@ -20,40 +21,18 @@ const NET = flags.includes('--net');
 const LOCAL = flags.includes('--local') ? flags[flags.indexOf('--local') + 1] : null;
 // Mirrors static_data.js isHeaderRow: section headers in PJF sheets aren't exercises.
 const isHeaderRow = (n) => /^(daily overview|start of workout.*overview|superset|circuit|combo cardio)\b/i.test(String(n || '').trim());
-// Mirrors local_videos.js localFor: exact normalized name, or a prefix for long names.
-const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
-let localNames = [], localFile = null;
-if (LOCAL) {
-  const buf = readFileSync(LOCAL.replace(/^~/, process.env.HOME));
-  let txt = buf.toString('utf8');
-  if (txt.includes('\uFFFD')) txt = buf.toString('latin1');
-  localFile = JSON.parse(txt);
-  localNames = Object.values(localFile.videos || {}).filter(o => (o?.v || o?.url || o?.yt) && o.name).map(o => norm(o.name));
-}
+if (!id) { console.error('Usage: node data/check_program.mjs <program_id> [--net] [--local <extra provider file>]'); process.exit(1); }
+
+// Same catalog the phone sees: library + hip tab + data/providers/*.json (+ an optional extra file).
+const { lib, byName: catalogByName, providers } = await loadFullCatalog({ extra: [LOCAL] });
+const byName = catalogByName;
+const localNames = Object.values(providers).flatMap(f => Object.values(f.videos || {}))
+  .filter(o => (o?.v || o?.url || o?.yt) && o.name).map(o => norm(o.name));
 const hasLocal = (name) => {
   const n = norm(name);
   return !!n && (localNames.includes(n) || (n.length >= 12 && localNames.some(k => k.startsWith(n))));
 };
-if (!id) { console.error('Usage: node data/check_program.mjs <program_id> [--net]'); process.exit(1); }
-
-const lib = JSON.parse(readFileSync(path.join(ROOT, 'data/library.json'), 'utf8'));
-const { HIP_CATALOG_ENTRIES } = await import(path.join(ROOT, 'src/lib/hip_protocol.js'));
-
-// Same resolution as static_data.js: library names, then aliases, then hip-tab entries.
-const byName = new Map();
-for (const e of lib.exercises) byName.set(e.name.toLowerCase(), e);
-for (const e of lib.exercises) for (const a of e.aliases || []) if (!byName.has(a.toLowerCase())) byName.set(a.toLowerCase(), e);
-for (const h of HIP_CATALOG_ENTRIES) {
-  const dup = byName.get(h.name.toLowerCase());
-  if (!dup) byName.set(h.name.toLowerCase(), { ...h, ...(lib.extra_tags?.[h.id] || {}) });
-  else if (!dup.video_url && h.video_url) dup.video_url = h.video_url;
-}
-
-// Private on-device files can carry their own programs and tagged exercises.
-for (const o of Object.values(localFile?.videos || {})) {
-  if (o?.name && o.tags && !byName.has(o.name.toLowerCase())) byName.set(o.name.toLowerCase(), { name: o.name, video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags });
-}
-const all = [...Object.values(lib.programs).flat(), ...(localFile?.programs || [])];
+const all = [...Object.values(lib.programs).flat(), ...Object.values(providers).flatMap(f => f.programs || [])];
 const p = all.find(x => x.id === id);
 if (!p) { console.error(`No program with id "${id}". Known: ${all.map(x => x.id).filter(Boolean).join(', ')}`); process.exit(1); }
 

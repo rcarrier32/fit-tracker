@@ -54773,6 +54773,7 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
+                      "Lateral Hops",
                       "Double Lateral Extensive Hops",
                       "Mutli-direction Bounds"
                     ]
@@ -55767,6 +55768,7 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
+                      "Lateral Hops",
                       "Double Lateral Extensive Hops",
                       "Mutli-direction Bounds"
                     ]
@@ -56759,6 +56761,7 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
+                      "Lateral Hops",
                       "Double Lateral Extensive Hops",
                       "Mutli-direction Bounds"
                     ]
@@ -57751,6 +57754,7 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
+                      "Lateral Hops",
                       "Double Lateral Extensive Hops",
                       "Mutli-direction Bounds"
                     ]
@@ -58217,7 +58221,7 @@
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "Dumbbell Row From Single Leg",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
@@ -58226,13 +58230,11 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "2-second hold at the top.",
+                    "notes": "Stand on the leg on the rowing side, hinge, 2-second hold at the top.",
                     "alternates": [
+                      "Contralateral Single Leg Row",
                       "Birddog Dumbbell Row",
-                      "Dumbbell Row From Single Leg",
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "3 Point Dumbbell Row"
                     ]
                   },
                   {
@@ -58436,7 +58438,7 @@
                     ]
                   },
                   {
-                    "name": "DB Split Stance Row",
+                    "name": "Contralateral Single Leg Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
@@ -58447,10 +58449,9 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Contralateral Single Leg Row",
+                      "Dumbbell Row From Single Leg",
                       "Birddog Dumbbell Row",
-                      "3 Point Dumbbell Row",
-                      "Bent Over 1 Arm Row"
+                      "DB Split Stance Row"
                     ]
                   },
                   {
@@ -58737,7 +58738,8 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
-                      "Lateral Bounds"
+                      "Lateral Bounds",
+                      "Lateral Hops"
                     ]
                   },
                   {
@@ -59201,7 +59203,7 @@
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "Dumbbell Row From Single Leg",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
@@ -59210,13 +59212,11 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "2-second hold at the top.",
+                    "notes": "Stand on the leg on the rowing side, hinge, 2-second hold at the top.",
                     "alternates": [
+                      "Contralateral Single Leg Row",
                       "Birddog Dumbbell Row",
-                      "Dumbbell Row From Single Leg",
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "3 Point Dumbbell Row"
                     ]
                   },
                   {
@@ -59420,7 +59420,7 @@
                     ]
                   },
                   {
-                    "name": "DB Split Stance Row",
+                    "name": "Contralateral Single Leg Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 2,
@@ -59431,10 +59431,9 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
-                      "Contralateral Single Leg Row",
+                      "Dumbbell Row From Single Leg",
                       "Birddog Dumbbell Row",
-                      "3 Point Dumbbell Row",
-                      "Bent Over 1 Arm Row"
+                      "DB Split Stance Row"
                     ]
                   },
                   {
@@ -59721,7 +59720,8 @@
                     "rest": "60s",
                     "notes": "Stick each landing for a 1-count. Quiet feet.",
                     "alternates": [
-                      "Lateral Bounds"
+                      "Lateral Bounds",
+                      "Lateral Hops"
                     ]
                   },
                   {

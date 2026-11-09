@@ -83,6 +83,9 @@ def main():
     print(f'library: {before} -> {len(lib["exercises"])} exercises ({before - len(lib["exercises"])} headers pruned), '
           f'{len(lib["extra_tags"])} extra (hip-tab) tags, {len(untagged)} untagged{": " + ", ".join(untagged[:10]) if untagged else ""}')
     print(f'program_index: {len(index)} programs')
+    # The exercise knowledge index (muscles, movement, video and its source) for every exercise the phone has.
+    import subprocess
+    subprocess.run(['node', str(D / 'catalog.mjs')], check=True)
 
 
 if __name__ == '__main__':

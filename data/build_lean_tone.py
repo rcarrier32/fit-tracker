@@ -12,7 +12,7 @@ from program_builder import Library, ex, w, expand_weeks
 lib = Library()
 GROUP = 'Move Like 30'
 # Every catalog name, including Hip tab exercises (tagged in exercise_tags.json).
-KNOWN = {e['name'].lower() for e in lib.data['exercises']} | {t['name'].lower() for t in lib.tags['tags'].values()}
+KNOWN = {e['name'].lower() for e in lib.data['exercises']} | {t['name'].lower() for t in lib.tags['tags'].values()} | set(lib.providers)
 
 # Moves this plan adds to the catalog (videos via enrich_program_videos.mjs --source lean).
 NEW = {
@@ -119,6 +119,8 @@ ALTS = {
     'Kettlebell Swing': ['Med Ball Slam', 'Penultimate Box Jumps (Optional)', 'KB Swing + Box Jump Contrast', 'Single-Leg RDL with Kettlebell'],
     'Med Ball Slam': ['Kettlebell Swing', 'Penultimate Box Jumps (Optional)', 'MB Rapid Lateral Toss'],
     'MB Rapid Lateral Toss': ['Med Ball Slam'],
+    'Dumbbell Row From Single Leg': ['Contralateral Single Leg Row', 'Birddog Dumbbell Row', '3 Point Dumbbell Row'],
+    'Contralateral Single Leg Row': ['Dumbbell Row From Single Leg', 'Birddog Dumbbell Row', 'DB Split Stance Row'],
     'Birddog Dumbbell Row': ['3 Point Dumbbell Row', 'Contralateral Single Leg Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)'],
     'Incline Alternating Arms Dumbbell Press': ['Low Incline Dumbbell Press', 'Dumbbell Bench Press', 'Push Up To Shoulder Airplane'],
     'Kneeling Dumbbell Diagonal Chop': ['Palloff Press', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press'],
@@ -171,8 +173,8 @@ def days(wk):
             r(pick('Dumbbell Goblet Squat', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'), reps, sets=S, rest=rest, group='Superset A', notes=pause),
             r('Dumbbell Bench Press', reps, sets=S, rest=rest, group='Superset A', notes=alt_iso if p == 3 else pause),
             r(pick('Dumbbell Romanian Deadlift', 'Dumbbell Romanian Deadlift', 'B-Stance RDL'), reps if p < 3 else each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
-            r(pick('Chest Supported DB Row (lat focus)', 'Chest Supported DB Row (lat focus)', '3 Point Dumbbell Row'), reps if p < 3 else each + ' arm', sets=S, rest=rest,
-              group='Superset B', notes='Bench on an incline.' if p < 3 else '2-second hold at the top.'),
+            r(pick('Chest Supported DB Row (lat focus)', 'Chest Supported DB Row (lat focus)', 'Dumbbell Row From Single Leg'), reps if p < 3 else each + ' arm', sets=S, rest=rest,
+              group='Superset B', notes='Bench on an incline.' if p < 3 else 'Stand on the leg on the rowing side, hinge, 2-second hold at the top.'),
             r(pick('Reverse Lunges', 'Reverse Lunges', 'Curtsy Lunge'), each + ' leg', sets=s, rest=rest, group='Superset C', notes=pause),
             r('Standing Dumbbell Shoulder Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
             r('Palloff Press', '12 each side', sets=2, rest='30s', group='Superset D', notes='Anchor the band at chest height.') if p == 1 else
@@ -184,7 +186,7 @@ def days(wk):
         ]},
         {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': WARM_LOWER, 'notes': notes, 'exercises': [
             r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
-            r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'DB Split Stance Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
+            r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'Contralateral Single Leg Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
             r('Single-Leg RDL to Knee Drive' if p == 3 else 'Single-Leg RDL with Kettlebell', each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
             r('Incline Alternating Arms Dumbbell Press' if p == 3 else 'Low Incline Dumbbell Press', reps if p < 3 else each + ' arm', sets=S, rest=rest, group='Superset B',
               notes='One arm holds locked out while the other presses.' if p == 3 else pause),
