@@ -13,13 +13,34 @@ import { openBandDatabase } from './band_db.js';
 import { generatePlan, swapInPlan, estimateMinutes, FOCUS_GROUPS } from '../lib/generator.js';
 import { hasVideo, rankSimilar, tagLine, EQUIPMENT_LABEL, muscleLabel } from '../lib/taxonomy.js';
 
+// Filter chips: matched on a program's name, group and source only (descriptions mention too much).
+const CATEGORIES = [
+  ['All', () => true],
+  ['Strength', (t) => /strength|split|upper|lower|full body|lean|bws|ab routine|muscle/.test(t)],
+  ['Hip & mobility', (t) => /hip|mobility|recovery|durability|griffith|trainheroic/.test(t)],
+  ['Plyo & athletic', (t) => /plyo|agility|court|athlet|speed|jump/.test(t)],
+  ['Home', (t) => /home|band/.test(t)],
+  ['Rehab', (t) => /rehab|tos|playbook|hip plan/.test(t)],
+];
+let _filter = 'All';
+let _query = '';
+const _closed = new Set(['BWS Strength', 'PJF Performance']);   // collapsed sections (big lists start closed)
+
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const haystack = (p) => [programName(p), p.group, p.source, p.description, p.goal, p.level].filter(Boolean).join(' ').toLowerCase();
+
+function metaLine(p) {
+  const weeks = p.weeks ? `${p.weeks.length} wk` : `${p.days?.length || '?'}-day rotation`;
+  return [weeks, p.sessions_per_week ? `${p.sessions_per_week}×/wk` : null,
+    p.session_length_min ? `${p.session_length_min} min` : null, p.level || null].filter(Boolean).join(' · ');
+}
+
 export async function renderPrograms(app) {
-  const [{ programs, exercises }, activePlan, tosProgress, hipProgress, hipFlare, customPrograms] = await Promise.all([
+  const [{ programs }, activePlan, tosProgress, hipProgress, customPrograms] = await Promise.all([
     loadCatalogs(),
     getActivePlan(),
     pref('tos_progress'),
     pref('hip_progress'),
-    pref('hip_flare'),
     pref('custom_programs').then(v => v || []),
   ]);
 
@@ -27,97 +48,89 @@ export async function renderPrograms(app) {
     ? Math.max(1, Math.floor(Math.floor((Date.now() - new Date(hipProgress.started + 'T12:00:00')) / 864e5) / 7) + 1)
     : null;
 
-  const bws = programs.filter(p => p.source === 'BWS');
-  const pjf = programs.filter(p => p.source === 'PJF');
-  // Built program groups (home, athletic, …), listed under each program's `group` label.
+  // Sections, in order: my plans, rehab & references, built groups, BWS, PJF.
   const groups = new Map();
   for (const p of programs.filter(p => p.source !== 'BWS' && p.source !== 'PJF')) {
     const g = p.group || p.source;
     if (!groups.has(g)) groups.set(g, []);
     groups.get(g).push(p);
   }
-  const bandCount = exercises.filter(e => e.sources?.includes('band') && !e.program_only).length;
+  const rows = [];   // { section, key, title, meta, text, active, open }
+  const add = (section, p, open, extra = {}) => rows.push({ section, title: programName(p), meta: metaLine(p),
+    text: haystack(p), cat: [programName(p), p.group, p.source === 'BWS' ? 'bws' : ''].join(' ').toLowerCase(), active: activePlan?.program_id === p.id, open, ...extra });
+  for (const p of customPrograms) rows.push({ section: 'My Plans', title: p.name, active: activePlan?.program_id === p.id,
+    meta: p.weeks ? `${p.weeks.length} wk · ${p.sessions_per_week || p.weeks[0].days.length}×/wk · ${p.generated ? 'Generated' : 'Custom'}` : `${p.days.length}-day rotation · Custom`,
+    text: `${p.name} my plan custom generated`.toLowerCase(), open: () => openCustomPlanActions(p, activePlan, () => renderPrograms(app)), custom: p });
+  for (const [g, list] of groups) for (const p of list) add(g, p, () => openStartPlanSheet(p, () => renderPrograms(app)));
+  for (const p of programs.filter(p => p.source === 'BWS')) add('BWS Strength', p, () => openStartPlanSheet(p, () => renderPrograms(app)));
+  for (const p of programs.filter(p => p.source === 'PJF')) add('PJF Performance', p, () => openStartPlanSheet(p, () => renderPrograms(app)));
+  rows.push({ section: 'Rehab & References', title: 'TOS + Scapular Dyskinesis', meta: '12 weeks · 5 phases · swimming inclusive',
+    text: 'tos rehab thoracic outlet scapular shoulder swim', cat: 'tos rehab', open: () => navigate('tos'), badge: tosProgress ? 'Active' : null });
+  rows.push({ section: 'Rehab & References', title: 'Hip Recovery Playbook', meta: `Warm-up · Pelvic Reset · Recovery · Pool${hipWeek ? ` · Week ${hipWeek}` : ''}`,
+    text: 'hip recovery playbook rehab mobility pool pelvic', cat: 'hip rehab playbook mobility', open: () => navigate('hip') });
+  rows.push({ section: 'Rehab & References', title: 'PJF Band Exercise Database', meta: 'Every PJF band move with its demo',
+    text: 'pjf band database mobility strength agility speed home', cat: 'band home', open: () => openBandDatabase() });
 
   app.innerHTML = `
     <h1>Programs</h1>
+    ${activePlan ? renderActivePlanCard(activePlan, [...programs, ...customPrograms]) : ''}
+    ${tosProgress ? renderActiveTOSCard(tosProgress) : ''}
 
-    ${activePlan    ? renderActivePlanCard(activePlan, [...programs, ...customPrograms]) : ''}
-    ${tosProgress   ? renderActiveTOSCard(tosProgress)           : ''}
-
-    <div class="card" style="padding:12px 14px">
-      <div style="font-weight:600;margin-bottom:2px">Build My Own Plan</div>
-      <div class="muted" style="font-size:12px;margin-bottom:10px">Generate a multi-week plan from every exercise in the app, or pick each exercise yourself</div>
-      <div style="display:flex;gap:8px">
-        <button class="btn" id="gen-plan" style="flex:2">✨ Generate a plan</button>
-        <button class="btn secondary" id="build-plan" style="flex:1">Manual</button>
-      </div>
+    <input type="text" inputmode="search" id="prog-search" placeholder="🔍  Search programs…" value="${esc(_query)}" autocomplete="off" style="margin-bottom:8px">
+    <div id="prog-chips" style="display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px;scrollbar-width:none">
+      ${CATEGORIES.map(([c]) => `<button class="pill${c === _filter ? ' accent' : ''}" data-cat="${c}" style="white-space:nowrap;cursor:pointer;padding:6px 12px;font-size:13px">${c}</button>`).join('')}
     </div>
+    <div id="prog-sections"></div>
 
-    ${customPrograms.length ? `<div class="group-label">My Plans</div><div id="custom-list"></div>` : ''}
-
-    <div class="group-label">Rehab Protocols</div>
-    <div class="card" style="padding:12px 14px;border-color:rgba(167,139,250,0.3);cursor:pointer" id="tos-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-weight:600;margin-bottom:2px">TOS + Scapular Dyskinesis</div>
-          <div class="muted" style="font-size:12px">
-            Thoracic outlet syndrome · 12-week motor control protocol · Swimming inclusive
-          </div>
-        </div>
-        <span class="pill" style="color:#a78bfa;border-color:rgba(167,139,250,0.4);flex-shrink:0;margin-left:8px">
-          5 phases
-        </span>
+    <div class="list-item" style="margin-top:14px;cursor:default">
+      <div style="flex:1;min-width:0">
+        <div class="list-item-title">Build my own plan</div>
+        <div class="list-item-meta">From every exercise in the app</div>
       </div>
+      <button class="btn" id="gen-plan" style="width:auto;padding:0 12px;min-height:36px;font-size:13px">✨ Generate</button>
+      <button class="btn secondary" id="build-plan" style="width:auto;padding:0 12px;min-height:36px;font-size:13px">Manual</button>
     </div>
-
-    <div class="card" style="padding:12px 14px;border-color:rgba(34,211,238,0.3);cursor:pointer;margin-top:10px" id="hip-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-weight:600;margin-bottom:2px">Hip Recovery Playbook</div>
-          <div class="muted" style="font-size:12px">
-            Warm-up · Pelvic Reset · Recovery · Pool (strength runs in Your Hip Plan)
-          </div>
-        </div>
-        <span class="pill" style="color:#38bdf8;border-color:rgba(56,189,248,0.4);flex-shrink:0;margin-left:8px">
-          ${hipWeek ? `Week ${hipWeek}` : 'Reference'}
-        </span>
-      </div>
-    </div>
-
-    ${[...groups.keys()].map((g, i) => `<div class="group-label">${g}</div><div id="group-list-${i}"></div>`).join('')}
-
-    <div class="group-label">BWS Strength</div>
-    <div id="bws-list"></div>
-
-    <div class="group-label">PJF Performance</div>
-    <div class="card" style="padding:12px 14px;border-color:rgba(34,197,94,0.3);cursor:pointer;margin-bottom:10px" id="band-db-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-weight:600;margin-bottom:2px">Extended Band Exercise Database</div>
-          <div class="muted" style="font-size:12px">
-            Mobility · strength · agility · speed · jumping · upper body, each with its PJF demo
-          </div>
-        </div>
-        <span class="pill" style="color:#22c55e;border-color:rgba(34,197,94,0.4);flex-shrink:0;margin-left:8px">
-          ${bandCount} videos
-        </span>
-      </div>
-    </div>
-    <div id="pjf-list"></div>
   `;
 
-  renderProgramList(app.querySelector('#bws-list'), bws, activePlan, () => renderPrograms(app));
-  renderProgramList(app.querySelector('#pjf-list'), pjf, activePlan, () => renderPrograms(app));
-  [...groups.values()].forEach((list, i) =>
-    renderProgramList(app.querySelector(`#group-list-${i}`), list, activePlan, () => renderPrograms(app)));
-
-  if (customPrograms.length) {
-    renderCustomProgramList(app.querySelector('#custom-list'), customPrograms, activePlan, () => renderPrograms(app));
+  const $sections = app.querySelector('#prog-sections');
+  function draw() {
+    const q = _query.trim().toLowerCase();
+    const test = CATEGORIES.find(([c]) => c === _filter)[1];
+    const shown = rows.filter(r => (q ? q.split(/\s+/).every(w => (r.title + ' ' + r.text + ' ' + r.section).toLowerCase().includes(w)) : true)
+      && (_filter === 'All' || test((r.cat || r.text).toLowerCase())));
+    const bySection = new Map();
+    for (const r of shown) { if (!bySection.has(r.section)) bySection.set(r.section, []); bySection.get(r.section).push(r); }
+    const filtering = !!q || _filter !== 'All';
+    $sections.innerHTML = shown.length ? [...bySection].map(([sec, list]) => {
+      const open = filtering || !_closed.has(sec);
+      return `<details ${open ? 'open' : ''} data-sec="${esc(sec)}" style="margin-top:6px">
+        <summary class="group-label" style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">
+          <span>${esc(sec)}</span><span class="muted" style="font-size:12px">${list.length} ${open ? '▾' : '▸'}</span>
+        </summary>
+        ${list.map(r => `<div class="list-item" data-row="${rows.indexOf(r)}" style="padding:9px 12px;margin-bottom:6px">
+          <div style="flex:1;min-width:0">
+            <div class="list-item-title" style="font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.title)}${r.active || r.badge ? ` <span class="pill accent" style="font-size:10px;margin-left:4px">${r.badge || 'Active'}</span>` : ''}</div>
+            <div class="list-item-meta" style="font-size:12px">${esc(r.meta)}</div>
+          </div>
+          <span class="muted" style="font-size:18px">›</span>
+        </div>`).join('')}
+      </details>`;
+    }).join('') : `<div class="empty" style="padding:24px">No programs match. Try another word or filter.</div>`;
+    $sections.querySelectorAll('[data-row]').forEach(el => { el.onclick = () => rows[+el.dataset.row].open(); });
+    $sections.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
+      if (filtering) return;
+      d.open ? _closed.delete(d.dataset.sec) : _closed.add(d.dataset.sec);
+      d.querySelector('summary .muted').textContent = `${d.querySelectorAll('[data-row]').length} ${d.open ? '▾' : '▸'}`;
+    }));
   }
+  draw();
 
-  app.querySelector('#tos-card').onclick = () => navigate('tos');
-  app.querySelector('#hip-card').onclick = () => navigate('hip');
-  app.querySelector('#band-db-card').onclick = () => openBandDatabase();
+  app.querySelector('#prog-search').oninput = (e) => { _query = e.target.value; draw(); };
+  app.querySelectorAll('[data-cat]').forEach(b => b.onclick = () => {
+    _filter = b.dataset.cat;
+    app.querySelectorAll('[data-cat]').forEach(x => x.classList.toggle('accent', x.dataset.cat === _filter));
+    draw();
+  });
 
   app.querySelector('#gen-plan').onclick = () => openGeneratorWizard(() => renderPrograms(app));
   app.querySelector('#build-plan').onclick = async () => {
@@ -126,11 +139,17 @@ export async function renderPrograms(app) {
   };
 
   if (activePlan) {
-    app.querySelector('[data-action="end-plan"]')?.addEventListener('click', async () => {
-      await endPlan(activePlan.id);
-      toast('Plan ended');
-      renderPrograms(app);
-    });
+    app.querySelector('[data-action="continue-plan"]')?.addEventListener('click', () => navigate('workout'));
+    app.querySelector('[data-action="plan-menu"]')?.addEventListener('click', () => openSheet((sheet, close) => {
+      const prog = [...programs, ...customPrograms].find(p => p.id === activePlan.program_id);
+      sheet.innerHTML = `<h2>${esc(prog ? programName(prog) : 'Plan')}</h2>
+        ${prog ? '<button class="btn secondary" id="pm-details">Plan details</button>' : ''}
+        <button class="btn ghost" id="pm-end" style="margin-top:8px;color:var(--danger);border-color:var(--danger)">${planProgress(activePlan).over ? 'Close plan' : 'End plan early'}</button>
+        <button class="btn ghost" id="pm-cancel" style="margin-top:8px">Cancel</button>`;
+      sheet.querySelector('#pm-details')?.addEventListener('click', () => { close(); prog.name && !prog.program_name ? openStartCustomPlanSheet(prog, () => renderPrograms(app)) : openStartPlanSheet(prog, () => renderPrograms(app)); });
+      sheet.querySelector('#pm-end').onclick = async () => { await endPlan(activePlan.id); close(); toast('Plan ended'); renderPrograms(app); };
+      sheet.querySelector('#pm-cancel').onclick = close;
+    }));
   }
 
   if (tosProgress) {
@@ -148,20 +167,17 @@ function renderActivePlanCard(plan, programs) {
   const { week, pct, weeksLeft, over } = planProgress(plan);
   const name = prog ? programName(prog) : 'Deleted plan';
   return `
-    <div class="card" style="border-color:var(--accent)">
-      <div class="card-row">
-        <h2 style="margin:0;color:var(--accent)">Active Plan</h2>
-        <span class="pill accent">Week ${week} of ${plan.total_weeks}</span>
+    <div class="card" style="border-color:var(--accent);padding:12px 14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <div style="min-width:0">
+          <div class="muted" style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)">Active plan</div>
+          <div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(name)}</div>
+          <div class="muted" style="font-size:12px">${over ? `Finished · all ${plan.total_weeks} weeks done` : `Week ${week} of ${plan.total_weeks} · ${pct}% · ${weeksLeft} wk left`}</div>
+        </div>
+        <button class="btn ghost" data-action="plan-menu" aria-label="Plan options" style="width:auto;padding:0 10px;min-height:34px;flex-shrink:0">⋯</button>
       </div>
-      <div style="font-weight:600;margin:6px 0 2px">${name}</div>
-      ${prog ? `<div class="muted" style="font-size:12px;margin-bottom:4px">${programKind(prog) === 'progression'
-        ? 'Progression — each finished workout moves you forward'
-        : `Rotation — the same ${prog.days?.length || ''} workouts repeat; add weight to progress`}</div>` : ''}
-      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
-      <div class="muted" style="margin-top:4px">${over
-        ? `Finished — all ${plan.total_weeks} weeks are up. Restart it or pick a new plan below.`
-        : `${pct}% complete · ${weeksLeft} week${weeksLeft !== 1 ? 's' : ''} left`}</div>
-      <button class="btn ghost danger-text" data-action="end-plan" style="margin-top:10px;color:var(--danger);border-color:var(--danger)">${over ? 'Close plan' : 'End plan early'}</button>
+      <div class="bar" style="margin-top:8px"><div class="bar-fill" style="width:${pct}%"></div></div>
+      ${over ? '' : '<button class="btn" data-action="continue-plan" style="margin-top:10px;min-height:40px">Continue today\'s workout</button>'}
     </div>
   `;
 }
@@ -188,44 +204,6 @@ function renderActiveTOSCard(progress) {
   `;
 }
 
-function renderProgramList(el, programs, activePlan, onRefresh) {
-  for (const p of programs) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '10px';
-    const isActive = activePlan?.program_id === p.id;
-    const kind = programKind(p);
-    const tags = [
-      kind === 'progression' ? `Progression · ${p.weeks.length} weeks` : `Rotation · ${p.days?.length || '?'} days, repeats`,
-      p.sessions_per_week ? `${p.sessions_per_week} days/wk` : null,
-      p.session_length_min ? `~${p.session_length_min} min` : null,
-      p.level || null,
-    ].filter(Boolean);
-
-    card.innerHTML = `
-      <div class="card-row" style="align-items:flex-start">
-        <div style="flex:1">
-          <div style="font-weight:600;font-size:16px">${programName(p)}
-            ${isActive ? `<span class="pill accent" style="margin-left:6px;font-size:10px">Active</span>` : ''}
-          </div>
-          ${p.description ? `<div class="muted" style="margin-top:3px;font-size:13px">${p.description}</div>` : ''}
-          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
-            ${tags.map(t => `<span class="pill">${t}</span>`).join('')}
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:10px">
-        <button class="btn ${isActive ? 'secondary' : ''}" data-start>
-          ${isActive ? 'Restart from day 1' : kind === 'progression' ? 'Start this program' : 'Use this rotation'}
-        </button>
-      </div>
-    `;
-
-    card.querySelector('[data-start]').onclick = () => openStartPlanSheet(p, onRefresh);
-    el.appendChild(card);
-  }
-}
-
 function openStartPlanSheet(program, onConfirm) {
   openSheet((sheet, close) => {
     // A fixed-length program (PJF) is exactly its own length; rotations run as long as you like.
@@ -243,6 +221,8 @@ function openStartPlanSheet(program, onConfirm) {
       </div>
 
       ${programGuideHtml(program)}
+      ${(program.weeks?.[0]?.days || program.days || []).length ? `<div class="group-label">${program.weeks ? 'Week 1' : 'Workouts'}</div>
+        <div style="font-size:13px;line-height:1.6">${(program.weeks?.[0]?.days || program.days).map(d => `<div>· ${esc(d.focus || d.day_name || `Day ${d.day_num}`)} <span class="muted">(${(d.exercises || []).length} exercises)</span></div>`).join('')}</div>` : ''}
 
       <div class="group-label">Duration</div>
       <div class="muted" style="margin-bottom:8px">
@@ -333,32 +313,18 @@ function suggestedWeekLabel(sw) {
   return [...groups].map(([k, days]) => `${days.join(' ')}: ${k}`).join(' · ') + '. Change it any time in Mixed Week.';
 }
 
-function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {
-  for (const p of customProgs) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '10px';
+/** A saved custom/generated plan: start it or delete it. */
+function openCustomPlanActions(p, activePlan, onRefresh) {
+  openSheet((sheet, close) => {
     const isActive = activePlan?.program_id === p.id;
-    card.innerHTML = `
-      <div class="card-row" style="align-items:flex-start">
-        <div style="flex:1">
-          <div style="font-weight:600;font-size:16px">${p.name}
-            ${isActive ? `<span class="pill accent" style="margin-left:6px;font-size:10px">Active</span>` : ''}
-          </div>
-          <div class="muted" style="font-size:13px;margin-top:3px">${p.weeks
-            ? `${p.weeks.length}-week progression · ${p.sessions_per_week || p.weeks[0].days.length} days/wk · ${p.generated ? 'Generated' : 'Custom'}`
-            : `${p.days.length}-day rotation · Custom`}</div>
-        </div>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px">
-        <button class="btn ${isActive ? 'secondary' : ''}" data-start>
-          ${isActive ? 'Restart' : 'Start plan'}
-        </button>
-        <button class="btn ghost danger-text" data-delete style="color:var(--danger);border-color:var(--danger)">Delete</button>
-      </div>
-    `;
-    card.querySelector('[data-start]').onclick = () => openStartCustomPlanSheet(p, onRefresh);
-    card.querySelector('[data-delete]').onclick = async () => {
+    sheet.innerHTML = `<h2>${esc(p.name)}</h2>
+      <div class="muted" style="margin-bottom:12px">${p.weeks ? `${p.weeks.length}-week progression` : `${p.days.length}-day rotation`} · ${p.generated ? 'Generated' : 'Custom'}</div>
+      <button class="btn" id="cp-start">${isActive ? 'Restart' : 'Start plan'}</button>
+      <button class="btn ghost" id="cp-delete" style="margin-top:8px;color:var(--danger);border-color:var(--danger)">Delete</button>
+      <button class="btn ghost" id="cp-cancel" style="margin-top:8px">Cancel</button>`;
+    sheet.querySelector('#cp-cancel').onclick = close;
+    sheet.querySelector('#cp-start').onclick = () => { close(); openStartCustomPlanSheet(p, onRefresh); };
+    sheet.querySelector('#cp-delete').onclick = async () => {
       const sched = await pref('schedule');
       const inSchedule = sched?.slots?.some(sl => sl?.program_id === p.id);
       const inUse = isActive || inSchedule || (await pref('active_program')) === p.id;
@@ -372,10 +338,10 @@ function renderCustomProgramList(el, customProgs, activePlan, onRefresh) {
       if ((await pref('active_program')) === p.id) await pref('active_program', null);
       await pref(`cursor:${p.id}`, null);
       toast('Deleted');
+      close();
       onRefresh();
     };
-    el.appendChild(card);
-  }
+  });
 }
 
 async function openStartCustomPlanSheet(program, onConfirm) {
