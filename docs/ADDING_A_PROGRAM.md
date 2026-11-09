@@ -114,7 +114,13 @@ moves without a parseable time, missing sets/reps, and dead follow-along links.
 3. Commit and push `main` as **rcarrier32**. The active `gh` account may be legendsyba. Pushing is the deploy (GitHub Pages).
 4. Confirm `https://rcarrier32.github.io/fit-tracker/version.json` shows the new number.
 
-## Keep out of the public repo
+## Provider content and the public repo
 
-The repo and site are public. Never commit PJF member stream ids or notes, people's names, or
-personal data. Plans for another person get a generic name. Their data stays on their phone.
+This is a personal-use app, and the user chose (2026-11-09) to keep paid provider content in the
+repo: PJF member videos and notes (`data/providers/pjf.json`) and the TrainHeroic plan
+(`data/providers/trainheroic.json`, written by `~/Documents/fit-tracker-private/build_th_import.py`).
+The app loads every file in `BUNDLED_SOURCES` (`src/lib/local_videos.js`) at boot, so no phone
+needs an import. Add a new provider the same way: a file in `data/providers/` plus its name in that list.
+
+Still keep out: people's names and personal data. Plans for another person get a generic name,
+and their data stays on their phone.

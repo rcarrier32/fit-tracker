@@ -1,9 +1,9 @@
 /**
  * On-device exercise videos (PJF member-library demos) and PJF coaching notes.
  *
- * These come from a file the user exports from their own PJF account and imports through
- * Home → Import data. They live only in this device's IndexedDB (pref 'local_videos') —
- * never in the repo, because the repo and the GitHub Pages site are public.
+ * The provider files ship with the app in data/providers/ (personal-use app: the user chose to
+ * keep them in the repo), so every phone has them with no import. A file imported through
+ * Home → Import data still works for any other source; for a bundled source the shipped file wins.
  *
  * File shape: { source: 'pjf' | 'trainheroic' | …, videos: { slug: { name, v?, url?, yt?, notes[], alts[], tags? } },
  *               programs?: [...], dayNotes?: [...] }
@@ -83,9 +83,17 @@ export async function loadLocalVideos() {
       sources = old ? { [old.source || 'pjf']: old } : {};
       if (old) await pref('local_sources', sources);
     }
-    index(sources);
+    index({ ...sources, ...(await bundled()) });
   } catch { /* storage unavailable: no local videos */ }
 }
+
+/** Provider files shipped with the app (data/providers/<source>.json). */
+export const BUNDLED_SOURCES = ['pjf', 'trainheroic'];
+let _bundled = null;
+const bundled = () => _bundled ??= Promise.all(BUNDLED_SOURCES.map(src =>
+  fetch(`data/providers/${src}.json`).then(r => (r.ok ? r.json() : null)).catch(() => null)
+    .then(d => (d?.videos ? [src, d] : null))))
+  .then(list => Object.fromEntries(list.filter(Boolean)));
 
 /** Is this a local-videos export rather than a full app backup? */
 export const isLocalVideosFile = (data) => {
@@ -100,7 +108,7 @@ export async function importLocalVideos(data) {
   const src = data.source || 'pjf';
   const sources = { ...((await pref('local_sources')) || _sources), [src]: data };
   await pref('local_sources', sources);
-  index(sources);
+  index({ ...sources, ...(await bundled()) });
   return Object.values(data.videos).filter(o => o.v || o.url || o.yt).length;
 }
 

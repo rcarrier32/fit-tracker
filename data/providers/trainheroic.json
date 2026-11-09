@@ -1,0 +1,2447 @@
+{
+ "source": "trainheroic",
+ "videos": {
+  "banded-hamstring-floss": {
+   "name": "Banded Hamstring Floss",
+   "yt": "72WKiKdmn0U",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "hip_flexors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "banded-hip-distraction-pulling-into-hip-extension": {
+   "name": "Banded Hip Distraction Pulling Into Hip Extension",
+   "yt": "s_FWJUcf3Zo",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "glutes"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "banded-hip-distraction-pulling-into-hip-flexion": {
+   "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+   "yt": "Ph2YbQcQazM",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hip_flexors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "birddog-dumbbell-row": {
+   "name": "Birddog Dumbbell Row",
+   "yt": "kAu6n0e9bQM",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "lats",
+    "muscles": [
+     "lats",
+     "upper_back",
+     "abs",
+     "glutes"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell",
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "contralateral-single-leg-row": {
+   "name": "Contralateral Single Leg Row",
+   "yt": "KyfPBFgRw_o",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "lats",
+    "muscles": [
+     "lats",
+     "upper_back",
+     "glutes",
+     "hamstrings"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "half-kneeling-lateral-bend": {
+   "name": "Half Kneeling Lateral Bend",
+   "yt": "_JQT4q4nxHM",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "abs",
+     "glutes"
+    ],
+    "pattern": "lateral_flexion",
+    "role": "core",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "half-kneeling-rotating-row": {
+   "name": "Half Kneeling Rotating Row",
+   "yt": "8UFg0_RRUqU",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "upper_back",
+    "muscles": [
+     "upper_back",
+     "lats",
+     "obliques"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "cable"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "hamstring-floss-with-knee-flexion": {
+   "name": "Hamstring Floss With Knee Flexion",
+   "yt": "8HY1TcknftY",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "calves"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "hip-hikes": {
+   "name": "Hip Hikes",
+   "yt": "STIFr84E7yQ",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "abductors",
+    "muscles": [
+     "abductors",
+     "glutes",
+     "obliques"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "box"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "incline-alternating-arms-dumbbell-press": {
+   "name": "Incline Alternating Arms Dumbbell Press",
+   "yt": "gAcj2x2meNk",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "front_delts",
+     "triceps",
+     "obliques"
+    ],
+    "pattern": "push_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell",
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "kneeling-cable-sweeping-rotation": {
+   "name": "Kneeling Cable Sweeping Rotation",
+   "yt": "uaoGnhX0WEo",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "abs",
+     "glutes"
+    ],
+    "pattern": "rotation",
+    "role": "core",
+    "equipment": [
+     "cable"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "kneeling-dumbbell-diagonal-chop": {
+   "name": "Kneeling Dumbbell Diagonal Chop",
+   "yt": "SL4lFwM9BXc",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "abs",
+     "front_delts"
+    ],
+    "pattern": "rotation",
+    "role": "core",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "landmine-kneeling-press": {
+   "name": "Landmine Kneeling Press",
+   "yt": "fQUabaoSfq8",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "front_delts",
+    "muscles": [
+     "front_delts",
+     "chest",
+     "triceps",
+     "abs"
+    ],
+    "pattern": "push_vertical",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "landmine-split-squat-isometric": {
+   "name": "Landmine Split Squat Isometric",
+   "yt": "0eRlZTD7HbY",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "adductors"
+    ],
+    "pattern": "isometric",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "lateral-step-to-adductor-pull-in": {
+   "name": "Lateral Step To Adductor Pull-In",
+   "yt": "3o77u5NNwD8",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "glutes",
+     "abductors"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "band"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "loaded-calf-iso": {
+   "name": "Loaded Calf ISO",
+   "yt": "XYxIeGY_MPg",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "calves",
+    "muscles": [
+     "calves"
+    ],
+    "pattern": "isometric",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "on-bench-single-leg-glute-bridge": {
+   "name": "On Bench Single Leg Glute Bridge",
+   "yt": "LsPF-8U8hak",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hamstrings"
+    ],
+    "pattern": "hinge",
+    "role": "accessory",
+    "equipment": [
+     "bench"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "plank": {
+   "name": "Plank",
+   "yt": "KQ46FSJgIKk",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "abs",
+    "muscles": [
+     "abs",
+     "obliques",
+     "front_delts"
+    ],
+    "pattern": "anti_extension",
+    "role": "core",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "pogos": {
+   "name": "Pogos",
+   "yt": "P9VR9_Buz48",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "calves",
+    "muscles": [
+     "calves",
+     "quads"
+    ],
+    "pattern": "plyo_bound_hop",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "poliquin-step-down": {
+   "name": "Poliquin Step Down",
+   "yt": "XI4NdfD3Xfo",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "warmup",
+    "equipment": [
+     "box"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "push-up-to-shoulder-airplane": {
+   "name": "Push Up To Shoulder Airplane",
+   "yt": "Au27fIpfOO0",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "triceps",
+     "obliques",
+     "rear_delts"
+    ],
+    "pattern": "push_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": false
+   }
+  },
+  "push-up-to-pike": {
+   "name": "Push-Up To Pike",
+   "yt": "gxf460U591I",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "front_delts",
+     "triceps",
+     "abs"
+    ],
+    "pattern": "push_horizontal",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "reverse-step-back-lunge": {
+   "name": "Reverse Step Back Lunge",
+   "yt": "um_OOswiPS4",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "hamstrings"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "shin-box-rotation": {
+   "name": "Shin Box Rotation",
+   "yt": "A9vhRbwH2Sw",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hip_flexors",
+     "adductors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "side-bridge-adductor-scissor": {
+   "name": "Side Bridge Adductor Scissor",
+   "yt": "ibYxA4rStng",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "obliques"
+    ],
+    "pattern": "isometric",
+    "role": "core",
+    "equipment": [
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "side-bridge-with-abduction-from-elbow": {
+   "name": "Side Bridge With Abduction From Elbow",
+   "yt": "GmJ-tX9NFIM",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "abductors",
+    "muscles": [
+     "abductors",
+     "obliques",
+     "glutes"
+    ],
+    "pattern": "lateral_flexion",
+    "role": "core",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "single-leg-hinge-to-hip-flexor-drive": {
+   "name": "Single Leg Hinge To Hip Flexor Drive",
+   "yt": "h7M0cIv1eKw",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hamstrings",
+     "hip_flexors"
+    ],
+    "pattern": "balance",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "single-leg-hinge-to-row-combo": {
+   "name": "Single Leg Hinge To Row Combo",
+   "yt": "hJ3eDF1J-3s",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "glutes",
+     "lats",
+     "upper_back"
+    ],
+    "pattern": "hinge",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "standing-hip-flexion-supported-with-iso-hold": {
+   "name": "Standing Hip Flexion Supported With ISO Hold",
+   "yt": "7pEIShmfBXw",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "abs"
+    ],
+    "pattern": "isometric",
+    "role": "accessory",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "suitcase-carry": {
+   "name": "Suitcase Carry",
+   "yt": "y-hn_Ha1-RE",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "forearms",
+     "abductors",
+     "upper_back"
+    ],
+    "pattern": "carry",
+    "role": "core",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "supported-lateral-squat": {
+   "name": "Supported Lateral Squat",
+   "yt": "KVZUDdcyCa8",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "quads",
+     "glutes"
+    ],
+    "pattern": "squat",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "trx-row": {
+   "name": "TRX Row",
+   "yt": "yCuSGoe1gjY",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "upper_back",
+    "muscles": [
+     "upper_back",
+     "lats",
+     "biceps",
+     "rear_delts"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "suspension"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "tempo-goblet-squat": {
+   "name": "Tempo Goblet Squat",
+   "yt": "nYDEYFXN2Rs",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "adductors"
+    ],
+    "pattern": "squat",
+    "role": "main",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "loaded-lateral-squat": {
+   "name": "Loaded Lateral Squat",
+   "yt": "w29bT04oiAM",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "quads",
+     "glutes"
+    ],
+    "pattern": "squat",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "90-90-copenhagen": {
+   "name": "90/90 Copenhagen",
+   "yt": "iTFfd8Lv14M",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "obliques",
+     "glutes"
+    ],
+    "pattern": "isometric",
+    "role": "core",
+    "equipment": [
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "adductor-grab-banded-pendulum-swing": {
+   "name": "Adductor Grab Banded Pendulum Swing",
+   "yt": "k_iVAPFOPHk",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "hip_flexors",
+     "glutes"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "band-pulling-hip-hurdle": {
+   "name": "Band Pulling Hip Hurdle",
+   "yt": "Dl0K7wWKKQs",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "glutes",
+     "abductors"
+    ],
+    "pattern": "mobility",
+    "role": "secondary",
+    "equipment": [
+     "band"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "banded-hip-flexion-using-a-medicine-ball": {
+   "name": "Banded Hip Flexion Using A Medicine Ball",
+   "yt": "HnIwyXFGLuA",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "abs"
+    ],
+    "pattern": "isolation_lower",
+    "role": "warmup",
+    "equipment": [
+     "band",
+     "med_ball"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "banded-incline-pigeon-rotation": {
+   "name": "Banded Incline Pigeon Rotation",
+   "yt": "WszEubOcLxA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hip_flexors",
+     "abductors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band",
+     "bench"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "banded-march-with-goblet-squat": {
+   "name": "Banded March With Goblet Squat",
+   "yt": "H3-seu2pbjQ",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "hip_flexors",
+     "abs"
+    ],
+    "pattern": "squat",
+    "role": "secondary",
+    "equipment": [
+     "band",
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "barbell-ffe-zercher-iso-hold": {
+   "name": "Barbell FFE Zercher ISO Hold",
+   "yt": "JZSMltcACMA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "abs",
+     "upper_back"
+    ],
+    "pattern": "isometric",
+    "role": "secondary",
+    "equipment": [
+     "barbell",
+     "box"
+    ],
+    "level": 3,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "biased-ir-split-squat": {
+   "name": "Biased IR Split Squat",
+   "yt": "y0YDMZ5Txpg",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "quads",
+     "adductors"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "copenhagen-straight-leg": {
+   "name": "Copenhagen Straight Leg",
+   "yt": "aDsaGBnvDQo",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "obliques"
+    ],
+    "pattern": "isometric",
+    "role": "core",
+    "equipment": [
+     "bench"
+    ],
+    "level": 3,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "dns-star": {
+   "name": "DNS Star",
+   "yt": "ScuPHM8Hsvk",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "glutes",
+     "abductors",
+     "side_delts"
+    ],
+    "pattern": "anti_rotation",
+    "role": "core",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "deadbug": {
+   "name": "Deadbug",
+   "yt": "UJ7b8gYa2Es",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "abs",
+    "muscles": [
+     "abs",
+     "hip_flexors"
+    ],
+    "pattern": "anti_extension",
+    "role": "core",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "dumbbell-hamstring-curl": {
+   "name": "Dumbbell Hamstring Curl",
+   "yt": "z6MvXsikOk0",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "calves"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell",
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "dumbbell-lateral-squat-drop-in": {
+   "name": "Dumbbell Lateral Squat Drop In",
+   "yt": "Fp_9q2t8u30",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "quads",
+     "glutes"
+    ],
+    "pattern": "squat",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "dumbbell-row-from-single-leg": {
+   "name": "Dumbbell Row From Single Leg",
+   "yt": "hJ3eDF1J-3s",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "lats",
+    "muscles": [
+     "lats",
+     "upper_back",
+     "glutes",
+     "hamstrings"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "dynamic-copenhagen": {
+   "name": "Dynamic Copenhagen",
+   "yt": "Gu9sdOVIY00",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "obliques"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "dynamic-groin-drift": {
+   "name": "Dynamic Groin Drift",
+   "yt": "phy7kOs7H0E",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "hip_flexors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "dynamic-hip-flexor-rock-back": {
+   "name": "Dynamic Hip Flexor Rock Back",
+   "yt": "HpA2RZzRlKw",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "glutes",
+     "quads"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "dynamic-kettlebell-split-squat-drops": {
+   "name": "Dynamic Kettlebell Split Squat Drops",
+   "yt": "GeuihYydydk",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "calves"
+    ],
+    "pattern": "deceleration_landing",
+    "role": "power",
+    "equipment": [
+     "kettlebell"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "dynamic-rotational-split-iso": {
+   "name": "Dynamic Rotational Split ISO",
+   "yt": "QbsiH6n1-M4",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "obliques",
+     "quads",
+     "adductors"
+    ],
+    "pattern": "rotation",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "explosive-step-up": {
+   "name": "Explosive Step Up",
+   "yt": "VRaIY4KlqWs",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "quads",
+     "calves"
+    ],
+    "pattern": "plyo_jump",
+    "role": "power",
+    "equipment": [
+     "box"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "ffe-dumbbell-split-squats": {
+   "name": "FFE Dumbbell Split Squats",
+   "yt": "GCqepujO-Bg",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "adductors"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell",
+     "box"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "ffe-floating-heel": {
+   "name": "FFE Floating Heel",
+   "yt": "sSPNGhNeIK4",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "calves"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "box"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "facing-wall-hip-airplane": {
+   "name": "Facing Wall Hip Airplane",
+   "yt": "LD7ePbXuXNw",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "abductors",
+     "adductors"
+    ],
+    "pattern": "balance",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "facing-wall-hip-circle-rotations": {
+   "name": "Facing Wall Hip Circle Rotations",
+   "yt": "TtSxDOj7uTQ",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hip_flexors",
+     "adductors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "figure-4-flow": {
+   "name": "Figure 4 Flow",
+   "yt": "GAjN5llpzrE",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "abductors",
+     "lower_back"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "goblet-squat-drop-step": {
+   "name": "Goblet Squat Drop Step",
+   "yt": "OP4T7oIZKlM",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "quads",
+     "adductors",
+     "obliques"
+    ],
+    "pattern": "agility_cod",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "hand-supported-sldl-loaded": {
+   "name": "Hand Supported SLDL Loaded",
+   "yt": "Iok3nSFXLUU",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "glutes",
+     "lower_back"
+    ],
+    "pattern": "hinge",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "hip-flexor-fall-in": {
+   "name": "Hip Flexor Fall-In",
+   "yt": "ikVLqLTj9xA",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "adductors",
+     "glutes"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "hip-flexor-rock-back": {
+   "name": "Hip Flexor Rock Back",
+   "yt": "TnHkpTcJ2Qw",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "quads",
+     "glutes"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "incline-dumbbell-chest-press": {
+   "name": "Incline Dumbbell Chest Press",
+   "yt": "kpzUeELReEA",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "front_delts",
+     "triceps"
+    ],
+    "pattern": "push_horizontal",
+    "role": "main",
+    "equipment": [
+     "dumbbell",
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "landmine-lateral-squat": {
+   "name": "Landmine Lateral Squat",
+   "yt": "w29bT04oiAM",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "quads",
+     "glutes"
+    ],
+    "pattern": "squat",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "landmine-reverse-lunge-to-overhead-press": {
+   "name": "Landmine Reverse Lunge To Overhead Press",
+   "yt": "tmpTmggdnog",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "front_delts",
+     "triceps"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "landmine-rotations": {
+   "name": "Landmine Rotations",
+   "yt": "EdaEreaEXGE",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "abs",
+     "front_delts",
+     "glutes"
+    ],
+    "pattern": "rotation",
+    "role": "core",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "landmine-row": {
+   "name": "Landmine Row",
+   "yt": "JlE7fzmGToY",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "lats",
+    "muscles": [
+     "lats",
+     "upper_back",
+     "biceps"
+    ],
+    "pattern": "pull_horizontal",
+    "role": "main",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "landmine-sldl": {
+   "name": "Landmine SLDL",
+   "yt": "g_j67rzBERA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "glutes",
+     "lower_back"
+    ],
+    "pattern": "hinge",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "landmine-squat-press": {
+   "name": "Landmine Squat Press",
+   "yt": "G9RpZXJcg10",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "front_delts",
+     "triceps"
+    ],
+    "pattern": "squat",
+    "role": "main",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "landmine-standing-press": {
+   "name": "Landmine Standing Press",
+   "yt": "IBE8qT84DIk",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "front_delts",
+    "muscles": [
+     "front_delts",
+     "triceps",
+     "chest",
+     "abs"
+    ],
+    "pattern": "push_vertical",
+    "role": "secondary",
+    "equipment": [
+     "landmine"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "lateral-bridge-with-row": {
+   "name": "Lateral Bridge With Row",
+   "yt": "FC7sZfep3Bs",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "upper_back",
+     "lats",
+     "abductors"
+    ],
+    "pattern": "lateral_flexion",
+    "role": "core",
+    "equipment": [
+     "band"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "lateral-hops": {
+   "name": "Lateral Hops",
+   "yt": "bqbZqxqs8tY",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "calves",
+    "muscles": [
+     "calves",
+     "abductors",
+     "adductors",
+     "quads"
+    ],
+    "pattern": "plyo_bound_hop",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "loaded-hip-airplane": {
+   "name": "Loaded Hip Airplane",
+   "yt": "HnR7Nz02Mms",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "abductors",
+     "adductors",
+     "hamstrings"
+    ],
+    "pattern": "balance",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "loaded-single-leg-calf-raise": {
+   "name": "Loaded Single Leg Calf Raise",
+   "yt": "cRKA_Qdut7I",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "calves",
+    "muscles": [
+     "calves"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell",
+     "box"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "lunge-matrix": {
+   "name": "Lunge Matrix",
+   "yt": "y89V6AvlaFA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "adductors"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "lunge-to-step-up": {
+   "name": "Lunge To Step Up",
+   "yt": "pZc-sd14XOQ",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "hamstrings"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell",
+     "box"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "marching-glute-bridge-with-hips-up": {
+   "name": "Marching Glute Bridge With Hips Up",
+   "yt": "msfdrPWJ-9o",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hamstrings",
+     "abs"
+    ],
+    "pattern": "isometric",
+    "role": "accessory",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "pike-toe-tap-from-push-up": {
+   "name": "Pike Toe Tap From Push-Up",
+   "yt": "GepLoHUKo8c",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "abs",
+    "muscles": [
+     "abs",
+     "front_delts",
+     "hip_flexors"
+    ],
+    "pattern": "anti_extension",
+    "role": "core",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "plyo-push-up-to-pike": {
+   "name": "Plyo Push Up To Pike",
+   "yt": "5wbQtnPJw9g",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "triceps",
+     "front_delts",
+     "abs"
+    ],
+    "pattern": "push_horizontal",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 3,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "plyo-push-up-to-shoulder-airplane": {
+   "name": "Plyo Push Up To Shoulder Airplane",
+   "yt": "eS1rSkwc5PU",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "chest",
+    "muscles": [
+     "chest",
+     "triceps",
+     "obliques",
+     "rear_delts"
+    ],
+    "pattern": "push_horizontal",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 3,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": false
+   }
+  },
+  "posterior-bridge-with-sagittal-leg-whip": {
+   "name": "Posterior Bridge With Sagittal Leg Whip",
+   "yt": "xvfVGwFee9s",
+   "video_from": "griffith",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hamstrings",
+     "hip_flexors"
+    ],
+    "pattern": "hinge",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "ql-hip-drop-from-a-bench": {
+   "name": "QL Hip Drop From A Bench",
+   "yt": "gFLdwp-5_iM",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "abductors",
+     "lower_back"
+    ],
+    "pattern": "lateral_flexion",
+    "role": "warmup",
+    "equipment": [
+     "bench"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "frontal",
+    "hip_focus": true
+   }
+  },
+  "rolling-shoulder-armbar": {
+   "name": "Rolling Shoulder Armbar",
+   "yt": "w2-yOWhsysE",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "rear_delts",
+    "muscles": [
+     "rear_delts",
+     "upper_back",
+     "obliques"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "kettlebell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": false
+   }
+  },
+  "rotating-pike-twist-to-cobra-flow": {
+   "name": "Rotating Pike Twist To Cobra Flow",
+   "yt": "zTpF6qlr1VM",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "obliques",
+    "muscles": [
+     "obliques",
+     "hip_flexors",
+     "abs",
+     "lower_back"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "sldl-with-loaded-hip-flexion": {
+   "name": "SLDL With Loaded Hip Flexion",
+   "yt": "fMxRY-B49tk",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "glutes",
+     "hip_flexors"
+    ],
+    "pattern": "hinge",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "serratus-slides": {
+   "name": "Serratus Slides",
+   "yt": "WIdjSjzNS2A",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "front_delts",
+    "muscles": [
+     "front_delts",
+     "upper_back",
+     "abs"
+    ],
+    "pattern": "mobility",
+    "role": "accessory",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "shin-box-reach-and-row": {
+   "name": "Shin Box Reach And Row",
+   "yt": "TROFKF4dRMk",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "upper_back",
+     "hip_flexors"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "side-lying-t-spine-dumbbell-press": {
+   "name": "Side Lying T-Spine Dumbbell Press",
+   "yt": "q1pAPyFOm8o",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "upper_back",
+    "muscles": [
+     "upper_back",
+     "chest",
+     "front_delts",
+     "obliques"
+    ],
+    "pattern": "mobility",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": false
+   }
+  },
+  "single-hinge-to-hip-flexor-flow-from-elevated-surface": {
+   "name": "Single Hinge To Hip Flexor Flow From Elevated Surface",
+   "yt": "MNUfNdOiIzw",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "hip_flexors",
+     "glutes"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "box"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "single-leg-kettlebell-swing": {
+   "name": "Single Leg Kettlebell Swing",
+   "yt": "kGB1SwDHo3o",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "hamstrings",
+     "abs"
+    ],
+    "pattern": "hinge",
+    "role": "power",
+    "equipment": [
+     "kettlebell"
+    ],
+    "level": 3,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "soleus-raise": {
+   "name": "Soleus Raise",
+   "yt": "u45C0NByqF8",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "calves",
+    "muscles": [
+     "calves"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "dumbbell",
+     "box"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "staggered-adductor-grab-from-punch": {
+   "name": "Staggered Adductor Grab From Punch",
+   "yt": "yG1atlUEqbA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "adductors",
+    "muscles": [
+     "adductors",
+     "obliques",
+     "glutes"
+    ],
+    "pattern": "rotation",
+    "role": "core",
+    "equipment": [
+     "cable"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "star-toe-tap": {
+   "name": "Star Toe Tap",
+   "yt": "0Zm7hpBvrMU",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "glutes",
+    "muscles": [
+     "glutes",
+     "quads",
+     "adductors",
+     "abductors"
+    ],
+    "pattern": "balance",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "transverse",
+    "hip_focus": true
+   }
+  },
+  "step-up-with-tke": {
+   "name": "Step Up With TKE",
+   "yt": "ulw00IJtJmA",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "warmup",
+    "equipment": [
+     "box",
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "suspended-hamstring-curl": {
+   "name": "Suspended Hamstring Curl",
+   "yt": "d10DjhGk7M4",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hamstrings",
+    "muscles": [
+     "hamstrings",
+     "glutes"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "suspension"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "t-spine-wall-contour": {
+   "name": "T-Spine Wall Contour",
+   "yt": "GvEp9XKDSHY",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "upper_back",
+    "muscles": [
+     "upper_back",
+     "lats",
+     "abs"
+    ],
+    "pattern": "mobility",
+    "role": "warmup",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 1,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": false
+   }
+  },
+  "two-leg-drop-into-split-squat": {
+   "name": "Two Leg Drop Into Split Squat",
+   "yt": "VZdIZPhCFJ4",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "calves"
+    ],
+    "pattern": "deceleration_landing",
+    "role": "power",
+    "equipment": [
+     "bodyweight"
+    ],
+    "level": 2,
+    "unilateral": false,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "bulgarian-split-squat": {
+   "name": "Bulgarian Split Squat",
+   "yt": "lG3MsPmEQQk",
+   "video_from": "reuse",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes",
+     "adductors"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "secondary",
+    "equipment": [
+     "dumbbell",
+     "bench"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "kettlebell-loaded-hip-flexor-lift": {
+   "name": "Kettlebell Loaded Hip Flexor Lift",
+   "yt": "djxTlEIJdqc",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "hip_flexors",
+    "muscles": [
+     "hip_flexors",
+     "abs"
+    ],
+    "pattern": "isolation_lower",
+    "role": "accessory",
+    "equipment": [
+     "kettlebell"
+    ],
+    "level": 2,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  },
+  "poliquin-step-down-with-tke": {
+   "name": "Poliquin Step Down With TKE",
+   "yt": "j34h8a1fEXw",
+   "video_from": "search",
+   "notes": [],
+   "alts": [],
+   "tags": {
+    "primary_muscle": "quads",
+    "muscles": [
+     "quads",
+     "glutes"
+    ],
+    "pattern": "lunge_single_leg",
+    "role": "warmup",
+    "equipment": [
+     "box",
+     "band"
+    ],
+    "level": 1,
+    "unilateral": true,
+    "plane": "sagittal",
+    "hip_focus": true
+   }
+  }
+ },
+ "programs": []
+}

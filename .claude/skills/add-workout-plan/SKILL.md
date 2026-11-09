@@ -17,7 +17,7 @@ Follow [docs/ADDING_A_PROGRAM.md](../../../docs/ADDING_A_PROGRAM.md) step by ste
 6b. **Alternatives:** give each exercise row 2–4 `alternates` that fit the plan's equipment (see `data/build_lean_tone.py`).
 7. **`node data/check_catalog.mjs` and `node data/check_program.mjs <id> --net` must pass** before you check it in the preview.
 8. **Preview at phone size** and step through every day. Then bump the version in 3 places and push as rcarrier32. Ask before pushing unless the user already said to.
-9. **Public repo:** generic program names, no personal names or data.
+9. **Repo content:** paid provider content (PJF, TrainHeroic, BWS) is fine to commit (personal-use app); it lives in `data/providers/` and loads automatically. Still no personal names or data.
 
 ## Designing a new plan (no source document)
 
