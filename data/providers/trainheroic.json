@@ -2591,6 +2591,7 @@
          "reps": "3",
          "notes": "Hold 3s each rep. Go straight into the next exercise; rest after the group.",
          "round_group": "B · Prep",
+         "prep": true,
          "rest": "0-15s"
         },
         {
@@ -2599,6 +2600,7 @@
          "reps": "3",
          "notes": "Hold 3s each rep.",
          "round_group": "B · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -2606,6 +2608,7 @@
          "sets": 1,
          "reps": "8",
          "round_group": "C · Prep",
+         "prep": false,
          "rest": "30s"
         },
         {
@@ -2613,6 +2616,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Unilateral Lower Body",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2622,6 +2626,7 @@
          "reps": "1",
          "notes": "Hold 10s each rep.",
          "round_group": "D · Unilateral Lower Body",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2629,6 +2634,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Lower Body & Upper Body Push",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2637,6 +2643,7 @@
          "sets": 3,
          "reps": "4",
          "round_group": "E · Lower Body & Upper Body Push",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2644,6 +2651,7 @@
          "sets": 2,
          "time": "10s",
          "round_group": "F · Lower Body & Upper Body Press",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric",
@@ -2656,6 +2664,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "F · Lower Body & Upper Body Press",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Half Kneeling Single Arm Dumbbell Press"
@@ -2667,6 +2676,7 @@
          "sets": 2,
          "time": "8s",
          "round_group": "G · Lower Leg & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2675,7 +2685,16 @@
          "sets": 2,
          "time": "10s",
          "round_group": "G · Lower Leg & Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -2689,6 +2708,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2697,6 +2717,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2705,6 +2726,7 @@
          "sets": 2,
          "reps": "10",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -2712,6 +2734,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Sling & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2720,6 +2743,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Sling & Hips",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2727,6 +2751,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Pull & Pillar",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2735,6 +2760,7 @@
          "sets": 3,
          "reps": "40 ft",
          "round_group": "C · Pull & Pillar",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2742,6 +2768,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "D · Posterior & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -2755,6 +2782,7 @@
          "sets": 3,
          "time": "45s",
          "round_group": "D · Posterior & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2762,6 +2790,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2770,7 +2799,22 @@
          "sets": 2,
          "time": "10s",
          "round_group": "E · Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
+        },
+        {
+         "name": "Deadbug",
+         "reps": "5 each side",
+         "time": null,
+         "notes": null
         }
        ]
       },
@@ -2784,6 +2828,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2792,6 +2837,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2800,6 +2846,7 @@
          "sets": 2,
          "reps": "20",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -2807,6 +2854,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hips & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2815,6 +2863,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hips & Groin",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2822,6 +2871,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "A band anchored at the same height works in place of the cable. Go straight into the next exercise; rest after the group."
         },
@@ -2830,6 +2880,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -2838,6 +2889,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2846,6 +2898,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2853,6 +2906,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Core Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2861,7 +2915,16 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Core Strength",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       }
@@ -2881,6 +2944,7 @@
          "reps": "3",
          "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s"
         },
         {
@@ -2889,6 +2953,7 @@
          "reps": "3",
          "notes": "Hold 5s each rep.",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -2896,6 +2961,7 @@
          "sets": 1,
          "reps": "10",
          "round_group": "B · Prep",
+         "prep": false,
          "rest": "30s"
         },
         {
@@ -2903,6 +2969,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Unilateral Lower Body",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2912,6 +2979,7 @@
          "reps": "1",
          "notes": "Hold 15s each rep.",
          "round_group": "C · Unilateral Lower Body",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2919,6 +2987,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "D · Lower Body & Upper Body Push",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2927,6 +2996,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "D · Lower Body & Upper Body Push",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -2934,6 +3004,7 @@
          "sets": 2,
          "time": "10s",
          "round_group": "E · Lower Body & Upper Body Press",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric",
@@ -2946,6 +3017,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Lower Body & Upper Body Press",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Half Kneeling Single Arm Dumbbell Press"
@@ -2957,6 +3029,7 @@
          "sets": 2,
          "time": "12s",
          "round_group": "F · Lower Leg & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2965,7 +3038,16 @@
          "sets": 2,
          "time": "15s",
          "round_group": "F · Lower Leg & Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -2979,6 +3061,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2987,6 +3070,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -2995,6 +3079,7 @@
          "sets": 2,
          "reps": "10",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3002,6 +3087,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Sling & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3010,6 +3096,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Sling & Hips",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3017,6 +3104,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Pull & Pillar",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3025,6 +3113,7 @@
          "sets": 3,
          "reps": "40 ft",
          "round_group": "C · Pull & Pillar",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3032,6 +3121,7 @@
          "sets": 3,
          "reps": "12",
          "round_group": "D · Posterior & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -3045,6 +3135,7 @@
          "sets": 3,
          "time": "45s",
          "round_group": "D · Posterior & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3052,6 +3143,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3060,7 +3152,22 @@
          "sets": 2,
          "time": "15s",
          "round_group": "E · Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
+        },
+        {
+         "name": "Deadbug",
+         "reps": "5 each side",
+         "time": null,
+         "notes": null
         }
        ]
       },
@@ -3074,6 +3181,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3082,6 +3190,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3090,6 +3199,7 @@
          "sets": 2,
          "reps": "30",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3097,6 +3207,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hips & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3105,6 +3216,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hips & Groin",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3112,6 +3224,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "A band anchored at the same height works in place of the cable. Go straight into the next exercise; rest after the group."
         },
@@ -3120,6 +3233,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Rotational Strength",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -3128,6 +3242,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3136,6 +3251,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3143,6 +3259,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Core Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3151,7 +3268,16 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Core Strength",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       }
@@ -3173,6 +3299,7 @@
          "reps": "3",
          "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "0-15s"
         },
         {
@@ -3180,6 +3307,7 @@
          "sets": 2,
          "reps": "10",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3188,6 +3316,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -3195,6 +3324,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3203,6 +3333,7 @@
          "sets": 3,
          "time": "10s",
          "round_group": "B · Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3210,6 +3341,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3218,6 +3350,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "C · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3225,6 +3358,7 @@
          "sets": 3,
          "time": "15s",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric",
@@ -3237,6 +3371,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Split Stance Single Arm Dumbbell Press",
@@ -3249,6 +3384,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Calf & Hip Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3257,7 +3393,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Calf & Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -3271,6 +3416,7 @@
          "sets": 2,
          "reps": "5",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3279,6 +3425,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3287,6 +3434,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3294,6 +3442,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hip, Row & Posture",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3302,6 +3451,7 @@
          "sets": 3,
          "reps": "40 ft",
          "round_group": "B · Hip, Row & Posture",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3309,6 +3459,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Single-Leg RDL with Kettlebell",
@@ -3321,6 +3472,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "DB Split Stance Row",
@@ -3333,6 +3485,7 @@
          "sets": 3,
          "reps": "12",
          "round_group": "D · Back & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -3346,6 +3499,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Back & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3353,6 +3507,7 @@
          "sets": 2,
          "reps": "5",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3361,7 +3516,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -3375,6 +3539,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3383,6 +3548,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3391,6 +3557,7 @@
          "sets": 2,
          "reps": "30",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -3398,6 +3565,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Rotational Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3406,6 +3574,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Rotational Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3413,6 +3582,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Core & Lower Body Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3421,6 +3591,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Core & Lower Body Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3428,6 +3599,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Loaded Lateral Squat",
@@ -3440,6 +3612,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Kneeling Dumbbell Diagonal Chop",
@@ -3452,6 +3625,7 @@
          "sets": 2,
          "time": "10s",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric"
@@ -3463,7 +3637,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Deadbug",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up core work before Griffith's Prep block."
         }
        ]
       }
@@ -3483,6 +3666,7 @@
          "reps": "3",
          "notes": "Hold 5s each rep. Go straight into the next exercise; rest after the group.",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "0-15s"
         },
         {
@@ -3490,6 +3674,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3498,6 +3683,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Hip & Knee Mobility",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -3505,6 +3691,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3513,6 +3700,7 @@
          "sets": 3,
          "time": "15s",
          "round_group": "B · Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3520,6 +3708,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3528,6 +3717,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "C · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3535,6 +3725,7 @@
          "sets": 3,
          "time": "15s",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric",
@@ -3547,6 +3738,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Split Stance Single Arm Dumbbell Press",
@@ -3559,6 +3751,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Calf & Hip Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3567,7 +3760,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Calf & Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -3581,6 +3783,7 @@
          "sets": 2,
          "reps": "5",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3589,6 +3792,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3597,6 +3801,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3604,6 +3809,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hip, Row & Posture",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3612,6 +3818,7 @@
          "sets": 3,
          "reps": "50 ft",
          "round_group": "B · Hip, Row & Posture",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3619,6 +3826,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Single-Leg RDL with Kettlebell",
@@ -3631,6 +3839,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "DB Split Stance Row",
@@ -3643,6 +3852,7 @@
          "sets": 3,
          "reps": "12",
          "round_group": "D · Back & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -3656,6 +3866,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Back & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3663,6 +3874,7 @@
          "sets": 2,
          "reps": "7",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3671,7 +3883,16 @@
          "sets": 2,
          "reps": "10",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -3685,6 +3906,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3693,6 +3915,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3701,6 +3924,7 @@
          "sets": 2,
          "reps": "30",
          "round_group": "A · Hips & Lower Leg",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -3708,6 +3932,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Rotational Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3716,6 +3941,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Rotational Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3723,6 +3949,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Core & Lower Body Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3731,6 +3958,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Core & Lower Body Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3738,6 +3966,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Loaded Lateral Squat",
@@ -3750,6 +3979,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Strength/Power",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Kneeling Dumbbell Diagonal Chop",
@@ -3762,6 +3992,7 @@
          "sets": 2,
          "time": "10s",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "FFE Goblet Split Squat Isometric"
@@ -3773,7 +4004,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Deadbug",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up core work before Griffith's Prep block."
         }
        ]
       }
@@ -3792,6 +4032,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3800,6 +4041,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3808,6 +4050,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3815,6 +4058,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Lower & Upper Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3823,6 +4067,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Lower & Upper Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3830,6 +4075,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Unilateral Strength & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3838,6 +4084,7 @@
          "sets": 3,
          "time": "10s",
          "round_group": "C · Unilateral Strength & Groin",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3845,6 +4092,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3853,6 +4101,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3860,6 +4109,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "E · Hip Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3868,7 +4118,16 @@
          "sets": 2,
          "reps": "5",
          "round_group": "E · Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -3882,6 +4141,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3890,6 +4150,7 @@
          "sets": 2,
          "reps": "5",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3898,6 +4159,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -3905,6 +4167,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3913,6 +4176,7 @@
          "sets": 3,
          "reps": "12",
          "round_group": "B · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -3926,6 +4190,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Rows",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3934,6 +4199,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Hips & Rows",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3941,6 +4207,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Core & Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3949,6 +4216,7 @@
          "sets": 3,
          "reps": "50 ft",
          "round_group": "D · Core & Posterior Chain",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -3956,6 +4224,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hamstrings & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3964,7 +4233,16 @@
          "sets": 2,
          "reps": "5",
          "round_group": "E · Hamstrings & Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -3978,6 +4256,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3986,6 +4265,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -3994,6 +4274,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4002,6 +4283,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4010,6 +4292,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4017,6 +4300,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Upper Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4025,6 +4309,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "C · Hips & Upper Strength",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Reverse Lunge to Single Arm Dumbbell Press"
@@ -4036,6 +4321,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Body Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4044,6 +4330,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Body Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4051,6 +4338,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "E · Lower Leg & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4060,6 +4348,7 @@
          "reps": "1",
          "notes": "Hold 10s each rep.",
          "round_group": "E · Lower Leg & Groin",
+         "prep": false,
          "rest": "60-90s"
         }
        ]
@@ -4079,6 +4368,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4087,6 +4377,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4095,6 +4386,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4102,6 +4394,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "B · Lower & Upper Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4110,6 +4403,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Lower & Upper Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4117,6 +4411,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Unilateral Strength & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4125,6 +4420,7 @@
          "sets": 3,
          "time": "10s",
          "round_group": "C · Unilateral Strength & Groin",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4132,6 +4428,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4140,6 +4437,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Upper & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4147,6 +4445,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "E · Hip Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4155,7 +4454,16 @@
          "sets": 2,
          "reps": "5",
          "round_group": "E · Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -4169,6 +4477,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4177,6 +4486,7 @@
          "sets": 2,
          "reps": "5",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4185,6 +4495,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4192,6 +4503,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4200,6 +4512,7 @@
          "sets": 3,
          "reps": "12",
          "round_group": "B · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -4213,6 +4526,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Rows",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4221,6 +4535,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Hips & Rows",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4228,6 +4543,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Core & Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4236,6 +4552,7 @@
          "sets": 3,
          "reps": "50 ft",
          "round_group": "D · Core & Posterior Chain",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4243,6 +4560,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hamstrings & Hips",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4251,7 +4569,16 @@
          "sets": 2,
          "reps": "5",
          "round_group": "E · Hamstrings & Hips",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -4265,6 +4592,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4273,6 +4601,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4281,6 +4610,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4289,6 +4619,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4297,6 +4628,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4304,6 +4636,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Upper Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4312,6 +4645,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "C · Hips & Upper Strength",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Reverse Lunge to Single Arm Dumbbell Press"
@@ -4323,6 +4657,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Body Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4331,6 +4666,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Body Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4338,6 +4674,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "E · Lower Leg & Groin",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4347,6 +4684,7 @@
          "reps": "1",
          "notes": "Hold 10s each rep.",
          "round_group": "E · Lower Leg & Groin",
+         "prep": false,
          "rest": "60-90s"
         }
        ]
@@ -4366,6 +4704,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4374,6 +4713,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4382,6 +4722,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4389,6 +4730,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4397,6 +4739,7 @@
          "sets": 3,
          "reps": "4",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4404,6 +4747,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4412,6 +4756,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4420,6 +4765,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Lower Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4428,6 +4774,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Upper Strength & Lower Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4435,6 +4782,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "E · Hips & Glutes",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4443,7 +4791,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips & Glutes",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -4457,6 +4814,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4465,6 +4823,7 @@
          "sets": 2,
          "reps": "10",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4473,6 +4832,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -4480,6 +4840,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "B · Hips & Rows",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4488,6 +4849,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hips & Rows",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4496,6 +4858,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4504,6 +4867,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4511,6 +4875,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Power & Posture",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4519,6 +4884,7 @@
          "sets": 3,
          "reps": "60 ft",
          "round_group": "D · Power & Posture",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4526,6 +4892,7 @@
          "sets": 2,
          "reps": "12",
          "round_group": "E · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -4539,12 +4906,21 @@
          "sets": 3,
          "reps": "6",
          "round_group": "E · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Single-Leg Slider Hamstring Curl",
           "Slider Hamstring Curl"
          ],
          "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -4558,6 +4934,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4566,6 +4943,7 @@
          "sets": 2,
          "reps": "4",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4573,6 +4951,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4580,6 +4959,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Power & Shoulder Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4588,6 +4968,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Power & Shoulder Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4595,6 +4976,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Goblet Squat to Press"
@@ -4606,6 +4988,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Hips & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4613,6 +4996,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Hips & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4621,6 +5005,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "E · Hips & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4628,6 +5013,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "F · Lower Leg & Spine",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4636,7 +5022,16 @@
          "sets": 2,
          "reps": "6",
          "round_group": "F · Lower Leg & Spine",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       }
@@ -4655,6 +5050,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4663,6 +5059,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4671,6 +5068,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4678,6 +5076,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4686,6 +5085,7 @@
          "sets": 3,
          "reps": "4",
          "round_group": "B · Power & Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4693,6 +5093,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4701,6 +5102,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Strength/Power",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4709,6 +5111,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Upper Strength & Lower Power",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4717,6 +5120,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Upper Strength & Lower Power",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4724,6 +5128,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "E · Hips & Glutes",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4732,7 +5137,16 @@
          "sets": 2,
          "reps": "8",
          "round_group": "E · Hips & Glutes",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Push-Up To Pike",
+         "reps": "8",
+         "time": null,
+         "notes": "Added by the app: warms up push work before Griffith's Prep block."
         }
        ]
       },
@@ -4746,6 +5160,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4754,6 +5169,7 @@
          "sets": 2,
          "reps": "10",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4762,6 +5178,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Strength/Power",
+         "prep": true,
          "rest": "60-90s"
         },
         {
@@ -4769,6 +5186,7 @@
          "sets": 3,
          "reps": "6",
          "round_group": "B · Hips & Rows",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4777,6 +5195,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "B · Hips & Rows",
+         "prep": false,
          "rest": "60-90s",
          "notes": "A band anchored at the same height works in place of the cable."
         },
@@ -4785,6 +5204,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Core",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4793,6 +5213,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Hips & Core",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4800,6 +5221,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Power & Posture",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4808,6 +5230,7 @@
          "sets": 3,
          "reps": "60 ft",
          "round_group": "D · Power & Posture",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4815,6 +5238,7 @@
          "sets": 2,
          "reps": "12",
          "round_group": "E · Posterior Chain",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Birddog Dumbbell Row",
@@ -4828,12 +5252,21 @@
          "sets": 3,
          "reps": "6",
          "round_group": "E · Posterior Chain",
+         "prep": false,
          "rest": "60-90s",
          "alternates": [
           "Single-Leg Slider Hamstring Curl",
           "Slider Hamstring Curl"
          ],
          "notes": "No landmine/barbell/TRX at home? Swap to the first alternative."
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       },
@@ -4847,6 +5280,7 @@
          "sets": 2,
          "reps": "6",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4855,6 +5289,7 @@
          "sets": 2,
          "reps": "4",
          "round_group": "A · Prep",
+         "prep": true,
          "rest": "30s"
         },
         {
@@ -4862,6 +5297,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "B · Hip Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4869,6 +5305,7 @@
          "sets": 3,
          "reps": "10",
          "round_group": "C · Power & Shoulder Mobility",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4877,6 +5314,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "C · Power & Shoulder Mobility",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4884,6 +5322,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "D · Hips & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "alternates": [
           "Goblet Squat to Press"
@@ -4895,6 +5334,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "D · Hips & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4902,6 +5342,7 @@
          "sets": 3,
          "reps": "8",
          "round_group": "E · Hips & Lower Strength",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4910,6 +5351,7 @@
          "sets": 3,
          "reps": "5",
          "round_group": "E · Hips & Lower Strength",
+         "prep": false,
          "rest": "60-90s"
         },
         {
@@ -4917,6 +5359,7 @@
          "sets": 2,
          "reps": "8",
          "round_group": "F · Lower Leg & Spine",
+         "prep": false,
          "rest": "0-15s",
          "notes": "Go straight into the next exercise; rest after the group."
         },
@@ -4925,7 +5368,16 @@
          "sets": 2,
          "reps": "6",
          "round_group": "F · Lower Leg & Spine",
+         "prep": false,
          "rest": "60-90s"
+        }
+       ],
+       "warmup": [
+        {
+         "name": "Rolling Shoulder Armbar",
+         "reps": "5 each side",
+         "time": null,
+         "notes": "Added by the app: warms up pull work before Griffith's Prep block."
         }
        ]
       }

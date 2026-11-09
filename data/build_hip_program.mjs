@@ -56,6 +56,8 @@ const warmup = WARMUP_IDS.map(id => EXERCISE_INDEX[id]).map(ex => {
   const rx = parseRx(ex.sets);
   return { name: ex.name, reps: rx.reps || null, time: rx.time || null, notes: ex.subtitle || null };
 });
+// The Hip tab warm-up is all hips; Session A also works core hard, so add one core move (Griffith's demo).
+warmup.push({ name: 'Dead Bug', reps: '5 each side', time: null, notes: 'Slow, low back pressed down: wakes up the core.' });
 
 function dayFor(sessionId, dayNum, phase, week) {
   const label = sessionId === 'session-a' ? 'Session A' : 'Session B';

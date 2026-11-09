@@ -83,7 +83,7 @@ const REGION = { chest: 'push', front_delts: 'push', side_delts: 'push', triceps
   quads: 'legs & hips', glutes: 'legs & hips', hamstrings: 'legs & hips', adductors: 'legs & hips', abductors: 'legs & hips', hip_flexors: 'legs & hips', calves: 'legs & hips',
   abs: 'core', obliques: 'core', lower_back: 'core' };
 weeks.forEach((w, wi) => w.days.forEach((d, di) => {
-  const isPrep = (ex) => /prep|warm/i.test(ex.round_group || '');
+  const isPrep = (ex) => ex.prep || /prep|warm/i.test(ex.round_group || '');
   const warm = [...(d.warmup || []).map(x => x.name), ...(d.exercises || []).filter(isPrep).map(x => x.name)];
   if (!warm.length) return;
   const regionsOf = (n, all) => { const e = byName.get(String(n).toLowerCase()); return e ? (all ? e.muscles || [] : [e.primary_muscle]).map(m => REGION[m]).filter(Boolean) : []; };
