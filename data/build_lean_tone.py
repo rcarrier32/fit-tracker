@@ -37,33 +37,52 @@ for n, t in NEW.items():
     lib.ensure_exercise(n, 'lean', tags=t, search=f'{n} how to')
 KNOWN |= {n.lower() for n in NEW}
 
+# Vernon Griffith's own demos (his public YouTube channel) for moves from his hip plan that fit
+# this home setup. Only the move names and public videos: the paid plan itself stays private.
+GRIFFITH = {
+    'Birddog Dumbbell Row': ('kAu6n0e9bQM', {"primary_muscle": "lats", "muscles": ["lats", "upper_back", "abs", "glutes"], "pattern": "pull_horizontal", "role": "secondary", "equipment": ["dumbbell", "bench"], "level": 2, "unilateral": True, "plane": "sagittal", "hip_focus": False}),
+    'Kneeling Dumbbell Diagonal Chop': ('SL4lFwM9BXc', {"primary_muscle": "obliques", "muscles": ["obliques", "abs", "front_delts"], "pattern": "rotation", "role": "core", "equipment": ["dumbbell"], "level": 2, "unilateral": False, "plane": "transverse", "hip_focus": True}),
+    'Incline Alternating Arms Dumbbell Press': ('gAcj2x2meNk', {"primary_muscle": "chest", "muscles": ["chest", "front_delts", "triceps", "obliques"], "pattern": "push_horizontal", "role": "secondary", "equipment": ["dumbbell", "bench"], "level": 2, "unilateral": True, "plane": "sagittal", "hip_focus": False}),
+    'Contralateral Single Leg Row': ('KyfPBFgRw_o', {"primary_muscle": "lats", "muscles": ["lats", "upper_back", "glutes", "hamstrings"], "pattern": "pull_horizontal", "role": "secondary", "equipment": ["dumbbell"], "level": 2, "unilateral": True, "plane": "transverse", "hip_focus": True}),
+    'Dumbbell Row From Single Leg': ('hJ3eDF1J-3s', {"primary_muscle": "lats", "muscles": ["lats", "upper_back", "glutes", "hamstrings"], "pattern": "pull_horizontal", "role": "secondary", "equipment": ["dumbbell"], "level": 2, "unilateral": True, "plane": "sagittal", "hip_focus": True}),
+    'Reverse Step Back Lunge': ('um_OOswiPS4', {"primary_muscle": "quads", "muscles": ["quads", "glutes", "hamstrings"], "pattern": "lunge_single_leg", "role": "secondary", "equipment": ["dumbbell"], "level": 1, "unilateral": True, "plane": "sagittal", "hip_focus": True}),
+    'Loaded Lateral Squat': ('w29bT04oiAM', {"primary_muscle": "adductors", "muscles": ["adductors", "quads", "glutes"], "pattern": "squat", "role": "secondary", "equipment": ["dumbbell"], "level": 2, "unilateral": True, "plane": "frontal", "hip_focus": True}),
+    'Push Up To Shoulder Airplane': ('Au27fIpfOO0', {"primary_muscle": "chest", "muscles": ["chest", "triceps", "obliques", "rear_delts"], "pattern": "push_horizontal", "role": "secondary", "equipment": ["bodyweight"], "level": 2, "unilateral": False, "plane": "transverse", "hip_focus": False}),
+    'Half Kneeling Lateral Bend': ('_JQT4q4nxHM', {"primary_muscle": "obliques", "muscles": ["obliques", "abs", "glutes"], "pattern": "lateral_flexion", "role": "core", "equipment": ["dumbbell"], "level": 1, "unilateral": False, "plane": "frontal", "hip_focus": True}),
+    'Pogos': ('P9VR9_Buz48', {"primary_muscle": "calves", "muscles": ["calves", "quads"], "pattern": "plyo_bound_hop", "role": "warmup", "equipment": ["bodyweight"], "level": 1, "unilateral": False, "plane": "sagittal", "hip_focus": False}),
+}
+for n, (yt, t) in GRIFFITH.items():
+    e = lib.ensure_exercise(n, 'lean', tags=t)
+    e['video_url'] = f'https://youtu.be/{yt}'
+KNOWN |= {n.lower() for n in GRIFFITH}
+
 ALTS = {
     'Dumbbell Goblet Squat': ['Heel Elevated Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
     'Heel Elevated Goblet Squat': ['Dumbbell Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
-    'Dumbbell Bench Press': ['Low Incline Dumbbell Press', 'Neutral Grip DB Press', 'Push Ups', 'Band Resisted Push Up'],
+    'Dumbbell Bench Press': ['Incline Alternating Arms Dumbbell Press', 'Low Incline Dumbbell Press', 'Neutral Grip DB Press', 'Push Ups', 'Band Resisted Push Up'],
     'Dumbbell Romanian Deadlift': ['Single-Leg RDL with Kettlebell', 'Staggered Stance RDL w/ Same Side Load', 'B-Stance RDL', 'Kickstand RDL'],
-    'Chest Supported DB Row (lat focus)': ['3 Point Dumbbell Row', 'DB Chest Supported Row (mid/upper back)', 'Bent Over 1 Arm Row'],
-    'Reverse Lunges': ['Slider Lunge', 'Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
+    'Chest Supported DB Row (lat focus)': ['Birddog Dumbbell Row', '3 Point Dumbbell Row', 'DB Chest Supported Row (mid/upper back)', 'Bent Over 1 Arm Row'],
+    'Reverse Lunges': ['Reverse Step Back Lunge', 'Slider Lunge', 'Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
     'Curtsy Lunge': ['Reverse Lunges', 'Deficit Reverse Lunge', 'Dumbbell Lateral Lunge'],
     'Standing Dumbbell Shoulder Press': ['Arnold Press', 'Seated Dumbbell Shoulder Press', 'Shoulder Press'],
-    'Palloff Press': ['Core Rotation Pallof Press', 'Anti Rotation ABC\'s'],
+    'Palloff Press': ['Kneeling Dumbbell Diagonal Chop', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press', 'Anti Rotation ABC\'s'],
     'Copenhagen Side Plank (Knee)': ['Copenhagen Side Plank (Long Lever)', 'Side Plank with Top-Leg Raise'],
     'Copenhagen Side Plank (Long Lever)': ['Copenhagen Side Plank (Knee)', 'Side Plank with Top-Leg Raise'],
     'Sprint 10s/Jog 20s/Walk 40s': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Zone 4 Workout'],
     'Weighted Step-Ups': ['Weighted Step Up with Leg Raise', 'Weighted Side Step-Ups', 'High Box Step Up', 'Lateral Step-Down'],
-    '3 Point Dumbbell Row': ['Chest Supported DB Row (lat focus)', 'DB Split Stance Row', 'Bent Over 1 Arm Row'],
+    '3 Point Dumbbell Row': ['Birddog Dumbbell Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)', 'DB Split Stance Row', 'Bent Over 1 Arm Row'],
     'Single-Leg RDL with Kettlebell': ['Single-Leg RDL to Knee Drive', 'Kickstand RDL', 'Dumbbell Romanian Deadlift'],
     'Single-Leg RDL to Knee Drive': ['Single-Leg RDL with Kettlebell', 'Kickstand RDL', 'Dumbbell Romanian Deadlift'],
-    'Low Incline Dumbbell Press': ['Dumbbell Bench Press', 'Neutral Grip DB Press', 'Push Ups'],
+    'Low Incline Dumbbell Press': ['Incline Alternating Arms Dumbbell Press', 'Dumbbell Bench Press', 'Neutral Grip DB Press', 'Push Ups'],
     'Single-Leg Hip Thrust': ['Dumbbell Hip Thrust', 'Single-Leg Glute Bridge', 'Dumbbell Glute Bridge'],
     'Dumbbell Lateral Raise': ['Lean In Lateral Raise', 'Lateral Raise'],
     'Dead Bug': ['Bird Dog with Ankle Weight or Band', 'RKC Plank'],
-    'Side Plank with Top-Leg Raise': ['Copenhagen Side Plank (Knee)', 'Banded Side Plank Clamshell'],
+    'Side Plank with Top-Leg Raise': ['Half Kneeling Lateral Bend', 'Copenhagen Side Plank (Knee)', 'Banded Side Plank Clamshell'],
     'Zone 2 Low Impact': ['Brisk Walk', 'Easy Outdoor Run', 'Easy Bike Ride'],
     'Bulgarian Split Squat': ['Heel Elevated Split Squat', 'Reverse Lunges', 'Front Foot Elevated Reverse Lunge'],
-    'Band Resisted Push Up': ['Push Ups', 'Dumbbell Bench Press'],
-    'Dumbbell Lateral Lunge': ['Adductor Slider Lunge', 'Lateral Lunge', 'Curtsy Lunge'],
-    'Bent Over 1 Arm Row': ['3 Point Dumbbell Row', 'Bent Over Cross Body Row'],
+    'Band Resisted Push Up': ['Push Up To Shoulder Airplane', 'Push Ups', 'Dumbbell Bench Press'],
+    'Dumbbell Lateral Lunge': ['Loaded Lateral Squat', 'Adductor Slider Lunge', 'Lateral Lunge', 'Curtsy Lunge'],
+    'Bent Over 1 Arm Row': ['Birddog Dumbbell Row', '3 Point Dumbbell Row', 'Bent Over Cross Body Row'],
     'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds': ['Single-Leg Pad Balance + Ball Catches', 'Weighted Hip Airplane'],
     'Weighted Hip Airplane': ['Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds', 'Hip Airplane (No Support)'],
     'Arnold Press': ['Standing Dumbbell Shoulder Press', 'Seated Dumbbell Shoulder Press'],
@@ -89,7 +108,7 @@ ALTS = {
     'Mutli-direction Bounds': ['Lateral Bounds', 'Lateral Hops'],
     '1¼ Goblet Squat': ['Dumbbell Goblet Squat', 'Heel Elevated Goblet Squat', 'Bulgarian Split Squat'],
     'B-Stance RDL': ['Single-Leg RDL with Kettlebell', 'Dumbbell Romanian Deadlift', 'Staggered Stance RDL w/ Same Side Load'],
-    'DB Split Stance Row': ['3 Point Dumbbell Row', 'Bent Over 1 Arm Row'],
+    'DB Split Stance Row': ['Contralateral Single Leg Row', 'Birddog Dumbbell Row', '3 Point Dumbbell Row', 'Bent Over 1 Arm Row'],
     'Weighted Step Up with Leg Raise': ['Weighted Step-Ups', 'Weighted Side Step-Ups', 'Lateral Step-Down'],
     'Lean In Lateral Raise': ['Dumbbell Lateral Raise', 'Lateral Raise'],
     'Banded Bridge Hold Abductions': ['Glute Bridge Hold', 'Banded Glute Bridge'],
@@ -100,6 +119,9 @@ ALTS = {
     'Kettlebell Swing': ['Med Ball Slam', 'Penultimate Box Jumps (Optional)', 'KB Swing + Box Jump Contrast', 'Single-Leg RDL with Kettlebell'],
     'Med Ball Slam': ['Kettlebell Swing', 'Penultimate Box Jumps (Optional)', 'MB Rapid Lateral Toss'],
     'MB Rapid Lateral Toss': ['Med Ball Slam'],
+    'Birddog Dumbbell Row': ['3 Point Dumbbell Row', 'Contralateral Single Leg Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)'],
+    'Incline Alternating Arms Dumbbell Press': ['Low Incline Dumbbell Press', 'Dumbbell Bench Press', 'Push Up To Shoulder Airplane'],
+    'Kneeling Dumbbell Diagonal Chop': ['Palloff Press', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press'],
 }
 
 
@@ -153,16 +175,19 @@ def days(wk):
               group='Superset B', notes='Bench on an incline.' if p < 3 else '2-second hold at the top.'),
             r(pick('Reverse Lunges', 'Reverse Lunges', 'Curtsy Lunge'), each + ' leg', sets=s, rest=rest, group='Superset C', notes=pause),
             r('Standing Dumbbell Shoulder Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
-            r('Palloff Press', '12 each side', sets=2, rest='30s', group='Superset D', notes='Anchor the band at chest height.'),
+            r('Palloff Press', '12 each side', sets=2, rest='30s', group='Superset D', notes='Anchor the band at chest height.') if p == 1 else
+            r('Kneeling Dumbbell Diagonal Chop', '10 each side', sets=2, rest='30s', group='Superset D',
+              notes='Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square.'),
             r('Copenhagen Side Plank (Long Lever)' if p == 3 else 'Copenhagen Side Plank (Knee)', time=hold, sets=2, rest='30s', group='Superset D',
               notes='Each side, top leg on the bench.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
         {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': WARM_LOWER, 'notes': notes, 'exercises': [
             r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
-            r('DB Split Stance Row' if p == 3 else '3 Point Dumbbell Row', each + ' arm', sets=S, rest=rest, group='Superset A'),
+            r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'DB Split Stance Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
             r('Single-Leg RDL to Knee Drive' if p == 3 else 'Single-Leg RDL with Kettlebell', each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
-            r('Low Incline Dumbbell Press', reps, sets=S, rest=rest, group='Superset B', notes=alt_iso if p == 3 else pause),
+            r('Incline Alternating Arms Dumbbell Press' if p == 3 else 'Low Incline Dumbbell Press', reps if p < 3 else each + ' arm', sets=S, rest=rest, group='Superset B',
+              notes='One arm holds locked out while the other presses.' if p == 3 else pause),
             r('Single-Leg Hip Thrust', each + ' leg', sets=s, rest=rest, group='Superset C',
               notes='Shoulders on the bench.' + (' 3-second squeeze at the top.' if p >= 2 else '')),
             r('Lean In Lateral Raise' if p == 3 else 'Dumbbell Lateral Raise', '15' if p < 3 else '15 each arm', sets=s, rest=rest, group='Superset C'),
@@ -173,7 +198,7 @@ def days(wk):
             r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Superset E'),
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
-        {'focus': 'Day 3 · Power, Stability + Bands', 'warmup': WARM_UPPER, 'notes': notes, 'exercises': [
+        {'focus': 'Day 3 · Power, Stability + Bands', 'warmup': WARM_UPPER + [w('Pogos', reps='2 x 15', notes='Quick, stiff ankles: primes the bounds.')], 'notes': notes, 'exercises': [
             r('Kettlebell Swing', '12' if p == 3 else '10', sets=3, rest='0-15s', group='Superset P',
               notes='Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball).'),
             r('Mutli-direction Bounds' if p == 3 else 'Lateral Bounds', '3 each direction' if p == 3 else ('4 each side' if p == 1 else '5 each side'),

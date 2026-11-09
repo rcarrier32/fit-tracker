@@ -13888,6 +13888,262 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "lean-birddog-dumbbell-row",
+      "name": "Birddog Dumbbell Row",
+      "video_url": "https://youtu.be/kAu6n0e9bQM",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Birddog+Dumbbell+Row+form",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats",
+        "upper_back",
+        "abs",
+        "glutes"
+      ],
+      "pattern": "pull_horizontal",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-kneeling-dumbbell-diagonal-chop",
+      "name": "Kneeling Dumbbell Diagonal Chop",
+      "video_url": "https://youtu.be/SL4lFwM9BXc",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Kneeling+Dumbbell+Diagonal+Chop+form",
+      "primary_muscle": "obliques",
+      "muscles": [
+        "obliques",
+        "abs",
+        "front_delts"
+      ],
+      "pattern": "rotation",
+      "role": "core",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-incline-alternating-arms-dumbbell-press",
+      "name": "Incline Alternating Arms Dumbbell Press",
+      "video_url": "https://youtu.be/gAcj2x2meNk",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Incline+Alternating+Arms+Dumbbell+Press+form",
+      "primary_muscle": "chest",
+      "muscles": [
+        "chest",
+        "front_delts",
+        "triceps",
+        "obliques"
+      ],
+      "pattern": "push_horizontal",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-contralateral-single-leg-row",
+      "name": "Contralateral Single Leg Row",
+      "video_url": "https://youtu.be/KyfPBFgRw_o",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Contralateral+Single+Leg+Row+form",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats",
+        "upper_back",
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "pull_horizontal",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-dumbbell-row-from-single-leg",
+      "name": "Dumbbell Row From Single Leg",
+      "video_url": "https://youtu.be/hJ3eDF1J-3s",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Dumbbell+Row+From+Single+Leg+form",
+      "primary_muscle": "lats",
+      "muscles": [
+        "lats",
+        "upper_back",
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "pull_horizontal",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-reverse-step-back-lunge",
+      "name": "Reverse Step Back Lunge",
+      "video_url": "https://youtu.be/um_OOswiPS4",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Reverse+Step+Back+Lunge+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "hamstrings"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-loaded-lateral-squat",
+      "name": "Loaded Lateral Squat",
+      "video_url": "https://youtu.be/w29bT04oiAM",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Loaded+Lateral+Squat+form",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "quads",
+        "glutes"
+      ],
+      "pattern": "squat",
+      "role": "secondary",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-push-up-to-shoulder-airplane",
+      "name": "Push Up To Shoulder Airplane",
+      "video_url": "https://youtu.be/Au27fIpfOO0",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Push+Up+To+Shoulder+Airplane+form",
+      "primary_muscle": "chest",
+      "muscles": [
+        "chest",
+        "triceps",
+        "obliques",
+        "rear_delts"
+      ],
+      "pattern": "push_horizontal",
+      "role": "secondary",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "transverse",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-half-kneeling-lateral-bend",
+      "name": "Half Kneeling Lateral Bend",
+      "video_url": "https://youtu.be/_JQT4q4nxHM",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Half+Kneeling+Lateral+Bend+form",
+      "primary_muscle": "obliques",
+      "muscles": [
+        "obliques",
+        "abs",
+        "glutes"
+      ],
+      "pattern": "lateral_flexion",
+      "role": "core",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "lean-pogos",
+      "name": "Pogos",
+      "video_url": "https://youtu.be/P9VR9_Buz48",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Pogos+form",
+      "primary_muscle": "calves",
+      "muscles": [
+        "calves",
+        "quads"
+      ],
+      "pattern": "plyo_bound_hop",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -53964,6 +54220,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -54000,6 +54257,7 @@
                     "rest": "60s",
                     "notes": "Bench on an incline.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
                       "Bent Over 1 Arm Row"
@@ -54017,6 +54275,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Reverse Step Back Lunge",
                       "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
@@ -54053,6 +54312,8 @@
                     "rest": "0-15s",
                     "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Kneeling Dumbbell Diagonal Chop",
+                      "Half Kneeling Lateral Bend",
                       "Core Rotation Pallof Press",
                       "Anti Rotation ABC's"
                     ]
@@ -54219,6 +54480,8 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Birddog Dumbbell Row",
+                      "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
@@ -54253,6 +54516,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
                       "Push Ups"
@@ -54352,6 +54616,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -54466,6 +54731,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -54535,6 +54806,7 @@
                     "rest": "60s",
                     "notes": "PJF heavy band across the back.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -54551,6 +54823,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"
@@ -54941,6 +55214,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -54977,6 +55251,7 @@
                     "rest": "60s",
                     "notes": "Bench on an incline.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
                       "Bent Over 1 Arm Row"
@@ -54994,6 +55269,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Reverse Step Back Lunge",
                       "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
@@ -55030,6 +55306,8 @@
                     "rest": "0-15s",
                     "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Kneeling Dumbbell Diagonal Chop",
+                      "Half Kneeling Lateral Bend",
                       "Core Rotation Pallof Press",
                       "Anti Rotation ABC's"
                     ]
@@ -55196,6 +55474,8 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Birddog Dumbbell Row",
+                      "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
@@ -55230,6 +55510,7 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
                       "Push Ups"
@@ -55329,6 +55610,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -55443,6 +55725,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -55512,6 +55800,7 @@
                     "rest": "60s",
                     "notes": "PJF heavy band across the back.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -55528,6 +55817,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"
@@ -55918,6 +56208,7 @@
                     "rest": "60s",
                     "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -55954,6 +56245,7 @@
                     "rest": "60s",
                     "notes": "Bench on an incline.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
                       "Bent Over 1 Arm Row"
@@ -55971,6 +56263,7 @@
                     "rest": "0-15s",
                     "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Reverse Step Back Lunge",
                       "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
@@ -55996,19 +56289,20 @@
                     ]
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Kneeling Dumbbell Diagonal Chop",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Core Rotation Pallof Press",
-                      "Anti Rotation ABC's"
+                      "Palloff Press",
+                      "Half Kneeling Lateral Bend",
+                      "Core Rotation Pallof Press"
                     ]
                   },
                   {
@@ -56162,7 +56456,7 @@
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "Birddog Dumbbell Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
@@ -56173,9 +56467,10 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "3 Point Dumbbell Row",
+                      "Contralateral Single Leg Row",
+                      "Dumbbell Row From Single Leg",
+                      "Chest Supported DB Row (lat focus)"
                     ]
                   },
                   {
@@ -56207,6 +56502,7 @@
                     "rest": "60s",
                     "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
                       "Push Ups"
@@ -56306,6 +56602,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -56420,6 +56717,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -56489,6 +56792,7 @@
                     "rest": "60s",
                     "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -56505,6 +56809,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"
@@ -56895,6 +57200,7 @@
                     "rest": "60s",
                     "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -56931,6 +57237,7 @@
                     "rest": "60s",
                     "notes": "Bench on an incline.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
                       "Bent Over 1 Arm Row"
@@ -56948,6 +57255,7 @@
                     "rest": "0-15s",
                     "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Reverse Step Back Lunge",
                       "Slider Lunge",
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
@@ -56973,19 +57281,20 @@
                     ]
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Kneeling Dumbbell Diagonal Chop",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Core Rotation Pallof Press",
-                      "Anti Rotation ABC's"
+                      "Palloff Press",
+                      "Half Kneeling Lateral Bend",
+                      "Core Rotation Pallof Press"
                     ]
                   },
                   {
@@ -57139,7 +57448,7 @@
                     ]
                   },
                   {
-                    "name": "3 Point Dumbbell Row",
+                    "name": "Birddog Dumbbell Row",
                     "round_group": "Superset A",
                     "is_alternate": false,
                     "sets": 3,
@@ -57150,9 +57459,10 @@
                     "rest": "60s",
                     "notes": null,
                     "alternates": [
-                      "Chest Supported DB Row (lat focus)",
-                      "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "3 Point Dumbbell Row",
+                      "Contralateral Single Leg Row",
+                      "Dumbbell Row From Single Leg",
+                      "Chest Supported DB Row (lat focus)"
                     ]
                   },
                   {
@@ -57184,6 +57494,7 @@
                     "rest": "60s",
                     "notes": "3-second pause at the bottom of every rep.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Dumbbell Bench Press",
                       "Neutral Grip DB Press",
                       "Push Ups"
@@ -57283,6 +57594,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -57397,6 +57709,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -57466,6 +57784,7 @@
                     "rest": "60s",
                     "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -57482,6 +57801,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"
@@ -57872,6 +58192,7 @@
                     "rest": "45s",
                     "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -57907,6 +58228,8 @@
                     "rest": "45s",
                     "notes": "2-second hold at the top.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
+                      "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
@@ -57947,19 +58270,20 @@
                     ]
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Kneeling Dumbbell Diagonal Chop",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Core Rotation Pallof Press",
-                      "Anti Rotation ABC's"
+                      "Palloff Press",
+                      "Half Kneeling Lateral Bend",
+                      "Core Rotation Pallof Press"
                     ]
                   },
                   {
@@ -58123,6 +58447,8 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
+                      "Contralateral Single Leg Row",
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "Bent Over 1 Arm Row"
                     ]
@@ -58145,20 +58471,20 @@
                     ]
                   },
                   {
-                    "name": "Low Incline Dumbbell Press",
+                    "name": "Incline Alternating Arms Dumbbell Press",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "12-15",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "notes": "One arm holds locked out while the other presses.",
                     "alternates": [
+                      "Low Incline Dumbbell Press",
                       "Dumbbell Bench Press",
-                      "Neutral Grip DB Press",
-                      "Push Ups"
+                      "Push Up To Shoulder Airplane"
                     ]
                   },
                   {
@@ -58254,6 +58580,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -58368,6 +58695,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -58436,6 +58769,7 @@
                     "rest": "45s",
                     "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -58452,6 +58786,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"
@@ -58841,6 +59176,7 @@
                     "rest": "45s",
                     "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
                     "alternates": [
+                      "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
@@ -58876,6 +59212,8 @@
                     "rest": "45s",
                     "notes": "2-second hold at the top.",
                     "alternates": [
+                      "Birddog Dumbbell Row",
+                      "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
                       "Bent Over 1 Arm Row"
@@ -58916,19 +59254,20 @@
                     ]
                   },
                   {
-                    "name": "Palloff Press",
+                    "name": "Kneeling Dumbbell Diagonal Chop",
                     "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12 each side",
+                    "reps": "10 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
                     "alternates": [
-                      "Core Rotation Pallof Press",
-                      "Anti Rotation ABC's"
+                      "Palloff Press",
+                      "Half Kneeling Lateral Bend",
+                      "Core Rotation Pallof Press"
                     ]
                   },
                   {
@@ -59092,6 +59431,8 @@
                     "rest": "45s",
                     "notes": null,
                     "alternates": [
+                      "Contralateral Single Leg Row",
+                      "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "Bent Over 1 Arm Row"
                     ]
@@ -59114,20 +59455,20 @@
                     ]
                   },
                   {
-                    "name": "Low Incline Dumbbell Press",
+                    "name": "Incline Alternating Arms Dumbbell Press",
                     "round_group": "Superset B",
                     "is_alternate": false,
                     "sets": 2,
-                    "reps": "12-15",
+                    "reps": "12 each arm",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "notes": "One arm holds locked out while the other presses.",
                     "alternates": [
+                      "Low Incline Dumbbell Press",
                       "Dumbbell Bench Press",
-                      "Neutral Grip DB Press",
-                      "Push Ups"
+                      "Push Up To Shoulder Airplane"
                     ]
                   },
                   {
@@ -59223,6 +59564,7 @@
                     "rest": "30s",
                     "notes": null,
                     "alternates": [
+                      "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
                       "Banded Side Plank Clamshell"
                     ]
@@ -59337,6 +59679,12 @@
                     "reps": "10",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Pogos",
+                    "reps": "2 x 15",
+                    "time": null,
+                    "notes": "Quick, stiff ankles: primes the bounds."
                   }
                 ],
                 "notes": [
@@ -59405,6 +59753,7 @@
                     "rest": "45s",
                     "notes": "PJF heavy band across the back. 3-second hold at the bottom.",
                     "alternates": [
+                      "Push Up To Shoulder Airplane",
                       "Push Ups",
                       "Dumbbell Bench Press"
                     ]
@@ -59421,6 +59770,7 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
+                      "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
                       "Lateral Lunge",
                       "Curtsy Lunge"

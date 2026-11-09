@@ -7554,6 +7554,64 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "lean-birddog-dumbbell-row": {
+   "name": "Birddog Dumbbell Row",
+   "primary_muscle": "lats",
+   "muscles": [
+    "lats",
+    "upper_back",
+    "abs",
+    "glutes"
+   ],
+   "pattern": "pull_horizontal",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-contralateral-single-leg-row": {
+   "name": "Contralateral Single Leg Row",
+   "primary_muscle": "lats",
+   "muscles": [
+    "lats",
+    "upper_back",
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "pull_horizontal",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "lean-dumbbell-row-from-single-leg": {
+   "name": "Dumbbell Row From Single Leg",
+   "primary_muscle": "lats",
+   "muscles": [
+    "lats",
+    "upper_back",
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "pull_horizontal",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
   "lean-easy-bike-ride": {
    "name": "Easy Bike Ride",
    "primary_muscle": "full_body",
@@ -7588,6 +7646,24 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "lean-half-kneeling-lateral-bend": {
+   "name": "Half Kneeling Lateral Bend",
+   "primary_muscle": "obliques",
+   "muscles": [
+    "obliques",
+    "abs",
+    "glutes"
+   ],
+   "pattern": "lateral_flexion",
+   "role": "core",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": true
+  },
   "lean-in-lateral-raise": {
    "name": "Lean In Lateral Raise",
    "primary_muscle": "side_delts",
@@ -7602,6 +7678,26 @@
    "level": 2,
    "unilateral": false,
    "plane": "frontal",
+   "hip_focus": false
+  },
+  "lean-incline-alternating-arms-dumbbell-press": {
+   "name": "Incline Alternating Arms Dumbbell Press",
+   "primary_muscle": "chest",
+   "muscles": [
+    "chest",
+    "front_delts",
+    "triceps",
+    "obliques"
+   ],
+   "pattern": "push_horizontal",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
    "hip_focus": false
   },
   "lean-kettlebell-swing": {
@@ -7621,6 +7717,42 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false
+  },
+  "lean-kneeling-dumbbell-diagonal-chop": {
+   "name": "Kneeling Dumbbell Diagonal Chop",
+   "primary_muscle": "obliques",
+   "muscles": [
+    "obliques",
+    "abs",
+    "front_delts"
+   ],
+   "pattern": "rotation",
+   "role": "core",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "lean-loaded-lateral-squat": {
+   "name": "Loaded Lateral Squat",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "quads",
+    "glutes"
+   ],
+   "pattern": "squat",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
   },
   "lean-med-ball-slam": {
    "name": "Med Ball Slam",
@@ -7657,6 +7789,60 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false
+  },
+  "lean-pogos": {
+   "name": "Pogos",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "quads"
+   ],
+   "pattern": "plyo_bound_hop",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-push-up-to-shoulder-airplane": {
+   "name": "Push Up To Shoulder Airplane",
+   "primary_muscle": "chest",
+   "muscles": [
+    "chest",
+    "triceps",
+    "obliques",
+    "rear_delts"
+   ],
+   "pattern": "push_horizontal",
+   "role": "secondary",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "transverse",
+   "hip_focus": false
+  },
+  "lean-reverse-step-back-lunge": {
+   "name": "Reverse Step Back Lunge",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes",
+    "hamstrings"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
   },
   "lean-single-arm-banded-lat-pulldown": {
    "name": "Single-Arm Banded Lat Pulldown",
