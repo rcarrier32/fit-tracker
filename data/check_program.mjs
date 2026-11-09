@@ -77,6 +77,23 @@ weeks.forEach((w, wi) => {
   });
 });
 
+// Warm-up coverage: every body region the day works hard (2+ exercises) should get at least one warm-up move.
+const REGION = { chest: 'push', front_delts: 'push', side_delts: 'push', triceps: 'push',
+  lats: 'pull', upper_back: 'pull', rear_delts: 'pull', biceps: 'pull',
+  quads: 'legs & hips', glutes: 'legs & hips', hamstrings: 'legs & hips', adductors: 'legs & hips', abductors: 'legs & hips', hip_flexors: 'legs & hips', calves: 'legs & hips',
+  abs: 'core', obliques: 'core', lower_back: 'core' };
+weeks.forEach((w, wi) => w.days.forEach((d, di) => {
+  const isPrep = (ex) => /prep|warm/i.test(ex.round_group || '');
+  const warm = [...(d.warmup || []).map(x => x.name), ...(d.exercises || []).filter(isPrep).map(x => x.name)];
+  if (!warm.length) return;
+  const regionsOf = (n, all) => { const e = byName.get(String(n).toLowerCase()); return e ? (all ? e.muscles || [] : [e.primary_muscle]).map(m => REGION[m]).filter(Boolean) : []; };
+  const covered = new Set(warm.flatMap(n => regionsOf(n, true)));
+  const worked = {};
+  for (const ex of (d.exercises || []).filter(x => !isPrep(x) && !/cool/i.test(x.round_group || ''))) for (const r of new Set(regionsOf(ex.name))) worked[r] = (worked[r] || 0) + 1;
+  const miss = Object.entries(worked).filter(([r, c]) => c >= 2 && !covered.has(r)).map(([r]) => r);
+  if (miss.length) warns.push(`W${wi + 1} D${di + 1} (${d.focus || d.day_name || ''}): warm-up doesn't touch ${miss.join(', ')} (worked by 2+ exercises)`);
+}));
+
 if (NET) {
   const urls = [...new Set(weeks.flatMap(w => w.days.map(d => d.video?.url).filter(Boolean)))];
   for (const u of urls) {

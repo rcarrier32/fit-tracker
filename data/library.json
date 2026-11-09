@@ -54053,6 +54053,18 @@
                     "reps": "8 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
                   }
                 ],
                 "notes": [
@@ -54307,6 +54319,18 @@
                     "reps": "8 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -54580,6 +54604,12 @@
                   {
                     "name": "Supported Lateral Squat",
                     "reps": "8 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
                     "time": null,
                     "notes": null
                   },
@@ -55043,6 +55073,18 @@
                     "reps": "8 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "time": null,
+                    "notes": null
                   }
                 ],
                 "notes": [
@@ -55297,6 +55339,18 @@
                     "reps": "8 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -55570,6 +55624,12 @@
                   {
                     "name": "Supported Lateral Squat",
                     "reps": "8 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
                     "time": null,
                     "notes": null
                   },
@@ -56033,6 +56093,18 @@
                     "reps": "10 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Rolling Shoulder Armbar",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": "Light kettlebell."
                   }
                 ],
                 "notes": [
@@ -56286,6 +56358,18 @@
                     "reps": "10 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -56558,6 +56642,12 @@
                   {
                     "name": "Lunge Matrix",
                     "reps": "6 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
                     "time": null,
                     "notes": null
                   },
@@ -57019,6 +57109,18 @@
                     "reps": "10 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Rolling Shoulder Armbar",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": "Light kettlebell."
                   }
                 ],
                 "notes": [
@@ -57272,6 +57374,18 @@
                     "reps": "10 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -57544,6 +57658,12 @@
                   {
                     "name": "Lunge Matrix",
                     "reps": "6 each leg",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
                     "time": null,
                     "notes": null
                   },
@@ -57995,8 +58115,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   },
@@ -58005,6 +58125,18 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Serratus Slides",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Rolling Shoulder Armbar",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": "Light kettlebell."
                   }
                 ],
                 "notes": [
@@ -58242,8 +58374,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   },
@@ -58252,6 +58384,18 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Serratus Slides",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -58520,6 +58664,12 @@
                   {
                     "name": "Shin Box Reach And Row",
                     "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
                     "time": null,
                     "notes": null
                   },
@@ -58794,8 +58944,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   }
@@ -58967,8 +59117,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   },
@@ -58977,6 +59127,18 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Serratus Slides",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Rolling Shoulder Armbar",
+                    "reps": "5 each side",
+                    "time": null,
+                    "notes": "Light kettlebell."
                   }
                 ],
                 "notes": [
@@ -59214,8 +59376,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   },
@@ -59224,6 +59386,18 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null
+                  },
+                  {
+                    "name": "Serratus Slides",
+                    "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "time": null,
+                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns."
                   }
                 ],
                 "notes": [
@@ -59492,6 +59666,12 @@
                   {
                     "name": "Shin Box Reach And Row",
                     "reps": "8",
+                    "time": null,
+                    "notes": null
+                  },
+                  {
+                    "name": "Push Up To Shoulder Airplane",
+                    "reps": "5 each side",
                     "time": null,
                     "notes": null
                   },
@@ -59766,8 +59946,8 @@
                     "notes": "2 rounds, easy pace: this is the mobility work, built into every session."
                   },
                   {
-                    "name": "Figure 4 Flow",
-                    "reps": "8",
+                    "name": "Single Leg Hinge To Hip Flexor Drive",
+                    "reps": "6 each leg",
                     "time": null,
                     "notes": null
                   }

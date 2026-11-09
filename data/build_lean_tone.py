@@ -185,13 +185,19 @@ PREP = {
             w('Hamstring Floss With Knee Flexion', reps='8 each leg'), w('Poliquin Step Down', reps='8 each leg')],
         2: [w('Shin Box Rotation', reps='8', notes=PREP_NOTE), w('Single Leg Hinge To Hip Flexor Drive', reps='6 each leg'),
             w('Poliquin Step Down With TKE', reps='10 each leg')],
-        3: [w('Facing Wall Hip Circle Rotations', reps='6 each leg', notes=PREP_NOTE), w('Figure 4 Flow', reps='8'),
+        3: [w('Facing Wall Hip Circle Rotations', reps='6 each leg', notes=PREP_NOTE), w('Single Leg Hinge To Hip Flexor Drive', reps='6 each leg'),
             w('Two Leg Drop Into Split Squat', reps='6 each leg')],
     },
+    # Full-body days also press and pull: one push and one pull/shoulder move so the upper body is warm too.
+    'upper': {
+        1: [w('Push-Up To Pike', reps='8'), w('Band Pull-Aparts', reps='15')],
+        2: [w('Push Up To Shoulder Airplane', reps='5 each side'), w('Rolling Shoulder Armbar', reps='5 each side', notes='Light kettlebell.')],
+        3: [w('Serratus Slides', reps='8'), w('Rolling Shoulder Armbar', reps='5 each side', notes='Light kettlebell.')],
+    },
     'power': {
-        1: [w('Push-Up To Pike', reps='8', notes=PREP_NOTE), w('Supported Lateral Squat', reps='8 each side'), w('Pogos', reps='20')],
-        2: [w('Dynamic Groin Drift', reps='8', notes=PREP_NOTE), w('Lunge Matrix', reps='6 each leg'), w('Lateral Hops', reps='30')],
-        3: [w('Star Toe Tap', reps='6 each leg', notes=PREP_NOTE), w('Shin Box Reach And Row', reps='8'), w('Lateral Hops', reps='30')],
+        1: [w('Push-Up To Pike', reps='8', notes=PREP_NOTE), w('Supported Lateral Squat', reps='8 each side'), w('Band Pull-Aparts', reps='15'), w('Pogos', reps='20')],
+        2: [w('Dynamic Groin Drift', reps='8', notes=PREP_NOTE), w('Lunge Matrix', reps='6 each leg'), w('Push Up To Shoulder Airplane', reps='5 each side'), w('Lateral Hops', reps='30')],
+        3: [w('Star Toe Tap', reps='6 each leg', notes=PREP_NOTE), w('Shin Box Reach And Row', reps='8'), w('Push Up To Shoulder Airplane', reps='5 each side'), w('Lateral Hops', reps='30')],
     },
 }
 
@@ -226,7 +232,7 @@ def days(wk):
     notes = ['Deload week: half the sets, same weights. Leave fresh.' if deload else NOTE[p]]
     pick = lambda a, b, c: (a, b, c)[p - 1]
     return [
-        {'focus': 'Day 1 · Full Body A: Squat, Push, Pull', 'warmup': PREP['lower'][p], 'notes': notes, 'exercises': [
+        {'focus': 'Day 1 · Full Body A: Squat, Push, Pull', 'warmup': PREP['lower'][p] + PREP['upper'][p], 'notes': notes, 'exercises': [
             r(pick('Dumbbell Goblet Squat', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'), reps, sets=S, rest=rest, group='Superset A', notes=pause),
             r('Dumbbell Bench Press', reps, sets=S, rest=rest, group='Superset A', notes=alt_iso if p == 3 else pause),
             r(pick('Dumbbell Romanian Deadlift', 'Dumbbell Romanian Deadlift', 'B-Stance RDL'), reps if p < 3 else each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
@@ -241,7 +247,7 @@ def days(wk):
               time=None if p == 3 else hold, sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
-        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p], 'notes': notes, 'exercises': [
+        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], w('Banded Lat Pulldown', reps='10 light', notes='Band anchored high: wakes up the lats before the rows and pulldowns.')], 'notes': notes, 'exercises': [
             r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
             r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'Contralateral Single Leg Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
             r(pick('Single-Leg RDL with Kettlebell', 'Hand Supported SLDL Loaded', 'SLDL With Loaded Hip Flexion'), each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),

@@ -43,6 +43,14 @@ if (args.includes('--sanity')) {
         if (!e?.video_url) issues.push(`${x.name} has no video`);
         if (e && !e.equipment.every(q => q === 'bodyweight' || eq.includes(q))) issues.push(`${x.name} needs ${e.equipment}`);
       }
+      // Warm-up covers every region the day works with 2+ exercises.
+      const R = { chest: 'push', front_delts: 'push', side_delts: 'push', triceps: 'push', lats: 'pull', upper_back: 'pull', rear_delts: 'pull', biceps: 'pull',
+        quads: 'legs', glutes: 'legs', hamstrings: 'legs', adductors: 'legs', abductors: 'legs', hip_flexors: 'legs', calves: 'legs', abs: 'core', obliques: 'core', lower_back: 'core' };
+      const cnt = {};
+      for (const x of d.exercises) { const r = R[exercises.find(q => q.name === x.name)?.primary_muscle]; if (r) cnt[r] = (cnt[r] || 0) + 1; }
+      const cov = new Set((d.warmup || []).flatMap(w => (exercises.find(q => q.name === w.name)?.muscles || []).map(m => R[m])));
+      const gap = Object.entries(cnt).filter(([r, c]) => c >= 2 && !cov.has(r)).map(([r]) => r);
+      if (gap.length) issues.push(`W${w.week_num} D${d.day_num} warm-up misses ${gap.join('/')}`);
       const mins = estimateMinutes(d, rules);
       if (mins > minutes * 1.15) issues.push(`W${w.week_num} D${d.day_num} ~${mins} min > ${minutes}`);
     }

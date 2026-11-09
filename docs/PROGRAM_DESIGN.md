@@ -55,6 +55,13 @@ mostly supersets, and cut isolation first (BWS express versions drop about 25% o
 - **Deload:** neither source writes one. Our plans make the last week of a 6- or 8-week block a deload (sets halved, same weights).
 - **Moving up a level:** when a movement stops reaching an 8/10 effort and is pain-free, move to the next variation.
 
+## Warm-ups cover the day
+
+Every body region the day works with 2+ exercises (push, pull, legs & hips, core) gets at least one warm-up move.
+Hip-focused prep alone isn't enough on a full-body day: add a push (push-up to pike, push-up to shoulder airplane) and a
+pull/shoulder move (band pull-aparts, rolling shoulder armbar, light banded lat pulldown). `check_program.mjs` warns on
+gaps, the generator builds warm-ups from the day's exercises, and `generate_plan.mjs --sanity` checks it.
+
 ## Progression by level (Griffith style)
 
 Griffith's 8-week TrainHeroic plan never explains its progressions, but they are consistent:

@@ -173,19 +173,31 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     });
   }
 
-  // Warm-ups: mobility and drills matched to the day (lower vs upper), rotated by phase.
-  function warmupFor(dayKey, ph) {
-    const lower = /lower|full|speed/.test(dayKey);
-    const pref = lower ? ['hip_flexors', 'glutes', 'adductors', 'calves', 'hamstrings'] : ['upper_back', 'rear_delts', 'front_delts', 'obliques'];
-    const list = pool.filter(e => e.role === 'warmup')
-      .map(e => [(pref.includes(e.primary_muscle) ? 2 : 0) + (e.pattern === 'mobility' ? 1 : 0.5) + rand(), e])
-      .sort((a, b) => b[0] - a[0]).map(([, e]) => e);
+  // Warm-ups cover what the day works: each body region hit by 2+ exercises gets a warm-up move,
+  // biggest region first; provider moves (Griffith, PJF) and moves at the phase's level preferred; rotated by phase.
+  const REGION = { chest: 'push', front_delts: 'push', side_delts: 'push', triceps: 'push', lats: 'pull', upper_back: 'pull',
+    rear_delts: 'pull', biceps: 'pull', quads: 'legs', glutes: 'legs', hamstrings: 'legs', adductors: 'legs', abductors: 'legs',
+    hip_flexors: 'legs', calves: 'legs', abs: 'core', obliques: 'core', lower_back: 'core' };
+  function warmupFor(dayKey, ph, exs) {
+    const worked = {};
+    for (const x of exs) { const e = pool.find(q => q.name === x.name); const r = REGION[e?.primary_muscle]; if (r) worked[r] = (worked[r] || 0) + 1; }
+    const order = Object.entries(worked).filter(([, c]) => c >= 2).sort((a, b) => b[1] - a[1]).map(([r]) => r);
+    if (!order.length) order.push(/upper|push|pull/.test(dayKey) ? 'pull' : 'legs');
+    const target = Math.max(1, Math.min(p.level, p.level - (nPhases - 1 - ph)));
+    const warm = pool.filter(e => e.role === 'warmup');
     const n = session.warmup_count;
-    const start = (ph * n) % Math.max(1, list.length - n);
-    return list.slice(start, start + n).map(e => ({
+    const out = [], covered = new Set();
+    const score = (e, r) => ((e.muscles || []).filter(m => REGION[m] === r).length) + (e.sources?.some(x => x === 'trainheroic' || x === 'pjf') ? 1 : 0)
+      + ((e.level || 1) === target ? 0.7 : 0) + (e.pattern === 'mobility' ? 0.3 : 0) + rand() * 0.8;
+    for (let pass = 0; out.length < n && pass < 3; pass++) for (const r of order) {
+      if (out.length >= n || (pass === 0 && covered.has(r))) continue;
+      const best = warm.filter(e => !out.includes(e) && (e.muscles || []).some(m => REGION[m] === r)).map(e => [score(e, r), e]).sort((a, b) => b[0] - a[0])[0]?.[1];
+      if (best) { out.push(best); (best.muscles || []).forEach(m => REGION[m] && covered.add(REGION[m])); }
+    }
+    return out.map(e => ({
       name: e.name,
       reps: TIMED.test(e.name) || e.pattern === 'speed_accel' ? null : (e.unilateral ? '6 each side' : '8'),
-      time: TIMED.test(e.name) ? '30s' : e.pattern === 'speed_accel' ? null : null,
+      time: TIMED.test(e.name) ? '30s' : null,
       notes: null,
     })).map(w => (w.reps || w.time ? w : { ...w, reps: '2 × 10 yd' }));
   }
@@ -267,7 +279,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         if (power && exercises.some(x => /^(power)$/.test((daySlots[di].find((s, i) => picks[ph][di][i]?.name === x.name) || {}).role))) {
           notes.push('Power work first, on fresh legs: full effort, full rest, stop when reps slow down.');
         }
-        const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph), notes, exercises };
+        const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph, exercises), notes, exercises };
         fitToTime(day, daySlots[di], picks[ph][di]);
         return day;
       }),
