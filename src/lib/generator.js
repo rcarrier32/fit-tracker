@@ -45,7 +45,7 @@ const secsOf = (t) => {
 
 /** Rough session length in minutes: warm-up + every set's work and rest (supersets share rest). */
 export function estimateMinutes(day, rules) {
-  let secs = (day.warmup?.length || 0) * 45 + 60;
+  let secs = (day.warmup || []).reduce((a, w) => a + 45 * (w.sets || 1), 0) + 60;
   for (const x of day.exercises) {
     const role = Object.values(rules.roles).find(r => r.rest === x.rest) || rules.roles.accessory;
     const work = x.time ? secsOf(x.time) : role.secs_per_set;
@@ -77,6 +77,18 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const splitSet = power && rules.athletic_splits[String(p.days)] ? rules.athletic_splits : rules.splits;
   const split = splitSet[String(Math.min(6, Math.max(2, p.days)))];
   const nPhases = Math.max(1, Math.ceil(p.weeks / rules.phases.length_weeks));
+  // Goal overrides (data/design_rules.json goal_overrides_doc). Volume targets the goal sets are scaled
+  // down for fewer than 5 training days, so a 3-day plan isn't pushed to 5-day core volume.
+  const scale = Math.min(1, p.days / 5);
+  const volumeTargets = { ...rules.volume_targets };
+  for (const [m, [lo, hi]] of Object.entries(goal.volume_targets || {})) volumeTargets[m] = [Math.round(lo * scale), Math.round(hi * scale)];
+  const restFor = (role) => goal.rest?.[role] || (rules.roles[role] || rules.roles.accessory).rest;
+  const dl = rules.phases.deload;
+  const isDeload = (w) => (dl.goals || []).includes(p.goal) && p.weeks >= (dl.min_weeks || 6) && w === p.weeks;
+  const ml = rules.phases.main_lifts || {};
+  const mainBlock = (ph) => p.weeks <= (ml.keep_whole_plan_up_to_weeks || 99) ? 0 : Math.floor(ph * rules.phases.length_weeks / (ml.keep_weeks || 4));
+  const warmupRounds = goal.warmup_rounds?.[String(p.minutes)] ?? session.warmup_rounds ?? 1;
+  const LIGHT_CORE = ['anti_extension', 'anti_rotation', 'lateral_flexion', 'isometric'];
 
   // Weekly sets per primary muscle, filled as picks are made, so later slots balance volume.
   const weekly = {};
@@ -105,7 +117,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (slot.patterns) s += slot.patterns.indexOf(e.pattern) === 0 ? 1 : 0.5;
       if (focusMuscles.has(e.primary_muscle)) s += 2;
       else if ((e.muscles || []).some(m => focusMuscles.has(m))) s += 0.75;
-      const t = rules.volume_targets[e.primary_muscle];
+      const t = volumeTargets[e.primary_muscle];
       const v = weekly[e.primary_muscle] || 0;
       if (t) { if (v < t[0]) s += 1.2; else if (v >= t[1]) s -= 2; }
       if (usedWeek.has(e.name)) s -= 2.5;
@@ -134,6 +146,16 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       const at = slots.findIndex(s => s.role === 'core');
       slots.splice(at < 0 ? slots.length : at, 0, rules.hip_focus_slot);
     }
+    // Core early (PJF): the day's core move goes right after power work, light patterns only.
+    if (goal.core_early && !SPEED_DAY.test(dayKey)) {
+      const ci = slots.findIndex(s => s.role === 'core' && !s.hip_focus);
+      if (ci >= 0) {
+        const [c] = slots.splice(ci, 1);
+        const light = (c.patterns || []).filter(x => LIGHT_CORE.includes(x));
+        const after = slots.map(s => s.role).lastIndexOf('power') + 1;
+        slots.splice(after, 0, { ...c, patterns: light.length ? light : ['anti_extension', 'anti_rotation'], early: true });
+      }
+    }
     // Fit the time box: drop accessories from the end, then secondaries, never main/power/the first core.
     const max = session.max_exercises + (power ? 1 : 0);
     const dropOrder = ['accessory', 'secondary', 'core'];
@@ -159,7 +181,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       return daySlots[di].map((slot, si) => {
         const prev = ph > 0 ? picks[ph - 1][di][si] : null;
         let e = null;
-        if (prev && (slot.role === 'main' || slot.role === 'power' && ph === 1 && false)) e = prev;
+        if (prev && slot.role === 'main' && mainBlock(ph) === mainBlock(ph - 1)) e = prev;
         if (!e) {
           const avoid = prev ? new Set([prev.name]) : null;
           e = candidates(slot, usedToday, usedWeek, avoid, ph)[0] || null;
@@ -196,6 +218,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     }
     return out.map(e => ({
       name: e.name,
+      sets: warmupRounds > 1 ? warmupRounds : undefined,
       reps: TIMED.test(e.name) || e.pattern === 'speed_accel' ? null : (e.unilateral ? '6 each side' : '8'),
       time: TIMED.test(e.name) ? '30s' : null,
       notes: null,
@@ -205,9 +228,17 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   function dose(slot, e, week, ph) {
     const role = rules.roles[slot.role] || rules.roles.accessory;
     const inPhaseWeek = ((week - 1) % rules.phases.length_weeks) + 1;
-    const deload = p.weeks >= 6 && week === p.weeks;
+    const deload = isDeload(week);
     let sets = role.sets;
+    if (slot.role === 'core' && goal.core_sets) sets = goal.core_sets;
     if (slot.role === 'main' && ph >= 1 && (p.goal === 'strength' || p.goal === 'athletic')) sets = 4;
+    // Coaches progress by adding sets, not reps: by the last phase secondaries get a set (set_ramp 1.1),
+    // and accessories too (1.2).
+    const ramp = goal.set_ramp || 1;
+    if (nPhases > 1 && ph === nPhases - 1 && !deload) {
+      if (slot.role === 'secondary' && ramp >= 1.1) sets += 1;
+      if (slot.role === 'accessory' && ramp >= 1.2) sets += 1;
+    }
     if (p.minutes <= 30 && slot.role === 'accessory') sets = 2;
     if (deload) sets = Math.max(1, Math.round(sets * rules.phases.deload.sets_factor));
     const each = e.unilateral ? ' each side' : '';
@@ -224,12 +255,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         plyo_bound_hop: ph === 0 ? '8' : '5 each side', plyo_jump: ph === 0 ? '5' : '4',
       }[e.pattern] || (ph === 0 ? '6' : '4');
       if (e.pattern === 'speed_accel') sets = ph === 0 ? 4 : 5;
-      return { sets, reps, time: null, rest: e.pattern === 'speed_accel' ? '90s' : role.rest };
+      return { sets, reps, time: null, rest: e.pattern === 'speed_accel' ? '90s' : restFor(slot.role) };
     }
-    else if (slot.role === 'core') reps = '10-12';
+    else if (slot.role === 'core') reps = slot.early ? '8-10' : '10-12';
     else reps = goal.accessory_reps;
     if (reps && each) reps += each;
-    return { sets, reps, time, rest: role.rest };
+    return { sets, reps, time, rest: restFor(slot.role) };
   }
 
   // Trim a session to the time box: accessory sets to 2, then drop accessories from the end,
@@ -253,7 +284,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   for (let w = 1; w <= p.weeks; w++) {
     const ph = Math.min(nPhases - 1, Math.floor((w - 1) / rules.phases.length_weeks));
     const inPhaseWeek = ((w - 1) % rules.phases.length_weeks) + 1;
-    const deload = p.weeks >= 6 && w === p.weeks;
+    const deload = isDeload(w);
     weeks.push({
       week_num: w,
       days: split.days.map((dayKey, di) => {
@@ -264,7 +295,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
           if (!e) return null;
           const d = dose(slot, e, w, ph);
           let group = null;
-          if (supersetAcc && (slot.role === 'accessory' || slot.role === 'core')) {
+          if (supersetAcc && !slot.early && (slot.role === 'accessory' || slot.role === 'core')) {
             if (inPair === 0) pair++;
             group = `Superset ${String.fromCharCode(64 + pair)}`;
             inPair = (inPair + 1) % 2;
@@ -274,13 +305,19 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         }).filter(Boolean);
         const notes = [
           deload ? 'Deload week: half the sets, same weights. Leave fresh.'
-            : `Phase ${ph + 1} of ${nPhases}, week ${inPhaseWeek}. ${inPhaseWeek === 1 ? 'Find weights that leave 2 reps in the tank.' : 'Same exercises: add a rep or a little weight on each.'}`,
+            : `Phase ${ph + 1} of ${nPhases}, week ${inPhaseWeek}. ${inPhaseWeek === 1 ? 'Find weights that leave 2 reps in the tank.' : 'Same exercises: once every set reaches the top of its rep range, add a little weight.'}`,
         ];
+        if (!deload && nPhases > 1 && ph === nPhases - 1 && inPhaseWeek === 1 && (goal.set_ramp || 1) > 1) notes.push('Last phase: one more set on the secondary lifts' + ((goal.set_ramp || 1) >= 1.2 ? ' and accessories.' : '.'));
+        if (daySlots[di].some((s, i) => s.early && picks[ph][di][i])) notes.push('Core comes early to switch it on: smooth reps, stop well short of failure.');
         if (power && exercises.some(x => /^(power)$/.test((daySlots[di].find((s, i) => picks[ph][di][i]?.name === x.name) || {}).role))) {
           notes.push('Power work first, on fresh legs: full effort, full rest, stop when reps slow down.');
         }
         const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph, exercises), notes, exercises };
         fitToTime(day, daySlots[di], picks[ph][di]);
+        // A superset left with one exercise (odd count, or its partner trimmed) is a straight set.
+        const groupSize = {};
+        for (const x of day.exercises) if (x.round_group) groupSize[x.round_group] = (groupSize[x.round_group] || 0) + 1;
+        for (const x of day.exercises) if (x.round_group && groupSize[x.round_group] < 2) x.round_group = null;
         return day;
       }),
     });
@@ -301,7 +338,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     name: `${goalLabel} · ${p.days} days · ${p.weeks} weeks`,
     source: 'custom',
     generated: { ...p },
-    description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${p.weeks >= 6 ? ' + deload' : ''}.`,
+    description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${isDeload(p.weeks) ? ' + deload' : ''}.`,
     sessions_per_week: p.days,
     session_length_min: p.minutes,
     weeks,

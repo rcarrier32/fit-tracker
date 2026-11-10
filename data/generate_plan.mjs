@@ -37,6 +37,9 @@ if (args.includes('--sanity')) {
     for (const w of plan.weeks) for (const d of w.days) {
       const names = d.exercises.map(x => x.name);
       if (new Set(names).size !== names.length) issues.push(`W${w.week_num} D${d.day_num} repeats an exercise`);
+      const groups = {};
+      for (const x of d.exercises) if (x.round_group) groups[x.round_group] = (groups[x.round_group] || 0) + 1;
+      if (Object.values(groups).some(n => n < 2)) issues.push(`W${w.week_num} D${d.day_num} has a one-exercise superset`);
       if (d.exercises.length < 3) issues.push(`W${w.week_num} D${d.day_num} only ${d.exercises.length} exercises`);
       for (const x of d.exercises) {
         const e = exercises.find(q => q.name === x.name);
@@ -77,7 +80,7 @@ console.log(`${plan.name} — ${plan.description} (pool ${plan.pool_size} exerci
 for (const w of plan.weeks.filter(w => [1, 3, 5].includes(w.week_num))) {
   console.log(`\nWeek ${w.week_num}`);
   for (const d of w.days) {
-    console.log(`  ${d.focus}  [warm-up: ${d.warmup.map(x => x.name).join(', ')}]`);
+    console.log(`  ${d.focus}  [warm-up${d.warmup[0]?.sets ? ` × ${d.warmup[0].sets} rounds` : ''}: ${d.warmup.map(x => x.name).join(', ')}]`);
     for (const x of d.exercises) console.log(`    ${x.round_group ? x.round_group.padEnd(11) : ' '.repeat(11)} ${x.name} — ${x.sets} × ${x.reps || x.time}${x.rest ? `, rest ${x.rest}` : ''}`);
   }
 }

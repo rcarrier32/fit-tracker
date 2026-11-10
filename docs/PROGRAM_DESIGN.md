@@ -63,17 +63,50 @@ compete (push + pull, lower + upper, isolation + core).
 | delts, biceps, triceps, calves | 6-8 |
 | abs / obliques | 2-6 |
 
-Each muscle is trained at least twice a week.
+Each muscle is trained at least twice a week. Indirect work counts as half a set (a step-up still
+trains quads), the way the research counts it.
+
+**By goal** (`goals.<goal>.volume_targets`, from the coach programs in
+[LEARNED_PATTERNS.md](LEARNED_PATTERNS.md); scaled by days/5 under 5 days a week):
+
+| Goal | Abs | Obliques | Glutes | Adductors |
+|---|---|---|---|---|
+| strength, muscle | 2-6 | 2-6 | 9-15 | 0-6 |
+| fat_loss (PJF Fat Don't Fly) | 8-12 | 6-10 | 12-20 | 0-6 |
+| durability (Durability Code, Griffith) | 8-12 | 10-16 | 15-22 | 4-8 |
+| athletic | 4-8 | 4-8 | 12-18 | 0-6 |
+
+## Rules that change by goal
+
+From comparing the coach programs with these rules (`python3 data/learn_patterns.py`) and the
+research in [reports/Workout plan builder methods.md](../reports/Workout%20plan%20builder%20methods.md):
+
+- **Rest** (`rest`): fat loss rests 90 s on main lifts and 60 s on the rest (PJF writes about 60 s;
+  research finds a small cost below 60 s and no gain past about 90 s). Strength keeps 2-3 min.
+- **Core sets** (`core_sets`): fat loss and durability give core 3 sets, as PJF and Griffith do.
+- **Core early** (`core_early`): fat loss, durability and athletic do the day's core move right after
+  power work and before the main lift, as PJF does: anti-extension, anti-rotation, side-bend or hold
+  patterns only, smooth reps, well short of failure. Strength and muscle keep core at the end.
+- **Warm-up rounds** (`session_minutes.<min>.warmup_rounds`, `warmup_rounds`): 1 round for 30 min,
+  2 for 45 and 60, 3 for fat loss at 60 min (PJF writes 2-3).
 
 **Session size:** 6-8 exercises fit 60 min. For 45 min, use 5-6. For 30 min, use 5 exercises,
 mostly supersets, and cut isolation first (BWS express versions drop about 25% of sets).
 
 ## Progression (PJF style)
 
-- **2-week microcycles.** Week 2 repeats week 1 with +1-2 reps, +5 s on holds, or +2 rounds/+5 min of cardio.
-- **A new phase every 2 weeks:** swap most accessories, keep the main lifts, drop strength reps by about 2 (8 → 6), and raise effort (8/10 → 9/10).
+- **2-week microcycles.** Week 2 repeats week 1 with +5 s on holds, or +2 rounds/+5 min of cardio.
+  Reps don't go up on a schedule: the coaches raise reps in only 0-26% of repeats. Lifts use double
+  progression: once every set reaches the top of the rep range, add the smallest weight step.
+- **A new phase every 2 weeks:** swap most accessories, drop strength reps by about 2 (8 → 6), and raise effort (8/10 → 9/10).
+- **Main lifts** stay for the whole plan up to 6 weeks, and change every 4 weeks in longer plans (Nippard keeps exercises 4 weeks).
+- **Add sets, not reps** (`set_ramp`): by the last phase the secondaries get one more set (1.1: strength,
+  fat loss, durability), and the accessories too (1.2: muscle, athletic). The coach programs end about
+  10% above their first week (1.6× in PJF's band program).
 - **Sprints and plyos:** intensity goes 50 → 70 → 90 → 100% across the weeks, with more sets and longer rest as it climbs.
-- **Deload:** neither source writes one. Our plans make the last week of a 6- or 8-week block a deload (sets halved, same weights).
+- **Deload:** none of the 15 coach programs writes one, and the research finds a planned week off
+  doesn't help muscle and can cost a little strength. Only strength and muscle plans of 8+ weeks end
+  with a deload week (sets halved, same weights). Otherwise deload when the logs show a drop.
 - **Moving up a level:** when a movement stops reaching an 8/10 effort and is pain-free, move to the next variation.
 
 ## Warm-ups cover the day
