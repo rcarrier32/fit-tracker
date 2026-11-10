@@ -87,6 +87,13 @@ research in [reports/Workout plan builder methods.md](../reports/Workout%20plan%
 - **Core early** (`core_early`): fat loss, durability and athletic do the day's core move right after
   power work and before the main lift, as PJF does: anti-extension, anti-rotation, side-bend or hold
   patterns only, smooth reps, well short of failure. Strength and muscle keep core at the end.
+- **Required moves** (`required`): durability plans always include the Copenhagen adductor drill,
+  3 times a week in the first phase and once a week after (the Harøy 2019 programme: 41% fewer groin
+  problems), moving from the knee version up; and a Nordic hamstring lower once a week, 2-3 × 3-5 slow
+  lowers, on the hamstring slot (or a new accessory slot on the hinge day when the split has none).
+  These may be one level above the person's level, and trimming for time never removes them.
+- **Jump contacts** (`max_contacts`): jumps, bounds and landings stay at 100 or fewer a session
+  (each side counted). `--sanity` checks it.
 - **Warm-up rounds** (`session_minutes.<min>.warmup_rounds`, `warmup_rounds`): 1 round for 30 min,
   2 for 45 and 60, 3 for fat loss at 60 min (PJF writes 2-3).
 

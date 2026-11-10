@@ -34,6 +34,17 @@ if (args.includes('--sanity')) {
     runs++;
     const plan = generatePlan({ goal, days, minutes, weeks: 6, equipment: eq, seed: 7 }, { exercises, rules });
     const issues = [];
+    // Required moves (Copenhagen, Nordics) appear as often as the goal asks, wherever the kit allows one.
+    for (const r of rules.goals[goal].required || []) {
+      const re = new RegExp(r.match, 'i'), not = r.not ? new RegExp(r.not, 'i') : null;
+      const possible = exercises.some(e => re.test(e.name) && !(not && not.test(e.name)) && e.video_url && (e.level || 2) <= 3
+        && e.equipment.every(q => q === 'bodyweight' || eq.includes(q)));
+      for (const w of possible ? plan.weeks : []) {
+        const n = w.days.flatMap(d => d.exercises).filter(x => re.test(x.name) && !(not && not.test(x.name))).length;
+        const want = Math.min(r.per_week[Math.min(Math.floor((w.week_num - 1) / rules.phases.length_weeks), r.per_week.length - 1)], days);
+        if (n < want) issues.push(`W${w.week_num} has ${n} × ${r.match}, wants ${want}`);
+      }
+    }
     for (const w of plan.weeks) for (const d of w.days) {
       const names = d.exercises.map(x => x.name);
       if (new Set(names).size !== names.length) issues.push(`W${w.week_num} D${d.day_num} repeats an exercise`);
@@ -54,6 +65,11 @@ if (args.includes('--sanity')) {
       const cov = new Set((d.warmup || []).flatMap(w => (exercises.find(q => q.name === w.name)?.muscles || []).map(m => R[m])));
       const gap = Object.entries(cnt).filter(([r, c]) => c >= 2 && !cov.has(r)).map(([r]) => r);
       if (gap.length) issues.push(`W${w.week_num} D${d.day_num} warm-up misses ${gap.join('/')}`);
+      // Plyo dose: research finds 40-100 jumps a session works; more adds impact, not results.
+      const PLYO = ['plyo_jump', 'plyo_bound_hop', 'deceleration_landing'];
+      const contacts = d.exercises.reduce((a, x) => a + (PLYO.includes(exercises.find(q => q.name === x.name)?.pattern)
+        ? (x.sets || 1) * (parseInt(x.reps) || 0) * (/each/.test(x.reps || '') ? 2 : 1) : 0), 0);
+      if (contacts > (rules.goals[goal].max_contacts || 100)) issues.push(`W${w.week_num} D${d.day_num} ${contacts} jump contacts`);
       const mins = estimateMinutes(d, rules);
       if (mins > minutes * 1.15) issues.push(`W${w.week_num} D${d.day_num} ~${mins} min > ${minutes}`);
     }

@@ -74,6 +74,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     e.pattern && e.role && hasVideo(e) && (e.level || 2) <= p.level &&
     (e.equipment || ['bodyweight']).every(q => have.has(q)));
 
+  const byName = new Map(exercises.map(e => [e.name, e]));   // required moves can sit outside the pool
   const splitSet = power && rules.athletic_splits[String(p.days)] ? rules.athletic_splits : rules.splits;
   const split = splitSet[String(Math.min(6, Math.max(2, p.days)))];
   const nPhases = Math.max(1, Math.ceil(p.weeks / rules.phases.length_weeks));
@@ -89,6 +90,27 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const mainBlock = (ph) => p.weeks <= (ml.keep_whole_plan_up_to_weeks || 99) ? 0 : Math.floor(ph * rules.phases.length_weeks / (ml.keep_weeks || 4));
   const warmupRounds = goal.warmup_rounds?.[String(p.minutes)] ?? session.warmup_rounds ?? 1;
   const LIGHT_CORE = ['anti_extension', 'anti_rotation', 'lateral_flexion', 'isometric'];
+  // Required moves (goal.required): evidence-backed drills a goal must include, e.g. Copenhagen and
+  // Nordics for durability. They may sit one level above the person's level.
+  const required = (goal.required || []).map(r => ({ ...r, re: new RegExp(r.match, 'i'), notRe: r.not ? new RegExp(r.not, 'i') : null }));
+  const reqOf = (e) => e && required.find(r => r.re.test(e.name) && !(r.notRe && r.notRe.test(e.name)));
+  const reqQuota = (r, ph) => r.per_week[Math.min(ph, r.per_week.length - 1)];
+  // A muscle slot for the first listed muscle wins (Nordics on the hamstring slot); later ones are the
+  // fallback for splits that have none (full-body days).
+  const reqFits = (r, slot) => {
+    if (r.slot === 'hip_focus') return !!slot.hip_focus;
+    if (slot.role === 'main' || slot.role === 'power') return false;
+    const ms = r.muscles || [r.muscle];
+    const first = daySlots.some(ss => ss.some(x => x.role !== 'main' && x.role !== 'power' && (x.muscles || []).includes(ms[0])));
+    return (slot.muscles || []).some(m => first ? m === ms[0] : ms.includes(m));
+  };
+  function requiredPick(r, usedToday, ph) {
+    const target = Math.max(1, Math.min(p.level, p.level - (nPhases - 1 - ph)));
+    return exercises.filter(e => r.re.test(e.name) && !(r.notRe && r.notRe.test(e.name)) && hasVideo(e) && !usedToday.has(e.name)
+        && (e.level || 2) <= p.level + 1 && (e.equipment || ['bodyweight']).every(q => have.has(q)))
+      .map(e => [Math.abs((e.level || 2) - target) + ((e.level || 2) > p.level ? 0.5 : 0) + rand() * 0.3, e])
+      .sort((a, b) => a[0] - b[0])[0]?.[1] || null;
+  }
 
   // Weekly sets per primary muscle, filled as picks are made, so later slots balance volume.
   const weekly = {};
@@ -173,15 +195,32 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   // Pick exercises: phase 1 picks everything; later phases keep main lifts and rotate the rest.
   const picks = []; // picks[phase][dayIndex] = [exercise|null per slot]
   const daySlots = split.days.map(slotsFor);
+  // A required move with no slot to go in (Nordics on a 2-day full-body plan) gets an accessory
+  // slot of its own on the first day with a hinge, before core.
+  for (const r of required) {
+    if (r.slot === 'hip_focus') continue;
+    const ms = r.muscles || [r.muscle];
+    if (daySlots.some(ss => ss.some(x => x.role !== 'main' && x.role !== 'power' && (x.muscles || []).some(m => ms.includes(m))))) continue;
+    let di = daySlots.findIndex(ss => ss.some(x => (x.patterns || []).includes('hinge')));
+    if (di < 0) di = daySlots.findIndex((ss, i) => !SPEED_DAY.test(split.days[i]));
+    if (di < 0) continue;
+    const ci = daySlots[di].map(x => x.role).lastIndexOf('core');
+    daySlots[di].splice(ci < 0 ? daySlots[di].length : ci, 0, { role: 'accessory', muscles: [ms[0]] });
+  }
   for (let ph = 0; ph < nPhases; ph++) {
     for (const k of Object.keys(weekly)) delete weekly[k];
     const usedWeek = new Set();
+    const reqCount = required.map(() => 0);
     picks[ph] = split.days.map((dayKey, di) => {
       const usedToday = new Set();
       return daySlots[di].map((slot, si) => {
         const prev = ph > 0 ? picks[ph - 1][di][si] : null;
         let e = null;
         if (prev && slot.role === 'main' && mainBlock(ph) === mainBlock(ph - 1)) e = prev;
+        if (!e) {
+          const ri = required.findIndex((r, k) => reqCount[k] < reqQuota(r, ph) && reqFits(r, slot));
+          if (ri >= 0 && (e = requiredPick(required[ri], usedToday, ph))) reqCount[ri]++;
+        }
         if (!e) {
           const avoid = prev ? new Set([prev.name]) : null;
           e = candidates(slot, usedToday, usedWeek, avoid, ph)[0] || null;
@@ -202,7 +241,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     hip_flexors: 'legs', calves: 'legs', abs: 'core', obliques: 'core', lower_back: 'core' };
   function warmupFor(dayKey, ph, exs) {
     const worked = {};
-    for (const x of exs) { const e = pool.find(q => q.name === x.name); const r = REGION[e?.primary_muscle]; if (r) worked[r] = (worked[r] || 0) + 1; }
+    for (const x of exs) { const e = byName.get(x.name); const r = REGION[e?.primary_muscle]; if (r) worked[r] = (worked[r] || 0) + 1; }
     const order = Object.entries(worked).filter(([, c]) => c >= 2).sort((a, b) => b[1] - a[1]).map(([r]) => r);
     if (!order.length) order.push(/upper|push|pull/.test(dayKey) ? 'pull' : 'legs');
     const target = Math.max(1, Math.min(p.level, p.level - (nPhases - 1 - ph)));
@@ -231,6 +270,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     const deload = isDeload(week);
     let sets = role.sets;
     if (slot.role === 'core' && goal.core_sets) sets = goal.core_sets;
+    const req = reqOf(e);
+    if (req?.dose) {
+      const d = req.dose;
+      return { sets: deload ? Math.max(1, Math.round(d.sets[Math.min(ph, d.sets.length - 1)] * dl.sets_factor)) : d.sets[Math.min(ph, d.sets.length - 1)],
+               reps: d.reps, time: null, rest: d.rest || restFor(slot.role) };
+    }
     if (slot.role === 'main' && ph >= 1 && (p.goal === 'strength' || p.goal === 'athletic')) sets = 4;
     // Coaches progress by adding sets, not reps: by the last phase secondaries get a set (set_ramp 1.1),
     // and accessories too (1.2).
@@ -270,7 +315,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     const roleOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)]?.role;
     const steps = [
       () => { let ch = false; for (const x of day.exercises) if (['accessory', 'core'].includes(roleOf(x)) && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
-      () => { const i = day.exercises.map(roleOf).lastIndexOf('accessory'); if (i < 0) return false; day.exercises.splice(i, 1); return true; },
+      () => { const i = day.exercises.map(x => reqOf(x) ? null : roleOf(x)).lastIndexOf('accessory'); if (i < 0) return false; day.exercises.splice(i, 1); return true; },
       () => { let ch = false; for (const x of day.exercises) if (roleOf(x) === 'secondary' && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
       () => { const rs = day.exercises.map(roleOf); const i = rs.lastIndexOf('core'); if (i < 0 || rs.filter(r => r === 'core').length < 2) return false; day.exercises.splice(i, 1); return true; },
       () => { const i = day.exercises.map(roleOf).lastIndexOf('secondary'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'secondary').length < 2) return false; day.exercises.splice(i, 1); return true; },
@@ -326,7 +371,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   // Weekly sets per primary muscle for the first week (shown in the preview).
   const summary = {};
   for (const d of weeks[0].days) for (const x of d.exercises) {
-    const e = pool.find(q => q.name === x.name);
+    const e = byName.get(x.name);
     if (!e) continue;
     summary[e.primary_muscle] = (summary[e.primary_muscle] || 0) + (x.sets || 0);
     for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) summary[m] = (summary[m] || 0) + (x.sets || 0) / 2;

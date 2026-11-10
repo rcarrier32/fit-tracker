@@ -416,7 +416,9 @@ function openPlanBuilder(allExercises, onSave) {
 
 function openPlanCustomizer(template, allExercises, onSave) {
   // Build initial exercise picks for all days
-  const daySlots = template.days.map((day, di) => autoFillDay(day, allExercises, di));
+  // Only days that repeat the same slots (Full Body A/B/C) rotate picks; Upper and Lower days take the best fit.
+  const daySlots = template.days.map((day, di) => autoFillDay(day, allExercises,
+    template.days.filter(d => d.slots === day.slots).length > 1 ? di : 0));
   // per-day ab finisher: array of { label, muscle, sets, reps, picked }
   const abSlots = template.days.map(() => []);
 
@@ -445,7 +447,7 @@ function openPlanCustomizer(template, allExercises, onSave) {
         };
         item.onclick = (e) => {
           if (e.target.dataset.removeAb != null) return;
-          const options = suggestForSlot(slot.muscle, allExercises);
+          const options = suggestForSlot(slot.muscle, allExercises, new Set(), slot.label);
           openSheet((s2, close2) => {
             s2.innerHTML = `
               <h2>${slot.label}</h2>
