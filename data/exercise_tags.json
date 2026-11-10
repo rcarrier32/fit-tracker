@@ -4580,7 +4580,7 @@
    "primary_muscle": "hip_flexors",
    "muscles": [
     "hip_flexors",
-    "abs"
+    "quads"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -4904,13 +4904,14 @@
   },
   "hip-flexorquad-bridge": {
    "name": "Hip Flexor/Quad Bridge",
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "quads",
    "muscles": [
+    "quads",
     "hip_flexors",
     "abs"
    ],
    "pattern": "hinge",
-   "role": "secondary",
+   "role": "cooldown",
    "equipment": [
     "bodyweight"
    ],
@@ -8259,10 +8260,10 @@
   },
   "optional-pigeon-length-under-load": {
    "name": "Optional Pigeon Length Under Load",
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "glutes",
    "muscles": [
-    "hip_flexors",
-    "glutes"
+    "glutes",
+    "hip_flexors"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -8278,7 +8279,9 @@
    "name": "Optional Post Chain Stretch",
    "primary_muscle": "hamstrings",
    "muscles": [
-    "hamstrings"
+    "hamstrings",
+    "glutes",
+    "calves"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -8921,10 +8924,11 @@
   },
   "rotational-rdl-length-under-load": {
    "name": "Rotational RDL Length Under Load",
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "hamstrings",
    "muscles": [
-    "hip_flexors",
-    "glutes"
+    "hamstrings",
+    "glutes",
+    "lower_back"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -10363,7 +10367,8 @@
    "name": "Wide Stance Length Under Load",
    "primary_muscle": "adductors",
    "muscles": [
-    "adductors"
+    "adductors",
+    "hamstrings"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -10397,7 +10402,9 @@
    "primary_muscle": "hip_flexors",
    "muscles": [
     "hip_flexors",
-    "glutes"
+    "hamstrings",
+    "glutes",
+    "upper_back"
    ],
    "pattern": "mobility",
    "role": "cooldown",

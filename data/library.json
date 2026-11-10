@@ -3413,7 +3413,7 @@
       "primary_muscle": "hip_flexors",
       "muscles": [
         "hip_flexors",
-        "abs"
+        "quads"
       ],
       "pattern": "mobility",
       "role": "cooldown",
@@ -3875,13 +3875,14 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Hip%20Flexor/Quad%20Bridge",
-      "primary_muscle": "hip_flexors",
+      "primary_muscle": "quads",
       "muscles": [
+        "quads",
         "hip_flexors",
         "abs"
       ],
       "pattern": "hinge",
-      "role": "secondary",
+      "role": "cooldown",
       "equipment": [
         "bodyweight"
       ],
@@ -5468,10 +5469,10 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Optional%20Pigeon%20Length%20Under%20Load",
-      "primary_muscle": "hip_flexors",
+      "primary_muscle": "glutes",
       "muscles": [
-        "hip_flexors",
-        "glutes"
+        "glutes",
+        "hip_flexors"
       ],
       "pattern": "mobility",
       "role": "cooldown",
@@ -6422,10 +6423,11 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Rotational%20RDL%20Length%20Under%20Load",
-      "primary_muscle": "hip_flexors",
+      "primary_muscle": "hamstrings",
       "muscles": [
-        "hip_flexors",
-        "glutes"
+        "hamstrings",
+        "glutes",
+        "lower_back"
       ],
       "pattern": "mobility",
       "role": "cooldown",
@@ -8526,7 +8528,8 @@
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Wide%20Stance%20Length%20Under%20Load",
       "primary_muscle": "adductors",
       "muscles": [
-        "adductors"
+        "adductors",
+        "hamstrings"
       ],
       "pattern": "mobility",
       "role": "cooldown",
@@ -8950,7 +8953,9 @@
       "primary_muscle": "hip_flexors",
       "muscles": [
         "hip_flexors",
-        "glutes"
+        "hamstrings",
+        "glutes",
+        "upper_back"
       ],
       "bws_alternates": [],
       "pattern": "mobility",
@@ -9291,7 +9296,9 @@
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Optional%20Post%20Chain%20Stretch",
       "primary_muscle": "hamstrings",
       "muscles": [
-        "hamstrings"
+        "hamstrings",
+        "glutes",
+        "calves"
       ],
       "pattern": "mobility",
       "role": "cooldown",
@@ -54110,7 +54117,7 @@
         "program_name": "Lean & Tone: Home Full Body",
         "group": "Move Like 30",
         "source": "Athletic",
-        "description": "4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.",
+        "description": "4 days a week, ~50 min including a PJF-style cooldown matched to the day's work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.",
         "sessions_per_week": 4,
         "session_length_min": 50,
         "level": "Intermediate",
@@ -54178,6 +54185,13 @@
                     "time": null,
                     "notes": null,
                     "sets": 2
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "time": null,
+                    "sets": 2
                   }
                 ],
                 "notes": [
@@ -54346,7 +54360,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54355,14 +54369,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Dumbbell Goblet Squat, Reverse Lunges)."
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); hamstrings (Dumbbell Romanian Deadlift, Sprint 10s/Jog 20s/Walk 40s).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54371,10 +54397,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's quads (Dumbbell Goblet Squat, Reverse Lunges); glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); adductors (90/90 Copenhagen).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -54387,7 +54413,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
@@ -54644,7 +54670,7 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54653,11 +54679,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Weighted Step-Ups)."
                   },
                   {
                     "name": "Rotational RDL Length Under Load",
@@ -54669,14 +54691,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's hamstrings (Single-Leg RDL with Kettlebell, Slider Hamstring Curl); glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54685,10 +54723,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -54935,20 +54973,16 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Bulgarian Split Squat, Lateral Bounds)."
                   },
                   {
                     "name": "Half Kneeling Thoracic Rotations",
@@ -54960,14 +54994,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Post Chain Stretch",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54976,10 +55010,22 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. Hamstrings and calves. For today's glutes (Kettlebell Swing, Dumbbell Lateral Lunge); calves (Lateral Bounds)."
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Dumbbell Lateral Lunge).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -55122,7 +55168,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55131,14 +55177,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55147,10 +55209,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -55214,6 +55276,13 @@
                     "time": null,
                     "notes": null,
                     "sets": 2
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "time": null,
+                    "sets": 2
                   }
                 ],
                 "notes": [
@@ -55382,7 +55451,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55391,14 +55460,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Dumbbell Goblet Squat, Reverse Lunges)."
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); hamstrings (Dumbbell Romanian Deadlift, Sprint 10s/Jog 20s/Walk 40s).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55407,10 +55488,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's quads (Dumbbell Goblet Squat, Reverse Lunges); glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); adductors (90/90 Copenhagen).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -55423,7 +55504,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
@@ -55680,7 +55761,7 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55689,11 +55770,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Weighted Step-Ups)."
                   },
                   {
                     "name": "Rotational RDL Length Under Load",
@@ -55705,14 +55782,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's hamstrings (Single-Leg RDL with Kettlebell, Slider Hamstring Curl); glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55721,10 +55814,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -55971,20 +56064,16 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Bulgarian Split Squat, Lateral Bounds)."
                   },
                   {
                     "name": "Half Kneeling Thoracic Rotations",
@@ -55996,14 +56085,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Post Chain Stretch",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56012,10 +56101,22 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. Hamstrings and calves. For today's glutes (Kettlebell Swing, Dumbbell Lateral Lunge); calves (Lateral Bounds)."
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Dumbbell Lateral Lunge).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -56158,7 +56259,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56167,14 +56268,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56183,10 +56300,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -56250,6 +56367,13 @@
                     "time": null,
                     "notes": "Light kettlebell.",
                     "sets": 2
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "time": null,
+                    "sets": 2
                   }
                 ],
                 "notes": [
@@ -56417,7 +56541,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56426,14 +56550,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Dumbbell Goblet Squat, Reverse Lunges)."
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); hamstrings (Dumbbell Romanian Deadlift, Sprint 10s/Jog 20s/Walk 40s).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56442,10 +56578,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's quads (Dumbbell Goblet Squat, Reverse Lunges); glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); adductors (Copenhagen Straight Leg).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -56458,7 +56594,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
@@ -56519,6 +56655,13 @@
                     "reps": "10 light",
                     "time": null,
                     "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "sets": 2
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "notes": "Wakes up the shoulders for Dumbbell Lateral Raise.",
+                    "time": null,
                     "sets": 2
                   }
                 ],
@@ -56714,7 +56857,7 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56723,11 +56866,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Weighted Step-Ups)."
                   },
                   {
                     "name": "Rotational RDL Length Under Load",
@@ -56739,14 +56878,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups); hamstrings (Hand Supported SLDL Loaded, Slider Hamstring Curl).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56755,10 +56910,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -57003,19 +57158,31 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (FFE Dumbbell Split Squats, Lateral Bounds)."
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Facing Wall Hip Airplane); quads (FFE Dumbbell Split Squats, Lateral Bounds); adductors (Dumbbell Lateral Squat Drop In, FFE Dumbbell Split Squats).",
                     "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -57028,14 +57195,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57044,10 +57211,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Facing Wall Hip Airplane).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -57190,7 +57357,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57199,14 +57366,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57215,10 +57398,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -57282,6 +57465,13 @@
                     "time": null,
                     "notes": "Light kettlebell.",
                     "sets": 2
+                  },
+                  {
+                    "name": "Banded Lat Pulldown",
+                    "reps": "10 light",
+                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "time": null,
+                    "sets": 2
                   }
                 ],
                 "notes": [
@@ -57449,7 +57639,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57458,14 +57648,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Dumbbell Goblet Squat, Reverse Lunges)."
+                  },
+                  {
+                    "name": "Rotational RDL Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); hamstrings (Dumbbell Romanian Deadlift, Sprint 10s/Jog 20s/Walk 40s).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57474,10 +57676,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's quads (Dumbbell Goblet Squat, Reverse Lunges); glutes (Dumbbell Goblet Squat, Dumbbell Romanian Deadlift); adductors (Copenhagen Straight Leg).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -57490,7 +57692,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
@@ -57551,6 +57753,13 @@
                     "reps": "10 light",
                     "time": null,
                     "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "sets": 2
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "notes": "Wakes up the shoulders for Dumbbell Lateral Raise.",
+                    "time": null,
                     "sets": 2
                   }
                 ],
@@ -57746,7 +57955,7 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57755,11 +57964,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Weighted Step-Ups)."
                   },
                   {
                     "name": "Rotational RDL Length Under Load",
@@ -57771,14 +57976,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups); hamstrings (Hand Supported SLDL Loaded, Slider Hamstring Curl).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57787,10 +58008,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust, Weighted Step-Ups).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -58035,19 +58256,31 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (FFE Dumbbell Split Squats, Lateral Bounds)."
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Facing Wall Hip Airplane); quads (FFE Dumbbell Split Squats, Lateral Bounds); adductors (Dumbbell Lateral Squat Drop In, FFE Dumbbell Split Squats).",
                     "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -58060,14 +58293,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58076,10 +58309,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Kettlebell Swing, Facing Wall Hip Airplane).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -58222,7 +58455,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Lateral Lunge Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58231,14 +58464,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "World's Greatest Stretch",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
+                    "alternates": [
+                      "Front Chain Stretch w/ Reach and Tu",
+                      "Half Kneeling Thoracic Rotations"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58247,10 +58496,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -58313,6 +58562,13 @@
                     "reps": "5 each side",
                     "time": null,
                     "notes": "Light kettlebell.",
+                    "sets": 2
+                  },
+                  {
+                    "name": "Push-Up To Pike",
+                    "reps": "8",
+                    "notes": "Wakes up the chest for Dumbbell Bench Press.",
+                    "time": null,
                     "sets": 2
                   }
                 ],
@@ -58475,7 +58731,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58484,14 +58740,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
-                    "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (1¼ Goblet Squat, Curtsy Lunge)."
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Rotational RDL Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58500,10 +58752,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Curtsy Lunge, 1¼ Goblet Squat); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
@@ -58516,10 +58768,26 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Curtsy Lunge, 1¼ Goblet Squat).",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -58768,22 +59036,6 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
-                    "round_group": "Cooldown",
-                    "is_alternate": false,
-                    "sets": 1,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "45s",
-                    "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
-                  },
-                  {
                     "name": "Rotational RDL Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
@@ -58793,14 +59045,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Weighted Step Up with Leg Raise, Single-Leg Hip Thrust); hamstrings (SLDL With Loaded Hip Flexion, Single-Leg Slider Hamstring Curl).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58809,10 +59077,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Weighted Step Up with Leg Raise, Single-Leg Hip Thrust).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -59054,19 +59322,31 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (FFE Floating Heel, Mutli-direction Bounds)."
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Single Leg Kettlebell Swing, Loaded Hip Airplane); quads (FFE Floating Heel, Mutli-direction Bounds); adductors (Dumbbell Lateral Squat Drop In, Loaded Hip Airplane).",
                     "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -59079,14 +59359,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59095,10 +59375,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single Leg Kettlebell Swing, Loaded Hip Airplane).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -59135,6 +59415,20 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null,
+                    "sets": 2
+                  },
+                  {
+                    "name": "Poliquin Step Down",
+                    "reps": "8 each leg",
+                    "notes": "Wakes up the quads for Squat Hold.",
+                    "time": null,
+                    "sets": 2
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "notes": "Wakes up the upper back for Band Pull-Aparts.",
+                    "time": null,
                     "sets": 2
                   }
                 ],
@@ -59240,7 +59534,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59249,14 +59543,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Squat Hold)."
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's upper back (Band Pull-Aparts).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59265,10 +59571,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust Hold, Mini Band Monster Walk).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -59493,7 +59799,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59502,14 +59808,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. Slow breaths, sink a little deeper each exhale.",
-                    "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
-                    ]
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (1¼ Goblet Squat, Curtsy Lunge)."
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Rotational RDL Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59518,10 +59820,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Curtsy Lunge, 1¼ Goblet Squat); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Optional Post Chain Stretch",
+                      "Hamstring Floss"
                     ]
                   },
                   {
@@ -59534,10 +59836,26 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Curtsy Lunge, 1¼ Goblet Squat).",
+                    "alternates": [
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -59786,22 +60104,6 @@
                     ]
                   },
                   {
-                    "name": "Optional Pigeon Length Under Load",
-                    "round_group": "Cooldown",
-                    "is_alternate": false,
-                    "sets": 1,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "45s",
-                    "rest": null,
-                    "notes": "Each side.",
-                    "alternates": [
-                      "Brettzel Stretch",
-                      "90/90 Hip Opener"
-                    ]
-                  },
-                  {
                     "name": "Rotational RDL Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
@@ -59811,14 +60113,30 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Weighted Step Up with Leg Raise, Single-Leg Hip Thrust); hamstrings (SLDL With Loaded Hip Flexion, Single-Leg Slider Hamstring Curl).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
+                    "alternates": [
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
+                    ]
+                  },
+                  {
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59827,10 +60145,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Weighted Step Up with Leg Raise, Single-Leg Hip Thrust).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -60072,19 +60390,31 @@
                     ]
                   },
                   {
-                    "name": "World's Greatest Stretch",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
                     "reps": null,
                     "weight": null,
                     "distance": null,
-                    "time": "30s",
+                    "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (FFE Floating Heel, Mutli-direction Bounds)."
+                  },
+                  {
+                    "name": "Lateral Lunge Length Under Load",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "45s",
+                    "rest": null,
+                    "notes": "Each side. For today's glutes (Single Leg Kettlebell Swing, Loaded Hip Airplane); quads (FFE Floating Heel, Mutli-direction Bounds); adductors (Dumbbell Lateral Squat Drop In, Loaded Hip Airplane).",
                     "alternates": [
-                      "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Optional Adductor Stretch Progressions",
+                      "Wide Stance Length Under Load"
                     ]
                   },
                   {
@@ -60097,14 +60427,14 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
                       "World's Greatest Stretch",
                       "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Lateral Lunge Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60113,10 +60443,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. For today's glutes (Single Leg Kettlebell Swing, Loaded Hip Airplane).",
                     "alternates": [
-                      "Optional Adductor Stretch Progressions",
-                      "Wide Stance Length Under Load"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
@@ -60153,6 +60483,20 @@
                     "reps": "6 each leg",
                     "time": null,
                     "notes": null,
+                    "sets": 2
+                  },
+                  {
+                    "name": "Poliquin Step Down",
+                    "reps": "8 each leg",
+                    "notes": "Wakes up the quads for Squat Hold.",
+                    "time": null,
+                    "sets": 2
+                  },
+                  {
+                    "name": "Band Pull-Aparts",
+                    "reps": "15",
+                    "notes": "Wakes up the upper back for Band Pull-Aparts.",
+                    "time": null,
                     "sets": 2
                   }
                 ],
@@ -60258,7 +60602,7 @@
                     ]
                   },
                   {
-                    "name": "Hip Flexor Length Under Load",
+                    "name": "Hip Flexor/Quad Bridge",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60267,14 +60611,26 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side.",
+                    "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Squat Hold)."
+                  },
+                  {
+                    "name": "Half Kneeling Thoracic Rotations",
+                    "round_group": "Cooldown",
+                    "is_alternate": false,
+                    "sets": 1,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": null,
+                    "notes": "Each side. For today's upper back (Band Pull-Aparts).",
                     "alternates": [
-                      "Half-Kneeling Hip Flexor Stretch",
-                      "Optional Static Stretch"
+                      "World's Greatest Stretch",
+                      "Lateral Line Stretch"
                     ]
                   },
                   {
-                    "name": "Wide Stance Length Under Load",
+                    "name": "Optional Pigeon Length Under Load",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60283,10 +60639,10 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": null,
+                    "notes": "Each side. For today's glutes (Single-Leg Hip Thrust Hold, Mini Band Monster Walk).",
                     "alternates": [
-                      "Lateral Lunge Length Under Load",
-                      "Optional Adductor Stretch Progressions"
+                      "Brettzel Stretch",
+                      "90/90 Hip Opener"
                     ]
                   },
                   {
