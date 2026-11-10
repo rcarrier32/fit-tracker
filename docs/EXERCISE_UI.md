@@ -89,3 +89,11 @@ plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`st
 - **Finish screen**: how it felt (easy / about right / too much, energy), anything that hurt, a
   workout note, and Share (the phone's share sheet, or copy). Hurt twice and an exercise leaves new
   plans; two of the last three feeling like too much suggests a lighter week (src/lib/learn.js).
+- **📅 Add to calendar** (Today → Body weight card): weekly events for the training days with an
+  alert before each, as an .ics file the phone's Calendar imports (src/lib/calendar.js,
+  `node data/check_calendar.mjs`). A home-screen web app can't schedule its own reminders reliably,
+  so the calendar does it. Days come from the weekly schedule, else the days the logs show you
+  train; length from how long workouts really take.
+- **Not done: saving demo videos offline.** TrainHeroic demos are YouTube (can't be cached) and PJF
+  demos are Mux HLS streams, which iPhone Safari plays outside the service worker, so caching them
+  wouldn't make them play offline.

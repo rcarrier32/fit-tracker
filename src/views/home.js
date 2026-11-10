@@ -18,7 +18,10 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout, selectSingleProgram, positionLabel } from './schedule.js';
+import { openScheduleEditor, todaysWorkout, selectSingleProgram, positionLabel, programName } from './schedule.js';
+import { buildIcs } from '../lib/calendar.js';
+import { learnProfile } from '../lib/learn.js';
+import { getAllPrograms } from '../lib/static_data.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
@@ -280,6 +283,7 @@ export async function renderHome(app) {
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
         <button class="btn ghost" data-action="edit-profile">Edit profile</button>
+        <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
         <button class="btn ghost" data-action="export-data">Export data</button>
         <button class="btn ghost" data-action="import-data">Import data</button>
       </div>
@@ -316,6 +320,7 @@ export async function renderHome(app) {
   app.querySelector('[data-action="log-weight"]').onclick = () => navigate('body');
   app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
 
+  app.querySelector('[data-action="calendar"]').onclick = () => openCalendarExport();
   app.querySelector('[data-action="export-data"]').onclick = async () => {
     const data = await exportAllData();
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -668,4 +673,65 @@ async function showOnboarding(app) {
   };
   const $cancel = app.querySelector('#cancel');
   if ($cancel) $cancel.onclick = () => renderHome(app);
+}
+
+
+/**
+ * Reminders through the phone's calendar (src/lib/calendar.js): weekly events for the training
+ * days, with an alert before each. Days start from the weekly schedule, else the days the logs
+ * show you train, else Mon/Wed/Fri; length from how long workouts really take.
+ */
+async function openCalendarExport() {
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const [schedule, sessions, programs, saved, activeId] = await Promise.all([pref('schedule'), getAll('sessions'), getAllPrograms(), pref('calendar_export'), pref('active_program')]);
+  const active = programs.find(p => p.id === activeId);
+  const fallbackTitle = active ? `Workout · ${programName(active)}` : 'Workout';
+  const prof = learnProfile(sessions, { today: localDateStr() });
+  const titles = {};
+  (schedule?.slots || []).forEach((sl, i) => {
+    if (!sl) return;
+    const prog = sl.program_id && programs.find(p => p.id === sl.program_id);
+    titles[i] = sl.label || (prog ? `Workout · ${programName(prog)}` : 'Workout');
+  });
+  let days = saved?.days || (Object.keys(titles).length ? Object.keys(titles).map(Number)
+    : prof.days.per_week ? prof.days.trained.map((n, i) => [n, i]).filter(([n]) => n > 0).sort((a, b) => b[0] - a[0]).slice(0, Math.round(prof.days.per_week)).map(([, i]) => i)
+    : [1, 3, 5]);
+  let time = saved?.time || '18:00';
+  let minutes = saved?.minutes || prof.duration?.median_min || 60;
+  let alarm = saved?.alarm ?? 30;
+  openSheet((sheet, close) => {
+    const paint = () => {
+      sheet.innerHTML = `<h2>Add workouts to your calendar</h2>
+        <div class="muted" style="margin-bottom:10px">Weekly events with an alert before each, for the next 12 weeks. Your calendar does the reminding.</div>
+        <div class="group-label">Days</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">${DOW.map((d, i) => `<button class="pill ${days.includes(i) ? 'accent' : ''}" data-dow="${i}" style="cursor:pointer;padding:7px 11px">${d}</button>`).join('')}</div>
+        <div class="group-label">Time</div><input type="time" id="cal-time" value="${time}">
+        <div class="group-label">Length (min)</div><input type="number" id="cal-min" inputmode="numeric" value="${minutes}" min="10" max="180">
+        <div class="group-label">Alert</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">${[[0, 'None'], [15, '15 min before'], [30, '30 min'], [60, '1 hour']].map(([v, l]) => `<button class="pill ${alarm === v ? 'accent' : ''}" data-alarm="${v}" style="cursor:pointer;padding:7px 11px">${l}</button>`).join('')}</div>
+        <button class="btn" id="cal-go" style="margin-top:16px" ${days.length ? '' : 'disabled'}>Add ${days.length} weekly event${days.length === 1 ? '' : 's'}</button>
+        <button class="btn ghost" id="cal-cancel" style="margin-top:8px">Cancel</button>`;
+      sheet.querySelectorAll('[data-dow]').forEach(b => b.onclick = () => { const d = +b.dataset.dow; days = days.includes(d) ? days.filter(x => x !== d) : [...days, d].sort(); paint(); });
+      sheet.querySelectorAll('[data-alarm]').forEach(b => b.onclick = () => { alarm = +b.dataset.alarm; paint(); });
+      sheet.querySelector('#cal-time').onchange = (e) => { time = e.target.value || time; };
+      sheet.querySelector('#cal-min').onchange = (e) => { minutes = Math.max(10, Math.min(180, +e.target.value || 60)); };
+      sheet.querySelector('#cal-cancel').onclick = close;
+      sheet.querySelector('#cal-go').onclick = async () => {
+        await pref('calendar_export', { days, time, minutes, alarm });
+        const ics = buildIcs({ days: days.map(d => ({ dow: d, title: titles[d] || fallbackTitle, notes: 'Open Fit Tracker to start.' })), time, minutes, alarm });
+        const file = new File([ics], 'workouts.ics', { type: 'text/calendar' });
+        try {
+          if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: 'Workouts' });
+          else {
+            const url = URL.createObjectURL(file);
+            const a = document.createElement('a'); a.href = url; a.download = 'workouts.ics'; a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+          }
+          close();
+          toast('Open it to add to your calendar', 2600);
+        } catch (err) { if (err?.name !== 'AbortError') toast('Could not create the calendar file'); }
+      };
+    };
+    paint();
+  });
 }
