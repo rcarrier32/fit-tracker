@@ -79,7 +79,7 @@ trains quads), the way the research counts it.
 ## Rules that change by goal
 
 From comparing the coach programs with these rules (`python3 data/learn_patterns.py`) and the
-research in [reports/Workout plan builder methods.md](../reports/Workout%20plan%20builder%20methods.md):
+research in [research/Workout plan builder methods.md](research/Workout%20plan%20builder%20methods.md):
 
 - **Rest** (`rest`): fat loss rests 90 s on main lifts and 60 s on the rest (PJF writes about 60 s;
   research finds a small cost below 60 s and no gain past about 90 s). Strength keeps 2-3 min.

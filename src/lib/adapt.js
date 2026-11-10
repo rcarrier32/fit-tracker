@@ -2,7 +2,7 @@
  * Next-session targets from what was logged: the adaptive layer on top of a written plan.
  * Plain module (no app imports) so it runs in node for tests: `node data/check_adapt.mjs`.
  *
- * Rules (reports/Workout plan builder methods.md, "Adaptive layer"):
+ * Rules (docs/research/Workout plan builder methods.md, "Adaptive layer"):
  * - Double progression: when every set at the working weight reached the top of the rep range,
  *   add the smallest weight step and aim for the bottom of the range. If that step is more than
  *   10% of the load (light dumbbells), aim for 2 more reps at the same weight first.
