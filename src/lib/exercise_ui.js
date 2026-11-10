@@ -184,7 +184,8 @@ function ladderHTML(l, accent) {
     </div>`;
 }
 
-function videoBlockHTML(ex) {
+/** The demo video for an exercise (the user's own program demo, else YouTube, else a search link). */
+export function videoBlockHTML(ex) {
   // The user's own program demos (PJF, TrainHeroic: stored on this device only) beat a
   // stand-in YouTube video.
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins

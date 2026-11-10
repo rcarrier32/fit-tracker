@@ -10,7 +10,17 @@ This is the FKH pattern: a short list you can scan, and a detail screen you tap 
 | `openExerciseDetail(ex, opts)` | Detail sheet: embedded YouTube on top, then sets/log, extra block, how-to, warnings, actions, and **Next →** |
 
 Used by: Hip Recovery, TOS Rehab, Daily Mobility, and Lift. Lift only uses the view-only
-detail, because weight and rep entry stay on its inline card.
+detail (for warm-up moves and the Full list view), because weight and rep entry stay on its card.
+
+## Lift step-by-step mode
+
+Lift's equivalent of the detail sheet's **Next →** flow lives in `setupGuided()` in
+`src/views/workout.js`. It shows the list view's own Lift cards one at a time, with
+`videoBlockHTML()` from this file on top, a progress bar (tap to jump), a rest line that
+stays on screen after Next, and Back / Next. Next goes down the list, except at the end of a
+superset or circuit done a set at a time, where it goes back to the group's first unfinished
+exercise. The mode (`lift_view` pref: `guided` or `list`) and the current step (`guided_step`)
+are saved, so a reload or a swap keeps your place.
 
 ## Exercise shape (author new plans in this shape)
 
