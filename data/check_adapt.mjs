@@ -50,6 +50,12 @@ eq('bodyweight at top → harder version',
 eq('manual change carries: heaviest set is the baseline',
   pick(nextTarget({ history: [at('2026-11-07', s([95, 10], [110, 10], [110, 10]))], target: '8-10', sets: 2, equipment: ['barbell'], today })),
   { weight: 115, reps: 8, kind: 'up' });
+eq('third jump in a row → offer a set',
+  !!nextTarget({ history: [at('2026-11-07', s([110, 10], [110, 10], [110, 10])), at('2026-11-04', s([105, 9], [105, 8], [105, 8])), at('2026-11-01', s([100, 10], [100, 10], [100, 10]))], target: '8-10', sets: 3, equipment: ['barbell'], today }).addSet, true);
+eq('first jump → no extra set',
+  !!nextTarget({ history: [at('2026-11-07', s([100, 10], [100, 10], [100, 10])), at('2026-11-04', s([100, 9], [100, 8], [100, 8]))], target: '8-10', sets: 3, equipment: ['barbell'], today }).addSet, false);
+eq('feeling beat → no extra set',
+  !!nextTarget({ history: [at('2026-11-07', s([110, 10], [110, 10], [110, 10])), at('2026-11-04', s([105, 9], [105, 8], [105, 8])), at('2026-11-01', s([100, 10], [100, 10], [100, 10]))], target: '8-10', sets: 3, equipment: ['barbell'], today, profile: { fatigue: { advice: 'x' } } }).addSet, false);
 eq('deload advice at 3 drops', !!deloadAdvice([{ kind: 'down' }, { kind: 'down' }, { kind: 'down' }, { kind: 'up' }]), true);
 eq('no deload advice at 2', deloadAdvice([{ kind: 'down' }, { kind: 'down' }]), null);
 

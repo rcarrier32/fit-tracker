@@ -23,10 +23,10 @@
                             "core_sets": 3, "core_early": true, "set_ramp": 1.1, "cooldown": true,
                             "required": [
                               { "match": "copenhagen", "not": "dynamic", "slot": "hip_focus", "per_week": [3, 1],
-                                "why": "Copenhagen adductor programme (Harøy 2019): 41% fewer groin problems; 3x/week to start, then 1x/week." },
+                                "why": "Groin injury prevention: the Copenhagen adductor programme (Harøy 2019) cut groin problems 41%; 3x/week to start, then 1x/week." },
                               { "match": "nordic hamstring", "not": "reverse", "muscles": ["hamstrings", "glutes"], "per_week": [1],
                                 "dose": { "sets": [2, 3], "reps": "3-5 slow lowers", "rest": "90s" },
-                                "why": "Nordic hamstring work: about half the hamstring injuries in programmes that include it (van Dyk 2019)." }
+                                "why": "Hamstring injury prevention: programmes with Nordics had about half the hamstring injuries (van Dyk 2019)." }
                             ] }
   },
   "goal_overrides_doc": "Per goal: splits (by days, replaces the split table); superset_all (pair every lift with a non-competing one, 0-15 s between, rest after the pair); cooldown (holds for what the day worked, then 7/11 breathing); required moves (match/not are case-insensitive name parts; filled into the hip_focus slot or a slot for that muscle, per_week by phase, the last value after that; may be one level above the person's level); max_contacts (jumps, landings and bounds per session, each side counted; --sanity checks it, default 100); rest (by role) replaces the role's rest; volume_targets replace the global ones for those muscles, scaled by days/5 under 5 days; core_sets replaces the core role's sets; core_early moves the day's core move (light patterns only, kept short of failure) to just after power work; warmup_rounds (by session minutes) replaces the session's rounds; set_ramp is how much weekly sets grow by the last phase (1.1: +1 set on secondaries, 1.2: also on accessories). Sources: docs/LEARNED_PATTERNS.md, docs/research/Workout plan builder methods.md.",
@@ -206,6 +206,13 @@
     "main_lifts": { "keep_weeks": 4, "keep_whole_plan_up_to_weeks": 6, "note": "Main lifts stay for the whole plan up to 6 weeks; longer plans change them every 4 weeks." },
     "deload": { "goals": ["strength", "muscle"], "min_weeks": 8, "sets_factor": 0.5,
                 "when": "Last week of a strength or muscle plan of 8+ weeks only. None of the coach programs schedules one; the adaptive layer deloads when logged performance drops." }
+  },
+  "easy_on": {
+    "_doc": "Generate → 'Go easy on': moves that commonly load the area are left out (patterns, or a name match). Not medical advice; required moves stay.",
+    "hip":      { "label": "Hip",        "names": "lunge|split squat|90/90|pigeon|hip flexor stretch|deep squat|cossack|curtsy|skater" },
+    "knee":     { "label": "Knees",      "patterns": ["plyo_jump", "plyo_bound_hop", "deceleration_landing", "agility_cod"], "names": "pistol|sissy|jump|bound|deep squat|lunge jump|1¼|1 1/4" },
+    "back":     { "label": "Lower back", "names": "deadlift|good morning|barbell row|back squat|bent[- ]over row|jefferson|superman|hyperextension" },
+    "shoulder": { "label": "Shoulders",  "names": "overhead|military|behind|dip|upright row|snatch|arnold|handstand|pike push" }
   },
   "load_limited": {
     "heavy_equipment": ["barbell", "trap_bar", "machine", "cable", "smith", "sled"],

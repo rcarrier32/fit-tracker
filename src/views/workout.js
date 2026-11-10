@@ -442,7 +442,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   $root.addEventListener('click', async e => {
     // Compact re-expansion: tap anywhere on a compact card except action buttons
     const compactCard = e.target.closest('.exercise--compact');
-    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn')) {
+    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn, [data-rest], .add-set-sugg')) {
       compactCard.classList.remove('exercise--compact');
       const $sum = compactCard.querySelector('.exercise-summary');
       if ($sum) $sum.style.display = 'none';
@@ -564,6 +564,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const i = +card.dataset.i;
       const setIdx = +e.target.dataset.set;
       openRPEPicker(card, setIdx, session, i);
+    }
+    if (e.target.matches('.add-set-sugg')) {
+      const ex = session.exercises[+e.target.closest('.exercise').dataset.i];
+      ex.target_sets = (parseInt(ex.target_sets) || 3) + 1;
+      ex.set_added = true;
+      await saveSession(session);
+      toast(`${ex.name}: ${ex.target_sets} sets today`);
+      renderWorkout(document.getElementById('app'), { keepRest: true });
+      return;
     }
     if (e.target.matches('.ex-menu')) {
       const card = e.target.closest('.exercise');
@@ -1639,7 +1648,8 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
         ${ex.user_note ? `<div style="font-size:12px;margin-top:2px">📝 ${esc(ex.user_note)}</div>`
           : _notes[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">📝 Last note: ${esc(_notes[ex.name])}</div>` : ''}
-        ${next ? `<div class="next-line" style="font-size:11px;margin-top:2px;color:${next.kind === 'down' || next.kind === 'back' ? 'var(--fg-dim)' : 'var(--accent)'}">Today: ${next.weight ? `${next.weight} lb × ` : ''}${next.reps} · ${next.note}</div>` : ''}
+        ${next ? `<div class="next-line" style="font-size:11px;margin-top:2px;color:${next.kind === 'down' || next.kind === 'back' ? 'var(--fg-dim)' : 'var(--accent)'}">Today: ${next.weight ? `${next.weight} lb × ` : ''}${next.reps} · ${next.note}${
+          next.addSet && !ex.set_added ? ' <button type="button" class="pill accent add-set-sugg" style="cursor:pointer;font-size:11px;padding:3px 8px;margin-left:4px">+1 set</button>' : ''}</div>` : ''}
         <div class="e1rm-line" style="font-size:12px;margin-top:2px">${initialE1RM}</div>
         <div class="rest-timer-line" style="min-height:14px"></div>
         <div class="exercise-summary"></div>

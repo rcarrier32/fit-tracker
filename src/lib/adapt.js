@@ -68,15 +68,20 @@ export function nextTarget({ history = [], target, sets = 3, equipment = [], tod
     return { weight: roundTo(w * 0.9, step), reps: lo, kind: 'back', note: `${gap} days since last time: start at about 90% and build back.` };
   }
   const allHit = last.count >= sets && last.reps.length >= Math.min(sets, last.count) && last.reps.every(r => r >= hi);
+  // Volume only where it's working (RP; the research report's volume rule): weight went up between the
+  // two sessions before this one too, so this is a second jump in a row → offer one more set.
+  const prev = working(history[1]), prev2 = working(history[2]);
+  const streak = allHit && prev && prev2 && prev.weight > prev2.weight && w > prev.weight - 1e-9 && sets < 5 && !profile?.fatigue?.advice;
+  const withSet = (t) => streak && t.kind === 'up' ? { ...t, addSet: true, note: `${t.note} Going up every time: add a set if you have it in you.` } : t;
   if (allHit) {
     if (step / w > 0.1) {
       return { weight: w, reps: hi + 2, kind: 'reps', note: `Every set hit ${hi}. A ${step} lb jump is big at ${w} lb: aim for ${hi + 2} reps first.` };
     }
     // Learned (src/lib/learn.js): if you usually beat the top of the range by 2+, and did again, jump twice as far.
     if (profile?.progression?.overshoot_rate >= 0.3 && last.reps.every(r => r >= hi + 2) && (2 * step) / w <= 0.1) {
-      return { weight: w + 2 * step, reps: lo, kind: 'up', note: `↑ ${2 * step} lb: you beat ${hi} on every set, as you often do.` };
+      return withSet({ weight: w + 2 * step, reps: lo, kind: 'up', note: `↑ ${2 * step} lb: you beat ${hi} on every set, as you often do.` });
     }
-    return { weight: w + step, reps: lo, kind: 'up', note: `↑ ${step} lb: every set hit ${hi} last time.` };
+    return withSet({ weight: w + step, reps: lo, kind: 'up', note: `↑ ${step} lb: every set hit ${hi} last time.` });
   }
   const under = (s) => { const x = working(s); return x && x.weight >= w && x.reps.some(r => r < lo); };
   if (under(history[0]) && under(history[1])) {

@@ -8,6 +8,7 @@ import { toast, openSheet, navigate } from '../app.js';
 import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/plan_builder.js';
 import { pref, getAll } from '../db.js';
 import { learnProfile, profileSummary } from '../lib/learn.js';
+import { comparePlan, compareLine } from '../lib/compare.js';
 import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 import { openBandDatabase } from './band_db.js';
@@ -578,6 +579,8 @@ const GEN_EQUIPMENT = ['dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'bench',
   'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'sled', 'smith', 'suspension', 'bike', 'pool'];
 let _rules = null;
 const loadRules = async () => (_rules ||= await fetch('data/design_rules.json').then(r => r.json()));
+let _learned = null;   // the coach-program numbers (data/learn_patterns.py)
+const loadLearned = async () => (_learned ||= await fetch('data/learned_patterns.json').then(r => r.json()).catch(() => ({})));
 
 async function loadProfile() {
   const [sessions, { exercises }] = await Promise.all([getAll('sessions'), loadCatalogs()]);
@@ -593,7 +596,9 @@ async function openGeneratorWizard(onSaved) {
   if (!saved.days && profile.days.per_week) saved.days = Math.min(6, Math.max(2, Math.round(profile.days.per_week)));
   if (!saved.minutes && profile.duration) saved.minutes = [30, 45, 60].reduce((a, b) => Math.abs(b - profile.duration.median_min) < Math.abs(a - profile.duration.median_min) ? b : a);
   const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band'];
-  const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], ...saved, equipment };
+  const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], easy: [], ...saved, equipment };
+  // Hip-flare mode (Hip tab) turns on "go easy on: hip".
+  if ((await pref('hip_flare')) && !st.easy.includes('hip')) st.easy = [...st.easy, 'hip'];
   openSheet((sheet, close) => {
     const chips = (key, options, multi = false) => options.map(([val, label]) => {
       const on = multi ? st[key].includes(val) : st[key] === val;
@@ -615,6 +620,9 @@ async function openGeneratorWizard(onSaved) {
         <div style="display:flex;gap:6px">${chips('level', [[1, 'Beginner'], [2, 'Intermediate'], [3, 'Advanced']])}</div>
         <div class="group-label">Focus (optional)</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('focus', Object.keys(FOCUS_GROUPS).map(f => [f, f]), true)}</div>
+        <div class="group-label">Go easy on (optional)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('easy', Object.entries(rules.easy_on || {}).filter(([k]) => k !== '_doc').map(([k, z]) => [k, z.label]), true)}</div>
+        ${st.easy.length ? '<div class="muted" style="font-size:11px;margin-top:4px">Leaves out moves that commonly load it. Not medical advice: follow your PT.</div>' : ''}
         <div class="group-label">Equipment you have</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('equipment', GEN_EQUIPMENT.map(q => [q, EQUIPMENT_LABEL[q]]), true)}</div>
         <label style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px">
@@ -643,8 +651,9 @@ async function openGeneratorWizard(onSaved) {
   });
 }
 
-function openGeneratedPreview(plan, ctx, onSaved) {
+async function openGeneratedPreview(plan, ctx, onSaved) {
   const { exercises, rules } = ctx;
+  const vsCoaches = compareLine(comparePlan(plan, await loadLearned(), plan.generated?.goal), muscleLabel);
   const byName = new Map(exercises.map(e => [e.name, e]));
   let week = 1;
   openSheet((sheet, close) => {
@@ -658,6 +667,7 @@ function openGeneratedPreview(plan, ctx, onSaved) {
         ${plan.learned && (plan.learned.avoided.length || plan.learned.preferred.length) ? `<div class="muted" style="font-size:12px;margin:-2px 0 6px">🧠 From your ${plan.learned.from_sessions} logged workouts:${
           plan.learned.avoided.length ? ` left out ${plan.learned.avoided.slice(0, 3).join(', ')}${plan.learned.avoided.length > 3 ? '…' : ''}.` : ''}${
           plan.learned.preferred.length ? ` Picked your usual ${plan.learned.preferred.slice(0, 3).join(', ')}.` : ''}</div>` : ''}
+        ${vsCoaches ? `<div class="muted" style="font-size:12px;margin:0 0 6px">📊 ${vsCoaches}</div>` : ''}
         <div class="muted" style="font-size:11px;margin-bottom:4px">Week 1 working sets per muscle</div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">${summary}</div>
         <div style="display:flex;gap:4px;overflow-x:auto;margin:12px 0 4px">
@@ -675,6 +685,7 @@ function openGeneratedPreview(plan, ctx, onSaved) {
                 <div style="flex:1;min-width:0">
                   <div class="list-item-title" style="font-size:14px">${x.round_group ? `<span class="muted" style="font-size:10px">${x.round_group} · </span>` : ''}${x.name}</div>
                   <div class="list-item-meta">${x.sets} × ${x.reps || x.time}${x.rest ? ' · rest ' + x.rest : ''}${e ? ` · <span style="text-transform:capitalize">${tagLine(e)}</span>` : ''}</div>
+                  ${x.why ? `<div class="list-item-meta" style="color:var(--accent);opacity:.85">${x.why}</div>` : ''}
                 </div><span class="muted" style="font-size:12px">⇄</span></div>`;
             }).join('')}
           </div>`).join('')}

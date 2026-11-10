@@ -148,6 +148,26 @@ today, from the last 3 times the lift was logged (in any plan). The workout card
 
 `node data/check_adapt.mjs` checks these rules.
 
+## In the plan preview
+
+- **Why each pick:** every exercise says why it's there ("Main lift, kept from the last phase",
+  "Core early, to switch it on", "Groin injury prevention", "one you swap to or add", "level 2 for
+  phase 3", "Stretch for today's quads").
+- **Compared with the coaches** ([`src/lib/compare.js`](../src/lib/compare.js)): weekly sets per
+  muscle against the min–max of the coach programs for the goal (data/learned_patterns.json), their
+  ranges scaled to the plan's days a week, and plain sets a session against theirs. Strength has no
+  coach program to compare with.
+- **Go easy on** (`easy_on`): hip, knees, lower back or shoulders leaves out moves that commonly load
+  the area (lunges and deep hip positions; jumps and landings; heavy barbell hinges and rows; overhead
+  pressing and dips), in lifts, warm-ups and cooldowns. Required moves stay, in a version that avoids
+  the area where one exists. Hip-flare mode turns on "hip". Not medical advice.
+
+## +1 set when a lift keeps climbing
+
+When a lift has gone up two sessions running and every set hit the top of the range again, the
+card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
+where it's working, the research report's volume rule.
+
 ## Learning from your logs
 
 [`src/lib/learn.js`](../src/lib/learn.js) works out a personal profile from the last 12 weeks of

@@ -85,7 +85,9 @@ if (args.includes('--sanity')) {
   process.exit(problems ? 1 : 0);
 }
 
+// --easy hip,knee: "go easy on" (design_rules easy_on)
 const plan = generatePlan({
+  easy: opt('easy', '') ? opt('easy').split(',') : [],
   goal: opt('goal', 'muscle'), days: +opt('days', 3), minutes: +opt('minutes', 60), weeks: +opt('weeks', 6),
   equipment: opt('equipment', 'dumbbell,bench').split(','), focus: opt('focus', '') ? opt('focus').split(',') : [],
   plyo: args.includes('--plyo'), level: +opt('level', 2), seed: +opt('seed', 1),
