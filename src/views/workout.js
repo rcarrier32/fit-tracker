@@ -5,6 +5,7 @@ import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
+import { isFav, toggleFav } from '../lib/favorites.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
@@ -999,6 +1000,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         <button class="btn ghost" id="ex-note">📝 ${ex.user_note ? 'Edit note' : 'Add note'}</button>
         <button class="btn ghost" id="ex-hurt">${ex.hurt ? '✓ Hurt today' : '🤕 This hurts'}</button>
       </div>
+      <button class="btn ghost" id="ex-fav" style="margin-bottom:8px">${isFav(ex.name) ? '♥ Favourite (tap to remove)' : '♡ Favourite'}</button>
       ${loadedLift(lookup) ? '<button class="btn ghost" id="ex-plates" style="margin-bottom:8px">🏋 Plates & warm-up sets</button>' : ''}
       <button class="btn ghost" id="progression" style="margin-bottom:8px">📈 Progression chart</button>
       <button class="btn ghost" id="edit-target" style="margin-bottom:8px">Edit target reps/sets</button>
@@ -1011,6 +1013,12 @@ function openExerciseMenu(session, i, allExercises, exMap) {
       openProgressionChart(ex.name);
     };
     sheet.querySelector('#ex-plates')?.addEventListener('click', () => { close(false); openPlates(ex, lookup); });
+    sheet.querySelector('#ex-fav').onclick = async () => {
+      const on = await toggleFav(ex.name);
+      close();
+      toast(on ? 'Favourite: new plans pick it first' : 'Removed from favourites', 1800);
+      renderWorkout(document.getElementById('app'), { keepRest: true });
+    };
     // A note stays with this exercise and shows next time it comes up ("Last note: …").
     sheet.querySelector('#ex-note').onclick = () => {
       close(false);
@@ -1071,10 +1079,10 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           }).join('')}` : '';
         const similarSection = similarExercises.length ? `
           <div class="group-label" style="margin:12px 0 6px">${lookup?.pattern ? 'Similar movement' : (muscleLabel || 'Similar')}</div>
-          ${similarExercises.slice(0, 12).map(e =>
+          ${[...similarExercises].sort((a, b) => isFav(b.name) - isFav(a.name)).slice(0, 12).map(e =>
             `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
-                <div class="list-item-title">${e.name}</div>
+                <div class="list-item-title">${isFav(e.name) ? '<span style="color:#f472b6">♥</span> ' : ''}${e.name}</div>
                 <div class="list-item-meta" style="text-transform:capitalize">${e.pattern ? tagLine(e) : (e.primary_muscle?.replace(/_/g, ' ') || '')}${e.level ? ` · ${LEVEL_LABEL[e.level]}` : ''}${hasVideo(e) ? ' · ▶' : ''}</div>
               </div>
             </div>`
@@ -1641,7 +1649,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   card.innerHTML = `
     <div class="exercise-header">
       <div style="flex:1">
-        <div class="exercise-name">${ex.name}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}${ex.hurt ? ' <span class="pill" style="font-size:10px;color:var(--danger)">hurt</span>' : ''}</div>
+        <div class="exercise-name">${ex.name}${isFav(ex.name) ? ' <span style="color:#f472b6;font-size:13px">♥</span>' : ''}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}${ex.hurt ? ' <span class="pill" style="font-size:10px;color:var(--danger)">hurt</span>' : ''}</div>
         ${lookup?.pattern ? `<div class="ex-tagline" style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
         ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>

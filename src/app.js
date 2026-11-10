@@ -149,6 +149,7 @@ if (FIRST_COPY) (async () => {
     await pref('hip_restrictions_off', true);
   }).catch(() => {});
   loadCatalogs().catch(err => console.error('[boot] catalogs failed', err));
+  await import('./lib/favorites.js').then(m => m.loadFavorites()).catch(() => {});
   await import('./lib/local_videos.js').then(m => m.loadLocalVideos()).catch(() => {});
   await offerBackupRestore();
   // One-time merge of duplicate workout sessions left by the old double boot.

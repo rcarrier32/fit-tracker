@@ -60,5 +60,10 @@ const planAfter = generatePlan({ ...base, profile: fake }, { exercises, rules })
 ok(`avoided "${avoidName}" left out`, !names(planAfter).has(avoidName));
 ok('plan says what it learned', planAfter.learned?.avoided.includes(avoidName));
 
+// Favourites (♡) are picked first, from day one (no logs needed).
+const favName = 'Pec-Deck Machine Fly';
+const favPlan = generatePlan({ ...base, favorites: [favName] }, { exercises, rules });
+ok(`favourite "${favName}" picked`, names(favPlan).has(favName) && favPlan.favorites_used.includes(favName));
+ok('favourite explained', favPlan.weeks[0].days.some(d => d.exercises.some(x => x.name === favName && /favourite/.test(x.why))));
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

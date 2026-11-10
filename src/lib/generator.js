@@ -73,7 +73,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const avoidSet = new Set(prof?.avoid || []);
   const likeSet = new Set([...(prof?.favorites || []), ...Object.values(prof?.prefer || {})]);
   const upSet = new Set(prof?.progressing || []), stallSet = new Set(prof?.stalled || []);
-  const learnedFrom = { avoided: new Set(), preferred: new Set() };
+  // Favourites (♡): chosen by you, so they count more than anything learned, and from day one.
+  const favSet = new Set(params.favorites || []);
+  const learnedFrom = { avoided: new Set(), preferred: new Set(), favorites: new Set() };
   // What the coaches pick (data/learned_patterns.json, from the uploaded PJF/BWS/Griffith programs):
   // exercises the goal's coach programs use score higher, by how many of them use it. Strength has no
   // coach program, so it borrows the BWS (muscle) list.
@@ -193,7 +195,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       // A slot lists its muscles best first ("chest", then "triceps"): the first one wins a tie.
       if (slot.muscles?.length > 1 && slot.muscles[0] === e.primary_muscle) s += 1;
       if (avoidSet.has(e.name)) s -= 6;
-      if (likeSet.has(e.name)) s += 1.5;
+      if (favSet.has(e.name)) s += 2.5;
+      else if (likeSet.has(e.name)) s += 1.5;
       if (upSet.has(e.name)) s += 0.8;
       if (stallSet.has(e.name) && slot.role !== 'main') s -= 0.8;
       return [s + rand() * 0.9, e];
@@ -268,6 +271,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         }
         if (e) {
           if (likeSet.has(e.name)) learnedFrom.preferred.add(e.name);
+          if (favSet.has(e.name)) learnedFrom.favorites.add(e.name);
           usedToday.add(e.name); usedWeek.add(e.name);
           addVol(e, (rules.roles[slot.role] || {}).sets || 3);
         }
@@ -490,6 +494,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     else if (slot.role === 'power') bits.push(`Power first: ${PAT[e.pattern] || e.pattern}`);
     else if (slot.role === 'core') bits.push('Core');
     else bits.push(`${slot.role === 'secondary' ? 'Second lift' : 'Accessory'}: ${PAT[e.pattern] || muscleWord(e.primary_muscle)}`);
+    if (favSet.has(e.name)) bits.push('♥ your favourite');
     if (coachUse[e.name] && slot.role !== 'core') bits.push(`in ${coachUse[e.name]} of ${coachN} coach program${coachN === 1 ? '' : 's'}`);
     if (likeSet.has(e.name)) bits.push('one you swap to or add');
     else if (upSet.has(e.name)) bits.push('going up for you');
@@ -579,6 +584,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     summary,
     working_sets: workingSets,
     pool_size: pool.length,
+    favorites_used: [...learnedFrom.favorites],
     learned: prof ? { from_sessions: prof.sessions, avoided: (prof.avoid || []).filter(n => pool.some(e => e.name === n)),
       preferred: [...learnedFrom.preferred] } : null,
   };

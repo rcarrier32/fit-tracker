@@ -9,6 +9,7 @@ import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/p
 import { pref, getAll } from '../db.js';
 import { learnProfile, profileSummary } from '../lib/learn.js';
 import { comparePlan, compareLine } from '../lib/compare.js';
+import { favorites, loadFavorites } from '../lib/favorites.js';
 import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 import { openBandDatabase } from './band_db.js';
@@ -100,7 +101,9 @@ export async function renderPrograms(app) {
   // Learned on the phone from your logs (src/lib/learn.js); new generated plans use it.
   loadProfile().then(prof => {
     const el = app.querySelector('#learned-body');
+    const favs = favorites();
     if (el) el.innerHTML = profileSummary(prof).map(l => `<div style="margin:3px 0">• ${l}</div>`).join('')
+      + (favs.length ? `<div style="margin:3px 0">• <span style="color:#f472b6">♥</span> Favourites (${favs.length}): ${favs.slice(0, 5).join(', ')}${favs.length > 5 ? '…' : ''}. New plans pick these first; tap ♡ on any exercise to add or remove.</div>` : '<div style="margin:3px 0">• Tap ♡ on any exercise to make it a favourite: new plans pick it first.</div>')
       + '<div style="margin-top:6px;font-size:11px;opacity:.75">Worked out on this phone from your logged workouts. Nothing is sent anywhere.</div>';
   });
 
@@ -429,8 +432,9 @@ function openPlanBuilder(allExercises, onSave) {
 function openPlanCustomizer(template, allExercises, onSave) {
   // Build initial exercise picks for all days
   // Only days that repeat the same slots (Full Body A/B/C) rotate picks; Upper and Lower days take the best fit.
+  const favs = new Set(favorites());
   const daySlots = template.days.map((day, di) => autoFillDay(day, allExercises,
-    template.days.filter(d => d.slots === day.slots).length > 1 ? di : 0));
+    template.days.filter(d => d.slots === day.slots).length > 1 ? di : 0, favs));
   // per-day ab finisher: array of { label, muscle, sets, reps, picked }
   const abSlots = template.days.map(() => []);
 
@@ -459,7 +463,7 @@ function openPlanCustomizer(template, allExercises, onSave) {
         };
         item.onclick = (e) => {
           if (e.target.dataset.removeAb != null) return;
-          const options = suggestForSlot(slot.muscle, allExercises, new Set(), slot.label);
+          const options = suggestForSlot(slot.muscle, allExercises, new Set(), slot.label, new Set(favorites()));
           openSheet((s2, close2) => {
             s2.innerHTML = `
               <h2>${slot.label}</h2>
@@ -518,7 +522,7 @@ function openPlanCustomizer(template, allExercises, onSave) {
         // Auto-fill 3 ab slots with distinct exercises
         const used = new Set(abs.map(s => s.picked).filter(Boolean));
         const newAbs = AB_SLOTS.map(s => {
-          const options = suggestForSlot('abs', allExercises, used);
+          const options = suggestForSlot('abs', allExercises, used, '', new Set(favorites()));
           const pick = options[0] || null;
           if (pick) used.add(pick.name);
           return { ...s, picked: pick?.name || null };
@@ -583,7 +587,7 @@ let _learned = null;   // the coach-program numbers (data/learn_patterns.py)
 const loadLearned = async () => (_learned ||= await fetch('data/learned_patterns.json').then(r => r.json()).catch(() => ({})));
 
 async function loadProfile() {
-  const [sessions, { exercises }] = await Promise.all([getAll('sessions'), loadCatalogs()]);
+  const [sessions, { exercises }] = await Promise.all([getAll('sessions'), loadCatalogs(), loadFavorites()]);
   const byName = new Map(exercises.map(e => [e.name, e]));
   return learnProfile(sessions, { today: localDateStr(), muscleOf: (n) => byName.get(n) });
 }
@@ -643,7 +647,7 @@ async function openGeneratorWizard(onSaved) {
         await pref('gen_settings', rest);
         close(false);   // a follow-up sheet opens next
         const { exercises } = await loadCatalogs();
-        const plan = generatePlan({ ...st, seed: Date.now() % 100000, profile }, { exercises, rules, hasVideo, learned: await loadLearned() });
+        const plan = generatePlan({ ...st, seed: Date.now() % 100000, profile, favorites: favorites() }, { exercises, rules, hasVideo, learned: await loadLearned() });
         openGeneratedPreview(plan, { exercises, rules }, onSaved);
       };
     };
@@ -667,6 +671,7 @@ async function openGeneratedPreview(plan, ctx, onSaved) {
         ${plan.learned && (plan.learned.avoided.length || plan.learned.preferred.length) ? `<div class="muted" style="font-size:12px;margin:-2px 0 6px">🧠 From your ${plan.learned.from_sessions} logged workouts:${
           plan.learned.avoided.length ? ` left out ${plan.learned.avoided.slice(0, 3).join(', ')}${plan.learned.avoided.length > 3 ? '…' : ''}.` : ''}${
           plan.learned.preferred.length ? ` Picked your usual ${plan.learned.preferred.slice(0, 3).join(', ')}.` : ''}</div>` : ''}
+        ${plan.favorites_used?.length ? `<div class="muted" style="font-size:12px;margin:0 0 6px"><span style="color:#f472b6">♥</span> Your favourites: ${plan.favorites_used.slice(0, 4).join(', ')}${plan.favorites_used.length > 4 ? ` +${plan.favorites_used.length - 4}` : ''}</div>` : ''}
         ${vsCoaches ? `<div class="muted" style="font-size:12px;margin:0 0 6px">📊 ${vsCoaches}</div>` : ''}
         <div class="muted" style="font-size:11px;margin-bottom:4px">Week 1 working sets per muscle</div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">${summary}</div>

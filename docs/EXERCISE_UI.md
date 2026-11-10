@@ -97,3 +97,7 @@ plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`st
 - **Not done: saving demo videos offline.** TrainHeroic demos are YouTube (can't be cached) and PJF
   demos are Mux HLS streams, which iPhone Safari plays outside the service worker, so caching them
   wouldn't make them play offline.
+- **♡ Favourites** (src/lib/favorites.js, pref `fav_exercises`): tap ♡ on any exercise screen (Lift,
+  Hip, plans) or ⋯ → ♡ Favourite on a Lift card. A ♥ shows on the card and in Swap, where favourites
+  of the same movement come first. Generate (+2.5, more than anything learned) and the Manual builder
+  pick them first; the preview lists the ones used and each says "♥ your favourite".

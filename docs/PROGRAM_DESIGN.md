@@ -188,6 +188,7 @@ workouts before anything changes; the Plans tab shows it under "What the app has
 | Learns | From | Changes |
 |---|---|---|
 | Exercises you avoid | Swapped away from 2+ times (more than done), or left undone most times | Generated plans leave them out |
+| ♥ Favourites (you mark them, no logs needed) | ♡ on the exercise screen or ⋯ menu | Both builders pick them first, ahead of everything learned |
 | What you swap to, and add | Swaps and added exercises | Generated plans prefer them |
 | What's progressing or stalled | Weekly trend of each lift's estimated max (3+ sessions) | Progressing picks preferred; stalled accessories rotated |
 | Trend per muscle | Average of its lifts' trends | Shown; for the volume rule next |
