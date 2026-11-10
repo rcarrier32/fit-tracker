@@ -5,6 +5,10 @@ These rules come from studying the PJF Performance and BWS (Built With Science) 
 follow them. The machine-readable copy is [`data/design_rules.json`](../data/design_rules.json):
 change both together.
 
+To check these rules against what the coaches actually wrote, run `python3 data/learn_patterns.py`.
+It measures the PJF, BWS and Griffith programs and lists where they disagree with the rules in
+[`LEARNED_PATTERNS.md`](LEARNED_PATTERNS.md).
+
 ## Session order
 
 Warm-up / mobility → power (plyo, sprints) → main compound → secondary compound / single-leg
