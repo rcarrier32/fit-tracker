@@ -5,6 +5,30 @@
  */
 export const TIMER_WARN_SECS = 5;
 export const TIMER_REST_WARN_SECS = 15;
+/** Seconds to change sides on a one-side-at-a-time hold (FKH uses 3; 10 gives time to reset a bench setup). */
+export const SIDE_SWITCH_SECS = 10;
+
+/**
+ * 'leg' | 'arm' | 'side' when a timed exercise is done one side at a time (the time is per
+ * side), else null. Reads the plan's own words ("Each side.", "Right side, then left.",
+ * PJF's "Perform each side") and names that are one-sided by definition (Copenhagen,
+ * side plank, single-leg, B-stance).
+ */
+export function sidesOf(ex) {
+  const txt = [ex?.name, ex?.notes, ex?.rest, ex?.reps, ex?.target_reps].filter(Boolean).join(' ');
+  const said = /\b(?:each|per)\s+(side|leg|arm|hand)\b|\bright(?: side)?,? then left\b|\bone side,? then the other\b/i.exec(txt);
+  const named = /copenhagen|side plank|single[- ]leg|single[- ]arm|b-stance/i.test(ex?.name || '');
+  if (!said && !named) return null;
+  const word = (said?.[1] || '').toLowerCase();
+  if (word === 'leg' || /copenhagen|single[- ]leg|b-stance/i.test(ex?.name || '')) return 'leg';
+  if (word === 'arm' || word === 'hand' || /single[- ]arm/i.test(ex?.name || '')) return 'arm';
+  return 'side';
+}
+
+/** "Right leg", "Left side"… Right first, as the plans write it ("Right side, then left"). */
+export const sideLabel = (unit, sideIdx) => `${sideIdx ? 'Left' : 'Right'} ${unit}`;
+/** FKH's switch call: "Switch legs — Left leg". */
+export const switchSpeech = (unit) => `Switch ${unit}s — ${sideLabel(unit, 1)}`;
 
 /**
  * Rest in seconds from a program's rest field, or null when it doesn't say.
@@ -41,6 +65,7 @@ export function timerAlert(kind, countValue) {
   const speech =
     kind === 'rest' ? 'Rest'
     : isBegin ? 'Begin'
+    : kind === 'switch' ? (typeof countValue === 'string' ? countValue : 'Switch')
     : kind === 'count' ? String(countValue)
     : null;
   if (!speech) return;

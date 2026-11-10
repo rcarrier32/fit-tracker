@@ -21,7 +21,11 @@ prefill, +5, RPE, set timers and e1RM work the same in both. The flow is warm-up
 the exercises. Next → goes to the next unfinished exercise, except at the end of a superset
 or circuit done a set at a time, where it goes back round to the group's first unfinished
 one. The rest timer counts down from the exercise's `rest` (counts up when it has none) and
-keeps running on the next exercise's sheet. ▶ Video on a list card opens that exercise in
+keeps running on the next exercise's sheet. Timed moves done one side at a time (`sidesOf()`:
+"each side/leg", "Right side, then left", PJF's "Perform each side", or a one-sided name such
+as Copenhagen, side plank, single-leg, B-stance) time each side: right, then a beep and
+"Switch legs — Left leg" with a 10 s switch countdown, then left on a fresh timer. The set
+logs after both sides. Write "Each side." in a plan's notes to turn this on. ▶ Video on a list card opens that exercise in
 the flow. Today's **Start workout** opens it straight away.
 
 ## Exercise shape (author new plans in this shape)

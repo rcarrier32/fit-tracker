@@ -447,3 +447,5 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 .exercise.in-sheet .e1rm-line { display: block !important; }
 .exercise.in-sheet .rest-timer-line { font-size: 16px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
 .rest-live.rest-over .rest-timer-text { color: #22c55e; }
+/* Changing sides on a one-side-at-a-time hold (FKH's switch colour). */
+.timer-btn.switching, .hold-timer.switching { background: #f59e0b !important; color: #0f172a !important; border-color: #f59e0b !important; }

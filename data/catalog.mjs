@@ -80,6 +80,13 @@ export async function loadFullCatalog({ extra = [] } = {}) {
       byNorm.set(norm(o.name), e);
     }
   }
+  // An exercise only another provider adds (e.g. TrainHeroic's Push-Up To Pike) still takes
+  // PJF's demo when PJF has one under that name, as local_videos.js does in the app.
+  for (const o of Object.values(providers.pjf?.videos || {})) {
+    const url = o?.name && providerVideo(o);
+    const hit = url && byNorm.get(norm(o.name));
+    if (hit && hit.video?.from !== 'pjf' && hit.video?.from !== 'catalog') hit.video = { url, from: 'pjf' };
+  }
   return { lib, exercises, byName, providers };
 }
 
