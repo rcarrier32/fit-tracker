@@ -21,6 +21,23 @@ Warm-up / mobility → power (plyo, sprints) → main compound → secondary com
 | conditioning | 10-12 rounds of 15-20 s on / 40-45 s off, or 20-35 min Zone 2 | | Intervals on strength days, Zone 2 on low days. |
 | cooldown | 1 × 15-45 s holds, 3 min breathing | | |
 
+**Warm-up and cooldown follow the workout.** Warm up what the day is about to work, and stretch
+what it worked. [`data/session_prep.py`](../data/session_prep.py) does this from the exercise
+tags, so a build script calls it rather than hard-coding a list:
+
+- It scores each region (quads, hamstrings, glutes, adductors, hip flexors, calves, chest,
+  shoulders, lats, upper back) by sets: 2 points for an exercise's main muscle, 1 for the others.
+- *Targets* are every region a main exercise trains directly (2+ sets), plus any region scoring
+  at least half the day's top region.
+- **Warm-up:** keep the plan's own prep (Griffith, PJF…). `fill_warmup` adds a move from the
+  plan's warm-up pool for any region that's worked hard but not reached by the prep, up to 6 moves.
+- **Cooldown:** `pick_cooldown` picks 3-4 holds (PJF's length-under-load format, then 3 min of
+  breathing). Every target gets reached. The day's two hardest-worked muscles need a hold that's
+  *mainly* for them, so a squat-and-lunge day gets a real quad stretch, not a hip stretch that
+  touches the quads. Each hold's note says which of today's exercises it's for.
+- Coverage comes from tags, so a stretch's tags must say what it really stretches (check the
+  provider's notes). The build prints any target nothing in the pool reaches.
+
 **Supersets:** 0-15 s between the two exercises, 30-60 s after the pair. Pair muscles that don't
 compete (push + pull, lower + upper, isolation + core).
 

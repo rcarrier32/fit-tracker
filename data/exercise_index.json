@@ -337,6 +337,7 @@
    "Lunge Rapid Switches",
    "Marching Glute Bridge With Hips Up",
    "On Bench Single Leg Glute Bridge",
+   "Optional Pigeon Length Under Load",
    "Overcoming Glute Isometric",
    "Posterior Bridge With Sagittal Leg Whip",
    "Posterior Lateral Change of Direction",
@@ -431,6 +432,7 @@
    "Prone Hip Extension (Knee Bent)",
    "RDL or Cable Pullthrough",
    "RDL Row w/ Rotation",
+   "Rotational RDL Length Under Load",
    "Seated Leg Curls",
    "Single Hinge To Hip Flexor Flow From Elevated Surface",
    "Single Leg Hinge To Row Combo",
@@ -487,7 +489,6 @@
    "Hip Flexor Rock Back",
    "Hip Flexor Tilt",
    "Hip Flexor w/ Rotation/Breathing",
-   "Hip Flexor/Quad Bridge",
    "Hip Mobility Band Freestyle",
    "Hip Mobility ER/IR Skips",
    "Kettlebell Loaded Hip Flexor Lift",
@@ -496,14 +497,12 @@
    "Leg Swings",
    "Loaded Lateral Line Stretch",
    "March in Place",
-   "Optional Pigeon Length Under Load",
    "Optional Static Stretch",
    "Pelvic Tilts",
    "Piriformis Stretch",
    "Posterior Pelvic Tilt Breathing",
    "RDL Step Back Hip Flexor Raise",
    "Rock Back Breathing",
-   "Rotational RDL Length Under Load",
    "Side Leg Swings",
    "Side-to-Side Leg Swings",
    "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
@@ -630,6 +629,7 @@
    "Heels Elevated Narrow Squat",
    "High Box Step Up",
    "Hindu Oscillating Squat",
+   "Hip Flexor/Quad Bridge",
    "Hip Loaded Diagonal Jumps",
    "Hip Shift Squat",
    "KB Swing + Box Jump Contrast",
@@ -870,7 +870,6 @@
    "Diagonal Split Rotational Reach to Crash Through",
    "Dragon Flag Level 2 Eccentric",
    "Flutter Kicks",
-   "Half Kneeling Hip Flexor Stretch",
    "Half Kneeling Lateral Bend",
    "Half-Kneeling Hip Flexor Stretch",
    "Hand Assisted Marching",
@@ -1088,6 +1087,7 @@
    "MB High Toss/Extensive Jumps Contrast",
    "Metronome Dot Drill",
    "Mutli-direction Bounds",
+   "Optional Post Chain Stretch",
    "Penultimate Box Jumps (Optional)",
    "Pogos",
    "Proprioception Progressions",
@@ -1501,6 +1501,7 @@
    "One Leg RDL Rotation w/ Toes Off",
    "One Leg RDL Same Side Load",
    "Optional Pigeon Length Under Load",
+   "Optional Post Chain Stretch",
    "Optional Static Stretch",
    "Outdoor Sprint Intervals",
    "Overcoming Glute Isometric",
@@ -1720,6 +1721,7 @@
    "Resisted Triple Switch Cycle Overs",
    "Reverse Hyperextensions",
    "Reverse Step Back Lunge",
+   "Rotational RDL Length Under Load",
    "Seated Leg Curls",
    "Short Accel/Decel Progressions",
    "Single Hinge To Hip Flexor Flow From Elevated Surface",
@@ -1755,7 +1757,9 @@
    "Suspended Hamstring Curl",
    "Swiss Ball Leg Curls",
    "Trap Bar Deadlift",
-   "World's Greatest Hamstring Lvl 2"
+   "Wide Stance Length Under Load",
+   "World's Greatest Hamstring Lvl 2",
+   "World's Greatest Stretch"
   ],
   "hip_flexors": [
    "3-Way Hip Hinge with Band Distraction",
@@ -1826,7 +1830,6 @@
    "RDL Step Back Hip Flexor Raise",
    "Rock Back Breathing",
    "Rotating Pike Twist To Cobra Flow",
-   "Rotational RDL Length Under Load",
    "Seated Banded Hip IR",
    "Shin Box Reach And Row",
    "Shin Box Rotation",
@@ -1928,6 +1931,7 @@
    "RDL or Cable Pullthrough",
    "Reverse Hyperextensions",
    "Rotating Pike Twist To Cobra Flow",
+   "Rotational RDL Length Under Load",
    "Single-Leg RDL",
    "Single-Leg RDL with Kettlebell",
    "Single-Leg Romanian Deadlift",
@@ -2081,12 +2085,14 @@
    "Goblet Squat to Press",
    "Hack Squat",
    "Half Kneel Lateral Jump",
+   "Half Kneeling Hip Flexor Stretch",
    "Heel Elevated Goblet Squat",
    "Heel Elevated Split Squat",
    "Heels Elevated Narrow Squat",
    "High Box Step Up",
    "Hindu Oscillating Squat",
    "Hip Flexor Rock Back",
+   "Hip Flexor/Quad Bridge",
    "Hip Loaded Diagonal Jumps",
    "Hip Shift Squat",
    "KB Swing + Box Jump Contrast",
@@ -2356,7 +2362,8 @@
    "Wall Side T Spine Opener",
    "Wall Slides",
    "Weighted Windmill Mobility",
-   "Wide Grip BB Upright Row (last resort)"
+   "Wide Grip BB Upright Row (last resort)",
+   "World's Greatest Stretch"
   ]
  },
  "by_pattern": {
@@ -9795,7 +9802,7 @@
    "primary_muscle": "hip_flexors",
    "muscles": [
     "hip_flexors",
-    "abs"
+    "quads"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -10725,13 +10732,14 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "quads",
    "muscles": [
+    "quads",
     "hip_flexors",
     "abs"
    ],
    "pattern": "hinge",
-   "role": "secondary",
+   "role": "cooldown",
    "equipment": [
     "bodyweight"
    ],
@@ -13541,10 +13549,10 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "glutes",
    "muscles": [
-    "hip_flexors",
-    "glutes"
+    "glutes",
+    "hip_flexors"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -13566,7 +13574,9 @@
    ],
    "primary_muscle": "hamstrings",
    "muscles": [
-    "hamstrings"
+    "hamstrings",
+    "glutes",
+    "calves"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -15755,10 +15765,11 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "hamstrings",
    "muscles": [
-    "hip_flexors",
-    "glutes"
+    "hamstrings",
+    "glutes",
+    "lower_back"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -19611,7 +19622,8 @@
    ],
    "primary_muscle": "adductors",
    "muscles": [
-    "adductors"
+    "adductors",
+    "hamstrings"
    ],
    "pattern": "mobility",
    "role": "cooldown",
@@ -19657,7 +19669,9 @@
    "primary_muscle": "hip_flexors",
    "muscles": [
     "hip_flexors",
-    "glutes"
+    "hamstrings",
+    "glutes",
+    "upper_back"
    ],
    "pattern": "mobility",
    "role": "cooldown",

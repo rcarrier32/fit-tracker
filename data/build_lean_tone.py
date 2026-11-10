@@ -9,6 +9,7 @@ in the Lift card's Swap menu, like BWS alternates). Validate with:
 """
 import re
 from program_builder import Library, ex, w, expand_weeks
+from session_prep import pick_cooldown, fill_warmup
 
 lib = Library()
 GROUP = 'Move Like 30'
@@ -298,30 +299,57 @@ def days(wk):
 
 
 FINISHER_NOTE = 'Outdoors, on a track or on the bike all work: Swap to log it. Bike: add about 25% more time to steady work.'
-COOLDOWN = {
-    1: [('Hip Flexor Length Under Load', '45s', 'Each side. Slow breaths, sink a little deeper each exhale.'),
-        ('Wide Stance Length Under Load', '45s', None),
-        ('Half Kneeling Thoracic Rotations', '30s', 'Each side.')],
-    2: [('Optional Pigeon Length Under Load', '45s', 'Each side.'),
-        ('Rotational RDL Length Under Load', '45s', 'Each side.'),
-        ('Lateral Lunge Length Under Load', '45s', 'Each side.')],
-    3: [("World's Greatest Stretch", '30s', 'Each side.'),
-        ('Half Kneeling Thoracic Rotations', '30s', 'Each side.'),
-        ('Lateral Lunge Length Under Load', '45s', 'Each side.')],
-    4: [('Hip Flexor Length Under Load', '45s', 'Each side.'),
-        ('Wide Stance Length Under Load', '45s', None)],
-}
+# Cooldown: PJF's format (length-under-load holds, then 3 min of 7/11 breathing), with the holds
+# picked by session_prep.py from what the day worked. Pool order is the flow order: standing and
+# kneeling holds first, then the floor, so you end lying down for the breathing.
+COOLDOWN_POOL = [
+    ('Hip Flexor/Quad Bridge', '45s', 'Each side. PJF\'s couch stretch: back knee down, foot up on the couch or bench. '
+     'Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead.'),
+    ('Hip Flexor Length Under Load', '45s', 'Each side. Slow breaths, sink a little deeper each exhale.'),
+    ('Rotational RDL Length Under Load', '45s', 'Each side.'),
+    ('Lateral Lunge Length Under Load', '45s', 'Each side.'),
+    ('Wide Stance Length Under Load', '45s', None),
+    ("World's Greatest Stretch", '30s', 'Each side.'),
+    ('Half Kneeling Thoracic Rotations', '30s', 'Each side.'),
+    ('Optional Post Chain Stretch', '45s', 'Each side. Hamstrings and calves.'),
+    ('Optional Pigeon Length Under Load', '45s', 'Each side.'),
+]
+# Warm-up top-ups: added only when the day's prep doesn't already reach a muscle it is about to work.
+WARMUP_POOL = [
+    ('Poliquin Step Down', '8 each leg', None),
+    ('Hamstring Floss With Knee Flexion', '8 each leg', None),
+    ('Supported Lateral Squat', '8 each side', None),
+    ('Push-Up To Pike', '8', None),
+    ('Band Pull-Aparts', '15', None),
+    ('Banded Lat Pulldown', '10 light', 'Band anchored high.'),
+    ('Pogos', '20', None),
+]
+COOLDOWN_REPORT = []
 
 
 def add_cooldown(day, n):
-    """PJF closes every session the same way: 1-3 length-under-load holds, then 3 min of 7/11 breathing."""
-    for name, t, note in COOLDOWN[n]:
+    """PJF closes every session the same way: length-under-load holds, then 3 min of 7/11 breathing.
+    The holds follow the day's work (session_prep.pick_cooldown)."""
+    holds, missing = pick_cooldown(lib, day['exercises'], COOLDOWN_POOL)
+    COOLDOWN_REPORT.append((day['focus'], [h[0] for h in holds], missing))
+    for name, t, note, _ in holds:
         day['exercises'].append(r(name, time=t, sets=1, rest=None, group='Cooldown', notes=note))
     day['exercises'].append(r('7/11 Breathing', time='3:00', sets=1, rest=None, group='Cooldown',
                               notes='Lie on your back: in through the nose for 7, out for 11.'))
     for x in day['exercises']:
         if (x.get('round_group') or '').lower().startswith('treadmill'):
             x['notes'] = ' '.join(filter(None, [x.get('notes'), FINISHER_NOTE]))
+    return day
+
+
+def match_warmup(day):
+    """Griffith's prep stays; anything the day works hard that it doesn't reach gets a top-up move."""
+    moves, missing = fill_warmup(lib, day['exercises'], day.get('warmup') or [], WARMUP_POOL)
+    for m in moves[len(day.get('warmup') or []):]:
+        m.setdefault('time', None)
+        m['sets'] = 2
+    day['warmup'] = moves
+    COOLDOWN_REPORT.append((day['focus'] + ' · warm-up', [m['name'] for m in moves], missing))
     return day
 
 
@@ -338,7 +366,7 @@ def superset_rest(day):
 
 
 def days_with_rest(wk):
-    return [add_cooldown(superset_rest(d), i) for i, d in enumerate(days(wk), 1)]
+    return [add_cooldown(match_warmup(superset_rest(d)), i) for i, d in enumerate(days(wk), 1)]
 
 
 program = {
@@ -346,7 +374,7 @@ program = {
     'program_name': 'Lean & Tone: Home Full Body',
     'group': GROUP,
     'source': 'Athletic',
-    'description': '4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
+    'description': '4 days a week, ~50 min including a PJF-style cooldown matched to the day\'s work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
                    'Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.',
     'sessions_per_week': 4, 'session_length_min': 50, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
@@ -359,3 +387,9 @@ program = {
 lib.set_programs('lean_tone', [program])
 lib.save()
 print('wrote', program['id'])
+seen = set()
+for focus, names, missing in COOLDOWN_REPORT:
+    if (focus, tuple(names)) in seen:
+        continue
+    seen.add((focus, tuple(names)))
+    print(f'  {focus}: {names}' + (f'  NOT COVERED: {missing}' if missing else ''))

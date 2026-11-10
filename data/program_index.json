@@ -18,18 +18,18 @@
     "Lower Body"
    ],
    "week1_sets_by_muscle": {
-    "hip_flexors": 45,
+    "hip_flexors": 39,
     "calves": 35,
+    "quads": 20,
     "full_body": 19,
-    "quads": 17,
-    "hamstrings": 17,
+    "hamstrings": 18,
     "adductors": 14,
     "upper_back": 14,
     "biceps": 12,
     "abs": 12,
     "obliques": 12,
     "triceps": 12,
-    "glutes": 9,
+    "glutes": 11,
     "lats": 8,
     "rear_delts": 8,
     "chest": 6,
@@ -57,8 +57,8 @@
    },
    "roles": {
     "warmup": 39,
-    "secondary": 20,
-    "cooldown": 17,
+    "cooldown": 20,
+    "secondary": 17,
     "accessory": 17,
     "core": 10,
     "power": 7,
@@ -1141,7 +1141,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 13.0,
+   "exercises_per_day": 14.0,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
     "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
@@ -1149,27 +1149,27 @@
     "Day 4 · Conditioning + Glutes"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 19,
-    "quads": 12,
+    "glutes": 22,
+    "quads": 15,
+    "hamstrings": 12,
     "lats": 12,
     "chest": 9,
-    "hamstrings": 9,
     "abs": 8,
     "front_delts": 6,
-    "hip_flexors": 5,
-    "upper_back": 5,
-    "adductors": 4,
+    "upper_back": 6,
     "side_delts": 3,
     "full_body": 3,
     "calves": 3,
     "abductors": 3,
+    "adductors": 2,
     "obliques": 2,
     "biceps": 2,
-    "triceps": 2
+    "triceps": 2,
+    "hip_flexors": 1
    },
    "week1_sets_by_pattern": {
-    "hinge": 15,
-    "mobility": 15,
+    "hinge": 18,
+    "mobility": 16,
     "lunge_single_leg": 12,
     "push_horizontal": 9,
     "pull_horizontal": 9,
@@ -1187,11 +1187,11 @@
    },
    "roles": {
     "secondary": 18,
-    "cooldown": 13,
+    "cooldown": 16,
     "accessory": 7,
     "conditioning": 4,
     "core": 3,
-    "warmup": 2,
+    "warmup": 3,
     "power": 2,
     "main": 1
    },
@@ -1205,7 +1205,7 @@
     "mini_band",
     "slider"
    ],
-   "description": "4 days a week, ~50 min including a PJF-style cooldown, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
+   "description": "4 days a week, ~50 min including a PJF-style cooldown matched to the day's work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
   },
   {
    "id": "move30_recovery_mobility",
