@@ -62,3 +62,18 @@ A plan only stores state and hands callbacks to `openExerciseDetail`:
 Rehab and band-only plans use this exercise shape and render through these three functions.
 Strength programs, including home dumbbell plans, stay on the Lift card so people can log
 weight and reps. See [ADDING_A_PROGRAM.md](ADDING_A_PROGRAM.md).
+
+## Clipping a demo that shows other moves too
+
+Some provider demos show more than one exercise (PJF's *KB Swing + Box Jump Contrast*). A clip
+plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`start`/`end`).
+
+- **On the phone:** exercise sheet → **⋯** → ✂ Clip video (also in the Lift card's ⋯ menu). Play
+  the demo, tap Start and End, Save. A small "✂ 0:12–0:27 · full video" line shows under a clipped
+  demo. It's a one-off per exercise, so the tools stay behind ⋯.
+- **Stored:** this phone's clips in `pref('clips')` (part of Export data); clips for every device in
+  [`data/clips.json`](../data/clips.json). Copy a phone's clip there to ship it.
+- Each clip is tied to one video (`src`: `mux:<id>`, `yt:<id>` or the file URL), so if an
+  exercise's video changes the old clip is ignored. Code: `clipFor` / `saveClip` in
+  `src/lib/local_videos.js`, the player and tools in `src/lib/exercise_ui.js`.
+

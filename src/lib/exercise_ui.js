@@ -10,8 +10,8 @@
  *   { id, name, subtitle?, sets ('3 × 10 per leg'), freq?, cues: [], warning?, askPt?,
  *     videoId? | video_url?, videoTitle?, link?, search?, source?, optional? }
  */
-import { openSheet } from '../app.js';
-import { localFor, muxThumb, attachMuxVideos, playable } from './local_videos.js';
+import { openSheet, toast } from '../app.js';
+import { localFor, muxThumb, attachMuxVideos, playable, videoSrcKey, clipFor, saveClip } from './local_videos.js';
 import { tagChipsHTML } from './taxonomy.js';
 import { getCachedSync } from './static_data.js';
 
@@ -184,48 +184,83 @@ function ladderHTML(l, accent) {
     </div>`;
 }
 
-function videoBlockHTML(ex) {
-  // The user's own program demos (PJF, TrainHeroic: stored on this device only) beat a
-  // stand-in YouTube video.
+const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+
+/** The video the sheet plays for ex: { l (provider entry), vid (YouTube id), src (clip key) }. */
+function sheetVideo(ex) {
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
-  const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l ? 'Your program\'s demo' : '';
-  if (l?.v) {
-    return `
-      <div class="ex-video">
-        <video data-mux="${esc(l.v)}" controls playsinline preload="metadata" poster="${muxThumb(l.v)}"
-          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
-      </div>
-      <div style="font-size:10.5px;color:#64748b;margin-top:5px">${label}</div>`;
-  }
-  if (l?.url) {
-    const hls = /\.m3u8(\?|$)/i.test(l.url);
-    return `
-      <div class="ex-video">
-        <video ${hls ? `data-hls="${esc(l.url)}"` : `src="${esc(l.url)}"`} controls playsinline preload="metadata"
-          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
-      </div>
-      <div style="font-size:10.5px;color:#64748b;margin-top:5px">${label}</div>`;
-  }
+  if (l?.v || l?.url) return { l, src: videoSrcKey(l) };
   const vid = l?.yt || videoOf(ex);
-  if (vid) {
-    return `
-      <div class="ex-video">
-        <iframe src="https://www.youtube.com/embed/${vid}?playsinline=1&rel=0&modestbranding=1${ytStart(ex) ? `&start=${ytStart(ex)}` : ''}"
+  return vid ? { l, vid, src: videoSrcKey({ yt: vid }) } : { l };
+}
+
+/**
+ * The demo video for an exercise (the user's own program demo, else YouTube, else a search
+ * link), wrapped so the clip tools can redraw it. A clip (local_videos clipFor) plays only
+ * that part, looping; `full` ignores it.
+ */
+function videoBlockHTML(ex, { full = false } = {}) {
+  const { l, vid, src } = sheetVideo(ex);
+  const clip = full ? null : clipFor(ex.name, src);
+  const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l ? 'Your program\'s demo' : '';
+  const clipAttrs = clip ? `data-start="${clip.start}" data-end="${clip.end}"` : '';
+  const clipLine = clip ? `✂ ${mmss(clip.start)}–${mmss(clip.end)} <button class="clip-full" type="button"
+    style="background:none;border:none;padding:0;color:#7dd3fc;font-size:10.5px;cursor:pointer">full video</button>` : '';
+  const note = (t) => (t || clipLine) ? `<div style="font-size:10.5px;color:#64748b;margin-top:5px;line-height:1.35">${[t, clipLine].filter(Boolean).join(' · ')}</div>` : '';
+  let body;
+  if (l?.v) {
+    body = `<div class="ex-video">
+        <video data-mux="${esc(l.v)}" ${clipAttrs} controls playsinline preload="metadata" poster="${muxThumb(l.v)}"
+          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
+      </div>${note(label)}`;
+  } else if (l?.url) {
+    const hls = /\.m3u8(\?|$)/i.test(l.url);
+    body = `<div class="ex-video">
+        <video ${hls ? `data-hls="${esc(l.url)}"` : `src="${esc(l.url)}"`} ${clipAttrs} controls playsinline preload="metadata"
+          style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
+      </div>${note(label)}`;
+  } else if (vid) {
+    const start = clip ? Math.floor(clip.start) : ytStart(ex);
+    body = `<div class="ex-video">
+        <iframe src="https://www.youtube.com/embed/${vid}?playsinline=1&rel=0&modestbranding=1&enablejsapi=1${start ? `&start=${start}` : ''}${clip ? `&end=${Math.ceil(clip.end)}` : ''}"
           title="${esc(ex.videoTitle || ex.name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
-      </div>
-      ${ex.videoTitle ? `<div style="font-size:10.5px;color:#64748b;margin-top:5px;line-height:1.35">${esc(ex.videoTitle)}</div>` : ''}`;
-  }
-  const href = ex.link || ex.video_url
-    || `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`;
-  return `
-    <a href="${esc(href)}" target="_blank" rel="noopener noreferrer"
+      </div>${note(ex.videoTitle ? esc(ex.videoTitle) : '')}`;
+  } else {
+    const href = ex.link || ex.video_url
+      || `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`;
+    body = `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer"
       style="display:flex;align-items:center;justify-content:center;gap:8px;height:96px;
         width:100%;border-radius:10px;background:#0f172a;
         border:1px dashed rgba(255,255,255,0.15);color:#94a3b8;text-decoration:none;font-size:12px">
       ▶ ${ex.link || ex.video_url ? 'Open video link' : 'Search YouTube for a demo'}
     </a>`;
+  }
+  return `<div class="ex-video-wrap">${body}</div>`;
 }
+
+/** Current playback time of the sheet's video: <video> directly, YouTube via its iframe API. */
+function playerClock(wrap) {
+  const v = wrap.querySelector('video');
+  if (v) return { now: () => v.currentTime, stop() {} };
+  const f = wrap.querySelector('iframe');
+  let t = null;
+  const on = (e) => {
+    if (!/youtube/.test(e.origin)) return;
+    try { const d = JSON.parse(e.data); if (d?.info?.currentTime != null) t = d.info.currentTime; } catch { /* not ours */ }
+  };
+  window.addEventListener('message', on);
+  const ping = () => f?.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), '*');
+  ping();
+  const iv = setInterval(ping, 1000);
+  return { now: () => t, stop() { clearInterval(iv); window.removeEventListener('message', on); } };
+}
+
+/** "1:05", "65", "0:12.5" → seconds, or null. */
+const parseTime = (s) => {
+  const m = String(s ?? '').trim().match(/^(?:(\d+):)?(\d+(?:\.\d+)?)$/);
+  return m ? (+(m[1] || 0)) * 60 + +m[2] : null;
+};
 
 /** PJF's own coaching notes and easier alternates, when the user imported them. */
 function pjfNotesHTML(ex, accent) {
@@ -266,6 +301,7 @@ function pjfNotesHTML(ex, accent) {
  * @param {{ label: string, onClick: (close: Function) => void }} [o.finish]
  *                                    button on the 🎉 card once nothing is left (Finish workout)
  * @param {() => void} [o.onClose]
+ * @param {boolean}  [o.startClip]    open with the clip tools showing (Lift card ⋯ → Clip video)
  * @param {string}   [o.completeLabel] shown once nothing is left
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
@@ -282,9 +318,10 @@ function pjfNotesHTML(ex, accent) {
 let _gravitySign = 0;   // +1 spec (Android), -1 iOS: the sign of y when held upright
 
 function startSidewaysVideo(sheet) {
-  const box = sheet.querySelector('.ex-video');
-  if (!box || !('DeviceMotionEvent' in window)) return () => {};
+  if (!sheet.querySelector('.ex-video') || !('DeviceMotionEvent' in window)) return () => {};
   const onMotion = (e) => {
+    const box = sheet.querySelector('.ex-video');   // looked up each time: the clip tools redraw it
+    if (!box) return;
     const g = e.accelerationIncludingGravity;
     if (!g || g.x == null) return;
     const ax = Math.abs(g.x), ay = Math.abs(g.y);
@@ -319,9 +356,14 @@ export function openExerciseDetail(ex, o = {}) {
           <h2 style="margin:0;font-size:18px;line-height:1.25">${esc(ex.name)}</h2>
           ${ex.subtitle ? `<div style="font-size:12px;color:#94a3b8;margin-top:3px;line-height:1.4">${esc(ex.subtitle)}</div>` : ''}
         </div>
-        ${ex.source ? `<span style="font-size:9px;padding:2px 6px;border-radius:4px;flex-shrink:0;
-          border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+          ${ex.source ? `<span style="font-size:9px;padding:2px 6px;border-radius:4px;
+            border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
+          ${sheetVideo(ex).src ? `<button class="ex-more" type="button" aria-label="More options"
+            style="background:none;border:none;color:#64748b;font-size:18px;line-height:1;padding:2px 4px;cursor:pointer">⋯</button>` : ''}
+        </div>
       </div>
+      <div class="ex-more-menu" hidden></div>
 
       ${(() => { const c = ex.pattern ? ex : getCachedSync()?.exerciseByName?.get(String(ex.name).toLowerCase());
         const h = tagChipsHTML(c); return h ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">${h}</div>` : ''; })()}
@@ -368,7 +410,78 @@ export function openExerciseDetail(ex, o = {}) {
     attachMuxVideos(sheet);
     const stopSideways = startSidewaysVideo(sheet);
     const prevClose = hooks.onClose;
-    hooks.onClose = () => { stopSideways(); prevClose?.(); o.onClose?.(); };
+    let stopClock = () => {};
+    hooks.onClose = () => { stopSideways(); stopClock(); prevClose?.(); o.onClose?.(); };
+
+    // ── Clip tools: ⋯ → Clip video. A one-off per exercise, so it stays out of the way. ──
+    const src = sheetVideo(ex).src;
+    const redrawVideo = (opts) => {
+      const wrap = sheet.querySelector('.ex-video-wrap');
+      wrap.outerHTML = videoBlockHTML(ex, opts);
+      attachMuxVideos(sheet.querySelector('.ex-video-wrap'));
+    };
+    const $menu = sheet.querySelector('.ex-more-menu');
+    const closeClipBar = () => { stopClock(); stopClock = () => {}; sheet.querySelector('.clip-bar')?.remove(); };
+    const openClipBar = () => {
+      $menu.hidden = true;
+      closeClipBar();
+      redrawVideo({ full: true });        // mark on the whole video
+      const wrap = sheet.querySelector('.ex-video-wrap');
+      const clock = playerClock(wrap);
+      stopClock = clock.stop;
+      const cur = clipFor(ex.name, src);
+      const mark = { start: cur?.start ?? null, end: cur?.end ?? null };
+      wrap.insertAdjacentHTML('afterend', `
+        <div class="clip-bar">
+          <div class="muted" style="font-size:11px;margin-bottom:6px">Play the demo. Tap Start where this move begins and End where it ends.</div>
+          <div style="display:flex;gap:6px">
+            <button class="btn ghost" data-c="start" style="flex:1">Start <b></b></button>
+            <button class="btn ghost" data-c="end" style="flex:1">End <b></b></button>
+            <button class="btn" data-c="save" style="flex:1">Save</button>
+            <button class="btn ghost" data-c="x" style="width:auto;padding:0 12px" aria-label="Cancel">✕</button>
+          </div>
+        </div>`);
+      const bar = sheet.querySelector('.clip-bar');
+      const show = () => {
+        bar.querySelector('[data-c="start"] b').textContent = mark.start == null ? '' : mmss(mark.start);
+        bar.querySelector('[data-c="end"] b').textContent = mark.end == null ? '' : mmss(mark.end);
+        bar.querySelector('[data-c="save"]').disabled = !(mark.start != null && mark.end > mark.start + 1);
+      };
+      bar.onclick = async (e) => {
+        const c = e.target.closest('[data-c]')?.dataset.c;
+        if (!c) return;
+        if (c === 'x') { closeClipBar(); redrawVideo(); return; }
+        if (c === 'save') {
+          await saveClip(ex.name, src, mark.start, mark.end);
+          closeClipBar(); redrawVideo(); toast('Clip saved');
+          return;
+        }
+        // The playing position; YouTube can refuse to share it, so then ask.
+        let t = clock.now();
+        if (t == null) t = parseTime(prompt(`${c === 'start' ? 'Start' : 'End'} time (m:ss)`, ''));
+        if (t == null) return;
+        mark[c] = t;
+        show();
+      };
+      show();
+    };
+    sheet.querySelector('.ex-more')?.addEventListener('click', () => {
+      if (!$menu.hidden) { $menu.hidden = true; return; }
+      const cur = clipFor(ex.name, src);
+      $menu.innerHTML = `
+        <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px">
+          <button class="btn ghost" data-m="clip" style="width:auto;font-size:12px;padding:6px 10px">✂ ${cur ? 'Change clip' : 'Clip video'}</button>
+          ${cur?.mine ? `<button class="btn ghost" data-m="unclip" style="width:auto;font-size:12px;padding:6px 10px">Remove clip</button>` : ''}
+        </div>`;
+      $menu.hidden = false;
+    });
+    $menu.addEventListener('click', async (e) => {
+      const m = e.target.closest('[data-m]')?.dataset.m;
+      if (m === 'clip') openClipBar();
+      if (m === 'unclip') { await saveClip(ex.name, src, null); $menu.hidden = true; redrawVideo(); toast('Clip removed'); }
+    });
+    sheet.addEventListener('click', (e) => { if (e.target.closest('.clip-full')) redrawVideo({ full: true }); });
+    if (o.startClip && src) openClipBar();
 
     const getSets = () => {
       const n = setCount(rx);

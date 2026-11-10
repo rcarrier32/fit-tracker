@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v115';
+const CACHE = 'fit-tracker-v116';
 
 self.addEventListener('install', e => {
   self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload
@@ -18,6 +18,7 @@ self.addEventListener('install', e => {
         './data/common_foods.json',
         './data/providers/pjf.json',
         './data/providers/trainheroic.json',
+        './data/clips.json',
       ]).catch(err => console.warn('cache miss', err))
     )
   );

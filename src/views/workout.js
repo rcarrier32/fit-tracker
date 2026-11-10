@@ -949,6 +949,8 @@ function openExerciseMenu(session, i, allExercises, exMap) {
   const muscleLabel = primaryMuscle ? primaryMuscle.replace(/_/g, ' ') : null;
   const bwsAlts = lookup?.bws_alternates || [];
   // The plan's own alternatives for this slot (plus the original, once swapped away from it).
+  const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+  const clipVideo = rowVideo || hasVideo(lookup) ? { url: rowVideo || lookup?.video_url || null, row: !!rowVideo } : null;
   const planAlts = [...new Set([...(ex.swapped && ex.orig_name ? [ex.orig_name] : []), ...(ex.alternates || [])])]
     .filter(n => n !== ex.name && exMap[n.toLowerCase()]);
   openSheet((sheet, close) => {
@@ -963,6 +965,7 @@ function openExerciseMenu(session, i, allExercises, exMap) {
       </div>
       <button class="btn ghost" id="progression" style="margin-bottom:8px">📈 Progression chart</button>
       <button class="btn ghost" id="edit-target" style="margin-bottom:8px">Edit target reps/sets</button>
+      ${clipVideo ? '<button class="btn ghost" id="clip-video" style="margin-bottom:8px">✂ Clip video</button>' : ''}
       <button class="btn danger" id="remove" style="margin-top:6px">🗑 Remove exercise</button>
     `;
 
@@ -970,6 +973,11 @@ function openExerciseMenu(session, i, allExercises, exMap) {
       close(false);
       openProgressionChart(ex.name);
     };
+    // Demo shows other moves too: play only this one's part (a one-off, so it lives here).
+    sheet.querySelector('#clip-video')?.addEventListener('click', () => {
+      close(false);
+      openExerciseDetail({ name: ex.name, video_url: clipVideo.url, rowVideo: clipVideo.row, sets: formatTarget(ex) }, { startClip: true });
+    });
 
     sheet.querySelector('#swap-all').onclick = () => {
       close(false);

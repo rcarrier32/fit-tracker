@@ -449,3 +449,7 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 .rest-live.rest-over .rest-timer-text { color: #22c55e; }
 /* Changing sides on a one-side-at-a-time hold (FKH's switch colour). */
 .timer-btn.switching, .hold-timer.switching { background: #f59e0b !important; color: #0f172a !important; border-color: #f59e0b !important; }
+/* Clip tools (exercise sheet ⋯ → Clip video): a one-off, so small and out of the way. */
+.clip-bar { margin-top: 8px; }
+.clip-bar .btn { min-height: 40px; padding: 8px; font-size: 13px; }
+.clip-bar .btn:disabled { opacity: 0.4; }
