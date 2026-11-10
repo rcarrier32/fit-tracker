@@ -54,6 +54,34 @@ const BAND_SHORT = {
 /** A timed exercise (hold, interval, carry) logs a duration instead of weight × reps. */
 const isTimed = (ex) => parseSecs(ex.time) > 0 && !ex.target_reps;
 
+/**
+ * Interval phases of one round, from the plan's words: "10 s fast, 20 s jog, 40 s walk",
+ * "1 min hard, 1 min easy", or a name like "Sprint 10s/Jog 20s/Walk 40s". [] if none.
+ */
+function parseIntervals(notes, name) {
+  const unit = (n, u) => /^m/i.test(u) ? +n * 60 : +n;
+  const out = [];
+  for (const m of String(notes || '').matchAll(/(\d+)\s*(s|secs?|seconds?|min|mins?|minutes?)\s+([a-z][a-z ]*?)(?=[,.;]|$)/gi)) {
+    out.push({ secs: unit(m[1], m[2]), label: m[3].trim() });
+  }
+  if (out.length >= 2) return out;
+  const byName = [...String(name || '').matchAll(/([A-Za-z][A-Za-z ]*?)\s*(\d+)\s*(s|sec|min)\b/gi)]
+    .map(m => ({ secs: unit(m[2], m[3]), label: m[1].trim().toLowerCase() }));
+  return byName.length >= 2 ? byName : [];
+}
+
+/**
+ * A plan's "1 set × 8 rounds" is 8 sets. Interval rounds (sprint/jog/walk) become timed
+ * sets of one round each, with the phases for the timer.
+ */
+function roundsAsSets(x) {
+  const m = /^\s*(\d+)\s*rounds?\s*$/i.exec(x.target_reps || '');
+  if (!m || (+x.target_sets || 1) > 1) return x;
+  const intervals = x.time ? [] : parseIntervals(x.notes, x.name);
+  return { ...x, target_sets: +m[1], target_reps: intervals.length ? '' : x.target_reps.replace(/^\s*\d+\s*rounds?\s*$/i, ''),
+    ...(intervals.length ? { intervals, time: String(intervals.reduce((a, p) => a + p.secs, 0)) } : {}) };
+}
+
 let _setTimer = null;   // the one running set/hold countdown: { interval, btn, idle }
 function stopSetTimer() {
   if (!_setTimer) return;
@@ -69,28 +97,33 @@ function stopSetTimer() {
  * "Switch legs — Left leg" with a 10 s switch countdown (3-2-1, Begin), then the left side
  * on a fresh timer. onDone runs once both sides are done.
  */
-function runWorkTimer(btn, { secs, unit = null, idle, onDone }) {
+function runWorkTimer(btn, { secs, unit = null, intervals = null, idle, onDone }) {
   stopSetTimer();
-  const phases = unit
+  // Interval round (sprint / jog / walk): each phase gets its own countdown and a call-out.
+  const phases = intervals?.length
+    ? intervals.map(ph => ({ work: true, secs: ph.secs, label: ph.label[0].toUpperCase() + ph.label.slice(1) }))
+    : unit
     ? [{ work: true, side: 0, secs }, { work: false, secs: SIDE_SWITCH_SECS }, { work: true, side: 1, secs }]
     : [{ work: true, secs }];
+  if (phases[0].label) timerAlert('switch', phases[0].label);
   let p = 0, started = Date.now(), last = null;
   const tick = () => {
     if (!btn.isConnected) return stopSetTimer();
     const ph = phases[p];
     const left = Math.max(0, ph.secs - Math.floor((Date.now() - started) / 1000));
     if (left > 0) {
-      if (left !== last && !ph.work && left <= 3) timerAlert('count', left);
+      if (left !== last && (!ph.work || ph.label) && left <= 3) timerAlert('count', left);
       last = left;
       btn.classList.toggle('switching', !ph.work);   // amber while changing sides, as in FKH
       btn.textContent = ph.work
-        ? `■ ${unit ? sideLabel(unit, ph.side) + ' ' : ''}${fmtSecs(left)}`
+        ? `■ ${ph.label ? ph.label + ' ' : unit ? sideLabel(unit, ph.side) + ' ' : ''}${fmtSecs(left)}`
         : `⇄ Switch · ${fmtSecs(left)}`;
       return;
     }
     p++; started = Date.now(); last = null;
     if (p >= phases.length) { stopSetTimer(); beep(); onDone?.(); return; }
-    if (phases[p].work) timerAlert('begin');
+    if (phases[p].label) timerAlert('switch', phases[p].label);
+    else if (phases[p].work) timerAlert('begin');
     else timerAlert('switch', switchSpeech(unit));
     tick();
   };
@@ -214,7 +247,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       video_url: ex.video_url || null,   // a plan can point a row at its own video (and start time)
       alternates: ex.alternates || null, // a plan's own swap list, like BWS alternates
       sets: [],
-    }));
+    })).map(roundsAsSets);
     session = {
       date: today(),
       program_id: programId,
@@ -224,6 +257,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       done: false,
     };
   }
+
+  // A session started before rounds became sets: upgrade any "N rounds" row not logged yet.
+  session.exercises = session.exercises.map(x => (x.sets || []).some(st => st?.done) ? x : roundsAsSets(x));
 
   // Already finished today (Finish advances the cursor, but today stays this workout).
   if (session.done && today_w.doneToday) {
@@ -466,7 +502,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
 
       if (set.done) {
-        startRestTimer(card, ex);
+        if (!ex.intervals) startRestTimer(card, ex);   // interval rounds run straight into the next
         applyCompactState(card, ex);
       } else {
         // Un-check: clear the timer only if it is running on this exercise
@@ -483,11 +519,17 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
       stopRestTimer();
       const ex = session.exercises[+btn.closest('.exercise').dataset.i];
-      runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: sidesOf(ex), idle: '▶ Start', onDone: () => {
-        // Time's up (both sides): log the set (fires the normal check path, then the rest timer).
-        const check = row.querySelector('.check');
-        if (check && !row.classList.contains('done')) check.click();
-      } });
+      runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: ex.intervals ? null : sidesOf(ex), intervals: ex.intervals,
+        idle: '▶ Start', onDone: () => {
+          // Time's up (both sides): log the set (fires the normal check path, then the rest timer).
+          const check = row.querySelector('.check');
+          if (check && !row.classList.contains('done')) check.click();
+          // Interval rounds run back to back: the next round starts by itself.
+          if (ex.intervals) {
+            const nextRow = row.nextElementSibling;
+            if (nextRow?.matches('.set-row.timed:not(.done)')) nextRow.querySelector('.timer-btn')?.click();
+          }
+        } });
       return;
     }
 
@@ -1344,7 +1386,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     setRows += `
       <div class="set-row timed ${set.done ? 'done' : ''}">
         <span class="set-num">${s + 1}</span>
-        <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}${sidesOf(ex) ? `<small class="muted"> each ${sidesOf(ex)}</small>` : ''}</span>
+        <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}${ex.intervals ? '<small class="muted"> round</small>' : sidesOf(ex) ? `<small class="muted"> each ${sidesOf(ex)}</small>` : ''}</span>
         <button class="timer-btn" data-set="${s}" data-secs="${target}">▶ Start</button>
         <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>
       </div>`;
@@ -1486,6 +1528,10 @@ document.addEventListener('click', (e) => {
 });
 
 function formatTarget(ex) {
+  if (ex.intervals) {
+    return [`${ex.target_sets} rounds`, ex.intervals.map(p => `${fmtSecs(p.secs)} ${p.label}`).join(' / '),
+      ex.rest ? `rest ${ex.rest}` : ''].filter(Boolean).join(' · ');
+  }
   const parts = [];
   if (ex.target_sets) parts.push(`${ex.target_sets} set${+ex.target_sets === 1 ? '' : 's'}`);
   if (ex.target_reps) parts.push(`× ${ex.target_reps}`);
