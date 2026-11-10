@@ -41,6 +41,9 @@ script and re-run it instead of hand-editing `library.json`.
 
 Each exercise: `name`, `sets`, `reps` **or** `time` (`"30:00"`, `"15s"`), `rest`
 (shown as the target, e.g. `"45-60s"`. The rest timer counts down from it after each set, low end of a range, and counts up when there is none), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
+A row written as `sets=1, reps="8 rounds"` is 8 sets. When its notes (or name) spell out the
+phases, like `"10 s fast, 20 s jog, 40 s walk"`, each round gets an interval timer that calls
+out each phase and starts the next round by itself.
 Optional per exercise: `alternates` (a list of catalog names, shown first under **Plan
 alternatives** in the Lift card's Swap menu, like BWS alternates; give every strength slot 2–4
 that fit the plan's equipment) and `video_url` (the row's own video, `&t=` for a start time).
