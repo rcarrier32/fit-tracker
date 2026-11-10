@@ -41,7 +41,8 @@ days = [
          r('Cat Cow', time='1:00', group='Daily mobility'),
          r("World's Greatest Stretch", time='30s', sets=2, group='Daily mobility', notes='Each side.'),
          r('Asian Squat', time='1:00', group='Daily mobility', notes='30 s hold, then 30 s side to side.'),
-         r('Half Kneeling Thoracic Rotations', time='30s', sets=2, group='Daily mobility', notes='Each side.'),
+         r('Wall Side T Spine Opener', time='30s', sets=2, group='Daily mobility', notes='Each side.',
+           alts=['Half Kneeling Thoracic Rotations', 'T-Spine Wall Contour']),   # BWS's thoracic rotation, PJF's demo
          r('Wall Slides', '12', group='Daily mobility'),
          r('(Weighted) Prone Arm Circles', '12', sets=2, group='Prehab'),
          r('Banded Hip Abductions', '15', sets=2, group='Prehab'),

@@ -10199,7 +10199,8 @@
    "primary_muscle": "upper_back",
    "muscles": [
     "upper_back",
-    "rear_delts"
+    "chest",
+    "front_delts"
    ],
    "pattern": "mobility",
    "role": "warmup",
