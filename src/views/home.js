@@ -301,7 +301,13 @@ export async function renderHome(app) {
   const cpBtn = app.querySelector('[data-action="change-program"]');
   if (cpBtn) cpBtn.onclick = () => openProgramPicker();
   const startBtn = app.querySelector('[data-action="start-workout"]');
-  if (startBtn) startBtn.onclick = () => navigate('workout');
+  if (startBtn) startBtn.onclick = () => {
+    // "Start workout" opens the first exercise straight away; "View workout" just shows it.
+    if (/^Start workout/.test(startBtn.textContent.trim())) {
+      try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ }
+    }
+    navigate('workout');
+  };
   const schedBtn = app.querySelector('[data-action="schedule"]');
   if (schedBtn) schedBtn.onclick = async () => {
     await openScheduleEditor();

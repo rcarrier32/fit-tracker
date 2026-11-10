@@ -184,8 +184,7 @@ function ladderHTML(l, accent) {
     </div>`;
 }
 
-/** The demo video for an exercise (the user's own program demo, else YouTube, else a search link). */
-export function videoBlockHTML(ex) {
+function videoBlockHTML(ex) {
   // The user's own program demos (PJF, TrainHeroic: stored on this device only) beat a
   // stand-in YouTube video.
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
@@ -260,6 +259,13 @@ function pjfNotesHTML(ex, accent) {
  * @param {() => boolean}  [o.isDone]
  * @param {(v: boolean) => Promise<void>} [o.setDone]
  * @param {() => ({ name: string, open: () => void } | null)} [o.next]  next undone exercise
+ * @param {boolean}  [o.autoNext]      FKH flow: finishing the last set moves on to next() by itself
+ * @param {(el: HTMLElement, changed: () => void) => void} [o.mountSets]
+ *                                    plan draws its own set logging (Lift: weight/reps) into el
+ *                                    and calls changed() whenever a set is checked
+ * @param {{ label: string, onClick: (close: Function) => void }} [o.finish]
+ *                                    button on the 🎉 card once nothing is left (Finish workout)
+ * @param {() => void} [o.onClose]
  * @param {string}   [o.completeLabel] shown once nothing is left
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
@@ -351,7 +357,7 @@ export function openExerciseDetail(ex, o = {}) {
           border:1px solid rgba(56,189,248,0.22);border-radius:8px;color:#7dd3fc;line-height:1.45">
           <span style="font-weight:700;letter-spacing:0.04em">ASK YOUR PT · </span>${esc(ex.askPt)}</div>` : ''}
 
-      <div id="ex-foot" style="margin-top:16px"></div>
+      <div id="ex-foot" class="ex-foot"></div>
       ${o.actions?.length ? `
         <div style="display:flex;gap:6px;margin-top:10px">
           ${o.actions.map((a, i) => `<button data-action="${i}" class="btn ghost"
@@ -362,7 +368,7 @@ export function openExerciseDetail(ex, o = {}) {
     attachMuxVideos(sheet);
     const stopSideways = startSidewaysVideo(sheet);
     const prevClose = hooks.onClose;
-    hooks.onClose = () => { stopSideways(); prevClose?.(); };
+    hooks.onClose = () => { stopSideways(); prevClose?.(); o.onClose?.(); };
 
     const getSets = () => {
       const n = setCount(rx);
@@ -372,10 +378,11 @@ export function openExerciseDetail(ex, o = {}) {
       return o.isDone?.() ? arr.map(() => true) : arr;
     };
 
+    let wasDone = null, autoT = null;   // auto-next fires on the not-done → done change only
     function paint() {
       const $sets = sheet.querySelector('#ex-sets');
       const $foot = sheet.querySelector('#ex-foot');
-      if (o.sets) {
+      if (o.sets && !o.mountSets) {
         const sets = getSets();
         const per = perSetLabel(rx);
         $sets.innerHTML = `
@@ -408,23 +415,37 @@ export function openExerciseDetail(ex, o = {}) {
 
       if (!o.setDone) { $foot.innerHTML = ''; return; }
       const done = !!o.isDone?.();
-      const next = done ? o.next?.() : null;
+      const next = o.next?.() || null;
+      // FKH: finishing the last set moves on by itself, a beat later so the ✓ registers.
+      if (o.autoNext && done && wasDone === false && next) {
+        clearTimeout(autoT);
+        autoT = setTimeout(() => { if (sheet.isConnected && o.isDone?.()) { close(false); next.open(); } }, 600);
+      }
+      wasDone = done;
+      // FKH footer: Mark done beside a Next → that skips ahead; once done, one big Next.
       $foot.innerHTML = !done
-        ? `<button id="ex-all" class="btn" style="background:${accent};color:#0f172a">✓ Mark exercise done</button>`
+        ? `<div style="display:flex;gap:8px">
+             <button id="ex-all" class="btn" style="flex:1;background:${accent};color:#0f172a">✓ Mark exercise done</button>
+             ${next ? `<button id="ex-skip" class="btn ghost" style="width:auto;padding:0 16px">Next →</button>` : ''}
+           </div>`
         : next
           ? `<button id="ex-next" class="btn" style="background:${accent};color:#0f172a">Next: ${esc(next.name)} →</button>`
           : `<div style="text-align:center;padding:12px;border-radius:10px;background:rgba(34,197,94,0.08);
               border:1px solid rgba(34,197,94,0.3);color:#22c55e;font-weight:700;font-size:14px">
               🎉 ${esc(o.completeLabel || 'All done')}</div>
+             ${o.finish ? `<button id="ex-finish" class="btn" style="margin-top:8px;background:${accent};color:#0f172a">${esc(o.finish.label)}</button>` : ''}
              <button id="ex-close" class="btn ghost" style="margin-top:8px">Done</button>`;
       $foot.querySelector('#ex-all')?.addEventListener('click', async () => {
-        if (o.sets) await o.sets.save(getSets().map(() => true));
+        if (o.sets && !o.mountSets) await o.sets.save(getSets().map(() => true));
         await o.setDone(true);
         paint();
       });
-      $foot.querySelector('#ex-next')?.addEventListener('click', () => { close(false); next.open(); });
+      $foot.querySelector('#ex-next')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
+      $foot.querySelector('#ex-skip')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
+      $foot.querySelector('#ex-finish')?.addEventListener('click', () => o.finish.onClick(close));
       $foot.querySelector('#ex-close')?.addEventListener('click', () => close());
     }
+    if (o.mountSets) o.mountSets(sheet.querySelector('#ex-sets'), () => paint());
     paint();
 
     sheet.querySelector('#ex-rx')?.addEventListener('click', async () => {

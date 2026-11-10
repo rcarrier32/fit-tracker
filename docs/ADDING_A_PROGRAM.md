@@ -11,11 +11,10 @@ Hip tab's sessions, then `python3 data/tag_exercises.py`.
 
 | Kind of plan | Screen | What the person gets |
 |---|---|---|
-| Anything with weights: dumbbells, barbells, machines, bodyweight strength (BWS, PJF, home plans) | **Lift card** (default) | Weight + reps + RPE per set, last-time prefill, ▶ Video embed, rest timer, ▶ Start timer on timed moves. Opens in **Step by step** mode: warm-up, then one exercise at a time with its video on top and **Next →** (supersets/circuits go round by round). **Full list** shows every card at once |
+| Anything with weights: dumbbells, barbells, machines, bodyweight strength (BWS, PJF, home plans) | **Lift card** (default) | Weight + reps + RPE per set, last-time prefill, ▶ Video embed, rest countdown, ▶ Start timer on timed moves. **Start workout** runs it one exercise at a time in the shared exercise sheet (video on top, Next →) |
 | Rehab and band-only work (Hip, TOS, PJF band days) | Row + detail ([EXERCISE_UI.md](EXERCISE_UI.md)) | Thumbnail rows, tap for the video with set checkboxes, no weight entry |
 
-A new program in `library.json` gets the Lift card, and its step-by-step mode, without any code change. Give
-supersets and circuits a shared `round_group` so Next → takes people round by round. Don't switch
+A new program in `library.json` gets the Lift card without any code change. Don't switch
 a strength plan to rows. People need to log their weights.
 
 ## 2. Write a build script: `data/build_<program>.py`
@@ -41,7 +40,7 @@ script and re-run it instead of hand-editing `library.json`.
 - `progress_check`: button label that opens the weekly check-in (start of the plan, and before each rest day).
 
 Each exercise: `name`, `sets`, `reps` **or** `time` (`"30:00"`, `"15s"`), `rest`
-(shown as the target, e.g. `"45-60s"`. The rest timer counts up from 0 after each set), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
+(shown as the target, e.g. `"45-60s"`. The rest timer counts down from it after each set, low end of a range, and counts up when there is none), `round_group` (e.g. `"Circuit · 2 rounds"`), `notes`.
 Optional per exercise: `alternates` (a list of catalog names, shown first under **Plan
 alternatives** in the Lift card's Swap menu, like BWS alternates; give every strength slot 2–4
 that fit the plan's equipment) and `video_url` (the row's own video, `&t=` for a start time).
