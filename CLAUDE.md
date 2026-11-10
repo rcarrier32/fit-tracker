@@ -20,3 +20,9 @@ Never delete:
 - another session's branch, unless the user asks you to tidy up branches.
 
 If deleting is blocked (permissions, network), tell the user which branches are left and why.
+
+## Bumping the app version
+
+Use `./scripts/bump-version.sh <n>`; don't edit the numbers by hand. It updates version.json,
+index.html, sw.js and copies index.html to 404.html. Run `./scripts/bump-version.sh --check`
+before pushing; it fails if any copy has drifted.
