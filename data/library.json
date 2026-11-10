@@ -8330,7 +8330,8 @@
       "primary_muscle": "upper_back",
       "muscles": [
         "upper_back",
-        "rear_delts"
+        "chest",
+        "front_delts"
       ],
       "pattern": "mobility",
       "role": "warmup",
@@ -47357,7 +47358,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -47483,7 +47484,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -47597,7 +47598,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -47728,7 +47729,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -47854,7 +47855,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -47968,7 +47969,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48099,7 +48100,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48225,7 +48226,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48339,7 +48340,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48470,7 +48471,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48596,7 +48597,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48710,7 +48711,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48841,7 +48842,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -48967,7 +48968,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -49081,7 +49082,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -49212,7 +49213,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -49338,7 +49339,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -49452,7 +49453,7 @@
                     "notes": null
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "reps": "6 each side",
                     "time": null,
                     "notes": null
@@ -54404,7 +54405,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54413,10 +54414,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -54698,7 +54700,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54707,10 +54709,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -54985,7 +54988,7 @@
                     "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Bulgarian Split Squat, Lateral Bounds)."
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -54994,10 +54997,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -55196,7 +55200,7 @@
                     "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
                     "alternates": [
                       "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Wall Side T Spine Opener"
                     ]
                   },
                   {
@@ -55495,7 +55499,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55504,10 +55508,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -55789,7 +55794,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -55798,10 +55803,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -56076,7 +56082,7 @@
                     "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Bulgarian Split Squat, Lateral Bounds)."
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56085,10 +56091,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -56287,7 +56294,7 @@
                     "notes": "Each side. For today's glutes (Banded Glute Bridge, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
                     "alternates": [
                       "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Wall Side T Spine Opener"
                     ]
                   },
                   {
@@ -56585,7 +56592,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56594,10 +56601,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -56885,7 +56893,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -56894,10 +56902,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -57186,7 +57195,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57195,10 +57204,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -57385,7 +57395,7 @@
                     "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
                     "alternates": [
                       "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Wall Side T Spine Opener"
                     ]
                   },
                   {
@@ -57683,7 +57693,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57692,10 +57702,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -57983,7 +57994,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -57992,10 +58003,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Dumbbell Lateral Raise, Low Incline Dumbbell Press); chest (Low Incline Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -58284,7 +58296,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58293,10 +58305,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -58483,7 +58496,7 @@
                     "notes": "Each side. For today's glutes (Banded Bridge Hold Abductions, Mini Band Monster Walk); hip flexors (Kettlebell Loaded Hip Flexor Lift); upper back (Band Pull-Aparts).",
                     "alternates": [
                       "Front Chain Stretch w/ Reach and Tu",
-                      "Half Kneeling Thoracic Rotations"
+                      "Wall Side T Spine Opener"
                     ]
                   },
                   {
@@ -58759,7 +58772,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -58768,10 +58781,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -59052,7 +59066,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59061,10 +59075,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -59350,7 +59365,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59359,10 +59374,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -59546,7 +59562,7 @@
                     "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Squat Hold)."
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59555,10 +59571,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's upper back (Band Pull-Aparts).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's upper back (Band Pull-Aparts).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -59827,7 +59844,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -59836,10 +59853,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Standing Dumbbell Shoulder Press, Dumbbell Bench Press); chest (Dumbbell Bench Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -60120,7 +60138,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60129,10 +60147,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's shoulders (Lean In Lateral Raise, Incline Alternating Arms Dumbbell Press); chest (Incline Alternating Arms Dumbbell Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -60418,7 +60437,7 @@
                     ]
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60427,10 +60446,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's chest (Band Resisted Push Up); shoulders (Arnold Press).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -60614,7 +60634,7 @@
                     "notes": "Each side. PJF's couch stretch: back knee down, foot up on the couch or bench. Level 1 = elbows resting on the couch or bench. Knee pain: use Hip Flexor Length Under Load instead. For today's quads (Squat Hold)."
                   },
                   {
-                    "name": "Half Kneeling Thoracic Rotations",
+                    "name": "Wall Side T Spine Opener",
                     "round_group": "Cooldown",
                     "is_alternate": false,
                     "sets": 1,
@@ -60623,10 +60643,11 @@
                     "distance": null,
                     "time": "30s",
                     "rest": null,
-                    "notes": "Each side. For today's upper back (Band Pull-Aparts).",
+                    "notes": "Each side. PJF's open-book against the wall: thoracic rotation that opens the chest. For today's upper back (Band Pull-Aparts).",
                     "alternates": [
-                      "World's Greatest Stretch",
-                      "Lateral Line Stretch"
+                      "Half Kneeling Thoracic Rotations",
+                      "Wall Side T Spine Band Rotations",
+                      "T-Spine Wall Contour"
                     ]
                   },
                   {
@@ -60840,7 +60861,7 @@
                 "notes": "30 s hold, then 30 s side to side."
               },
               {
-                "name": "Half Kneeling Thoracic Rotations",
+                "name": "Wall Side T Spine Opener",
                 "round_group": "Daily mobility",
                 "is_alternate": false,
                 "sets": 2,
@@ -60849,7 +60870,11 @@
                 "distance": null,
                 "time": "30s",
                 "rest": null,
-                "notes": "Each side."
+                "notes": "Each side.",
+                "alternates": [
+                  "Half Kneeling Thoracic Rotations",
+                  "T-Spine Wall Contour"
+                ]
               },
               {
                 "name": "Wall Slides",

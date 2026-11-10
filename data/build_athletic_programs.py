@@ -96,7 +96,7 @@ hip_program = {
 TB_WARMUP = [
     w('Walking Sprinters Mobility', reps='5 each side'),
     w('90/90 Hip Opener', reps='5 each side'),
-    w('Half Kneeling Thoracic Rotations', reps='6 each side'),
+    w('Wall Side T Spine Opener', reps='6 each side'),   # PJF's demo of the half-kneeling thoracic rotation
     w('Band Pull-Aparts', reps='15'),
     w('Bodyweight Squat', reps='10'),
 ]

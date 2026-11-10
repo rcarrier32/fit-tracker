@@ -1172,6 +1172,7 @@
    "Tricep Dropset (Optional)",
    "Tricep Extension (Optional)",
    "Tricep Push Down Iso Hold (Optional)",
+   "Wall Side T Spine Opener",
    "Weighted Dips",
    "Yoga Pushup"
   ],
@@ -1243,6 +1244,7 @@
    "Standing Barbell Overhead Press",
    "Standing Dumbbell Shoulder Press",
    "Walking Curls/Alternating Press",
+   "Wall Side T Spine Opener",
    "Weighted Dips",
    "Yoga Pushup"
   ],
@@ -2222,7 +2224,6 @@
    "Standing Face Pulls",
    "TRX Row",
    "Wall Side T Spine Band Rotations",
-   "Wall Side T Spine Opener",
    "Wall Slides",
    "Weighted External Rotations",
    "Weighted Windmill Mobility"
@@ -19367,7 +19368,8 @@
    "primary_muscle": "upper_back",
    "muscles": [
     "upper_back",
-    "rear_delts"
+    "chest",
+    "front_delts"
    ],
    "pattern": "mobility",
    "role": "warmup",
