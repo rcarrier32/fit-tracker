@@ -109,6 +109,25 @@ mostly supersets, and cut isolation first (BWS express versions drop about 25% o
   with a deload week (sets halved, same weights). Otherwise deload when the logs show a drop.
 - **Moving up a level:** when a movement stops reaching an 8/10 effort and is pain-free, move to the next variation.
 
+## Adjusting from the logs
+
+A written plan says what to do; [`src/lib/adapt.js`](../src/lib/adapt.js) says what weight to use
+today, from the last 3 times the lift was logged (in any plan). The workout card shows it as
+"Today: 105 lb × 8 · ↑ 5 lb: every set hit 10 last time" and prefills the sets with it.
+
+- **Double progression:** every set at the working weight reached the top of the rep range → add
+  the smallest step (5 lb; 2.5 lb on dumbbells under 15 lb) and aim for the bottom of the range.
+  If the step is over 10% of the load, aim for 2 more reps first.
+- **Under the range two sessions running** at that weight → about 8% lighter, then build back.
+- **14+ days since last time** → about 90% of the last weight.
+- **Otherwise** same weight, beat last time's reps. The heaviest weight logged is the baseline, so a
+  weight changed by hand carries forward.
+- **Bodyweight** at the top of the range on every set → move to a harder version.
+- **Deload when the logs say so:** 3+ lifts in today's session dropping → a banner suggests a deload
+  week (half the sets, same weights). No plan schedules one except 8+ week strength/muscle plans.
+
+`node data/check_adapt.mjs` checks these rules.
+
 ## Warm-ups cover the day
 
 Every body region the day works with 2+ exercises (push, pull, legs & hips, core) gets at least one warm-up move.

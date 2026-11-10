@@ -3,6 +3,7 @@
  */
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
+import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
@@ -306,8 +307,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   const anyLogged = session.exercises.some(x => (x.sets || []).some(st => st?.done));
 
   // Build last-session reference weights + all-time best e1RM per exercise
-  const { ref: prevRef, bestE1RM: allTimeBestE1RM } = await buildPrevReference(programId, session.id, today());
+  const { ref: prevRef, bestE1RM: allTimeBestE1RM, history } = await buildPrevReference(programId, session.id, today());
   if (stale()) return;
+  _history = history;
+  const _deload = bandDay ? null : deloadAdvice(session.exercises.map(x => targetFor(x, exMap[String(x.name).toLowerCase()])));
 
   app.innerHTML = `
     <h1>${dayData.focus || dayData.day_name}</h1>
@@ -315,6 +318,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
     ${pjfDayNotesHtml(program, week, day, dayData)}
     ${dayInfoHtml(program, dayData)}
+    ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
@@ -1285,6 +1289,18 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
     .filter(s => s.program_id === programId && s.id !== currentSessionId && s.date < todayStr && s.done && !s.skipped)
     .sort((a, b) => b.date.localeCompare(a.date));
 
+  // Every program's sessions, newest first, up to 3 per exercise: what the next-session targets
+  // (src/lib/adapt.js) work from. The same lift logged in another plan still counts.
+  const history = {};
+  const allDone = all.filter(s => s.id !== currentSessionId && s.date < todayStr && s.done && !s.skipped)
+    .sort((a, b) => b.date.localeCompare(a.date));
+  for (const s of allDone) for (const ex of (s.exercises || [])) {
+    const sets = (ex.sets || []).filter(st => st?.done && st.reps);
+    if (!sets.length) continue;
+    const h = (history[ex.name] ||= []);
+    if (h.length < 3 && h[h.length - 1]?.date !== s.date) h.push({ date: s.date, sets });
+  }
+
   const ref = {};
   for (const s of past) {
     for (const ex of (s.exercises || [])) {
@@ -1296,7 +1312,15 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
       }
     }
   }
-  return { ref, bestE1RM };
+  return { ref, bestE1RM, history };
+}
+
+let _history = {};
+/** Next-session target for a lift from its logged history (null for timed work or nothing logged). */
+function targetFor(ex, lookup) {
+  if (isTimed(ex) || ex.intervals) return null;
+  return nextTarget({ history: _history[ex.name] || [], target: ex.target_reps, sets: parseInt(ex.target_sets) || 3,
+                      equipment: lookup?.equipment || [], today: today() });
 }
 
 function formatPrevSets(sets) {
@@ -1402,6 +1426,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const prevSets = prevRef[ex.name]?.sets || [];
   let setRows = '';
   const timed = isTimed(ex);
+  const next = targetFor(ex, lookup);
   const target = parseSecs(ex.time);
   for (let s = 0; s < sets && timed; s++) {
     const set = ex.sets[s] || {};
@@ -1417,9 +1442,9 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     const set = ex.sets[s] || {};
     const prev = prevSets[s] || {};
     const done = set.done ? 'done' : '';
-    // Pre-fill from previous session when this set hasn't been logged yet
-    const wVal = set.weight ?? prev.weight ?? '';
-    const rVal = set.reps   ?? prev.reps   ?? '';
+    // Pre-fill with the next-session target (src/lib/adapt.js), else the previous session's set
+    const wVal = set.weight ?? (next?.weight ?? prev.weight) ?? '';
+    const rVal = set.reps   ?? (next ? next.reps : prev.reps) ?? '';
     const wPh  = wVal === '' ? 'lb'   : '';
     const rPh  = rVal === '' ? 'reps' : '';
     setRows += `
@@ -1458,6 +1483,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
         ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
+        ${next ? `<div class="next-line" style="font-size:11px;margin-top:2px;color:${next.kind === 'down' || next.kind === 'back' ? 'var(--fg-dim)' : 'var(--accent)'}">Today: ${next.weight ? `${next.weight} lb × ` : ''}${next.reps} · ${next.note}</div>` : ''}
         <div class="e1rm-line" style="font-size:12px;margin-top:2px">${initialE1RM}</div>
         <div class="rest-timer-line" style="min-height:14px"></div>
         <div class="exercise-summary"></div>
