@@ -67,7 +67,7 @@
       { "role": "secondary", "patterns": ["pull_horizontal"] },
       { "role": "secondary", "patterns": ["hinge"], "unilateral": true },
       { "role": "accessory", "muscles": ["side_delts"] },
-      { "role": "accessory", "muscles": ["biceps", "triceps"] },
+      { "role": "accessory", "muscles": ["chest", "triceps"] },
       { "role": "core",      "patterns": ["anti_extension", "anti_rotation"] }
     ]},
     "full_b": { "focus": "Full Body B", "slots": [
@@ -77,7 +77,7 @@
       { "role": "secondary", "patterns": ["pull_vertical"] },
       { "role": "secondary", "patterns": ["lunge_single_leg"] },
       { "role": "accessory", "muscles": ["rear_delts", "upper_back"] },
-      { "role": "accessory", "muscles": ["triceps", "biceps"] },
+      { "role": "accessory", "muscles": ["biceps", "triceps"] },
       { "role": "core",      "patterns": ["rotation", "anti_rotation", "lateral_flexion"] }
     ]},
     "full_c": { "focus": "Full Body C", "slots": [
@@ -96,7 +96,7 @@
       { "role": "secondary", "patterns": ["push_vertical"] },
       { "role": "secondary", "patterns": ["pull_horizontal"] },
       { "role": "accessory", "muscles": ["side_delts"] },
-      { "role": "accessory", "muscles": ["biceps"] },
+      { "role": "accessory", "muscles": ["chest"] },
       { "role": "accessory", "muscles": ["triceps"] },
       { "role": "core",      "patterns": ["anti_rotation", "rotation"] }
     ]},
@@ -106,7 +106,7 @@
       { "role": "secondary", "patterns": ["push_horizontal"] },
       { "role": "secondary", "patterns": ["pull_vertical"] },
       { "role": "accessory", "muscles": ["rear_delts"] },
-      { "role": "accessory", "muscles": ["triceps"] },
+      { "role": "accessory", "muscles": ["chest"] },
       { "role": "accessory", "muscles": ["biceps"] },
       { "role": "core",      "patterns": ["anti_extension"] }
     ]},

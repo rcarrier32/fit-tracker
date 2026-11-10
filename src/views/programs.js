@@ -643,7 +643,7 @@ async function openGeneratorWizard(onSaved) {
         await pref('gen_settings', rest);
         close(false);   // a follow-up sheet opens next
         const { exercises } = await loadCatalogs();
-        const plan = generatePlan({ ...st, seed: Date.now() % 100000, profile }, { exercises, rules, hasVideo });
+        const plan = generatePlan({ ...st, seed: Date.now() % 100000, profile }, { exercises, rules, hasVideo, learned: await loadLearned() });
         openGeneratedPreview(plan, { exercises, rules }, onSaved);
       };
     };

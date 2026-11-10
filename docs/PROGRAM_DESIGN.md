@@ -148,6 +148,17 @@ today, from the last 3 times the lift was logged (in any plan). The workout card
 
 `node data/check_adapt.mjs` checks these rules.
 
+## Exercises the coaches pick
+
+`python3 data/learn_patterns.py` also records which exercises each goal's coach programs use
+(`goals.<goal>.exercises` in data/learned_patterns.json: name → how many of its programs use it).
+The generator prefers them, scaled by that share: a BWS staple used in 8 of 9 muscle programs
+(bench, low-incline DB press, DB RDL, face pulls, chest-supported row) clearly beats a one-off,
+while one PJF program's pick only nudges, so volume balancing still decides. Strength borrows the
+BWS list. Names marked "last resort" in the catalog are pushed down, and a slot's first muscle wins a
+tie ("chest, triceps" → a chest move). Upper A/B and Full Body A carry a chest accessory (BWS: 9-15
+chest sets a week; plans were at 6).
+
 ## In the plan preview
 
 - **Why each pick:** every exercise says why it's there ("Main lift, kept from the last phase",

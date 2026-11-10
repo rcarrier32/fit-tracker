@@ -22,17 +22,18 @@ export async function loadCatalog() {
   const { loadFullCatalog } = await import('./catalog.mjs');
   const { exercises } = await loadFullCatalog();
   for (const e of exercises) if (!e.video_url && e.video?.url) e.video_url = e.video.url;
-  return { exercises, rules };
+  const learned = JSON.parse(readFileSync(path.join(ROOT, 'data/learned_patterns.json'), 'utf8'));
+  return { exercises, rules, learned };
 }
 
-const { exercises, rules } = await loadCatalog();
+const { exercises, rules, learned } = await loadCatalog();
 
 if (args.includes('--sanity')) {
   const gyms = { home: ['dumbbell', 'band', 'mini_band', 'bench'], gym: ['dumbbell', 'barbell', 'trap_bar', 'bench', 'box', 'cable', 'machine', 'pullup_bar', 'band', 'mini_band', 'landmine', 'kettlebell', 'med_ball'] };
   let problems = 0, runs = 0;
   for (const goal of Object.keys(rules.goals)) for (const days of [2, 3, 4, 5, 6]) for (const minutes of [30, 60]) for (const [gname, eq] of Object.entries(gyms)) {
     runs++;
-    const plan = generatePlan({ goal, days, minutes, weeks: 6, equipment: eq, seed: 7 }, { exercises, rules });
+    const plan = generatePlan({ goal, days, minutes, weeks: 6, equipment: eq, seed: 7 }, { exercises, rules, learned });
     const issues = [];
     // Required moves (Copenhagen, Nordics) appear as often as the goal asks, wherever the kit allows one.
     for (const r of rules.goals[goal].required || []) {
@@ -91,7 +92,7 @@ const plan = generatePlan({
   goal: opt('goal', 'muscle'), days: +opt('days', 3), minutes: +opt('minutes', 60), weeks: +opt('weeks', 6),
   equipment: opt('equipment', 'dumbbell,bench').split(','), focus: opt('focus', '') ? opt('focus').split(',') : [],
   plyo: args.includes('--plyo'), level: +opt('level', 2), seed: +opt('seed', 1),
-}, { exercises, rules });
+}, { exercises, rules, learned });
 
 if (args.includes('--json')) { console.log(JSON.stringify(plan, null, 1)); process.exit(0); }
 console.log(`${plan.name} — ${plan.description} (pool ${plan.pool_size} exercises)`);

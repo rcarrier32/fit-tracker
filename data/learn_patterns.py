@@ -223,7 +223,10 @@ def analyse(progs, tags):
         deloads = [i + 1 for i in range(1, len(totals)) if totals[i] < 0.75 * max(totals[:i])]
 
         n_days = len(weeks[0]['days'])
+        used = sorted({r['name'] for w in weeks for d in w['days'] for r in rows_of(d) if r['name'].lower() in tags
+                       and tags[r['name'].lower()]['role'] not in ('warmup', 'cooldown', 'conditioning')})
         per_prog.append({
+            'exercises': used,
             'id': p['id'], 'name': p.get('program_name') or p.get('name'), 'goal': goal,
             'weeks': len(weeks) if p.get('weeks') else None, 'days_per_week': n_days,
             'weekly_sets_by_muscle': {m: round(v, 1) for m, v in weekly[0]['sets_by_muscle'].most_common()},
@@ -261,7 +264,10 @@ def summarise(per_prog, role_stats, positions, pairs, progression):
             'programs_with_deload': sum(1 for p in ps if p['deload_weeks']),
             'volume_growth_first_to_last_week': med([p['volume_growth'] for p in ps if p['volume_growth']]),
         }
+        # Which exercises the coaches use for this goal (in how many of its programs): the generator prefers them.
+        usage = Counter(n for p in ps for n in p['exercises'])
         goals[goal] = {'programs': [p['id'] for p in ps], 'days_per_week': med([p['days_per_week'] for p in ps]),
+                       'exercises': dict(usage.most_common()),
                        'volume': volume, 'roles': roles, 'role_position': pos, 'progression': prog,
                        'superset_pairs': dict(pairs[goal].most_common(8))}
     return goals
