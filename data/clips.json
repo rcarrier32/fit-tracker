@@ -1,0 +1,4 @@
+{
+  "_doc": "Clips for demos that also show other moves: the app plays only start–end (seconds) of that exercise's video, looping. Keyed by exercise name; `src` ties the clip to one video (\"mux:<PJF playback id>\", \"yt:<YouTube id>\" or the file URL) so it is ignored if the exercise's video changes. Clips set on a phone (exercise sheet → ⋯ → Clip video) are stored there in pref('clips'); copy them here to ship them to every device. See src/lib/local_videos.js clipFor().",
+  "clips": {}
+}

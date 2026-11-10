@@ -93,6 +93,54 @@ export async function loadLocalVideos() {
     }
     index({ ...sources, ...(await bundled()) });
   } catch { /* storage unavailable: no local videos */ }
+  await loadClips();
+}
+
+/**
+ * Clips: play only part of a demo that also shows other moves (PJF's "KB Swing + Box Jump
+ * Contrast" for a plain swing). Keyed by exercise and tied to one video (`src`, see
+ * videoSrcKey), so a clip never lands on a different video. data/clips.json ships with the
+ * app; clips set on this phone (exercise sheet → ⋯ → Clip video) sit on top in pref('clips').
+ */
+let _bundledClips = {};
+let _clips = {};
+async function loadClips() {
+  try {
+    const file = await fetch('data/clips.json').then(r => (r.ok ? r.json() : null)).catch(() => null);
+    _bundledClips = Object.fromEntries(Object.entries(file?.clips || {}).map(([n, c]) => [vkey(n), { ...c, name: n }]));
+    _clips = { ..._bundledClips, ...((await pref('clips')) || {}) };
+  } catch { /* no clips */ }
+}
+/** "mux:<id>", "yt:<id>" or the file URL: which video a clip belongs to. */
+export const videoSrcKey = ({ v, url, yt } = {}) => (v ? `mux:${v}` : yt ? `yt:${yt}` : url || null);
+/** { start, end, mine } for this exercise on this video, or null. */
+export function clipFor(name, src) {
+  const c = src && _clips[vkey(name)];
+  return c && c.src === src ? { start: +c.start || 0, end: +c.end || 0, mine: !!c.mine } : null;
+}
+/** Save (start/end in seconds) or, with start == null, remove this phone's clip. */
+export async function saveClip(name, src, start, end) {
+  const k = vkey(name);
+  const mine = (await pref('clips')) || {};
+  if (start == null) {
+    delete mine[k];
+    if (_bundledClips[k]) _clips[k] = _bundledClips[k]; else delete _clips[k];
+  } else {
+    mine[k] = { name, src, start: Math.round(start * 10) / 10, end: Math.round(end * 10) / 10, mine: true };
+    _clips[k] = mine[k];
+  }
+  await pref('clips', mine);
+}
+
+/** Loop a <video data-start data-end> inside its clip. */
+function clipVideo(el) {
+  const start = +el.dataset.start || 0, end = +el.dataset.end || 0;
+  if (!end || el._clipped) return;
+  el._clipped = true;
+  const toStart = () => { if (!el.dataset.full) el.currentTime = start; };
+  el.addEventListener('loadedmetadata', toStart);
+  el.addEventListener('play', () => { if (!el.dataset.full && (el.currentTime < start - 0.5 || el.currentTime >= end)) toStart(); });
+  el.addEventListener('timeupdate', () => { if (!el.dataset.full && el.currentTime >= end) toStart(); });
 }
 
 /** Provider files shipped with the app (data/providers/<source>.json). */
@@ -153,6 +201,7 @@ let _hls = null;   // hls.js loader, only for browsers without native HLS (deskt
  * support in canPlayType and then fail to play it.
  */
 export function attachMuxVideos(root) {
+  root.querySelectorAll('video[data-end]').forEach(clipVideo);
   for (const el of root.querySelectorAll('video[data-mux], video[data-hls]')) {
     const src = el.dataset.mux ? muxSrc(el.dataset.mux) : el.dataset.hls;
     if (!window.MediaSource && el.canPlayType('application/vnd.apple.mpegurl')) { el.src = src; continue; }
