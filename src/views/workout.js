@@ -70,16 +70,30 @@ function parseIntervals(notes, name) {
   return byName.length >= 2 ? byName : [];
 }
 
+/** Running and conditioning rows (sprints, zone work, intervals), as opposed to a lift. */
+const CARDIO_RE = /sprint|zone \d|cardio|interval|\bjog|\brun\b|shuttle|stride/i;
+
 /**
- * A plan's "1 set × 8 rounds" is 8 sets. Interval rounds (sprint/jog/walk) become timed
- * sets of one round each, with the phases for the timer.
+ * A run written as one set is really N sets: "1 set × 8 rounds", PJF's "1 set × 14" sprint
+ * intervals or "1 set × 10 · 0:15" zone-5 sprints, "1 set × 3 × 10 yd at 80%". Interval
+ * rounds (sprint/jog/walk) become timed sets of one round each, with the phases for the timer.
  */
 function roundsAsSets(x) {
-  const m = /^\s*(\d+)\s*rounds?\s*$/i.exec(x.target_reps || '');
-  if (!m || (+x.target_sets || 1) > 1) return x;
-  const intervals = x.time ? [] : parseIntervals(x.notes, x.name);
-  return { ...x, target_sets: +m[1], target_reps: intervals.length ? '' : x.target_reps.replace(/^\s*\d+\s*rounds?\s*$/i, ''),
-    ...(intervals.length ? { intervals, time: String(intervals.reduce((a, p) => a + p.secs, 0)) } : {}) };
+  if ((+x.target_sets || 1) > 1) return x;
+  const reps = String(x.target_reps || '').trim();
+  let n = 0, rest = '';
+  let m;
+  if ((m = /^(\d+)\s*rounds?$/i.exec(reps))) n = +m[1];
+  else if ((m = /^(\d+)\s*[×x]\s*(.+)$/i.exec(reps)) && CARDIO_RE.test(x.name)) { n = +m[1]; rest = m[2]; }
+  else if ((m = /^(\d+)$/.exec(reps)) && +m[1] > 1 && CARDIO_RE.test(x.name)) n = +m[1];
+  if (!n) return x;
+  const intervals = parseSecs(x.time) ? [] : parseIntervals(x.notes, x.name);
+  if (intervals.length) {
+    return { ...x, target_sets: n, target_reps: '', intervals, time: String(intervals.reduce((a, p) => a + p.secs, 0)) };
+  }
+  // Timed reps ("× 10 · 0:15") become timed sets; a distance in the notes is each set's target.
+  const dist = /^\s*\d+(?:\.\d+)?\s*(?:m|yd|yards?|meters?)\b/i.exec(x.notes || '')?.[0];
+  return { ...x, target_sets: n, target_reps: parseSecs(x.time) ? '' : (rest || dist || '1') };
 }
 
 let _setTimer = null;   // the one running set/hold countdown: { interval, btn, idle }
