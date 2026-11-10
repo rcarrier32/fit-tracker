@@ -40,6 +40,10 @@ ok('chest trend up, biceps flat', prof.muscles.chest?.trend_per_week > 0 && prof
 ok('overshoot noticed', prof.progression?.overshoot_rate > 0.2, JSON.stringify(prof.progression));
 ok('summary reads', profileSummary(prof).length >= 4, profileSummary(prof).join(' | '));
 ok('empty logs', profileSummary(learnProfile([], { today: '2026-11-10' }))[0].startsWith('Nothing logged'));
+const hurtSessions = sessions.map((s, i) => i >= 20 && i < 23 ? { ...s, feel: { effort: 'hard', energy: 1 }, exercises: s.exercises.map(x => x.name === 'Dumbbell Curl' ? { ...x, hurt: true } : x) } : s);
+const hp = learnProfile(hurtSessions, { today: '2026-11-10' });
+ok('hurt twice → avoided', hp.hurts.includes('Dumbbell Curl') && hp.avoid.includes('Dumbbell Curl'));
+ok('felt heavy → deload advice', !!hp.fatigue?.advice, JSON.stringify(hp.fatigue));
 ok('too few logs → not ready', !learnProfile(sessions.slice(0, 3), { today: '2026-11-10' }).ready);
 
 // The generator leaves out what you avoid, and picks what you swap to.

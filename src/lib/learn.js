@@ -41,12 +41,13 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
 
   // ── Exercises: done, left undone, swapped away from, swapped to, strength trend ──
   const ex = {};
-  const E = (n) => (ex[n] ||= { done: 0, undone: 0, swappedAway: 0, swappedTo: 0, added: 0, e1rm: [], hitTop: 0, overshoot: 0, ranged: 0, lastDate: null });
+  const E = (n) => (ex[n] ||= { done: 0, undone: 0, swappedAway: 0, swappedTo: 0, added: 0, hurt: 0, e1rm: [], hitTop: 0, overshoot: 0, ranged: 0, lastDate: null });
   for (const s of done) {
     for (const x of s.exercises || []) {
       const sets = (x.sets || []).filter(st => st?.done);
       if (x.swapped && x.orig_name && x.orig_name !== x.name) { E(x.orig_name).swappedAway++; E(x.name).swappedTo++; }
       if (x.added) E(x.name).added++;
+      if (x.hurt) E(x.name).hurt++;
       const r = E(x.name);
       if (!sets.length) { r.undone++; continue; }
       r.done++; r.lastDate = s.date;
@@ -64,14 +65,16 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
   const exercises = {};
   for (const [name, r] of Object.entries(ex)) {
     exercises[name] = {
-      done: r.done, undone: r.undone, swapped_away: r.swappedAway, swapped_to: r.swappedTo, added: r.added,
+      done: r.done, undone: r.undone, swapped_away: r.swappedAway, swapped_to: r.swappedTo, added: r.added, hurt: r.hurt,
       trend_per_week: r.e1rm.length >= LEARN_MIN.appearances ? round(trend(r.e1rm), 3) : null,
       last: r.lastDate,
     };
   }
 
   // Avoid: swapped away from at least twice and more often than done, or left undone most times it came up.
-  const avoid = Object.entries(ex).filter(([, r]) =>
+  // Hurt twice (the ⋯ menu or the finish screen) and it's left out too.
+  const hurts = Object.entries(ex).filter(([, r]) => r.hurt >= 2).map(([n]) => n);
+  const avoid = Object.entries(ex).filter(([, r]) => r.hurt >= 2 ||
     (r.swappedAway >= LEARN_MIN.swaps && r.swappedAway >= r.done) ||
     (r.undone >= LEARN_MIN.appearances && r.undone > r.done)).map(([n]) => n);
   // Preferred replacements: what you swap each avoided exercise to most.
@@ -115,12 +118,20 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
   const spanWeeks = done.length ? Math.max(1, weeksBetween(done[0].date, today || done[done.length - 1].date)) : 0;
   const per_week = done.length >= LEARN_MIN.sessions ? round(done.length / spanWeeks, 1) : null;
 
+  // ── How the last workouts felt (finish-screen check-in) ──
+  const felt = done.filter(s => s.feel).slice(-3);
+  const heavy = felt.filter(s => s.feel.effort === 'hard' || s.feel.energy === 1).length;
+  const fatigue = felt.length >= 2 ? {
+    last: felt.length, heavy,
+    advice: heavy >= 2 ? `${heavy} of your last ${felt.length} workouts felt like too much or left you drained. Consider a lighter week: half the sets, same weights.` : null,
+  } : null;
+
   return {
     updated: today || null,
     sessions: done.length, skipped: skipped.length, weeks: round(spanWeeks, 1),
     ready: done.length >= LEARN_MIN.sessions,
     exercises, avoid, prefer, favorites, progressing, stalled, muscles,
-    progression, duration,
+    progression, duration, fatigue, hurts,
     days: { trained: weekday, skipped: skippedDay, per_week },
   };
 }
@@ -140,6 +151,8 @@ export function profileSummary(p) {
   if (p.duration) out.push(`Your workouts take about ${p.duration.median_min} min.`);
   if (p.progressing.length) out.push(`Going up: ${p.progressing.slice(0, 4).join(', ')}${p.progressing.length > 4 ? ` +${p.progressing.length - 4}` : ''}.`);
   if (p.stalled.length) out.push(`Stalled: ${p.stalled.slice(0, 4).join(', ')}${p.stalled.length > 4 ? ` +${p.stalled.length - 4}` : ''}. New plans try something different.`);
+  if (p.hurts?.length) out.push(`Hurt more than once: ${p.hurts.slice(0, 3).join(', ')}. New plans leave ${p.hurts.length === 1 ? 'it' : 'them'} out.`);
+  if (p.fatigue?.advice) out.push(p.fatigue.advice);
   if (p.avoid.length) out.push(`You swap or skip: ${p.avoid.slice(0, 4).join(', ')}. New plans leave ${p.avoid.length === 1 ? 'it' : 'them'} out${Object.keys(p.prefer).length ? ' and use what you swap to' : ''}.`);
   if (p.progression?.overshoot_rate >= 0.3) out.push('You often beat the top of the rep range by 2+: weight goes up in bigger steps.');
   return out;

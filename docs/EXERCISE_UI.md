@@ -77,3 +77,15 @@ plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`st
   exercise's video changes the old clip is ignored. Code: `clipFor` / `saveClip` in
   `src/lib/local_videos.js`, the player and tools in `src/lib/exercise_ui.js`.
 
+
+## During and after a workout (v117)
+
+- **Rest timer** keeps running when you leave the Lift tab: a pill above the tab bar shows it (tap
+  the time to go back). −15 / +15 / Skip on the card, in the sheet and on the pill.
+- **Undo**: logging a set shows "Set N logged · Undo" for 5 s.
+- **Session clock** in the header from the first logged set; the finish screen shows the minutes.
+- **⋯ menu**: 📝 note (shows next time as "Last note: …"), 🤕 this hurts, 🏋 plates & warm-up sets
+  (plates a side for barbell/Smith/trap bar, and a warm-up ramp to the working weight).
+- **Finish screen**: how it felt (easy / about right / too much, energy), anything that hurt, a
+  workout note, and Share (the phone's share sheet, or copy). Hurt twice and an exercise leaves new
+  plans; two of the last three feeling like too much suggests a lighter week (src/lib/learn.js).
