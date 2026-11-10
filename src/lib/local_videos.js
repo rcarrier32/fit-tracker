@@ -18,10 +18,18 @@ import { pref } from '../db.js';
 
 let _byName = new Map();   // normalized name → { v, url, yt, source, notes, alts: [names], tags }
 let _sources = {};         // source → imported file
-let _names = [];           // normalized names, for prefix matching of truncated catalog names
+let _words = [];          // [word form, key] longest first, for names cut short or with a bracket added
 let _dayNotes = [];        // { program, week, day, note, exercises: [normalized names] }
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
+/**
+ * Video matching keeps what's in brackets: "Copenhagen Side Plank (Knee)" and "(Long Lever)",
+ * or BWS's "(quad focus)" / "(glute focus)", are different demos from the plain name.
+ * Only "(Optional)" is dropped.
+ */
+const vkey = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '').replace(/[^a-z0-9]/g, '');
+const words = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '')
+  .replace(/[^a-z0-9(]+/g, ' ').replace(/\s+/g, ' ').trim();
 
 // PJF first: its demos are the closest match for PJF program names.
 const ORDER = (a, b) => (a === 'pjf' ? -1 : b === 'pjf' ? 1 : a.localeCompare(b));
@@ -34,8 +42,8 @@ function index(sources) {
     const data = _sources[src];
     const videos = data?.videos || {};
     for (const o of Object.values(videos)) {
-      if (!o?.name || _byName.has(norm(o.name))) continue;
-      _byName.set(norm(o.name), {
+      if (!o?.name || _byName.has(vkey(o.name))) continue;
+      _byName.set(vkey(o.name), {
         v: o.v || null, url: o.url || null, yt: o.yt || null, source: src, name: o.name,
         notes: o.notes || [],
         alts: (o.alts || []).map(s => videos[s]?.name).filter(Boolean),
@@ -44,7 +52,7 @@ function index(sources) {
     }
     _dayNotes.push(...(data?.dayNotes || []).map(d => ({ ...d, exercises: (d.exercises || []).map(norm) })));
   }
-  _names = [..._byName.keys()].sort((a, b) => b.length - a.length);
+  _words = [..._byName.values()].map(o => [words(o.name), vkey(o.name)]).sort((a, b) => b[0].length - a[0].length);
 }
 
 /** Every imported private source (for catalog merging): { source: file }. */
@@ -112,15 +120,26 @@ export async function importLocalVideos(data) {
   return Object.values(data.videos).filter(o => o.v || o.url || o.yt).length;
 }
 
-/** PJF video + notes for an exercise name, or null. Handles catalog names cut short at import. */
+/**
+ * PJF video + notes for an exercise name, or null. Exact name first. Otherwise a provider
+ * name that only adds a bracket ("Zone 5 Cardio" → "Zone 5 Cardio (90-100%)"), or that
+ * finishes a word our name was cut off in ("Cable Hip Flexor Driv" → "…Drive"). Never a
+ * longer, different exercise: "Dumbbell Lateral Raise" is not "…Raise + Post Delt Row Drop Set",
+ * and "Lateral Lunge" is not "Lateral Lunge Length Under Load".
+ */
 export function localFor(name) {
-  const n = norm(name);
+  const n = vkey(name);
   if (!n) return null;
   const hit = _byName.get(n);
   if (hit) return hit;
-  if (n.length < 12) return null;
-  const k = _names.find(k => k.startsWith(n));
-  return k ? _byName.get(k) : null;
+  const w = words(name);
+  for (const [pw, k] of _words) {
+    if (!pw.startsWith(w)) continue;
+    const rest = pw.slice(w.length);
+    if (rest.startsWith(' (')) return _byName.get(k);                       // provider adds a bracket
+    if (rest && rest[0] !== ' ' && n.length >= 12) return _byName.get(k);   // our name was cut off mid-word
+  }
+  return null;
 }
 
 export const muxThumb = (id) => `https://image.mux.com/${id}/thumbnail.jpg?width=320`;
