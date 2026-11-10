@@ -10,7 +10,7 @@ import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
-import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS } from '../lib/exercise_session.js';
+import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 
@@ -54,12 +54,48 @@ const BAND_SHORT = {
 /** A timed exercise (hold, interval, carry) logs a duration instead of weight × reps. */
 const isTimed = (ex) => parseSecs(ex.time) > 0 && !ex.target_reps;
 
-let _setTimer = null;   // the one running set countdown: { interval, btn }
+let _setTimer = null;   // the one running set/hold countdown: { interval, btn, idle }
 function stopSetTimer() {
   if (!_setTimer) return;
   clearInterval(_setTimer.interval);
-  if (_setTimer.btn?.isConnected) _setTimer.btn.textContent = '▶ Start';
+  if (_setTimer.btn?.isConnected) _setTimer.btn.textContent = _setTimer.idle;
+  _setTimer.btn?.classList.remove('switching');
   _setTimer = null;
+}
+
+/**
+ * A timed set or hold. One-side-at-a-time moves (sidesOf: Copenhagen, side plank,
+ * single-leg, "each side") run like FKH's single-side drills: right side, then a beep and
+ * "Switch legs — Left leg" with a 10 s switch countdown (3-2-1, Begin), then the left side
+ * on a fresh timer. onDone runs once both sides are done.
+ */
+function runWorkTimer(btn, { secs, unit = null, idle, onDone }) {
+  stopSetTimer();
+  const phases = unit
+    ? [{ work: true, side: 0, secs }, { work: false, secs: SIDE_SWITCH_SECS }, { work: true, side: 1, secs }]
+    : [{ work: true, secs }];
+  let p = 0, started = Date.now(), last = null;
+  const tick = () => {
+    if (!btn.isConnected) return stopSetTimer();
+    const ph = phases[p];
+    const left = Math.max(0, ph.secs - Math.floor((Date.now() - started) / 1000));
+    if (left > 0) {
+      if (left !== last && !ph.work && left <= 3) timerAlert('count', left);
+      last = left;
+      btn.classList.toggle('switching', !ph.work);   // amber while changing sides, as in FKH
+      btn.textContent = ph.work
+        ? `■ ${unit ? sideLabel(unit, ph.side) + ' ' : ''}${fmtSecs(left)}`
+        : `⇄ Switch · ${fmtSecs(left)}`;
+      return;
+    }
+    p++; started = Date.now(); last = null;
+    if (p >= phases.length) { stopSetTimer(); beep(); onDone?.(); return; }
+    if (phases[p].work) timerAlert('begin');
+    else timerAlert('switch', switchSpeech(unit));
+    tick();
+  };
+  _setTimer = { btn, idle, interval: setInterval(tick, 250) };
+  tick();
 }
 function beep() {
   try {
@@ -445,22 +481,13 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const btn = e.target;
       const row = btn.closest('.set-row');
       if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
-      stopSetTimer();
       stopRestTimer();
-      const total = +btn.dataset.secs || 0;
-      const started = Date.now();
-      const tick = () => {
-        const left = Math.max(0, total - Math.floor((Date.now() - started) / 1000));
-        btn.textContent = `■ ${fmtSecs(left)}`;
-        if (left > 0) return;
-        stopSetTimer();
-        beep();
-        // Time's up: log the set (fires the normal check path, then the rest timer).
+      const ex = session.exercises[+btn.closest('.exercise').dataset.i];
+      runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: sidesOf(ex), idle: '▶ Start', onDone: () => {
+        // Time's up (both sides): log the set (fires the normal check path, then the rest timer).
         const check = row.querySelector('.check');
         if (check && !row.classList.contains('done')) check.click();
-      };
-      _setTimer = { btn, interval: setInterval(tick, 250) };
-      tick();
+      } });
       return;
     }
 
@@ -556,7 +583,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         rx: target,
         isDone: () => wuDone(w.name),
         setDone: async (v) => { try { sessionStorage.setItem(wuKey(w.name), v ? '1' : '0'); } catch { /* private mode */ } },
-        extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}</button>` : '',
+        extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" data-sides="${sidesOf(w) || ''}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}${sidesOf(w) ? ' each ' + sidesOf(w) : ''}</button>` : '',
       });
     }
     const i = st.i;
@@ -694,7 +721,7 @@ function _warmupBlockHtml(warmup, exMap) {
             ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
           </div>
           <div style="display:flex;gap:6px;align-items:center">
-            ${secs ? `<button class="video-link hold-timer" data-secs="${secs}">▶ ${fmtSecs(secs)}</button>` : ''}
+            ${secs ? `<button class="video-link hold-timer" data-secs="${secs}" data-sides="${sidesOf(ex) || ''}">▶ ${fmtSecs(secs)}${sidesOf(ex) ? ' ×2' : ''}</button>` : ''}
             ${videoHtml}
             <button class="check warmup-check" data-wu="${_wNameEsc}" aria-label="Done">${isDone ? '✓' : '○'}</button>
           </div>
@@ -1317,7 +1344,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     setRows += `
       <div class="set-row timed ${set.done ? 'done' : ''}">
         <span class="set-num">${s + 1}</span>
-        <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}</span>
+        <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}${sidesOf(ex) ? `<small class="muted"> each ${sidesOf(ex)}</small>` : ''}</span>
         <button class="timer-btn" data-set="${s}" data-secs="${target}">▶ Start</button>
         <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>
       </div>`;
@@ -1437,7 +1464,7 @@ function renderBandList($ex, session, exMap) {
       },
       completeLabel: 'Every exercise done. Tap Finish workout',
       autoNext: true,
-      extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}</button>` : '',
+      extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" data-sides="${sidesOf(ex) || ''}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}${sidesOf(ex) ? ' each ' + sidesOf(ex) : ''}</button>` : '',
     });
   }
   paint();
@@ -1452,22 +1479,17 @@ function renderBandList($ex, session, exMap) {
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.hold-timer');
   if (!btn) return;
-  if (btn._t) { clearInterval(btn._t); btn._t = null; btn.textContent = `▶ Start ${fmtSecs(+btn.dataset.secs)}`; return; }
-  let left = +btn.dataset.secs;
-  btn.textContent = `■ ${fmtSecs(left)}`;
-  btn._t = setInterval(() => {
-    left--;
-    if (!btn.isConnected) { clearInterval(btn._t); return; }
-    if (left <= 0) { clearInterval(btn._t); btn._t = null; beep(); btn.textContent = `✓ Done · ▶ again`; return; }
-    btn.textContent = `■ ${fmtSecs(left)}`;
-  }, 1000);
+  if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
+  btn.dataset.idle ??= btn.textContent;
+  runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: btn.dataset.sides || null, idle: btn.dataset.idle,
+    onDone: () => { btn.textContent = '✓ Done · ▶ again'; } });
 });
 
 function formatTarget(ex) {
   const parts = [];
   if (ex.target_sets) parts.push(`${ex.target_sets} set${+ex.target_sets === 1 ? '' : 's'}`);
   if (ex.target_reps) parts.push(`× ${ex.target_reps}`);
-  if (ex.time) parts.push(parseSecs(ex.time) ? fmtSecs(parseSecs(ex.time)) : ex.time);
+  if (ex.time) parts.push((parseSecs(ex.time) ? fmtSecs(parseSecs(ex.time)) : ex.time) + (sidesOf(ex) ? ` each ${sidesOf(ex)}` : ''));
   if (ex.rest) parts.push(`rest ${ex.rest}`);
   return parts.join(' · ');
 }
