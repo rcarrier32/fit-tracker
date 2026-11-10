@@ -16,6 +16,32 @@ import path from 'path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 export const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]/g, '');
+// Video matching, mirrored from src/lib/local_videos.js: brackets count ("(Knee)", "(quad focus)"),
+// except "(Optional)"; a longer provider name matches only if it just adds a bracket or finishes
+// a word our name was cut off in.
+const vkey = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '').replace(/[^a-z0-9]/g, '');
+const words = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '')
+  .replace(/[^a-z0-9(]+/g, ' ').replace(/\s+/g, ' ').trim();
+function providerMatcher(providers, order) {
+  const byKey = new Map();
+  for (const src of order) for (const o of Object.values(providers[src].videos || {})) {
+    if (o?.name && !byKey.has(vkey(o.name))) byKey.set(vkey(o.name), { src, o });
+  }
+  const list = [...byKey.values()].map(x => [words(x.o.name), x]).sort((a, b) => b[0].length - a[0].length);
+  return (name) => {
+    const n = vkey(name);
+    if (!n) return null;
+    if (byKey.has(n)) return byKey.get(n);
+    const w = words(name);
+    for (const [pw, x] of list) {
+      if (!pw.startsWith(w)) continue;
+      const rest = pw.slice(w.length);
+      if (rest.startsWith(' (')) return x;
+      if (rest && rest[0] !== ' ' && n.length >= 12) return x;
+    }
+    return null;
+  };
+}
 const FIELDS = ['primary_muscle', 'muscles', 'pattern', 'role', 'equipment', 'level', 'unilateral', 'plane', 'hip_focus'];
 
 /** Read a provider/private file (older PJF exports were not UTF-8). */
@@ -62,30 +88,23 @@ export async function loadFullCatalog({ extra = [] } = {}) {
   // Provider files: PJF first (closest match for PJF program names), like local_videos.js.
   const providers = loadProviders(extra);
   const order = Object.keys(providers).sort((a, b) => (a === 'pjf' ? -1 : b === 'pjf' ? 1 : a.localeCompare(b)));
-  const byNorm = new Map(exercises.map(e => [norm(e.name), e]));
+  // Provider-only moves (with tags) join the catalog as private entries.
   for (const src of order) {
     for (const o of Object.values(providers[src].videos || {})) {
-      if (!o?.name) continue;
-      const url = providerVideo(o);
-      // Videos match loosely (local_videos.js localFor); catalog entries join by exact name (static_data.js).
-      const hit = byName.get(o.name.toLowerCase()) || byNorm.get(norm(o.name));
-      if (hit) {
-        if (url && (!hit.video || hit.video.from === 'catalog')) hit.video = { url, from: src };
-        hit.provider_notes ??= o.notes?.length ? o.notes : undefined;
-      }
-      if (!o.tags || byName.has(o.name.toLowerCase())) continue;
-      const e = { id: `private-${src}-${o.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name: o.name, sources: [src], aliases: [],
-        video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags, video: url ? { url, from: src } : null };
-      add(e);
-      byNorm.set(norm(o.name), e);
+      if (!o?.name || !o.tags || byName.has(o.name.toLowerCase())) continue;
+      add({ id: `private-${src}-${o.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name: o.name, sources: [src], aliases: [],
+        video_url: o.yt ? `https://youtu.be/${o.yt}` : null, ...o.tags, video: null });
     }
   }
-  // An exercise only another provider adds (e.g. TrainHeroic's Push-Up To Pike) still takes
-  // PJF's demo when PJF has one under that name, as local_videos.js does in the app.
-  for (const o of Object.values(providers.pjf?.videos || {})) {
-    const url = o?.name && providerVideo(o);
-    const hit = url && byNorm.get(norm(o.name));
-    if (hit && hit.video?.from !== 'pjf' && hit.video?.from !== 'catalog') hit.video = { url, from: 'pjf' };
+  // Every exercise's video is whatever the app plays: the provider demo localFor() finds, else
+  // the library's YouTube link. Same matching as src/lib/local_videos.js (keep the two in step).
+  const providerFor = providerMatcher(providers, order);
+  for (const e of exercises) {
+    const p = providerFor(e.name);
+    const url = p && providerVideo(p.o);
+    if (url) e.video = { url, from: p.src };
+    else if (!e.video && e.video_url) e.video = { url: e.video_url, from: e.sources?.[0] || 'catalog' };
+    if (p?.o.notes?.length) e.provider_notes ??= p.o.notes;
   }
   return { lib, exercises, byName, providers };
 }

@@ -4,8 +4,8 @@
   "exercises": 715,
   "with_video": 687,
   "video_from": {
-   "catalog": 392,
-   "pjf": 195,
+   "catalog": 379,
+   "pjf": 208,
    "trainheroic": 100,
    "none": 28
   }
@@ -4182,8 +4182,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/V9cOez5TTD0",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/cdSYkYp02ZoD9k7Femkg5akeT8mO3pfJY00IqBlui8Zeo.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "All Four Prone Hip Shift Drill",
@@ -4459,8 +4459,8 @@
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=1528",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/JaiIXKETIgVX2dQe2R1zLwobknBPhcLtCJJthpBn01Ho.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Back Leg Lunge (Peterson Lunge)",
@@ -6297,8 +6297,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
-   "video": "https://youtu.be/8ZIPiL3kWPI",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/R51oQVLtSS00rYJPUYqcPjg02aQUqbsktgYYhzaPSwYas.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Cable Lateral Raise",
@@ -6502,8 +6502,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
-   "video": "https://www.youtube.com/watch?v=96sQ-N5VBnA",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/K9zgVBNj55732l8mA8aRGyih1Qgdrhkq01yfoPvitYl8.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Chest Supported DB Rear Delt Row",
@@ -8007,8 +8007,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://www.youtube.com/watch?v=3D7vdq1pvOw&t=28",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/NLPEbDHj7Kux6NBV4e8KOSqXsVgv18Tz3Qc7CMFjeKE.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Dumbbell Incline Curls (Optional)",
@@ -9322,8 +9322,8 @@
    "unilateral": true,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/Jbq8uaPibh4",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/oxYrFuRb1jYJtVIgVEpUmqkKPHZ3dhV4pqqzuw1y0202c.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Front Foot Elevated Reverse Lunge",
@@ -10004,8 +10004,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": true,
-   "video": "https://www.youtube.com/watch?v=vIDzsqJiAIo",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/9UEb9buhPz7iFKkrzHGZy01dRVx1u200u1A02vAbP02v6nU.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Half-Kneeling Hip Thrust",
@@ -13311,8 +13311,8 @@
    "unilateral": true,
    "plane": "frontal",
    "hip_focus": true,
-   "video": "https://www.youtube.com/watch?v=lvpPNjRQONQ",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/s23O02iqEWLOkMls1X3hGctge02eIaqhhUzeeeZgXVNZs.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Mutli-direction Bounds",
@@ -13633,8 +13633,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/3r0Kd3G4kek",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/01rL8GX7PCMd02Db02inZeiD9nNN4dbEfHcDtoJoaRojzI.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Outdoor Sprint Intervals",
@@ -19077,8 +19077,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/RMCr0yDAjqs",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/B4uw1O5fQT1hMDjJnRrh36R3Rf7iDL5Gi96tJxiG9Wk.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Tricep Extension (Optional)",
@@ -19730,8 +19730,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/5rOGPnnCUhk",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/Kwa8YctYNmRnPsqbqK7BKD4PQITWtX97DXSQUlvzUdI.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Zone 2 60-70% (Low Impact)",
@@ -19774,8 +19774,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/5rOGPnnCUhk",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/Kwa8YctYNmRnPsqbqK7BKD4PQITWtX97DXSQUlvzUdI.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Zone 2 Workout",
@@ -19818,8 +19818,8 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false,
-   "video": "https://youtu.be/5rOGPnnCUhk",
-   "video_from": "catalog"
+   "video": "https://stream.mux.com/Kwa8YctYNmRnPsqbqK7BKD4PQITWtX97DXSQUlvzUdI.m3u8",
+   "video_from": "pjf"
   },
   {
    "name": "Zone 4 Workout",
