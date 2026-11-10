@@ -11,10 +11,11 @@ Hip tab's sessions, then `python3 data/tag_exercises.py`.
 
 | Kind of plan | Screen | What the person gets |
 |---|---|---|
-| Anything with weights: dumbbells, barbells, machines, bodyweight strength (BWS, PJF, home plans) | **Lift card** (default) | Weight + reps + RPE per set, last-time prefill, ▶ Video embed, rest timer, ▶ Start timer on timed moves |
+| Anything with weights: dumbbells, barbells, machines, bodyweight strength (BWS, PJF, home plans) | **Lift card** (default) | Weight + reps + RPE per set, last-time prefill, ▶ Video embed, rest timer, ▶ Start timer on timed moves. Opens in **Step by step** mode: warm-up, then one exercise at a time with its video on top and **Next →** (supersets/circuits go round by round). **Full list** shows every card at once |
 | Rehab and band-only work (Hip, TOS, PJF band days) | Row + detail ([EXERCISE_UI.md](EXERCISE_UI.md)) | Thumbnail rows, tap for the video with set checkboxes, no weight entry |
 
-A new program in `library.json` gets the Lift card without any code change. Don't switch
+A new program in `library.json` gets the Lift card, and its step-by-step mode, without any code change. Give
+supersets and circuits a shared `round_group` so Next → takes people round by round. Don't switch
 a strength plan to rows. People need to log their weights.
 
 ## 2. Write a build script: `data/build_<program>.py`

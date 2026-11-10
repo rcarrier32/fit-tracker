@@ -8,8 +8,8 @@ import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, posit
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
-import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
-import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
+import { openExerciseDetail, exerciseRowHTML, wireExerciseRows, videoBlockHTML, esc } from '../lib/exercise_ui.js';
+import { localFor, dayNotesFor, playable, attachMuxVideos } from '../lib/local_videos.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 
@@ -215,6 +215,7 @@ export async function renderWorkout(app) {
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
+    <div id="day-extras">
     ${pjfDayNotesHtml(program, week, day, dayData)}
     ${dayInfoHtml(program, dayData)}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
@@ -223,9 +224,13 @@ export async function renderWorkout(app) {
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
     </div>` : ''}
+    </div>
+    <div id="lift-view-toggle"></div>
+    <div id="guided-top"></div>
     ${warmup ? _warmupBlockHtml(warmup, exMap) : ''}
-    ${warmup ? '<div class="group-label" style="margin-top:14px">💪 Workout</div>' : ''}
+    ${warmup ? '<div class="group-label workout-label" style="margin-top:14px">💪 Workout</div>' : ''}
     <div id="exercises"></div>
+    <div id="guided-nav"></div>
     <div class="btn-row" style="margin-top:14px">
       <button class="btn secondary" id="add-ex">+ Add exercise</button>
       <button class="btn" id="finish">Finish workout</button>
@@ -267,6 +272,12 @@ export async function renderWorkout(app) {
     const node = exerciseCard(ex, i, exMap, prevRef, allTimeBestE1RM);
     $ex.appendChild(node);
   });
+  // Weighted days start in step-by-step mode: one exercise at a time, video on top, Next →.
+  if (!bandDay && session.exercises.length) {
+    await setupGuided(app, { session, exMap, hasWarmup: !!warmup,
+      stepKey: `guided:${today()}:${programId}:${week}:${day}:${day_index ?? 0}` });
+    if (stale()) return;
+  }
 
   app.querySelector('[data-progress-check]')?.addEventListener('click', () => openProgressCheck());
   app.querySelector('[data-follow-along]')?.addEventListener('click', () => {
@@ -1085,6 +1096,183 @@ function formatPrevSets(sets) {
     .join('  ');
 }
 
+// ── Step-by-step mode (Lift) ────────────────────────────────────────────────
+// One exercise on screen at a time: its video on top, the same weight/rep card under it,
+// then Next →. The cards are the list view's own cards (shown one at a time), so logging,
+// last-time prefill, RPE, swaps and timers all work exactly as they do in the full list.
+
+const setsDoneCount = (ex) => (ex.sets || []).filter(st => st?.done).length;
+const exerciseDone = (ex) => setsDoneCount(ex) >= (parseInt(ex.target_sets) || 3);
+
+/** The exercise as the video block wants it: a row's own video wins unless swapped. */
+function liftVideoEx(ex, exMap) {
+  const lookup = exMap[ex.name.toLowerCase()];
+  const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+  return { name: ex.name, rowVideo: !!rowVideo, video_url: rowVideo || lookup?.video_url || null, search: ex.name };
+}
+
+async function setupGuided(app, { session, exMap, hasWarmup, stepKey }) {
+  const $toggle = app.querySelector('#lift-view-toggle');
+  const $top = app.querySelector('#guided-top');
+  const $nav = app.querySelector('#guided-nav');
+  const $ex = app.querySelector('#exercises');
+  const $warm = app.querySelector('.warmup-section');
+  const $workoutLabel = app.querySelector('.workout-label');
+  const $extras = app.querySelector('#day-extras');
+  const $finish = app.querySelector('#finish');
+
+  let mode = (await pref('lift_view')) || 'guided';
+  const saved = await pref('guided_step');
+  const steps = () => [...(hasWarmup ? ['warmup'] : []), ...session.exercises.keys()];
+  let step;
+  if (saved?.key === stepKey) step = +saved.step || 0;
+  else {
+    // Fresh start: warm-up first. Coming back to a half-done workout: first unfinished exercise.
+    const logged = session.exercises.some(x => setsDoneCount(x) > 0);
+    const list = steps();
+    const k = logged ? list.findIndex(v => v !== 'warmup' && !exerciseDone(session.exercises[v])) : -1;
+    step = k >= 0 ? k : 0;
+  }
+
+  const warmupDone = () => !!$warm && $warm.querySelectorAll('.warmup-ex').length > 0
+    && $warm.querySelectorAll('.warmup-ex:not(.done)').length === 0;
+  const stepDone = (v) => v === 'warmup' ? warmupDone() : exerciseDone(session.exercises[v]);
+
+  /**
+   * Where Next → goes. Straight down the list, except at the end of a superset or circuit
+   * done a set at a time (this exercise part-way through its sets): back to the group's
+   * first unfinished exercise, for the next round. Doing all sets at once, or skipping
+   * without logging, just moves on.
+   */
+  const nextStep = (s) => {
+    const list = steps();
+    const cur = list[s];
+    const g = cur === 'warmup' ? null : session.exercises[cur].round_group;
+    const curDoneSets = cur === 'warmup' ? 0 : setsDoneCount(session.exercises[cur]);
+    if (g && curDoneSets > 0 && !exerciseDone(session.exercises[cur])) {
+      let a = s, b = s;
+      while (a - 1 >= 0 && list[a - 1] !== 'warmup' && session.exercises[list[a - 1]].round_group === g) a--;
+      while (b + 1 < list.length && session.exercises[list[b + 1]].round_group === g) b++;
+      if (s === b && b > a) {
+        for (let k = a; k <= b; k++) if (!exerciseDone(session.exercises[list[k]])) {
+          if (k !== s) return { step: k, round: true };
+        }
+      }
+    }
+    return s + 1 < list.length ? { step: s + 1, round: false } : null;
+  };
+
+  const exCount = session.exercises.length;
+  $nav.innerHTML = `<div id="guided-rest" class="rest-timer-line"></div><div id="guided-btns"></div>`;
+  const $btns = $nav.querySelector('#guided-btns');
+
+  const paintToggle = () => {
+    $toggle.innerHTML = `
+      <div class="lift-view-toggle" role="tablist">
+        <button data-view="guided" class="${mode === 'guided' ? 'on' : ''}">▶ Step by step</button>
+        <button data-view="list" class="${mode === 'list' ? 'on' : ''}">☰ Full list</button>
+      </div>`;
+  };
+
+  // Progress + Next/Back. Repainted on every set check; never touches the video.
+  const paintProgress = () => {
+    if (mode !== 'guided') return;
+    const list = steps();
+    const cur = list[step];
+    const exNo = cur === 'warmup' ? 0 : cur + 1;
+    const doneCount = session.exercises.filter(exerciseDone).length;
+    $top.querySelector('#guided-progress').innerHTML = `
+      <div class="guided-count">
+        <span>${cur === 'warmup' ? `Warm-up · then ${exCount} exercise${exCount === 1 ? '' : 's'}` : `Exercise ${exNo} of ${exCount}`}</span>
+        <span class="muted">${doneCount}/${exCount} done</span>
+      </div>
+      <div class="guided-dots">
+        ${list.map((v, k) => `<button data-step="${k}" aria-label="${v === 'warmup' ? 'Warm-up' : `Exercise ${v + 1}`}"
+          class="${stepDone(v) ? 'done' : ''} ${k === step ? 'cur' : ''} ${v === 'warmup' ? 'wu' : ''}"></button>`).join('')}
+      </div>`;
+    const nx = nextStep(step);
+    const curDone = stepDone(cur);
+    const nextName = nx ? (list[nx.step] === 'warmup' ? 'Warm-up' : session.exercises[list[nx.step]].name) : '';
+    const nextLabel = !nx ? 'Finish workout ✓'
+      : cur === 'warmup' ? `Start: ${nextName} →`
+      : nx.round ? `Next round: ${nextName} →`
+      : `Next: ${nextName} →`;
+    $btns.innerHTML = `
+      <div class="guided-nav-row">
+        <button class="btn ghost" data-g="prev" ${step === 0 ? 'disabled' : ''} aria-label="Previous exercise">← Back</button>
+        <button class="btn ${curDone || cur === 'warmup' ? '' : 'secondary'}" data-g="next">${esc(nextLabel)}</button>
+      </div>
+      ${!curDone && cur !== 'warmup' && nx ? `<div class="muted" style="font-size:11px;text-align:center;margin-top:6px">Log your sets above, then tap Next</div>` : ''}`;
+  };
+
+  // The whole step: which card shows, the video, the day notes. Runs on step/mode change only.
+  const paintStep = () => {
+    const guided = mode === 'guided';
+    const list = steps();
+    step = Math.min(Math.max(step, 0), list.length - 1);
+    const cur = list[step];
+    $ex.classList.toggle('guided', guided);
+    // The last step's Next button is Finish, so the second Finish button would compete with Next.
+    if ($finish) $finish.style.display = guided ? 'none' : '';
+    $nav.hidden = !guided;
+    $top.hidden = !guided;
+    if ($extras) $extras.style.display = guided && step !== 0 ? 'none' : '';
+    if ($warm) $warm.style.display = guided && cur !== 'warmup' ? 'none' : '';
+    if ($workoutLabel) $workoutLabel.style.display = guided ? 'none' : '';
+    $ex.style.display = guided && cur === 'warmup' ? 'none' : '';
+    $ex.querySelectorAll(':scope > .exercise').forEach(card => {
+      card.style.display = guided && +card.dataset.i !== cur ? 'none' : '';
+    });
+    if (!guided) { $top.innerHTML = ''; return; }
+    const ex = cur === 'warmup' ? null : session.exercises[cur];
+    const grp = ex?.round_group ? prettyGroup(ex.round_group) : '';
+    $top.innerHTML = `
+      <div id="guided-progress"></div>
+      ${ex ? `${grp ? `<div class="group-label" style="margin-top:10px">${esc(grp)}</div>` : ''}
+        <div class="guided-video">${videoBlockHTML(liftVideoEx(ex, exMap))}</div>` : ''}`;
+    attachMuxVideos($top);
+    paintProgress();
+    pref('guided_step', { key: stepKey, step });
+  };
+
+  const goTo = (k) => {
+    if (k === step) return;
+    stopSetTimer();
+    step = k;
+    paintStep();
+    $toggle.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
+
+  $toggle.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-view]');
+    if (!b || b.dataset.view === mode) return;
+    mode = b.dataset.view;
+    await pref('lift_view', mode);
+    paintToggle();
+    paintStep();
+  });
+  $top.addEventListener('click', (e) => {
+    const d = e.target.closest('[data-step]');
+    if (d) goTo(+d.dataset.step);
+  });
+  $btns.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-g]');
+    if (!b) return;
+    if (b.dataset.g === 'prev') return goTo(step - 1);
+    const nx = nextStep(step);
+    if (nx) goTo(nx.step);
+    else app.querySelector('#finish')?.click();
+  });
+  // A set or warm-up move checked off: update the dots and the Next button (after the
+  // card's own handler has flipped the set).
+  const later = () => setTimeout(paintProgress, 0);
+  $ex.addEventListener('click', later);
+  $warm?.addEventListener('click', later);
+
+  paintToggle();
+  paintStep();
+}
+
 function stopRestTimer() {
   if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
   document.querySelectorAll('.rest-timer-line').forEach(el => { el.innerHTML = ''; });
@@ -1092,18 +1280,21 @@ function stopRestTimer() {
 
 function startRestTimer(card) {
   stopRestTimer();
-  const $el = card.querySelector('.rest-timer-line');
-  if (!$el) return;
+  // The card's own line, plus step-by-step mode's rest line, which stays on screen after Next →.
+  const $els = [card.querySelector('.rest-timer-line'), document.getElementById('guided-rest')].filter(Boolean);
+  if (!$els.length) return;
   const start = Date.now();
-  $el.innerHTML = '<span class="rest-timer-text">rest 0:00</span> <button type="button" class="btn ghost rest-stop" style="width:auto;padding:2px 8px;font-size:11px;margin-left:6px">Stop</button>';
-  const $text = $el.querySelector('.rest-timer-text');
-  $el.querySelector('.rest-stop').onclick = (e) => {
-    e.stopPropagation();
-    stopRestTimer();
-  };
+  const $texts = $els.map($el => {
+    $el.innerHTML = '<span class="rest-timer-text">rest 0:00</span> <button type="button" class="btn ghost rest-stop" style="width:auto;padding:2px 8px;font-size:11px;margin-left:6px">Stop</button>';
+    $el.querySelector('.rest-stop').onclick = (e) => {
+      e.stopPropagation();
+      stopRestTimer();
+    };
+    return $el.querySelector('.rest-timer-text');
+  });
   _restInterval = setInterval(() => {
     const sec = Math.floor((Date.now() - start) / 1000);
-    if ($text) $text.textContent = `rest ${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+    for (const $t of $texts) $t.textContent = `rest ${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
   }, 1000);
 }
 
