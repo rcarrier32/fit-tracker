@@ -46,12 +46,16 @@ const secsOf = (t) => {
 /** Rough session length in minutes: warm-up + every set's work and rest (supersets share rest). */
 export function estimateMinutes(day, rules) {
   let secs = (day.warmup || []).reduce((a, w) => a + 45 * (w.sets || 1), 0) + 60;
-  for (const x of day.exercises) {
+  day.exercises.forEach((x, i) => {
     const role = Object.values(rules.roles).find(r => r.rest === x.rest) || rules.roles.accessory;
-    const work = x.time ? secsOf(x.time) : role.secs_per_set;
-    const rest = x.rest ? (secsOf(x.rest) || role.rest_secs || 0) * (x.round_group ? 0.5 : 1) : 0;
+    const rounds = /^(\d+)\s*rounds?$/i.exec(x.reps || '');
+    const work = x.time ? secsOf(x.time) : rounds ? +rounds[1] * 70 : role.secs_per_set;
+    const prev = day.exercises[i - 1];
+    const explicitPair = x.round_group && prev?.round_group === x.round_group && /^0/.test(prev.rest || '');
+    const rest = !x.rest ? 0 : /^0/.test(x.rest) ? 10
+      : (secsOf(x.rest) || role.rest_secs || 0) * (x.round_group && !explicitPair ? 0.5 : 1);
     secs += (x.sets || 1) * (work + rest);
-  }
+  });
   return Math.round(secs / 60);
 }
 
@@ -75,8 +79,13 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     (e.equipment || ['bodyweight']).every(q => have.has(q)));
 
   const byName = new Map(exercises.map(e => [e.name, e]));   // required moves can sit outside the pool
-  const splitSet = power && rules.athletic_splits[String(p.days)] ? rules.athletic_splits : rules.splits;
-  const split = splitSet[String(Math.min(6, Math.max(2, p.days)))];
+  const nDays = String(Math.min(6, Math.max(2, p.days)));
+  const splitSet = goal.splits?.[nDays] ? goal.splits : power && rules.athletic_splits[nDays] ? rules.athletic_splits : rules.splits;
+  const split = splitSet[nDays];
+  // Home kit (no barbell, cable or machine) can't keep adding load: progress by reps, rest and
+  // harder versions instead, the way Lean & Tone and PJF's home programs do (rules.load_limited).
+  const LL = rules.load_limited;
+  const loadLimited = !!LL && !p.equipment.some(q => LL.heavy_equipment.includes(q));
   const nPhases = Math.max(1, Math.ceil(p.weeks / rules.phases.length_weeks));
   // Goal overrides (data/design_rules.json goal_overrides_doc). Volume targets the goal sets are scaled
   // down for fewer than 5 training days, so a 3-day plan isn't pushed to 5-day core volume.
@@ -144,7 +153,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (t) { if (v < t[0]) s += 1.2; else if (v >= t[1]) s -= 2; }
       if (usedWeek.has(e.name)) s -= 2.5;
       if (avoid?.has(e.name)) s -= 3;                          // rotate accessories between phases
-      if (progressesBy(e) === 'variation') {
+      if (slot.prefer) s += new RegExp(slot.prefer, 'i').test(e.name) ? 3 : 0;
+      if (progressesBy(e) === 'variation' || (loadLimited && slot.role !== 'main')) {
         const L = e.level || 2;
         s += L === target ? 1.5 : L > target ? -1 : -0.6 * (target - L);
       } else if ((e.level || 2) === p.level) s += 0.4;
@@ -188,7 +198,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         slots.splice(i, 1);
       }
     }
-    if (goal.conditioning && !SPEED_DAY.test(dayKey)) slots.push({ role: 'conditioning' });
+    if (goal.conditioning && !SPEED_DAY.test(dayKey) && !slots.some(x => x.role === 'conditioning')) {
+      slots.push({ role: 'conditioning', finisher: true, prefer: rules.conditioning?.finisher_prefer });
+    }
     return slots;
   }
 
@@ -288,11 +300,21 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     if (deload) sets = Math.max(1, Math.round(sets * rules.phases.deload.sets_factor));
     const each = e.unilateral ? ' each side' : '';
     let reps = null, time = null;
-    if (slot.role === 'conditioning') time = p.minutes <= 30 ? '6:00' : p.minutes <= 45 ? '8:00' : '12:00';
+    if (slot.role === 'conditioning') {
+      const mins = slot.long ? (p.minutes <= 30 ? 15 : p.minutes <= 45 ? 20 : 25) + 5 * Math.min(ph, 1)
+        : (p.minutes <= 30 ? 6 : p.minutes <= 45 ? 8 : 12);
+      // Named intervals (Sprint 10s/Jog 20s/Walk 40s) are written as rounds; the app times each phase.
+      const phases = (e.name.match(/(\d+)\s*s\b/g) || []).map(x => parseInt(x));
+      if (phases.length >= 2) {
+        const per = phases.reduce((a, b) => a + b, 0);
+        return { sets: 1, reps: `${Math.max(4, Math.round(mins * 60 / per) + 2 * ph)} rounds`, time: null, rest: null };
+      }
+      time = `${mins}:00`;
+    }
     else if (TIMED.test(e.name) || e.pattern === 'isometric' || e.pattern === 'balance') {
       time = `${20 + 5 * (ph + inPhaseWeek - 1)}s`;
-    } else if (slot.role === 'main') reps = goal.main_reps[Math.min(ph, goal.main_reps.length - 1)];
-    else if (slot.role === 'secondary') reps = goal.secondary_reps;
+    } else if (slot.role === 'main') reps = (loadLimited ? LL.main_reps : goal.main_reps)[Math.min(ph, (loadLimited ? LL.main_reps : goal.main_reps).length - 1)];
+    else if (slot.role === 'secondary') reps = loadLimited ? LL.secondary_reps[Math.min(ph, LL.secondary_reps.length - 1)] : goal.secondary_reps;
     else if (slot.role === 'power') {
       reps = {
         speed_accel: ph === 0 ? '10 yd at 70%' : ph === 1 ? '15 yd at 85%' : '20 yd full speed',
@@ -305,7 +327,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     else if (slot.role === 'core') reps = slot.early ? '8-10' : '10-12';
     else reps = goal.accessory_reps;
     if (reps && each) reps += each;
-    return { sets, reps, time, rest: restFor(slot.role) };
+    let rest = restFor(slot.role);
+    // Home kit: the last phase also gets denser (L&T: 60 s → 45 s after a pair).
+    if (loadLimited && nPhases > 1 && ph === nPhases - 1 && slot.role !== 'main' && /^\d+s$/.test(rest || '')) {
+      rest = `${Math.max(30, parseInt(rest) - LL.last_phase_rest_drop_secs)}s`;
+    }
+    return { sets, reps, time, rest };
   }
 
   // Trim a session to the time box: accessory sets to 2, then drop accessories from the end,
@@ -325,6 +352,98 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     }
   }
 
+  // Pair every lift with one that doesn't compete for the same muscles (lower with upper, push with
+  // pull), as Lean & Tone and PJF do for fat loss: 0-15 s between the two, rest after the pair.
+  const GROUP = { quads: 'legs', glutes: 'legs', hamstrings: 'legs', adductors: 'legs', abductors: 'legs', hip_flexors: 'legs', calves: 'legs',
+    chest: 'push', front_delts: 'push', side_delts: 'push', triceps: 'push',
+    lats: 'pull', upper_back: 'pull', rear_delts: 'pull', biceps: 'pull', forearms: 'pull',
+    abs: 'core', obliques: 'core', lower_back: 'core', full_body: 'core' };
+  function pairAll(rows, slots, dayPicks) {
+    const slotOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)] || {};
+    const ok = (x) => { const sl = slotOf(x); return ['main', 'secondary', 'accessory', 'core'].includes(sl.role) && !sl.early; };
+    const grp = (x) => GROUP[byName.get(x.name)?.primary_muscle] || 'core';
+    const partner = new Map(), used = new Set();
+    rows.forEach((a, i) => {
+      if (used.has(i) || !ok(a)) return;
+      const ga = grp(a);
+      const fits = (j, strict) => !used.has(j) && j !== i && ok(rows[j]) && grp(rows[j]) !== ga
+        && (!strict || (ga === 'legs') !== (grp(rows[j]) === 'legs'));
+      let j = rows.findIndex((_, k) => k > i && fits(k, true));
+      if (j < 0) j = rows.findIndex((_, k) => k > i && fits(k, false));
+      if (j < 0) return;
+      used.add(i); used.add(j); partner.set(i, j);
+    });
+    const out = [];
+    let n = 0;
+    rows.forEach((x, i) => {
+      if (partner.has(i)) {
+        const y = rows[partner.get(i)], g = `Pair ${String.fromCharCode(65 + n++)}`;
+        const restAfter = [x.rest, y.rest].sort((a, b) => secsOf(b) - secsOf(a))[0];
+        out.push({ ...x, round_group: g, rest: '0-15s' }, { ...y, round_group: g, rest: restAfter });
+      } else if (![...partner.values()].includes(i)) out.push(x);
+    });
+    return out;
+  }
+
+  // Cooldown: hold-stretches for what the day worked (data/session_prep.py's rule, in JS): score the
+  // regions by sets, target the ones worked directly or at least half as hard as the top one, pick
+  // holds greedily so every target is reached and the two hardest-worked get a hold mainly for them;
+  // then 3 minutes of PJF's 7/11 breathing.
+  const CREG = { quads: 'quads', hamstrings: 'hamstrings', glutes: 'glutes', abductors: 'glutes', adductors: 'adductors',
+    hip_flexors: 'hip flexors', calves: 'calves', chest: 'chest', front_delts: 'shoulders', side_delts: 'shoulders',
+    lats: 'lats', upper_back: 'upper back', rear_delts: 'upper back', lower_back: 'lower back' };
+  const regionsOf = (e) => { const o = {}; for (const m of e?.muscles || []) if (CREG[m]) o[CREG[m]] = Math.max(o[CREG[m]] || 0, 0.5); if (CREG[e?.primary_muscle]) o[CREG[e.primary_muscle]] = 1; return o; };
+  const coolPool = exercises.filter(e => hasVideo(e) && (e.equipment || ['bodyweight']).every(q => have.has(q)) && !/foam|gentle|optional static|breathing|hang/i.test(e.name) && (
+    e.role === 'cooldown' || (e.role === 'warmup' && e.pattern === 'mobility' && /opener|stretch/i.test(e.name))));
+  const breathing = exercises.find(e => e.name === '7/11 Breathing' && hasVideo(e));
+  function cooldownFor(rows) {
+    const score = {}, by = {}, direct = new Set();
+    for (const x of rows) {
+      const e = byName.get(x.name);
+      if (!e) continue;
+      const n = e.role === 'conditioning' ? 1 : (x.sets || 1);
+      if (n >= 2 && !['conditioning', 'warmup', 'cooldown'].includes(e.role) && CREG[e.primary_muscle]) direct.add(CREG[e.primary_muscle]);
+      for (const [r, st] of Object.entries(regionsOf(e))) {
+        score[r] = (score[r] || 0) + n * (st === 1 ? 2 : 1);
+        (by[r] ||= {})[x.name] = ((by[r] || {})[x.name] || 0) + n;
+      }
+    }
+    const order = Object.entries(score).sort((a, b) => b[1] - a[1]).map(([r]) => r);
+    if (!order.length) return [];
+    const top = score[order[0]];
+    const need = order.filter(r => direct.has(r) || score[r] >= 0.5 * top);
+    const strong = need.filter(r => direct.has(r)).slice(0, 2);
+    const okR = (r, st) => st >= (strong.includes(r) ? 1 : 0.5);
+    const reach = new Set(coolPool.flatMap(e => Object.keys(regionsOf(e))));
+    const kMax = p.minutes <= 30 ? 2 : 4, kMin = Math.min(3, kMax);
+    const picks = [], covered = new Set();
+    while (picks.length < kMax) {
+      const left = need.filter(r => !covered.has(r) && reach.has(r));
+      if (!left.length && picks.length >= kMin) break;
+      const aim = left.length ? left : order.filter(r => !covered.has(r) && reach.has(r)).slice(0, 1);
+      if (!aim.length) break;
+      let best = null, gain = 0;
+      for (const e of coolPool) {
+        if (picks.includes(e)) continue;
+        const reg = regionsOf(e);
+        const g = aim.reduce((a, r) => a + (okR(r, reg[r] || 0) ? score[r] * reg[r] : 0), 0) + rand() * 0.5;
+        if (g > gain) { best = e; gain = g; }
+      }
+      if (!best || gain < 1) break;
+      picks.push(best);
+      for (const [r, st] of Object.entries(regionsOf(best))) if (okR(r, st)) covered.add(r);
+    }
+    const out = picks.map(e => {
+      const serves = need.filter(r => regionsOf(e)[r]);
+      const why = serves.map(r => `${r} (${Object.entries(by[r] || {}).sort((a, b) => b[1] - a[1]).slice(0, 2).map(([n]) => n).join(', ')})`).join('; ');
+      return { name: e.name, round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null, weight: null, distance: null,
+               time: e.role === 'warmup' ? '30s' : '45s', rest: null, notes: serves.length ? `For today's ${why}.` : null };
+    });
+    if (breathing && out.length) out.push({ name: breathing.name, round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null,
+      weight: null, distance: null, time: '3:00', rest: null, notes: 'Slow breathing to finish: in for 7, out for 11.' });
+    return out;
+  }
+
   const weeks = [];
   for (let w = 1; w <= p.weeks; w++) {
     const ph = Math.min(nPhases - 1, Math.floor((w - 1) / rules.phases.length_weeks));
@@ -333,14 +452,16 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     weeks.push({
       week_num: w,
       days: split.days.map((dayKey, di) => {
-        const supersetAcc = session.superset_accessories || goal.superset_accessories;
+        const supersetAcc = !goal.superset_all && (session.superset_accessories || goal.superset_accessories);
+        const circuit = !!rules.days[dayKey].circuit;
         let pair = 0, inPair = 0;
-        const exercises = daySlots[di].map((slot, si) => {
+        let exercises = daySlots[di].map((slot, si) => {
           const e = picks[ph][di][si];
           if (!e) return null;
           const d = dose(slot, e, w, ph);
           let group = null;
-          if (supersetAcc && !slot.early && (slot.role === 'accessory' || slot.role === 'core')) {
+          if (circuit && slot.role !== 'conditioning') group = 'Circuit';
+          else if (supersetAcc && !slot.early && (slot.role === 'accessory' || slot.role === 'core')) {
             if (inPair === 0) pair++;
             group = `Superset ${String.fromCharCode(64 + pair)}`;
             inPair = (inPair + 1) % 2;
@@ -348,21 +469,32 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
           return { name: e.name, round_group: group, is_alternate: false, sets: d.sets, reps: d.reps, weight: null,
                    distance: null, time: d.time, rest: d.rest, notes: null };
         }).filter(Boolean);
+        if (circuit) {
+          const rows = exercises.filter(x => x.round_group === 'Circuit');
+          rows.forEach((x, i) => { x.rest = i === rows.length - 1 ? '60s' : '0s'; });
+        } else if (goal.superset_all) exercises = pairAll(exercises, daySlots[di], picks[ph][di]);
         const notes = [
           deload ? 'Deload week: half the sets, same weights. Leave fresh.'
             : `Phase ${ph + 1} of ${nPhases}, week ${inPhaseWeek}. ${inPhaseWeek === 1 ? 'Find weights that leave 2 reps in the tank.' : 'Same exercises: once every set reaches the top of its rep range, add a little weight.'}`,
         ];
         if (!deload && nPhases > 1 && ph === nPhases - 1 && inPhaseWeek === 1 && (goal.set_ramp || 1) > 1) notes.push('Last phase: one more set on the secondary lifts' + ((goal.set_ramp || 1) >= 1.2 ? ' and accessories.' : '.'));
+        if (goal.superset_all && exercises.some(x => /^Pair/.test(x.round_group || ''))) notes.push('Pairs: go straight from the first exercise to the second, then rest.');
+        if (circuit) notes.push('Circuit: one exercise after another with no rest, 60 s after each round.');
+        if (loadLimited && ph > 0 && inPhaseWeek === 1 && !deload) notes.push('Home weights: progress with more reps, shorter rest, slower lowering and harder versions rather than heavier dumbbells.');
         if (daySlots[di].some((s, i) => s.early && picks[ph][di][i])) notes.push('Core comes early to switch it on: smooth reps, stop well short of failure.');
         if (power && exercises.some(x => /^(power)$/.test((daySlots[di].find((s, i) => picks[ph][di][i]?.name === x.name) || {}).role))) {
           notes.push('Power work first, on fresh legs: full effort, full rest, stop when reps slow down.');
         }
         const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph, exercises), notes, exercises };
+        if (goal.cooldown) day.exercises.push(...cooldownFor(day.exercises));
         fitToTime(day, daySlots[di], picks[ph][di]);
         // A superset left with one exercise (odd count, or its partner trimmed) is a straight set.
         const groupSize = {};
         for (const x of day.exercises) if (x.round_group) groupSize[x.round_group] = (groupSize[x.round_group] || 0) + 1;
-        for (const x of day.exercises) if (x.round_group && groupSize[x.round_group] < 2) x.round_group = null;
+        for (const x of day.exercises) if (x.round_group && groupSize[x.round_group] < 2 && x.round_group !== 'Cooldown') {
+          x.round_group = null;
+          if (/^0/.test(x.rest || '')) x.rest = '60s';   // its partner was trimmed: rest after it instead
+        }
         return day;
       }),
     });
@@ -372,7 +504,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const summary = {};
   for (const d of weeks[0].days) for (const x of d.exercises) {
     const e = byName.get(x.name);
-    if (!e) continue;
+    if (!e || ['warmup', 'cooldown', 'conditioning'].includes(e.role) || x.round_group === 'Cooldown') continue;
     summary[e.primary_muscle] = (summary[e.primary_muscle] || 0) + (x.sets || 0);
     for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) summary[m] = (summary[m] || 0) + (x.sets || 0) / 2;
   }

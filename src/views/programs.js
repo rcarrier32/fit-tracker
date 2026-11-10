@@ -564,7 +564,7 @@ function infoBox(value, label) {
 // ── Plan generator (src/lib/generator.js, rules in data/design_rules.json) ──────────────
 
 const GEN_EQUIPMENT = ['dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'bench', 'box', 'pullup_bar', 'cable', 'machine',
-  'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'sled', 'smith', 'suspension'];
+  'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'sled', 'smith', 'suspension', 'bike', 'pool'];
 let _rules = null;
 const loadRules = async () => (_rules ||= await fetch('data/design_rules.json').then(r => r.json()));
 

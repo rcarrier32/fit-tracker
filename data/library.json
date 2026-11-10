@@ -13842,7 +13842,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "bike"
       ],
       "level": 1,
       "unilateral": false,
@@ -13866,7 +13866,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "bike"
       ],
       "level": 1,
       "unilateral": false,
@@ -61169,7 +61169,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "pool"
       ],
       "level": 2,
       "unilateral": false,
@@ -61185,7 +61185,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "pool"
       ],
       "level": 2,
       "unilateral": false,
@@ -61200,7 +61200,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "pool"
       ],
       "level": 1,
       "unilateral": false,
@@ -61216,7 +61216,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "pool"
       ],
       "level": 2,
       "unilateral": false,
@@ -61231,7 +61231,7 @@
       "pattern": "conditioning",
       "role": "conditioning",
       "equipment": [
-        "bodyweight"
+        "pool"
       ],
       "level": 1,
       "unilateral": false,

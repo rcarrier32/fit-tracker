@@ -87,6 +87,19 @@ research in [reports/Workout plan builder methods.md](../reports/Workout%20plan%
 - **Core early** (`core_early`): fat loss, durability and athletic do the day's core move right after
   power work and before the main lift, as PJF does: anti-extension, anti-rotation, side-bend or hold
   patterns only, smooth reps, well short of failure. Strength and muscle keep core at the end.
+- **Fat-loss structure** (`splits`, `superset_all`, `days.cond_glutes`): 4-6 days are three full-body
+  days plus a Conditioning + Glutes day (25 min of Zone 2, then a no-rest glute and hip circuit),
+  as Lean & Tone and PJF write them. Every lift is paired with one that doesn't compete (lower with
+  upper, push with pull): 0-15 s between the two, rest after the pair. Lifting days end with an
+  interval finisher (sprint/jog/walk rounds, Zone 4/5); the long day is Zone 2.
+- **Cooldown** (`cooldown`: fat loss, durability, athletic): 2-4 holds for what the day worked, the
+  two hardest-worked muscles each getting a hold mainly for them, then 3 min of 7/11 breathing. The
+  generator does in JS what `data/session_prep.py` does for hand-built plans; each hold's note says
+  which of today's exercises it's for. Strength and muscle plans (BWS style) have none.
+- **Home kit** (`load_limited`): with no barbell, cable, machine, Smith or sled, weights can't keep
+  going up, so main and secondary reps climb each phase (8-10 → 10-12 → 12-15) instead of dropping,
+  rest after a pair shortens by 15 s in the last phase, and non-main picks move up a level per
+  phase (harder versions: single-leg, B-stance, 1¼ reps).
 - **Required moves** (`required`): durability plans always include the Copenhagen adductor drill,
   3 times a week in the first phase and once a week after (the Harøy 2019 programme: 41% fewer groin
   problems), moving from the knee version up; and a Nordic hamstring lower once a week, 2-3 × 3-5 slow

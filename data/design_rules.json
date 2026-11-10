@@ -8,13 +8,19 @@
     "fat_loss":   { "label": "Lose fat",            "main_reps": ["8-10", "8-10", "6-8"], "secondary_reps": "10-12", "accessory_reps": "12-15", "power": false, "conditioning": true, "superset_accessories": true,
                             "rest": { "main": "90s", "secondary": "60s", "accessory": "60s", "core": "45s" },
                             "volume_targets": { "abs": [8, 12], "obliques": [6, 10], "glutes": [12, 20] },
-                            "core_sets": 3, "core_early": true, "warmup_rounds": { "60": 3 }, "set_ramp": 1.1 },
+                            "core_sets": 3, "core_early": true, "warmup_rounds": { "60": 3 }, "set_ramp": 1.1,
+                            "superset_all": true, "cooldown": true,
+                            "splits": {
+                              "4": { "name": "3 full body + conditioning & glutes", "days": ["full_a", "full_b", "full_c", "cond_glutes"] },
+                              "5": { "name": "3 full body + upper + conditioning & glutes", "days": ["full_a", "full_b", "cond_glutes", "full_c", "upper_a"] },
+                              "6": { "name": "3 full body + upper + single-leg + conditioning & glutes", "days": ["full_a", "full_b", "cond_glutes", "full_c", "upper_a", "lower_single"] }
+                            } },
     "athletic":   { "label": "Athletic / court",    "main_reps": ["6-8", "5-6", "4-5"], "secondary_reps": "8-10", "accessory_reps": "10-12", "power": true,  "conditioning": false, "hip_focus": true,
                             "volume_targets": { "abs": [4, 8], "obliques": [4, 8], "glutes": [12, 18] },
-                            "core_early": true, "set_ramp": 1.2, "max_contacts": 100 },
+                            "core_early": true, "set_ramp": 1.2, "max_contacts": 100, "cooldown": true },
     "durability": { "label": "Durability & hip",    "main_reps": ["8-10", "6-8", "6-8"], "secondary_reps": "8-12", "accessory_reps": "10-15", "power": false, "conditioning": false, "hip_focus": true,
                             "volume_targets": { "abs": [8, 12], "obliques": [10, 16], "glutes": [15, 22], "adductors": [4, 8] },
-                            "core_sets": 3, "core_early": true, "set_ramp": 1.1,
+                            "core_sets": 3, "core_early": true, "set_ramp": 1.1, "cooldown": true,
                             "required": [
                               { "match": "copenhagen", "not": "dynamic", "slot": "hip_focus", "per_week": [3, 1],
                                 "why": "Copenhagen adductor programme (Harøy 2019): 41% fewer groin problems; 3x/week to start, then 1x/week." },
@@ -23,7 +29,7 @@
                                 "why": "Nordic hamstring work: about half the hamstring injuries in programmes that include it (van Dyk 2019)." }
                             ] }
   },
-  "goal_overrides_doc": "Per goal: required moves (match/not are case-insensitive name parts; filled into the hip_focus slot or a slot for that muscle, per_week by phase, the last value after that; may be one level above the person's level); max_contacts (jumps, landings and bounds per session, each side counted; --sanity checks it, default 100); rest (by role) replaces the role's rest; volume_targets replace the global ones for those muscles, scaled by days/5 under 5 days; core_sets replaces the core role's sets; core_early moves the day's core move (light patterns only, kept short of failure) to just after power work; warmup_rounds (by session minutes) replaces the session's rounds; set_ramp is how much weekly sets grow by the last phase (1.1: +1 set on secondaries, 1.2: also on accessories). Sources: docs/LEARNED_PATTERNS.md, reports/Workout plan builder methods.md.",
+  "goal_overrides_doc": "Per goal: splits (by days, replaces the split table); superset_all (pair every lift with a non-competing one, 0-15 s between, rest after the pair); cooldown (holds for what the day worked, then 7/11 breathing); required moves (match/not are case-insensitive name parts; filled into the hip_focus slot or a slot for that muscle, per_week by phase, the last value after that; may be one level above the person's level); max_contacts (jumps, landings and bounds per session, each side counted; --sanity checks it, default 100); rest (by role) replaces the role's rest; volume_targets replace the global ones for those muscles, scaled by days/5 under 5 days; core_sets replaces the core role's sets; core_early moves the day's core move (light patterns only, kept short of failure) to just after power work; warmup_rounds (by session minutes) replaces the session's rounds; set_ramp is how much weekly sets grow by the last phase (1.1: +1 set on secondaries, 1.2: also on accessories). Sources: docs/LEARNED_PATTERNS.md, reports/Workout plan builder methods.md.",
   "roles": {
     "warmup":      { "sets": 1, "reps": "8",      "rest": null,      "secs_per_set": 40,  "count": 4 },
     "power":       { "sets": 3, "reps": "4",      "rest": "60-90s",  "secs_per_set": 20,  "rest_secs": 75 },
@@ -175,6 +181,14 @@
       { "role": "accessory", "patterns": ["balance"] },
       { "role": "core",      "patterns": ["anti_rotation", "rotation"] }
     ]},
+    "cond_glutes": { "focus": "Conditioning + Glutes", "circuit": true, "slots": [
+      { "role": "conditioning", "long": true, "prefer": "zone 2|walk|easy|bike ride" },
+      { "role": "accessory", "muscles": ["glutes"] },
+      { "role": "accessory", "muscles": ["abductors", "glutes"] },
+      { "role": "accessory", "muscles": ["hip_flexors", "adductors"] },
+      { "role": "accessory", "muscles": ["upper_back", "rear_delts"] },
+      { "role": "accessory", "muscles": ["quads", "glutes"] }
+    ]},
     "speed_lateral": { "focus": "Agility · Lateral", "slots": [
       { "role": "power",     "patterns": ["deceleration_landing"] },
       { "role": "power",     "patterns": ["plyo_bound_hop"] },
@@ -193,6 +207,12 @@
     "deload": { "goals": ["strength", "muscle"], "min_weeks": 8, "sets_factor": 0.5,
                 "when": "Last week of a strength or muscle plan of 8+ weeks only. None of the coach programs schedules one; the adaptive layer deloads when logged performance drops." }
   },
+  "load_limited": {
+    "heavy_equipment": ["barbell", "trap_bar", "machine", "cable", "smith", "sled"],
+    "main_reps": ["8-10", "10-12", "12-15"], "secondary_reps": ["10-12", "12-15", "12-15"], "last_phase_rest_drop_secs": 15,
+    "note": "Without heavy-load kit, main and secondary reps climb each phase instead of dropping, rest shortens in the last phase, and non-main picks move up a level per phase (harder versions), as Lean & Tone and PJF's home programs do."
+  },
+  "conditioning": { "finisher_prefer": "interval|sprint|zone 4|zone 5", "note": "Finishers on lifting days are intervals; the long conditioning day is Zone 2." },
   "session_minutes": { "30": { "max_exercises": 5, "superset_accessories": true, "warmup_count": 3, "warmup_rounds": 1 },
                        "45": { "max_exercises": 6, "superset_accessories": true, "warmup_count": 4, "warmup_rounds": 2 },
                        "60": { "max_exercises": 8, "superset_accessories": false, "warmup_count": 4, "warmup_rounds": 2 } }
