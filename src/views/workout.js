@@ -4,6 +4,7 @@
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
+import { learnProfile } from '../lib/learn.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
@@ -307,9 +308,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   const anyLogged = session.exercises.some(x => (x.sets || []).some(st => st?.done));
 
   // Build last-session reference weights + all-time best e1RM per exercise
-  const { ref: prevRef, bestE1RM: allTimeBestE1RM, history } = await buildPrevReference(programId, session.id, today());
+  const { ref: prevRef, bestE1RM: allTimeBestE1RM, history, profile } = await buildPrevReference(programId, session.id, today());
   if (stale()) return;
   _history = history;
+  _profile = profile;
   const _deload = bandDay ? null : deloadAdvice(session.exercises.map(x => targetFor(x, exMap[String(x.name).toLowerCase()])));
 
   app.innerHTML = `
@@ -487,6 +489,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
 
       set.done = !set.done;
+      if (set.done) set.at = Date.now(); else delete set.at;   // set times give real session length (src/lib/learn.js)
       await saveSession(session);
       e.target.closest('.set-row').classList.toggle('done', !!set.done);
       e.target.textContent = set.done ? '✓' : '○';
@@ -1312,15 +1315,16 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
       }
     }
   }
-  return { ref, bestE1RM, history };
+  return { ref, bestE1RM, history, profile: learnProfile(all, { today: todayStr }) };
 }
 
 let _history = {};
+let _profile = null;
 /** Next-session target for a lift from its logged history (null for timed work or nothing logged). */
 function targetFor(ex, lookup) {
   if (isTimed(ex) || ex.intervals) return null;
   return nextTarget({ history: _history[ex.name] || [], target: ex.target_reps, sets: parseInt(ex.target_sets) || 3,
-                      equipment: lookup?.equipment || [], today: today() });
+                      equipment: lookup?.equipment || [], today: today(), profile: _profile });
 }
 
 function formatPrevSets(sets) {

@@ -148,6 +148,24 @@ today, from the last 3 times the lift was logged (in any plan). The workout card
 
 `node data/check_adapt.mjs` checks these rules.
 
+## Learning from your logs
+
+[`src/lib/learn.js`](../src/lib/learn.js) works out a personal profile from the last 12 weeks of
+logged workouts, on the phone, with no AI service: plain counts and trends. It needs 6 logged
+workouts before anything changes; the Plans tab shows it under "What the app has learned".
+
+| Learns | From | Changes |
+|---|---|---|
+| Exercises you avoid | Swapped away from 2+ times (more than done), or left undone most times | Generated plans leave them out |
+| What you swap to, and add | Swaps and added exercises | Generated plans prefer them |
+| What's progressing or stalled | Weekly trend of each lift's estimated max (3+ sessions) | Progressing picks preferred; stalled accessories rotated |
+| Trend per muscle | Average of its lifts' trends | Shown; for the volume rule next |
+| How fast you outgrow ranges | Share of exercises where every set beat the top by 2+ | At 30%+, weight targets jump twice as far when you do it again |
+| Real session length | First to last logged set (each set now stores its time) | Generate starts at the closest session length |
+| When you train | Weekdays trained and skipped, sessions a week | Generate starts at your usual days a week |
+
+`node data/check_learn.mjs` checks it.
+
 ## Warm-ups cover the day
 
 Every body region the day works with 2+ exercises (push, pull, legs & hips, core) gets at least one warm-up move.

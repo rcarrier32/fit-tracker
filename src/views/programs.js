@@ -6,7 +6,8 @@ import { loadCatalogs } from '../lib/static_data.js';
 import { startPlan, getActivePlan, getAllPlans, endPlan, currentWeek, planProgress } from '../lib/plans.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { SPLIT_TEMPLATES, AB_SLOTS, suggestForSlot, autoFillDay } from '../lib/plan_builder.js';
-import { pref } from '../db.js';
+import { pref, getAll } from '../db.js';
+import { learnProfile, profileSummary } from '../lib/learn.js';
 import { programName, selectSingleProgram, programKind } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 import { openBandDatabase } from './band_db.js';
@@ -90,7 +91,17 @@ export async function renderPrograms(app) {
       <button class="btn" id="gen-plan" style="width:auto;padding:0 12px;min-height:36px;font-size:13px">✨ Generate</button>
       <button class="btn secondary" id="build-plan" style="width:auto;padding:0 12px;min-height:36px;font-size:13px">Manual</button>
     </div>
+    <details id="learned-card" class="card" style="margin-top:10px;padding:10px 12px">
+      <summary style="cursor:pointer;font-weight:600;font-size:14px">🧠 What the app has learned</summary>
+      <div id="learned-body" class="muted" style="font-size:13px;margin-top:6px">…</div>
+    </details>
   `;
+  // Learned on the phone from your logs (src/lib/learn.js); new generated plans use it.
+  loadProfile().then(prof => {
+    const el = app.querySelector('#learned-body');
+    if (el) el.innerHTML = profileSummary(prof).map(l => `<div style="margin:3px 0">• ${l}</div>`).join('')
+      + '<div style="margin-top:6px;font-size:11px;opacity:.75">Worked out on this phone from your logged workouts. Nothing is sent anywhere.</div>';
+  });
 
   const $sections = app.querySelector('#prog-sections');
   function draw() {
@@ -568,9 +579,19 @@ const GEN_EQUIPMENT = ['dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'bench',
 let _rules = null;
 const loadRules = async () => (_rules ||= await fetch('data/design_rules.json').then(r => r.json()));
 
+async function loadProfile() {
+  const [sessions, { exercises }] = await Promise.all([getAll('sessions'), loadCatalogs()]);
+  const byName = new Map(exercises.map(e => [e.name, e]));
+  return learnProfile(sessions, { today: localDateStr(), muscleOf: (n) => byName.get(n) });
+}
+
 async function openGeneratorWizard(onSaved) {
   const rules = await loadRules();
+  const profile = await loadProfile();
   const saved = (await pref('gen_settings')) || {};
+  // First time: start from how you actually train (days a week, session length), when the logs say.
+  if (!saved.days && profile.days.per_week) saved.days = Math.min(6, Math.max(2, Math.round(profile.days.per_week)));
+  if (!saved.minutes && profile.duration) saved.minutes = [30, 45, 60].reduce((a, b) => Math.abs(b - profile.duration.median_min) < Math.abs(a - profile.duration.median_min) ? b : a);
   const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band'];
   const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], ...saved, equipment };
   openSheet((sheet, close) => {
@@ -614,7 +635,7 @@ async function openGeneratorWizard(onSaved) {
         await pref('gen_settings', rest);
         close(false);   // a follow-up sheet opens next
         const { exercises } = await loadCatalogs();
-        const plan = generatePlan({ ...st, seed: Date.now() % 100000 }, { exercises, rules, hasVideo });
+        const plan = generatePlan({ ...st, seed: Date.now() % 100000, profile }, { exercises, rules, hasVideo });
         openGeneratedPreview(plan, { exercises, rules }, onSaved);
       };
     };
@@ -634,6 +655,9 @@ function openGeneratedPreview(plan, ctx, onSaved) {
       sheet.innerHTML = `
         <input type="text" id="gp-name" value="${plan.name.replace(/"/g, '&quot;')}" style="font-size:17px;font-weight:600">
         <div class="muted" style="margin:6px 0">${plan.description}</div>
+        ${plan.learned && (plan.learned.avoided.length || plan.learned.preferred.length) ? `<div class="muted" style="font-size:12px;margin:-2px 0 6px">🧠 From your ${plan.learned.from_sessions} logged workouts:${
+          plan.learned.avoided.length ? ` left out ${plan.learned.avoided.slice(0, 3).join(', ')}${plan.learned.avoided.length > 3 ? '…' : ''}.` : ''}${
+          plan.learned.preferred.length ? ` Picked your usual ${plan.learned.preferred.slice(0, 3).join(', ')}.` : ''}</div>` : ''}
         <div class="muted" style="font-size:11px;margin-bottom:4px">Week 1 working sets per muscle</div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">${summary}</div>
         <div style="display:flex;gap:4px;overflow-x:auto;margin:12px 0 4px">

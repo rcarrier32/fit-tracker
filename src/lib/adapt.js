@@ -49,7 +49,7 @@ function working(session) {
  * @param today     'YYYY-MM-DD'
  * @returns { weight, reps, kind: 'up'|'reps'|'hold'|'down'|'back'|'harder', note } or null when there's nothing to go on
  */
-export function nextTarget({ history = [], target, sets = 3, equipment = [], today }) {
+export function nextTarget({ history = [], target, sets = 3, equipment = [], today, profile = null }) {
   const range = repRange(target);
   const last = working(history[0]);
   if (!range || !last) return null;
@@ -71,6 +71,10 @@ export function nextTarget({ history = [], target, sets = 3, equipment = [], tod
   if (allHit) {
     if (step / w > 0.1) {
       return { weight: w, reps: hi + 2, kind: 'reps', note: `Every set hit ${hi}. A ${step} lb jump is big at ${w} lb: aim for ${hi + 2} reps first.` };
+    }
+    // Learned (src/lib/learn.js): if you usually beat the top of the range by 2+, and did again, jump twice as far.
+    if (profile?.progression?.overshoot_rate >= 0.3 && last.reps.every(r => r >= hi + 2) && (2 * step) / w <= 0.1) {
+      return { weight: w + 2 * step, reps: lo, kind: 'up', note: `↑ ${2 * step} lb: you beat ${hi} on every set, as you often do.` };
     }
     return { weight: w + step, reps: lo, kind: 'up', note: `↑ ${step} lb: every set hit ${hi} last time.` };
   }

@@ -67,6 +67,13 @@ export const FOCUS_GROUPS = {
 
 export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.video_url }) {
   const p = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, equipment: ['bodyweight', 'dumbbell'], focus: [], plyo: false, level: 2, seed: 1, ...params };
+  // What the app learned from the logs (src/lib/learn.js): leave out what you swap or skip, prefer
+  // what you swap to and what's progressing, rotate what's stalled. Absent until there are enough logs.
+  const prof = params.profile?.ready ? params.profile : null;
+  const avoidSet = new Set(prof?.avoid || []);
+  const likeSet = new Set([...(prof?.favorites || []), ...Object.values(prof?.prefer || {})]);
+  const upSet = new Set(prof?.progressing || []), stallSet = new Set(prof?.stalled || []);
+  const learned = { avoided: new Set(), preferred: new Set() };
   const goal = rules.goals[p.goal];
   const rand = rng(p.seed);
   const have = new Set(['bodyweight', ...p.equipment]);
@@ -167,6 +174,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (slot.muscles && ['isolation_upper', 'isolation_lower'].includes(e.pattern)) s += lifting ? 1.5 : 0.5;
       if (slot.muscles && ['mobility', 'balance', 'isometric'].includes(e.pattern) && !slot.hip_focus) s -= lifting ? 2.5 : 1;
       if (/optional/i.test(e.name)) s -= 0.6;
+      if (avoidSet.has(e.name)) s -= 6;
+      if (likeSet.has(e.name)) s += 1.5;
+      if (upSet.has(e.name)) s += 0.8;
+      if (stallSet.has(e.name) && slot.role !== 'main') s -= 0.8;
       return [s + rand() * 0.9, e];
     }).sort((a, b) => b[0] - a[0]).map(([, e]) => e);
   }
@@ -238,6 +249,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
           e = candidates(slot, usedToday, usedWeek, avoid, ph)[0] || null;
         }
         if (e) {
+          if (likeSet.has(e.name)) learned.preferred.add(e.name);
           usedToday.add(e.name); usedWeek.add(e.name);
           addVol(e, (rules.roles[slot.role] || {}).sets || 3);
         }
@@ -521,6 +533,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     weeks,
     summary,
     pool_size: pool.length,
+    learned: prof ? { from_sessions: prof.sessions, avoided: (prof.avoid || []).filter(n => pool.some(e => e.name === n)),
+      preferred: [...learned.preferred] } : null,
   };
 }
 
