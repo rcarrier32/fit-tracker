@@ -36,7 +36,7 @@ lower_back, neck, full_body.
 
 **Equipment:** bodyweight, dumbbell, kettlebell, barbell, trap_bar, band, mini_band, cable,
 machine, bench, box, med_ball, sled, slider, bosu_pad, pullup_bar, landmine, smith, suspension (TRX and other straps),
-pool (swimming, deep-water and pool running), bike (stationary or road). Walking, running and "Zone 2/4/5" cardio
+pool (swimming, deep-water and pool running), bike (stationary or road), agility_ladder. Walking, running and "Zone 2/4/5" cardio
 are `bodyweight`: they can be done outside or on any machine.
 
 ## Classifying a new exercise

@@ -23,7 +23,7 @@ export const TAXONOMY = {
     'plyo_jump', 'plyo_bound_hop', 'speed_accel', 'agility_cod', 'deceleration_landing', 'balance', 'mobility', 'isometric', 'conditioning'],
   role: ['warmup', 'power', 'main', 'secondary', 'accessory', 'core', 'conditioning', 'cooldown'],
   equipment: ['bodyweight', 'dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'band', 'mini_band', 'cable', 'machine', 'bench', 'box',
-    'med_ball', 'sled', 'slider', 'bosu_pad', 'pullup_bar', 'landmine', 'smith', 'suspension'],
+    'med_ball', 'sled', 'slider', 'bosu_pad', 'pullup_bar', 'landmine', 'smith', 'suspension', 'pool', 'bike', 'agility_ladder'],
   plane: ['sagittal', 'frontal', 'transverse'],
   progresses_by: ['load', 'variation'],   // optional; otherwise derived (src/lib/taxonomy.js progressesBy)
 };

@@ -60949,6 +60949,764 @@
           }
         ]
       }
+    ],
+    "daily_mobility": [
+      {
+        "id": "daily_mobility",
+        "name": "Daily Mobility",
+        "program_name": "Daily Mobility",
+        "group": "Daily",
+        "source": "Daily",
+        "description": "Hips and whole body, 12-15 minutes a day, rotating A → B → C. Opens with your low-back reset, then ankles, hips, T-spine, shoulders and balance, shaped like HoopStudy's Ten Minute Routine. Runs next to your training plan (Copenhagen and Nordics stay in the training).",
+        "sessions_per_week": 7,
+        "session_length_min": 14,
+        "level": "All levels",
+        "recommended_weeks": 12,
+        "rotation_note": "every day, A → B → C",
+        "equipment": [
+          "Light band",
+          "Bench or step",
+          "Weight plate or step"
+        ],
+        "goal": "Keep the hips and whole body feeling good when you coach a lot and sit at a computer.",
+        "days": [
+          {
+            "day_name": "Daily A · Ankles, hips, T-spine",
+            "notes": [
+              "About 13 minutes. Your low-back reset, then stand → floor → lunge & squat → finish, like HoopStudy's Ten Minute Routine.",
+              "Smooth and steady, not a workout. Stop any move that hurts sharply."
+            ],
+            "exercises": [
+              {
+                "name": "Cat Camel",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "7",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Slow, segment by segment. (The old daily card's Cat Cow.)",
+                "alternates": [
+                  "Cat Cow"
+                ]
+              },
+              {
+                "name": "Split Stance Lunge Overhead Reach with Rotation",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
+                "alternates": [
+                  "Half Kneeling Hip Flexor Stretch"
+                ]
+              },
+              {
+                "name": "Hip Airplane (No Support)",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 3,
+                "reps": "3 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "Your hip airplanes (split-lunge rotation): slow open and close.",
+                "alternates": [
+                  "Facing Wall Hip Airplane"
+                ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
+              },
+              {
+                "name": "Pogos",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "25",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Single Leg Stance"
+                ]
+              },
+              {
+                "name": "Arm Circles",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Double Leg Functional Calf Raise (Optional)",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "15",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Bent Knee Calf Raise (Optional)"
+                ]
+              },
+              {
+                "name": "Resisted Ankle Circles",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Each foot. No band needed."
+              },
+              {
+                "name": "Dead Bug",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "5 slow breaths first, then 10 alternating."
+              },
+              {
+                "name": "90/90 Hip Opener",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "5 s hold each way, then 5 slow transitions.",
+                "alternates": [
+                  "90/90 Knee Roll"
+                ]
+              },
+              {
+                "name": "Glute Bridge",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "10",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "3 s squeeze at the top.",
+                "alternates": [
+                  "Glute Bridge Hold"
+                ]
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Half Kneeling Thoracic Rotations"
+                ]
+              },
+              {
+                "name": "Hip Flexor/Quad Bridge",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Each side. PJF's couch stretch.",
+                "alternates": [
+                  "Half Kneeling Hip Flexor Stretch"
+                ]
+              },
+              {
+                "name": "Asian Squat",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Hold, then rock side to side."
+              },
+              {
+                "name": "Wall Slides",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Band Pull-Aparts",
+                "round_group": "Finish",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "15",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Band External Rotations"
+                ]
+              },
+              {
+                "name": "Single Leg Stance",
+                "round_group": "Finish",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30s",
+                "rest": null,
+                "notes": "Each side.",
+                "alternates": [
+                  "Single-Leg Balance"
+                ]
+              }
+            ]
+          },
+          {
+            "day_name": "Daily B · Breathing, glutes, shoulders",
+            "notes": [
+              "About 13 minutes. Your low-back reset, then the B versions: Menner's lying-down breathing and bridge hold, thoracic rotations, band rotations.",
+              "Smooth and steady, not a workout. Stop any move that hurts sharply."
+            ],
+            "exercises": [
+              {
+                "name": "Cat Camel",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "7",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Slow, segment by segment. (The old daily card's Cat Cow.)",
+                "alternates": [
+                  "Cat Cow"
+                ]
+              },
+              {
+                "name": "Split Stance Lunge Overhead Reach with Rotation",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
+                "alternates": [
+                  "Half Kneeling Hip Flexor Stretch"
+                ]
+              },
+              {
+                "name": "Hip Airplane (No Support)",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 3,
+                "reps": "3 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "Your hip airplanes (split-lunge rotation): slow open and close.",
+                "alternates": [
+                  "Facing Wall Hip Airplane"
+                ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
+              },
+              {
+                "name": "Pogos",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "25",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Single Leg Stance"
+                ]
+              },
+              {
+                "name": "Arm Circles",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Bent Knee Calf Raise (Optional)",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "15",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Bent knee works the soleus.",
+                "alternates": [
+                  "Double Leg Functional Calf Raise (Optional)"
+                ]
+              },
+              {
+                "name": "Resisted Ankle Circles",
+                "round_group": "Standing",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Each foot."
+              },
+              {
+                "name": "Posterior Pelvic Tilt Breathing",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "10 breaths",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "HoopStudy recovery's \"90/90 lift\": lying down, feet on a wall with hips and knees at 90°, slight tuck, slow breaths.",
+                "alternates": [
+                  "Rock Back Breathing"
+                ]
+              },
+              {
+                "name": "90/90 Hip Opener",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "5 s hold each way, then 5 slow transitions.",
+                "alternates": [
+                  "90/90 Knee Roll"
+                ]
+              },
+              {
+                "name": "Glute Bridge Hold",
+                "round_group": "Floor",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "25s",
+                "rest": "15s",
+                "notes": "One leg if you can (Menner's single-leg heel bridge hold): each side.",
+                "alternates": [
+                  "Glute Bridge"
+                ]
+              },
+              {
+                "name": "Half Kneeling Thoracic Rotations",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "World's Greatest Stretch"
+                ]
+              },
+              {
+                "name": "Half Kneeling Hip Flexor Stretch",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Each side, reach the same-side arm overhead.",
+                "alternates": [
+                  "Hip Flexor/Quad Bridge"
+                ]
+              },
+              {
+                "name": "Asian Squat",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Hold, then rock side to side."
+              },
+              {
+                "name": "Wall Slides",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Band External Rotations",
+                "round_group": "Finish",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null,
+                "alternates": [
+                  "Band Pull-Aparts"
+                ]
+              },
+              {
+                "name": "Single-Leg Balance",
+                "round_group": "Finish",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30s",
+                "rest": null,
+                "notes": "Each side. Eyes closed once 30 s is easy.",
+                "alternates": [
+                  "Single Leg Stance"
+                ]
+              }
+            ]
+          },
+          {
+            "day_name": "Daily C · Hips",
+            "notes": [
+              "About 15 minutes. Your low-back reset, then hips: your Hip Mobility list, PJF's pigeon and hip-flexor progressions, and the \"4 moves for tight hips\" reel.",
+              "Work through the pigeon levels slowly (PJF: levels 3 and 4 are hard for many people)."
+            ],
+            "exercises": [
+              {
+                "name": "Cat Camel",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "7",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Slow, segment by segment. (The old daily card's Cat Cow.)",
+                "alternates": [
+                  "Cat Cow"
+                ]
+              },
+              {
+                "name": "Split Stance Lunge Overhead Reach with Rotation",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
+                "alternates": [
+                  "Half Kneeling Hip Flexor Stretch"
+                ]
+              },
+              {
+                "name": "Hip Airplane (No Support)",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 3,
+                "reps": "3 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "Your hip airplanes (split-lunge rotation): slow open and close.",
+                "alternates": [
+                  "Facing Wall Hip Airplane"
+                ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Low back reset",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
+              },
+              {
+                "name": "Optional Pigeon Length Under Load",
+                "round_group": "Pigeon",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"rotating pigeon\". PJF's levels, slowly.",
+                "alternates": [
+                  "Banded Incline Pigeon Rotation"
+                ]
+              },
+              {
+                "name": "Banded Incline Pigeon Rotation",
+                "round_group": "Pigeon",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"band pigeon\". A bench works too (the reel's bench pigeon).",
+                "alternates": [
+                  "Optional Pigeon Length Under Load"
+                ]
+              },
+              {
+                "name": "Facing Wall Hip Circle Rotations",
+                "round_group": "Rotation",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"knee circles\": big slow circles, each leg."
+              },
+              {
+                "name": "90/90 Hip Opener",
+                "round_group": "Rotation",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:30",
+                "rest": null,
+                "notes": "Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener.",
+                "alternates": [
+                  "90/90 Knee Roll"
+                ]
+              },
+              {
+                "name": "90/90 Knee Roll",
+                "round_group": "Rotation",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your 90/90 windshield wipers."
+              },
+              {
+                "name": "Banded Hip Distraction Pulling Into Hip Flexion",
+                "round_group": "Band",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"knee pull, band resistance\": try different angles."
+              },
+              {
+                "name": "Hamstring Floss",
+                "round_group": "Hamstrings & frog",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"lunge to hamstring\": tuck, then push the glute back."
+              },
+              {
+                "name": "Optional Downward Frog",
+                "round_group": "Hamstrings & frog",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Your frog work: lean forward toward cobra."
+              },
+              {
+                "name": "Hip Flexor Rock Back",
+                "round_group": "Hamstrings & frog",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your \"sit back, ankle tuck/untuck\"."
+              },
+              {
+                "name": "Hip Flexor Length Under Load",
+                "round_group": "Length under load",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Each side (PJF).",
+                "alternates": [
+                  "Hip Flexor/Quad Bridge"
+                ]
+              },
+              {
+                "name": "Lateral Lunge Length Under Load",
+                "round_group": "Length under load",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "45s",
+                "rest": null,
+                "notes": "Each side. The reel's bench lateral lunge works too."
+              },
+              {
+                "name": "Single Leg Full Range Step Downs or Leg Press",
+                "round_group": "Knees",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "8 each leg",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "30s",
+                "notes": "PJF's plate step-downs: slow, knee travels over the toes.",
+                "alternates": [
+                  "Poliquin Step Down"
+                ]
+              },
+              {
+                "name": "Single-Leg Balance",
+                "round_group": "Finish",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "30s",
+                "rest": null,
+                "notes": "Each side.",
+                "alternates": [
+                  "Single Leg Stance"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "stats": {
