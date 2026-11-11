@@ -45,8 +45,27 @@ Rotation) 3x3 · Stand stretch with breath
   kneeling at the bench, leg circles/extensions. (Used in Daily C as stand-ins.)
 - PJF Online: Optional Pigeon Length Under Load → Hip Flexor Length Under Load; plate step-downs,
   half-kneeling front-foot-on-plate knee rocks, single-leg stance.
-- 11 more Facebook screen recordings (mostly Griffith) were being read on 2026-11-11; results
-  are added below when available.
+- 11 more Facebook screen recordings, read 2026-11-11 (frame by frame). Only one is Griffith's,
+  and its "...more" caption wasn't expanded, so **his full hip session is still in a reel link**:
+
+| Recording | Creator | Moves (dose / cues) | Note items it shows |
+|---|---|---|---|
+| 2025-09-12 | **Vernon Griffith**: "FULL HIP MOBILITY SESSION while out at Ohio State…" | Hands and knees → kick one leg back → sink into a low pigeon/long lunge, chest down, reach forward → back; both sides. No dose shown. | likely #1 Rotating Pigeon (or #19/#20) |
+| 2025-09-15 | Dr. Devon Hoffman, "fix anterior pelvic tilt" | On back: pull one knee to chest, lift the other foot's toes, drive the heel and lift the hip, low back pressed down; hold 5 breaths (exhale back down, inhale hip up); both sides. | **#9 Knee Pull, Lift Toe/Heel Bridge** (strong) |
+| 2025-11-04 | dr.leethechiro | On back, long band low-anchored around the top of the thigh, pulling toward the anchor; knee to chest and across at different angles. | likely **#8 Knee Pull Band Resistance** |
+| 2025-09-21 | RISE Training, "pinch in your hip" | Seated leaning back, band foot-to-other-knee, hold the knee against it: 2 × 40 s at 40% daily for a week, then more effort/less time. (2nd move cut off.) | possibly #8 |
+| 2025-10-21 | Project Physical Therapy, "What them hips do?" | Back to a wall, standing leg slightly bent; other leg turn in + lift, then turn out + lift, alternating; 8-10 cycles × 2-3 sets; wall/chair for balance. | likely **#4 Standing 45 ext IR/ER** |
+| 2025-10-19 | raybeau_moves, "Hip Mobility Beginner Friendly" | All ×5 each side: block squat + trunk rotation reach · seated knee windshield wipers · seated good mornings · side-bend QL stretch · squat → fold → lunge back · 90-90 hold/hinge, straighten back leg. | likely **#13** (wipers), **#10** (squat→hamstring), weak #12/#14/#17 |
+| 2026-02-26 | Yoga With Katharine, "Hip Mobility routine that will change your life" | Malasana folds · knee drops in squat · **quadruped knee circles** · low lunge tucks · mermaid openers · kneeling side lunges; 3×/day for 21 days. | **#2 Knee circle** (strong), likely #18 (tuck), possibly #1 |
+| 2025-09-20 | Physical Therapy Session, "30 times daily" | Hands and knees: swing one knee under the body, then kick the leg back and up. | possibly **#19 Swing Throughs** |
+| 2025-10-19 | Zac Cupples, "Still stretching your hip flexors?" | On back, ball between knees, lower one leg without arching, 3 × 8/side · reverse lunge holding a weight, heel heavy, no back arch/hip hike, 3 × 8/side; 2-4 weeks. | not on the list (hip extension control) |
+| 2026-02-26 | Yoga with Asury, "undoes hours of sitting" | Shins up a wall, knees on a blanket: hands-and-knees → cobra/upward dog and back, repeated. | not on the list (near #5/#6) |
+| 2026-02-26 | Anytime Mobility, "3 moves each day" | On back with a small ball: knee rotations · legs straight up · frog-leg lift. | not on the list |
+
+Still **not found in any recording**: #3 sit back ankle tuck/untuck, #5 frog leg cobra lean,
+#6 ½ frog into cobra, #7 hip opener into knee lean back, #11 heel clicks, #15 90/90 30% rotations,
+#16 90/90 swing-through single leg, #20 band pigeon (and a clear #12/#14/#17). These are most
+likely in Griffith's full hip-session reel and the links below.
 
 ## Links
 
