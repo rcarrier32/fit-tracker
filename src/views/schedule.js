@@ -564,8 +564,8 @@ export const DAILY_ID = 'daily_mobility';
  * Daily Mobility runs alongside whatever program is active (its own A → B → C cursor), opened from
  * its Home card at #/daily. Null if the program isn't in the library.
  */
-export async function dailyWorkout() {
-  const program = await findProgram(DAILY_ID);
+export async function dailyWorkout(id = DAILY_ID) {
+  const program = await findProgram(id);
   if (!program) return null;
   return { type: 'program', program, ...(await followPosition(program)), mode: 'follow', daily: true };
 }

@@ -166,6 +166,11 @@ const dayLetter = (name, i) => (/Daily ([A-Z])/.exec(name || '') || [])[1] || St
  * Not started → Start / Skip today, with what it changed for yesterday's training.
  * Started → progress and the next move. Done or skipped → one line.
  */
+async function findProgramById(id) {
+  const { programById } = await loadCatalogs();
+  return programById.get(id) || null;
+}
+
 async function dailyCardData(todaysSessions) {
   const dw = await dailyWorkout();
   if (!dw || dw.type !== 'program') return null;
@@ -194,8 +199,20 @@ async function dailyCardData(todaysSessions) {
   const finished = st.state === 'done'
     ? todaysSessions.filter(x => x.program_id === DAILY_ID && x.done && !x.skipped).sort((a, b) => (b.id || 0) - (a.id || 0))[0] : null;
   const todayIdx = finished ? (finished.day_index ?? 0) : i;
-  return { program, day, rows, st, streak, adjust, letters, todayIdx, nextIdx: (todayIdx + 1) % n,
+  // Basketball days: Mon, Wed, Fri mornings (the user's 5:45 pickup).
+  const hoops = [1, 3, 5].includes(new Date().getDay()) && (await findProgramById('basketball_warmup'))
+    ? { done: todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped) } : null;
+  return { program, day, rows, st, streak, adjust, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
     minutes: program.session_length_min || 13 };
+}
+
+/** Basketball days (Mon/Wed/Fri, 5:45): one line to the pre-game warm-up, next to the plan. */
+function hoopsRow(d) {
+  if (!d?.hoops) return '';
+  return `<div class="card-row" style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+        <div style="font-size:13px">🏀 Basketball warm-up <span class="muted">· ${d.hoops.done ? 'done ✓' : '10 min'}</span></div>
+        <button class="btn ghost" id="hoops-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${d.hoops.done ? 'View' : 'Open →'}</button>
+      </div>`;
 }
 
 function renderDailyCard(d) {
@@ -215,6 +232,7 @@ function renderDailyCard(d) {
         </div>
         <button class="btn ghost" id="daily-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${done ? 'View' : 'Do it anyway'}</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
   }
   if (st.state === 'started') {
@@ -227,6 +245,7 @@ function renderDailyCard(d) {
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" style="flex:2">▶ Resume</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
   }
   return `
@@ -237,6 +256,7 @@ function renderDailyCard(d) {
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
 }
 
@@ -493,6 +513,8 @@ export async function renderHome(app) {
     }
     navigate('workout');
   };
+  const hoopsBtn = app.querySelector('#hoops-open');
+  if (hoopsBtn) hoopsBtn.onclick = () => navigate('routine/basketball_warmup');
   const dailyBtn = app.querySelector('#daily-open');
   if (dailyBtn) dailyBtn.onclick = async () => {
     if (dailyBtn.dataset.start) { try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ } }

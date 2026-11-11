@@ -68494,6 +68494,229 @@
           }
         ]
       }
+    ],
+    "basketball_warmup": [
+      {
+        "id": "basketball_warmup",
+        "name": "Basketball Warm-up",
+        "program_name": "Basketball Warm-up",
+        "group": "Daily",
+        "source": "Daily",
+        "description": "About 10 minutes before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and sprints. Opens from Today on basketball days without changing your plan.",
+        "sessions_per_week": 2,
+        "session_length_min": 10,
+        "level": "All levels",
+        "rotation_note": "before each game",
+        "equipment": [
+          "A court or 15 yards of space"
+        ],
+        "goal": "Get game-ready at 5:45 and keep ankles, groin and hamstrings healthy.",
+        "guide": [
+          {
+            "title": "Getting up for a 5:45 game",
+            "items": [
+              "Night before: shoes, clothes and water bottle by the door; aim to be asleep 7 hours before the alarm.",
+              "Alarm across the room; lights on and a glass of water as soon as you're up.",
+              "Something small if you like (banana, coffee) and the two at-home moves while it brews.",
+              "Play the first 5 minutes at about 70%: your body is coldest early in the morning."
+            ]
+          }
+        ],
+        "days": [
+          {
+            "day_name": "Basketball warm-up",
+            "notes": [
+              "About 10 minutes. Early morning means a colder body: if you feel stiff, add another lap of the jog and the skips.",
+              "Then the first few minutes of the game at about 70%."
+            ],
+            "exercises": [
+              {
+                "name": "Cat Camel",
+                "round_group": "At home",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "7",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Slow, segment by segment."
+              },
+              {
+                "name": "Split Stance Lunge Overhead Reach with Rotation",
+                "round_group": "At home",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Tuck the back-leg glute, reach long."
+              },
+              {
+                "name": "Easy Outdoor Run",
+                "round_group": "Raise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "2:00",
+                "rest": null,
+                "notes": "Easy jog around the court, both directions. Slower than you think.",
+                "alternates": [
+                  "Brisk Walk"
+                ]
+              },
+              {
+                "name": "Extensive Locomotion Cariocas",
+                "round_group": "Raise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "1 length each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Easy rhythm, hips turning."
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "3 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Walking Sprinters Mobility",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": null
+              },
+              {
+                "name": "Lateral Lunge",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "No band needed. Sit back into the hip: the groin takes the cuts and slides."
+              },
+              {
+                "name": "Hip Airplane (No Support)",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "3 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Slow open and close."
+              },
+              {
+                "name": "Resisted Ankle Circles",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Each foot, no band."
+              },
+              {
+                "name": "Single-Leg Balance",
+                "round_group": "Activate",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "20s",
+                "rest": null,
+                "notes": "Each side. Balance work prevents ankle sprains better than anything else in a warm-up."
+              },
+              {
+                "name": "Glute Bridge",
+                "round_group": "Activate",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "10",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "2 s squeeze at the top."
+              },
+              {
+                "name": "Extensive Locomotive Skips",
+                "round_group": "Build to game speed",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "1 length",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "A-skips: knee up, quick off the ground."
+              },
+              {
+                "name": "Pogos",
+                "round_group": "Build to game speed",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "15",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "20s",
+                "notes": "Quick and springy off the ankles."
+              },
+              {
+                "name": "Lateral Bounds",
+                "round_group": "Build to game speed",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "4 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "30s",
+                "notes": "No band. Push off one leg, stick the landing on the other for a second."
+              },
+              {
+                "name": "Sprint Accelerations",
+                "round_group": "Build to game speed",
+                "is_alternate": false,
+                "sets": 3,
+                "reps": "10 yd",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "30s",
+                "notes": "At about 60%, 80%, then 95%. Walk back."
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "stats": {

@@ -190,6 +190,16 @@ missed day just pushes the order back. Starting on a Tuesday, for example: Thu D
 Sat Day 3, Sun rest, Mon Day 4, Tue recovery, Wed Day 1… ([`src/lib/week_flow.js`](../src/lib/week_flow.js),
 `node data/check_week_flow.mjs`).
 
+## Basketball warm-up
+
+About 10 minutes before the user's 5:45 pickup games (`data/build_basketball_warmup.py`, program
+`basketball_warmup`): two moves at home (the low-back reset), then RAMP on court — raise (jog, cariocas),
+mobilise (World's Greatest Stretch, sprinter mobility, lateral lunge, hip airplanes, ankles), activate
+(single-leg balance for ankle sprains, glute bridge), build to game speed (skips, pogos, lateral bounds,
+3 × 10 yd at 60/80/95%). Opens from a "🏀 Basketball warm-up" line in the Daily Mobility card on Mon, Wed
+and Fri (`#/routine/basketball_warmup`), next to the plan; side routines don't show the gym toggle, band
+setup or day arrows. Its jumps and sprints count as impact for the next day's Daily Mobility.
+
 ## Hip warm-up inside the workout
 
 When the hip plan is in use, its warm-up (walk or bike, Cat-Cow, pelvic tilts, the hip stretches) is the

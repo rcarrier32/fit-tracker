@@ -191,8 +191,10 @@ function openLiftDetail(btn) {
 let _noRefresh = false;   // Finish from the sheet: don't redraw the Lift page over the Done screen
 
 /** #/daily opens Daily Mobility (its Home card) without touching the active program. */
-const onDailyRoute = () => location.hash.startsWith('#/daily');
-const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout())) || todaysWorkout();
+// #/daily (Daily Mobility) and #/routine/<id> (Basketball Warm-up …) open a side routine next to the plan.
+const onDailyRoute = () => location.hash.startsWith('#/daily') || location.hash.startsWith('#/routine/');
+const routineId = () => (/^#\/routine\/([\w-]+)/.exec(location.hash) || [])[1];
+const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout(routineId()))) || todaysWorkout();
 
 export async function renderWorkout(app, { keepRest = false } = {}) {
   const token = ++_renderToken;
@@ -352,15 +354,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
     ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
-    ${session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()])) ? `
+    ${!today_w.daily && (session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()]))) ? `
     <div style="display:flex;align-items:center;gap:8px;margin:10px 0">
       <button class="pill ${session.gym_day ? 'accent' : ''}" id="gym-toggle" style="cursor:pointer;padding:8px 14px;font-size:14px">🏋 ${session.gym_day ? 'At the gym today' : 'Going to the gym today?'}</button>
       <button class="pill" id="gym-kit" style="cursor:pointer;padding:8px 10px" aria-label="Gym equipment">⚙</button>
       <span class="muted" style="font-size:11px;flex:1">${session.gym_day ? 'Band and bodyweight stand-ins swapped for gym versions.' : 'Swaps band and bodyweight stand-ins for gym versions.'}</span>
     </div>` : ''}
-    ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
+    ${bandCats.length && !today_w.daily ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
-    ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
+    ${today_w.mode === 'follow' && (program.weeks || (program.days?.length || 0) > 1) ? `<div class="btn-row" style="margin:10px 0">
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
     </div>` : ''}
