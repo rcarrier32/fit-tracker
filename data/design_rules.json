@@ -224,6 +224,8 @@
     "note": "Without heavy-load kit, main and secondary reps climb each phase instead of dropping, rest shortens in the last phase, and non-main picks move up a level per phase (harder versions), as Lean & Tone and PJF's home programs do."
   },
   "conditioning": { "finisher_prefer": "interval|sprint|zone 4|zone 5", "note": "Finishers on lifting days are intervals; the long conditioning day is Zone 2." },
+  "fill": { "below": 0.85, "max_added": 3, "max_extra_exercises": 2, "secondary_max_sets": 4, "main_max_sets": 5,
+            "note": "A day under 85% of the time asked gets accessories for the muscles trained on the fewest days this week (fractional sets: main muscle 1, helpers 0.5; a day counts at 3+), then a set on secondaries and mains. Coaches fill a longer session with more work, not more rest (docs/research/Workout plan builder methods.md)." },
   "session_minutes": { "30": { "max_exercises": 5, "superset_accessories": true, "warmup_count": 3, "warmup_rounds": 1 },
                        "45": { "max_exercises": 6, "superset_accessories": true, "warmup_count": 4, "warmup_rounds": 2 },
                        "60": { "max_exercises": 8, "superset_accessories": false, "warmup_count": 4, "warmup_rounds": 2 } }
