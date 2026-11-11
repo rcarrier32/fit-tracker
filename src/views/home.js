@@ -30,6 +30,7 @@ import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { hipToday } from '../lib/hip_protocol.js';
 import { hipCredits } from '../lib/moves_today.js';
+import { HOME_CARDS, resolveLayout, moveCard } from '../lib/home_layout.js';
 
 const today = () => localDateStr();
 
@@ -323,13 +324,12 @@ export async function renderHome(app) {
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
-  app.innerHTML = `
-    <h1>Today</h1>
-    <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
-    ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday })}
-    ${renderWeeklySummary(weeklySummary)}
-    ${renderDailyCard(daily)}
-
+  // Cards in the order you chose (Customize Home, pref 'home_layout'; src/lib/home_layout.js).
+  const cards = {
+    tips: renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday }),
+    lastweek: renderWeeklySummary(weeklySummary),
+    daily: renderDailyCard(daily),
+    calories: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Calories</h2>
@@ -352,7 +352,8 @@ export async function renderHome(app) {
         <button class="btn secondary" data-action="log-activity">+ Activity</button>
       </div>
     </div>
-
+    `,
+    workout: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Today's Workout</h2>
@@ -375,7 +376,8 @@ export async function renderHome(app) {
         </div>` : ''}
       ${hip && !hipFirst ? hipRow(hip, false) : ''}
     </div>
-
+    `,
+    body: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Body weight</h2>
@@ -384,20 +386,33 @@ export async function renderHome(app) {
       <div class="muted">Latest: ${userProfile.weight_lb} lb · target ${tdee.weekly_change_lb > 0 ? '+' : ''}${tdee.weekly_change_lb} lb/week · ${actualTdee ? ('actual TDEE ~' + actualTdee + ' kcal') : ('maintenance ~' + tdee.maintenance + ' kcal')}</div>
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
-        <button class="btn ghost" data-action="edit-profile">Edit profile</button>
-        <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
-        <button class="btn ghost" data-action="export-data">Export data</button>
-        <button class="btn ghost" data-action="import-data">Import data</button>
       </div>
+    </div>
+    `,
+  };
+  const layout = resolveLayout(await pref('home_layout'));
+  app.innerHTML = `
+    <h1>Today</h1>
+    <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+    ${layout.order.filter(id => !layout.hidden.has(id)).map(id => cards[id] || '').join('\n')}
+    <div class="btn-row" style="margin-top:4px">
+      <button class="btn ghost" data-action="customize-home">↕ Customize Home</button>
+      <button class="btn ghost" data-action="edit-profile">Edit profile</button>
+      <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
+      <button class="btn ghost" data-action="export-data">Export data</button>
+      <button class="btn ghost" data-action="import-data">Import data</button>
     </div>
   `;
 
-  app.querySelector('[data-action="log-meal"]').onclick = () => navigate('meals');
+  app.querySelector('[data-action="customize-home"]').onclick = () => openHomeLayout(() => renderHome(app));
+  const logMeal = app.querySelector('[data-action="log-meal"]');
+  if (logMeal) logMeal.onclick = () => navigate('meals');
   const openTosBtn = app.querySelector('#open-tos');
   if (openTosBtn) openTosBtn.onclick = () => navigate('tos');
   const openHipBtn = app.querySelector('#open-hip');
   if (openHipBtn) openHipBtn.onclick = () => navigate('hip');
-  app.querySelector('[data-action="log-activity"]').onclick = () => navigate('cardio');
+  const logAct = app.querySelector('[data-action="log-activity"]');
+  if (logAct) logAct.onclick = () => navigate('cardio');
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {
     await pref('completed:' + startOverBtn.dataset.programId, null);
@@ -431,7 +446,8 @@ export async function renderHome(app) {
     await openScheduleEditor();
     renderHome(app);
   };
-  app.querySelector('[data-action="log-weight"]').onclick = () => navigate('body');
+  const logW = app.querySelector('[data-action="log-weight"]');
+  if (logW) logW.onclick = () => navigate('body');
   app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
 
   app.querySelector('[data-action="calendar"]').onclick = () => openCalendarExport();
@@ -657,6 +673,41 @@ function macroBox(label, val, target, unit) {
       <div class="bar" style="margin-top:4px"><div class="bar-fill" style="width:${pct}%"></div></div>
     </div>
   `;
+}
+
+/** Customize Home: move cards up and down, show or hide each. Saved as pref 'home_layout'. */
+async function openHomeLayout(onDone) {
+  let { order, hidden } = resolveLayout(await pref('home_layout'));
+  const label = Object.fromEntries(HOME_CARDS.map(c => [c.id, c.label]));
+  const save = () => pref('home_layout', { order, hidden: [...hidden] });
+  openSheet((sheet, close, hooks) => {
+    hooks.onClose = onDone;   // Done, the backdrop or the back button: redraw Home in the new order
+    const draw = () => {
+      sheet.innerHTML = `
+        <h2>Customize Home</h2>
+        <div class="muted" style="margin-bottom:10px">Order the cards with ↑ ↓; tap Show / Hide to choose what's on Today.</div>
+        ${order.map((id, i) => `
+          <div class="list-item" style="cursor:default;gap:8px;${hidden.has(id) ? 'opacity:0.5' : ''}">
+            <div style="flex:1"><div class="list-item-title">${label[id]}</div></div>
+            <button class="pill" data-up="${id}" ${i === 0 ? 'disabled' : ''} style="cursor:pointer;padding:6px 10px" aria-label="Move up">↑</button>
+            <button class="pill" data-down="${id}" ${i === order.length - 1 ? 'disabled' : ''} style="cursor:pointer;padding:6px 10px" aria-label="Move down">↓</button>
+            <button class="pill ${hidden.has(id) ? '' : 'accent'}" data-vis="${id}" style="cursor:pointer;padding:6px 10px;min-width:58px">${hidden.has(id) ? 'Hidden' : 'Shown'}</button>
+          </div>`).join('')}
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn" id="hl-done">Done</button>
+          <button class="btn ghost" id="hl-reset">Reset to default</button>
+        </div>`;
+      sheet.querySelectorAll('[data-up]').forEach(b => b.onclick = async () => { order = moveCard(order, b.dataset.up, -1); await save(); draw(); });
+      sheet.querySelectorAll('[data-down]').forEach(b => b.onclick = async () => { order = moveCard(order, b.dataset.down, 1); await save(); draw(); });
+      sheet.querySelectorAll('[data-vis]').forEach(b => b.onclick = async () => {
+        const id = b.dataset.vis; if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+        await save(); draw();
+      });
+      sheet.querySelector('#hl-done').onclick = () => close();
+      sheet.querySelector('#hl-reset').onclick = async () => { await pref('home_layout', null); ({ order, hidden } = resolveLayout(null)); draw(); };
+    };
+    draw();
+  });
 }
 
 async function openProgramPicker() {

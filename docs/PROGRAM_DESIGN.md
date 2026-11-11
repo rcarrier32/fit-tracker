@@ -179,7 +179,14 @@ When a lift has gone up two sessions running and every set hit the top of the ra
 card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
 where it's working, the research report's volume rule.
 
-## Daily Mobility card
+## Home order
+
+Today's cards come in the order you set with **↕ Customize Home** (bottom of Today): ↑ ↓ to move a
+card, Shown / Hidden to choose what's there, Reset to default. Saved as pref `home_layout`
+([`src/lib/home_layout.js`](../src/lib/home_layout.js), `node data/check_home_layout.mjs`). Default:
+Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weight. Profile, calendar
+and backup buttons sit under the cards so hiding a card never hides them.
+
 
 Daily Mobility runs next to whatever program is active, from its own card on Today (mockup:
 [`docs/mockups/daily_mobility_card.png`](mockups/daily_mobility_card.png); state and streak in
