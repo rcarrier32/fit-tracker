@@ -30,7 +30,8 @@ import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { hipToday } from '../lib/hip_protocol.js';
 import { hipCredits } from '../lib/moves_today.js';
-import { HOME_CARDS, resolveLayout, moveCard } from '../lib/home_layout.js';
+import { HOME_CARDS, resolveLayout, moveCard, layoutToSave } from '../lib/home_layout.js';
+import { weekSummary, weightTrend, feelingSummary } from '../lib/home_extras.js';
 
 const today = () => localDateStr();
 
@@ -263,6 +264,75 @@ function hipRow(hip, first) {
         </div>`;
 }
 
+/** Workouts planned this week: Mixed Week program days, else the program's days per week. */
+function plannedThisWeek(schedule, today_w) {
+  if (schedule?.type === 'weekly' && schedule.slots?.some(sl => sl?.program_id)) return schedule.slots.filter(sl => sl?.program_id).length;
+  const p = today_w?.program;
+  if (!p || p.id === DAILY_ID) return null;
+  if (p.weeks) return p.weeks.find(w => w.week_num === today_w.week)?.days?.length || p.sessions_per_week || null;
+  return p.sessions_per_week || null;
+}
+
+function renderWeekCard(w) {
+  const L = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  const dots = w.days.map((d, i) => `
+    <div style="flex:1;text-align:center">
+      <div style="font-size:10px;color:${d.today ? 'var(--accent)' : 'var(--fg-dim)'};font-weight:${d.today ? 700 : 400}">${L[i]}</div>
+      <div style="height:22px;margin-top:3px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;
+        background:${d.workout ? 'var(--accent)' : 'transparent'};color:${d.workout ? '#0f172a' : 'var(--fg-dim)'};
+        border:1px ${d.future ? 'dashed' : 'solid'} ${d.workout ? 'var(--accent)' : d.today ? 'var(--accent)' : 'var(--border)'}">${d.workout ? '✓' : ''}</div>
+      <div style="height:6px;margin-top:3px;display:flex;justify-content:center">${d.daily ? '<span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>' : ''}</div>
+    </div>`).join('');
+  return `
+    <div class="card">
+      <div class="card-row"><h2 style="margin:0">This week</h2>
+        <span class="pill ${w.planned && w.workouts >= w.planned ? 'accent' : ''}">${w.workouts}${w.planned ? ` of ${w.planned}` : ''} workout${(w.planned || w.workouts) === 1 ? '' : 's'}</span></div>
+      <div style="display:flex;gap:4px;margin-top:10px">${dots}</div>
+      <div class="muted" style="font-size:12px;margin-top:6px">✓ workout · • Daily Mobility (${w.dailyDays} day${w.dailyDays === 1 ? '' : 's'})${w.cardioMin ? ` · ${w.cardioMin} min activity` : ''}</div>
+    </div>`;
+}
+
+function renderFeelingCard(f) {
+  const effort = { easy: 'Easy', right: 'About right', hard: 'Too much' };
+  const energy = { 1: '😫', 2: '🙂', 3: '💪' };
+  const body = !f ? `<div class="muted" style="font-size:13px;margin-top:4px">Answer "How did it feel?" when you finish a workout and it shows up here.</div>` : `
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${f.recent.map(r => `
+        <span class="pill" style="font-size:12px;padding:4px 9px">${new Date(r.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short' })} ${energy[r.energy] || ''} ${effort[r.effort] || ''}</span>`).join('')}</div>
+      ${f.hurts.length ? `<div style="font-size:12px;margin-top:8px">Hurt in the last two weeks: <b>${f.hurts.map(escH).join(', ')}</b></div>` : ''}
+      ${f.advice ? `<div style="font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(56,189,248,0.12)">🔄 ${escH(f.advice)}</div>`
+        : `<div class="muted" style="font-size:12px;margin-top:8px">Recovering fine: keep building.</div>`}`;
+  return `
+    <div class="card">
+      <div class="card-row"><h2 style="margin:0">How you've been feeling</h2>${f?.advice ? '<span class="pill accent">Lighter week?</span>' : ''}</div>
+      ${body}
+    </div>`;
+}
+
+function renderTrendCard(t) {
+  if (!t) return `
+    <div class="card">
+      <div class="card-row"><h2 style="margin:0">Weight trend</h2></div>
+      <div class="muted" style="font-size:13px;margin-top:4px">Weigh in 3 times in a week to see your 7-day average. Daily weight jumps around; the average is what moves.</div>
+    </div>`;
+  const ws = t.points.map(p => p.w), lo = Math.min(...ws), hi = Math.max(...ws), span = Math.max(1, hi - lo);
+  const t0 = new Date(t.points[0].date + 'T12:00:00').getTime(), t1 = new Date(t.points[t.points.length - 1].date + 'T12:00:00').getTime();
+  const X = (p) => t1 === t0 ? 150 : 4 + (new Date(p.date + 'T12:00:00').getTime() - t0) / (t1 - t0) * 292;
+  const Y = (w) => 6 + (hi - w) / span * 48;
+  const path = t.points.map((p, i) => `${i ? 'L' : 'M'}${X(p).toFixed(1)},${Y(p.w).toFixed(1)}`).join(' ');
+  const ch = t.change;
+  return `
+    <div class="card">
+      <div class="card-row"><h2 style="margin:0">Weight trend</h2>
+        ${ch != null ? `<span class="pill ${ch < 0 ? 'accent' : ''}">${ch > 0 ? '+' : ''}${ch} lb vs last week</span>` : ''}</div>
+      <div style="font-size:22px;font-weight:700;margin-top:6px">${t.avg} lb <span class="muted" style="font-size:12px;font-weight:400">7-day average${t.prev != null ? ` · was ${t.prev}` : ''}</span></div>
+      <svg viewBox="0 0 300 60" style="width:100%;height:60px;margin-top:6px" role="img" aria-label="Weight, last 4 weeks">
+        <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        ${t.points.map(p => `<circle cx="${X(p).toFixed(1)}" cy="${Y(p.w).toFixed(1)}" r="2" fill="var(--accent)"/>`).join('')}
+      </svg>
+      <div class="muted" style="font-size:11px;display:flex;justify-content:space-between"><span>${t.points[0].date.slice(5)}</span><span>${lo}–${hi} lb</span><span>${t.points[t.points.length - 1].date.slice(5)}</span></div>
+    </div>`;
+}
+
 export async function renderHome(app) {
   const userProfile = await pref('profile');
   if (!userProfile) {
@@ -391,6 +461,12 @@ export async function renderHome(app) {
     `,
   };
   const layout = resolveLayout(await pref('home_layout'));
+  // Optional cards: only gather their data when they're on.
+  const want = (id) => !layout.hidden.has(id);
+  const allSessions = (want('week') || want('feeling')) ? await getAll('sessions') : [];
+  if (want('week')) cards.week = renderWeekCard(weekSummary({ sessions: allSessions, cardio: await getAll('cardio'), today: today(), planned: plannedThisWeek(schedule, today_w) }));
+  if (want('feeling')) cards.feeling = renderFeelingCard(feelingSummary(allSessions, today()));
+  if (want('trend')) cards.trend = renderTrendCard(weightTrend(allBody, today()));
   app.innerHTML = `
     <h1>Today</h1>
     <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
@@ -679,7 +755,7 @@ function macroBox(label, val, target, unit) {
 async function openHomeLayout(onDone) {
   let { order, hidden } = resolveLayout(await pref('home_layout'));
   const label = Object.fromEntries(HOME_CARDS.map(c => [c.id, c.label]));
-  const save = () => pref('home_layout', { order, hidden: [...hidden] });
+  const save = () => pref('home_layout', layoutToSave(order, hidden));
   openSheet((sheet, close, hooks) => {
     hooks.onClose = onDone;   // Done, the backdrop or the back button: redraw Home in the new order
     const draw = () => {

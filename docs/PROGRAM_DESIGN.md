@@ -184,7 +184,12 @@ where it's working, the research report's volume rule.
 Today's cards come in the order you set with **↕ Customize Home** (bottom of Today): ↑ ↓ to move a
 card, Shown / Hidden to choose what's there, Reset to default. Saved as pref `home_layout`
 ([`src/lib/home_layout.js`](../src/lib/home_layout.js), `node data/check_home_layout.mjs`). Default:
-Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weight. Profile, calendar
+Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weight. Three optional cards
+start hidden and are turned on there ([`src/lib/home_extras.js`](../src/lib/home_extras.js),
+`node data/check_home_extras.mjs`): **This week** (workouts done of planned, Mon–Sun, Daily Mobility
+days, activity minutes), **How you've been feeling** (the last finish-screen check-ins, anything that
+hurt in two weeks, the lighter-week advice) and **Weight trend** (7-day average vs the week before, last
+4 weeks charted; needs 3 weigh-ins in a week). Profile, calendar
 and backup buttons sit under the cards so hiding a card never hides them.
 
 
