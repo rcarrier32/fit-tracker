@@ -120,5 +120,6 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
   if (brought.length) changes.push('added what helped: ' + brought.join(', '));
   if (!changes.length) return { rows, note: null };
   const what = worked.slice(0, 3).map(w => (load.by[w] || []).length ? `${w} (${load.by[w].slice(0, 2).join(', ')})` : `${w} (sore, from your note)`).join('; ');
-  return { rows: out, note: `Adjusted for yesterday's training${what ? ` — ${what}` : ''}: ${changes.join('; ')}.` };
+  const game = (load.by.quads || []).includes('Basketball') || Object.values(load.by).some(l => l.includes('Basketball'));
+  return { rows: out, note: `Adjusted for ${game ? "yesterday's game" : "yesterday's training"}${what ? ` — ${what}` : ''}: ${changes.join('; ')}.`, game };
 }
