@@ -294,10 +294,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     const warm = pool.filter(e => e.role === 'warmup');
     const n = session.warmup_count;
     const out = [], covered = new Set();
-    // The user's own collected moves (his hip/low-back lists and saved reels, source 'daily') and his
-    // ♥ favourites are preferred as warm-ups, then provider demos (Griffith, PJF).
     const score = (e, r) => ((e.muscles || []).filter(m => REGION[m] === r).length) + (e.sources?.some(x => x === 'trainheroic' || x === 'pjf') ? 1 : 0)
-      + (e.sources?.includes('daily') ? 1.2 : 0) + (favSet.has(e.name) ? 2 : 0)
       + ((e.level || 1) === target ? 0.7 : 0) + (e.pattern === 'mobility' ? 0.3 : 0) + rand() * 0.8;
     for (let pass = 0; out.length < n && pass < 3; pass++) for (const r of order) {
       if (out.length >= n || (pass === 0 && covered.has(r))) continue;

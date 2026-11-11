@@ -205,10 +205,9 @@ Hip-focused prep alone isn't enough on a full-body day: add a push (push-up to p
 pull/shoulder move (band pull-aparts, rolling shoulder armbar, light banded lat pulldown). `check_program.mjs` warns on
 gaps, the generator builds warm-ups from the day's exercises, and `generate_plan.mjs --sanity` checks it.
 
-**Your own moves first.** Moves the user collected (his hip and low-back lists and saved reels,
-catalog source `daily`, added by `data/build_daily_mobility.py`) and his ♥ favourites are preferred
-for warm-ups, ahead of provider demos. They are a pool of options, not a checklist: Daily Mobility
-uses some, the rest sit in its Swap lists, and training-day warm-ups draw on them too.
+The user's collected moves (his hip and low-back lists and saved reels, catalog source `daily`,
+added by `data/build_daily_mobility.py`) are ordinary warm-up options: eligible like any other
+warm-up move, with no preference.
 
 ## Progression by level (Griffith style)
 

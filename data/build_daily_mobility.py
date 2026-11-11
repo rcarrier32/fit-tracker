@@ -38,8 +38,7 @@ NEW = {
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
 }
 # These are options, not a checklist: Daily C uses some, the rest sit in its Swap lists, and all of
-# them are warm-up moves the plan generator can pick for training-day warm-ups (it prefers the
-# user's own moves: src/lib/generator.js, OWN_MOVES).
+# them are ordinary warm-up options the plan generator can pick for training-day warm-ups (no preference).
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'daily', tags=tags, video_from=borrow)
 

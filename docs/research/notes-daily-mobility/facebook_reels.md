@@ -70,8 +70,8 @@ likely in Griffith's full hip-session reel and the links below.
 ## Stand-ins in Daily C (added 2026-11-11, check these)
 
 **These moves are options, not a checklist** (the user, 2026-11-11). Daily C uses a core of 7;
-the rest are in its Swap lists ("Plan alternatives"), and all of them are warm-up moves the plan
-generator prefers for training-day warm-ups. When linking reels, add new moves the same way:
+the rest are in its Swap lists ("Plan alternatives"), and all of them are ordinary warm-up options
+the plan generator can pick for training-day warm-ups (no preference over other moves). When linking reels, add new moves the same way:
 catalog entries with `role: warmup`, source `daily`, and only put them in Daily C if they earn a slot.
 
 Every move from the user's Hip Mobility list in Daily C is either a **new exercise named after the
