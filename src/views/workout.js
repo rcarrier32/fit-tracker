@@ -18,6 +18,7 @@ import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SI
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 import { doneElsewhere } from '../lib/same_move.js';
+import { SECTIONS as HIP_SECTIONS } from '../lib/hip_protocol.js';
 import { movesToday } from '../lib/moves_today.js';
 
 const today = () => localDateStr();
@@ -305,9 +306,18 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   for (const [k, v] of exerciseByName) exMap[k] = v;
 
   // A day can carry its own warm-up (home plans); otherwise pick one by focus.
-  const warmup = dayData.warmup?.length
+  let warmup = dayData.warmup?.length
     ? { name: 'Warm-Up · 5 min', exercises: dayData.warmup }
     : _pickWarmup(dayData.focus || dayData.day_name, warmups);
+  // Hip plan in use: its warm-up IS the workout's warm-up (the plan says to do it before any lift).
+  // It replaces the generic warm-up; a program's own warm-up follows it. Checking a move here checks
+  // it on the Hip tab too (hip_logs), and the other way round.
+  const hipLogsAll = (await pref('hip_logs')) || {};
+  _hipDone = hipLogsAll[today()] || {};
+  if (!today_w.daily && ((await pref('hip_progress')) || Object.keys(hipLogsAll).length)) {
+    const hipWarm = hipWarmupRows();
+    warmup = { name: 'Warm-Up · hip first', exercises: [...hipWarm, ...(dayData.warmup?.length ? dayData.warmup : [])] };
+  }
   // Band workouts: one tap to each category's band-setup overview, in workout order.
   const bandCats = [...new Set(session.exercises
     .map(x => exMap[x.name.toLowerCase()])
@@ -364,7 +374,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // Warm-up section: video buttons and check-offs (delegated). Check-offs last for today's session.
   const $warmupCard = app.querySelector('.warmup-section');
   if ($warmupCard) {
-    $warmupCard.addEventListener('click', e => {
+    $warmupCard.addEventListener('click', async e => {
       const btn = e.target.closest('button.video-link.has-video[data-ytid]');
       if (btn) return openLiftDetail(btn);
       const chk = e.target.closest('.warmup-check');
@@ -373,6 +383,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         chk.textContent = on ? '✓' : '○';
         chk.closest('.warmup-ex').classList.toggle('done', on);
         try { sessionStorage.setItem(`wu:${today()}:${chk.dataset.wu}`, on ? '1' : '0'); } catch {}
+        if (chk.dataset.hip) {   // the hip plan's warm-up: same check-off on the Hip tab
+          const logs = (await pref('hip_logs')) || {};
+          logs[today()] = { ...(logs[today()] || {}), [chk.dataset.hip]: on };
+          await pref('hip_logs', logs);
+          _hipDone = logs[today()];
+        }
       }
     });
   }
@@ -640,7 +656,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // Warm-up moves, then the exercises. Video on top, the Lift card's weight/rep rows under
   // it, rest countdown, and the last set moves on to the next exercise by itself.
   const wuKey = (n) => `wu:${today()}:${n}`;
-  const wuDone = (n) => { try { if (sessionStorage.getItem(wuKey(n)) === '1') return true; } catch { /* private mode */ }
+  const wuDone = (n) => { if (Object.entries(_hipDone).some(([id, v]) => v && hipWarmupRows().find(r => r.hip_id === id)?.name === n)) return true;
+    try { if (sessionStorage.getItem(wuKey(n)) === '1') return true; } catch { /* private mode */ }
     return !!doneElsewhere(n, _elsewhere, _sessionId); };   // done in another workout or the hip plan today
   const steps = [
     ...(bandDay ? [] : (warmup?.exercises || []).map(w => ({ wu: w }))),
@@ -704,7 +721,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         ...common,
         rx: target,
         isDone: () => wuDone(w.name),
-        setDone: async (v) => { try { sessionStorage.setItem(wuKey(w.name), v ? '1' : '0'); } catch { /* private mode */ } },
+        setDone: async (v) => {
+          try { sessionStorage.setItem(wuKey(w.name), v ? '1' : '0'); } catch { /* private mode */ }
+          if (w.hip_id) {   // the hip plan's warm-up: same check-off on the Hip tab
+            const logs = (await pref('hip_logs')) || {};
+            logs[today()] = { ...(logs[today()] || {}), [w.hip_id]: v };
+            await pref('hip_logs', logs);
+            _hipDone = logs[today()];
+          }
+        },
         extraHTML: secs ? `<button class="btn ghost hold-timer" data-secs="${secs}" data-sides="${sidesOf(w) || ''}" style="margin-top:10px">▶ Start ${fmtSecs(secs)}${sidesOf(w) ? ' each ' + sidesOf(w) : ''}</button>` : '',
       });
     }
@@ -844,9 +869,25 @@ function dayInfoHtml(program, dayData) {
  * The warm-up as its own section, laid out like the workout's exercises: a section heading,
  * then one card per move with its target, ▶ Video and a check-off (no weights to log).
  */
+// Hip warm-up check-offs for today (hip_logs), shared with the Hip tab.
+let _hipDone = {};
+/** The hip plan's warm-up as workout warm-up rows ("3 × 30 s per side" → 3 sets of 30 s each side). */
+function hipWarmupRows() {
+  const sec = HIP_SECTIONS.find(x => x.id === 'warmup');
+  return (sec?.exercises || []).map(e => {
+    const s = String(e.sets || '');
+    const hold = /^(\d+)\s*×\s*(\d+)\s*s/.exec(s);
+    const mins = /(\d+)(?:–\d+)?\s*min/.exec(s);
+    const reps = /^(\d+)\s*reps?/.exec(s);
+    return hold ? { name: e.name, hip_id: e.id, sets: +hold[1], time: `${hold[2]}s`, notes: /side/.test(s) ? 'Each side.' : null }
+      : mins ? { name: e.name, hip_id: e.id, time: `${mins[1]}:00`, notes: `${s}, easy pace.` }
+      : { name: e.name, hip_id: e.id, reps: reps ? reps[1] : s, notes: null };
+  });
+}
+
 function _warmupBlockHtml(warmup, exMap) {
   const key = (n) => `wu:${today()}:${n}`;
-  const done = (n) => { try { return sessionStorage.getItem(key(n)) === '1'; } catch { return false; } };
+  const done = (n, hipId) => { if (hipId && _hipDone[hipId]) return true; try { return sessionStorage.getItem(key(n)) === '1'; } catch { return false; } };
   const cards = warmup.exercises.map(ex => {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
@@ -861,8 +902,8 @@ function _warmupBlockHtml(warmup, exMap) {
         ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
         : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank">🔍 Find</a>`;
     const secs = !ex.reps && parseSecs(ex.time);
-    const where = !done(ex.name) && doneElsewhere(ex.name, _elsewhere, _sessionId);
-    const isDone = done(ex.name) || !!where;
+    const where = !done(ex.name, ex.hip_id) && doneElsewhere(ex.name, _elsewhere, _sessionId);
+    const isDone = done(ex.name, ex.hip_id) || !!where;
     return `
       <div class="exercise warmup-ex${isDone ? ' done' : ''}" style="padding:12px 14px">
         <div class="exercise-header" style="align-items:center">
@@ -876,7 +917,7 @@ function _warmupBlockHtml(warmup, exMap) {
           <div style="display:flex;gap:6px;align-items:center">
             ${secs ? `<button class="video-link hold-timer" data-secs="${secs}" data-sides="${sidesOf(ex) || ''}">▶ ${fmtSecs(secs)}${sidesOf(ex) ? ' ×2' : ''}</button>` : ''}
             ${videoHtml}
-            <button class="check warmup-check" data-wu="${_wNameEsc}" aria-label="Done">${isDone ? '✓' : '○'}</button>
+            <button class="check warmup-check" data-wu="${_wNameEsc}"${ex.hip_id ? ` data-hip="${ex.hip_id}"` : ''} aria-label="Done">${isDone ? '✓' : '○'}</button>
           </div>
         </div>
       </div>`;
