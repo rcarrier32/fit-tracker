@@ -29,6 +29,7 @@ import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { hipToday } from '../lib/hip_protocol.js';
+import { hipCredits } from '../lib/moves_today.js';
 
 const today = () => localDateStr();
 
@@ -305,7 +306,7 @@ export async function renderHome(app) {
   ]);
   // Only once the hip plan is in use — started, flaring, or anything ever checked off.
   const hip = (hipProgress || Object.keys(hipLogs).length)
-    ? hipToday({ custom: hipCustom, done: hipLogs[today()] || {} })
+    ? hipToday({ custom: hipCustom, done: { ...(await hipCredits(hipCustom || [])), ...(hipLogs[today()] || {}) } })
     : null;
 
   const tosDoneToday = tosProgress

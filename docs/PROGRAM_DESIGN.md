@@ -193,7 +193,20 @@ day never moves. It replaced the old daily mobility checklist on the Move tab an
 - **Streak:** days in a row finished. Today not done yet doesn't break it; a skipped or missed day does.
 - If Daily Mobility is itself the active program, the card is hidden (Today's Workout already shows it).
 
-## Daily Mobility follows yesterday's training
+## One move, once a day
+
+Daily Mobility, the hip plan's warm-up / Pelvic Reset and workouts like Recovery & Mobility share
+moves (Cat Cow / Cat Camel, posterior pelvic tilt breathing, the half-kneeling hip flexor stretch).
+Once a move is done in one of them today, the others show it as done there
+([`src/lib/same_move.js`](../src/lib/same_move.js) matches names, `node data/check_same_move.mjs`;
+[`src/lib/moves_today.js`](../src/lib/moves_today.js) gathers today's sessions and hip check-offs):
+- **Hip tab:** the move shows checked, "✓ Done today in Daily Mobility", and counts toward the hip
+  warm-up on Today. Nothing extra is written to the hip log.
+- **Workouts:** the row says "✓ Done today in …" with **Mark done**, which fills its sets as done and
+  marked as counted from there ("✓ Counted from …"). Warm-up moves done elsewhere show as done, and
+  the Start flow skips them.
+- A counted set never counts as a source for another place, and skipped sessions don't count.
+
 
 When today's Daily Mobility session starts ([`src/lib/daily_adjust.js`](../src/lib/daily_adjust.js),
 `node data/check_daily_adjust.mjs`), it reads yesterday's logged training (not yesterday's mobility,

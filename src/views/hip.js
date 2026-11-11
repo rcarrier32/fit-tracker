@@ -24,6 +24,8 @@ const todayKey = () => localDateStr();
 const PAIN_COLORS = ['#34d399', '#34d399', '#34d399', '#a3e635', '#fbbf24', '#fbbf24',
                      '#fb923c', '#fb923c', '#f87171', '#f87171', '#ef4444'];
 
+import { hipCredits } from '../lib/moves_today.js';
+
 export async function renderHip(app) {
   const day = todayKey();
 
@@ -45,6 +47,10 @@ export async function renderHip(app) {
   let started    = savedProgress?.started || null;
   let activeId   = SECTIONS[0].id;
   let completed  = { ...(allLogs[day] || {}) };
+  // Done today in a workout (Daily Mobility, Recovery...): shown as done here, not logged twice.
+  // Only in memory: the hip log keeps what you checked here.
+  const credited = await hipCredits(savedCustom);
+  for (const [id, where] of Object.entries(credited)) if (allLogs[day]?.[id] === undefined) completed[id] = true;
   let setsDone   = { ...(allSets[day] || {}) };
   let levels     = { ...savedLevels };      // plan exercise id → { step, since } on its ladder   // exercise id → [bool per set], today only
   let rx         = { ...savedRx };          // exercise id → custom "sets" string
@@ -387,6 +393,7 @@ export async function renderHip(app) {
     done: !!completed[ex.id], sets: setsFor(ex),
     badge: (() => {
       const l = ladderFor(ex);
+      if (credited[ex.id] && completed[ex.id] && allLogs[day]?.[ex.id] === undefined) return `✓ DONE TODAY IN ${String(credited[ex.id]).toUpperCase()}`;
       if (!l) return '';
       const lvl = l.current ? `LEVEL ${l.current + 1} OF ${l.steps.length}` : '';
       return [lvl, l.ready ? '↑ READY TO MOVE UP' : ''].filter(Boolean).join(' · ');
