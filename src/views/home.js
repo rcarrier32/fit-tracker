@@ -202,7 +202,7 @@ function renderDailyCard(d) {
   if (!d) return '';
   const { st, streak, letters, todayIdx, nextIdx } = d;
   const L = letters[todayIdx];
-  const fire = streak > 1 ? ` · 🔥 ${streak}-day streak` : '';
+  const fire = streak >= 1 ? ` · 🔥 ${streak}-day streak` : '';
   if (st.state === 'done' || st.state === 'skipped') {
     const done = st.state === 'done';
     return `
@@ -231,7 +231,7 @@ function renderDailyCard(d) {
   }
   return `
     <div class="card" style="margin-bottom:12px">
-      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min${streak > 1 ? ` · 🔥${streak}` : ''}</span></div>
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min${streak >= 1 ? ` · 🔥${streak}` : ''}</span></div>
       ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ Adjusted for yesterday's training</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
