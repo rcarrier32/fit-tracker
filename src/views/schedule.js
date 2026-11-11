@@ -555,6 +555,17 @@ async function followPosition(program) {
     : { week: 1, day: 1, day_index: cur.day_index ?? 0 };
 }
 
+export const DAILY_ID = 'daily_mobility';
+/**
+ * Daily Mobility runs alongside whatever program is active (its own A → B → C cursor), opened from
+ * its Home card at #/daily. Null if the program isn't in the library.
+ */
+export async function dailyWorkout() {
+  const program = await findProgram(DAILY_ID);
+  if (!program) return null;
+  return { type: 'program', program, ...(await followPosition(program)), mode: 'follow', daily: true };
+}
+
 /** Used by Home + Workout views to figure out today's prescription. */
 export async function todaysWorkout() {
   const sched = await pref('schedule');

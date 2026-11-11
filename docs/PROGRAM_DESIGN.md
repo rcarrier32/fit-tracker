@@ -179,6 +179,20 @@ When a lift has gone up two sessions running and every set hit the top of the ra
 card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
 where it's working, the research report's volume rule.
 
+## Daily Mobility card
+
+Daily Mobility runs next to whatever program is active, from its own card on Today (mockup:
+[`docs/mockups/daily_mobility_card.png`](mockups/daily_mobility_card.png); state and streak in
+[`src/lib/daily_card.js`](../src/lib/daily_card.js), `node data/check_daily_card.mjs`). It opens at
+`#/daily`, the Lift screen with Daily Mobility's own A → B → C position, so the training program's
+day never moves. It replaced the old daily mobility checklist on the Move tab and rest days.
+- **Not started:** today's day, about how long, the streak, what changed for yesterday's training,
+  **Start** (opens the first move) and **Skip today**.
+- **Started:** moves done, a progress bar, the next move, **Resume**.
+- **Done or skipped:** one line. Skipping keeps today's day for tomorrow and ends the streak.
+- **Streak:** days in a row finished. Today not done yet doesn't break it; a skipped or missed day does.
+- If Daily Mobility is itself the active program, the card is hidden (Today's Workout already shows it).
+
 ## Daily Mobility follows yesterday's training
 
 When today's Daily Mobility session starts ([`src/lib/daily_adjust.js`](../src/lib/daily_adjust.js),

@@ -52,7 +52,7 @@ def r(name, reps=None, time=None, sets=1, notes=None, group=None, alts=None, res
 
 # The user's own low-back routine opens every day.
 LOW_BACK = [
-    r('Cat Camel', '7', group='Low back reset', notes='Slow, segment by segment. (The old daily card\'s Cat Cow.)', alts=['Cat Cow']),
+    r('Cat Camel', '7', group='Low back reset', notes='Slow, segment by segment. (Cat Cow works too: it\'s in the swaps.)', alts=['Cat Cow']),
     r('Split Stance Lunge Overhead Reach with Rotation', '6 each side', group='Low back reset',
       notes='Your "lunge with overhead reach": tuck the back-leg glute, reach long.', alts=['Half Kneeling Hip Flexor Stretch']),
     r('Hip Airplane (No Support)', '3 each side', sets=3, group='Low back reset', rest='15s',

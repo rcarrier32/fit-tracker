@@ -9,7 +9,7 @@ import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
+import { todaysWorkout, dailyWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
@@ -195,6 +195,10 @@ function openLiftDetail(btn) {
 
 let _noRefresh = false;   // Finish from the sheet: don't redraw the Lift page over the Done screen
 
+/** #/daily opens Daily Mobility (its Home card) without touching the active program. */
+const onDailyRoute = () => location.hash.startsWith('#/daily');
+const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout())) || todaysWorkout();
+
 export async function renderWorkout(app, { keepRest = false } = {}) {
   const token = ++_renderToken;
   const stale = () => token !== _renderToken;
@@ -202,7 +206,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // only when a different workout is opened (checked below, once the session is known).
   stopSetTimer();
   _hipFlare = await pref('hip_flare');
-  const today_w = await todaysWorkout();
+  const today_w = await whichWorkout();
   if (stale()) return;
   if (today_w.type === 'unset') {
     app.innerHTML = `
@@ -443,7 +447,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     session.done = true;
     session.skipped = true;
     await saveSession(session);
-    if (today_w.mode === 'follow' && !wasDone) await advanceCursor(programId, 'follow');
+    // Skipping Daily Mobility keeps its day for tomorrow (same as Skip today on its Home card).
+    if (today_w.mode === 'follow' && !wasDone && !today_w.daily) await advanceCursor(programId, 'follow');
     stopRestTimer();
     toast('Workout skipped');
     navigate('home');
@@ -1865,18 +1870,17 @@ async function renderTagDay(app, today_w) {
     'Custom': { icon: '✏️', txt: 'Free-form session', sub: 'Add exercises and log as you go.' },
   };
   const m = map[today_w.tag] || { icon: '·', txt: today_w.tag, sub: '' };
-  const dateKey = today();
   app.innerHTML = `
     <h1>${m.icon} ${m.txt}</h1>
     <div class="muted">${m.sub}</div>
-    <div id="daily-mobility"></div>
     <div class="btn-row" style="margin-top:14px">
+      ${(await dailyWorkout()) ? '<button class="btn" id="mob-daily">Daily Mobility →</button>' : ''}
       <button class="btn ghost" id="mob-move">Move tab</button>
       <button class="btn ghost" id="back">Today</button>
     </div>
   `;
-  const { renderDailyMobility } = await import('./daily_mobility.js');
-  await renderDailyMobility(app.querySelector('#daily-mobility'), dateKey, { compact: true });
+  const $daily = app.querySelector('#mob-daily');
+  if ($daily) $daily.onclick = () => navigate('daily');
   app.querySelector('#back').onclick = () => navigate('home');
   app.querySelector('#mob-move').onclick = () => navigate('cardio');
 }
@@ -2047,7 +2051,7 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
 
 async function changeDay(delta) {
   // Manually move the program cursor (follow mode only — the buttons are hidden otherwise).
-  const today_w = await todaysWorkout();
+  const today_w = await whichWorkout();
   if (today_w.type !== 'program' || today_w.mode !== 'follow') return;
   const program = today_w.program;
   const programId = program.id;

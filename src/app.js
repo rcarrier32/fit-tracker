@@ -17,6 +17,7 @@ import { offerBackupRestore, scheduleLocalBackup, requestPersistence } from './l
 const ROUTES = {
   home:      renderHome,
   workout:   renderWorkout,
+  daily:     renderWorkout,   // Daily Mobility, next to the active program
   meals:     renderMeals,
   body:      renderBody,
   dashboard: renderDashboard,
@@ -42,7 +43,7 @@ async function render() {
   const route = (location.hash.replace('#/', '') || 'home').split('/')[0];
   const fn = ROUTES[route] || renderHome;
   document.querySelectorAll('#tabbar .tab').forEach(b => {
-    b.classList.toggle('active', b.dataset.route === route);
+    b.classList.toggle('active', b.dataset.route === (route === 'daily' ? 'workout' : route));
   });
   $app.innerHTML = '<div class="empty"><div class="icon">⏳</div><div>Loading…</div></div>';
   try {

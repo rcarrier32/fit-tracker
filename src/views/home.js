@@ -18,7 +18,9 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout, selectSingleProgram, positionLabel, programName } from './schedule.js';
+import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
+import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
+import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -152,6 +154,86 @@ function renderWeeklySummary(s) {
   `;
 }
 
+const escH = (t) => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const dayLetter = (name, i) => (/Daily ([A-Z])/.exec(name || '') || [])[1] || String.fromCharCode(65 + i);
+
+/**
+ * Daily Mobility card: runs next to the active program (docs/mockups/daily_mobility_card.png).
+ * Not started → Start / Skip today, with what it changed for yesterday's training.
+ * Started → progress and the next move. Done or skipped → one line.
+ */
+async function dailyCardData(todaysSessions) {
+  const dw = await dailyWorkout();
+  if (!dw || dw.type !== 'program') return null;
+  const program = dw.program;
+  const n = program.days.length;
+  const i = dw.day_index ?? 0;
+  const day = program.days[i] || program.days[0];
+  const rows = day.exercises.filter(e => !e.is_alternate && !isHeaderRow(e.name))
+    .map(x => ({ name: x.name, target_sets: x.sets, target_reps: x.reps || '', time: x.time, notes: x.notes }));
+  const skippedToday = (await pref('daily_skip')) === today();
+  const st = dailyState(todaysSessions, { programId: DAILY_ID, skippedToday, dayRows: rows });
+  const all = await getAll('sessions');
+  const streak = dailyStreak(all, today(), DAILY_ID);
+  let adjust = null;
+  if (st.state === 'todo') {
+    const yest = all.filter(x => x.date === prevDay(today()));
+    const { exerciseByName } = await loadCatalogs();
+    const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
+    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup).note;
+  }
+  const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
+  // dailyWorkout() already gives today's day even once it's finished (the cursor has moved on by then).
+  return { program, day, rows, st, streak, adjust, letters, todayIdx: i, nextIdx: (i + 1) % n,
+    minutes: program.session_length_min || 13 };
+}
+
+function renderDailyCard(d) {
+  if (!d) return '';
+  const { st, streak, letters, todayIdx, nextIdx } = d;
+  const L = letters[todayIdx];
+  const fire = streak > 1 ? ` · 🔥 ${streak}-day streak` : '';
+  if (st.state === 'done' || st.state === 'skipped') {
+    const done = st.state === 'done';
+    return `
+    <div class="card" style="padding:10px 14px">
+      <div class="card-row">
+        <div>
+          <div style="font-weight:600">Daily Mobility ${done ? '✓' : '· skipped today'}</div>
+          <div style="font-size:11px;color:var(--fg-dim)">${done ? `Day ${L}${st.minutes ? ` · ${st.minutes} min` : ''}${fire} · tomorrow: Day ${letters[nextIdx]}`
+            : `Day ${L} waits for tomorrow`}</div>
+        </div>
+        <button class="btn ghost" id="daily-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${done ? 'View' : 'Do it anyway'}</button>
+      </div>
+    </div>`;
+  }
+  if (st.state === 'started') {
+    const pct = Math.round(st.done / Math.max(1, st.total) * 100);
+    return `
+    <div class="card" style="border-color:var(--accent);margin-bottom:12px">
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">${st.done} of ${st.total}</span></div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+      ${st.next ? `<div class="muted" style="font-size:13px">Next up: <b style="color:var(--fg)">${escH(st.next.name)}</b> · ${escH(rowTarget(st.next))}</div>` : ''}
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" id="daily-open" style="flex:2">▶ Resume</button>
+      </div>
+    </div>`;
+  }
+  const chips = letters.map((l, k) => `<span class="pill ${k === todayIdx ? 'accent' : ''}" style="font-size:11px;padding:3px 8px">${l}${k === todayIdx ? ' · today' : ''}</span>`).join('');
+  const label = (d.day.day_name || '').split('·')[1]?.trim();
+  return `
+    <div class="card" style="border-color:var(--accent);margin-bottom:12px">
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ~${d.minutes} min</span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px">${chips}${streak ? `<span class="pill" style="font-size:11px;padding:3px 8px">🔥 ${streak}-day streak</span>` : ''}</div>
+      ${d.adjust ? `<div style="font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(56,189,248,0.12)">↻ ${escH(d.adjust)}</div>` : ''}
+      <div class="muted" style="font-size:12px;margin-top:8px">${label ? escH(label) + ' · ' : ''}${d.rows.length} moves, starting with your low-back reset</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
+        <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
+      </div>
+    </div>`;
+}
+
 export async function renderHome(app) {
   const userProfile = await pref('profile');
   if (!userProfile) {
@@ -209,6 +291,8 @@ export async function renderHome(app) {
     return Math.max(1, Math.floor(days / 7) + 1);
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
+  // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
+  const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
   app.innerHTML = `
@@ -216,6 +300,7 @@ export async function renderHome(app) {
     <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
     ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday })}
     ${renderWeeklySummary(weeklySummary)}
+    ${renderDailyCard(daily)}
 
     <div class="card">
       <div class="card-row">
@@ -311,6 +396,18 @@ export async function renderHome(app) {
       try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ }
     }
     navigate('workout');
+  };
+  const dailyBtn = app.querySelector('#daily-open');
+  if (dailyBtn) dailyBtn.onclick = async () => {
+    if (dailyBtn.dataset.start) { try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ } }
+    if ((await pref('daily_skip')) === today()) await pref('daily_skip', null);   // "Do it anyway"
+    navigate('daily');
+  };
+  const dailySkip = app.querySelector('#daily-skip');
+  if (dailySkip) dailySkip.onclick = async () => {
+    // Skipping keeps today's day for tomorrow (the rotation doesn't move) and ends the streak.
+    await pref('daily_skip', today());
+    renderHome(app);
   };
   const schedBtn = app.querySelector('[data-action="schedule"]');
   if (schedBtn) schedBtn.onclick = async () => {
