@@ -1,5 +1,10 @@
 # App inventory: mobility, recovery and joint-health exercises already in fit-tracker
 
+> **Out of date (2026-11-11, v121):** the hip flare mode, exercise pauses, flare caution badges and
+> "hip-friendly swaps" described below have been removed from the app, and so has the old daily card
+> (`src/views/daily_mobility.js`). The user has no hip restrictions: nothing here should gate or avoid
+> hip moves (90/90, shin box, lunges, hip-flexor stretches are all fine).
+
 Scope: local codebase study of /home/user/fit-tracker only (no web research). "Source" links below are repo file paths; line numbers where useful. Video source codes come from `data/exercise_index.json` field `video_from`: **pjf** = PJF Performance's own demo (mux stream), **trainheroic** = Vernon Griffith's own TrainHeroic demo (YouTube), **catalog** = a curated YouTube link stored in library.json / hip_protocol.js, **none** = no video. Index totals: 715 exercises, 687 with video (catalog 379, pjf 208, trainheroic 100, none 28) — [data/exercise_index.json](data/exercise_index.json) `counts`.
 
 ## 1. What src/views/daily_mobility.js does

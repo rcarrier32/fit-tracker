@@ -12,20 +12,11 @@ import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, dailyWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
-import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
 import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
-
-// Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
-let _hipFlare = null;
-function hipCautionHtml(name) {
-  const why = _hipFlare && hipCaution(name);
-  if (!why) return '';
-  return `<div style="font-size:11px;color:#fdba74;margin-top:2px;line-height:1.35">⚠ Hip flare · ${why}</div>`;
-}
 
 const today = () => localDateStr();
 let _restInterval = null;
@@ -205,7 +196,6 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // A running rest timer survives leaving the tab and coming back to the same workout; it stops
   // only when a different workout is opened (checked below, once the session is known).
   stopSetTimer();
-  _hipFlare = await pref('hip_flare');
   const today_w = await whichWorkout();
   if (stale()) return;
   if (today_w.type === 'unset') {
@@ -860,7 +850,6 @@ function _warmupBlockHtml(warmup, exMap) {
           <div style="flex:1;min-width:0">
             <div class="exercise-name" style="font-size:16px">${ex.name}</div>
             ${lookup?.pattern ? `<div style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
-            ${hipCautionHtml(ex.name)}
             ${target ? `<div class="exercise-target">${target}</div>` : ''}
             ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
           </div>
@@ -1155,27 +1144,10 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           <div class="group-label" style="margin:0 0 6px">This move is ${LEVEL_LABEL[lookup.level || 2]} · progress with a harder version</div>
           ${nb.harder.length ? `<div class="list-item-meta" style="margin:4px 0">Harder</div>${nb.harder.map(stepRow).join('')}` : ''}
           ${nb.easier.length ? `<div class="list-item-meta" style="margin:8px 0 4px">Easier</div>${nb.easier.map(stepRow).join('')}` : ''}` : '';
-        const hipAlts = _hipFlare
-          ? hipSwaps(ex.name).filter(n => exMap[n.toLowerCase()] && n !== ex.name)
-          : [];
-        const hipSection = hipAlts.length ? `
-          <div class="group-label" style="margin:0 0 6px;color:#fdba74">Hip-friendly swaps · flare mode</div>
-          ${hipAlts.map(name => {
-            const alt = exMap[name.toLowerCase()];
-            const from = alt?.sources?.includes('hip') ? 'from your hip plan' : (alt?.primary_muscle || '').replace(/_/g, ' ');
-            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
-              <div style="flex:1">
-                <div class="list-item-title">${name}</div>
-                <div class="list-item-meta">${from}${alt?.video_url ? ' · ▶' : ''}</div>
-              </div>
-            </div>`;
-          }).join('')}
-          <div style="height:10px"></div>` : '';
         s2.innerHTML = `
           <h2>Swap: ${ex.name}</h2>
           ${planSection}
           ${levelSection}
-          ${hipSection}
           ${bwsSection}
           ${similarSection}
           <div class="group-label" style="margin:12px 0 6px">Any exercise</div>
@@ -1708,7 +1680,6 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
       <div style="flex:1">
         <div class="exercise-name">${ex.name}${isFav(ex.name) ? ' <span style="color:#f472b6;font-size:13px">♥</span>' : ''}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}${ex.hurt ? ' <span class="pill" style="font-size:10px;color:var(--danger)">hurt</span>' : ''}</div>
         ${lookup?.pattern ? `<div class="ex-tagline" style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
-        ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
         ${ex.user_note ? `<div style="font-size:12px;margin-top:2px">📝 ${esc(ex.user_note)}</div>`

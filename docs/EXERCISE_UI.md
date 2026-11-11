@@ -57,7 +57,7 @@ A plan only stores state and hands callbacks to `openExerciseDetail`:
 - `autoNext`: move on by itself once the exercise is done (FKH).
 - `mountSets(el, changed)`: draw your own set logging instead of the checkboxes (Lift).
 - `finish`: a button on the 🎉 card, such as Finish workout.
-- `actions`: plan-specific buttons such as Pause and Remove.
+- `actions`: plan-specific buttons such as Remove (for your own added exercises).
 
 Rehab and band-only plans use this exercise shape and render through these three functions.
 Strength programs, including home dumbbell plans, stay on the Lift card so people can log
