@@ -171,7 +171,7 @@ chest sets a week; plans were at 6).
 - **Go easy on** (`easy_on`): hip, knees, lower back or shoulders leaves out moves that commonly load
   the area (lunges and deep hip positions; jumps and landings; heavy barbell hinges and rows; overhead
   pressing and dips), in lifts, warm-ups and cooldowns. Required moves stay, in a version that avoids
-  the area where one exists. Hip-flare mode turns on "hip". Not medical advice.
+  the area where one exists. Only ever chosen by the user; nothing turns it on automatically. Not medical advice.
 
 ## +1 set when a lift keeps climbing
 

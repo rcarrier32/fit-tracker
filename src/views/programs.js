@@ -601,8 +601,6 @@ async function openGeneratorWizard(onSaved) {
   if (!saved.minutes && profile.duration) saved.minutes = [30, 45, 60].reduce((a, b) => Math.abs(b - profile.duration.median_min) < Math.abs(a - profile.duration.median_min) ? b : a);
   const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band'];
   const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], easy: [], ...saved, equipment };
-  // Hip-flare mode (Hip tab) turns on "go easy on: hip".
-  if ((await pref('hip_flare')) && !st.easy.includes('hip')) st.easy = [...st.easy, 'hip'];
   openSheet((sheet, close) => {
     const chips = (key, options, multi = false) => options.map(([val, label]) => {
       const on = multi ? st[key].includes(val) : st[key] === val;
