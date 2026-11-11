@@ -400,7 +400,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
 
   // Trim a session to the time box: accessory sets to 2, then drop accessories from the end,
   // then secondary sets to 2. Main lifts, power work and the first core move stay.
-  function fitToTime(day, slots, dayPicks) {
+  // Lifting sets per day of each phase's first week, so a later phase's trim stops at the earlier phase's
+  // sets while the day still fits in 115% of the time asked (the last phase never ends up with fewer sets).
+  const phaseSets = {};
+  const liftSets = (day, roleOf) => day.exercises.filter(x => x.round_group !== 'Cooldown' && !['power', 'conditioning'].includes(roleOf(x)))
+    .reduce((a, x) => a + (x.sets || 0), 0);
+  function fitToTime(day, slots, dayPicks, ph = 0, di = 0) {
     const budget = p.minutes * 1.1;
     const roleOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)]?.role;
     const steps = [
@@ -432,8 +437,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       }
     };
     fixOrphans();   // a lone 'superset' member is estimated at half rest: settle it before measuring
+    const floor = ph > 0 ? phaseSets[`${ph - 1}:${di}`] : null;
+    const keep = () => floor != null && liftSets(day, roleOf) <= floor && estimateMinutes(day, rules) <= p.minutes * 1.15;
     for (const step of steps) {
-      while (estimateMinutes(day, rules) > budget) { if (!step()) break; fixOrphans(); }
+      while (estimateMinutes(day, rules) > budget && !keep()) { if (!step()) break; fixOrphans(); }
     }
     for (const x of day.exercises) delete x._ramp;
   }
@@ -691,8 +698,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         }
         const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph, exercises), notes, exercises };
         if (goal.cooldown) day.exercises.push(...cooldownFor(day.exercises));
-        fitToTime(day, daySlots[di], picks[ph][di]);
+        fitToTime(day, daySlots[di], picks[ph][di], ph, di);
         fillToTime(day, dayKey, di, ph, w);
+        if (phaseSets[`${ph}:${di}`] == null && !isDeload(w)) {
+          const roleOf = (x) => daySlots[di][picks[ph][di].findIndex(e => e?.name === x.name)]?.role || byName.get(x.name)?.role;
+          phaseSets[`${ph}:${di}`] = liftSets(day, roleOf);
+        }
         // A superset left with one exercise (odd count, or its partner trimmed) is a straight set.
         const groupSize = {};
         for (const x of day.exercises) if (x.round_group) groupSize[x.round_group] = (groupSize[x.round_group] || 0) + 1;

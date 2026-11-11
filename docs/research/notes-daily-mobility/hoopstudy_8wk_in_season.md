@@ -6,6 +6,12 @@ Source: the program PDF the user supplied (HoopStudy8WeekInSeasonTrainingProgram
 20 pages, www.hoopstudy.com), by **Adam Menner**, "Youth - NBA Performance Coach" for HoopStudy.
 Downloaded 2026-11-11 and read in full (text extracted from the PDF).
 
+**In the app:** Plans → HoopStudy → "HoopStudy 8-Week In-Season Strength" (`hoopstudy_8wk_in_season`), built
+by `data/build_hoopstudy.py` with the high-school volume. The PDF has no pictures or videos, so moves the
+app didn't have (A-March, A-Skip, Power Skip, OH March, Falling / 90-90 Sprints, 90/90 Single Power Jumps,
+Paused Squat Jumps, Hollow Hold Sit Up, Prone Pull Through, Single Leg Wall Stride, Hook Plank) borrow the
+closest demo and say so in their notes.
+
 ## Week structure (7-day plan, repeated 8 weeks)
 Day 1 Strength 1 · Day 2 Sports Performance 1 · Day 3 Strength 2 · Day 4 Sports Specific 2 · Day 5 Strength 3 ·
 Day 6 Recovery · Day 7 Recovery. Two recovery days a week are programmed.

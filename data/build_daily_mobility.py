@@ -20,7 +20,7 @@ from program_builder import Library, ex
 lib = Library()
 GROUP = 'Daily'
 
-# Moves from the user's Hip Mobility list, read off his saved reels (screen recordings, 2026-11-11).
+# Moves from the user's Hip Mobility list, read off the user's saved reels (screen recordings, 2026-11-11).
 # Their reels can't be opened from the cloud, so each borrows the closest demo the app already has
 # (video_from) until a logged-in session links the reel itself: see
 # docs/research/notes-daily-mobility/facebook_reels.md ("Stand-ins").

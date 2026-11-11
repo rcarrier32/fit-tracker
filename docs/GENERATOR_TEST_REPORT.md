@@ -9,10 +9,10 @@ Muscles trained 2+ days a week (strength/muscle, 3+ days, 45+ min; a day counts 
 Push:pull sets ratio, week 1: median 0.82
 Variety (distinct / total picks over the plan): 26%
   strength   coach range: — of muscles · coach exercises: 25% of week-1 picks
-  muscle     coach range: 59% of muscles · coach exercises: 24% of week-1 picks
+  muscle     coach range: 59% of muscles · coach exercises: 25% of week-1 picks
   fat_loss   coach range: 53% of muscles · coach exercises: 19% of week-1 picks
   athletic   coach range: 43% of muscles · coach exercises: 16% of week-1 picks
-  durability coach range: 61% of muscles · coach exercises: 60% of week-1 picks
+  durability coach range: 60% of muscles · coach exercises: 60% of week-1 picks
 
 Hard rules: all passed.
 ```
