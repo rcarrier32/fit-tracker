@@ -6,7 +6,8 @@ import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
 import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
-import { isFav, toggleFav } from '../lib/favorites.js';
+import { isFav, toggleFav, favorites } from '../lib/favorites.js';
+import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
@@ -338,6 +339,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
     ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
+    ${session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()])) ? `
+    <div style="display:flex;align-items:center;gap:8px;margin:10px 0">
+      <button class="pill ${session.gym_day ? 'accent' : ''}" id="gym-toggle" style="cursor:pointer;padding:8px 14px;font-size:14px">🏋 ${session.gym_day ? 'At the gym today' : 'Going to the gym today?'}</button>
+      <button class="pill" id="gym-kit" style="cursor:pointer;padding:8px 10px" aria-label="Gym equipment">⚙</button>
+      <span class="muted" style="font-size:11px;flex:1">${session.gym_day ? 'Band and bodyweight stand-ins swapped for gym versions.' : 'Swaps band and bodyweight stand-ins for gym versions.'}</span>
+    </div>` : ''}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
@@ -725,6 +732,36 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     openStep(k < 0 ? warmCount : k);
   };
   app.querySelector('#start-flow').onclick = startFlow;
+  // 🏋 Gym today (src/lib/gym_swap.js): swap home stand-ins for better gym versions, or put the plan back.
+  app.querySelector('#gym-toggle')?.addEventListener('click', async () => {
+    const on = !session.gym_day;
+    const [gym, learned] = await Promise.all([pref('gym_equipment'), _loadLearned()]);
+    const lookup = (n) => exMap[String(n).toLowerCase()];
+    const { rows, swaps } = applyGymDay(session.exercises, on, lookup, allExercises,
+      { gym: gym || GYM_DEFAULT, learned, favorites: favorites(), avoid: _profile?.avoid || [] });
+    session.exercises = rows;
+    session.gym_day = on || undefined;
+    await saveSession(session);
+    const real = swaps.filter(x => x.from !== x.to);
+    toast(on ? (real.length ? `Gym: ${real.length} swap${real.length === 1 ? '' : 's'}${swaps.length > real.length ? ', lunges with dumbbells' : ''}` : 'Nothing to swap: today already suits the gym')
+      : 'Back to the plan', 2400);
+    renderWorkout(app, { keepRest: true });
+  });
+  app.querySelector('#gym-kit')?.addEventListener('click', async () => {
+    let kit = (await pref('gym_equipment')) || [...GYM_DEFAULT];
+    const ALL = ['dumbbell', 'barbell', 'trap_bar', 'bench', 'box', 'cable', 'machine', 'pullup_bar', 'landmine', 'kettlebell', 'smith', 'med_ball', 'band', 'mini_band', 'sled', 'suspension'];
+    openSheet((sheet, close) => {
+      const paint = () => {
+        sheet.innerHTML = `<h2>Your gym has</h2>
+          <div class="muted" style="margin-bottom:10px">Used when you tap "Going to the gym today?".</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">${ALL.map(q => `<button class="pill ${kit.includes(q) ? 'accent' : ''}" data-q="${q}" style="cursor:pointer;padding:7px 11px">${EQUIPMENT_LABEL[q] || q}</button>`).join('')}</div>
+          <button class="btn" id="gk-save" style="margin-top:14px">Save</button>`;
+        sheet.querySelectorAll('[data-q]').forEach(b => b.onclick = () => { const q = b.dataset.q; kit = kit.includes(q) ? kit.filter(x => x !== q) : [...kit, q]; paint(); });
+        sheet.querySelector('#gk-save').onclick = async () => { await pref('gym_equipment', kit); close(); toast('Gym equipment saved'); };
+      };
+      paint();
+    });
+  });
   // Today's "Start workout" goes straight into the flow.
   let auto = false;
   try { auto = sessionStorage.getItem('lift-autostart') === '1'; sessionStorage.removeItem('lift-autostart'); } catch { /* private mode */ }
@@ -1398,6 +1435,8 @@ let _history = {};
 let _profile = null;
 let _notes = {};   // last note written on each exercise
 let _clock = null;
+let _learned = null;   // coach-program numbers (data/learned_patterns.json), for gym swaps
+const _loadLearned = async () => (_learned ||= await fetch('data/learned_patterns.json').then(r => r.json()).catch(() => ({})));
 let _tickClock = () => {};
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 /** Next-session target for a lift from its logged history (null for timed work or nothing logged). */

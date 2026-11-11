@@ -101,3 +101,11 @@ plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`st
   Hip, plans) or ⋯ → ♡ Favourite on a Lift card. A ♥ shows on the card and in Swap, where favourites
   of the same movement come first. Generate (+2.5, more than anything learned) and the Manual builder
   pick them first; the preview lists the ones used and each says "♥ your favourite".
+- **🏋 Going to the gym today?** (Lift screen, shown when today has something the gym could do better;
+  src/lib/gym_swap.js, `node data/check_gym_swap.mjs`): swaps home stand-ins (working lifts done only with a
+  band, mini band, slider or bodyweight, in a loadable movement) for the gym version of the same movement and
+  main muscle, using the gym's equipment (⚙: cable, machines, barbell, …), best first by what the coach
+  programs use, ♥ favourites, BWS gym lifts and a name match; accessories stay accessories, combo moves rank
+  last. Bodyweight lunges get "hold dumbbells" instead of a machine. Never swapped: ♥ favourites,
+  Copenhagen/Nordics, dumbbell and kettlebell work (a choice, not a stand-in), holds, mobility, core, jumps,
+  anything logged today. Sets and reps stay; tap again to put the plan back.
