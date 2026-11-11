@@ -98,8 +98,6 @@ through with the user before building anything: what they'd want from it and whe
 
 - **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
   each needs its impact profile and a label on game days).
-- **Week patterns for plans without sports.** Generated plans only come with a week when there are games; a
-  "two on, recovery" week for every plan would use the same `week_plan.js`.
 
 ## 8. FitKidHooper: commit the In-Season Hooper program (needs push access to `legendsyba/FitKidHooper`)
 

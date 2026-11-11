@@ -389,6 +389,10 @@ has its own video; `enrich_program_videos.mjs --apply` clears the mark. The test
 **Coach programs it learns from** (`data/learn_patterns.py`): PJF, BWS, Griffith/TrainHeroic and, since
 2026-11-11, HoopStudy's 8-week in-season program for the athletic goal.
 
+**Every generated plan comes with a week** (`suggested_week`, offered as **Set up my week** when you start it):
+training days spread out with Sunday rest, never three hard days in a row, Recovery & Mobility on spare days
+(3 days: Mon/Wed/Fri; 4 days: Mon Tue Thu Sat). It then runs with the week-flow rules (recovery after each pair).
+
 **Sports days** (Generate a plan → Sports you play → 🏀 Basketball and the game days; `--basketball 1,5`
 on the command line): pickup games are sprints, jumps, cuts and intervals, so with games in the week the plan
 - leaves out hard-interval finishers (Zone 2 instead), and with 2+ games a week no jumps, sprints or speed

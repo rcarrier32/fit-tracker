@@ -753,7 +753,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   for (const k of Object.keys(summary)) summary[k] = Math.round(summary[k]);
   const goalLabel = goal.label;
   // The week, laid out around the games (src/lib/week_plan.js): Mixed Week slots the start sheet can set up.
-  const week = games ? planWeek(split.days.map(k => rules.days[k].focus), p.sport.days, { sport: p.sport.name || 'basketball' }) : null;
+  // Every plan gets one; with no games it's just training days spread out, Sunday rest, recovery on spare days.
+  const week = planWeek(split.days.map(k => rules.days[k].focus), games ? p.sport.days : [], { sport: p.sport?.name || 'basketball' });
   const DOWN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   return {
     id: `gen-${Date.now().toString(36)}`,
@@ -761,10 +762,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     source: 'custom',
     generated: { ...p },
     description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${isDeload(p.weeks) ? ' + deload' : ''}.`
-      + (week ? ` Built around ${p.sport.name || 'basketball'} ${p.sport.days.map(d => DOWN[d]).join(' & ')}: the games are the jumps and hard conditioning.` : '')
+      + (games ? ` Built around ${p.sport.name || 'basketball'} ${p.sport.days.map(d => DOWN[d]).join(' & ')}: the games are the jumps and hard conditioning.` : '')
       + (askedDays > p.days ? ` ${askedDays} workouts plus ${p.sport.days.length} games won't fit a week, so it's ${p.days}.` : '')
       + (startLighter ? ' Starts a set lighter on the smaller lifts: your recent check-ins say you\'ve been running low.' : ''),
-    ...(week ? { suggested_week: { days: week.days, labels: { move30_recovery_mobility: 'Recovery & Mobility' }, start_dow: week.start_dow, note: week.note } } : {}),
+    suggested_week: { days: week.days, labels: { move30_recovery_mobility: 'Recovery & Mobility' }, start_dow: games ? week.start_dow : null, note: week.note },
     sessions_per_week: p.days,
     session_length_min: p.minutes,
     weeks,

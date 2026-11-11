@@ -56,6 +56,11 @@ function check(params, label) {
   const easyHit = (e) => easy.some(z => (z.patterns || []).includes(e.pattern) || (z.names && new RegExp(z.names, 'i').test(e.name)));
 
   if (plan.weeks.length !== params.weeks) fail('weeks', `${label}: ${plan.weeks.length} weeks`);
+  // Every plan comes with a week: all its workouts placed, no three hard days in a row unless it can't fit.
+  {
+    const sw = plan.suggested_week, nTrain = Math.min(6, Math.max(2, params.days), 7 - (params.sport?.days?.length || 0));
+    if (!sw || sw.days.length !== 7 || sw.days.filter(t => t === 'train').length !== nTrain) fail('a week for every plan', `${label}: ${JSON.stringify(sw?.days)}`);
+  }
   // Sports days: games are the jumps/sprints (2+ a week: none in the plan), finishers stay easy, the week is laid out.
   if (params.sport) {
     const g = params.sport.days;
