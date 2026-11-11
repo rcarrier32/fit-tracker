@@ -201,6 +201,12 @@ finishes both days; Day 4's 25-min treadmill is what the games replace). Set it 
   Undo. A game is saved as a session (`src/lib/game.js`), so it counts toward the streak and This week.
 - **Played:** the next day's workout drops its jumps and hard intervals (power moves, sprint / Zone 4
   finishers), and Daily Mobility treats the game as impact work for the tendons.
+- **Recovery the day after a game** comes from four places: Daily Mobility (the card says "Recovery from
+  yesterday's game built in": pogos become a balance hold, extra stretch sets for the quads, calves and hips),
+  a workout with no jumps or hard intervals, a warm-up with no pogos, skips or sprint drills (the hip warm-up,
+  then the day's own), and the day's cooldown holds and 7/11 breathing. The basketball week has one recovery
+  session fewer than the standard week (Friday's game takes it), covered by that lighter Saturday, Sunday's
+  rest and Daily Mobility every day; the check-ins still bring the lighter-week advice if games leave you drained.
 - **Didn't play:** nothing is dropped, so Saturday keeps Day 3's swings, bounds and intervals; Today
   suggests 25 minutes of easy cardio.
 - The "two on, recovery" order still follows what you finish (`src/lib/week_flow.js`): a game or rest day

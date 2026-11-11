@@ -192,7 +192,8 @@ async function dailyCardData(todaysSessions) {
     const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
     // Notes from yesterday's and today's workouts: areas called sore get their stretches.
     const sore = soreFromNotes([...yest, ...todaysSessions]);
-    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) }).note;
+    const adj = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) });
+    adjust = adj.note ? (adj.game ? 'game' : 'training') : null;
   }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
   // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
@@ -254,7 +255,7 @@ function renderDailyCard(d) {
   return `
     <div class="card" style="margin-bottom:12px">
       <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
-      ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ Adjusted for yesterday's training</div>` : ''}
+      ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ ${d.adjust === 'game' ? "Recovery from yesterday's game built in" : "Adjusted for yesterday's training"}</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>

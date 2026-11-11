@@ -289,10 +289,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
     }
     // The day after (or the day of) a pickup game: no jumps or hard intervals, the game already did them.
+    let afterGame = false;
     if (!today_w.daily) {
       const yd = new Date(); yd.setDate(yd.getDate() - 1);
       const near = [...todaysSessions, ...(await getByIndex('sessions', 'date', localDateStr(yd)))];
       if (near.some(x => x.program_id === GAME_ID && x.done && !x.skipped)) {
+        afterGame = true;
         const { exerciseByName: byN } = await loadCatalogs();
         const hard = (x) => { const e = byN.get(String(x.name).toLowerCase());
           return e?.role === 'power' || (e?.role === 'conditioning' && /sprint|zone 4|interval|hiit/i.test(x.name)); };
@@ -312,6 +314,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       done: false,
     };
     if (mergedDay) session.merged_day = mergedDay;
+    if (afterGame) session.after_game = true;
     if (gameNotes.length) session.adjust_note = gameNotes.join(' ');
     // Daily Mobility adjusts for yesterday's training (src/lib/daily_adjust.js): no pogos after jumps
     // or heavy legs, one more set of the holds for what was worked. Decided once, when today's session starts.
@@ -350,6 +353,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   let warmup = dayData.warmup?.length
     ? { name: 'Warm-Up · 5 min', exercises: dayData.warmup }
     : _pickWarmup(dayData.focus || dayData.day_name, warmups);
+  // The day after a game: the warm-up skips jumps and sprints too (pogos, skips, sprint drills).
+  if (session.after_game && warmup?.exercises?.length) {
+    const IMPACT = new Set(['plyo_jump', 'plyo_bound_hop', 'speed_accel', 'deceleration_landing', 'agility_cod']);
+    const keep = warmup.exercises.filter(w => !IMPACT.has(exMap[String(w.name).toLowerCase()]?.pattern));
+    if (keep.length !== warmup.exercises.length) warmup = { ...warmup, exercises: keep };
+  }
   // Hip plan in use: its warm-up IS the workout's warm-up (the plan says to do it before any lift).
   // It replaces the generic warm-up; a program's own warm-up follows it. Checking a move here checks
   // it on the Hip tab too (hip_logs), and the other way round.
