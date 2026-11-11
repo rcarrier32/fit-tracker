@@ -56,3 +56,11 @@ Hip-friendly items that can stay as written: pogos (if pain-free), arm swings, m
 raises, ankle rolls, jumping jacks, sit-down roll ups, the dead bug series, single-leg heel bridge,
 rock back breathing (keep it short of the pinch), sit-down lat stretch, 3-way palm stretch,
 yoga push-ups.
+
+## Also in the user's HoopStudy account: "8 Week In Season Strength Program"
+
+From a screenshot the user shared (2026-11-11): Introduction (video), Academy Workbook Download, and a
+"7 Day Workout Plan" (6 lessons): Day 1 Sports Performance: Full Body Strength 1 · Day 2 Sport Specific 1 ·
+Day 3 Strength 2 · Day 4 Sports Specific 2 · Day 5 Strength 3 · Day 6 & Day 7 Recovery. The day contents
+were not visible. Structure: 3 strength days alternating with 2 sport-specific days, and 2 recovery days a
+week — recovery is programmed, not optional.
