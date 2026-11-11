@@ -14026,6 +14026,131 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "daily-knee-circles",
+      "name": "Knee Circles",
+      "video_url": "https://youtu.be/nt4DnYjP-Xo",
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Knee+Circles+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "hip_flexors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "daily-standing-hip-internal-external-lifts",
+      "name": "Standing Hip Internal/External Lifts",
+      "video_url": "https://youtu.be/odvEl4NkZuo",
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Hip+Internal/External+Lifts+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "daily-knee-pull-heel-bridge",
+      "name": "Knee Pull Heel Bridge",
+      "video_url": "https://youtu.be/LsPF-8U8hak",
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Knee+Pull+Heel+Bridge+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "abs"
+      ],
+      "pattern": "isometric",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "daily-squat-to-hamstring-stretch",
+      "name": "Squat to Hamstring Stretch",
+      "video_url": "https://www.youtube.com/watch?v=m2f4XRZuHWc",
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Squat+to+Hamstring+Stretch+form",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "adductors",
+        "glutes"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "daily-quadruped-swing-throughs",
+      "name": "Quadruped Swing Throughs",
+      "video_url": "https://youtu.be/YoOlLusFMYU",
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Quadruped+Swing+Throughs+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "hamstrings"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
     }
   ],
   "programs": {
@@ -61468,7 +61593,7 @@
           {
             "day_name": "Daily C · Hips",
             "notes": [
-              "About 15 minutes. Your low-back reset, then hips: your Hip Mobility list, PJF's pigeon and hip-flexor progressions, and the \"4 moves for tight hips\" reel.",
+              "About 18 minutes. Your low-back reset, then hips: your Hip Mobility list (from your saved reels), PJF's pigeon and hip-flexor progressions, and the \"4 moves for tight hips\" reel.",
               "Work through the pigeon levels slowly (PJF: levels 3 and 4 are hard for many people)."
             ],
             "exercises": [
@@ -61560,7 +61685,7 @@
                 ]
               },
               {
-                "name": "Facing Wall Hip Circle Rotations",
+                "name": "Knee Circles",
                 "round_group": "Rotation",
                 "is_alternate": false,
                 "sets": 1,
@@ -61569,7 +61694,26 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your \"knee circles\": big slow circles, each leg."
+                "notes": "Your #2. On hands and knees, circle one bent knee out to the side and back, slow; each leg (Yoga With Katharine). Demo is a stand-in until your saved reel is linked.",
+                "alternates": [
+                  "Facing Wall Hip Circle Rotations",
+                  "Fire Hydrants"
+                ]
+              },
+              {
+                "name": "Standing Hip Internal/External Lifts",
+                "round_group": "Rotation",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "8 cycles each leg",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "15s",
+                "notes": "Your #4 (likely match). Back to a wall, standing knee soft: turn the other leg in and lift, set down, turn out and lift. 8-10 cycles (Project Physical Therapy). Demo is a stand-in until your saved reel is linked.",
+                "alternates": [
+                  "Facing Wall Hip Circle Rotations"
+                ]
               },
               {
                 "name": "90/90 Hip Opener",
@@ -61608,7 +61752,23 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your \"knee pull, band resistance\": try different angles."
+                "notes": "Your #8 (likely match): band low-anchored at the top of the thigh, knee to chest and across, different angles."
+              },
+              {
+                "name": "Knee Pull Heel Bridge",
+                "round_group": "Band",
+                "is_alternate": false,
+                "sets": 2,
+                "reps": "5 breaths",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": "10s",
+                "notes": "Your #9. On your back, hug one knee to the chest, lift the other foot's toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Demo is a stand-in until your saved reel is linked.",
+                "alternates": [
+                  "Posterior Pelvic Tilt Breathing",
+                  "Glute Bridge Hold"
+                ]
               },
               {
                 "name": "Hamstring Floss",
@@ -61620,7 +61780,38 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your \"lunge to hamstring\": tuck, then push the glute back."
+                "notes": "Your #18 \"lunge to hamstring\": tuck, then push the glute back."
+              },
+              {
+                "name": "Squat to Hamstring Stretch",
+                "round_group": "Hamstrings & frog",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your #10 (likely match): deep squat → fold forward, straighten the legs → back down (raybeau_moves, 5 reps). Demo is a stand-in until your saved reel is linked.",
+                "alternates": [
+                  "Hamstring Stretch",
+                  "Asian Squat"
+                ]
+              },
+              {
+                "name": "Quadruped Swing Throughs",
+                "round_group": "Hamstrings & frog",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Your #19 (possible match): on hands and knees, swing one knee under you, then kick the leg back and up (Physical Therapy Session). Demo is a stand-in until your saved reel is linked.",
+                "alternates": [
+                  "Donkey Kicks"
+                ]
               },
               {
                 "name": "Optional Downward Frog",

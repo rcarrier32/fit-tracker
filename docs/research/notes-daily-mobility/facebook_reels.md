@@ -67,6 +67,31 @@ Still **not found in any recording**: #3 sit back ankle tuck/untuck, #5 frog leg
 #16 90/90 swing-through single leg, #20 band pigeon (and a clear #12/#14/#17). These are most
 likely in Griffith's full hip-session reel and the links below.
 
+## Stand-ins in Daily C (added 2026-11-11, check these)
+
+Every move from the user's Hip Mobility list in Daily C is either a **new exercise named after the
+list item, borrowing the closest existing demo** (`video_from` in `data/build_daily_mobility.py`), or an
+**existing app exercise used for the list item**. Each row's notes in the app say "Demo is a
+stand-in" or name the list item. Replace a stand-in when its real reel is linked, and change the
+mapping if it's the wrong move.
+
+| List item | In Daily C as | Demo shown now | How sure | Source of the move |
+|---|---|---|---|---|
+| #1 Rotating Pigeon | Optional Pigeon Length Under Load (existing, PJF) | PJF's own | likely | Griffith reel (2025-09-12) or PJF; Griffith's full session not seen |
+| #2 Knee circle | **Knee Circles** (new) | stand-in: Fire Hydrants | strong match, stand-in demo | Yoga With Katharine reel |
+| #4 Standing 45 ext IR/ER | **Standing Hip Internal/External Lifts** (new) | stand-in: Facing Wall Hip Circle Rotations (Griffith) | likely match ("extension" part not obvious) | Project Physical Therapy reel |
+| #8 Knee Pull Band Resistance | Banded Hip Distraction Pulling Into Hip Flexion (existing, Griffith) | Griffith's own | likely | dr.leethechiro reel (RISE Training possible) |
+| #9 Knee Pull, Lift Tie Heel Bridge | **Knee Pull Heel Bridge** (new) | stand-in: On Bench Single Leg Glute Bridge (Griffith) | strong match, stand-in demo | Dr. Devon Hoffman reel |
+| #10 Squats to Hamstring stretch | **Squat to Hamstring Stretch** (new) | stand-in: Hamstring Stretch | likely | raybeau_moves reel |
+| #13 90/90 Windshield Wipers | 90/90 Knee Roll (existing, PJF) | PJF's own | likely | raybeau_moves reel |
+| #18 Lunge to Hamstring | Hamstring Floss (existing, PJF) | PJF's own | likely (tuck part seen) | Yoga With Katharine reel |
+| #19 Swing Throughs | **Quadruped Swing Throughs** (new) | stand-in: Donkey Kicks | possible | Physical Therapy Session reel (or Griffith) |
+| #20 Band Pigeon | Banded Incline Pigeon Rotation (existing, Griffith) | Griffith's own | guess (not seen in any recording) | — |
+| #3 Sit back ankle tuck/untuck | Hip Flexor Rock Back (existing, Griffith) | Griffith's own | guess | — |
+| #5/#6 Frog leg cobra lean, ½ frog into cobra | Optional Downward Frog (existing, PJF) | PJF's own | guess | — |
+| #12, #14, #15, #16, #17 (90/90 45 push, backside opener, 30% rotations, swing-through single leg, lift back/lean) | folded into 90/90 Hip Opener (existing, PJF), 1:30 | PJF's own | placeholder | likely Griffith's full hip session |
+| #7 Hip opener into knee lean back, #11 Heel clicks | not in Daily C yet | — | not found | — |
+
 ## Links
 
 | # | Link | Creator | Move |

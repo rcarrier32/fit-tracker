@@ -90,9 +90,18 @@ class Library:
         q = (search or f'{name} form').replace(' ', '+')
         e.setdefault('fallback_search', f'https://www.youtube.com/results?search_query={q}')
         if video_from and not e.get('video_url'):
-            src = self.by_name.get(video_from.lower())
-            if src and src.get('video_url'):
-                e['video_url'] = src['video_url']
+            # Borrow from the library, a provider file (PJF, Griffith) or the Hip tab: anywhere the
+            # phone's catalog has a video for that name (data/exercise_index.json).
+            src = self.by_name.get(video_from.lower()) or self.providers.get(video_from.lower())
+            url = (src or {}).get('video_url')
+            if not url:
+                idx = json.loads((LIB_PATH.parent / 'exercise_index.json').read_text())['exercises']
+                hit = next((x for x in idx if x['name'].lower() == video_from.lower() and x.get('video')), None)
+                url = hit and (hit['video'].get('url') if isinstance(hit['video'], dict) else hit['video'])
+            if url:
+                e['video_url'] = url
+            else:
+                print(f'NO VIDEO to borrow for "{name}" from "{video_from}"')
         return e
 
     def set_programs(self, key, programs):

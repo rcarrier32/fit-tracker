@@ -3695,6 +3695,96 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "daily-knee-circles": {
+   "name": "Knee Circles",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "abductors",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "daily-knee-pull-heel-bridge": {
+   "name": "Knee Pull Heel Bridge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "abs"
+   ],
+   "pattern": "isometric",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
+  "daily-quadruped-swing-throughs": {
+   "name": "Quadruped Swing Throughs",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "hamstrings"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
+  "daily-squat-to-hamstring-stretch": {
+   "name": "Squat to Hamstring Stretch",
+   "primary_muscle": "hamstrings",
+   "muscles": [
+    "hamstrings",
+    "adductors",
+    "glutes"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "daily-standing-hip-internal-external-lifts": {
+   "name": "Standing Hip Internal/External Lifts",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "adductors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
   "db-chest-supported-row-midupper-back": {
    "name": "DB Chest Supported Row (mid/upper back)",
    "primary_muscle": "upper_back",
