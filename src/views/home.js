@@ -32,6 +32,7 @@ import { hipToday } from '../lib/hip_protocol.js';
 import { hipCredits } from '../lib/moves_today.js';
 import { HOME_CARDS, resolveLayout, moveCard, layoutToSave } from '../lib/home_layout.js';
 import { weekSummary, weightTrend, feelingSummary } from '../lib/home_extras.js';
+import { mountWeightChart } from '../lib/weight_chart.js';
 
 const today = () => localDateStr();
 
@@ -273,63 +274,44 @@ function plannedThisWeek(schedule, today_w) {
   return p.sessions_per_week || null;
 }
 
+// Optional cards stay light: a title row and one or two quiet lines.
 function renderWeekCard(w) {
   const L = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
   const dots = w.days.map((d, i) => `
     <div style="flex:1;text-align:center">
-      <div style="font-size:10px;color:${d.today ? 'var(--accent)' : 'var(--fg-dim)'};font-weight:${d.today ? 700 : 400}">${L[i]}</div>
-      <div style="height:22px;margin-top:3px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;
-        background:${d.workout ? 'var(--accent)' : 'transparent'};color:${d.workout ? '#0f172a' : 'var(--fg-dim)'};
-        border:1px ${d.future ? 'dashed' : 'solid'} ${d.workout ? 'var(--accent)' : d.today ? 'var(--accent)' : 'var(--border)'}">${d.workout ? '✓' : ''}</div>
-      <div style="height:6px;margin-top:3px;display:flex;justify-content:center">${d.daily ? '<span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>' : ''}</div>
+      <div style="width:22px;height:22px;margin:0 auto;border-radius:50%;font-size:10px;line-height:22px;
+        ${d.workout ? 'background:var(--accent);color:#0f172a;font-weight:700' : `border:1px solid ${d.today ? 'var(--accent)' : 'var(--border)'};color:var(--fg-dim)`}">${L[i]}</div>
+      <div style="height:4px;margin-top:3px">${d.daily ? '<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent)"></span>' : ''}</div>
     </div>`).join('');
+  const extra = [w.dailyDays ? `mobility ${w.dailyDays}×` : '', w.cardioMin ? `${w.cardioMin} min active` : ''].filter(Boolean).join(' · ');
   return `
-    <div class="card">
-      <div class="card-row"><h2 style="margin:0">This week</h2>
-        <span class="pill ${w.planned && w.workouts >= w.planned ? 'accent' : ''}">${w.workouts}${w.planned ? ` of ${w.planned}` : ''} workout${(w.planned || w.workouts) === 1 ? '' : 's'}</span></div>
-      <div style="display:flex;gap:4px;margin-top:10px">${dots}</div>
-      <div class="muted" style="font-size:12px;margin-top:6px">✓ workout · • Daily Mobility (${w.dailyDays} day${w.dailyDays === 1 ? '' : 's'})${w.cardioMin ? ` · ${w.cardioMin} min activity` : ''}</div>
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">This week</div>
+        <span class="muted" style="font-size:12px">${w.workouts}${w.planned ? ` of ${w.planned}` : ''} workout${(w.planned || w.workouts) === 1 ? '' : 's'}${extra ? ` · ${extra}` : ''}</span></div>
+      <div style="display:flex;gap:2px;margin-top:8px">${dots}</div>
     </div>`;
 }
 
 function renderFeelingCard(f) {
-  const effort = { easy: 'Easy', right: 'About right', hard: 'Too much' };
-  const energy = { 1: '😫', 2: '🙂', 3: '💪' };
-  const body = !f ? `<div class="muted" style="font-size:13px;margin-top:4px">Answer "How did it feel?" when you finish a workout and it shows up here.</div>` : `
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${f.recent.map(r => `
-        <span class="pill" style="font-size:12px;padding:4px 9px">${new Date(r.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short' })} ${energy[r.energy] || ''} ${effort[r.effort] || ''}</span>`).join('')}</div>
-      ${f.hurts.length ? `<div style="font-size:12px;margin-top:8px">Hurt in the last two weeks: <b>${f.hurts.map(escH).join(', ')}</b></div>` : ''}
-      ${f.advice ? `<div style="font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(56,189,248,0.12)">🔄 ${escH(f.advice)}</div>`
-        : `<div class="muted" style="font-size:12px;margin-top:8px">Recovering fine: keep building.</div>`}`;
+  const face = (r) => r.effort === 'hard' || r.energy === 1 ? '😫' : r.energy === 3 || r.effort === 'easy' ? '💪' : '🙂';
+  const line = !f ? 'Answer "How did it feel?" after a workout to see this.'
+    : f.advice ? '2 of your last 3 felt like too much: try a lighter week (half the sets, same weights).'
+    : 'Recovering fine. Keep building.';
   return `
-    <div class="card">
-      <div class="card-row"><h2 style="margin:0">How you've been feeling</h2>${f?.advice ? '<span class="pill accent">Lighter week?</span>' : ''}</div>
-      ${body}
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">How you've been feeling</div>
+        ${f ? `<span style="font-size:15px;letter-spacing:2px" title="Last workouts, oldest first">${f.recent.slice(-3).map(face).join('')}</span>` : ''}</div>
+      <div class="muted" style="font-size:12px;margin-top:4px;${f?.advice ? 'color:var(--fg)' : ''}">${escH(line)}</div>
+      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
     </div>`;
 }
 
 function renderTrendCard(t) {
-  if (!t) return `
-    <div class="card">
-      <div class="card-row"><h2 style="margin:0">Weight trend</h2></div>
-      <div class="muted" style="font-size:13px;margin-top:4px">Weigh in 3 times in a week to see your 7-day average. Daily weight jumps around; the average is what moves.</div>
-    </div>`;
-  const ws = t.points.map(p => p.w), lo = Math.min(...ws), hi = Math.max(...ws), span = Math.max(1, hi - lo);
-  const t0 = new Date(t.points[0].date + 'T12:00:00').getTime(), t1 = new Date(t.points[t.points.length - 1].date + 'T12:00:00').getTime();
-  const X = (p) => t1 === t0 ? 150 : 4 + (new Date(p.date + 'T12:00:00').getTime() - t0) / (t1 - t0) * 292;
-  const Y = (w) => 6 + (hi - w) / span * 48;
-  const path = t.points.map((p, i) => `${i ? 'L' : 'M'}${X(p).toFixed(1)},${Y(p.w).toFixed(1)}`).join(' ');
-  const ch = t.change;
   return `
-    <div class="card">
-      <div class="card-row"><h2 style="margin:0">Weight trend</h2>
-        ${ch != null ? `<span class="pill ${ch < 0 ? 'accent' : ''}">${ch > 0 ? '+' : ''}${ch} lb vs last week</span>` : ''}</div>
-      <div style="font-size:22px;font-weight:700;margin-top:6px">${t.avg} lb <span class="muted" style="font-size:12px;font-weight:400">7-day average${t.prev != null ? ` · was ${t.prev}` : ''}</span></div>
-      <svg viewBox="0 0 300 60" style="width:100%;height:60px;margin-top:6px" role="img" aria-label="Weight, last 4 weeks">
-        <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-        ${t.points.map(p => `<circle cx="${X(p).toFixed(1)}" cy="${Y(p.w).toFixed(1)}" r="2" fill="var(--accent)"/>`).join('')}
-      </svg>
-      <div class="muted" style="font-size:11px;display:flex;justify-content:space-between"><span>${t.points[0].date.slice(5)}</span><span>${lo}–${hi} lb</span><span>${t.points[t.points.length - 1].date.slice(5)}</span></div>
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">Weight</div>
+        <span class="muted" style="font-size:12px">${t ? `${t.avg} lb 7-day avg${t.change != null ? ` · ${t.change > 0 ? '+' : ''}${t.change} vs last week` : ''}` : 'Weigh in 3× a week for a trend'}</span></div>
+      <div id="home-wchart"></div>
     </div>`;
 }
 
@@ -480,6 +462,9 @@ export async function renderHome(app) {
     </div>
   `;
 
+  const $hw = app.querySelector('#home-wchart');
+  if ($hw && allBody.length >= 2) mountWeightChart($hw, allBody, { today: today(), range: (await pref('weight_chart_range')) || '1M',
+    goalPerWeek: userProfile.weekly_change_lb ?? null, height: 120, onRange: (r) => pref('weight_chart_range', r) });
   app.querySelector('[data-action="customize-home"]').onclick = () => openHomeLayout(() => renderHome(app));
   const logMeal = app.querySelector('[data-action="log-meal"]');
   if (logMeal) logMeal.onclick = () => navigate('meals');

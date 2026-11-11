@@ -95,6 +95,13 @@ export async function renderBody(app, date) {
     <h2>History</h2>
     <div id="history">${renderHistory(all)}</div>
   `;
+  // Weight chart: ranges, 7-day average, goal pace, tap a dot (src/lib/weight_chart.js).
+  const $wc = app.querySelector('#body-wchart');
+  if ($wc) {
+    const { mountWeightChart } = await import('../lib/weight_chart.js');
+    mountWeightChart($wc, all, { today: todayStr(), range: (await pref('weight_chart_range')) || '3M', goalPerWeek: userProfile.weekly_change_lb ?? null,
+      height: 170, onRange: (r) => pref('weight_chart_range', r) });
+  }
 
   renderProgressCard(app.querySelector('#progress-check'), () => renderBody(app));
 
@@ -190,7 +197,7 @@ function renderTrendCard(all, prof) {
           <div style="font-size:22px;font-weight:700;color:${onTrack ? 'var(--accent)' : 'var(--warn)'}">${wkRate}</div>
         </div>
       </div>
-      ${sparkline(all.slice(-30))}
+      <div id="body-wchart"></div>
     </div>
   `;
 }
@@ -232,16 +239,3 @@ function renderHistory(all) {
   `).join('');
 }
 
-function sparkline(points) {
-  if (points.length < 2) return '';
-  const w = 320, h = 60, pad = 4;
-  const ws = points.map(p => p.weight_lb);
-  const min = Math.min(...ws), max = Math.max(...ws);
-  const range = max - min || 1;
-  const xs = (i) => pad + (i / (points.length - 1)) * (w - pad * 2);
-  const ys = (v) => h - pad - ((v - min) / range) * (h - pad * 2);
-  const path = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xs(i).toFixed(1)} ${ys(p.weight_lb).toFixed(1)}`).join(' ');
-  return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;margin-top:10px">
-    <path d="${path}" fill="none" stroke="#4ade80" stroke-width="2"/>
-  </svg>`;
-}

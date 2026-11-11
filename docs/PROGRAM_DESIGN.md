@@ -188,8 +188,13 @@ Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weigh
 start hidden and are turned on there ([`src/lib/home_extras.js`](../src/lib/home_extras.js),
 `node data/check_home_extras.mjs`): **This week** (workouts done of planned, Mon–Sun, Daily Mobility
 days, activity minutes), **How you've been feeling** (the last finish-screen check-ins, anything that
-hurt in two weeks, the lighter-week advice) and **Weight trend** (7-day average vs the week before, last
-4 weeks charted; needs 3 weigh-ins in a week). Profile, calendar
+hurt in two weeks, the lighter-week advice) and **Weight** (7-day average vs the week before, and the
+weight chart). The optional cards keep to a title row and a line or two.
+
+The weight chart ([`src/lib/weight_chart.js`](../src/lib/weight_chart.js), `node data/check_weight_chart.mjs`)
+is shared by that card and the Body tab: ranges 1M · 3M · 6M · 1Y · All (remembered), the 7-day
+average as the line, each weigh-in a faint dot, grid lines with weights, your goal pace dashed, the
+change and lb/week for the range, and tap a dot for its date and weight. Profile, calendar
 and backup buttons sit under the cards so hiding a card never hides them.
 
 
