@@ -179,6 +179,17 @@ When a lift has gone up two sessions running and every set hit the top of the ra
 card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
 where it's working, the research report's volume rule.
 
+## Hip warm-up inside the workout
+
+When the hip plan is in use, its warm-up (walk or bike, Cat-Cow, pelvic tilts, the hip stretches) is the
+workout's warm-up on the Lift screen, in place of the generic one; a program's own warm-up follows it.
+Checking a move there checks it on the Hip tab too (`hip_logs`), and the other way round. Today has no
+separate hip box on workout days (the workout card says "hip warm-up first"); on a day with no workout
+it's one line. Daily Mobility doesn't get it.
+
+Cards stay light: the workout card is the day's name, one quiet line and the buttons; Daily Mobility is a
+badge, at most one short line, and the buttons (what changed for yesterday is on its workout screen).
+
 ## Home order
 
 Today's cards come in the order you set with **↕ Customize Home** (bottom of Today): ↑ ↓ to move a

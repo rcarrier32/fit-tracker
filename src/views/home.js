@@ -227,14 +227,10 @@ function renderDailyCard(d) {
       </div>
     </div>`;
   }
-  const chips = letters.map((l, k) => `<span class="pill ${k === todayIdx ? 'accent' : ''}" style="font-size:11px;padding:3px 8px">${l}${k === todayIdx ? ' · today' : ''}</span>`).join('');
-  const label = (d.day.day_name || '').split('·')[1]?.trim();
   return `
-    <div class="card" style="border-color:var(--accent);margin-bottom:12px">
-      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ~${d.minutes} min</span></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px">${chips}${streak ? `<span class="pill" style="font-size:11px;padding:3px 8px">🔥 ${streak}-day streak</span>` : ''}</div>
-      ${d.adjust ? `<div style="font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(56,189,248,0.12)">↻ ${escH(d.adjust)}</div>` : ''}
-      <div class="muted" style="font-size:12px;margin-top:8px">${label ? escH(label) + ' · ' : ''}${d.rows.length} moves, starting with your low-back reset</div>
+    <div class="card" style="margin-bottom:12px">
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min${streak > 1 ? ` · 🔥${streak}` : ''}</span></div>
+      ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ Adjusted for yesterday's training</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
@@ -242,26 +238,13 @@ function renderDailyCard(d) {
     </div>`;
 }
 
-/** The hip plan's row on the Today's Workout card: first (before the workout) or last. */
-function hipRow(hip, first) {
+/** The hip plan on a day with no workout: one line. (On workout days its warm-up is the workout's warm-up.) */
+function hipRow(hip) {
   const wu = hip.warmup || { done: 0, total: 0 };
-  const wuDone = wu.total && wu.done >= wu.total;
-  const title = first
-    ? `Hip warm-up first${wu.total ? ` · ${wuDone ? 'done ✓' : `${wu.done} of ${wu.total}`}` : ''}`
-    : `Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}`;
-  const sub = hip.strength
-    ? `${first ? 'Walk or bike, then the hip stretches, before the workout. ' : ''}Session ${hip.session || 'A/B'} strength runs in Your Hip Plan on the Lift screen.`
-    : (first ? `${hip.label} · ` : '') + `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`;
   return `
-        <div style="${first ? 'margin:10px 0 12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px' : 'margin-top:12px;padding-top:12px;border-top:1px solid var(--border)'}">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-            <div>
-              <div style="font-size:${first ? 13 : 12}px;font-weight:600">${title}</div>
-              <div style="font-size:11px;color:var(--fg-dim)">${sub}</div>
-              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
-            </div>
-            <button id="open-hip" class="btn ${first && !wuDone ? '' : 'ghost'}" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${first && !wuDone ? 'Start →' : 'Open →'}</button>
-          </div>
+        <div class="card-row" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+          <div style="font-size:13px">Hip warm-up <span class="muted">· ${wu.done}/${wu.total}</span></div>
+          <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
         </div>`;
 }
 
@@ -371,7 +354,7 @@ export async function renderHome(app) {
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
-  const hipFirst = !!hip && today_w.type === 'program' && !workoutDoneToday;
+  const hipInWorkout = !!hip && today_w.type === 'program';   // the workout starts with the hip warm-up
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -411,9 +394,8 @@ export async function renderHome(app) {
         <h2 style="margin:0">Today's Workout</h2>
         ${renderTodayBadge(today_w, activePlan)}
       </div>
-      ${hipFirst ? hipRow(hip, true) : ''}
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule, workoutDoneToday)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
@@ -426,7 +408,7 @@ export async function renderHome(app) {
             <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>
         </div>` : ''}
-      ${hip && !hipFirst ? hipRow(hip, false) : ''}
+      ${hip && !hipInWorkout ? hipRow(hip) : ''}
     </div>
     `,
     body: `
@@ -604,7 +586,7 @@ function renderMacroPct(p, c, f) {
   return `<div class="muted" style="font-size:11px;margin-top:8px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
 }
 
-function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
+function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -636,32 +618,17 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false) {
   }
   if (today_w.type === 'program' && today_w.program) {
     const p = today_w.program;
-    const detail = today_w.day_index != null
-      ? (p.days?.[today_w.day_index]?.day_name || ('Day ' + (today_w.day_index + 1)))
-      : `Wk ${today_w.week}, Day ${today_w.day}`;
-    const preview = getExercisePreview(today_w);
-    const totalEx = today_w.program.days
-      ? (today_w.program.days[today_w.day_index ?? 0]?.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).length
-      : null;
-    const previewHtml = preview.length ? `
-      <div style="margin:8px 0 2px">
-        ${preview.map(e => `
-          <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--fg-dim);padding:3px 0">
-            <span>${e.name}</span>
-            <span style="opacity:0.55">${e.sets ? (e.sets + '×' + (e.reps || e.set_targets?.[0] || '')) : ''}</span>
-          </div>
-        `).join('')}
-        ${totalEx > 4 ? `<div style="font-size:12px;color:var(--fg-dim);opacity:0.5;padding-top:2px">+ ${totalEx - 4} more</div>` : ''}
-      </div>
-    ` : '';
+    const day = today_w.day_index != null ? p.days?.[today_w.day_index]
+      : p.weeks?.find(w => w.week_num === today_w.week)?.days?.find(d => d.day_num === today_w.day);
+    const title = String(day?.day_name || day?.focus || `Week ${today_w.week}, Day ${today_w.day}`).split(' · ')[0];
+    const moves = (day?.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).length;
+    const line = [p.program_name || p.name || p.id, moves ? `${moves} moves` : '', hipFirst ? 'hip warm-up first' : ''].filter(Boolean).join(' · ');
     return `
-      <div style="margin-top:6px">${p.name || p.program_name || p.id} — ${detail}</div>
-      <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
-      ${previewHtml}
-      ${workoutDoneToday ? `<div class="pill accent" style="display:inline-block;margin-top:8px">Workout complete ✓</div>` : ''}
-      <div class="btn-row" style="margin-top:10px">
-        <button class="btn" data-action="start-workout">${workoutDoneToday ? 'View workout' : 'Start workout'}</button>
-        <button class="btn ghost" data-action="schedule">Edit week</button>
+      <div style="font-size:17px;font-weight:600;margin-top:6px">${escH(title)}${workoutDoneToday ? ' ✓' : ''}</div>
+      <div class="muted" style="font-size:12px">${escH(line)}</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" data-action="start-workout" style="flex:2">${workoutDoneToday ? 'View workout' : 'Start workout'}</button>
+        <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button>
       </div>
     `;
   }
@@ -698,17 +665,8 @@ function renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bod
   }
 
   // Workout nudge
-  if (today_w.type === 'program' || today_w.type === 'tag') {
-    const tag = today_w.tag;
-    if (tag === 'Rest') msgs.push(`Rest day. Let the muscles recover.`);
-    else if (today_w.type === 'program' && today_w.program) {
-      const dayLabel = today_w.day_index != null
-        ? today_w.program.days?.[today_w.day_index]?.day_name || `Day ${today_w.day_index + 1}`
-        : `Day ${today_w.day}`;
-      if (workoutDoneToday) msgs.push(`Workout done for ${dayLabel}. Nice work.`);
-      else msgs.push(`Lift day: ${dayLabel}. Get it done.`);
-    }
-  }
+  // The workout card already says what today's workout is; tips only add what it doesn't.
+  if (today_w.type === 'tag' && today_w.tag === 'Rest') msgs.push('Rest day. Let the muscles recover.');
 
   // Body weight nudge
   if (!bodyToday && hour >= 7) {
@@ -717,8 +675,8 @@ function renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bod
 
   if (!msgs.length) return '';
 
-  return `<div class="card" style="border-color:var(--accent);padding:12px 14px;margin-bottom:12px">
-    <div style="font-size:13px;line-height:1.6;color:var(--fg)">
+  return `<div class="card" style="padding:10px 14px;margin-bottom:12px">
+    <div class="muted" style="font-size:12px;line-height:1.6">
       ${msgs.map(m => `<div>· ${m}</div>`).join('')}
     </div>
   </div>`;
