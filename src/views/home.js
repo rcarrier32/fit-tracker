@@ -637,13 +637,17 @@ function renderMacroPct(p, c, f) {
   return `<div class="muted" style="font-size:11px;margin-top:8px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
 }
 
-/** Basketball icons: a ball through the net (played) or a crossed-out hoop (didn't play). */
-const HOOP = `<path d="M6 13h20" stroke="#f97316" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M8 13l2.5 11h11L24 13M11 13l2 11M16 13v11M21 13l-2 11M9 18h14" stroke="var(--fg-dim)" stroke-width="1.1" fill="none"/>`;
-const ICON_SCORED = `<svg viewBox="4 8 24 20" width="44" height="37" aria-hidden="true">${HOOP}
-  <circle cx="16" cy="18" r="6" fill="#f97316"/><path d="M10 18h12M16 12v12M11.5 13.5c2.5 2.5 2.5 6.5 0 9M20.5 13.5c-2.5 2.5-2.5 6.5 0 9" stroke="#7c2d12" stroke-width="0.9" fill="none"/></svg>`;
-const ICON_MISSED = `<svg viewBox="4 8 24 20" width="44" height="37" aria-hidden="true">${HOOP}
-  <path d="M8 10l16 16M24 10L8 26" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+/**
+ * Basketball icons, flat and modern: one ball (Lucide-style seams) with a status badge — green ✓ played,
+ * faded ball with a red ✕ didn't play.
+ */
+const BALL = (faded) => `<circle cx="14" cy="14" r="11" fill="${faded ? '#64748b' : '#f97316'}"/>
+  <g fill="none" stroke="${faded ? '#334155' : '#7c2d12'}" stroke-width="1.4" stroke-linecap="round">
+    <path d="M3 14h22M14 3v22"/><path d="M6.2 6.2c3.6 3.6 3.6 12 0 15.6M21.8 6.2c-3.6 3.6-3.6 12 0 15.6"/></g>`;
+const BADGE = (ok) => `<circle cx="24" cy="24" r="7" fill="${ok ? '#22c55e' : '#ef4444'}" stroke="var(--bg-card, #1b2230)" stroke-width="2"/>
+  <path d="${ok ? 'M20.6 24.2l2.3 2.3 4.3-4.6' : 'M21.4 21.4l5.2 5.2M26.6 21.4l-5.2 5.2'}" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+const ICON_SCORED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(false)}${BADGE(true)}</svg>`;
+const ICON_MISSED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(true)}${BADGE(false)}</svg>`;
 
 function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
