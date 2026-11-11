@@ -89,6 +89,10 @@ class Library:
             self.tags['tags'][e['id']] = {'name': name, **t}
         q = (search or f'{name} form').replace(' ', '+')
         e.setdefault('fallback_search', f'https://www.youtube.com/results?search_query={q}')
+        # A borrowed video is a stand-in: the move plays someone else's demo. Plan generators skip stand-ins
+        # (src/lib/generator.js) until the move gets its own video (enrich_program_videos.mjs --apply clears it).
+        if video_from and not e.get('video_own'):
+            e['video_standin'] = True
         if video_from and not e.get('video_url'):
             # Borrow from the library, a provider file (PJF, Griffith) or the Hip tab: anywhere the
             # phone's catalog has a video for that name (data/exercise_index.json).

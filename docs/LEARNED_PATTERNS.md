@@ -13,8 +13,19 @@ Volume is only compared with the rules for goals with 2+ programs; role order on
 
 | Goal | Area | What | Rule now | Coaches |
 |---|---|---|---|---|
-| athletic | sets | warmup | 1 | 2.0 |
+| athletic | volume | biceps | 6-8 sets/wk | 3.8 (range 1.5-6) |
+| athletic | volume | chest | 9-15 sets/wk | 6.0 (range 6-6) |
+| athletic | volume | glutes | 9-15 sets/wk | 30.2 (range 18.5-42.0) |
+| athletic | volume | lats | 6-12 sets/wk | 3.0 (range 0-6) |
+| athletic | volume | quads | 9-15 sets/wk | 28.5 (range 28.0-29.0) |
+| athletic | volume | rear_delts | 4-8 sets/wk | 1.5 (range 0-3.0) |
+| athletic | volume | side_delts | 6-8 sets/wk | 3.0 (range 0-6) |
+| athletic | sets | warmup | 1 | 2 |
 | athletic | sets | power | 3 | 2.0 |
+| athletic | rest | accessory | 60s | 15s |
+| athletic | rest | core | 45s | 15s |
+| athletic | sets | cooldown | 1 | 2 |
+| athletic | order | accessory before core | yes | accessory sits at 1.0, core at 0.2 |
 | durability | volume | abs | 2-6 sets/wk | 11.0 (range 10.0-12) |
 | durability | volume | glutes | 9-15 sets/wk | 22.2 (range 15.5-29.0) |
 | durability | volume | obliques | 2-6 sets/wk | 17.0 (range 13.5-20.5) |
@@ -38,44 +49,50 @@ Volume is only compared with the rules for goals with 2+ programs; role order on
 
 ## athletic
 
-From 1 programs: `pjf_extended_band_6wk`.
-Median 5 days a week.
+From 2 programs: `pjf_extended_band_6wk`, `hoopstudy_8wk_in_season`.
+Median 6.0 days a week.
 
 ### Weekly sets per muscle (week 1)
 
 | Muscle | Median | Range |
 |---|---|---|
-| quads | 29.0 | 29.0-29.0 |
-| glutes | 18.5 | 18.5-18.5 |
-| hamstrings | 8.0 | 8.0-8.0 |
-| abductors | 6.5 | 6.5-6.5 |
-| biceps | 6 | 6-6 |
-| chest | 6 | 6-6 |
-| side_delts | 6 | 6-6 |
-| triceps | 6 | 6-6 |
-| upper_back | 6 | 6-6 |
-| obliques | 4 | 4-4 |
-| adductors | 2.5 | 2.5-2.5 |
-| abs | 2.0 | 2.0-2.0 |
-| calves | 1.5 | 1.5-1.5 |
+| glutes | 30.2 | 18.5-42.0 |
+| quads | 28.5 | 28.0-29.0 |
+| hamstrings | 14.2 | 8.0-20.5 |
+| chest | 6.0 | 6-6 |
+| triceps | 5.2 | 4.5-6 |
+| upper_back | 5.2 | 4.5-6 |
+| calves | 4.8 | 1.5-8.0 |
+| abs | 4.5 | 2.0-7 |
+| biceps | 3.8 | 1.5-6 |
+| obliques | 3.8 | 3.5-4 |
+| abductors | 3.2 | 0-6.5 |
+| front_delts | 3.0 | 0-6.0 |
+| lats | 3.0 | 0-6 |
+| side_delts | 3.0 | 0-6 |
+| lower_back | 2.5 | 0-5.0 |
+| adductors | 2.0 | 1.5-2.5 |
+| rear_delts | 1.5 | 0-3.0 |
+| hip_flexors | 0.8 | 0-1.5 |
 
 ### By role (week 1)
 
 | Role | Exercises | Sets | Reps | Hold | Rest | Position in session |
 |---|---|---|---|---|---|---|
-| warmup | 8 | 2.0 | 5.0 | – | – | 0.1 |
-| power | 10 | 2.0 | 8.0 | 20s | – | 0.5 |
-| secondary | 8 | 3.0 | 10.0 | – | – | 0.6 |
-| accessory | 10 | 3.0 | – | 8.0s | – | 0.9 |
-| core | 2 | 2.0 | 8.0 | – | – | 0.0 |
-| cooldown | 1 | 2 | 8.0 | – | – | 0.0 |
+| warmup | 19 | 2 | 10.0 | – | 30s | 0.2 |
+| power | 18 | 2.0 | 6.0 | 20s | 60.0s | 0.6 |
+| main | 1 | 3 | 8.0 | – | 90s | 0.0 |
+| secondary | 20 | 3.0 | 8.0 | – | 90.0s | 0.5 |
+| accessory | 15 | 3 | 8.0 | 25.0s | 15s | 1.0 |
+| core | 5 | 2 | 8.0 | – | 15s | 0.2 |
+| cooldown | 5 | 2 | 10.0 | 90.0s | 15.0s | 0.0 |
 
 ### Progression
 
-- Exercises stay the same for a median of **2 weeks** before they change.
-- Same exercise, next week: sets +0.0, reps +0.0 (reps go up 0% of the time), holds +0 s.
-- Total weekly sets, last week vs first: ×1.6.
-- Programs with a deload week: 0 of 1.
+- Exercises stay the same for a median of **2.0 weeks** before they change.
+- Same exercise, next week: sets +0, reps +0.0 (reps go up 0% of the time), holds +0 s.
+- Total weekly sets, last week vs first: ×1.5.
+- Programs with a deload week: 0 of 2.
 
 ### Most common superset pairs
 
@@ -263,4 +280,5 @@ Median 4 days a week.
 | Ryhan's 5-Day Split | muscle | – | 5 | 91 | – | – |
 | Ryhan's 4-Day Split | muscle | – | 4 | 79 | – | – |
 | Ryhan's 3-Day Full Body | muscle | – | 3 | 65 | – | – |
+| HoopStudy 8-Week In-Season Strength | athletic | 8 | 7 | 82 82 102 102 106 106 113 113 | 100% 100% 100% 100% 100% 100% 100% | – |
 | Runners Mobility & Strength (Griffith) | durability | 8 | 3 | 62 64 66 66 65 65 69 69 | 97% 21% 97% 21% 100% 36% 100% | – |

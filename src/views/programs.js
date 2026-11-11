@@ -328,7 +328,7 @@ export function programGuideHtml(p) {
 function suggestedWeekLabel(sw) {
   const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const groups = new Map();
-  sw.days.forEach((d, i) => { const k = d === 'train' ? 'train' : d === 'rest' ? 'rest' : (sw.labels?.[d] || d); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(DOW[i]); });
+  sw.days.forEach((d, i) => { const k = d === 'train' ? 'train' : d === 'rest' ? 'rest' : d === 'basketball' ? '🏀 basketball' : (sw.labels?.[d] || d); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(DOW[i]); });
   return [...groups].map(([k, days]) => `${days.join(' ')}: ${k}`).join(' · ')
     + '. Recovery comes after the training days you actually finish, so a missed day never brings it early. Change it any time in Mixed Week.';
 }
@@ -364,6 +364,15 @@ function openCustomPlanActions(p, activePlan, onRefresh) {
   });
 }
 
+/** Start date for a plan whose week puts Day 1 on a set weekday (games around it): the next one, from today. */
+function startFor(program) {
+  const dow = program.suggested_week?.start_dow;
+  if (dow == null) return localDateStr();
+  const d = new Date();
+  while (d.getDay() !== dow) d.setDate(d.getDate() + 1);
+  return localDateStr(d);
+}
+
 async function openStartCustomPlanSheet(program, onConfirm) {
   openSheet((sheet, close) => {
     sheet.innerHTML = `
@@ -377,8 +386,13 @@ async function openStartCustomPlanSheet(program, onConfirm) {
         <span class="muted">weeks</span>
       </div>
       <div class="group-label">Start date</div>
-      <input type="date" id="start-date" value="${localDateStr()}">
+      <input type="date" id="start-date" value="${startFor(program)}">
       <div id="end-preview" class="muted" style="margin-top:6px;font-size:13px"></div>
+      ${program.suggested_week ? `
+        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14px;color:var(--fg)">
+          <input type="checkbox" id="use-week" checked style="width:auto;margin-top:3px">
+          <span><strong>Set up my week</strong><br><span class="muted" style="font-size:12px">${suggestedWeekLabel(program.suggested_week)}</span></span>
+        </label>` : ''}
       <button class="btn" id="confirm" style="margin-top:18px">Start plan</button>
       <button class="btn ghost" id="cancel" style="margin-top:8px">Cancel</button>
     `;
@@ -401,6 +415,9 @@ async function openStartCustomPlanSheet(program, onConfirm) {
       btn.disabled = true;
       if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $s.value);
+      if (program.suggested_week && sheet.querySelector('#use-week')?.checked) {
+        await pref('schedule', { type: 'weekly', slots: weekSlots(program, program.suggested_week) });
+      }
       toast(`${program.name} started`);
       close(); onConfirm();
     };
@@ -630,6 +647,12 @@ async function openGeneratorWizard(onSaved) {
         <div class="group-label">Go easy on (optional)</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('easy', Object.entries(rules.easy_on || {}).filter(([k]) => k !== '_doc').map(([k, z]) => [k, z.label]), true)}</div>
         ${st.easy.length ? '<div class="muted" style="font-size:11px;margin-top:4px">Leaves out moves that commonly load it. Not medical advice: follow your PT.</div>' : ''}
+        <div class="group-label">Sports you play (optional)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <button class="pill ${st.sport ? 'accent' : ''}" id="g-sport" style="cursor:pointer;font-size:12px;padding:6px 10px">🏀 Basketball</button></div>
+        ${st.sport ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d, i) =>
+          `<button class="pill ${st.sport.days.includes(i) ? 'accent' : ''}" data-sport-day="${i}" style="cursor:pointer;font-size:11px;padding:5px 8px">${d}</button>`).join('')}</div>
+          <div class="muted" style="font-size:11px;margin-top:4px">Game days. The plan leaves out jumps, sprints and hard intervals (the games are those) and lays your week out around them.</div>` : ''}
         <div class="group-label">Equipment you have</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px">${chips('equipment', GEN_EQUIPMENT.map(q => [q, EQUIPMENT_LABEL[q]]), true)}</div>
         <label style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px">
@@ -643,6 +666,13 @@ async function openGeneratorWizard(onSaved) {
         paint();
       });
       sheet.querySelector('#g-plyo').onchange = (e) => { st.plyo = e.target.checked; };
+      sheet.querySelector('#g-sport').onclick = () => { st.sport = st.sport ? null : { name: 'basketball', days: [1, 5] }; paint(); };
+      sheet.querySelectorAll('[data-sport-day]').forEach(b => b.onclick = () => {
+        const d = +b.dataset.sportDay;
+        st.sport.days = st.sport.days.includes(d) ? st.sport.days.filter(x => x !== d) : [...st.sport.days, d].sort();
+        if (!st.sport.days.length) st.sport = null;
+        paint();
+      });
       sheet.querySelector('#g-cancel').onclick = close;
       sheet.querySelector('#g-go').onclick = async () => {
         await pref('equipment', st.equipment);
@@ -671,6 +701,7 @@ async function openGeneratedPreview(plan, ctx, onSaved) {
       sheet.innerHTML = `
         <input type="text" id="gp-name" value="${plan.name.replace(/"/g, '&quot;')}" style="font-size:17px;font-weight:600">
         <div class="muted" style="margin:6px 0">${plan.description}</div>
+        ${plan.suggested_week ? `<div style="font-size:12px;margin:4px 0 8px">Your week: ${suggestedWeekLabel(plan.suggested_week)}${plan.suggested_week.note ? `<div class="muted" style="font-size:11px;margin-top:2px">${plan.suggested_week.note}</div>` : ''}</div>` : ''}
         ${plan.learned && (plan.learned.avoided.length || plan.learned.preferred.length) ? `<div class="muted" style="font-size:12px;margin:-2px 0 6px">🧠 From your ${plan.learned.from_sessions} logged workouts:${
           plan.learned.avoided.length ? ` left out ${plan.learned.avoided.slice(0, 3).join(', ')}${plan.learned.avoided.length > 3 ? '…' : ''}.` : ''}${
           plan.learned.preferred.length ? ` Picked your usual ${plan.learned.preferred.slice(0, 3).join(', ')}.` : ''}</div>` : ''}

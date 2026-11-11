@@ -38,6 +38,10 @@ otherwise search YouTube. Also confirm what "90/90 Sprints", "90/90 Single Power
 ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
 was assumed.
 
+**Look in FitKidHooper first** (`legendsyba/FitKidHooper`, `src/data/trainingCatalog.js`): it already links
+vetted HoopStudy and other demos, including Hollow Body Hold (→ Hollow Hold Sit Up) and Squat Jumps
+(→ Paused Squat Jumps), and its HoopStudy candidate list (`docs/HOOPSTUDY_CANDIDATES.md`) may have the rest.
+
 How: `node data/enrich_program_videos.mjs --source hoopstudy` (or `--source daily`) writes
 candidates to `data/<source>-video-review.json`. It needs `YOUTUBE_API_KEY` in the environment or a
 gitignored `.env.local`. Approve the right ones, run it again with `--apply`, delete `video_from` for
@@ -89,6 +93,16 @@ through with the user before building anything: what they'd want from it and whe
   (CLAUDE.md rules): `claude/admiring-planck-pxx2wg` (3 commits), `claude/icon-update-not-applying-yc1asv`
   (58), `ccr-645a6c8f-v74bik` (77), `ccr-6b46d8ff-z08nyx` (9), `ccr-df5d237c-aov2jp` (66). Check each
   with the user: merge, or delete if `main` already has the same change.
+
+## 7. Plan builder: still to do *(decide with the user)*
+
+- **Check-ins set a new plan's starting size.** Recent "Too much" / Drained / Low / tired or very sore notes
+  could start a new plan a set lighter per exercise. Today they only shape Daily Mobility and the lighter-week
+  advice (`src/lib/feel.js`, `src/lib/learn.js`).
+- **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
+  each needs its impact profile and a label on game days).
+- **Week patterns for plans without sports.** Generated plans only come with a week when there are games; a
+  "two on, recovery" week for every plan would use the same `week_plan.js`.
 
 ## Known limits (no action needed)
 

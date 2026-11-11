@@ -56,9 +56,19 @@ function check(params, label) {
   const easyHit = (e) => easy.some(z => (z.patterns || []).includes(e.pattern) || (z.names && new RegExp(z.names, 'i').test(e.name)));
 
   if (plan.weeks.length !== params.weeks) fail('weeks', `${label}: ${plan.weeks.length} weeks`);
+  // Sports days: games are the jumps/sprints (2+ a week: none in the plan), finishers stay easy, the week is laid out.
+  if (params.sport) {
+    const g = params.sport.days;
+    const sw = plan.suggested_week;
+    if (!sw || !g.every(d => sw.days[d] === 'basketball')) fail('sport: week around the games', `${label}: ${JSON.stringify(sw?.days)}`);
+    else if (sw.days.filter(t => t === 'train').length !== Math.min(6, Math.max(2, params.days), 7 - g.length)) fail('sport: every workout placed', `${label}: ${JSON.stringify(sw.days)}`);
+    const all = plan.weeks.flatMap(w => w.days.flatMap(d => d.exercises));
+    if (g.length >= 2) for (const x of all) { const e = byName.get(x.name); if (e && (e.role === 'power' || ['plyo_jump', 'plyo_bound_hop', 'speed_accel'].includes(e.pattern)) && x.round_group !== 'Cooldown') { fail('sport: no jumps or sprints with 2+ games', `${label}: ${x.name}`); break; } }
+    for (const x of all) if (byName.get(x.name)?.role === 'conditioning' && /sprint|zone 4|zone 5|hiit|tabata/i.test(x.name)) { fail('sport: easy finishers', `${label}: ${x.name}`); break; }
+  }
   const mainByDay = {};
   for (const w of plan.weeks) {
-    if (w.days.length !== Math.min(6, Math.max(2, params.days))) fail('days', `${label} W${w.week_num}: ${w.days.length} days`);
+    if (w.days.length !== Math.min(6, Math.max(2, params.days), 7 - (params.sport?.days?.length || 0))) fail('days', `${label} W${w.week_num}: ${w.days.length} days`);
     for (const d of w.days) {
       stats.days++;
       const tag = `${label} W${w.week_num} D${d.day_num} ${d.focus}`;
@@ -75,6 +85,7 @@ function check(params, label) {
         if ((e.level || 2) > maxL) fail('level', `${tag}: ${x.name} L${e.level} > L${params.level}`);
         if (easy.length && easyHit(e) && !isReq(x.name)) fail('go easy on', `${tag}: ${x.name}`);
         if (/last resort/i.test(x.name)) fail('no "last resort" picks', `${tag}: ${x.name}`);
+        if (e.video_standin) fail('no stand-in videos', `${tag}: ${x.name}`);
       }
       for (const x of d.exercises) {
         if (!x.sets || x.sets < 1) fail('sets', `${tag}: ${x.name}`);
@@ -205,6 +216,7 @@ for (const goal of GOALS) for (const days of [2, 3, 4, 5, 6]) for (const minutes
       if (rnd() < 0.3) { params.plyo = true; extra.push('plyo'); }
       if (rnd() < 0.3) { params.easy = [pick(['hip', 'knee', 'back', 'shoulder'])]; extra.push('easy ' + params.easy); }
       if (rnd() < 0.3) { params.favorites = ['Barbell Bench Press', 'Dumbbell Romanian Deadlift', 'Knee Circles']; extra.push('favs'); }
+      if (rnd() < 0.3) { params.sport = { name: 'basketball', days: rnd() < 0.7 ? [1, 5] : [3] }; extra.push('basketball ' + params.sport.days.join('/')); }
       if (rnd() < 0.3) {
         const base = generatePlan({ ...params }, { exercises, rules, learned });
         const acc = base.weeks[0].days[0].exercises.find(x => byName.get(x.name)?.role === 'accessory');

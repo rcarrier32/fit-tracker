@@ -128,6 +128,9 @@ if (APPLY) {
     if (!ex) { console.warn(`  ! ${entry.id} no longer in library.json`); skipped++; continue; }
     if ((ex.sources || []).includes('band')) { skipped++; continue; }   // PDF video stays
     ex.video_url = `https://youtu.be/${pick.videoId}`;
+    // Its own demo now: no longer a stand-in, and re-running a build script won't mark it again.
+    delete ex.video_standin;
+    ex.video_own = true;
     patched++;
   }
 

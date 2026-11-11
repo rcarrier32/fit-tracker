@@ -381,6 +381,26 @@ coach range and coach-exercise share by goal, session length vs asked, muscles t
 push:pull, variety. "Trained twice a week" counts a day when the muscle gets 3+ fractional sets (main
 muscle 1 per set, helper muscles 0.5: a squat trains glutes, a row trains lats and upper back).
 
+**Stand-in videos stay out:** a move added with another move's demo (`video_from`, marked
+`video_standin` in library.json: the Daily Mobility and HoopStudy moves listed in [TODO.md](TODO.md)) is never
+picked by the generator (main slots, warm-ups, cooldowns, fill, required moves) or offered as a gym swap until it
+has its own video; `enrich_program_videos.mjs --apply` clears the mark. The test fails on any stand-in pick.
+
+**Coach programs it learns from** (`data/learn_patterns.py`): PJF, BWS, Griffith/TrainHeroic and, since
+2026-11-11, HoopStudy's 8-week in-season program for the athletic goal.
+
+**Sports days** (Generate a plan → Sports you play → 🏀 Basketball and the game days; `--basketball 1,5`
+on the command line): pickup games are sprints, jumps, cuts and intervals, so with games in the week the plan
+- leaves out hard-interval finishers (Zone 2 instead), and with 2+ games a week no jumps, sprints or speed
+  days anywhere (warm-ups aside);
+- caps workouts at 7 minus the games (6 workouts + 2 games won't fit a week) and says so;
+- comes with its week laid out ([`src/lib/week_plan.js`](../src/lib/week_plan.js), `node data/check_week_plan.mjs`):
+  games on their days, Sunday rest (or the first free day), no leg-heavy day right before a game, no three hard
+  days in a row, Recovery & Mobility on days left over; Day 1 may fall mid-week so the upper days sit before
+  the games, and the start sheet sets the date to Day 1's weekday and offers **Set up my week**.
+On the days themselves the same app rules as Lean & Tone's basketball week apply: ✓ / ✕ on game days, no jumps
+or hard intervals the day after a game, Daily Mobility built for game recovery, recovery after each pair.
+
 **Filling the time asked** (`rules.fill`): a day under 85% of its minutes gets up to 3 accessories for the
 muscles trained on the fewest days this week (an upper day stays upper, a lower day lower), then one more
 set on the secondary and main lifts. Chosen once per phase, so the weeks of a phase match; a later phase

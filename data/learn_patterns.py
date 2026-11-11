@@ -46,6 +46,7 @@ COACH = {
     'ryhan_4day_personal': 'muscle',
     'ryhan_3day_personal': 'muscle',
     'th_runners_mobility_strength_8wk': 'durability',
+    'hoopstudy_8wk_in_season': 'athletic',   # Adam Menner, HoopStudy: in-season basketball (dumbbell strength, speed, jumps)
 }
 ROLE_ORDER = ['warmup', 'power', 'main', 'secondary', 'accessory', 'core', 'conditioning', 'cooldown']
 HEADER = re.compile(r'^(daily overview|start of workout.*overview|superset|circuit|combo cardio)\b', re.I)
