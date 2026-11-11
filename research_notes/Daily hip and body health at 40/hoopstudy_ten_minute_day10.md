@@ -1,5 +1,7 @@
 # HoopStudy "Ten Minute Routine" — Day 10 (primary source)
 
+> **Correction (2026-11-11):** the user has no hip restrictions and avoids no hip exercises (app v82: "no hip restrictions (the user's call)"). The hip-conflict sections below are historical and should not shape the routine.
+
 Source: the user's own screen recording of the #HoopStudy app (DJ Sackmann), "Ten Minute Routine",
 Day 10, video length 12:35, recorded 2026-11-10. Read from the app's exercise list frame by frame.
 This is the primary source the earlier HoopStudy notes could not reach.

@@ -1,5 +1,7 @@
 # HoopStudy "8 Week In Season Strength Training Program" (primary source)
 
+> **Correction (2026-11-11):** the user has no hip restrictions and avoids no hip exercises (app v82: "no hip restrictions (the user's call)"). The hip-conflict sections below are historical and should not shape the routine.
+
 Source: the program PDF the user supplied (HoopStudy8WeekInSeasonTrainingProgram-221128-105508.pdf,
 20 pages, www.hoopstudy.com), by **Adam Menner**, "Youth - NBA Performance Coach" for HoopStudy.
 Downloaded 2026-11-11 and read in full (text extracted from the PDF).
