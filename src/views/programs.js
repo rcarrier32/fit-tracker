@@ -325,7 +325,8 @@ function suggestedWeekLabel(sw) {
   const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const groups = new Map();
   sw.days.forEach((d, i) => { const k = d === 'train' ? 'train' : d === 'rest' ? 'rest' : (sw.labels?.[d] || d); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(DOW[i]); });
-  return [...groups].map(([k, days]) => `${days.join(' ')}: ${k}`).join(' · ') + '. Change it any time in Mixed Week.';
+  return [...groups].map(([k, days]) => `${days.join(' ')}: ${k}`).join(' · ')
+    + '. Recovery comes after the training days you actually finish, so a missed day never brings it early. Change it any time in Mixed Week.';
 }
 
 /** A saved custom/generated plan: start it or delete it. */
