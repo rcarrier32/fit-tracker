@@ -3,6 +3,7 @@
  *
  *   node data/generate_plan.mjs --goal athletic --days 4 --minutes 60 --weeks 6 \
  *        --equipment dumbbell,barbell,bench,box,band --focus Glutes,Core --plyo --level 2 --seed 1
+ *        [--basketball 1,5]   (game weekdays, 0 = Sun: the week is laid out around them)
  *   node data/generate_plan.mjs ... --json > draft.json     # full program JSON
  *   node data/generate_plan.mjs --sanity                    # checks every goal × days × minutes
  *
@@ -94,10 +95,12 @@ const plan = generatePlan({
   goal: opt('goal', 'muscle'), days: +opt('days', 3), minutes: +opt('minutes', 60), weeks: +opt('weeks', 6),
   equipment: opt('equipment', 'dumbbell,bench').split(','), focus: opt('focus', '') ? opt('focus').split(',') : [],
   plyo: args.includes('--plyo'), level: +opt('level', 2), seed: +opt('seed', 1),
+  ...(opt('basketball') ? { sport: { name: 'basketball', days: opt('basketball').split(',').map(Number) } } : {}),
 }, { exercises, rules, learned });
 
 if (args.includes('--json')) { console.log(JSON.stringify(plan, null, 1)); process.exit(0); }
 console.log(`${plan.name} — ${plan.description} (pool ${plan.pool_size} exercises)`);
+if (plan.suggested_week) console.log('Week (Sun..Sat):', plan.suggested_week.days.join(' · ') + (plan.suggested_week.note ? `\n  ${plan.suggested_week.note}` : ''));
 for (const w of plan.weeks.filter(w => [1, 3, 5].includes(w.week_num))) {
   console.log(`\nWeek ${w.week_num}`);
   for (const d of w.days) {

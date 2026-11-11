@@ -90,6 +90,16 @@ through with the user before building anything: what they'd want from it and whe
   (58), `ccr-645a6c8f-v74bik` (77), `ccr-6b46d8ff-z08nyx` (9), `ccr-df5d237c-aov2jp` (66). Check each
   with the user: merge, or delete if `main` already has the same change.
 
+## 7. Plan builder: still to do *(decide with the user)*
+
+- **Check-ins set a new plan's starting size.** Recent "Too much" / Drained / Low / tired or very sore notes
+  could start a new plan a set lighter per exercise. Today they only shape Daily Mobility and the lighter-week
+  advice (`src/lib/feel.js`, `src/lib/learn.js`).
+- **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
+  each needs its impact profile and a label on game days).
+- **Week patterns for plans without sports.** Generated plans only come with a week when there are games; a
+  "two on, recovery" week for every plan would use the same `week_plan.js`.
+
 ## Known limits (no action needed)
 
 - Generated plans on a bodyweight-only kit leave upper-body days short (about 3% of test days): with no

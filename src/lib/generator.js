@@ -6,10 +6,13 @@
  * and in node for Claude-built plans (data/generate_plan.mjs).
  *
  *   generatePlan(params, { exercises, rules, hasVideo })
- *   params: { goal, days, minutes, weeks, equipment[], focus[], plyo, level, seed }
+ *   params: { goal, days, minutes, weeks, equipment[], focus[], plyo, level, seed,
+ *             sport: { name: 'basketball', days: [weekday…] } (pickup games: they are the jumps, sprints and
+ *             hard conditioning, so the plan leaves those out and lays the week out around them) }
  *   returns a program in the app's weeks format, plus `summary` (weekly sets per muscle).
  */
 import { progressesBy } from './progression.js';
+import { planWeek } from './week_plan.js';
 
 // Small seeded RNG (mulberry32) so a plan can be regenerated exactly, or varied by seed.
 function rng(seed) {
@@ -36,6 +39,8 @@ const ROLE_FALLBACK = {
 };
 const TIMED = /plank|hold|\biso\b|isos\b|isometric|copenhagen|balance|hang|airplane|wall sit|carry|single leg stance|single-leg stance/i;
 const SPEED_DAY = /^speed_/;
+const HARD_INTERVALS = /sprint|zone 4|zone 5|hiit|tabata|interval/i;
+const IMPACT_PATTERNS = new Set(['plyo_jump', 'plyo_bound_hop', 'speed_accel', 'deceleration_landing', 'agility_cod']);
 
 const secsOf = (t) => {
   const str = String(t || '').trim();
@@ -68,6 +73,9 @@ export const FOCUS_GROUPS = {
 
 export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.video_url, learned = null }) {
   const p = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, equipment: ['bodyweight', 'dumbbell'], focus: [], plyo: false, level: 2, seed: 1, ...params };
+  // Games take days too: at most 7 minus the games (6 workouts + 2 games won't fit a week).
+  const askedDays = p.days;
+  if (p.sport?.days?.length) p.days = Math.min(p.days, 7 - p.sport.days.length);
   // What the app learned from the logs (src/lib/learn.js): leave out what you swap or skip, prefer
   // what you swap to and what's progressing, rotate what's stalled. Absent until there are enough logs.
   const prof = params.profile?.ready ? params.profile : null;
@@ -88,7 +96,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const rand = rng(p.seed);
   const have = new Set(['bodyweight', ...p.equipment]);
   const focusMuscles = new Set(p.focus.flatMap(f => FOCUS_GROUPS[f] || [f]));
-  const power = goal.power || p.plyo;
+  // Sports you play (pickup basketball): two or more games a week are the jump, sprint and speed work.
+  const games = (p.sport?.days || []).length;
+  const power = (goal.power && games < 2) || (p.plyo && !games);
   const session = rules.session_minutes[String(p.minutes)] || rules.session_minutes['60'];
 
   // Go easy on (rules.easy_on): leave out moves that commonly load a sore area.
@@ -106,7 +116,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const levelUp = new Set();
   const nDays = String(Math.min(6, Math.max(2, p.days)));
   // Speed and agility days are jumps, sprints and cuts: not with "go easy on knees".
-  const speedOk = !(p.easy || []).includes('knee');
+  const speedOk = !(p.easy || []).includes('knee') && games < 2;
   const splitSet = goal.splits?.[nDays] ? goal.splits : power && speedOk && rules.athletic_splits[nDays] ? rules.athletic_splits : rules.splits;
   const split = splitSet[nDays];
   // Home kit (no barbell, cable or machine) can't keep adding load: progress by reps, rest and
@@ -164,6 +174,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     return pool.filter(e => {
       if (!roles.includes(e.role)) return false;
       if (usedToday.has(e.name)) return false;
+      // Games in the week: no hard intervals (the games are), and with 2+ games no jumps or sprints anywhere.
+      if (games && e.role === 'conditioning' && HARD_INTERVALS.test(e.name)) return false;
+      if (games >= 2 && e.role !== 'warmup' && (e.role === 'power' || IMPACT_PATTERNS.has(e.pattern))) return false;
       if (slot.patterns && !slot.patterns.includes(e.pattern)) return false;
       if (slot.muscles && !slot.muscles.includes(e.primary_muscle)) return false;
       if (slot.unilateral && !e.unilateral) return false;
@@ -239,7 +252,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       }
     }
     if (goal.conditioning && !SPEED_DAY.test(dayKey) && !slots.some(x => x.role === 'conditioning')) {
-      slots.push({ role: 'conditioning', finisher: true, prefer: rules.conditioning?.finisher_prefer });
+      // With games in the week the finisher stays easy (Zone 2): the games are the hard intervals.
+      slots.push({ role: 'conditioning', finisher: true, prefer: games ? 'zone 2|low impact|easy|walk|bike' : rules.conditioning?.finisher_prefer });
     }
     return slots;
   }
@@ -729,12 +743,18 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   }
   for (const k of Object.keys(summary)) summary[k] = Math.round(summary[k]);
   const goalLabel = goal.label;
+  // The week, laid out around the games (src/lib/week_plan.js): Mixed Week slots the start sheet can set up.
+  const week = games ? planWeek(split.days.map(k => rules.days[k].focus), p.sport.days, { sport: p.sport.name || 'basketball' }) : null;
+  const DOWN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   return {
     id: `gen-${Date.now().toString(36)}`,
     name: `${goalLabel} · ${p.days} days · ${p.weeks} weeks`,
     source: 'custom',
     generated: { ...p },
-    description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${isDeload(p.weeks) ? ' + deload' : ''}.`,
+    description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${isDeload(p.weeks) ? ' + deload' : ''}.`
+      + (week ? ` Built around ${p.sport.name || 'basketball'} ${p.sport.days.map(d => DOWN[d]).join(' & ')}: the games are the jumps and hard conditioning.` : '')
+      + (askedDays > p.days ? ` ${askedDays} workouts plus ${p.sport.days.length} games won't fit a week, so it's ${p.days}.` : ''),
+    ...(week ? { suggested_week: { days: week.days, labels: { move30_recovery_mobility: 'Recovery & Mobility' }, start_dow: week.start_dow, note: week.note } } : {}),
     sessions_per_week: p.days,
     session_length_min: p.minutes,
     weeks,
