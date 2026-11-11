@@ -201,6 +201,20 @@ function check(params, label) {
   return plan;
 }
 
+// ── Recent check-ins: a plan starts a set lighter in phase 1 (and says so); later phases are unchanged ──
+{
+  const base = { goal: 'muscle', days: 4, minutes: 60, weeks: 6, level: 2, equipment: KITS.gym, seed: 7 };
+  const sets = (pl, w) => pl.weeks[w].days.flatMap(d => d.exercises).filter(x => x.round_group !== 'Cooldown').reduce((a, x) => a + (x.sets || 0), 0);
+  const normal = generatePlan(base, { exercises, rules, learned });
+  const tired = generatePlan({ ...base, profile: { ready: false, fatigue: { last: 3, heavy: 2 }, avoid: [], prefer: {}, favorites: [] } }, { exercises, rules, learned });
+  if (!(sets(tired, 0) < sets(normal, 0))) fail('check-ins: starts lighter', `phase 1 ${sets(tired, 0)} vs ${sets(normal, 0)}`);
+  if (!/a set lighter/.test(tired.weeks[0].days[0].notes.join(' ')) || !/running low/.test(tired.description)) fail('check-ins: says why', tired.description);
+  const mainOf = (pl) => pl.weeks[0].days.flatMap(d => d.exercises).filter(x => /main/.test(x.why || '') ).map(x => x.sets).join();
+  if (sets(tired, 4) < sets(normal, 4) - 1) fail('check-ins: later phases unchanged', `${sets(tired, 4)} vs ${sets(normal, 4)}`);
+  const ok1 = generatePlan({ ...base, profile: { ready: false, fatigue: { last: 3, heavy: 1 }, avoid: [], prefer: {}, favorites: [] } }, { exercises, rules, learned });
+  if (sets(ok1, 0) !== sets(normal, 0)) fail('check-ins: one hard day changes nothing', `${sets(ok1, 0)} vs ${sets(normal, 0)}`);
+}
+
 // ── The sweep ──
 const quick = args.includes('--quick');
 let n = 0;

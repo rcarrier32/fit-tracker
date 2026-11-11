@@ -96,9 +96,6 @@ through with the user before building anything: what they'd want from it and whe
 
 ## 7. Plan builder: still to do *(decide with the user)*
 
-- **Check-ins set a new plan's starting size.** Recent "Too much" / Drained / Low / tired or very sore notes
-  could start a new plan a set lighter per exercise. Today they only shape Daily Mobility and the lighter-week
-  advice (`src/lib/feel.js`, `src/lib/learn.js`).
 - **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
   each needs its impact profile and a label on game days).
 - **Week patterns for plans without sports.** Generated plans only come with a week when there are games; a

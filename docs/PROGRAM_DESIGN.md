@@ -401,6 +401,12 @@ on the command line): pickup games are sprints, jumps, cuts and intervals, so wi
 On the days themselves the same app rules as Lean & Tone's basketball week apply: ✓ / ✕ on game days, no jumps
 or hard intervals the day after a game, Daily Mobility built for game recovery, recovery after each pair.
 
+**Recent check-ins set the starting size:** when 2 of your last 3 finished workouts were Too much, Drained, Low
+or had a tired note (`learn.js` fatigue), a new plan's first phase has one set fewer on secondary, accessory and
+core work (never under 2; main lifts and required moves unchanged) and fills to a lower time mark, about a
+fifth to a quarter fewer sets; the plan and week 1 say why, and phase 2 is back to normal. Works from the
+check-ins directly, before the profile has 6 workouts.
+
 **Filling the time asked** (`rules.fill`): a day under 85% of its minutes gets up to 3 accessories for the
 muscles trained on the fewest days this week (an upper day stays upper, a lower day lower), then one more
 set on the secondary and main lifts. Chosen once per phase, so the weeks of a phase match; a later phase
