@@ -3695,6 +3695,42 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "daily-adductor-rock-back": {
+   "name": "Adductor Rock Back",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "hamstrings",
+    "glutes"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "daily-ali-shuffle": {
+   "name": "Ali Shuffle",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "quads",
+    "hip_flexors"
+   ],
+   "pattern": "agility_cod",
+   "role": "power",
+   "equipment": [
+    "agility_ladder"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "daily-basketball": {
    "name": "Basketball",
    "primary_muscle": "quads",
@@ -3707,6 +3743,42 @@
    "role": "conditioning",
    "equipment": [
     "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
+  "daily-hip-pry-to-lateral-stretch": {
+   "name": "Hip Pry to Lateral Stretch",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "glutes",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "daily-ickey-shuffle": {
+   "name": "Ickey Shuffle",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "quads",
+    "abductors"
+   ],
+   "pattern": "agility_cod",
+   "role": "power",
+   "equipment": [
+    "agility_ladder"
    ],
    "level": 2,
    "unilateral": false,
@@ -3749,6 +3821,60 @@
    "plane": "sagittal",
    "hip_focus": true
   },
+  "daily-ladder-in-out-hops": {
+   "name": "Ladder In & Out Hops",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "quads",
+    "abductors"
+   ],
+   "pattern": "agility_cod",
+   "role": "warmup",
+   "equipment": [
+    "agility_ladder"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
+  "daily-ladder-lateral-in-outs": {
+   "name": "Ladder Lateral In & Outs",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "quads",
+    "abductors"
+   ],
+   "pattern": "agility_cod",
+   "role": "warmup",
+   "equipment": [
+    "agility_ladder"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
+  "daily-ladder-twist-hops": {
+   "name": "Ladder Twist Hops",
+   "primary_muscle": "calves",
+   "muscles": [
+    "calves",
+    "obliques",
+    "hip_flexors"
+   ],
+   "pattern": "agility_cod",
+   "role": "warmup",
+   "equipment": [
+    "agility_ladder"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "transverse",
+   "hip_focus": false
+  },
   "daily-quadruped-swing-throughs": {
    "name": "Quadruped Swing Throughs",
    "primary_muscle": "glutes",
@@ -3765,6 +3891,24 @@
    "level": 1,
    "unilateral": true,
    "plane": "sagittal",
+   "hip_focus": true
+  },
+  "daily-side-lying-hip-opener": {
+   "name": "Side Lying Hip Opener",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "abductors",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
    "hip_focus": true
   },
   "daily-squat-to-hamstring-stretch": {

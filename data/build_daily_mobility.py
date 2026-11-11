@@ -34,13 +34,51 @@ NEW = {
                      role='cooldown', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
     'Squat to Hamstring Stretch': ('Hamstring Stretch', dict(primary_muscle='hamstrings', muscles=['hamstrings', 'adductors', 'glutes'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Quadruped Swing Throughs': ('Donkey Kicks', dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'hamstrings'], pattern='mobility',
+    'Quadruped Swing Throughs': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'hamstrings'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
 }
 # These are options, not a checklist: Daily C uses some, the rest sit in its Swap lists, and all of
 # them are ordinary warm-up options the plan generator can pick for training-day warm-ups (no preference).
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'daily', tags=tags, video_from=borrow)
+
+# The user's saved Facebook reels, read in a logged-in local session on 2026-11-11 (all 29 are listed in
+# docs/research/notes-daily-mobility/facebook_reels.md). A reel link opens in the browser (no embed).
+REEL = {
+    'igor_hips': 'https://www.facebook.com/reel/1838906024154994',        # Igor system: pigeon rotation, 90/90 swing-through, quadruped swing-through
+    'griffith_lotion': 'https://www.facebook.com/share/v/1FLcHuHnk8/',     # Vernon Griffith, "Motion is lotion" hip routine
+    'jtm_ladder': 'https://www.facebook.com/reel/776388821846395',         # Jtm_fit, 5 ladder drills
+}
+# Moves from the reels the app had no exercise for: options (warm-ups the plan builder can pick), not a checklist.
+REEL_NEW = {
+    # Griffith's routine: "1-2 sets ... to work on your hip mobility, restore range of motion, explore tension and tightness".
+    # Dynamic Groin Drift and Figure 4 Flow from the same routine already play his TrainHeroic demos.
+    'Hip Pry to Lateral Stretch': ('griffith_lotion', dict(primary_muscle='adductors', muscles=['adductors', 'glutes', 'hip_flexors'],
+                                   pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='frontal', hip_focus=True)),
+    'Side Lying Hip Opener': ('griffith_lotion', dict(primary_muscle='glutes', muscles=['glutes', 'abductors', 'hip_flexors'],
+                              pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
+    'Adductor Rock Back': ('griffith_lotion', dict(primary_muscle='adductors', muscles=['adductors', 'hamstrings', 'glutes'],
+                           pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='frontal', hip_focus=True)),
+    # Jtm_fit's ladder drills (all five in one reel), for the agility ladder in Plans → Generate a plan.
+    'Ladder Twist Hops': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'obliques', 'hip_flexors'], pattern='agility_cod',
+                          role='warmup', equipment=['agility_ladder'], level=1, unilateral=False, plane='transverse', hip_focus=False)),
+    'Ladder In & Out Hops': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'quads', 'abductors'], pattern='agility_cod',
+                             role='warmup', equipment=['agility_ladder'], level=1, unilateral=False, plane='frontal', hip_focus=False)),
+    'Ladder Lateral In & Outs': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'quads', 'abductors'], pattern='agility_cod',
+                                 role='warmup', equipment=['agility_ladder'], level=1, unilateral=False, plane='frontal', hip_focus=False)),
+    'Ickey Shuffle': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'quads', 'abductors'], pattern='agility_cod',
+                      role='power', equipment=['agility_ladder'], level=2, unilateral=False, plane='frontal', hip_focus=False)),
+    'Ali Shuffle': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'quads', 'hip_flexors'], pattern='agility_cod',
+                    role='power', equipment=['agility_ladder'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
+}
+for name, (reel, tags) in REEL_NEW.items():
+    lib.ensure_exercise(name, 'daily', tags=tags)
+# Give a move its reel as its own video (replaces a borrowed stand-in).
+for name, reel in {**{n: r for n, (r, _) in REEL_NEW.items()}, 'Quadruped Swing Throughs': 'igor_hips'}.items():
+    e = lib.by_name[name.lower()]
+    e['video_url'] = REEL[reel]
+    e['video_own'] = True
+    e.pop('video_standin', None)
 
 
 def r(name, reps=None, time=None, sets=1, notes=None, group=None, alts=None, rest=None):
@@ -107,7 +145,7 @@ days = [
         'About 13 minutes. Your low-back reset, then the hip moves that earn a daily slot (docs/research/notes-daily-mobility/move_review.md): rotation, extension for all the sitting, adductors, hamstrings, balance.',
         'Holds here are for daily range, not before lifting: long holds (60 s+) right before training cost a little power.'], [
         r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener. Hip rotation is the range most tied to hip and groin trouble.',
-          alts=['90/90 Knee Roll', 'Knee Circles', 'Standing Hip Internal/External Lifts']),
+          alts=['90/90 Knee Roll', 'Knee Circles', 'Standing Hip Internal/External Lifts', 'Quadruped Swing Throughs', 'Side Lying Hip Opener']),
         r('Optional Pigeon Length Under Load', '5 each side', group='Rotation', notes='Your #1 "rotating pigeon". PJF\'s levels, slowly.',
           alts=['Banded Incline Pigeon Rotation']),
         r('Knee Pull Heel Bridge', '5 breaths', sets=2, group='Extension', rest='10s', alts=['Posterior Pelvic Tilt Breathing', 'Banded Hip Distraction Pulling Into Hip Flexion'],
@@ -115,7 +153,7 @@ days = [
         r('Hip Flexor Length Under Load', time='45s', sets=2, group='Extension', notes='Each side (PJF). 45 s a side most days reaches the weekly stretch dose for range.',
           alts=['Hip Flexor/Quad Bridge', 'Half Kneeling Hip Flexor Stretch']),
         r('Lateral Lunge Length Under Load', time='45s', sets=2, group='Adductors', notes='Each side (PJF). The reel\'s bench lateral lunge works too.',
-          alts=['Optional Downward Frog']),
+          alts=['Optional Downward Frog', 'Adductor Rock Back', 'Hip Pry to Lateral Stretch']),
         r('Hamstring Floss', '8 each side', group='Hamstrings', notes='Your #18 "lunge to hamstring": tuck, then push the glute back.',
           alts=['Squat to Hamstring Stretch']),
         r('Single-Leg Balance', time='30s', sets=2, group='Finish', notes='Each side. Balance work has the strongest injury-prevention evidence of anything here.',

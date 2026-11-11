@@ -7,18 +7,16 @@ what to run and how to check it. Ask the user before anything marked *(decide)*.
 
 Before pushing, as always: `./scripts/bump-version.sh <n>` then `./scripts/bump-version.sh --check`.
 
-## 1. Facebook reels → Daily Mobility (needs the logged-in browser)
+## 1. Facebook reels → Daily Mobility
 
-The user saved 29 Facebook exercise reels (mostly Vernon Griffith's hip moves) for Daily Mobility.
-The full instructions, all 29 links, the user's notes they come from, and the stand-ins table are in
-[`research/notes-daily-mobility/facebook_reels.md`](research/notes-daily-mobility/facebook_reels.md).
-In short: open each reel, name the move and creator, then add it to `data/build_daily_mobility.py`
-with the reel as its video and re-run the build and checks.
+Done 2026-11-11 (v147): all 29 links read; the table in
+[`research/notes-daily-mobility/facebook_reels.md`](research/notes-daily-mobility/facebook_reels.md) says what each one is
+and what the app uses. Quadruped Swing Throughs plays its reel; Griffith's "Motion is lotion" moves and Jtm_fit's 5 ladder
+drills were added. The reels that match Knee Circles, Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to
+Hamstring Stretch are screen recordings, not links: send those links to replace the stand-ins.
 
-Undecided moves to settle while watching the reels *(decide with the user)*: heel clicks, hip
-opener into knee lean back, and whether the separate 90/90 variants (45 push, backside opener, 30%
-rotations, swing-through single leg, lift back / lean to side) each get their own row or stay inside
-"90/90 Hip Opener".
+Undecided *(decide with the user)*: heel clicks, hip opener into knee lean back, and whether the 90/90 variants get their
+own rows (no reel showed them clearly).
 
 ## 2. Stand-in videos → real demos (needs YouTube, or the reels)
 
@@ -72,13 +70,11 @@ Several may be duplicates of exercises that already have a video under another n
 vs Band Pull-Aparts, Nordic Hamstring Curl vs Eccentric Nordic Hamstring Curl): add an alias instead
 of a new video where that's true.
 
-## 4. Agility ladder drills (needs YouTube)
+## 4. Agility ladder drills
 
-The user has an agility ladder (equipment `agility_ladder`, a chip in Plans → Generate a plan), but
-the catalog has no ladder drills with videos, so plans never use it. Add 4-6 classic drills (two-in,
-lateral in-out, Icky shuffle, crossover, single-leg hops) with real demos: tags `pattern:
-agility_cod`, `role: warmup` or `power`, `equipment: ['agility_ladder']`. Then run
-`node data/test_generator.mjs` (hard rules must pass) and `node data/generate_plan.mjs --sanity`.
+Done 2026-11-11 (v147): Ladder Twist Hops, Ladder In & Out Hops, Ladder Lateral In & Outs, Ickey Shuffle and Ali Shuffle
+(Jtm_fit's reel, the user's save), in `data/build_daily_mobility.py` `REEL_NEW`. They're in the plan builder's pool when
+the agility ladder is ticked. One reel shows all five: replace with one demo each (YouTube) when the quota allows.
 
 ## 5. Weekly AI check-in with a Claude API key *(decide)*
 

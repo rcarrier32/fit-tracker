@@ -97,36 +97,43 @@ mapping if it's the wrong move.
 | #12, #14, #15, #16, #17 (90/90 45 push, backside opener, 30% rotations, swing-through single leg, lift back/lean) | folded into 90/90 Hip Opener (existing, PJF), 1:30 | PJF's own | placeholder | likely Griffith's full hip session |
 | #7 Hip opener into knee lean back, #11 Heel clicks | not in Daily C yet | — | not found | — |
 
-## Links
+## Links (all 29 read 2026-11-11, logged-in local session)
 
-| # | Link | Creator | Move |
-|---|---|---|---|
-| 1 | https://www.facebook.com/share/r/1KCCCnZDYk/ | | |
-| 2 | https://www.facebook.com/share/r/1DwCaigXgo/ | | |
-| 3 | https://www.facebook.com/share/r/14nrxPggGDK/ | | |
-| 4 | https://www.facebook.com/share/r/1G3XhuNqxJ/ | | |
-| 5 | https://www.facebook.com/share/r/1SsUvsbpfz/ | | |
-| 6 | https://www.facebook.com/share/r/154jd4L95QS/ | | |
-| 7 | https://www.facebook.com/share/r/1DNdSPh8KL/ | | |
-| 8 | https://www.facebook.com/share/r/1FSvxNHagh/ | | |
-| 9 | https://www.facebook.com/share/v/1Dt3KzHMuZ/ | | |
-| 10 | https://www.facebook.com/share/r/1e7DvdzGeL/ | | |
-| 11 | https://www.facebook.com/share/r/1dtKD1N3NR/ | | |
-| 12 | https://www.facebook.com/share/r/1Eg9h6emjN/ | | |
-| 13 | https://www.facebook.com/share/r/1B5nvH41kd/ | | |
-| 14 | https://www.facebook.com/share/r/19u9Jf4T7z/ | | |
-| 15 | https://www.facebook.com/share/v/14uXCEoJ2gx/ | | |
-| 16 | https://www.facebook.com/share/r/1KLibtqVwQ/ | | |
-| 17 | https://www.facebook.com/share/r/14yaY7cdBJ3/ | | |
-| 18 | https://www.facebook.com/share/r/1MUgcCmXWz/ | | |
-| 19 | https://www.facebook.com/share/r/1DytG6Xr62/ | | |
-| 20 | https://www.facebook.com/share/r/19J5jeRbxL/ | | |
-| 21 | https://www.facebook.com/share/r/1KfsHSGupc/ | | |
-| 22 | https://www.facebook.com/share/r/1HyPkxUbsv/ | | |
-| 23 | https://www.facebook.com/share/r/19qvFrjBEq/ | | |
-| 24 | https://www.facebook.com/share/v/1FLcHuHnk8/ | | |
-| 25 | https://www.facebook.com/share/r/1E16iko8Wi/ | | |
-| 26 | https://www.facebook.com/share/r/1Kt7PxPyMr/ | | |
-| 27 | https://www.facebook.com/share/r/1CW6bp2xMh/ | | |
-| 28 | https://www.facebook.com/share/r/198mCiGMg6/ | | |
-| 29 | https://www.facebook.com/share/r/1HxtPvKyML/ | | |
+Read by expanding each caption and sampling frames. **Used** = what the app does with it now.
+
+| # | Link | Creator | Moves | Used |
+|---|---|---|---|---|
+| 1 | https://www.facebook.com/share/r/1KCCCnZDYk/ | OJ.Fit | "Fix tight hip flexors with these 4 moves": 90-90 dynamic stretch 30 s, (supine) leg raises 12/side, half-kneeling hip flexor lift 12/side | — (the app has these) |
+| 2 | https://www.facebook.com/share/r/1DwCaigXgo/ | FitPhysio Dr.K (PT) | Hip internal rotation for the deep squat: supine on a bench, band around the ankles, IR test/drill | — |
+| 3 | https://www.facebook.com/share/r/14nrxPggGDK/ | Igor system | 3 moves: pigeon → 90/90 rotation, seated 90/90 swing-through, quadruped knee swing-through | **Quadruped Swing Throughs** video (#19); also shows #1, #16 |
+| 4 | https://www.facebook.com/share/r/1G3XhuNqxJ/ | John Pierson | "I'm 37": general mobility (hanging lat stretch, lateral flexion, squat, pull-ups, dips) | — |
+| 5 | https://www.facebook.com/share/r/1SsUvsbpfz/ | Portia Mitchell | Half-kneeling hip work with a kettlebell, kneeling lunge, single-leg balance on a pad | — |
+| 6 | https://www.facebook.com/share/r/154jd4L95QS/ | dmitrymobility | 4-move hip rotation flow: straddle rotations, lunge/pigeon rotation, 90/90 | — |
+| 7 | https://www.facebook.com/share/r/1DNdSPh8KL/ | Mat Frankel | "If you sit a lot": seated 90/90, half-kneeling hip flexor, seated knee lifts | — |
+| 8 | https://www.facebook.com/share/r/1FSvxNHagh/ | Nooch_13 | Side-lying-on-bench hip abduction with thoracic rotation (glute med) | — |
+| 9 | https://www.facebook.com/share/v/1Dt3KzHMuZ/ | Dr. Bryan Geier (Doctor Fascia) | Standing hip internal/external rotation, 2:39 | candidate for #4 (Standing Hip IR/ER Lifts), not linked |
+| 10 | https://www.facebook.com/share/r/1e7DvdzGeL/ | MauraExplorer.Yoga | Supine tabletop, block between thighs, hip IR (feet out), adductors + deep core | — |
+| 11 | https://www.facebook.com/share/r/1dtKD1N3NR/ | liftwithkartiki | "If you sit a lot": lunge rotation, prone frog-leg, seated rotation; 2-3 × 6-10 | possible #5 frog leg, not linked |
+| 12 | https://www.facebook.com/share/r/1Eg9h6emjN/ | FitwithCarla | Foam-roller toe taps (lower abs) | — |
+| 13 | https://www.facebook.com/share/r/1B5nvH41kd/ | Primal Mobility | Seated 90/90 internal-rotation lift and hold | candidate for #15/#17 |
+| 14 | https://www.facebook.com/share/r/19u9Jf4T7z/ | **Vernon Griffith** (post) | Hip & low back: Incline Bench Pigeon Rotations, QL Hip Drop, Half Kneeling Lateral Tilts, Suitcase Carries | his TrainHeroic demos already cover the pigeon, QL drop and carry |
+| 15 | https://www.facebook.com/share/v/14uXCEoJ2gx/ | **Vernon Griffith** (post) | Adductors/groin: rack adductor work, Rack ISO Leg Whip, "add movement, load, length and velocity" | — |
+| 16 | https://www.facebook.com/share/r/1KLibtqVwQ/ | Yoga with Asury | Shins-up-the-wall cobra | — |
+| 17 | https://www.facebook.com/share/r/14yaY7cdBJ3/ | Proformance | Hip IR: banded 90/90 IR, med-ball/bench work, supine band | — |
+| 18 | https://www.facebook.com/share/r/1MUgcCmXWz/ | jasonandlaurenpak | Lengthen/isolate/strengthen: split-stance adductor mob, side-lying adductor lifts, cossack squat, side plank clamshell hip raise, landmine curtsy lunge | — |
+| 19 | https://www.facebook.com/share/r/1DytG6Xr62/ | Jtm_fit | 5 ladder drills: Twist Hops, In & Out Hops, Lateral In & Outs, Ickey Shuffle, Ali Shuffle | **all 5 added** (equipment agility_ladder) |
+| 20 | https://www.facebook.com/share/r/19J5jeRbxL/ | Proformance | "Forget about tight hips with these 4 moves" (already read) | Daily C stand-ins |
+| 21 | https://www.facebook.com/share/r/1KfsHSGupc/ | PostureKing | Raised Foot Spinal Sweep (hamstring / sciatic floss) | — |
+| 22 | https://www.facebook.com/share/r/1HyPkxUbsv/ | Yoga With Katharine | Hip routine: squat → hamstring, mermaid, low lunge (likely the knee-circles one) | candidate for #2 / #10 |
+| 23 | https://www.facebook.com/share/r/19qvFrjBEq/ | Yoga With Katharine | Relevés, wide-stance folds, malasana knee drops | — |
+| 24 | https://www.facebook.com/share/v/1FLcHuHnk8/ | **Vernon Griffith** (post) | "Motion is lotion" (under 10 min, 1-2 rounds): Hip Pry to Lateral Stretch 5/side, Dynamic Groin Drift 6 angles, Figure Four Contours 8/side, Side Lying Hip Openers 8/side, Adductor Rock Backs 8/side | **3 added**: Hip Pry to Lateral Stretch, Side Lying Hip Opener, Adductor Rock Back (groin drift + figure 4 use his TrainHeroic demos) |
+| 25 | https://www.facebook.com/share/r/1E16iko8Wi/ | Skyler Munro | Shoulders: lower trap, serratus, rotator cuff drills | — |
+| 26 | https://www.facebook.com/share/r/1Kt7PxPyMr/ | Violet Balance | Side-lying ball squeeze + band reach (functional asymmetry) | — |
+| 27 | https://www.facebook.com/share/r/1CW6bp2xMh/ | Garcia_effect_official | 10 foam-roller mobility moves | — |
+| 28 | https://www.facebook.com/share/r/198mCiGMg6/ | MauraExplorer.Yoga | Prone shoulder opener over a ball (rounded shoulders) | — |
+| 29 | https://www.facebook.com/share/r/1HxtPvKyML/ | Yoga with Asury | 3 shoulder openers on yoga blocks, 1-3 min holds | — |
+
+**Not in any link:** Griffith's full hip session (2025-09-12 recording), Dr. Devon Hoffman (#9), dr.leethechiro (#8),
+Project Physical Therapy (#4), raybeau_moves (#10, #13). Those stay screen recordings only, so Knee Circles,
+Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to Hamstring Stretch keep their stand-ins. Still not
+seen anywhere: #3, #6, #7, #11, #12, #14, #16 (#16 only partly, Igor reel).
