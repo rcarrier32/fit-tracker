@@ -26,7 +26,9 @@ for (const w of lean.weeks.slice(0, 2)) for (const d of w.days) {
     seen.push(s.note ? `${s.from}: ${s.note}` : `${s.from} → ${s.to}`);
     if (s.note) continue;
     if (a.pattern !== b.pattern || a.primary_muscle !== b.primary_muscle) ok(`same movement ${s.from}`, false, `${a.pattern}/${a.primary_muscle} vs ${b.pattern}/${b.primary_muscle}`);
-    if (!(b.equipment || []).some(q => ['cable', 'machine', 'barbell', 'smith', 'trap_bar', 'landmine', 'pullup_bar'].includes(q))) ok(`gym kit ${s.to}`, false);
+    if (!(b.equipment || []).some(q => ['dumbbell', 'cable', 'machine', 'barbell', 'smith', 'trap_bar', 'landmine', 'pullup_bar'].includes(q))) ok(`loaded kit ${s.to}`, false);
+    if ((b.equipment || []).includes('barbell') && exercises.some(c => c.pattern === a.pattern && c.primary_muscle === a.primary_muscle && (c.equipment || []).includes('dumbbell') && c.video_url && !/optional|last resort/i.test(c.name) && (c.role === a.role || (a.role !== 'accessory' && c.role !== 'accessory'))))
+      ok(`dumbbell preferred over barbell: ${s.from} → ${s.to}`, false);
     if (!b.video_url) ok(`video ${s.to}`, false);
   }
   for (const [i, x] of out.entries()) {

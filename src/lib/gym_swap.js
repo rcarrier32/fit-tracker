@@ -6,9 +6,9 @@
  * A row is a home stand-in when it's a working lift (main, secondary or accessory) done with only band,
  * mini band, slider or bodyweight, in a loadable movement (not a hold, balance, mobility, core or jump
  * drill). Its replacement must be the same movement pattern and main muscle, use real gym equipment
- * (cable, machine, barbell, Smith, trap bar, landmine, pull-up bar) the gym has, have a video, and be
- * at most one level harder. Best first: exercises the coach programs use (data/learned_patterns.json),
- * your ♥ favourites, BWS's gym lifts, same one-side/two-side.
+ * (dumbbells first: the user prefers them; then cable, machine, barbell, Smith, trap bar, landmine, pull-up
+ * bar) the gym has, have a video, and be at most one level harder. Then: exercises the coach programs use
+ * (data/learned_patterns.json), your ♥ favourites, BWS's gym lifts, same one-side/two-side.
  *
  * Never swapped: ♥ favourites, required moves (Copenhagen), anything with a set logged today, and rows
  * whose plan picked dumbbells or kettlebells (those are a choice, not a stand-in).
@@ -53,10 +53,11 @@ export function gymReplacements(e, catalog, { gym = GYM_DEFAULT, learned = null,
   return catalog
     .filter(c => c.name !== e.name && !used.has(c.name) && !no.has(c.name) && (c.video_url || c.video)
       && c.pattern === e.pattern && c.primary_muscle === e.primary_muscle && sameJob(e.role, c.role)
-      && (c.equipment || []).some(q => GYM_KIT.has(q)) && (c.equipment || []).every(q => have.has(q))
+      && (c.equipment || []).some(q => GYM_KIT.has(q) || q === 'dumbbell') && (c.equipment || []).every(q => have.has(q))
       && (c.level || 2) <= Math.max(level, (e.level || 2) + 1) && !/last resort|optional/i.test(c.name))
     .map(c => [coachShare(learned, c.name) * 3 + (favs.has(c.name) ? 2 : 0) + (c.sources?.includes('bws') ? 1 : 0)
       + (!!c.unilateral === !!e.unilateral ? 0.5 : 0) + (c.role === e.role ? 0.3 : 0)
+      + ((c.equipment || []).includes('dumbbell') ? 2.5 : 0)    // the user prefers dumbbells (2026-11-11)
       + 1.5 * shared(e.name, c.name)                         // "Band Pullover" → "Cable Pullover"
       - (COMBO.test(c.name) ? 2 : 0), c])                    // a plain lift beats a combo move
     .sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name))
