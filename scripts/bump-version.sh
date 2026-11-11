@@ -12,16 +12,18 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-num() { sed -n "s/$1/\1/p" "$2" | head -1; }
+num() { sed -n -E "s/$1/\1/p" "$2" | head -1; }
+# Portable in-place edit (GNU and BSD/macOS sed differ on -i).
+sedi() { local f="${@: -1}"; sed -E "${@:1:$#-1}" "$f" > "$f.tmp" && mv "$f.tmp" "$f"; }
 
 check() {
-  local ok=1 want; want=$(num '.*"v"[[:space:]]*:[[:space:]]*\([0-9]\+\).*' version.json)
+  local ok=1 want; want=$(num '.*"v"[[:space:]]*:[[:space:]]*([0-9]+).*' version.json)
   for spot in \
-    "index.html __FIT_V|.*window\.__FIT_V[[:space:]]*=[[:space:]]*\([0-9]\+\).*|index.html" \
-    "index.html styles.css|.*styles\.css?v=\([0-9]\+\).*|index.html" \
-    "index.html app.js|.*app\.js?v=\([0-9]\+\).*|index.html" \
-    "404.html __FIT_V|.*window\.__FIT_V[[:space:]]*=[[:space:]]*\([0-9]\+\).*|404.html" \
-    "sw.js CACHE|.*fit-tracker-v\([0-9]\+\).*|sw.js"; do
+    "index.html __FIT_V|.*window\.__FIT_V[[:space:]]*=[[:space:]]*([0-9]+).*|index.html" \
+    "index.html styles.css|.*styles\.css\?v=([0-9]+).*|index.html" \
+    "index.html app.js|.*app\.js\?v=([0-9]+).*|index.html" \
+    "404.html __FIT_V|.*window\.__FIT_V[[:space:]]*=[[:space:]]*([0-9]+).*|404.html" \
+    "sw.js CACHE|.*fit-tracker-v([0-9]+).*|sw.js"; do
     IFS='|' read -r label re file <<<"$spot"
     got=$(num "$re" "$file")
     printf '%-22s %s\n' "$label" "$got"
@@ -35,9 +37,9 @@ case "${1:-}" in --check|-c|"") check; exit $? ;; esac
 N="$1"
 case "$N" in ''|*[!0-9]*) echo "usage: $0 <integer version> | --check" >&2; exit 2 ;; esac
 
-sed -i -E "s/(\"v\"[[:space:]]*:[[:space:]]*)[0-9]+/\1$N/" version.json
-sed -i -E "s/(\"label\"[[:space:]]*:[[:space:]]*\")[^\"]*/\1$(date +%Y-%m-%d)/" version.json
-sed -i -E "s/(window\.__FIT_V[[:space:]]*=[[:space:]]*)[0-9]+/\1$N/; s#(src/(styles\.css|app\.js)\?v=)[0-9]+#\1$N#g" index.html
-sed -i -E "s/(fit-tracker-v)[0-9]+/\1$N/" sw.js
+sedi "s/(\"v\"[[:space:]]*:[[:space:]]*)[0-9]+/\1$N/" version.json
+sedi "s/(\"label\"[[:space:]]*:[[:space:]]*\")[^\"]*/\1$(date +%Y-%m-%d)/" version.json
+sedi "s/(window\.__FIT_V[[:space:]]*=[[:space:]]*)[0-9]+/\1$N/; s#(src/(styles\.css|app\.js)\?v=)[0-9]+#\1$N#g" index.html
+sedi "s/(fit-tracker-v)[0-9]+/\1$N/" sw.js
 cp index.html 404.html
 check

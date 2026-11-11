@@ -1,0 +1,355 @@
+{
+  "source": "bws",
+  "generated_for": 12,
+  "max_seconds": 300,
+  "exercises": [
+    {
+      "id": "ab-wheel-rollout",
+      "name": "Ab Wheel Rollout",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "XWJmFD_AdbM",
+          "title": "STOP Using The Ab Roller Like This! #shorts",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 29,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/XWJmFD_AdbM",
+          "score": 8.9
+        },
+        {
+          "videoId": "IHImpzGBqdM",
+          "title": "The #1 Ab Workout Mistake",
+          "channel": "Jeremy Ethier",
+          "seconds": 36,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/IHImpzGBqdM",
+          "score": 8.88
+        },
+        {
+          "videoId": "YgIf-8yklUA",
+          "title": "Ab Wheel Roll-Out: Correct Form Mistakes! #abs #technique",
+          "channel": "Squat University",
+          "seconds": 66,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/YgIf-8yklUA",
+          "score": 5.28
+        }
+      ]
+    },
+    {
+      "id": "band-pull-apart",
+      "name": "Band Pull-Apart",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "y7PBQ2fYbxY",
+          "title": "NEVER Do Push-Ups Like This (3 Mistakes)",
+          "channel": "Jeremy Ethier",
+          "seconds": 32,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/y7PBQ2fYbxY",
+          "score": 7.89
+        },
+        {
+          "videoId": "SLFDrgKarUs",
+          "title": "How To Fix 3 Common Band Pull Apart Mistakes",
+          "channel": "Paul Clingan",
+          "seconds": 26,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/SLFDrgKarUs",
+          "score": 2.41
+        },
+        {
+          "videoId": "stwYTTPXubo",
+          "title": "How To Do Banded Pull-Aparts",
+          "channel": "Tangelo - Seattle Chiropractor + Rehab",
+          "seconds": 51,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/stwYTTPXubo",
+          "score": 2.33
+        }
+      ]
+    },
+    {
+      "id": "cable-external-rotation",
+      "name": "Cable External Rotation",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "_DawiSCNYvk",
+          "title": "Build A STRONG Rotator Cuff (3 Easy Steps)",
+          "channel": "Squat University",
+          "seconds": 53,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/_DawiSCNYvk",
+          "score": 3.82
+        },
+        {
+          "videoId": "QmFicFj8aNM",
+          "title": "This Just Bulletproofed His Shoulders!",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/QmFicFj8aNM",
+          "score": 3.81
+        },
+        {
+          "videoId": "Tv2BudxPrnI",
+          "title": "Surprising SECRET To Fix Shoulder Pain!",
+          "channel": "Squat University",
+          "seconds": 60,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Tv2BudxPrnI",
+          "score": 3.8
+        }
+      ]
+    },
+    {
+      "id": "cable-pull-through",
+      "name": "Cable Pull-Through",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "o78waFTrxtM",
+          "title": "How to Get WIDER Shoulders (2 Exercises)",
+          "channel": "Jeremy Ethier",
+          "seconds": 27,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/o78waFTrxtM",
+          "score": 8.41
+        },
+        {
+          "videoId": "pv8e6OSyETE",
+          "title": "Cable Pull Through",
+          "channel": "Renaissance Periodization",
+          "seconds": 11,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/pv8e6OSyETE",
+          "score": 4.96
+        },
+        {
+          "videoId": "n-cgsNePyFo",
+          "title": "How to Properly Perform Cable Glute Kickbacks With Good Form (Exercise Tutorial)",
+          "channel": "Gerardi Performance",
+          "seconds": 9,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/n-cgsNePyFo",
+          "score": 2.47
+        }
+      ]
+    },
+    {
+      "id": "chest-supported-t-bar-row",
+      "name": "Chest Supported T-Bar Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Nqh7q3zDCoQ",
+          "title": "The PERFECT Barbell Row (5 Steps)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 53,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Nqh7q3zDCoQ",
+          "score": 7.82
+        },
+        {
+          "videoId": "D8BwMZGzmmk",
+          "title": "5 BEST exercises for back thickness!",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 56,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/D8BwMZGzmmk",
+          "score": 6.31
+        },
+        {
+          "videoId": "qjaCg55f9OA",
+          "title": "When Should You Do Chest Supported Rows?",
+          "channel": "Renaissance Periodization",
+          "seconds": 51,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/qjaCg55f9OA",
+          "score": 4.83
+        }
+      ]
+    },
+    {
+      "id": "concentration-curl",
+      "name": "Concentration Curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "EuIaSgUIg30",
+          "title": "BEST Bicep Exercise For Massive Arms #shorts",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 42,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/EuIaSgUIg30",
+          "score": 8.36
+        },
+        {
+          "videoId": "v5XyHiZpBIQ",
+          "title": "3 Methods to Speed Up Bicep Growth",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 48,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/v5XyHiZpBIQ",
+          "score": 7.84
+        },
+        {
+          "videoId": "kjgk8EzxT6k",
+          "title": "Do THIS Bicep Curl For Bigger Arms",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/kjgk8EzxT6k",
+          "score": 7.81
+        }
+      ]
+    },
+    {
+      "id": "donkey-calf-raise",
+      "name": "Donkey Calf Raise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "baEXLy09Ncc",
+          "title": "Get NOTICEABLY BIGGER Calves With This Technique",
+          "channel": "Jeff Nippard",
+          "seconds": 57,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/baEXLy09Ncc",
+          "score": 4.31
+        },
+        {
+          "videoId": "x41IWlX4Rqo",
+          "title": "You're Doing Calf Raises WRONG",
+          "channel": "Renaissance Periodization",
+          "seconds": 21,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/x41IWlX4Rqo",
+          "score": 3.93
+        },
+        {
+          "videoId": "xK6DoHBXTdw",
+          "title": "This Is Why Your Calves Won\u2019t Grow",
+          "channel": "Jeff Nippard",
+          "seconds": 49,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/xK6DoHBXTdw",
+          "score": 3.84
+        }
+      ]
+    },
+    {
+      "id": "ez-bar-curl",
+      "name": "EZ Bar Curl",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "ez-bar-overhead-tricep-extension",
+      "name": "EZ Bar Overhead Tricep Extension",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "hack-squat",
+      "name": "Hack Squat",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "hanging-knee-raises",
+      "name": "Hanging Knee Raises",
+      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
+      "approved": null,
+      "candidates": []
+    },
+    {
+      "id": "hip-abduction-machine",
+      "name": "Hip Abduction Machine",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "3wYElXaohSI",
+          "title": "Squats VS Hip Thrusts for Glutes (NEW Study)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/3wYElXaohSI",
+          "score": 8.81
+        },
+        {
+          "videoId": "yURXU8LJK88",
+          "title": "The PERFECT Glutes Workout (ft. Bret Contreras)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/yURXU8LJK88",
+          "score": 7.81
+        },
+        {
+          "videoId": "Bfdmj4pp660",
+          "title": "This is what I recommend on the seated hip abduction machine!",
+          "channel": "Bret Contreras Glute Guy",
+          "seconds": 56,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Bfdmj4pp660",
+          "score": 4.81
+        }
+      ]
+    }
+  ]
+}

@@ -14,6 +14,7 @@
  *   node data/enrich_program_videos.mjs --source pjf                  # first 80 unresolved
  *   node data/enrich_program_videos.mjs --source pjf --limit 40       # smaller quota-sized chunk
  *   node data/enrich_program_videos.mjs --source pjf --only "Kickstand RDL"
+ *   node data/enrich_program_videos.mjs --source bws --missing        # only exercises with no video yet
  *   node data/enrich_program_videos.mjs --source pjf --redo           # re-search ones already in the review file
  *   node data/enrich_program_videos.mjs --source pjf --apply          # write approved video_urls into library.json
  *
@@ -44,6 +45,7 @@ const LIMIT       = parseInt(opt('limit', '80'), 10);   // new searches this run
 const MAX_SECONDS = parseInt(opt('max-seconds', '300'), 10);
 const APPLY       = args.includes('--apply');
 const REDO        = args.includes('--redo');
+const MISSING     = args.includes('--missing');  // only exercises with no video yet (saves quota)
 
 if (!SOURCE) {
   console.error('Usage: node data/enrich_program_videos.mjs --source <tag> [--apply]');
@@ -106,7 +108,8 @@ const allTargets = lib.exercises
   .filter(e => (e.sources || []).includes(SOURCE))
   // Band exercises already have PJF's own demo, one per exercise, from the band database PDF.
   .filter(e => !(e.sources || []).includes('band'))
-  .filter(e => !ONLY || e.name === ONLY);
+  .filter(e => !ONLY || e.name === ONLY)
+  .filter(e => !MISSING || (!e.video_url && !e.video_from));
 
 // ── apply mode: patch approved video_urls into library.json, no API needed ──
 if (APPLY) {

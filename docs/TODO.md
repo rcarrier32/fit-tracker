@@ -31,11 +31,11 @@ Knee Circles · Standing Hip Internal/External Lifts · Knee Pull Heel Bridge ·
 Stretch · Quadruped Swing Throughs.
 
 **HoopStudy 8-Week** (`data/build_hoopstudy.py`, `NEW`; HoopStudy's PDF has no pictures or videos):
-A-March · A-Skip · Power Skip · OH March · Falling Sprints · 90/90 Sprints · 90/90 Single Power
-Jumps · Paused Squat Jumps · Hollow Hold Sit Up · Prone Pull Through · Single Leg Wall Stride ·
-Hook Plank. HoopStudy's course videos (courses.hoopstudy.com, the user's login) are the best source;
-otherwise search YouTube. Also confirm what "90/90 Sprints", "90/90 Single Power Jumps", "Single Leg
-ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
+done 2026-11-11 (v146) for A-March · A-Skip · Power Skip · OH March · Falling Sprints · Paused Squat Jumps ·
+Single Leg Wall Stride. Still stand-ins (search found nothing usable): Hollow Hold Sit Up · Prone Pull
+Through · 90/90 Sprints · 90/90 Single Power Jumps · Hook Plank. HoopStudy's course videos
+(courses.hoopstudy.com, the user's login) are the best source for those. Also confirm what "90/90 Sprints",
+"90/90 Single Power Jumps", "Single Leg ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
 was assumed.
 
 **Look in FitKidHooper first** (`legendsyba/FitKidHooper`, `src/data/trainingCatalog.js`): it already links
@@ -55,7 +55,9 @@ Provider demos (PJF, BWS, Griffith) beat expert channels, which beat random ones
 
 ## 3. Catalog exercises with no video (needs YouTube)
 
-`node data/check_catalog.mjs` warns about 28 catalog exercises with no video. The plan builder can't
+`node data/check_catalog.mjs` warns about 29 catalog exercises with no video. Search with
+`node data/enrich_program_videos.mjs --source bws --missing` (only moves with no video; the 2026-11-11 run
+without it spent the day's quota). `data/bws-video-review.json` has first candidates for 8, mostly weak. The plan builder can't
 pick them, so filling them widens its choices:
 
 Ab Wheel Rollout · Band Pull-Apart · Bridge March · Cable External Rotation · Cable Pull-Through ·

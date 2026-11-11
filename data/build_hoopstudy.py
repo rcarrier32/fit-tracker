@@ -26,28 +26,29 @@ GROUP = 'HoopStudy'
 STANDIN = 'Demo is the closest match in the app; HoopStudy\'s PDF names this move without a picture or video.'
 
 # Moves the app didn't have: tagged, with the nearest vetted demo borrowed (video_from).
+# None = has its own demo now (data/hoopstudy-video-review.json, applied 2026-11-11).
 NEW = {
     'Hollow Hold Sit Up': ('Reverse 1/2 Crunch', dict(primary_muscle='abs', muscles=['abs', 'hip_flexors'], pattern='flexion', role='core',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     'Prone Pull Through': ('(Weighted) Prone Arm Circles', dict(primary_muscle='upper_back', muscles=['upper_back', 'rear_delts', 'lower_back'], pattern='mobility',
                            role='accessory', equipment=['dumbbell'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Single Leg Wall Stride': ('Sprint Drills', dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'glutes', 'calves'], pattern='speed_accel',
+    'Single Leg Wall Stride': (None, dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'glutes', 'calves'], pattern='speed_accel',
                            role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
-    'OH March': ('Sprint Drills', dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'abs', 'calves'], pattern='speed_accel', role='warmup',
+    'OH March': (None, dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'abs', 'calves'], pattern='speed_accel', role='warmup',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=True)),
-    'A-March': ('Sprint Drills', dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'glutes', 'calves'], pattern='speed_accel', role='warmup',
+    'A-March': (None, dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'glutes', 'calves'], pattern='speed_accel', role='warmup',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=True)),
-    'A-Skip': ('Extensive Locomotive Skips', dict(primary_muscle='calves', muscles=['calves', 'hip_flexors', 'glutes'], pattern='plyo_bound_hop', role='warmup',
+    'A-Skip': (None, dict(primary_muscle='calves', muscles=['calves', 'hip_flexors', 'glutes'], pattern='plyo_bound_hop', role='warmup',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Power Skip': ('Extensive Locomotive Skips', dict(primary_muscle='glutes', muscles=['glutes', 'calves', 'quads'], pattern='plyo_bound_hop', role='power',
+    'Power Skip': (None, dict(primary_muscle='glutes', muscles=['glutes', 'calves', 'quads'], pattern='plyo_bound_hop', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Falling Sprints': ('Sprint Accelerations', dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
+    'Falling Sprints': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     '90/90 Sprints': ('Sprint Accelerations', dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=True)),
     '90/90 Single Power Jumps': ('Extensive Knee Dominant Jump', dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=True)),
-    'Paused Squat Jumps': ('Resisted Pause Jumps', dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
+    'Paused Squat Jumps': (None, dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     'Hook Plank': ('Dead Bug', dict(primary_muscle='abs', muscles=['abs', 'obliques', 'lower_back'], pattern='anti_extension', role='core',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
@@ -98,12 +99,12 @@ def speed_drills(build_ups=True):
         r('Pogos', '10 each way', sets=2, rest='30s', group='Drills',
           notes='HoopStudy\'s 4-way extensive ankle pop series: forward/back, side to side, and both diagonals, quick and springy off the ankles.',
           alts=['Extensive Locomotive Skips']),
-        r('OH March', '10 each side', sets=2, rest='30s', group='Drills', notes='Arms locked overhead, tall posture, knee up to hip height. ' + STANDIN),
-        r('A-March', '10 each side', sets=2, rest='30s', group='Drills', notes='Sprint posture: drive the knee up, toes up, punch the foot down under the hip. ' + STANDIN),
-        r('A-Skip', '10 each side', sets=2, rest='30s', group='Drills', notes='The A-march with a skip. ' + STANDIN),
-        r('Power Skip', '5 each side', sets=2, rest='45s', group='Drills', notes='Skip for height: big knee drive and arm swing. ' + STANDIN),
+        r('OH March', '10 each side', sets=2, rest='30s', group='Drills', notes='Arms locked overhead, tall posture, knee up to hip height.'),
+        r('A-March', '10 each side', sets=2, rest='30s', group='Drills', notes='Sprint posture: drive the knee up, toes up, punch the foot down under the hip.'),
+        r('A-Skip', '10 each side', sets=2, rest='30s', group='Drills', notes='The A-march with a skip.'),
+        r('Power Skip', '5 each side', sets=2, rest='45s', group='Drills', notes='Skip for height: big knee drive and arm swing.'),
     ] + ([r('Falling Sprints', '10 yd', sets=3, rest='60s', group='Sprint warm-up',
-          notes='Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. ' + STANDIN)] if build_ups else [])
+          notes='Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go.')] if build_ups else [])
 
 
 def day1(wk):
@@ -156,9 +157,9 @@ def day4(wk):
         'Have someone time your sprints and record the time (⋯ → Note on the sprint row).'],
         'exercises': speed_drills(build_ups=False) + [
         r('Falling Sprints', '10 yd', sets=sprint_reps(wk) + 3, rest='60-90s',
-          notes=f'First 3 are build-ups at 50%, 75% and 100% effort, then {sprint_reps(wk)} × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. ' + STANDIN,
+          notes=f'First 3 are build-ups at 50%, 75% and 100% effort, then {sprint_reps(wk)} × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.',
           alts=['Sprint Accelerations']),
-        r('Paused Squat Jumps', '3', sets=jump_rounds(wk), rest='60s', notes='Squat down, pause 2 s, jump as high as you can, land softly. ' + STANDIN,
+        r('Paused Squat Jumps', '3', sets=jump_rounds(wk), rest='60s', notes='Squat down, pause 2 s, jump as high as you can, land softly.',
           alts=['Extensive Knee Dominant Jump']),
     ]}
 
@@ -175,7 +176,7 @@ def day5(wk):
         r('Single-Leg Glute Bridge', '8 each side', sets=s, rest='60s', notes='HoopStudy\'s single-leg DB heel bridge: dumbbell on the hip, drive through the heel.',
           alts=['Dumbbell Glute Bridge', 'On Bench Single Leg Glute Bridge']),
         r('Single Leg Wall Stride', '8 each side', sets=s, rest='60s',
-          notes='Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. ' + STANDIN, alts=['A-March']),
+          notes='Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.', alts=['A-March']),
     ]}
 
 

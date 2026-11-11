@@ -14211,7 +14211,7 @@
     {
       "id": "hoopstudy-single-leg-wall-stride",
       "name": "Single Leg Wall Stride",
-      "video_url": "https://youtu.be/EpDo08LJ1JY",
+      "video_url": "https://youtu.be/chovZlG63Qk",
       "sources": [
         "hoopstudy"
       ],
@@ -14232,12 +14232,12 @@
       "unilateral": true,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-oh-march",
       "name": "OH March",
-      "video_url": "https://youtu.be/EpDo08LJ1JY",
+      "video_url": "https://youtu.be/15Inn5Ht96w",
       "sources": [
         "hoopstudy"
       ],
@@ -14258,12 +14258,12 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-a-march",
       "name": "A-March",
-      "video_url": "https://youtu.be/EpDo08LJ1JY",
+      "video_url": "https://youtu.be/98I8rynMBqM",
       "sources": [
         "hoopstudy"
       ],
@@ -14284,12 +14284,12 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-a-skip",
       "name": "A-Skip",
-      "video_url": "https://youtu.be/rWZdDUGFjoI",
+      "video_url": "https://youtu.be/O9wh-huxbxU",
       "sources": [
         "hoopstudy"
       ],
@@ -14310,12 +14310,12 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-power-skip",
       "name": "Power Skip",
-      "video_url": "https://youtu.be/rWZdDUGFjoI",
+      "video_url": "https://youtu.be/iJGycGF-iQE",
       "sources": [
         "hoopstudy"
       ],
@@ -14336,12 +14336,12 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-falling-sprints",
       "name": "Falling Sprints",
-      "video_url": "https://youtu.be/bIsKXTp3nA0",
+      "video_url": "https://youtu.be/jgaT-1puJn4",
       "sources": [
         "hoopstudy"
       ],
@@ -14362,7 +14362,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-90-90-sprints",
@@ -14419,7 +14419,7 @@
     {
       "id": "hoopstudy-paused-squat-jumps",
       "name": "Paused Squat Jumps",
-      "video_url": "https://youtu.be/fAOEW-DDMts",
+      "video_url": "https://youtu.be/xEFA0jTD7oU",
       "sources": [
         "hoopstudy"
       ],
@@ -14440,7 +14440,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-hook-plank",
@@ -62313,7 +62313,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -62325,7 +62325,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -62337,7 +62337,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -62349,7 +62349,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -62361,7 +62361,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -62568,7 +62568,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -62580,7 +62580,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -62592,7 +62592,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -62604,7 +62604,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -62616,7 +62616,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 4 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 4 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -62631,7 +62631,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -62746,7 +62746,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -63111,7 +63111,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -63123,7 +63123,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -63135,7 +63135,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -63147,7 +63147,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -63159,7 +63159,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -63366,7 +63366,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -63378,7 +63378,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -63390,7 +63390,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -63402,7 +63402,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -63414,7 +63414,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 4 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 4 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -63429,7 +63429,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -63544,7 +63544,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -63909,7 +63909,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -63921,7 +63921,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -63933,7 +63933,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -63945,7 +63945,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -63957,7 +63957,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -64164,7 +64164,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -64176,7 +64176,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -64188,7 +64188,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -64200,7 +64200,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -64212,7 +64212,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 6 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 6 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -64227,7 +64227,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -64342,7 +64342,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -64707,7 +64707,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -64719,7 +64719,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -64731,7 +64731,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -64743,7 +64743,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -64755,7 +64755,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -64962,7 +64962,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -64974,7 +64974,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -64986,7 +64986,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -64998,7 +64998,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -65010,7 +65010,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 6 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 6 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -65025,7 +65025,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -65140,7 +65140,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -65506,7 +65506,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -65518,7 +65518,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -65530,7 +65530,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -65542,7 +65542,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -65554,7 +65554,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -65762,7 +65762,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -65774,7 +65774,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -65786,7 +65786,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -65798,7 +65798,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -65810,7 +65810,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 8 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 8 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -65825,7 +65825,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -65941,7 +65941,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -66306,7 +66306,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -66318,7 +66318,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -66330,7 +66330,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -66342,7 +66342,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -66354,7 +66354,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -66561,7 +66561,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -66573,7 +66573,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -66585,7 +66585,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -66597,7 +66597,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -66609,7 +66609,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 8 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 8 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -66624,7 +66624,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -66739,7 +66739,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -67104,7 +67104,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -67116,7 +67116,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -67128,7 +67128,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -67140,7 +67140,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -67152,7 +67152,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -67359,7 +67359,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -67371,7 +67371,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -67383,7 +67383,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -67395,7 +67395,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -67407,7 +67407,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 10 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 10 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -67422,7 +67422,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -67537,7 +67537,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
@@ -67902,7 +67902,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -67914,7 +67914,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -67926,7 +67926,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -67938,7 +67938,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -67950,7 +67950,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Falling-start sprint warm-ups: 1 at 50%, 1 at 75%, 1 at 100% effort. Lean forward until you have to step, then go."
                   },
                   {
                     "name": "90/90 Sprints",
@@ -68157,7 +68157,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Arms locked overhead, tall posture, knee up to hip height. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Arms locked overhead, tall posture, knee up to hip height."
                   },
                   {
                     "name": "A-March",
@@ -68169,7 +68169,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Sprint posture: drive the knee up, toes up, punch the foot down under the hip."
                   },
                   {
                     "name": "A-Skip",
@@ -68181,7 +68181,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "The A-march with a skip. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "The A-march with a skip."
                   },
                   {
                     "name": "Power Skip",
@@ -68193,7 +68193,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "45s",
-                    "notes": "Skip for height: big knee drive and arm swing. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video."
+                    "notes": "Skip for height: big knee drive and arm swing."
                   },
                   {
                     "name": "Falling Sprints",
@@ -68205,7 +68205,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 10 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "First 3 are build-ups at 50%, 75% and 100% effort, then 10 × 10 yd at 100% from a falling start: lean forward until you have to step, then go. Walk back between reps.",
                     "alternates": [
                       "Sprint Accelerations"
                     ]
@@ -68220,7 +68220,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Squat down, pause 2 s, jump as high as you can, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -68335,7 +68335,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hands on a wall, body leaning in a sprint angle; drive one knee up and hold the stride position.",
                     "alternates": [
                       "A-March"
                     ]
