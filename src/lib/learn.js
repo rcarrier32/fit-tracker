@@ -42,13 +42,14 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
 
   // ── Exercises: done, left undone, swapped away from, swapped to, strength trend ──
   const ex = {};
-  const E = (n) => (ex[n] ||= { done: 0, undone: 0, swappedAway: 0, swappedTo: 0, added: 0, hurt: 0, e1rm: [], hitTop: 0, overshoot: 0, ranged: 0, lastDate: null });
+  const E = (n) => (ex[n] ||= { done: 0, undone: 0, swappedAway: 0, swappedTo: 0, added: 0, hurt: 0, helped: 0, e1rm: [], hitTop: 0, overshoot: 0, ranged: 0, lastDate: null });
   for (const s of done) {
     for (const x of s.exercises || []) {
       const sets = (x.sets || []).filter(st => st?.done);
       if (x.swapped && x.orig_name && x.orig_name !== x.name) { E(x.orig_name).swappedAway++; E(x.name).swappedTo++; }
       if (x.added) E(x.name).added++;
       if (x.hurt) E(x.name).hurt++;
+      if (x.helped) E(x.name).helped++;
       const r = E(x.name);
       if (!sets.length) { r.undone++; continue; }
       r.done++; r.lastDate = s.date;
@@ -85,7 +86,9 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
   }
   const prefer = {};
   for (const [orig, to] of Object.entries(replacements)) prefer[orig] = Object.entries(to).sort((a, b) => b[1] - a[1])[0][0];
-  const favorites = Object.entries(ex).filter(([, r]) => r.swappedTo + r.added >= 2).map(([n]) => n);
+  const favorites = Object.entries(ex).filter(([, r]) => r.swappedTo + r.added >= 2 || r.helped >= 1).map(([n]) => n);
+  // Marked "Helped" on a finish screen: one tap is a clear yes (new plans favour it; Daily Mobility brings it back when its area is sore).
+  const helped = Object.entries(ex).filter(([, r]) => r.helped >= 1).map(([n]) => n);
   const progressing = Object.entries(exercises).filter(([, r]) => r.trend_per_week > 0.005).map(([n]) => n);
   const stalled = Object.entries(exercises).filter(([, r]) => r.trend_per_week != null && r.trend_per_week <= 0).map(([n]) => n);
 
@@ -132,7 +135,7 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
     sessions: done.length, skipped: skipped.length, weeks: round(spanWeeks, 1),
     ready: done.length >= LEARN_MIN.sessions,
     exercises, avoid, prefer, favorites, progressing, stalled, muscles,
-    progression, duration, fatigue, hurts,
+    progression, duration, fatigue, hurts, helped,
     days: { trained: weekday, skipped: skippedDay, per_week },
   };
 }
@@ -152,6 +155,7 @@ export function profileSummary(p) {
   if (p.duration) out.push(`Your workouts take about ${p.duration.median_min} min.`);
   if (p.progressing.length) out.push(`Going up: ${p.progressing.slice(0, 4).join(', ')}${p.progressing.length > 4 ? ` +${p.progressing.length - 4}` : ''}.`);
   if (p.stalled.length) out.push(`Stalled: ${p.stalled.slice(0, 4).join(', ')}${p.stalled.length > 4 ? ` +${p.stalled.length - 4}` : ''}. New plans try something different.`);
+  if (p.helped?.length) out.push(`Helped you: ${p.helped.slice(0, 3).join(', ')}. New plans favour ${p.helped.length === 1 ? 'it' : 'them'}, and Daily Mobility brings ${p.helped.length === 1 ? 'it' : 'them'} back when that area is sore.`);
   if (p.hurts?.length) out.push(`Hurt more than once: ${p.hurts.slice(0, 3).join(', ')}. New plans leave ${p.hurts.length === 1 ? 'it' : 'them'} out.`);
   if (p.fatigue?.advice) out.push(p.fatigue.advice);
   if (p.avoid.length) out.push(`You swap or skip: ${p.avoid.slice(0, 4).join(', ')}. New plans leave ${p.avoid.length === 1 ? 'it' : 'them'} out${Object.keys(p.prefer).length ? ' and use what you swap to' : ''}.`);

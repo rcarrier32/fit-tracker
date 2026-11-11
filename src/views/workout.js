@@ -5,7 +5,7 @@ import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
@@ -285,7 +285,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const lookup = (n) => byName.get(String(n).toLowerCase());
       // Notes from yesterday's and today's workouts: areas called sore get their stretches.
       const sore = soreFromNotes([...yesterday, ...todaysSessions]);
-      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup, { sore });
+      const helped = helpedMoves(await getAll('sessions'), today());
+      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup, { sore, helped });
       session.exercises = adj.rows;
       if (adj.note) session.adjust_note = adj.note;
     }
@@ -2038,6 +2039,8 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:10px">${ENERGY.map(x => chip('energy5', x.v, `<div style="font-size:18px;line-height:1.1">${x.emoji}</div><div style="font-size:11px">${x.label}</div>`)).join('')}</div>
       ${doneNames.length ? `<div class="muted" style="font-size:12px;margin-bottom:4px">Anything hurt? (tap)</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.hurt ? 'accent' : ''}" data-hurt="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
+      ${doneNames.length ? `<div class="muted" style="font-size:12px;margin:10px 0 4px">Helped or felt great? (tap)</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.helped ? 'accent' : ''}" data-helped="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
       <textarea id="feel-note" rows="2" placeholder="Anything to note? e.g. quads sore from yesterday, slept badly" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
       <div id="note-read" class="muted" style="font-size:12px;margin-top:4px">${esc(noteSummary(readNote(session.note)))}</div>
       <div id="feel-saved" class="muted" style="font-size:11px;margin-top:4px;min-height:14px">Saves as you tap and type.</div>
@@ -2076,6 +2079,14 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     await saveSession(session);
     savedTick();
     app.querySelectorAll(`[data-feel="${b.dataset.feel}"]`).forEach(x => x.classList.toggle('accent', x === b));
+  });
+  app.querySelectorAll('[data-helped]').forEach(b => b.onclick = async () => {
+    const x = session.exercises.find(q => q.name === b.dataset.helped);
+    if (!x) return;
+    x.helped = !x.helped || undefined;
+    await saveSession(session);
+    savedTick();
+    b.classList.toggle('accent', !!x.helped);
   });
   app.querySelectorAll('[data-hurt]').forEach(b => b.onclick = async () => {
     const x = session.exercises.find(q => q.name === b.dataset.hurt);

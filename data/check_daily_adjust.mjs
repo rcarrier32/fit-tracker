@@ -1,6 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
-import { yesterdayLoad, adjustDaily, soreFromNotes } from '../src/lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -55,5 +55,13 @@ const hf2 = r.rows.find(x => x.name === 'Hip Flexor/Quad Bridge');
 ok('sore note bumps the quad/hip-flexor hold', hf2 && hf2.target_sets === 3 && /from your note/.test(r.note || ''), r.note);
 ok('pogos stay (soreness isn\'t impact)', r.rows.some(x => x.name === 'Pogos'));
 ok('Daily Mobility notes ignored', soreFromNotes([{ program_id: 'daily_mobility', note: 'quads sore' }]).length === 0);
+// Moves marked "Helped" come back when their area is sore.
+const helped = helpedMoves([{ date: '2026-11-11', program_id: 'move30', exercises: [{ name: 'Back Leg Lunge (Peterson Lunge)', helped: true, target_sets: 2, target_reps: '8 each side' },
+  { name: 'Wall Slides', helped: true, target_sets: 2, target_reps: '8' }] }, { date: '2026-09-01', exercises: [{ name: 'Old Move', helped: true }] }], '2026-11-12');
+ok('helped moves: recent only', helped.length === 2 && !helped.some(h => h.name === 'Old Move'), JSON.stringify(helped));
+r = adjustDaily(A, yesterdayLoad([], lookup), lookup, { sore: ['quads'], helped });
+ok('sore quads → Peterson lunge added', r.rows.some(x => x.name === 'Back Leg Lunge (Peterson Lunge)' && x.helped_add) && /added what helped/.test(r.note), r.note);
+ok('a helped move for an area that\'s fine stays out', !r.rows.some(x => x.name === 'Wall Slides' && x.helped_add));
+ok('nothing sore → nothing added', adjustDaily(A, yesterdayLoad([], lookup), lookup, { helped }).note === null);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

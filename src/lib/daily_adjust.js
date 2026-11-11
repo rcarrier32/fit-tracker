@@ -17,6 +17,22 @@ import { readNote } from './feel.js';
 const NOTE_REGION = { quads: 'quads', 'hip flexors': 'hip flexors', hamstrings: 'hamstrings', glutes: 'glutes', adductors: 'adductors',
   calves: 'calves', 'lower back': 'lower back', 'upper back': 'upper back', shoulders: 'shoulders', chest: 'chest', hips: 'glutes' };
 
+/**
+ * Moves you marked "Helped" on a finish screen in the last 30 days (newest first), with the dose you
+ * did them at, so Daily Mobility can bring one back when its area is sore or was worked hard.
+ */
+export function helpedMoves(sessions, today) {
+  const since = new Date(new Date(today + 'T12:00:00') - 30 * 864e5).toISOString().slice(0, 10);
+  const out = new Map();
+  for (const s of [...(sessions || [])].sort((a, b) => b.date.localeCompare(a.date))) {
+    if (!s.date || s.date < since || s.date > today) continue;
+    for (const x of s.exercises || []) if (x.helped && !out.has(x.name)) {
+      out.set(x.name, { name: x.name, target_sets: Math.min(2, +x.target_sets || 2), target_reps: x.target_reps || '', time: x.time || null });
+    }
+  }
+  return [...out.values()];
+}
+
 /** Areas recent workout notes call sore (not Daily Mobility's own sessions). */
 export function soreFromNotes(sessions, { skipProgram = 'daily_mobility' } = {}) {
   const out = new Set();
@@ -61,7 +77,7 @@ export function yesterdayLoad(sessions, lookup, { skipProgram = 'daily_mobility'
  * @param lookup name → catalog entry ({ role, pattern, primary_muscle, muscles })
  * @returns { rows, note } (rows copied; note null when nothing changed)
  */
-export function adjustDaily(rows, load, lookup, { sore = [] } = {}) {
+export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {}) {
   if ((!load || (!Object.keys(load.direct).length && !load.impact)) && !sore.length) return { rows, note: null };
   load = load || { direct: {}, by: {}, impact: 0, legSets: 0 };
   const out = rows.map(r => ({ ...r }));
@@ -87,6 +103,21 @@ export function adjustDaily(rows, load, lookup, { sore = [] } = {}) {
     if (hit && (+r.target_sets || 1) < 3) { r.target_sets = (+r.target_sets || 1) + 1; bumped.push(`${r.name} (${hit})`); }
   }
   if (bumped.length) changes.push('+1 set: ' + bumped.join(', '));
+  // Moves you said helped, for an area that's sore or was worked: up to 2, before the finish.
+  const have = new Set(out.map(r => r.name.toLowerCase()));
+  const brought = [];
+  for (const h of helped) {
+    if (brought.length >= 2 || have.has(h.name.toLowerCase())) continue;
+    const e = lookup(h.name);
+    const regions = new Set([REGION[e?.primary_muscle], ...(e?.muscles || []).map(m => REGION[m])].filter(Boolean));
+    const hit = worked.find(w => regions.has(w));
+    if (!hit) continue;
+    const at = out.findIndex(r => /single.?leg (stance|balance)/i.test(r.name));
+    out.splice(at < 0 ? out.length : at, 0, { name: h.name, orig_name: h.name, sets: [], target_sets: h.target_sets, target_reps: h.target_reps, time: h.time,
+      notes: `You marked this as helping last time: for your ${hit}.`, helped_add: true });
+    have.add(h.name.toLowerCase()); brought.push(`${h.name} (${hit})`);
+  }
+  if (brought.length) changes.push('added what helped: ' + brought.join(', '));
   if (!changes.length) return { rows, note: null };
   const what = worked.slice(0, 3).map(w => (load.by[w] || []).length ? `${w} (${load.by[w].slice(0, 2).join(', ')})` : `${w} (sore, from your note)`).join('; ');
   return { rows: out, note: `Adjusted for yesterday's training${what ? ` — ${what}` : ''}: ${changes.join('; ')}.` };

@@ -20,7 +20,7 @@ import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
 import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -186,7 +186,7 @@ async function dailyCardData(todaysSessions) {
     const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
     // Notes from yesterday's and today's workouts: areas called sore get their stretches.
     const sore = soreFromNotes([...yest, ...todaysSessions]);
-    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore }).note;
+    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) }).note;
   }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
   // Done: today is the finished session's day, whatever the cursor says (it has moved on, and

@@ -255,6 +255,12 @@ it took from it:
   next day (and the same day, if it hasn't started), and Today's "How you've been feeling" lists them for 3 days.
 - **pain** in an area: listed with the exercises you marked as hurting, for two weeks.
 - **tired** (slept badly, drained…): counts toward the lighter-week advice, like Too much, Drained or Low.
+Soreness isn't a bad sign and doesn't count toward the lighter-week advice.
+
+**Helped or felt great? (tap)** marks moves that worked for you (the Peterson lunge that loosened sore
+quads). New plans favour them (`learn.js` favourites), and for 30 days Daily Mobility adds up to 2 of them
+when their area is sore (from a note) or was trained hard the day before (`daily_adjust.js` `helpedMoves`).
+
 A knee only counts when the note says the knee itself is sore or hurts ("from above the knee up to the
 hip flexor" names the quads and hip flexors).
 
