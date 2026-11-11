@@ -302,7 +302,16 @@ of 2+, pair rest, the time box, jump contacts, warm-up coverage, cooldown by goa
 say (and it halves the sets), required moves per week, a learned "avoid" stays out unless it's the only fit,
 the last phase keeps its lifting sets (within 8%; athletic exempt), same seed → same plan. Quality is reported:
 coach range and coach-exercise share by goal, session length vs asked, muscles trained twice a week,
-push:pull, variety.
+push:pull, variety. "Trained twice a week" counts a day when the muscle gets 3+ fractional sets (main
+muscle 1 per set, helper muscles 0.5: a squat trains glutes, a row trains lats and upper back).
+
+**Filling the time asked** (`rules.fill`): a day under 85% of its minutes gets up to 3 accessories for the
+muscles trained on the fewest days this week (an upper day stays upper, a lower day lower), then one more
+set on the secondary and main lifts. Chosen once per phase, so the weeks of a phase match; a later phase
+adds at least as much as the one before (the last phase never has fewer sets). The warm-up and cooldown
+are redone to cover what was added. 2026-11-11, same 2,700 plans: twice a week 81% → 94%, average session
+81% → 90% of the time asked, days under 55% 7% → 3% (all of those are bodyweight-only upper days: without
+a band, bar or dumbbells there's little to pull with).
 
 `src/lib/generator.js` turns these rules into plans, both in the app (Plans → Generate a plan)
 and in node (`node data/generate_plan.mjs`). `--sanity` runs every goal × days × minutes ×

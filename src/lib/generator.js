@@ -400,7 +400,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
 
   // Trim a session to the time box: accessory sets to 2, then drop accessories from the end,
   // then secondary sets to 2. Main lifts, power work and the first core move stay.
-  function fitToTime(day, slots, dayPicks) {
+  // Lifting sets per day of each phase's first week, so a later phase's trim stops at the earlier phase's
+  // sets while the day still fits in 115% of the time asked (the last phase never ends up with fewer sets).
+  const phaseSets = {};
+  const liftSets = (day, roleOf) => day.exercises.filter(x => x.round_group !== 'Cooldown' && !['power', 'conditioning'].includes(roleOf(x)))
+    .reduce((a, x) => a + (x.sets || 0), 0);
+  function fitToTime(day, slots, dayPicks, ph = 0, di = 0) {
     const budget = p.minutes * 1.1;
     const roleOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)]?.role;
     const steps = [
@@ -432,10 +437,103 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       }
     };
     fixOrphans();   // a lone 'superset' member is estimated at half rest: settle it before measuring
+    const floor = ph > 0 ? phaseSets[`${ph - 1}:${di}`] : null;
+    const keep = () => floor != null && liftSets(day, roleOf) <= floor && estimateMinutes(day, rules) <= p.minutes * 1.15;
     for (const step of steps) {
-      while (estimateMinutes(day, rules) > budget) { if (!step()) break; fixOrphans(); }
+      while (estimateMinutes(day, rules) > budget && !keep()) { if (!step()) break; fixOrphans(); }
     }
     for (const x of day.exercises) delete x._ramp;
+  }
+
+  // Fill a short session (rules.fill): a day under 85% of the time asked gets accessories for the
+  // muscles trained on the fewest days this week, then a set on the secondary and main lifts. Decided
+  // once per phase and day (week 1 of the phase), so every week of a phase has the same exercises.
+  const FILL = rules.fill || null;
+  const fillCache = {};   // `${ph}:${di}` → { adds: [{ slot, e }], bump: Set(names) }
+  const BIG = ['quads', 'hamstrings', 'glutes', 'chest', 'lats', 'upper_back', 'side_delts', 'rear_delts', 'biceps', 'triceps', 'calves'];
+  /** Days this phase that train muscle m: fractional sets (main muscle 1, helpers 0.5) of 3+ on the day. */
+  function daysTraining(ph, extra = {}) {
+    const out = {};
+    split.days.forEach((_, di) => {
+      const fr = {};
+      const add = (e, sets) => { if (!e) return; fr[e.primary_muscle] = (fr[e.primary_muscle] || 0) + sets;
+        for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) fr[m] = (fr[m] || 0) + sets / 2; };
+      daySlots[di].forEach((slot, si) => { if (['main', 'secondary', 'accessory'].includes(slot.role)) add(picks[ph][di][si], (rules.roles[slot.role] || {}).sets || 3); });
+      for (const a of (extra[di] || [])) add(a.e, 3);
+      for (const [m, v] of Object.entries(fr)) if (v >= 3) out[m] = (out[m] || 0) + 1;
+    });
+    return out;
+  }
+  function fillToTime(day, dayKey, di, ph, w) {
+    if (!FILL || rules.days[dayKey].circuit || SPEED_DAY.test(dayKey) || isDeload(w)) return;
+    const key = `${ph}:${di}`;
+    let plan = fillCache[key];
+    const insertAt = () => { const i = day.exercises.findIndex(x => x.round_group === 'Cooldown' || ['core', 'conditioning'].includes(byName.get(x.name)?.role)); return i < 0 ? day.exercises.length : i; };
+    const rowFor = (slot, e) => { const d = dose(slot, e, w, ph);
+      return { name: e.name, round_group: null, is_alternate: false, sets: d.sets, reps: d.reps, weight: null, distance: null, time: d.time, rest: d.rest, notes: null,
+        why: `Extra ${e.primary_muscle.replace(/_/g, ' ')} work: fills the time you asked for and trains it on another day this week` }; };
+    // A later phase adds at least what the phase before did, so the last phase never has fewer sets
+    // (it may then use the trim budget, 110% of the time asked).
+    const prev = ph > 0 ? fillCache[`${ph - 1}:${di}`] : null;
+    const minAdds = prev?.adds.length || 0, minBumps = prev?.bump.size || 0;
+    const short = () => estimateMinutes(day, rules) < p.minutes * FILL.below;
+    const cap = (forced) => p.minutes * (forced ? 1.1 : 1);
+    if (!plan) {
+      plan = fillCache[key] = { adds: [], bump: new Set() };
+      if (!short() && !minAdds && !minBumps) return;
+      // Which muscles suit the day: an upper day stays upper, a lower day lower, full body anything.
+      const groups = new Set(daySlots[di].flatMap((s, si) => { const e = picks[ph][di][si]; return e && ['main', 'secondary'].includes(s.role) ? [GROUP[e.primary_muscle]] : []; }));
+      const suits = (m) => groups.has(GROUP[m]) || (groups.has('push') && groups.has('pull') && groups.has('legs'));
+      const usedToday = new Set(day.exercises.map(x => x.name));
+      const usedWeek = new Set(picks[ph].flat().filter(Boolean).map(e => e.name));
+      const extra = {};
+      for (const k of Object.keys(fillCache)) if (k.startsWith(`${ph}:`)) extra[+k.split(':')[1]] = [...fillCache[k].adds];
+      const working = () => day.exercises.filter(x => x.round_group !== 'Cooldown' && !['warmup', 'cooldown', 'conditioning'].includes(byName.get(x.name)?.role)).length;
+      while (plan.adds.length < FILL.max_added && (plan.adds.length < minAdds
+        || (working() < session.max_exercises + (power ? 1 : 0) + FILL.max_extra_exercises && short()))) {
+        const forced = plan.adds.length < minAdds && !short();
+        const freq = daysTraining(ph, extra);
+        const today = new Set(day.exercises.map(x => byName.get(x.name)?.primary_muscle));
+        const rank = (a, b) => (freq[a] || 0) - (freq[b] || 0) || (focusMuscles.has(b) ? 1 : 0) - (focusMuscles.has(a) ? 1 : 0) || BIG.indexOf(a) - BIG.indexOf(b);
+        let order = BIG.filter(m => suits(m) && (!today.has(m) || (freq[m] || 0) < 2)).sort(rank);
+        // Every muscle that suits the day is already covered: any of them, fewest days first.
+        if (!order.length) order = BIG.filter(suits).sort(rank);
+        let added = false;
+        for (const m of order) {
+          const slot = { role: 'accessory', muscles: [m] };
+          const e = candidates(slot, usedToday, usedWeek, null, ph).find(x => !avoidSet.has(x.name) && !['mobility', 'balance', 'isometric'].includes(x.pattern));
+          if (!e) continue;
+          const row = rowFor(slot, e);
+          day.exercises.splice(insertAt(), 0, row);
+          if (estimateMinutes(day, rules) > cap(forced)) { day.exercises.splice(day.exercises.indexOf(row), 1); continue; }
+          plan.adds.push({ slot, e }); usedToday.add(e.name); usedWeek.add(e.name);
+          (extra[di] ||= []).push({ e }); added = true; break;
+        }
+        if (!added) break;
+      }
+      // Still short: one more set on secondary, then main lifts.
+      for (const role of ['secondary', 'main']) for (const x of day.exercises) {
+        if (!short() && plan.bump.size >= minBumps) break;
+        const forced = !short();
+        const r = daySlots[di][picks[ph][di].findIndex(e => e?.name === x.name)]?.role;
+        if (r !== role || reqOf(byName.get(x.name)) || x.time) continue;
+        if (x.sets >= (role === 'main' ? FILL.main_max_sets : FILL.secondary_max_sets)) continue;
+        x.sets += 1; plan.bump.add(x.name);
+        if (estimateMinutes(day, rules) > cap(forced)) { x.sets -= 1; plan.bump.delete(x.name); }
+      }
+    } else {
+      // Later weeks of the phase: same additions, same extra sets.
+      for (const a of plan.adds) day.exercises.splice(insertAt(), 0, rowFor(a.slot, a.e));
+      for (const x of day.exercises) if (plan.bump.has(x.name)) x.sets += 1;
+    }
+    // New exercises: the warm-up and cooldown cover them too.
+    if (plan.adds.length) {
+      day.warmup = warmupFor(dayKey, ph, day.exercises.filter(x => x.round_group !== 'Cooldown'));
+      if (goal.cooldown) {
+        day.exercises = day.exercises.filter(x => x.round_group !== 'Cooldown');
+        day.exercises.push(...cooldownFor(day.exercises));
+      }
+    }
   }
 
   // Pair every lift with one that doesn't compete for the same muscles (lower with upper, push with
@@ -600,7 +698,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         }
         const day = { day_num: di + 1, focus: rules.days[dayKey].focus, warmup: warmupFor(dayKey, ph, exercises), notes, exercises };
         if (goal.cooldown) day.exercises.push(...cooldownFor(day.exercises));
-        fitToTime(day, daySlots[di], picks[ph][di]);
+        fitToTime(day, daySlots[di], picks[ph][di], ph, di);
+        fillToTime(day, dayKey, di, ph, w);
+        if (phaseSets[`${ph}:${di}`] == null && !isDeload(w)) {
+          const roleOf = (x) => daySlots[di][picks[ph][di].findIndex(e => e?.name === x.name)]?.role || byName.get(x.name)?.role;
+          phaseSets[`${ph}:${di}`] = liftSets(day, roleOf);
+        }
         // A superset left with one exercise (odd count, or its partner trimmed) is a straight set.
         const groupSize = {};
         for (const x of day.exercises) if (x.round_group) groupSize[x.round_group] = (groupSize[x.round_group] || 0) + 1;

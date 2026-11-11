@@ -1300,6 +1300,67 @@
     "band"
    ],
    "description": "Hips and whole body, 12-15 minutes a day, rotating A → B → C. Opens with your low-back reset, then ankles, hips, T-spine, shoulders and balance, shaped like HoopStudy's Ten Minute Routine. Runs next to your training plan (Copenhagen and Nordics stay in the training)."
+  },
+  {
+   "id": "hoopstudy_8wk_in_season",
+   "name": "HoopStudy 8-Week In-Season Strength",
+   "group": "HoopStudy",
+   "kind": "progression",
+   "weeks": 8,
+   "days_per_week": 7,
+   "exercises_per_day": 6.3,
+   "day_focus": [
+    "Day 1 · Strength 1",
+    "Day 2 · Sports Performance 1",
+    "Day 3 · Strength 2",
+    "Day 4 · Sports Specific 2",
+    "Day 5 · Strength 3",
+    "Day 6 · Recovery",
+    "Day 7 · Recovery"
+   ],
+   "week1_sets_by_muscle": {
+    "glutes": 31,
+    "hip_flexors": 19,
+    "quads": 13,
+    "abs": 7,
+    "calves": 7,
+    "hamstrings": 7,
+    "chest": 6,
+    "lats": 6,
+    "upper_back": 3,
+    "front_delts": 3,
+    "full_body": 2
+   },
+   "week1_sets_by_pattern": {
+    "speed_accel": 25,
+    "hinge": 13,
+    "mobility": 13,
+    "plyo_bound_hop": 11,
+    "isometric": 8,
+    "push_horizontal": 6,
+    "pull_horizontal": 6,
+    "plyo_jump": 6,
+    "anti_extension": 4,
+    "flexion": 3,
+    "squat": 3,
+    "lunge_single_leg": 3,
+    "push_vertical": 3
+   },
+   "roles": {
+    "secondary": 11,
+    "warmup": 9,
+    "power": 8,
+    "accessory": 5,
+    "cooldown": 4,
+    "core": 3,
+    "main": 1
+   },
+   "equipment": [
+    "band",
+    "bench",
+    "dumbbell"
+   ],
+   "description": "Adam Menner's HoopStudy program: dumbbell strength 3 days a week (all sets of 8), speed and jumps 2 days, recovery 2 days, for 8 weeks. Built for basketball players in season; uses the high-school volume (3×8, then 4×8 from week 3)."
   }
  ]
 }

@@ -167,8 +167,19 @@ function check(params, label) {
     (stats.coachShare[params.goal] ||= []).push(w1.filter(x => use[x.name]).length / Math.max(1, w1.length));
   }
   if (['strength', 'muscle'].includes(params.goal) && params.days >= 3 && params.minutes >= 45) {
+    // A day trains a muscle when its fractional sets reach 3 (main muscle 1 per set, helpers 0.5:
+    // a squat trains glutes, a row lats and upper back), the way the research counts volume.
     const freq = {};
-    for (const d of plan.weeks[0].days) for (const m of new Set(d.exercises.map(x => byName.get(x.name)?.primary_muscle).filter(Boolean))) freq[m] = (freq[m] || 0) + 1;
+    for (const d of plan.weeks[0].days) {
+      const fr = {};
+      for (const x of d.exercises) {
+        const e = byName.get(x.name);
+        if (!e || x.round_group === 'Cooldown' || ['warmup', 'cooldown', 'conditioning', 'core'].includes(e.role)) continue;
+        fr[e.primary_muscle] = (fr[e.primary_muscle] || 0) + (x.sets || 1);
+        for (const m of (e.muscles || []).slice(0, 3)) if (m !== e.primary_muscle) fr[m] = (fr[m] || 0) + (x.sets || 1) / 2;
+      }
+      for (const [m, v] of Object.entries(fr)) if (v >= 3) freq[m] = (freq[m] || 0) + 1;
+    }
     for (const m of ['chest', 'quads', 'hamstrings', 'glutes', 'lats', 'upper_back']) { stats.twice.n++; if ((freq[m] || 0) >= 2) stats.twice.ok++; }
   }
   const pp = { push: 0, pull: 0 };
@@ -211,7 +222,7 @@ const pct = (x) => `${Math.round(x * 100)}%`;
 const lines = [];
 lines.push(`Plans: ${stats.plans} · days checked: ${stats.days}`);
 lines.push(`Session length vs asked: average ${pct(avg(stats.minutes))}; days under 55% of the time asked: ${stats.short} (${pct(stats.short / stats.days)})`);
-lines.push(`Muscles trained 2+ days a week (strength/muscle, 3+ days, 45+ min): ${pct(stats.twice.ok / Math.max(1, stats.twice.n))}`);
+lines.push(`Muscles trained 2+ days a week (strength/muscle, 3+ days, 45+ min; a day counts at 3+ fractional sets): ${pct(stats.twice.ok / Math.max(1, stats.twice.n))}`);
 lines.push(`Push:pull sets ratio, week 1: median ${(stats.pushPull.sort((a, b) => a - b)[stats.pushPull.length >> 1] || 0).toFixed(2)}`);
 lines.push(`Variety (distinct / total picks over the plan): ${pct(avg(stats.variety))}`);
 for (const g of GOALS) {
