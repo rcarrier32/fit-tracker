@@ -38,6 +38,10 @@ otherwise search YouTube. Also confirm what "90/90 Sprints", "90/90 Single Power
 ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
 was assumed.
 
+**Look in FitKidHooper first** (`legendsyba/FitKidHooper`, `src/data/trainingCatalog.js`): it already links
+vetted HoopStudy and other demos, including Hollow Body Hold (→ Hollow Hold Sit Up) and Squat Jumps
+(→ Paused Squat Jumps), and its HoopStudy candidate list (`docs/HOOPSTUDY_CANDIDATES.md`) may have the rest.
+
 How: `node data/enrich_program_videos.mjs --source hoopstudy` (or `--source daily`) writes
 candidates to `data/<source>-video-review.json`. It needs `YOUTUBE_API_KEY` in the environment or a
 gitignored `.env.local`. Approve the right ones, run it again with `--apply`, delete `video_from` for
