@@ -1,5 +1,5 @@
 /** Checks src/lib/daily_card.js (Home's Daily Mobility card). `node data/check_daily_card.mjs` */
-import { dailyStreak, dailyState, rowTarget, prevDay } from '../src/lib/daily_card.js';
+import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../src/lib/daily_card.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -20,6 +20,10 @@ ok('unfinished day doesn\'t count', dailyStreak([s('2026-11-10', { done: false }
 ok('other programs don\'t count', dailyStreak([s(T, { program_id: 'lean_tone' })], T) === 0);
 ok('two sessions one day count once', dailyStreak([s(T), s(T), s('2026-11-10')], T) === 2);
 
+ok('active streak: workouts count', activeStreak([s('2026-11-10', { program_id: 'lean' }), s(T, { program_id: 'move30' })], T) === 2);
+ok('active streak: Daily Mobility on a rest day keeps it', activeStreak([s('2026-11-09', { program_id: 'lean' }), s('2026-11-10'), s(T, { program_id: 'lean' })], T) === 3);
+ok('active streak: today not done yet keeps it', activeStreak([s('2026-11-10', { program_id: 'lean' }), s('2026-11-09', { program_id: 'lean' })], T) === 2);
+ok('active streak: skipped breaks it', activeStreak([s(T, { program_id: 'lean' }), s('2026-11-10', { program_id: 'lean', skipped: true }), s('2026-11-09', { program_id: 'lean' })], T) === 1);
 const rows = [{ name: 'Cat Camel', target_sets: 1, target_reps: '10' }, { name: 'Pogos', target_sets: 2, time: '30s' }, { name: 'Dead Bug', target_sets: 2, target_reps: '8 each' }];
 const set = (at) => ({ done: true, at });
 let st = dailyState([], { dayRows: rows });

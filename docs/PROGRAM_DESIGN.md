@@ -192,7 +192,7 @@ badge, at most one short line, and the buttons (what changed for yesterday is on
 
 ## Home order
 
-Today's cards come in the order you set with **↕ Customize Home** (bottom of Today): ↑ ↓ to move a
+Today's cards come in the order you set with **Customize Home** (👤 at the top right of Today): ↑ ↓ to move a
 card, Shown / Hidden to choose what's there, Reset to default. Saved as pref `home_layout`
 ([`src/lib/home_layout.js`](../src/lib/home_layout.js), `node data/check_home_layout.mjs`). Default:
 Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weight. Three optional cards
@@ -205,8 +205,8 @@ weight chart). The optional cards keep to a title row and a line or two.
 The weight chart ([`src/lib/weight_chart.js`](../src/lib/weight_chart.js), `node data/check_weight_chart.mjs`)
 is shared by that card and the Body tab: ranges 1M · 3M · 6M · 1Y · All (remembered), the 7-day
 average as the line, each weigh-in a faint dot, grid lines with weights, your goal pace dashed, the
-change and lb/week for the range, and tap a dot for its date and weight. Profile, calendar
-and backup buttons sit under the cards so hiding a card never hides them.
+change and lb/week for the range, and tap a dot for its date and weight. Profile & goal, Log weight, Customize Home, Workout reminders (calendar)
+and backups live behind the 👤 button at the top right of Today, so hiding a card never hides them.
 
 
 Daily Mobility runs next to whatever program is active, from its own card on Today (mockup:
@@ -218,7 +218,7 @@ day never moves. It replaced the old daily mobility checklist on the Move tab an
   **Start** (opens the first move) and **Skip today**.
 - **Started:** moves done, a progress bar, the next move, **Resume**.
 - **Done or skipped:** one line. Skipping keeps today's day for tomorrow and ends the streak.
-- **Streak:** days in a row finished. Today not done yet doesn't break it; a skipped or missed day does.
+- **Streak:** on Today's Workout (in place of the program label): days in a row you trained, any finished workout or Daily Mobility (Daily Mobility on a rest day keeps it going). Today not done yet doesn't break it; a day with nothing finished does. `activeStreak` in `src/lib/daily_card.js`.
 - If Daily Mobility is itself the active program, the card is hidden (Today's Workout already shows it).
 
 ## One move, once a day
@@ -244,6 +244,28 @@ not skipped sessions):
 - **Each area trained directly (4+ working sets)** gets one more set (max 3) of today's holds and
   mobility moves for it: stretch what was worked, like generated cooldowns.
 - A note at the top says what changed and why. A rest day changes nothing.
+
+## How did it feel? (finish screen)
+
+Saves as you tap and type; **Save & finish** saves the note and goes back to Today. Energy has 5 levels
+(Drained, Low, OK, Good, Strong; check-ins saved on the old 3-level scale map across). The note is read on
+the phone ([`src/lib/feel.js`](../src/lib/feel.js), `node data/check_feel.mjs`), and the screen says what
+it took from it:
+- **sore** areas (quads, hip flexors, hamstrings…): Daily Mobility adds a set of their stretches the
+  next day (and the same day, if it hasn't started), and Today's "How you've been feeling" lists them for 3 days.
+- **pain** in an area: listed with the exercises you marked as hurting, for two weeks.
+- **tired** (slept badly, drained…): counts toward the lighter-week advice, like Too much, Drained or Low.
+Soreness isn't a bad sign and doesn't count toward the lighter-week advice.
+
+**Helped or felt great? (tap)** marks moves that worked for you (the Peterson lunge that loosened sore
+quads). New plans favour them (`learn.js` favourites), and for 30 days Daily Mobility adds up to 2 of them
+when their area is sore (from a note) or was trained hard the day before (`daily_adjust.js` `helpedMoves`).
+
+A knee only counts when the note says the knee itself is sore or hurts ("from above the knee up to the
+hip flexor" names the quads and hip flexors).
+
+**Share summary** sends a short text of the workout (best set per exercise, PRs, time) through the
+phone's share sheet, or copies it.
 
 ## Learning from your logs
 

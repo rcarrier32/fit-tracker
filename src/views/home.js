@@ -19,8 +19,8 @@ function macroPercents(p, c, f) {
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
-import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
-import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
+import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -184,7 +184,9 @@ async function dailyCardData(todaysSessions) {
     const yest = all.filter(x => x.date === prevDay(today()));
     const { exerciseByName } = await loadCatalogs();
     const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
-    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup).note;
+    // Notes from yesterday's and today's workouts: areas called sore get their stretches.
+    const sore = soreFromNotes([...yest, ...todaysSessions]);
+    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) }).note;
   }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
   // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
@@ -200,7 +202,7 @@ function renderDailyCard(d) {
   if (!d) return '';
   const { st, streak, letters, todayIdx, nextIdx } = d;
   const L = letters[todayIdx];
-  const fire = streak > 1 ? ` · 🔥 ${streak}-day streak` : '';
+  const fire = '';   // the streak lives on Today's Workout (any training day counts)
   if (st.state === 'done' || st.state === 'skipped') {
     const done = st.state === 'done';
     return `
@@ -229,7 +231,7 @@ function renderDailyCard(d) {
   }
   return `
     <div class="card" style="margin-bottom:12px">
-      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min${streak > 1 ? ` · 🔥${streak}` : ''}</span></div>
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
       ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ Adjusted for yesterday's training</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
@@ -276,7 +278,7 @@ function renderWeekCard(w) {
 }
 
 function renderFeelingCard(f) {
-  const face = (r) => r.effort === 'hard' || r.energy === 1 ? '😫' : r.energy === 3 || r.effort === 'easy' ? '💪' : '🙂';
+  const face = (r) => r.heavy ? '😫' : (r.energy >= 4 || r.effort === 'easy') ? '💪' : '🙂';
   const line = !f ? 'Answer "How did it feel?" after a workout to see this.'
     : f.advice ? '2 of your last 3 felt like too much: try a lighter week (half the sets, same weights).'
     : 'Recovering fine. Keep building.';
@@ -285,7 +287,8 @@ function renderFeelingCard(f) {
       <div class="card-row"><div style="font-weight:600">How you've been feeling</div>
         ${f ? `<span style="font-size:15px;letter-spacing:2px" title="Last workouts, oldest first">${f.recent.slice(-3).map(face).join('')}</span>` : ''}</div>
       <div class="muted" style="font-size:12px;margin-top:4px;${f?.advice ? 'color:var(--fg)' : ''}">${escH(line)}</div>
-      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
+      ${f?.sore?.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore: ${f.sore.map(escH).join(', ')} (Daily Mobility stretches them)</div>` : ''}
+      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Hurt lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
     </div>`;
 }
 
@@ -354,7 +357,8 @@ export async function renderHome(app) {
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
-  const hipInWorkout = !!hip && today_w.type === 'program';   // the workout starts with the hip warm-up
+  const hipInWorkout = !!hip && today_w.type === 'program';
+  const trainStreak = activeStreak(await getAll('sessions'), today());   // the workout starts with the hip warm-up
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -392,7 +396,7 @@ export async function renderHome(app) {
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Today's Workout</h2>
-        ${renderTodayBadge(today_w, activePlan)}
+        ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout)}
@@ -432,22 +436,39 @@ export async function renderHome(app) {
   if (want('feeling')) cards.feeling = renderFeelingCard(feelingSummary(allSessions, today()));
   if (want('trend')) cards.trend = renderTrendCard(weightTrend(allBody, today()));
   app.innerHTML = `
-    <h1>Today</h1>
-    <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
-    ${layout.order.filter(id => !layout.hidden.has(id)).map(id => cards[id] || '').join('\n')}
-    <div class="btn-row" style="margin-top:4px">
-      <button class="btn ghost" data-action="customize-home">↕ Customize Home</button>
-      <button class="btn ghost" data-action="edit-profile">Edit profile</button>
-      <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
-      <button class="btn ghost" data-action="export-data">Export data</button>
-      <button class="btn ghost" data-action="import-data">Import data</button>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+      <div>
+        <h1 style="margin-bottom:0">Today</h1>
+        <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+      </div>
+      <button id="you-btn" aria-label="Profile and settings" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;margin-top:6px;
+        border:1px solid var(--border);background:var(--bg-input);color:var(--fg);font-size:18px;cursor:pointer">👤</button>
     </div>
+    ${layout.order.filter(id => !layout.hidden.has(id)).map(id => cards[id] || '').join('\n')}
   `;
 
   const $hw = app.querySelector('#home-wchart');
   if ($hw && allBody.length >= 2) mountWeightChart($hw, allBody, { today: today(), range: (await pref('weight_chart_range')) || '1M',
     goalPerWeek: userProfile.weekly_change_lb ?? null, height: 120, onRange: (r) => pref('weight_chart_range', r) });
-  app.querySelector('[data-action="customize-home"]').onclick = () => openHomeLayout(() => renderHome(app));
+  // 👤: profile, reminders, Home layout and backups in one place (they're occasional, so off the page).
+  app.querySelector('#you-btn').onclick = () => openSheet((sheet, close) => {
+    const item = (act, icon, title, sub) => `<div class="list-item" data-you="${act}" style="cursor:pointer">
+      <div style="font-size:20px;width:28px;text-align:center">${icon}</div>
+      <div style="flex:1"><div class="list-item-title">${title}</div><div class="list-item-meta">${sub}</div></div><span class="muted">›</span></div>`;
+    sheet.innerHTML = `<h2 style="margin-bottom:8px">You</h2>
+      ${item('profile', '🎯', 'Profile & goal', `${userProfile.weight_lb} lb · ${escH(userProfile.goal || '')} · ${tdee.weekly_change_lb > 0 ? '+' : ''}${tdee.weekly_change_lb} lb/week`)}
+      ${item('weight', '⚖️', 'Log weight', bodyToday ? 'Logged today' : 'Not logged today')}
+      ${item('layout', '↕', 'Customize Home', 'Order the cards, show or hide them')}
+      ${item('calendar', '📅', 'Workout reminders', 'Training days in your calendar, with an alert')}
+      ${item('export', '💾', 'Back up data', 'Saves everything to a file')}
+      ${item('import', '📂', 'Restore from a backup', 'Or add a video pack')}`;
+    sheet.querySelectorAll('[data-you]').forEach(el => el.onclick = () => {
+      const act = el.dataset.you;
+      close(false);
+      ({ profile: () => showOnboarding(app), weight: () => navigate('body'), layout: () => openHomeLayout(() => renderHome(app)),
+         calendar: () => openCalendarExport(), export: exportData, import: importData })[act]();
+    });
+  });
   const logMeal = app.querySelector('[data-action="log-meal"]');
   if (logMeal) logMeal.onclick = () => navigate('meals');
   const openTosBtn = app.querySelector('#open-tos');
@@ -491,10 +512,7 @@ export async function renderHome(app) {
   };
   const logW = app.querySelector('[data-action="log-weight"]');
   if (logW) logW.onclick = () => navigate('body');
-  app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
-
-  app.querySelector('[data-action="calendar"]').onclick = () => openCalendarExport();
-  app.querySelector('[data-action="export-data"]').onclick = async () => {
+  async function exportData() {
     const data = await exportAllData();
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -504,9 +522,9 @@ export async function renderHome(app) {
     a.click();
     URL.revokeObjectURL(url);
     toast('Data exported');
-  };
+  }
 
-  app.querySelector('[data-action="import-data"]').onclick = () => {
+  function importData() {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'application/json,.json';
