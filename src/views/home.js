@@ -637,6 +637,14 @@ function renderMacroPct(p, c, f) {
   return `<div class="muted" style="font-size:11px;margin-top:8px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
 }
 
+/** Basketball icons: a ball through the net (played) or a crossed-out hoop (didn't play). */
+const HOOP = `<path d="M6 13h20" stroke="#f97316" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M8 13l2.5 11h11L24 13M11 13l2 11M16 13v11M21 13l-2 11M9 18h14" stroke="var(--fg-dim)" stroke-width="1.1" fill="none"/>`;
+const ICON_SCORED = `<svg viewBox="4 8 24 20" width="44" height="37" aria-hidden="true">${HOOP}
+  <circle cx="16" cy="18" r="6" fill="#f97316"/><path d="M10 18h12M16 12v12M11.5 13.5c2.5 2.5 2.5 6.5 0 9M20.5 13.5c-2.5 2.5-2.5 6.5 0 9" stroke="#7c2d12" stroke-width="0.9" fill="none"/></svg>`;
+const ICON_MISSED = `<svg viewBox="4 8 24 20" width="44" height="37" aria-hidden="true">${HOOP}
+  <path d="M8 10l16 16M24 10L8 26" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+
 function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
@@ -654,21 +662,20 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
   }
   if (today_w.type === 'tag' && today_w.tag === 'Basketball') {
     // Game day: warm up, play, then one tap. Didn't play → the next workout keeps its jumps and intervals.
-    if (game?.played) return `
-      <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Played ✓</div>
-      <div class="muted" style="font-size:12px">Tomorrow's workout skips its jumps and hard intervals.</div>
-      <button class="btn ghost" data-game="clear" style="margin-top:8px;width:auto;padding:4px 10px;font-size:12px">Undo</button>`;
-    if (game && !game.played) return `
-      <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 No game today</div>
-      <div class="muted" style="font-size:12px">Your next workout keeps its jumps and intervals. If you can, 25 min of easy cardio today (log it on Move).</div>
-      <button class="btn ghost" data-game="clear" style="margin-top:8px;width:auto;padding:4px 10px;font-size:12px">Undo</button>`;
+    const iconBtn = (v, icon, label, on) => `<button class="btn ghost" data-game="${v}" aria-label="${label}" title="${label}"
+      style="flex:1;padding:6px 0;display:flex;align-items:center;justify-content:center;${on ? 'border-color:var(--accent);background:rgba(56,189,248,0.12)' : ''}">${icon}</button>`;
+    if (game) return `
+      <div class="card-row" style="margin-top:6px">
+        <div style="display:flex;align-items:center;gap:8px">${game.played ? ICON_SCORED : ICON_MISSED}
+          <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div>
+        <button class="btn ghost" data-game="clear" aria-label="Undo" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">↺</button>
+      </div>`;
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
-      <div class="muted" style="font-size:12px">Warm up first, then mark the game.</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" data-game="warmup" style="flex:2">▶ Warm-up</button>
-        <button class="btn ghost" data-game="played" style="flex:1">Played ✓</button>
-        <button class="btn ghost" data-game="skipped" style="flex:1">Didn't play</button>
+        ${iconBtn('played', ICON_SCORED, 'Played')}
+        ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
       </div>`;
   }
   if (today_w.type === 'tag') {

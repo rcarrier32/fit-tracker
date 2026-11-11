@@ -197,7 +197,7 @@ time rather than adding to them (`basketball_week` in `data/build_lean_tone.py`)
 Tue Day 1 · Wed Day 2 · Thu Recovery & Mobility · Fri 🏀 · Sat Day 3 + Day 4's band circuit (one session
 finishes both days; Day 4's 25-min treadmill is what the games replace). Set it when starting Lean & Tone
 ("🏀 With basketball Mon & Fri") or in Edit week ("🏀 Basketball week", keeps your place).
-- **Game days:** Today shows ▶ Warm-up (the Basketball Warm-up), **Played ✓** and **Didn't play**, with
+- **Game days:** Today shows ▶ Warm-up (the Basketball Warm-up) and two icons, a ball through the net (played) and a crossed-out hoop (didn't play), with ↺
   Undo. A game is saved as a session (`src/lib/game.js`), so it counts toward the streak and This week.
 - **Played:** the next day's workout drops its jumps and hard intervals (power moves, sprint / Zone 4
   finishers), and Daily Mobility treats the game as impact work for the tendons.
