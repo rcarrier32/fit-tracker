@@ -8,8 +8,21 @@
  *   daily), so the day after gets the low-impact version.
  * - Stretch what was worked: each region yesterday trained directly (4+ working sets) gets one more set
  *   of today's holds and mobility moves for it (max 3), the same rule as generated cooldowns.
+ * - Sore from your notes: areas a recent workout note calls sore (src/lib/feel.js readNote) get one
+ *   more set of their holds too, even when the sets alone wouldn't have triggered it.
  * - Nothing changes after a rest day, or when yesterday was only mobility.
  */
+import { readNote } from './feel.js';
+// Note words → the regions below.
+const NOTE_REGION = { quads: 'quads', 'hip flexors': 'hip flexors', hamstrings: 'hamstrings', glutes: 'glutes', adductors: 'adductors',
+  calves: 'calves', 'lower back': 'lower back', 'upper back': 'upper back', shoulders: 'shoulders', chest: 'chest', hips: 'glutes' };
+
+/** Areas recent workout notes call sore (not Daily Mobility's own sessions). */
+export function soreFromNotes(sessions, { skipProgram = 'daily_mobility' } = {}) {
+  const out = new Set();
+  for (const s of sessions || []) if (s.program_id !== skipProgram && s.note) for (const a of readNote(s.note).sore) if (NOTE_REGION[a]) out.add(NOTE_REGION[a]);
+  return [...out];
+}
 const REGION = {
   quads: 'quads', hamstrings: 'hamstrings', glutes: 'glutes', abductors: 'glutes', adductors: 'adductors',
   hip_flexors: 'hip flexors', calves: 'calves', chest: 'chest', front_delts: 'shoulders', side_delts: 'shoulders',
@@ -48,11 +61,13 @@ export function yesterdayLoad(sessions, lookup, { skipProgram = 'daily_mobility'
  * @param lookup name → catalog entry ({ role, pattern, primary_muscle, muscles })
  * @returns { rows, note } (rows copied; note null when nothing changed)
  */
-export function adjustDaily(rows, load, lookup) {
-  if (!load || (!Object.keys(load.direct).length && !load.impact)) return { rows, note: null };
+export function adjustDaily(rows, load, lookup, { sore = [] } = {}) {
+  if ((!load || (!Object.keys(load.direct).length && !load.impact)) && !sore.length) return { rows, note: null };
+  load = load || { direct: {}, by: {}, impact: 0, legSets: 0 };
   const out = rows.map(r => ({ ...r }));
   const changes = [];
   const worked = Object.entries(load.direct).filter(([, n]) => n >= 4).sort((a, b) => b[1] - a[1]).map(([r]) => r);
+  for (const r of sore) if (!worked.includes(r)) worked.push(r);
 
   // Tendons: no pogos the day after impact work or a heavy leg day.
   if (load.impact >= 3 || load.legSets >= 9) {
@@ -73,6 +88,6 @@ export function adjustDaily(rows, load, lookup) {
   }
   if (bumped.length) changes.push('+1 set: ' + bumped.join(', '));
   if (!changes.length) return { rows, note: null };
-  const what = worked.slice(0, 3).map(w => `${w} (${(load.by[w] || []).slice(0, 2).join(', ')})`).join('; ');
+  const what = worked.slice(0, 3).map(w => (load.by[w] || []).length ? `${w} (${load.by[w].slice(0, 2).join(', ')})` : `${w} (sore, from your note)`).join('; ');
   return { rows: out, note: `Adjusted for yesterday's training${what ? ` — ${what}` : ''}: ${changes.join('; ')}.` };
 }

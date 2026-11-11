@@ -1,6 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
-import { yesterdayLoad, adjustDaily } from '../src/lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -47,5 +47,13 @@ ok('daily mobility ignored', adjustDaily(A, mob, lookup).note === null);
 // Skipped sessions don't count.
 ok('skipped ignored', adjustDaily(A, yesterdayLoad([{ ...sess('x', [done('Barbell Back Squat', 5)]), skipped: true }], lookup), lookup).note === null);
 
+// Sore from a note: a rest day otherwise, but the note's areas get a set.
+const sore = soreFromNotes([{ program_id: 'move30', note: 'Front legs like quad from above knee up to hip flexor extra sore from prior day workout' }]);
+ok('note → quads + hip flexors', sore.includes('quads') && sore.includes('hip flexors'), JSON.stringify(sore));
+r = adjustDaily(A, yesterdayLoad([], lookup), lookup, { sore });
+const hf2 = r.rows.find(x => x.name === 'Hip Flexor/Quad Bridge');
+ok('sore note bumps the quad/hip-flexor hold', hf2 && hf2.target_sets === 3 && /from your note/.test(r.note || ''), r.note);
+ok('pogos stay (soreness isn\'t impact)', r.rows.some(x => x.name === 'Pogos'));
+ok('Daily Mobility notes ignored', soreFromNotes([{ program_id: 'daily_mobility', note: 'quads sore' }]).length === 0);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

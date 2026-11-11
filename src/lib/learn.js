@@ -8,6 +8,7 @@
  * targets (weight steps). It needs a few weeks of logs; until then every field says how much data
  * it rests on, and callers fall back to the coach rules. See docs/PROGRAM_DESIGN.md, "Learning from your logs".
  */
+import { heavyCheckIn } from './feel.js';
 import { epley } from './e1rm.js';
 
 const DAY = 86400000;
@@ -119,11 +120,11 @@ export function learnProfile(sessions, { today, weeks = 12, muscleOf = () => nul
   const per_week = done.length >= LEARN_MIN.sessions ? round(done.length / spanWeeks, 1) : null;
 
   // ── How the last workouts felt (finish-screen check-in) ──
-  const felt = done.filter(s => s.feel).slice(-3);
-  const heavy = felt.filter(s => s.feel.effort === 'hard' || s.feel.energy === 1).length;
+  const felt = done.filter(s => s.feel || s.note).slice(-3);
+  const heavy = felt.filter(heavyCheckIn).length;   // too much, Drained/Low, or a tired note
   const fatigue = felt.length >= 2 ? {
     last: felt.length, heavy,
-    advice: heavy >= 2 ? `${heavy} of your last ${felt.length} workouts felt like too much or left you drained. Consider a lighter week: half the sets, same weights.` : null,
+    advice: heavy >= 2 ? `${heavy} of your last ${felt.length} workouts felt like too much or left you drained or tired. Consider a lighter week: half the sets, same weights.` : null,
   } : null;
 
   return {

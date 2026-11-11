@@ -2,6 +2,7 @@
  * Optional Today cards: This week, Weight trend, How you've been feeling. Plain module (no app
  * imports) so it runs in node: `node data/check_home_extras.mjs`.
  */
+import { energyOf, heavyCheckIn, readNote } from './feel.js';
 const DAY = 864e5;
 const d = (ymd) => new Date(ymd + 'T12:00:00');
 const ymd = (dt) => `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`;
@@ -53,15 +54,19 @@ export function weightTrend(body = [], today) {
 export function feelingSummary(sessions = [], today, { dailyId = 'daily_mobility' } = {}) {
   const fin = sessions.filter(s => s.done && !s.skipped && s.date <= today && s.program_id !== dailyId)
     .sort((a, b) => a.date.localeCompare(b.date) || (a.id || 0) - (b.id || 0));
-  const felt = fin.filter(s => s.feel && (s.feel.effort || s.feel.energy)).slice(-5);
+  const felt = fin.filter(s => (s.feel && (s.feel.effort || energyOf(s.feel) != null)) || s.note).slice(-5);
   if (!felt.length) return null;
   const last3 = felt.slice(-3);
-  const heavy = last3.filter(s => s.feel.effort === 'hard' || s.feel.energy === 1).length;
-  const since = addDays(today, -13);
-  const hurts = [...new Set(fin.filter(s => s.date >= since).flatMap(s => (s.exercises || []).filter(x => x.hurt).map(x => x.name)))];
+  const heavy = last3.filter(heavyCheckIn).length;
+  const since = addDays(today, -13), recent3 = addDays(today, -2);
+  const hurts = [...new Set([
+    ...fin.filter(s => s.date >= since).flatMap(s => (s.exercises || []).filter(x => x.hurt).map(x => x.name)),
+    ...fin.filter(s => s.date >= since).flatMap(s => readNote(s.note).pain)])];
+  // Soreness from notes in the last 3 days (soreness passes; pain is kept two weeks).
+  const sore = [...new Set(fin.filter(s => s.date >= recent3).flatMap(s => readNote(s.note).sore))];
   return {
-    recent: felt.map(s => ({ date: s.date, effort: s.feel.effort || null, energy: s.feel.energy || null })),
-    hurts,
-    advice: last3.length >= 2 && heavy >= 2 ? `${heavy} of your last ${last3.length} workouts felt like too much or left you drained. Consider a lighter week: half the sets, same weights.` : null,
+    recent: felt.map(s => ({ date: s.date, effort: s.feel?.effort || null, energy: energyOf(s.feel), heavy: heavyCheckIn(s) })),
+    hurts, sore,
+    advice: last3.length >= 2 && heavy >= 2 ? `${heavy} of your last ${last3.length} workouts felt like too much or left you drained or tired. Consider a lighter week: half the sets, same weights.` : null,
   };
 }

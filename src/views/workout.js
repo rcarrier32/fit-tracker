@@ -5,7 +5,7 @@ import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
-import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
@@ -18,6 +18,7 @@ import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SI
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 import { doneElsewhere } from '../lib/same_move.js';
+import { ENERGY, energyOf, readNote, noteSummary } from '../lib/feel.js';
 import { SECTIONS as HIP_SECTIONS } from '../lib/hip_protocol.js';
 import { movesToday } from '../lib/moves_today.js';
 
@@ -282,7 +283,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const yesterday = await getByIndex('sessions', 'date', localDateStr(d));
       const { exerciseByName: byName } = await loadCatalogs();   // cached; exMap is built further down
       const lookup = (n) => byName.get(String(n).toLowerCase());
-      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup);
+      // Notes from yesterday's and today's workouts: areas called sore get their stretches.
+      const sore = soreFromNotes([...yesterday, ...todaysSessions]);
+      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup, { sore });
       session.exercises = adj.rows;
       if (adj.note) session.adjust_note = adj.note;
     }
@@ -2023,7 +2026,8 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     stats.totalVolume > 0 ? `${Math.round(stats.totalVolume).toLocaleString()} lb` : null, mins ? `${mins} min` : null].filter(Boolean).join(' · ');
   // How it felt (RP-style check-in): feeds the deload advice and what the app learns (src/lib/learn.js).
   const feel = session.feel || {};
-  const chip = (k, v, label) => `<button class="pill ${feel[k] === v ? 'accent' : ''}" data-feel="${k}" data-v="${v}" style="cursor:pointer;font-size:13px;padding:7px 12px">${label}</button>`;
+  const energyNow = energyOf(feel);
+  const chip = (k, v, label) => `<button class="pill ${(k === 'energy5' ? energyNow === v : feel[k] === v) ? 'accent' : ''}" data-feel="${k}" data-v="${v}" style="cursor:pointer;font-size:13px;padding:${k === 'energy5' ? '6px 2px;border-radius:12px;text-align:center' : '7px 11px'}">${label}</button>`;
   const doneNames = session.exercises.filter(x => (x.sets || []).some(st => st?.done)).map(x => x.name);
   const feelCard = session.skipped ? '' : `
     <div class="card" id="feel-card" style="padding:12px 14px;margin-bottom:14px">
@@ -2031,10 +2035,12 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       <div class="muted" style="font-size:12px;margin-bottom:4px">The workout was</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${chip('effort', 'easy', 'Easy')}${chip('effort', 'right', 'About right')}${chip('effort', 'hard', 'Too much')}</div>
       <div class="muted" style="font-size:12px;margin-bottom:4px">Energy</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${chip('energy', 1, '😫 Drained')}${chip('energy', 2, '🙂 OK')}${chip('energy', 3, '💪 Strong')}</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:10px">${ENERGY.map(x => chip('energy5', x.v, `<div style="font-size:18px;line-height:1.1">${x.emoji}</div><div style="font-size:11px">${x.label}</div>`)).join('')}</div>
       ${doneNames.length ? `<div class="muted" style="font-size:12px;margin-bottom:4px">Anything hurt? (tap)</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.hurt ? 'accent' : ''}" data-hurt="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
-      <textarea id="feel-note" rows="2" placeholder="Note for this workout (optional)" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
+      <textarea id="feel-note" rows="2" placeholder="Anything to note? e.g. quads sore from yesterday, slept badly" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
+      <div id="note-read" class="muted" style="font-size:12px;margin-top:4px">${esc(noteSummary(readNote(session.note)))}</div>
+      <div id="feel-saved" class="muted" style="font-size:11px;margin-top:4px;min-height:14px">Saves as you tap and type.</div>
     </div>`;
 
   app.innerHTML = `
@@ -2051,21 +2057,24 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
 
       <div class="muted" style="text-align:center;margin:14px 0 20px;font-size:13px">${statsLine}</div>
       ${feelCard}
-      <button class="btn ghost" id="done-share" style="margin-bottom:8px">↗ Share</button>
-
-      <div class="btn-row">
-        <button class="btn" id="done-home">Back to today</button>
+      <button class="btn" id="done-home">Save &amp; finish</button>
+      <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" id="done-body">Log weight</button>
+        <button class="btn ghost" id="done-share" title="Send a text summary of this workout">↗ Share summary</button>
       </div>
       ${session.skipped ? '' : `<button class="btn ghost" id="done-next" style="margin-top:8px;font-size:13px">
         Do the next workout today →</button>`}
     </div>
   `;
 
+  const $saved = app.querySelector('#feel-saved');
+  const savedTick = () => { if ($saved) $saved.textContent = 'Saved ✓'; };
   app.querySelectorAll('[data-feel]').forEach(b => b.onclick = async () => {
     const v = isNaN(+b.dataset.v) ? b.dataset.v : +b.dataset.v;
     session.feel = { ...(session.feel || {}), [b.dataset.feel]: v };
+    if (b.dataset.feel === 'energy5') delete session.feel.energy;   // the old 3-level answer
     await saveSession(session);
+    savedTick();
     app.querySelectorAll(`[data-feel="${b.dataset.feel}"]`).forEach(x => x.classList.toggle('accent', x === b));
   });
   app.querySelectorAll('[data-hurt]').forEach(b => b.onclick = async () => {
@@ -2073,9 +2082,24 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     if (!x) return;
     x.hurt = !x.hurt || undefined;
     await saveSession(session);
+    savedTick();
     b.classList.toggle('accent', !!x.hurt);
   });
-  app.querySelector('#feel-note')?.addEventListener('change', async (e) => { session.note = e.target.value.trim() || undefined; await saveSession(session); });
+  // The note saves as you type (no submit needed) and shows what the app read from it.
+  let noteTimer = null;
+  const saveNote = async () => {
+    const el = app.querySelector('#feel-note');
+    if (!el) return;
+    session.note = el.value.trim() || undefined;
+    await saveSession(session);
+    savedTick();
+  };
+  app.querySelector('#feel-note')?.addEventListener('input', (e) => {
+    const r = app.querySelector('#note-read');
+    if (r) r.textContent = noteSummary(readNote(e.target.value));
+    if ($saved) $saved.textContent = 'Saving…';
+    clearTimeout(noteTimer); noteTimer = setTimeout(saveNote, 500);
+  });
   app.querySelector('#done-share').onclick = async () => {
     const lines = [`${session.focus || 'Workout'} · ${session.date}${mins ? ` · ${mins} min` : ''}`,
       ...stats.exerciseSummaries.map(x => `${x.name}: ${x.bestSet ? `${x.bestSet.weight ?? 'BW'} × ${x.bestSet.reps ?? '—'}` : `${x.setsCompleted} sets`}${prNames.has(x.name) ? ' ★ PR' : ''}`),
@@ -2086,8 +2110,13 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       else { await navigator.clipboard.writeText(text); toast('Copied'); }
     } catch (err) { if (err?.name !== 'AbortError') { try { await navigator.clipboard.writeText(text); toast('Copied'); } catch { toast('Could not share'); } } }
   };
-  app.querySelector('#done-home').onclick = () => navigate('home');
-  app.querySelector('#done-body').onclick = () => navigate('body');
+  app.querySelector('#done-home').onclick = async () => {
+    clearTimeout(noteTimer);
+    await saveNote();
+    toast('Workout saved');
+    navigate('home');
+  };
+  app.querySelector('#done-body').onclick = async () => { clearTimeout(noteTimer); await saveNote(); navigate('body'); };
   app.querySelector('#done-next')?.addEventListener('click', () => {
     allowNextWorkoutToday(program.id);
     renderWorkout(app);

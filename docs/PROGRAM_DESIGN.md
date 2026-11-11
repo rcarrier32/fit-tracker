@@ -245,6 +245,22 @@ not skipped sessions):
   mobility moves for it: stretch what was worked, like generated cooldowns.
 - A note at the top says what changed and why. A rest day changes nothing.
 
+## How did it feel? (finish screen)
+
+Saves as you tap and type; **Save & finish** saves the note and goes back to Today. Energy has 5 levels
+(Drained, Low, OK, Good, Strong; check-ins saved on the old 3-level scale map across). The note is read on
+the phone ([`src/lib/feel.js`](../src/lib/feel.js), `node data/check_feel.mjs`), and the screen says what
+it took from it:
+- **sore** areas (quads, hip flexors, hamstrings…): Daily Mobility adds a set of their stretches the
+  next day (and the same day, if it hasn't started), and Today's "How you've been feeling" lists them for 3 days.
+- **pain** in an area: listed with the exercises you marked as hurting, for two weeks.
+- **tired** (slept badly, drained…): counts toward the lighter-week advice, like Too much, Drained or Low.
+A knee only counts when the note says the knee itself is sore or hurts ("from above the knee up to the
+hip flexor" names the quads and hip flexors).
+
+**Share summary** sends a short text of the workout (best set per exercise, PRs, time) through the
+phone's share sheet, or copies it.
+
 ## Learning from your logs
 
 [`src/lib/learn.js`](../src/lib/learn.js) works out a personal profile from the last 12 weeks of

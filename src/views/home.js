@@ -20,7 +20,7 @@ import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
 import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
-import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -184,7 +184,9 @@ async function dailyCardData(todaysSessions) {
     const yest = all.filter(x => x.date === prevDay(today()));
     const { exerciseByName } = await loadCatalogs();
     const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
-    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup).note;
+    // Notes from yesterday's and today's workouts: areas called sore get their stretches.
+    const sore = soreFromNotes([...yest, ...todaysSessions]);
+    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore }).note;
   }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
   // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
@@ -276,7 +278,7 @@ function renderWeekCard(w) {
 }
 
 function renderFeelingCard(f) {
-  const face = (r) => r.effort === 'hard' || r.energy === 1 ? '😫' : r.energy === 3 || r.effort === 'easy' ? '💪' : '🙂';
+  const face = (r) => r.heavy ? '😫' : (r.energy >= 4 || r.effort === 'easy') ? '💪' : '🙂';
   const line = !f ? 'Answer "How did it feel?" after a workout to see this.'
     : f.advice ? '2 of your last 3 felt like too much: try a lighter week (half the sets, same weights).'
     : 'Recovering fine. Keep building.';
@@ -285,7 +287,8 @@ function renderFeelingCard(f) {
       <div class="card-row"><div style="font-weight:600">How you've been feeling</div>
         ${f ? `<span style="font-size:15px;letter-spacing:2px" title="Last workouts, oldest first">${f.recent.slice(-3).map(face).join('')}</span>` : ''}</div>
       <div class="muted" style="font-size:12px;margin-top:4px;${f?.advice ? 'color:var(--fg)' : ''}">${escH(line)}</div>
-      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
+      ${f?.sore?.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore: ${f.sore.map(escH).join(', ')} (Daily Mobility stretches them)</div>` : ''}
+      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Hurt lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
     </div>`;
 }
 
