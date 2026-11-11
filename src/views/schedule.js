@@ -523,12 +523,15 @@ async function findProgram(id) {
   return customList.find(c => c.id === id) || null;
 }
 
-/** Day key for "I chose to move past today's finished workout". */
-const NEXT_KEY = () => `fit-lift-next-${localDateStr()}`;
-export function allowNextWorkoutToday() {
-  try { sessionStorage.setItem(NEXT_KEY(), '1'); } catch { /* private mode */ }
+/**
+ * Day key for "I chose to move past today's finished workout", per program: moving on in the
+ * training program must not move Daily Mobility's card (or the other way round).
+ */
+const NEXT_KEY = (programId) => `fit-lift-next-${localDateStr()}-${programId}`;
+export function allowNextWorkoutToday(programId) {
+  try { sessionStorage.setItem(NEXT_KEY(programId), '1'); } catch { /* private mode */ }
 }
-const nextAllowed = () => { try { return sessionStorage.getItem(NEXT_KEY()) === '1'; } catch { return false; } };
+const nextAllowed = (programId) => { try { return sessionStorage.getItem(NEXT_KEY(programId)) === '1'; } catch { return false; } };
 
 /**
  * Follow-mode position for a program. Finishing advances the cursor immediately, so if a
@@ -537,7 +540,7 @@ const nextAllowed = () => { try { return sessionStorage.getItem(NEXT_KEY()) === 
  */
 async function followPosition(program) {
   const completed = await pref(`completed:${program.id}`);
-  const doneToday = nextAllowed() ? null
+  const doneToday = nextAllowed(program.id) ? null
     : (await getByIndex('sessions', 'date', localDateStr()))
       .filter(x => x.program_id === program.id && x.done)
       .sort((a, b) => (b.id || 0) - (a.id || 0))[0];
@@ -553,6 +556,17 @@ async function followPosition(program) {
   return program.weeks
     ? { week: cur.week || 1, day: cur.day || 1, day_index: null }
     : { week: 1, day: 1, day_index: cur.day_index ?? 0 };
+}
+
+export const DAILY_ID = 'daily_mobility';
+/**
+ * Daily Mobility runs alongside whatever program is active (its own A → B → C cursor), opened from
+ * its Home card at #/daily. Null if the program isn't in the library.
+ */
+export async function dailyWorkout() {
+  const program = await findProgram(DAILY_ID);
+  if (!program) return null;
+  return { type: 'program', program, ...(await followPosition(program)), mode: 'follow', daily: true };
 }
 
 /** Used by Home + Workout views to figure out today's prescription. */

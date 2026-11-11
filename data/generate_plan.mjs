@@ -22,21 +22,38 @@ export async function loadCatalog() {
   const { loadFullCatalog } = await import('./catalog.mjs');
   const { exercises } = await loadFullCatalog();
   for (const e of exercises) if (!e.video_url && e.video?.url) e.video_url = e.video.url;
-  return { exercises, rules };
+  const learned = JSON.parse(readFileSync(path.join(ROOT, 'data/learned_patterns.json'), 'utf8'));
+  return { exercises, rules, learned };
 }
 
-const { exercises, rules } = await loadCatalog();
+const { exercises, rules, learned } = await loadCatalog();
 
 if (args.includes('--sanity')) {
   const gyms = { home: ['dumbbell', 'band', 'mini_band', 'bench'], gym: ['dumbbell', 'barbell', 'trap_bar', 'bench', 'box', 'cable', 'machine', 'pullup_bar', 'band', 'mini_band', 'landmine', 'kettlebell', 'med_ball'] };
   let problems = 0, runs = 0;
   for (const goal of Object.keys(rules.goals)) for (const days of [2, 3, 4, 5, 6]) for (const minutes of [30, 60]) for (const [gname, eq] of Object.entries(gyms)) {
     runs++;
-    const plan = generatePlan({ goal, days, minutes, weeks: 6, equipment: eq, seed: 7 }, { exercises, rules });
+    const plan = generatePlan({ goal, days, minutes, weeks: 6, equipment: eq, seed: 7 }, { exercises, rules, learned });
     const issues = [];
+    // Required moves (Copenhagen, Nordics) appear as often as the goal asks, wherever the kit allows one.
+    for (const r of rules.goals[goal].required || []) {
+      const re = new RegExp(r.match, 'i'), not = r.not ? new RegExp(r.not, 'i') : null;
+      const possible = exercises.some(e => re.test(e.name) && !(not && not.test(e.name)) && e.video_url && (e.level || 2) <= 3
+        && e.equipment.every(q => q === 'bodyweight' || eq.includes(q)));
+      for (const w of possible ? plan.weeks : []) {
+        const n = w.days.flatMap(d => d.exercises).filter(x => re.test(x.name) && !(not && not.test(x.name))).length;
+        // Hip-focus moves go on strength days only (speed/agility days have no hip slot).
+        const slotsDays = r.slot === 'hip_focus' ? w.days.filter(d => !/^(Speed|Agility)/.test(d.focus)).length : days;
+        const want = Math.min(r.per_week[Math.min(Math.floor((w.week_num - 1) / rules.phases.length_weeks), r.per_week.length - 1)], slotsDays);
+        if (n < want) issues.push(`W${w.week_num} has ${n} × ${r.match}, wants ${want}`);
+      }
+    }
     for (const w of plan.weeks) for (const d of w.days) {
       const names = d.exercises.map(x => x.name);
       if (new Set(names).size !== names.length) issues.push(`W${w.week_num} D${d.day_num} repeats an exercise`);
+      const groups = {};
+      for (const x of d.exercises) if (x.round_group && x.round_group !== 'Cooldown') groups[x.round_group] = (groups[x.round_group] || 0) + 1;
+      if (Object.values(groups).some(n => n < 2)) issues.push(`W${w.week_num} D${d.day_num} has a one-exercise superset`);
       if (d.exercises.length < 3) issues.push(`W${w.week_num} D${d.day_num} only ${d.exercises.length} exercises`);
       for (const x of d.exercises) {
         const e = exercises.find(q => q.name === x.name);
@@ -47,10 +64,15 @@ if (args.includes('--sanity')) {
       const R = { chest: 'push', front_delts: 'push', side_delts: 'push', triceps: 'push', lats: 'pull', upper_back: 'pull', rear_delts: 'pull', biceps: 'pull',
         quads: 'legs', glutes: 'legs', hamstrings: 'legs', adductors: 'legs', abductors: 'legs', hip_flexors: 'legs', calves: 'legs', abs: 'core', obliques: 'core', lower_back: 'core' };
       const cnt = {};
-      for (const x of d.exercises) { const r = R[exercises.find(q => q.name === x.name)?.primary_muscle]; if (r) cnt[r] = (cnt[r] || 0) + 1; }
+      for (const x of d.exercises) { if (x.round_group === 'Cooldown') continue; const r = R[exercises.find(q => q.name === x.name)?.primary_muscle]; if (r) cnt[r] = (cnt[r] || 0) + 1; }
       const cov = new Set((d.warmup || []).flatMap(w => (exercises.find(q => q.name === w.name)?.muscles || []).map(m => R[m])));
       const gap = Object.entries(cnt).filter(([r, c]) => c >= 2 && !cov.has(r)).map(([r]) => r);
       if (gap.length) issues.push(`W${w.week_num} D${d.day_num} warm-up misses ${gap.join('/')}`);
+      // Plyo dose: research finds 40-100 jumps a session works; more adds impact, not results.
+      const PLYO = ['plyo_jump', 'plyo_bound_hop', 'deceleration_landing'];
+      const contacts = d.exercises.reduce((a, x) => a + (PLYO.includes(exercises.find(q => q.name === x.name)?.pattern)
+        ? (x.sets || 1) * (parseInt(x.reps) || 0) * (/each/.test(x.reps || '') ? 2 : 1) : 0), 0);
+      if (contacts > (rules.goals[goal].max_contacts || 100)) issues.push(`W${w.week_num} D${d.day_num} ${contacts} jump contacts`);
       const mins = estimateMinutes(d, rules);
       if (mins > minutes * 1.15) issues.push(`W${w.week_num} D${d.day_num} ~${mins} min > ${minutes}`);
     }
@@ -66,18 +88,20 @@ if (args.includes('--sanity')) {
   process.exit(problems ? 1 : 0);
 }
 
+// --easy hip,knee: "go easy on" (design_rules easy_on)
 const plan = generatePlan({
+  easy: opt('easy', '') ? opt('easy').split(',') : [],
   goal: opt('goal', 'muscle'), days: +opt('days', 3), minutes: +opt('minutes', 60), weeks: +opt('weeks', 6),
   equipment: opt('equipment', 'dumbbell,bench').split(','), focus: opt('focus', '') ? opt('focus').split(',') : [],
   plyo: args.includes('--plyo'), level: +opt('level', 2), seed: +opt('seed', 1),
-}, { exercises, rules });
+}, { exercises, rules, learned });
 
 if (args.includes('--json')) { console.log(JSON.stringify(plan, null, 1)); process.exit(0); }
 console.log(`${plan.name} — ${plan.description} (pool ${plan.pool_size} exercises)`);
 for (const w of plan.weeks.filter(w => [1, 3, 5].includes(w.week_num))) {
   console.log(`\nWeek ${w.week_num}`);
   for (const d of w.days) {
-    console.log(`  ${d.focus}  [warm-up: ${d.warmup.map(x => x.name).join(', ')}]`);
+    console.log(`  ${d.focus}  [warm-up${d.warmup[0]?.sets ? ` × ${d.warmup[0].sets} rounds` : ''}: ${d.warmup.map(x => x.name).join(', ')}]`);
     for (const x of d.exercises) console.log(`    ${x.round_group ? x.round_group.padEnd(11) : ' '.repeat(11)} ${x.name} — ${x.sets} × ${x.reps || x.time}${x.rest ? `, rest ${x.rest}` : ''}`);
   }
 }

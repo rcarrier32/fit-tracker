@@ -57,7 +57,7 @@ A plan only stores state and hands callbacks to `openExerciseDetail`:
 - `autoNext`: move on by itself once the exercise is done (FKH).
 - `mountSets(el, changed)`: draw your own set logging instead of the checkboxes (Lift).
 - `finish`: a button on the 🎉 card, such as Finish workout.
-- `actions`: plan-specific buttons such as Pause and Remove.
+- `actions`: plan-specific buttons such as Remove (for your own added exercises).
 
 Rehab and band-only plans use this exercise shape and render through these three functions.
 Strength programs, including home dumbbell plans, stay on the Lift card so people can log
@@ -77,3 +77,35 @@ plays only one exercise's part, looping, for PJF/HLS/MP4 videos and YouTube (`st
   exercise's video changes the old clip is ignored. Code: `clipFor` / `saveClip` in
   `src/lib/local_videos.js`, the player and tools in `src/lib/exercise_ui.js`.
 
+
+## During and after a workout (v117)
+
+- **Rest timer** keeps running when you leave the Lift tab: a pill above the tab bar shows it (tap
+  the time to go back). −15 / +15 / Skip on the card, in the sheet and on the pill.
+- **Undo**: logging a set shows "Set N logged · Undo" for 5 s.
+- **Session clock** in the header from the first logged set; the finish screen shows the minutes.
+- **⋯ menu**: 📝 note (shows next time as "Last note: …"), 🤕 this hurts, 🏋 plates & warm-up sets
+  (plates a side for barbell/Smith/trap bar, and a warm-up ramp to the working weight).
+- **Finish screen**: how it felt (easy / about right / too much, energy), anything that hurt, a
+  workout note, and Share (the phone's share sheet, or copy). Hurt twice and an exercise leaves new
+  plans; two of the last three feeling like too much suggests a lighter week (src/lib/learn.js).
+- **📅 Add to calendar** (Today → Body weight card): weekly events for the training days with an
+  alert before each, as an .ics file the phone's Calendar imports (src/lib/calendar.js,
+  `node data/check_calendar.mjs`). A home-screen web app can't schedule its own reminders reliably,
+  so the calendar does it. Days come from the weekly schedule, else the days the logs show you
+  train; length from how long workouts really take.
+- **Not done: saving demo videos offline.** TrainHeroic demos are YouTube (can't be cached) and PJF
+  demos are Mux HLS streams, which iPhone Safari plays outside the service worker, so caching them
+  wouldn't make them play offline.
+- **♡ Favourites** (src/lib/favorites.js, pref `fav_exercises`): tap ♡ on any exercise screen (Lift,
+  Hip, plans) or ⋯ → ♡ Favourite on a Lift card. A ♥ shows on the card and in Swap, where favourites
+  of the same movement come first. Generate (+2.5, more than anything learned) and the Manual builder
+  pick them first; the preview lists the ones used and each says "♥ your favourite".
+- **🏋 Going to the gym today?** (Lift screen, shown when today has something the gym could do better;
+  src/lib/gym_swap.js, `node data/check_gym_swap.mjs`): swaps home stand-ins (working lifts done only with a
+  band, mini band, slider or bodyweight, in a loadable movement) for the gym version of the same movement and
+  main muscle, dumbbells first (the user prefers them), then the gym's cable, machines, barbell (⚙), best first by what the coach
+  programs use, ♥ favourites, BWS gym lifts and a name match; accessories stay accessories, combo moves rank
+  last. Bodyweight lunges get "hold dumbbells" instead of a machine. Never swapped: ♥ favourites,
+  Copenhagen/Nordics, dumbbell and kettlebell work (a choice, not a stand-in), holds, mobility, core, jumps,
+  anything logged today. Sets and reps stay; tap again to put the plan back.

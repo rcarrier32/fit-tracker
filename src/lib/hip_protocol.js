@@ -145,10 +145,10 @@ const SOURCE_SECTIONS = [
   {
     id: 'pelvic-reset',
     label: 'Pelvic Reset',
-    tag: 'Daily · Flare-friendly',
+    tag: 'Daily',
     accent: '#a3e635',
     bg: 'rgba(101,163,13,0.10)',
-    description: 'Lying-down pelvic positioning — tilt the pelvis back and hold it there with the hamstrings and deep abs, using long exhales. No end-range stretching, so these are the gentle-movement option on flare days. Stop any that reproduce the burning.',
+    description: 'Lying-down pelvic positioning — tilt the pelvis back and hold it there with the hamstrings and deep abs, using long exhales. No end-range stretching.',
     exercises: [
       {
         id: 'pr-bench-hip-lift',
@@ -227,7 +227,7 @@ const SOURCE_SECTIONS = [
     criteria: [
       'Single leg stance 30 s per side with no pelvic drop',
       'All exercises completed with no pain above 3/10 during or after',
-      'No next-day flare — soreness settles within 24 h',
+      'Soreness settles within 24 h',
     ],
     exercises: [
       {
@@ -512,7 +512,6 @@ const SOURCE_SECTIONS = [
           'Same band setup as the IR version.',
           'Let the knee open outward slowly and return under control.',
         ],
-        askPt: 'Same as the IR version — confirm with your PT while this flare is active.',
         videoId: '99pb0NnE4Kw',
         videoTitle: "Banded Joint Mobilization for The Hip",
         channel: "Squat University",
@@ -618,7 +617,6 @@ const SOURCE_SECTIONS = [
           'Lying down, let the knee drop inward to a gentle stretch on the outside of the hip.',
           'Hold lightly — stretch, not pinch.',
         ],
-        askPt: 'This pulls on the outside of the hip, where the new burning is. Ask your PT whether to keep it while the flare settles; back off if it reproduces the burn.',
         videoId: 'Q9HF6G04L04',
         videoTitle: "TFL Stretch",
         channel: "Movement Physio",
@@ -965,7 +963,7 @@ const SOURCE_SECTIONS = [
           'Cadence around 70–80 strides/min. Build by ~5 min per week.',
           'Keep the knee drive normal-running height — an exaggerated high-knee stride is repetitive resisted hip flexion.',
         ],
-        askPt: 'This is your highest-volume aerobic modality, and aqua jogging is repetitive resisted hip flexion — psoas work, 20–60 min a day. If the psoas is the problem, ask whether to lead with backstroke or flutter kicks on flare days instead.',
+        askPt: 'This is your highest-volume aerobic modality, and aqua jogging is repetitive resisted hip flexion — psoas work, 20–60 min a day. If the psoas is the problem, ask whether to lead with backstroke or flutter kicks instead.',
         videoId: 'fiUzT-s93sg',
         videoTitle: "Deep Water Running technique and the Benefits of Aqua Jogging",
         channel: "Hydro Functional Fitness",
@@ -1055,7 +1053,7 @@ const SOURCE_SECTIONS = [
     tag: 'All day · Habits',
     accent: '#94a3b8',
     bg: 'rgba(100,116,139,0.12)',
-    description: 'What you do between sessions matters as much as the sessions. Prolonged sitting in a low car seat puts the hip in deep flexion for hours, which is one of the most reliable ways to provoke a flare.',
+    description: 'What you do between sessions matters as much as the sessions. Prolonged sitting in a low car seat puts the hip in deep flexion for hours, which is one of the most reliable ways to leave it stiff and sore.',
     guidance: [
       {
         id: 'rc-seat-height',
@@ -1081,11 +1079,6 @@ const SOURCE_SECTIONS = [
         id: 'rc-stretch-frequency',
         title: 'Short and frequent beats long and occasional',
         detail: 'For a tight hip flexor, several brief stretches spread through the day generally do more than one long session. If you can get the half-kneeling stretch in a few times a day rather than only before a workout, that is the higher-value version. Confirm the dose with your PT.',
-      },
-      {
-        id: 'rc-ice-heat',
-        title: 'Ice after flare-ups, heat before exercise',
-        detail: 'Ice 15–20 minutes after a session that irritated the hip. Heat 10–15 minutes before exercise when the joint feels stiff, never after a flare.',
       },
       {
         id: 'rc-track',
@@ -1507,7 +1500,7 @@ const SESSION_A = {
   tag: 'Strength · Alternates with B',
   accent: '#22d3ee',
   bg: 'rgba(2,132,199,0.10)',
-  description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout.',
   criteria: SESSION_CRITERIA,
   exercises: pick('A', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
@@ -1531,7 +1524,7 @@ const SESSION_B = {
   tag: 'Strength · Alternates with A',
   accent: '#e879f9',
   bg: 'rgba(192,38,211,0.10)',
-  description: 'Merged PT + Motion RC plan — the partner to Session A, with the other version of each movement slot. Same mobility prep. Quality over load; pelvis level throughout. If the outer hip flares, trim side-hip volume first.',
+  description: 'Merged PT + Motion RC plan — the partner to Session A, with the other version of each movement slot. Same mobility prep. Quality over load; pelvis level throughout.',
   criteria: SESSION_CRITERIA,
   exercises: pick('B', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
@@ -1723,20 +1716,25 @@ export function weeklySchedule(date = new Date()) {
 
 /**
  * What today's hip work is: the main section (the strength session on Mon/Wed/Fri,
- * Pelvic Reset otherwise or during a flare) and how much of it is checked off.
+ * Pelvic Reset otherwise) and how much of it is checked off. No hip restrictions
+ * (the user's call).
  * Shared by the Hip tab (which tab to open), the Home card and the Plans card.
  */
-export function hipToday({ flare = null, paused = {}, done = {}, custom = [], date = new Date() } = {}) {
+export function hipToday({ done = {}, custom = [], date = new Date() } = {}) {
   const day = weeklySchedule(date)[date.getDay()];
-  const sectionId = flare ? 'pelvic-reset' : day.sections[day.sections.length - 1];
+  const sectionId = day.sections[day.sections.length - 1];
   const section = SECTIONS.find(s => s.id === sectionId);
-  const items = [...(section.exercises || []), ...custom.filter(c => c.sectionId === sectionId)]
-    .filter(e => !paused[e.id]);
+  const items = [...(section.exercises || []), ...custom.filter(c => c.sectionId === sectionId)];
+  // The warm-up comes before any lift ("Do this before PT work, the pool, or any lift"), so Today
+  // shows its progress first, ahead of the day's workout.
+  const wu = [...(SECTIONS.find(s => s.id === 'warmup')?.exercises || []), ...custom.filter(c => c.sectionId === 'warmup')];
   return {
     sectionId,
     sectionLabel: section.label,
-    label: flare ? 'Flare day · Pelvic Reset + short walk' : day.focus,
-    strength: !flare && sectionId.startsWith('session-'),
+    session: /^session-([a-z])$/.exec(sectionId)?.[1]?.toUpperCase() || null,
+    warmup: { done: wu.filter(e => done[e.id]).length, total: wu.length },
+    label: day.focus,
+    strength: sectionId.startsWith('session-'),
     done: items.filter(e => done[e.id]).length,
     total: items.length,
   };
@@ -1746,38 +1744,6 @@ export function hipToday({ flare = null, paused = {}, done = {}, custom = [], da
 export const ALL_EXERCISES = SOURCE_SECTIONS.flatMap(s =>
   (s.exercises || []).map(ex => ({ ...ex, sectionId: s.id }))
 );
-
-/**
- * Flare mode — new burning/pinching on the side and back of the hip (Oct 2026), which
- * started after a pulling sensation in a 90/90 stretch. Cause not established; this is
- * load management while it settles, not a diagnosis. Hip tab only — it deliberately
- * does not touch the lifting programs or daily mobility.
- *
- * `defaultPauses` are seeded into pref('hip_paused') when flare mode is switched on.
- * Pauses persist independently of the flag and are resumed one at a time by hand.
- */
-export const FLARE = {
-  summary: 'Burning/pinching on the side and back of the hip, glute and outer-thigh tightness. Started after a pull in a 90/90 stretch; lunges, sitting, and the forward-driving hip flexor stretch make it worse. Lying down eases it. Cause not established yet — so calm it down rather than stretch or strengthen through it.',
-  defaultPauses: [
-    { id: 'wu-half-kneel-flexor', reason: 'Forward-driving hip flexor stretch — a known aggravator of this flare.' },
-    { id: 'pt-posterior-lunge', reason: 'Lunges currently provoke the symptoms.' },
-    { id: 'mrc-adductor-slider-lunge', reason: 'Lunge pattern — lunges currently provoke the symptoms.' },
-  ],
-  calm: [
-    { title: 'Unload when it burns', detail: 'On your back with a pillow under the knees. Skip it if that position is not comfortable.' },
-    { title: 'Short, easy walks', detail: 'Only while it stays mild and does not build during or after. Stop before you start to limp — do not walk through the burning.' },
-    { title: 'Gentle range only', detail: 'Move within what is comfortable. Nothing forced to end range, no deep hip rotation, no seated 90/90 positions. The Pelvic Reset tab is the go-to here.' },
-    { title: 'Ice if it helps', detail: '10–15 min with a towel between ice and skin. Skip it if it does not help.' },
-  ],
-  positions: [
-    { title: 'Keep the pelvis level', detail: 'Stand on both feet evenly — no hanging on one hip. In single-leg work, if the opposite hip drops or hikes, end the set.' },
-    { title: 'Sitting', detail: 'Feet flat, knees no higher than hips, no crossed legs. Get up every 30–45 min.' },
-    { title: 'Sleeping', detail: 'Not on the sore side. On the other side, a pillow between the knees so the top leg does not drop across.' },
-  ],
-  returnRule: 'Bring it back once the hip has been settled 2–3 days with no worse next morning: do it at about half the volume. If the next morning is fine, return to full. If it flares again, re-pause and give it longer.',
-  stopIf: 'Stop the exercise if you get a sharp pinch, burning that builds during the set, new tingling or numbness, weakness, or a limp. Write what happened in the note below — do not swap in something harder.',
-  urgent: 'Same-day care if you cannot put weight on the leg, have significant new weakness, a fever with a hot or swollen hip, or one leg swells. Emergency care for any loss of bowel or bladder control, or numbness in the groin/saddle area.',
-};
 
 /**
  * Side-hip (lateral hip / abductor) exercises — the load that lands on the sore area.
@@ -1829,45 +1795,6 @@ const PATTERN_RULES = [
 
 export function movementTags(name) {
   return PATTERN_RULES.filter(([, re]) => re.test(name || '')).map(([tag]) => tag);
-}
-
-/**
- * Which tags overlap with what flared the hip, and what to try instead. Used for a
- * caution badge and swap suggestions while flare mode is on — never to pause or remove
- * anything outside the Hip tab. Swap names are filtered against the live catalog.
- */
-const CAUTION = {
-  'deep-rotation': {
-    reason: 'Seated 90/90-type rotation — the position the flare started in.',
-    swaps: ['Bench Hip Lift with Roller Squeeze', 'Supine Ball Squeeze Series', 'Sidelying Grounding', 'Cat Cow', 'Dead Bug'],
-  },
-  'hip-forward-stretch': {
-    reason: 'Hip-forward stretch — a known aggravator right now.',
-    swaps: ['Posterior Pelvic Tilt Breathing', 'Bench Hip Lift with Roller Squeeze', 'Pelvic Tilts', 'Hamstring Stretch', 'Dead Bug'],
-  },
-  'lunge': {
-    reason: 'Lunge pattern — lunges currently provoke the hip.',
-    swaps: ['Weighted Step-Ups', 'Step Ups', 'Box Squat', 'Dumbbell Goblet Squat', 'Hip Thrust', 'Dumbbell Romanian Deadlift', 'Bridge with Ball Squeeze'],
-  },
-};
-// The Thomas stretch is tagged hip-forward for search, but it stays in the warm-up
-// unflagged — only the half-kneeling stretch was named as an aggravator.
-const NOT_FLAGGED = /thomas/i;
-
-function cautionTag(name) {
-  if (NOT_FLAGGED.test(name || '')) return null;
-  return movementTags(name).find(t => CAUTION[t]) || null;
-}
-
-export function hipCaution(name) {
-  const tag = cautionTag(name);
-  return tag ? CAUTION[tag].reason : null;
-}
-
-/** Hip-friendly alternatives for a flagged move (empty if it isn't flagged). */
-export function hipSwaps(name) {
-  const tag = cautionTag(name);
-  return tag ? CAUTION[tag].swaps : [];
 }
 
 /**

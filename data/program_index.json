@@ -1246,10 +1246,60 @@
     "accessory": 1
    },
    "equipment": [
+    "bike",
     "dumbbell",
     "mini_band"
    ],
    "description": "Two off-day sessions (30-45 min) from PJF's recovery day and BWS daily mobility + prehab, plus easy cardio. Pair it with a training plan through Today → Set up Mixed Week."
+  },
+  {
+   "id": "daily_mobility",
+   "name": "Daily Mobility",
+   "group": "Daily",
+   "kind": "rotation",
+   "weeks": null,
+   "days_per_week": 3,
+   "exercises_per_day": 15.0,
+   "day_focus": [
+    "Daily A · Ankles, hips, T-spine",
+    "Daily B · Breathing, glutes, shoulders",
+    "Daily C · Hips"
+   ],
+   "week1_sets_by_muscle": {
+    "glutes": 22,
+    "hip_flexors": 10,
+    "front_delts": 5,
+    "abs": 4,
+    "calves": 4,
+    "quads": 4,
+    "upper_back": 4,
+    "lower_back": 3,
+    "adductors": 2,
+    "rear_delts": 1,
+    "hamstrings": 1
+   },
+   "week1_sets_by_pattern": {
+    "mobility": 29,
+    "balance": 15,
+    "hinge": 4,
+    "isometric": 4,
+    "rotation": 3,
+    "isolation_lower": 2,
+    "anti_extension": 1,
+    "pull_horizontal": 1,
+    "isolation_upper": 1
+   },
+   "roles": {
+    "warmup": 16,
+    "accessory": 11,
+    "cooldown": 11,
+    "core": 4,
+    "secondary": 1
+   },
+   "equipment": [
+    "band"
+   ],
+   "description": "Hips and whole body, 12-15 minutes a day, rotating A → B → C. Opens with your low-back reset, then ankles, hips, T-spine, shoulders and balance, shaped like HoopStudy's Ten Minute Routine. Runs next to your training plan (Copenhagen and Nordics stay in the training)."
   }
  ]
 }

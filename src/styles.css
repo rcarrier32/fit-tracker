@@ -131,7 +131,7 @@ button {
 .btn-row > * { flex: 1; }
 
 /* ── Inputs ── */
-input[type="text"], input[type="number"], input[type="date"], select, textarea {
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], select, textarea {
   width: 100%;
   background: var(--bg-input);
   border: 1px solid var(--border);
@@ -447,9 +447,20 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 .exercise.in-sheet .e1rm-line { display: block !important; }
 .exercise.in-sheet .rest-timer-line { font-size: 16px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
 .rest-live.rest-over .rest-timer-text { color: #22c55e; }
+/* Rest timer while away from the Lift tab: tap it to go back. */
+.rest-float { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--safe-bot) + 74px);
+  z-index: 250; background: var(--bg-card); border: 1px solid var(--accent); border-radius: 999px; padding: 6px 8px 6px 14px;
+  font-size: 14px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35); cursor: pointer; display: flex; align-items: center; }
 /* Changing sides on a one-side-at-a-time hold (FKH's switch colour). */
 .timer-btn.switching, .hold-timer.switching { background: #f59e0b !important; color: #0f172a !important; border-color: #f59e0b !important; }
 /* Clip tools (exercise sheet ⋯ → Clip video): a one-off, so small and out of the way. */
 .clip-bar { margin-top: 8px; }
 .clip-bar .btn { min-height: 40px; padding: 8px; font-size: 13px; }
 .clip-bar .btn:disabled { opacity: 0.4; }
+
+/* "Set logged · Undo" */
+.undo-toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--safe-bot) + 128px); z-index: 260;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 6px 6px 6px 16px; font-size: 14px;
+  display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.35); animation: fade 0.2s; }
+.undo-toast button { background: none; border: none; color: var(--accent); font-weight: 700; font-size: 14px; padding: 6px 10px; cursor: pointer; }

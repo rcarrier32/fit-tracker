@@ -14,6 +14,7 @@ import { openSheet, toast } from '../app.js';
 import { localFor, muxThumb, attachMuxVideos, playable, videoSrcKey, clipFor, saveClip } from './local_videos.js';
 import { tagChipsHTML } from './taxonomy.js';
 import { getCachedSync } from './static_data.js';
+import { isFav, toggleFav } from './favorites.js';
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -359,6 +360,8 @@ export function openExerciseDetail(ex, o = {}) {
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
           ${ex.source ? `<span style="font-size:9px;padding:2px 6px;border-radius:4px;
             border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
+          <button class="ex-fav" type="button" aria-label="Favourite" aria-pressed="${isFav(ex.name)}"
+            style="background:none;border:none;font-size:20px;line-height:1;padding:2px 4px;cursor:pointer;color:${isFav(ex.name) ? '#f472b6' : '#64748b'}">${isFav(ex.name) ? '♥' : '♡'}</button>
           ${sheetVideo(ex).src ? `<button class="ex-more" type="button" aria-label="More options"
             style="background:none;border:none;color:#64748b;font-size:18px;line-height:1;padding:2px 4px;cursor:pointer">⋯</button>` : ''}
         </div>
@@ -408,6 +411,12 @@ export function openExerciseDetail(ex, o = {}) {
     `;
 
     attachMuxVideos(sheet);
+    sheet.querySelector('.ex-fav').onclick = async (e) => {
+      const b = e.currentTarget;   // gone after the await
+      const on = await toggleFav(ex.name);
+      b.textContent = on ? '♥' : '♡'; b.style.color = on ? '#f472b6' : '#64748b'; b.setAttribute('aria-pressed', on);
+      toast(on ? 'Favourite: new plans pick it first' : 'Removed from favourites', 1800);
+    };
     const stopSideways = startSidewaysVideo(sheet);
     const prevClose = hooks.onClose;
     let stopClock = () => {};

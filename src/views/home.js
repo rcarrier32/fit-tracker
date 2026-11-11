@@ -18,7 +18,12 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout, selectSingleProgram, positionLabel } from './schedule.js';
+import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
+import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
+import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
+import { buildIcs } from '../lib/calendar.js';
+import { learnProfile } from '../lib/learn.js';
+import { getAllPrograms } from '../lib/static_data.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
@@ -149,6 +154,113 @@ function renderWeeklySummary(s) {
   `;
 }
 
+const escH = (t) => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const dayLetter = (name, i) => (/Daily ([A-Z])/.exec(name || '') || [])[1] || String.fromCharCode(65 + i);
+
+/**
+ * Daily Mobility card: runs next to the active program (docs/mockups/daily_mobility_card.png).
+ * Not started → Start / Skip today, with what it changed for yesterday's training.
+ * Started → progress and the next move. Done or skipped → one line.
+ */
+async function dailyCardData(todaysSessions) {
+  const dw = await dailyWorkout();
+  if (!dw || dw.type !== 'program') return null;
+  const program = dw.program;
+  const n = program.days.length;
+  const i = dw.day_index ?? 0;
+  const day = program.days[i] || program.days[0];
+  const rows = day.exercises.filter(e => !e.is_alternate && !isHeaderRow(e.name))
+    .map(x => ({ name: x.name, target_sets: x.sets, target_reps: x.reps || '', time: x.time, notes: x.notes }));
+  const skippedToday = (await pref('daily_skip')) === today();
+  const st = dailyState(todaysSessions, { programId: DAILY_ID, skippedToday, dayRows: rows });
+  const all = await getAll('sessions');
+  const streak = dailyStreak(all, today(), DAILY_ID);
+  let adjust = null;
+  if (st.state === 'todo') {
+    const yest = all.filter(x => x.date === prevDay(today()));
+    const { exerciseByName } = await loadCatalogs();
+    const lookup = (nm) => exerciseByName.get(String(nm).toLowerCase());
+    adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup).note;
+  }
+  const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
+  // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
+  // "next workout" on Daily Mobility's own finish screen shows the cursor's day on Lift).
+  const finished = st.state === 'done'
+    ? todaysSessions.filter(x => x.program_id === DAILY_ID && x.done && !x.skipped).sort((a, b) => (b.id || 0) - (a.id || 0))[0] : null;
+  const todayIdx = finished ? (finished.day_index ?? 0) : i;
+  return { program, day, rows, st, streak, adjust, letters, todayIdx, nextIdx: (todayIdx + 1) % n,
+    minutes: program.session_length_min || 13 };
+}
+
+function renderDailyCard(d) {
+  if (!d) return '';
+  const { st, streak, letters, todayIdx, nextIdx } = d;
+  const L = letters[todayIdx];
+  const fire = streak > 1 ? ` · 🔥 ${streak}-day streak` : '';
+  if (st.state === 'done' || st.state === 'skipped') {
+    const done = st.state === 'done';
+    return `
+    <div class="card" style="padding:10px 14px">
+      <div class="card-row">
+        <div>
+          <div style="font-weight:600">Daily Mobility ${done ? '✓' : '· skipped today'}</div>
+          <div style="font-size:11px;color:var(--fg-dim)">${done ? `Day ${L}${st.minutes ? ` · ${st.minutes} min` : ''}${fire} · tomorrow: Day ${letters[nextIdx]}`
+            : `Day ${L} waits for tomorrow`}</div>
+        </div>
+        <button class="btn ghost" id="daily-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${done ? 'View' : 'Do it anyway'}</button>
+      </div>
+    </div>`;
+  }
+  if (st.state === 'started') {
+    const pct = Math.round(st.done / Math.max(1, st.total) * 100);
+    return `
+    <div class="card" style="border-color:var(--accent);margin-bottom:12px">
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">${st.done} of ${st.total}</span></div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+      ${st.next ? `<div class="muted" style="font-size:13px">Next up: <b style="color:var(--fg)">${escH(st.next.name)}</b> · ${escH(rowTarget(st.next))}</div>` : ''}
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" id="daily-open" style="flex:2">▶ Resume</button>
+      </div>
+    </div>`;
+  }
+  const chips = letters.map((l, k) => `<span class="pill ${k === todayIdx ? 'accent' : ''}" style="font-size:11px;padding:3px 8px">${l}${k === todayIdx ? ' · today' : ''}</span>`).join('');
+  const label = (d.day.day_name || '').split('·')[1]?.trim();
+  return `
+    <div class="card" style="border-color:var(--accent);margin-bottom:12px">
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ~${d.minutes} min</span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px">${chips}${streak ? `<span class="pill" style="font-size:11px;padding:3px 8px">🔥 ${streak}-day streak</span>` : ''}</div>
+      ${d.adjust ? `<div style="font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(56,189,248,0.12)">↻ ${escH(d.adjust)}</div>` : ''}
+      <div class="muted" style="font-size:12px;margin-top:8px">${label ? escH(label) + ' · ' : ''}${d.rows.length} moves, starting with your low-back reset</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
+        <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
+      </div>
+    </div>`;
+}
+
+/** The hip plan's row on the Today's Workout card: first (before the workout) or last. */
+function hipRow(hip, first) {
+  const wu = hip.warmup || { done: 0, total: 0 };
+  const wuDone = wu.total && wu.done >= wu.total;
+  const title = first
+    ? `Hip warm-up first${wu.total ? ` · ${wuDone ? 'done ✓' : `${wu.done} of ${wu.total}`}` : ''}`
+    : `Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}`;
+  const sub = hip.strength
+    ? `${first ? 'Walk or bike, then the hip stretches, before the workout. ' : ''}Session ${hip.session || 'A/B'} strength runs in Your Hip Plan on the Lift screen.`
+    : (first ? `${hip.label} · ` : '') + `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`;
+  return `
+        <div style="${first ? 'margin:10px 0 12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px' : 'margin-top:12px;padding-top:12px;border-top:1px solid var(--border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div>
+              <div style="font-size:${first ? 13 : 12}px;font-weight:600">${title}</div>
+              <div style="font-size:11px;color:var(--fg-dim)">${sub}</div>
+              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
+            </div>
+            <button id="open-hip" class="btn ${first && !wuDone ? '' : 'ghost'}" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${first && !wuDone ? 'Start →' : 'Open →'}</button>
+          </div>
+        </div>`;
+}
+
 export async function renderHome(app) {
   const userProfile = await pref('profile');
   if (!userProfile) {
@@ -186,16 +298,14 @@ export async function renderHome(app) {
     pref('tos_progress'),
     pref('tos_logs'),
   ]);
-  const [hipProgress, hipLogs, hipFlare, hipPaused, hipCustom] = await Promise.all([
+  const [hipProgress, hipLogs, hipCustom] = await Promise.all([
     pref('hip_progress'),
     pref('hip_logs').then(v => v || {}),
-    pref('hip_flare'),
-    pref('hip_paused').then(v => v || {}),
     pref('hip_custom').then(v => v || []),
   ]);
   // Only once the hip plan is in use — started, flaring, or anything ever checked off.
-  const hip = (hipProgress || hipFlare || Object.keys(hipLogs).length)
-    ? hipToday({ flare: hipFlare, paused: hipPaused, custom: hipCustom, done: hipLogs[today()] || {} })
+  const hip = (hipProgress || Object.keys(hipLogs).length)
+    ? hipToday({ custom: hipCustom, done: hipLogs[today()] || {} })
     : null;
 
   const tosDoneToday = tosProgress
@@ -206,6 +316,10 @@ export async function renderHome(app) {
     return Math.max(1, Math.floor(days / 7) + 1);
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
+  // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
+  const hipFirst = !!hip && today_w.type === 'program' && !workoutDoneToday;
+  // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
+  const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
   app.innerHTML = `
@@ -213,6 +327,7 @@ export async function renderHome(app) {
     <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
     ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday })}
     ${renderWeeklySummary(weeklySummary)}
+    ${renderDailyCard(daily)}
 
     <div class="card">
       <div class="card-row">
@@ -242,6 +357,7 @@ export async function renderHome(app) {
         <h2 style="margin:0">Today's Workout</h2>
         ${renderTodayBadge(today_w, activePlan)}
       </div>
+      ${hipFirst ? hipRow(hip, true) : ''}
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday)}
       ${tosProgress ? `
@@ -256,19 +372,7 @@ export async function renderHome(app) {
             <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>
         </div>` : ''}
-      ${hip ? `
-        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-            <div>
-              <div style="font-size:12px;font-weight:600">Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}</div>
-              <div style="font-size:11px;color:var(--fg-dim)">
-                ${hip.strength ? 'Strength (Session A/B) runs in Your Hip Plan on the Lift screen' : `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`}
-              </div>
-              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
-            </div>
-            <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
-          </div>
-        </div>` : ''}
+      ${hip && !hipFirst ? hipRow(hip, false) : ''}
     </div>
 
     <div class="card">
@@ -280,6 +384,7 @@ export async function renderHome(app) {
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
         <button class="btn ghost" data-action="edit-profile">Edit profile</button>
+        <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
         <button class="btn ghost" data-action="export-data">Export data</button>
         <button class="btn ghost" data-action="import-data">Import data</button>
       </div>
@@ -308,6 +413,18 @@ export async function renderHome(app) {
     }
     navigate('workout');
   };
+  const dailyBtn = app.querySelector('#daily-open');
+  if (dailyBtn) dailyBtn.onclick = async () => {
+    if (dailyBtn.dataset.start) { try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ } }
+    if ((await pref('daily_skip')) === today()) await pref('daily_skip', null);   // "Do it anyway"
+    navigate('daily');
+  };
+  const dailySkip = app.querySelector('#daily-skip');
+  if (dailySkip) dailySkip.onclick = async () => {
+    // Skipping keeps today's day for tomorrow (the rotation doesn't move) and ends the streak.
+    await pref('daily_skip', today());
+    renderHome(app);
+  };
   const schedBtn = app.querySelector('[data-action="schedule"]');
   if (schedBtn) schedBtn.onclick = async () => {
     await openScheduleEditor();
@@ -316,6 +433,7 @@ export async function renderHome(app) {
   app.querySelector('[data-action="log-weight"]').onclick = () => navigate('body');
   app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
 
+  app.querySelector('[data-action="calendar"]').onclick = () => openCalendarExport();
   app.querySelector('[data-action="export-data"]').onclick = async () => {
     const data = await exportAllData();
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -668,4 +786,65 @@ async function showOnboarding(app) {
   };
   const $cancel = app.querySelector('#cancel');
   if ($cancel) $cancel.onclick = () => renderHome(app);
+}
+
+
+/**
+ * Reminders through the phone's calendar (src/lib/calendar.js): weekly events for the training
+ * days, with an alert before each. Days start from the weekly schedule, else the days the logs
+ * show you train, else Mon/Wed/Fri; length from how long workouts really take.
+ */
+async function openCalendarExport() {
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const [schedule, sessions, programs, saved, activeId] = await Promise.all([pref('schedule'), getAll('sessions'), getAllPrograms(), pref('calendar_export'), pref('active_program')]);
+  const active = programs.find(p => p.id === activeId);
+  const fallbackTitle = active ? `Workout · ${programName(active)}` : 'Workout';
+  const prof = learnProfile(sessions, { today: localDateStr() });
+  const titles = {};
+  (schedule?.slots || []).forEach((sl, i) => {
+    if (!sl) return;
+    const prog = sl.program_id && programs.find(p => p.id === sl.program_id);
+    titles[i] = sl.label || (prog ? `Workout · ${programName(prog)}` : 'Workout');
+  });
+  let days = saved?.days || (Object.keys(titles).length ? Object.keys(titles).map(Number)
+    : prof.days.per_week ? prof.days.trained.map((n, i) => [n, i]).filter(([n]) => n > 0).sort((a, b) => b[0] - a[0]).slice(0, Math.round(prof.days.per_week)).map(([, i]) => i)
+    : [1, 3, 5]);
+  let time = saved?.time || '18:00';
+  let minutes = saved?.minutes || prof.duration?.median_min || 60;
+  let alarm = saved?.alarm ?? 30;
+  openSheet((sheet, close) => {
+    const paint = () => {
+      sheet.innerHTML = `<h2>Add workouts to your calendar</h2>
+        <div class="muted" style="margin-bottom:10px">Weekly events with an alert before each, for the next 12 weeks. Your calendar does the reminding.</div>
+        <div class="group-label">Days</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">${DOW.map((d, i) => `<button class="pill ${days.includes(i) ? 'accent' : ''}" data-dow="${i}" style="cursor:pointer;padding:7px 11px">${d}</button>`).join('')}</div>
+        <div class="group-label">Time</div><input type="time" id="cal-time" value="${time}">
+        <div class="group-label">Length (min)</div><input type="number" id="cal-min" inputmode="numeric" value="${minutes}" min="10" max="180">
+        <div class="group-label">Alert</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">${[[0, 'None'], [15, '15 min before'], [30, '30 min'], [60, '1 hour']].map(([v, l]) => `<button class="pill ${alarm === v ? 'accent' : ''}" data-alarm="${v}" style="cursor:pointer;padding:7px 11px">${l}</button>`).join('')}</div>
+        <button class="btn" id="cal-go" style="margin-top:16px" ${days.length ? '' : 'disabled'}>Add ${days.length} weekly event${days.length === 1 ? '' : 's'}</button>
+        <button class="btn ghost" id="cal-cancel" style="margin-top:8px">Cancel</button>`;
+      sheet.querySelectorAll('[data-dow]').forEach(b => b.onclick = () => { const d = +b.dataset.dow; days = days.includes(d) ? days.filter(x => x !== d) : [...days, d].sort(); paint(); });
+      sheet.querySelectorAll('[data-alarm]').forEach(b => b.onclick = () => { alarm = +b.dataset.alarm; paint(); });
+      sheet.querySelector('#cal-time').onchange = (e) => { time = e.target.value || time; };
+      sheet.querySelector('#cal-min').onchange = (e) => { minutes = Math.max(10, Math.min(180, +e.target.value || 60)); };
+      sheet.querySelector('#cal-cancel').onclick = close;
+      sheet.querySelector('#cal-go').onclick = async () => {
+        await pref('calendar_export', { days, time, minutes, alarm });
+        const ics = buildIcs({ days: days.map(d => ({ dow: d, title: titles[d] || fallbackTitle, notes: 'Open Fit Tracker to start.' })), time, minutes, alarm });
+        const file = new File([ics], 'workouts.ics', { type: 'text/calendar' });
+        try {
+          if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: 'Workouts' });
+          else {
+            const url = URL.createObjectURL(file);
+            const a = document.createElement('a'); a.href = url; a.download = 'workouts.ics'; a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+          }
+          close();
+          toast('Open it to add to your calendar', 2600);
+        } catch (err) { if (err?.name !== 'AbortError') toast('Could not create the calendar file'); }
+      };
+    };
+    paint();
+  });
 }

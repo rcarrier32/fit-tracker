@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Mobility card mockup</title>
+<link rel="stylesheet" href="../../src/styles.css">
+<style>
+ body{padding:16px;background:var(--bg)} .frames{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+ .phone{width:380px;border:1px solid var(--border);border-radius:22px;padding:16px;background:var(--bg)}
+ .cap{font:600 13px system-ui;color:var(--fg-dim);margin:0 0 8px 4px;text-transform:uppercase;letter-spacing:.04em}
+ .dm-chips{display:flex;gap:6px;margin:8px 0 2px}
+ .dm-chip{font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--border);color:var(--fg-dim)}
+ .dm-chip.on{border-color:var(--accent);color:var(--accent)}
+ .dm-adj{font-size:12px;margin-top:8px;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--fg)}
+ .dm-moves{font-size:12px;color:var(--fg-dim);margin-top:8px;line-height:1.45}
+ .dm-bar{height:6px;border-radius:3px;background:var(--border);margin-top:10px;overflow:hidden}.dm-bar i{display:block;height:100%;background:var(--accent)}
+ .faded{opacity:.45}
+</style></head><body>
+<div class="frames">
+
+<div><div class="cap">1 · Morning, after a leg day</div><div class="phone">
+ <h1>Today</h1><div class="muted">Wednesday, Nov 11</div>
+ <div class="card" style="border-color:var(--accent);margin-top:12px">
+  <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day B · ~13 min</span></div>
+  <div class="dm-chips"><span class="dm-chip">A</span><span class="dm-chip on">B — today</span><span class="dm-chip">C</span><span class="dm-chip">🔥 4-day streak</span></div>
+  <div class="dm-adj">↻ Adjusted for yesterday's legs (Goblet Squat, RDL): pogos → balance hold; +1 set on hip flexor and hamstring holds.</div>
+  <div class="dm-moves">Low-back reset · ankles · breathing &amp; bridge hold · T-spine rotations · hip flexor · squat · shoulders · balance</div>
+  <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn" style="flex:2">▶ Start</button><button class="btn ghost" style="flex:1">Skip today</button></div>
+ </div>
+ <div class="card"><div class="card-row"><h2 style="margin:0">Today's Workout</h2><span class="pill">Rest day</span></div>
+  <div class="muted">Lean &amp; Tone · Week 3. Next: Upper A tomorrow.</div></div>
+ <div class="card faded"><div class="card-row"><h2 style="margin:0">Calories</h2><span class="pill accent">1,840 left</span></div><div class="bar"><div class="bar-fill" style="width:15%"></div></div></div>
+</div></div>
+
+<div><div class="cap">2 · Halfway through (left the screen)</div><div class="phone">
+ <h1>Today</h1><div class="muted">Wednesday, Nov 11</div>
+ <div class="card" style="border-color:var(--accent);margin-top:12px">
+  <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">9 of 17</span></div>
+  <div class="dm-bar"><i style="width:53%"></i></div>
+  <div class="dm-moves">Next up: <b style="color:var(--fg)">Half Kneeling Hip Flexor Stretch</b> · 2 × 30s each side</div>
+  <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn" style="flex:2">▶ Resume</button><button class="btn ghost" style="flex:1">Finish now</button></div>
+ </div>
+ <div class="card"><div class="card-row"><h2 style="margin:0">Today's Workout</h2><span class="pill accent">Upper A</span></div>
+  <div class="muted">Lean &amp; Tone · Week 3 Day 2 · ~40 min</div>
+  <div class="btn-row" style="margin-top:8px;margin-bottom:0"><button class="btn">Start workout</button></div></div>
+</div></div>
+
+<div><div class="cap">3 · Done — collapses to one line</div><div class="phone">
+ <h1>Today</h1><div class="muted">Wednesday, Nov 11</div>
+ <div class="card" style="margin-top:12px;padding:10px 14px">
+  <div class="card-row"><div><div style="font-weight:600">Daily Mobility ✓</div><div style="font-size:11px;color:var(--fg-dim)">Day B · 14 min · 🔥 5-day streak · tomorrow: Day C</div></div><button class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px">View</button></div>
+ </div>
+ <div class="card"><div class="card-row"><h2 style="margin:0">Today's Workout</h2><span class="pill accent">Upper A</span></div>
+  <div class="muted">Lean &amp; Tone · Week 3 Day 2 · ~40 min</div>
+  <div class="btn-row" style="margin-top:8px;margin-bottom:0"><button class="btn">Start workout</button></div></div>
+ <div class="card faded"><div class="card-row"><h2 style="margin:0">Calories</h2><span class="pill accent">1,840 left</span></div><div class="bar"><div class="bar-fill" style="width:15%"></div></div></div>
+</div></div>
+
+</div></body></html>

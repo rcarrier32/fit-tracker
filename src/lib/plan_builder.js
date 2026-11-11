@@ -119,25 +119,43 @@ export const AB_SLOTS = [
   { label: 'Core',       muscle: 'abs', sets: 3, reps: '8-15'  },
 ];
 
-// Pick exercises for a muscle group slot, avoiding already-used exercises in this day
-export function suggestForSlot(muscle, allExercises, usedInDay = new Set()) {
+// Pick exercises for a muscle group slot, avoiding already-used exercises in this day.
+// Every exercise with a video and that main muscle (BWS, PJF, TrainHeroic, …), best fit first: a
+// "(compound)" slot wants a main or secondary lift, any other slot an accessory; loaded lifts and
+// beginner/intermediate moves rank above bodyweight and advanced ones. Warm-up and mobility moves are left out.
+const SKIP_ROLES = new Set(['warmup', 'cooldown', 'conditioning', 'power']);
+const LOADED = new Set(['barbell', 'dumbbell', 'cable', 'machine', 'kettlebell', 'trap_bar', 'smith', 'landmine']);
+export function suggestForSlot(muscle, allExercises, usedInDay = new Set(), label = '', favs = new Set()) {
+  // Big-muscle slots without an isolation word want a compound (RDL for "Hamstrings", a row for "Back (upper)").
+  const compound = /compound|overhead|vertical|horizontal|incline|^back|^upper back|^hamstrings|^chest$|^shoulders$|^quads$/i.test(label)
+    && !/accessory|iso|fly|curl|extension|lats\)/i.test(label);
+  const move = /^(leg curls|leg extensions|calves)$/i.test(label.trim()) ? label.trim().replace(/s$/i, '').replace(/^calve$/i, 'calf raise') : '';
+  const named = move ? new RegExp(move.replace(/\s+/g, '\\s*'), 'i') : null;
+  const score = (e) => {
+    const roleFit = compound ? { main: 3, secondary: 2.5, accessory: 0.5 } : muscle === 'abs' ? { core: 3, accessory: 1.5 } : { accessory: 3, secondary: 1.5, main: 0.5, core: 1 };
+    return (roleFit[e.role] || 0) + ((e.equipment || []).some(q => LOADED.has(q)) ? 1 : 0)
+      + ((e.level || 2) <= 2 ? 0.5 : 0) + (e.sources?.includes('bws') ? 0.3 : 0)
+      - (['mobility', 'balance'].includes(e.pattern) ? 2 : 0)
+      + (named && named.test(e.name) ? 2 : 0)    // "Leg Curls" slot → a leg curl
+      + (favs.has(e.name) ? 3 : 0);               // ♡ favourites first
+  };
   return allExercises
     .filter(e =>
       e.primary_muscle === muscle &&
-      e.sources?.includes('bws') &&
       e.video_url &&
+      !SKIP_ROLES.has(e.role) &&
       !usedInDay.has(e.name)
     )
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => score(b) - score(a) || a.name.localeCompare(b.name));
 }
 
 // Auto-populate a day template with exercise picks
 // `dayIndex` rotates the pick so repeated day templates (Full Body A/B/C) aren't identical.
-export function autoFillDay(dayTemplate, allExercises, dayIndex = 0) {
+export function autoFillDay(dayTemplate, allExercises, dayIndex = 0, favs = new Set()) {
   const usedInDay = new Set();
   return dayTemplate.slots.map(slot => {
-    const options = suggestForSlot(slot.muscle, allExercises, usedInDay);
-    const pick = options.length ? options[dayIndex % options.length] : null;
+    const options = suggestForSlot(slot.muscle, allExercises, usedInDay, slot.label, favs);
+    const pick = options.length ? options[dayIndex % Math.min(3, options.length)] : null;   // rotate among the best 3
     if (pick) usedInDay.add(pick.name);
     return {
       ...slot,

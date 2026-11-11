@@ -3,24 +3,20 @@
  */
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
+import { nextTarget, deloadAdvice } from '../lib/adapt.js';
+import { learnProfile } from '../lib/learn.js';
+import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
+import { isFav, toggleFav, favorites } from '../lib/favorites.js';
+import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
+import { todaysWorkout, dailyWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
-import { hipCaution, hipSwaps } from '../lib/hip_protocol.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
 import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
-
-// Hip flare mode — loaded per render. Only adds a caution badge; nothing is paused here.
-let _hipFlare = null;
-function hipCautionHtml(name) {
-  const why = _hipFlare && hipCaution(name);
-  if (!why) return '';
-  return `<div style="font-size:11px;color:#fdba74;margin-top:2px;line-height:1.35">⚠ Hip flare · ${why}</div>`;
-}
 
 const today = () => localDateStr();
 let _restInterval = null;
@@ -190,13 +186,17 @@ function openLiftDetail(btn) {
 
 let _noRefresh = false;   // Finish from the sheet: don't redraw the Lift page over the Done screen
 
+/** #/daily opens Daily Mobility (its Home card) without touching the active program. */
+const onDailyRoute = () => location.hash.startsWith('#/daily');
+const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout())) || todaysWorkout();
+
 export async function renderWorkout(app, { keepRest = false } = {}) {
   const token = ++_renderToken;
   const stale = () => token !== _renderToken;
-  if (!keepRest) stopRestTimer();
+  // A running rest timer survives leaving the tab and coming back to the same workout; it stops
+  // only when a different workout is opened (checked below, once the session is known).
   stopSetTimer();
-  _hipFlare = await pref('hip_flare');
-  const today_w = await todaysWorkout();
+  const today_w = await whichWorkout();
   if (stale()) return;
   if (today_w.type === 'unset') {
     app.innerHTML = `
@@ -246,6 +246,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // rotation day, so treat missing as 0 rather than starting a duplicate session.
   const sameIndex = (a, b) => (a ?? 0) === (b ?? 0);
   let session = todaysSessions.find(s => s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index));
+  _restKey = `${today()}|${programId}|${week}|${day}|${day_index ?? 0}`;
+  if (!keepRest && _rest && _rest.key !== _restKey) stopRestTimer();
   if (!session) {
     const allSwaps = (await pref('swaps')) || {};
     const dayKey = _sessionDayKey({ day_index, week, day });
@@ -270,6 +272,17 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps, { week, day }) : rawExercises,
       done: false,
     };
+    // Daily Mobility adjusts for yesterday's training (src/lib/daily_adjust.js): no pogos after jumps
+    // or heavy legs, one more set of the holds for what was worked. Decided once, when today's session starts.
+    if (programId === 'daily_mobility') {
+      const d = new Date(); d.setDate(d.getDate() - 1);
+      const yesterday = await getByIndex('sessions', 'date', localDateStr(d));
+      const { exerciseByName: byName } = await loadCatalogs();   // cached; exMap is built further down
+      const lookup = (n) => byName.get(String(n).toLowerCase());
+      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup);
+      session.exercises = adj.rows;
+      if (adj.note) session.adjust_note = adj.note;
+    }
   }
 
   // A session started before rounds became sets: upgrade any "N rounds" row not logged yet.
@@ -306,15 +319,26 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   const anyLogged = session.exercises.some(x => (x.sets || []).some(st => st?.done));
 
   // Build last-session reference weights + all-time best e1RM per exercise
-  const { ref: prevRef, bestE1RM: allTimeBestE1RM } = await buildPrevReference(programId, session.id, today());
+  const { ref: prevRef, bestE1RM: allTimeBestE1RM, history, profile } = await buildPrevReference(programId, session.id, today());
   if (stale()) return;
+  _history = history;
+  _profile = profile;
+  const _deload = bandDay ? null : (deloadAdvice(session.exercises.map(x => targetFor(x, exMap[String(x.name).toLowerCase()]))) || profile?.fatigue?.advice || null);
 
   app.innerHTML = `
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
-    <div class="muted" style="font-size:12px">${positionLabel(today_w)}</div>
+    <div class="muted" style="font-size:12px">${positionLabel(today_w)}<span id="session-clock"></span></div>
     ${pjfDayNotesHtml(program, week, day, dayData)}
     ${dayInfoHtml(program, dayData)}
+    ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
+    ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
+    ${session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()])) ? `
+    <div style="display:flex;align-items:center;gap:8px;margin:10px 0">
+      <button class="pill ${session.gym_day ? 'accent' : ''}" id="gym-toggle" style="cursor:pointer;padding:8px 14px;font-size:14px">🏋 ${session.gym_day ? 'At the gym today' : 'Going to the gym today?'}</button>
+      <button class="pill" id="gym-kit" style="cursor:pointer;padding:8px 10px" aria-label="Gym equipment">⚙</button>
+      <span class="muted" style="font-size:11px;flex:1">${session.gym_day ? 'Band and bodyweight stand-ins swapped for gym versions.' : 'Swaps band and bodyweight stand-ins for gym versions.'}</span>
+    </div>` : ''}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
@@ -413,7 +437,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     session.done = true;
     session.skipped = true;
     await saveSession(session);
-    if (today_w.mode === 'follow' && !wasDone) await advanceCursor(programId, 'follow');
+    // Skipping Daily Mobility keeps its day for tomorrow (same as Skip today on its Home card).
+    if (today_w.mode === 'follow' && !wasDone && !today_w.daily) await advanceCursor(programId, 'follow');
     stopRestTimer();
     toast('Workout skipped');
     navigate('home');
@@ -433,7 +458,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   $root.addEventListener('click', async e => {
     // Compact re-expansion: tap anywhere on a compact card except action buttons
     const compactCard = e.target.closest('.exercise--compact');
-    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn')) {
+    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn, [data-rest], .add-set-sugg')) {
       compactCard.classList.remove('exercise--compact');
       const $sum = compactCard.querySelector('.exercise-summary');
       if ($sum) $sum.style.display = 'none';
@@ -483,7 +508,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
 
       set.done = !set.done;
+      if (set.done) set.at = Date.now(); else delete set.at;   // set times give real session length (src/lib/learn.js)
       await saveSession(session);
+      _tickClock();
       e.target.closest('.set-row').classList.toggle('done', !!set.done);
       e.target.textContent = set.done ? '✓' : '○';
 
@@ -518,6 +545,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       if (set.done) {
         if (!ex.intervals) startRestTimer(card, ex);   // interval rounds run straight into the next
         applyCompactState(card, ex);
+        showUndo(e.target, session, i, setIdx);
       } else {
         // Un-check: clear the timer only if it is running on this exercise
         if (_rest?.i === i) stopRestTimer();
@@ -553,6 +581,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const setIdx = +e.target.dataset.set;
       openRPEPicker(card, setIdx, session, i);
     }
+    if (e.target.matches('.add-set-sugg')) {
+      const ex = session.exercises[+e.target.closest('.exercise').dataset.i];
+      ex.target_sets = (parseInt(ex.target_sets) || 3) + 1;
+      ex.set_added = true;
+      await saveSession(session);
+      toast(`${ex.name}: ${ex.target_sets} sets today`);
+      renderWorkout(document.getElementById('app'), { keepRest: true });
+      return;
+    }
     if (e.target.matches('.ex-menu')) {
       const card = e.target.closest('.exercise');
       const i = +card.dataset.i;
@@ -568,6 +605,17 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   });
   };
   if (!bandDay) wireCards($ex);
+  // Session clock: minutes since the first logged set (sets store their time).
+  clearInterval(_clock);
+  const tickClock = () => {
+    const el = document.getElementById('session-clock');
+    if (!el) return clearInterval(_clock);
+    const ts = session.exercises.flatMap(x => (x.sets || []).map(st => st?.done && st.at)).filter(Boolean);
+    el.textContent = ts.length && !session.done ? ` · ⏱ ${Math.max(1, Math.round((Date.now() - Math.min(...ts)) / 60000))} min` : '';
+  };
+  tickClock();
+  _tickClock = tickClock;
+  _clock = setInterval(tickClock, 15000);
   // A rest that was running when the sheet closed carries on, on that exercise's card.
   if (_rest) $ex.querySelector(`.exercise[data-i="${_rest.i}"] .rest-timer-line`)?.classList.add('rest-live');
 
@@ -679,6 +727,36 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     openStep(k < 0 ? warmCount : k);
   };
   app.querySelector('#start-flow').onclick = startFlow;
+  // 🏋 Gym today (src/lib/gym_swap.js): swap home stand-ins for better gym versions, or put the plan back.
+  app.querySelector('#gym-toggle')?.addEventListener('click', async () => {
+    const on = !session.gym_day;
+    const [gym, learned] = await Promise.all([pref('gym_equipment'), _loadLearned()]);
+    const lookup = (n) => exMap[String(n).toLowerCase()];
+    const { rows, swaps } = applyGymDay(session.exercises, on, lookup, allExercises,
+      { gym: gym || GYM_DEFAULT, learned, favorites: favorites(), avoid: _profile?.avoid || [] });
+    session.exercises = rows;
+    session.gym_day = on || undefined;
+    await saveSession(session);
+    const real = swaps.filter(x => x.from !== x.to);
+    toast(on ? (real.length ? `Gym: ${real.length} swap${real.length === 1 ? '' : 's'}${swaps.length > real.length ? ', lunges with dumbbells' : ''}` : 'Nothing to swap: today already suits the gym')
+      : 'Back to the plan', 2400);
+    renderWorkout(app, { keepRest: true });
+  });
+  app.querySelector('#gym-kit')?.addEventListener('click', async () => {
+    let kit = (await pref('gym_equipment')) || [...GYM_DEFAULT];
+    const ALL = ['dumbbell', 'barbell', 'trap_bar', 'bench', 'box', 'cable', 'machine', 'pullup_bar', 'landmine', 'kettlebell', 'smith', 'med_ball', 'band', 'mini_band', 'sled', 'suspension'];
+    openSheet((sheet, close) => {
+      const paint = () => {
+        sheet.innerHTML = `<h2>Your gym has</h2>
+          <div class="muted" style="margin-bottom:10px">Used when you tap "Going to the gym today?".</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">${ALL.map(q => `<button class="pill ${kit.includes(q) ? 'accent' : ''}" data-q="${q}" style="cursor:pointer;padding:7px 11px">${EQUIPMENT_LABEL[q] || q}</button>`).join('')}</div>
+          <button class="btn" id="gk-save" style="margin-top:14px">Save</button>`;
+        sheet.querySelectorAll('[data-q]').forEach(b => b.onclick = () => { const q = b.dataset.q; kit = kit.includes(q) ? kit.filter(x => x !== q) : [...kit, q]; paint(); });
+        sheet.querySelector('#gk-save').onclick = async () => { await pref('gym_equipment', kit); close(); toast('Gym equipment saved'); };
+      };
+      paint();
+    });
+  });
   // Today's "Start workout" goes straight into the flow.
   let auto = false;
   try { auto = sessionStorage.getItem('lift-autostart') === '1'; sessionStorage.removeItem('lift-autostart'); } catch { /* private mode */ }
@@ -772,7 +850,6 @@ function _warmupBlockHtml(warmup, exMap) {
           <div style="flex:1;min-width:0">
             <div class="exercise-name" style="font-size:16px">${ex.name}</div>
             ${lookup?.pattern ? `<div style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
-            ${hipCautionHtml(ex.name)}
             ${target ? `<div class="exercise-target">${target}</div>` : ''}
             ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
           </div>
@@ -963,6 +1040,12 @@ function openExerciseMenu(session, i, allExercises, exMap) {
         <button class="btn secondary" id="add-set">+ Set</button>
         <button class="btn secondary" id="rm-set">− Set</button>
       </div>
+      <div class="btn-row" style="margin-bottom:8px">
+        <button class="btn ghost" id="ex-note">📝 ${ex.user_note ? 'Edit note' : 'Add note'}</button>
+        <button class="btn ghost" id="ex-hurt">${ex.hurt ? '✓ Hurt today' : '🤕 This hurts'}</button>
+      </div>
+      <button class="btn ghost" id="ex-fav" style="margin-bottom:8px">${isFav(ex.name) ? '♥ Favourite (tap to remove)' : '♡ Favourite'}</button>
+      ${loadedLift(lookup) ? '<button class="btn ghost" id="ex-plates" style="margin-bottom:8px">🏋 Plates & warm-up sets</button>' : ''}
       <button class="btn ghost" id="progression" style="margin-bottom:8px">📈 Progression chart</button>
       <button class="btn ghost" id="edit-target" style="margin-bottom:8px">Edit target reps/sets</button>
       ${clipVideo ? '<button class="btn ghost" id="clip-video" style="margin-bottom:8px">✂ Clip video</button>' : ''}
@@ -972,6 +1055,35 @@ function openExerciseMenu(session, i, allExercises, exMap) {
     sheet.querySelector('#progression').onclick = () => {
       close(false);
       openProgressionChart(ex.name);
+    };
+    sheet.querySelector('#ex-plates')?.addEventListener('click', () => { close(false); openPlates(ex, lookup); });
+    sheet.querySelector('#ex-fav').onclick = async () => {
+      const on = await toggleFav(ex.name);
+      close();
+      toast(on ? 'Favourite: new plans pick it first' : 'Removed from favourites', 1800);
+      renderWorkout(document.getElementById('app'), { keepRest: true });
+    };
+    // A note stays with this exercise and shows next time it comes up ("Last note: …").
+    sheet.querySelector('#ex-note').onclick = () => {
+      close(false);
+      openSheet((s2, close2) => {
+        s2.innerHTML = `<h2>Note · ${ex.name}</h2>
+          <textarea id="n-text" rows="3" placeholder="e.g. hip pinched at depth, use the blue band, seat on 4" style="width:100%">${(ex.user_note || '').replace(/</g, '&lt;')}</textarea>
+          <div class="btn-row" style="margin-top:12px"><button class="btn" id="n-save">Save</button><button class="btn ghost" id="n-cancel">Cancel</button></div>`;
+        s2.querySelector('#n-cancel').onclick = close2;
+        s2.querySelector('#n-save').onclick = async () => {
+          ex.user_note = s2.querySelector('#n-text').value.trim() || undefined;
+          await saveSession(session); close2(); renderWorkout(document.getElementById('app'), { keepRest: true });
+        };
+      });
+    };
+    // "This hurts" is remembered: twice for the same exercise and new plans leave it out (src/lib/learn.js).
+    sheet.querySelector('#ex-hurt').onclick = async () => {
+      ex.hurt = !ex.hurt || undefined;
+      await saveSession(session);
+      close();
+      if (ex.hurt) toast('Noted. Swap it (⋯ → Swap) if it keeps hurting.', 2600);
+      renderWorkout(document.getElementById('app'), { keepRest: true });
     };
     // Demo shows other moves too: play only this one's part (a one-off, so it lives here).
     sheet.querySelector('#clip-video')?.addEventListener('click', () => {
@@ -1011,10 +1123,10 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           }).join('')}` : '';
         const similarSection = similarExercises.length ? `
           <div class="group-label" style="margin:12px 0 6px">${lookup?.pattern ? 'Similar movement' : (muscleLabel || 'Similar')}</div>
-          ${similarExercises.slice(0, 12).map(e =>
+          ${[...similarExercises].sort((a, b) => isFav(b.name) - isFav(a.name)).slice(0, 12).map(e =>
             `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
-                <div class="list-item-title">${e.name}</div>
+                <div class="list-item-title">${isFav(e.name) ? '<span style="color:#f472b6">♥</span> ' : ''}${e.name}</div>
                 <div class="list-item-meta" style="text-transform:capitalize">${e.pattern ? tagLine(e) : (e.primary_muscle?.replace(/_/g, ' ') || '')}${e.level ? ` · ${LEVEL_LABEL[e.level]}` : ''}${hasVideo(e) ? ' · ▶' : ''}</div>
               </div>
             </div>`
@@ -1032,27 +1144,10 @@ function openExerciseMenu(session, i, allExercises, exMap) {
           <div class="group-label" style="margin:0 0 6px">This move is ${LEVEL_LABEL[lookup.level || 2]} · progress with a harder version</div>
           ${nb.harder.length ? `<div class="list-item-meta" style="margin:4px 0">Harder</div>${nb.harder.map(stepRow).join('')}` : ''}
           ${nb.easier.length ? `<div class="list-item-meta" style="margin:8px 0 4px">Easier</div>${nb.easier.map(stepRow).join('')}` : ''}` : '';
-        const hipAlts = _hipFlare
-          ? hipSwaps(ex.name).filter(n => exMap[n.toLowerCase()] && n !== ex.name)
-          : [];
-        const hipSection = hipAlts.length ? `
-          <div class="group-label" style="margin:0 0 6px;color:#fdba74">Hip-friendly swaps · flare mode</div>
-          ${hipAlts.map(name => {
-            const alt = exMap[name.toLowerCase()];
-            const from = alt?.sources?.includes('hip') ? 'from your hip plan' : (alt?.primary_muscle || '').replace(/_/g, ' ');
-            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
-              <div style="flex:1">
-                <div class="list-item-title">${name}</div>
-                <div class="list-item-meta">${from}${alt?.video_url ? ' · ▶' : ''}</div>
-              </div>
-            </div>`;
-          }).join('')}
-          <div style="height:10px"></div>` : '';
         s2.innerHTML = `
           <h2>Swap: ${ex.name}</h2>
           ${planSection}
           ${levelSection}
-          ${hipSection}
           ${bwsSection}
           ${similarSection}
           <div class="group-label" style="margin:12px 0 6px">Any exercise</div>
@@ -1285,6 +1380,20 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
     .filter(s => s.program_id === programId && s.id !== currentSessionId && s.date < todayStr && s.done && !s.skipped)
     .sort((a, b) => b.date.localeCompare(a.date));
 
+  // Every program's sessions, newest first, up to 3 per exercise: what the next-session targets
+  // (src/lib/adapt.js) work from. The same lift logged in another plan still counts.
+  const history = {};
+  const allDone = all.filter(s => s.id !== currentSessionId && s.date < todayStr && s.done && !s.skipped)
+    .sort((a, b) => b.date.localeCompare(a.date));
+  _notes = {};
+  for (const s of allDone) for (const ex of (s.exercises || [])) if (ex.user_note && !(ex.name in _notes)) _notes[ex.name] = ex.user_note;
+  for (const s of allDone) for (const ex of (s.exercises || [])) {
+    const sets = (ex.sets || []).filter(st => st?.done && st.reps);
+    if (!sets.length) continue;
+    const h = (history[ex.name] ||= []);
+    if (h.length < 3 && h[h.length - 1]?.date !== s.date) h.push({ date: s.date, sets });
+  }
+
   const ref = {};
   for (const s of past) {
     for (const ex of (s.exercises || [])) {
@@ -1296,7 +1405,22 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
       }
     }
   }
-  return { ref, bestE1RM };
+  return { ref, bestE1RM, history, profile: learnProfile(all, { today: todayStr }) };
+}
+
+let _history = {};
+let _profile = null;
+let _notes = {};   // last note written on each exercise
+let _clock = null;
+let _learned = null;   // coach-program numbers (data/learned_patterns.json), for gym swaps
+const _loadLearned = async () => (_learned ||= await fetch('data/learned_patterns.json').then(r => r.json()).catch(() => ({})));
+let _tickClock = () => {};
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+/** Next-session target for a lift from its logged history (null for timed work or nothing logged). */
+function targetFor(ex, lookup) {
+  if (isTimed(ex) || ex.intervals) return null;
+  return nextTarget({ history: _history[ex.name] || [], target: ex.target_reps, sets: parseInt(ex.target_sets) || 3,
+                      equipment: lookup?.equipment || [], today: today(), profile: _profile });
 }
 
 function formatPrevSets(sets) {
@@ -1312,16 +1436,34 @@ function formatPrevSets(sets) {
  * it counts up. It draws into every `.rest-live` element on screen, so it keeps going on the
  * next exercise's sheet after Next →, and on the card again if the sheet is closed.
  */
-let _rest = null;   // { start, target, last, i }
+let _rest = null;   // { start, target, last, i, key }
+let _restKey = null;  // which workout the Lift tab shows
 function stopRestTimer() {
   if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
   _rest = null;
   document.querySelectorAll('.rest-timer-line, .rest-live').forEach(el => { el.innerHTML = ''; });
+  document.getElementById('rest-float')?.remove();
+}
+
+/** −15 s / +15 s: a countdown moves its target; a count-up (no prescribed rest) gets one. */
+function adjustRest(delta) {
+  if (!_rest) return;
+  const elapsed = Math.floor((Date.now() - _rest.start) / 1000);
+  _rest.target = Math.max(elapsed + 1, (_rest.target || Math.max(elapsed, 60)) + delta);
+  _rest.last = null;
+  paintRest();
+}
+const REST_BTN = 'class="btn ghost" style="width:auto;min-height:0;padding:2px 8px;font-size:11px;margin-left:4px"';
+const restControls = () => `<button type="button" data-rest="-15" ${REST_BTN}>−15</button><button type="button" data-rest="15" ${REST_BTN}>+15</button><button type="button" data-rest="skip" ${REST_BTN}>Skip</button>`;
+function wireRestControls(el) {
+  el.querySelectorAll('[data-rest]').forEach(b => b.onclick = (e) => {
+    e.stopPropagation();
+    if (b.dataset.rest === 'skip') stopRestTimer(); else adjustRest(+b.dataset.rest);
+  });
 }
 
 function paintRest() {
   if (!_rest) return;
-  if (!/workout/.test(location.hash)) return stopRestTimer();   // left the Lift tab
   const sec = Math.floor((Date.now() - _rest.start) / 1000);
   let text;
   if (_rest.target) {
@@ -1336,14 +1478,24 @@ function paintRest() {
   } else {
     text = `rest ${fmtSecs(sec)}`;
   }
+  // Away from the Lift tab (meals, a chart…), the timer keeps going in a pill above the tab bar.
+  const away = !/workout/.test(location.hash);
+  let $float = document.getElementById('rest-float');
+  if (away && !$float) {
+    $float = document.createElement('div');
+    $float.id = 'rest-float';
+    $float.className = 'rest-live rest-float';
+    document.body.appendChild($float);
+    $float.addEventListener('click', (e) => { if (!e.target.closest('[data-rest]')) location.hash = '#/workout'; });
+  } else if (!away && $float) { $float.remove(); }
   document.querySelectorAll('.rest-live').forEach(el => {
     let $t = el.querySelector('.rest-timer-text');
     if (!$t) {
-      el.innerHTML = '<span class="rest-timer-text"></span> <button type="button" class="btn ghost rest-stop" style="width:auto;min-height:0;padding:2px 8px;font-size:11px;margin-left:6px">Stop</button>';
-      el.querySelector('.rest-stop').onclick = (e) => { e.stopPropagation(); stopRestTimer(); };
+      el.innerHTML = `<span class="rest-timer-text"></span>${restControls()}`;
+      wireRestControls(el);
       $t = el.querySelector('.rest-timer-text');
     }
-    $t.textContent = text;
+    $t.textContent = el.id === 'rest-float' ? `⏱ ${text}` : text;
     el.classList.toggle('rest-over', !!_rest.target && sec >= _rest.target);
   });
 }
@@ -1352,10 +1504,82 @@ function startRestTimer(card, ex) {
   stopRestTimer();
   document.querySelectorAll('.rest-timer-line.rest-live').forEach(el => el.classList.remove('rest-live'));
   card.querySelector('.rest-timer-line')?.classList.add('rest-live');
-  _rest = { start: Date.now(), target: parseRestSeconds(ex?.rest), last: null, i: +card.dataset.i };
+  _rest = { start: Date.now(), target: parseRestSeconds(ex?.rest), last: null, i: +card.dataset.i, key: _restKey };
   if (_rest.target) timerAlert('rest');
   paintRest();
   _restInterval = setInterval(paintRest, 250);
+}
+
+// ── Plates and warm-up sets ──────────────────────────────────────────────────────────────
+const BAR_LB = { barbell: 45, smith: 25, trap_bar: 55, landmine: 0 };
+const PLATES_LB = [45, 35, 25, 10, 5, 2.5];
+const loadedLift = (lookup) => (lookup?.equipment || []).some(q => q in BAR_LB || q === 'dumbbell' || q === 'kettlebell' || q === 'machine' || q === 'cable');
+/** Plates per side for a bar weight: [45, 25, 2.5] for 190 on a 45 lb bar. */
+function platesFor(total, bar = 45) {
+  let side = Math.max(0, (total - bar) / 2);
+  const out = [];
+  for (const p of PLATES_LB) while (side >= p - 1e-9) { out.push(p); side -= p; }
+  return { plates: out, leftover: Math.round(side * 2 * 10) / 10 };
+}
+/** Ramp to the working weight (BWS/Nippard: lighter sets with fewer reps as load climbs). */
+function warmupRamp(work, step = 5, bar = 0) {
+  const r = (x) => Math.max(bar, Math.round(x / step) * step);
+  const ramp = work >= 135 ? [[0.5, 8], [0.7, 4], [0.85, 2], [0.95, 1]] : work >= 60 ? [[0.5, 8], [0.75, 3], [0.9, 1]] : [[0.6, 8]];
+  return ramp.map(([f, reps]) => ({ weight: r(work * f), reps })).filter((x, i, a) => x.weight < work && (!i || x.weight > a[i - 1].weight));
+}
+function openPlates(ex, lookup) {
+  const eq = lookup?.equipment || [];
+  const barKey = Object.keys(BAR_LB).find(q => eq.includes(q));
+  const bar = barKey ? BAR_LB[barKey] : 0;
+  const t = targetFor(ex, lookup);
+  const lastW = Math.max(0, ...(_history[ex.name]?.[0]?.sets || []).map(st => +st.weight || 0));
+  let work = (ex.sets || []).find(st => st?.weight)?.weight || t?.weight || lastW || (bar ? 135 : 30);
+  openSheet((sheet, close) => {
+    const paint = () => {
+      const step = barKey ? 5 : eq.includes('dumbbell') && work < 15 ? 2.5 : 5;
+      const ramp = warmupRamp(work, step, bar);
+      const plateStr = (w) => { if (!barKey || !bar) return ''; const { plates, leftover } = platesFor(w, bar);
+        return plates.length ? ` · <span class="muted">${plates.join(' + ')} a side${leftover ? ` (+${leftover})` : ''}</span>` : ' · <span class="muted">empty bar</span>'; };
+      sheet.innerHTML = `<h2>${esc(ex.name)}</h2>
+        <label>Working weight (lb)</label>
+        <div style="display:flex;gap:6px;align-items:center"><button class="btn ghost" data-w="-5" style="width:auto">−5</button>
+          <input type="number" id="pl-w" inputmode="decimal" value="${work}" style="text-align:center;font-size:18px">
+          <button class="btn ghost" data-w="5" style="width:auto">+5</button></div>
+        ${barKey && bar ? `<div style="margin:12px 0;font-size:16px"><b>${work} lb</b> on a ${bar} lb ${barKey.replace('_', ' ')}${plateStr(work)}</div>` : '<div style="height:10px"></div>'}
+        <div class="group-label">Warm-up sets</div>
+        ${ramp.length ? ramp.map(x => `<div class="list-item" style="padding:8px 0"><div style="flex:1">${x.weight} lb × ${x.reps}${plateStr(x.weight)}</div></div>`).join('')
+          : '<div class="muted">Light enough to start with a set of 8 at about half.</div>'}
+        <div class="muted" style="font-size:12px;margin-top:8px">Short rest between warm-up sets. They don't count as working sets.</div>
+        <button class="btn" id="pl-close" style="margin-top:14px">Done</button>`;
+      sheet.querySelector('#pl-close').onclick = close;
+      sheet.querySelector('#pl-w').onchange = (e) => { work = Math.max(0, +e.target.value || 0); paint(); };
+      sheet.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { work = Math.max(0, work + +b.dataset.w); paint(); });
+    };
+    paint();
+  });
+}
+
+/** "Set 2 logged · Undo" for a few seconds: a mis-tap shouldn't land in the logs the app learns from. */
+let _undoTimer = null;
+function showUndo(btn, session, i, setIdx) {
+  document.getElementById('undo-toast')?.remove();
+  clearTimeout(_undoTimer);
+  const el = document.createElement('div');
+  el.id = 'undo-toast';
+  el.className = 'undo-toast';
+  el.innerHTML = `<span>Set ${setIdx + 1} logged</span><button type="button">Undo</button>`;
+  document.body.appendChild(el);
+  el.querySelector('button').onclick = async () => {
+    el.remove();
+    if (btn.isConnected && btn.closest('.set-row')?.classList.contains('done')) { btn.click(); return; }   // the normal un-check path
+    const set = session.exercises[i]?.sets?.[setIdx];
+    if (!set?.done) return;
+    set.done = false; delete set.at;
+    if (_rest?.i === i) stopRestTimer();
+    await saveSession(session);
+    renderWorkout(document.getElementById('app'), { keepRest: true });
+  };
+  _undoTimer = setTimeout(() => el.remove(), 5000);
 }
 
 function applyCompactState(card, ex) {
@@ -1402,6 +1626,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const prevSets = prevRef[ex.name]?.sets || [];
   let setRows = '';
   const timed = isTimed(ex);
+  const next = targetFor(ex, lookup);
   const target = parseSecs(ex.time);
   for (let s = 0; s < sets && timed; s++) {
     const set = ex.sets[s] || {};
@@ -1417,9 +1642,9 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     const set = ex.sets[s] || {};
     const prev = prevSets[s] || {};
     const done = set.done ? 'done' : '';
-    // Pre-fill from previous session when this set hasn't been logged yet
-    const wVal = set.weight ?? prev.weight ?? '';
-    const rVal = set.reps   ?? prev.reps   ?? '';
+    // Pre-fill with the next-session target (src/lib/adapt.js), else the previous session's set
+    const wVal = set.weight ?? (next?.weight ?? prev.weight) ?? '';
+    const rVal = set.reps   ?? (next ? next.reps : prev.reps) ?? '';
     const wPh  = wVal === '' ? 'lb'   : '';
     const rPh  = rVal === '' ? 'reps' : '';
     setRows += `
@@ -1453,11 +1678,14 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   card.innerHTML = `
     <div class="exercise-header">
       <div style="flex:1">
-        <div class="exercise-name">${ex.name}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}</div>
+        <div class="exercise-name">${ex.name}${isFav(ex.name) ? ' <span style="color:#f472b6;font-size:13px">♥</span>' : ''}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}${ex.hurt ? ' <span class="pill" style="font-size:10px;color:var(--danger)">hurt</span>' : ''}</div>
         ${lookup?.pattern ? `<div class="ex-tagline" style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
-        ${hipCautionHtml(ex.name)}
         <div class="exercise-target">${formatTarget(ex)}</div>
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
+        ${ex.user_note ? `<div style="font-size:12px;margin-top:2px">📝 ${esc(ex.user_note)}</div>`
+          : _notes[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">📝 Last note: ${esc(_notes[ex.name])}</div>` : ''}
+        ${next ? `<div class="next-line" style="font-size:11px;margin-top:2px;color:${next.kind === 'down' || next.kind === 'back' ? 'var(--fg-dim)' : 'var(--accent)'}">Today: ${next.weight ? `${next.weight} lb × ` : ''}${next.reps} · ${next.note}${
+          next.addSet && !ex.set_added ? ' <button type="button" class="pill accent add-set-sugg" style="cursor:pointer;font-size:11px;padding:3px 8px;margin-left:4px">+1 set</button>' : ''}</div>` : ''}
         <div class="e1rm-line" style="font-size:12px;margin-top:2px">${initialE1RM}</div>
         <div class="rest-timer-line" style="min-height:14px"></div>
         <div class="exercise-summary"></div>
@@ -1613,18 +1841,17 @@ async function renderTagDay(app, today_w) {
     'Custom': { icon: '✏️', txt: 'Free-form session', sub: 'Add exercises and log as you go.' },
   };
   const m = map[today_w.tag] || { icon: '·', txt: today_w.tag, sub: '' };
-  const dateKey = today();
   app.innerHTML = `
     <h1>${m.icon} ${m.txt}</h1>
     <div class="muted">${m.sub}</div>
-    <div id="daily-mobility"></div>
     <div class="btn-row" style="margin-top:14px">
+      ${(await dailyWorkout()) ? '<button class="btn" id="mob-daily">Daily Mobility →</button>' : ''}
       <button class="btn ghost" id="mob-move">Move tab</button>
       <button class="btn ghost" id="back">Today</button>
     </div>
   `;
-  const { renderDailyMobility } = await import('./daily_mobility.js');
-  await renderDailyMobility(app.querySelector('#daily-mobility'), dateKey, { compact: true });
+  const $daily = app.querySelector('#mob-daily');
+  if ($daily) $daily.onclick = () => navigate('daily');
   app.querySelector('#back').onclick = () => navigate('home');
   app.querySelector('#mob-move').onclick = () => navigate('cardio');
 }
@@ -1674,6 +1901,12 @@ function computeSessionStats(session, allSessions) {
   return { totalSets, totalVolume, exerciseSummaries, prs };
 }
 
+/** Minutes from the first to the last logged set, plus a few for warm-up (sets store their time since v117). */
+function sessionMinutes(session) {
+  const ts = (session.exercises || []).flatMap(x => (x.sets || []).map(st => st?.done && st.at)).filter(Boolean);
+  return ts.length >= 2 ? Math.round((Math.max(...ts) - Math.min(...ts)) / 60000) + 4 : null;
+}
+
 function renderWorkoutComplete(app, session, stats, program, week, day) {
   const programLabel = program.name || program.program_name || program.id;
   const weekDayLabel = program?.days && !program.weeks
@@ -1710,9 +1943,25 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     `;
   }).join('');
 
-  const statsLine = stats.totalVolume > 0
-    ? `${stats.exerciseSummaries.length} exercises · ${stats.totalSets} sets · ${Math.round(stats.totalVolume).toLocaleString()} lb`
-    : `${stats.exerciseSummaries.length} exercises · ${stats.totalSets} sets`;
+  const mins = sessionMinutes(session);
+  const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+  const statsLine = [plural(stats.exerciseSummaries.length, 'exercise'), plural(stats.totalSets, 'set'),
+    stats.totalVolume > 0 ? `${Math.round(stats.totalVolume).toLocaleString()} lb` : null, mins ? `${mins} min` : null].filter(Boolean).join(' · ');
+  // How it felt (RP-style check-in): feeds the deload advice and what the app learns (src/lib/learn.js).
+  const feel = session.feel || {};
+  const chip = (k, v, label) => `<button class="pill ${feel[k] === v ? 'accent' : ''}" data-feel="${k}" data-v="${v}" style="cursor:pointer;font-size:13px;padding:7px 12px">${label}</button>`;
+  const doneNames = session.exercises.filter(x => (x.sets || []).some(st => st?.done)).map(x => x.name);
+  const feelCard = session.skipped ? '' : `
+    <div class="card" id="feel-card" style="padding:12px 14px;margin-bottom:14px">
+      <div style="font-weight:600;margin-bottom:8px">How did it feel?</div>
+      <div class="muted" style="font-size:12px;margin-bottom:4px">The workout was</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${chip('effort', 'easy', 'Easy')}${chip('effort', 'right', 'About right')}${chip('effort', 'hard', 'Too much')}</div>
+      <div class="muted" style="font-size:12px;margin-bottom:4px">Energy</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${chip('energy', 1, '😫 Drained')}${chip('energy', 2, '🙂 OK')}${chip('energy', 3, '💪 Strong')}</div>
+      ${doneNames.length ? `<div class="muted" style="font-size:12px;margin-bottom:4px">Anything hurt? (tap)</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.hurt ? 'accent' : ''}" data-hurt="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
+      <textarea id="feel-note" rows="2" placeholder="Note for this workout (optional)" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
+    </div>`;
 
   app.innerHTML = `
     <div style="padding-top:8px">
@@ -1727,6 +1976,8 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       </div>
 
       <div class="muted" style="text-align:center;margin:14px 0 20px;font-size:13px">${statsLine}</div>
+      ${feelCard}
+      <button class="btn ghost" id="done-share" style="margin-bottom:8px">↗ Share</button>
 
       <div class="btn-row">
         <button class="btn" id="done-home">Back to today</button>
@@ -1737,22 +1988,46 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     </div>
   `;
 
+  app.querySelectorAll('[data-feel]').forEach(b => b.onclick = async () => {
+    const v = isNaN(+b.dataset.v) ? b.dataset.v : +b.dataset.v;
+    session.feel = { ...(session.feel || {}), [b.dataset.feel]: v };
+    await saveSession(session);
+    app.querySelectorAll(`[data-feel="${b.dataset.feel}"]`).forEach(x => x.classList.toggle('accent', x === b));
+  });
+  app.querySelectorAll('[data-hurt]').forEach(b => b.onclick = async () => {
+    const x = session.exercises.find(q => q.name === b.dataset.hurt);
+    if (!x) return;
+    x.hurt = !x.hurt || undefined;
+    await saveSession(session);
+    b.classList.toggle('accent', !!x.hurt);
+  });
+  app.querySelector('#feel-note')?.addEventListener('change', async (e) => { session.note = e.target.value.trim() || undefined; await saveSession(session); });
+  app.querySelector('#done-share').onclick = async () => {
+    const lines = [`${session.focus || 'Workout'} · ${session.date}${mins ? ` · ${mins} min` : ''}`,
+      ...stats.exerciseSummaries.map(x => `${x.name}: ${x.bestSet ? `${x.bestSet.weight ?? 'BW'} × ${x.bestSet.reps ?? '—'}` : `${x.setsCompleted} sets`}${prNames.has(x.name) ? ' ★ PR' : ''}`),
+      statsLine];
+    const text = lines.join('\n');
+    try {
+      if (navigator.share) await navigator.share({ title: session.focus || 'Workout', text });
+      else { await navigator.clipboard.writeText(text); toast('Copied'); }
+    } catch (err) { if (err?.name !== 'AbortError') { try { await navigator.clipboard.writeText(text); toast('Copied'); } catch { toast('Could not share'); } } }
+  };
   app.querySelector('#done-home').onclick = () => navigate('home');
   app.querySelector('#done-body').onclick = () => navigate('body');
   app.querySelector('#done-next')?.addEventListener('click', () => {
-    allowNextWorkoutToday();
+    allowNextWorkoutToday(program.id);
     renderWorkout(app);
   });
 }
 
 async function changeDay(delta) {
   // Manually move the program cursor (follow mode only — the buttons are hidden otherwise).
-  const today_w = await todaysWorkout();
+  const today_w = await whichWorkout();
   if (today_w.type !== 'program' || today_w.mode !== 'follow') return;
   const program = today_w.program;
   const programId = program.id;
   // Browsing days means moving on from anything already finished today.
-  allowNextWorkoutToday();
+  allowNextWorkoutToday(programId);
   if (program.weeks) {
     let week = today_w.week || 1;
     let day = (today_w.day || 1) + delta;
