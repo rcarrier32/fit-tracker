@@ -94,13 +94,14 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   // Go easy on (rules.easy_on): leave out moves that commonly load a sore area.
   const easy = (p.easy || []).map(k => rules.easy_on?.[k]).filter(Boolean);
   const easyHit = (e) => easy.some(z => (z.patterns || []).includes(e.pattern) || (z.names && new RegExp(z.names, 'i').test(e.name)));
+  // Moves whose video is a stand-in (another move's demo) wait for their own before plans use them.
   const pool = exercises.filter(e =>
-    e.pattern && e.role && hasVideo(e) && (e.level || 2) <= p.level &&
+    e.pattern && e.role && hasVideo(e) && !e.video_standin && (e.level || 2) <= p.level &&
     (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/last resort/i.test(e.name));
 
   const byName = new Map(exercises.map(e => [e.name, e]));   // required moves can sit outside the pool
   // One level above the person's level: the last resort for a slot nothing at their level fits.
-  const levelUpPool = exercises.filter(e => e.pattern && e.role && hasVideo(e) && (e.level || 2) === p.level + 1 &&
+  const levelUpPool = exercises.filter(e => e.pattern && e.role && hasVideo(e) && !e.video_standin && (e.level || 2) === p.level + 1 &&
     (e.equipment || ['bodyweight']).every(q => ['bodyweight', ...p.equipment].includes(q)) && !/last resort/i.test(e.name) && !easyHit(e));
   const levelUp = new Set();
   const nDays = String(Math.min(6, Math.max(2, p.days)));
@@ -142,7 +143,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   function requiredPick(r, usedToday, ph) {
     const target = Math.max(1, Math.min(p.level, p.level - (nPhases - 1 - ph)));
     // A version that doesn't hit a "go easy on" area wins (no 90/90 Copenhagen for a sore hip); one that does is the last resort.
-    return exercises.filter(e => r.re.test(e.name) && !(r.notRe && r.notRe.test(e.name)) && hasVideo(e) && !usedToday.has(e.name)
+    return exercises.filter(e => r.re.test(e.name) && !(r.notRe && r.notRe.test(e.name)) && hasVideo(e) && !e.video_standin && !usedToday.has(e.name)
         && (e.level || 2) <= p.level + 1 && (e.equipment || ['bodyweight']).every(q => have.has(q)))
       .map(e => [Math.abs((e.level || 2) - target) + ((e.level || 2) > p.level ? 0.5 : 0) + (easyHit(e) ? 10 : 0) + rand() * 0.3, e])
       .sort((a, b) => a[0] - b[0])[0]?.[1] || null;
@@ -577,7 +578,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     hip_flexors: 'hip flexors', calves: 'calves', chest: 'chest', front_delts: 'shoulders', side_delts: 'shoulders',
     lats: 'lats', upper_back: 'upper back', rear_delts: 'upper back', lower_back: 'lower back' };
   const regionsOf = (e) => { const o = {}; for (const m of e?.muscles || []) if (CREG[m]) o[CREG[m]] = Math.max(o[CREG[m]] || 0, 0.5); if (CREG[e?.primary_muscle]) o[CREG[e.primary_muscle]] = 1; return o; };
-  const coolPool = exercises.filter(e => hasVideo(e) && (e.level || 1) <= p.level && (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/foam|gentle|optional static|breathing|hang/i.test(e.name) && (
+  const coolPool = exercises.filter(e => hasVideo(e) && !e.video_standin && (e.level || 1) <= p.level && (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/foam|gentle|optional static|breathing|hang/i.test(e.name) && (
     e.role === 'cooldown' || (e.role === 'warmup' && e.pattern === 'mobility' && /opener|stretch/i.test(e.name))));
   const breathing = exercises.find(e => e.name === '7/11 Breathing' && hasVideo(e));
   function cooldownFor(rows) {

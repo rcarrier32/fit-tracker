@@ -3,10 +3,12 @@
  "goals": {
   "athletic": {
    "programs": [
-    "pjf_extended_band_6wk"
+    "pjf_extended_band_6wk",
+    "hoopstudy_8wk_in_season"
    ],
-   "days_per_week": 5,
+   "days_per_week": 6.0,
    "exercises": {
+    "Forward Lunge Isometric": 2,
     "1 Leg Supported TKE": 1,
     "2 Leg Full Range TKE": 1,
     "3D 1 Leg RDL": 1,
@@ -27,7 +29,6 @@
     "Double Arm Fly": 1,
     "Eccentric Forward Step with Reach": 1,
     "First Step Acceleration Hip Before Knee": 1,
-    "Forward Lunge Isometric": 1,
     "Front Raise": 1,
     "Front Raise with Lateral Step": 1,
     "Half Kneel Lateral Jump": 1,
@@ -63,135 +64,190 @@
     "Stationary Sprinting": 1,
     "Step Back Hip Hinge": 1,
     "Supine Quad Extension Iso": 1,
-    "Tricep Extension": 1
+    "Tricep Extension": 1,
+    "3 Point Dumbbell Row": 1,
+    "90/90 Single Power Jumps": 1,
+    "90/90 Sprints": 1,
+    "Dumbbell Bench Press": 1,
+    "Dumbbell Bent-Over Row": 1,
+    "Dumbbell Glute Bridge": 1,
+    "Dumbbell Goblet Squat": 1,
+    "Dumbbell Lateral Lunge": 1,
+    "Dumbbell Romanian Deadlift": 1,
+    "Falling Sprints": 1,
+    "Glute Bridge Hold": 1,
+    "Half Kneeling Single Arm Dumbbell Press": 1,
+    "Hollow Hold Sit Up": 1,
+    "Hook Plank": 1,
+    "Lateral Bounds": 1,
+    "Paused Squat Jumps": 1,
+    "Power Skip": 1,
+    "Prone Pull Through": 1,
+    "Reverse Step Back Lunge": 1,
+    "Single-Leg Elevated Hamstring Bridge": 1,
+    "Single-Leg Glute Bridge": 1,
+    "Yoga Pushup": 1
    },
    "volume": {
     "abductors": {
-     "median": 6.5,
-     "min": 6.5,
+     "median": 3.2,
+     "min": 0,
      "max": 6.5
     },
     "abs": {
-     "median": 2.0,
+     "median": 4.5,
      "min": 2.0,
-     "max": 2.0
+     "max": 7
     },
     "adductors": {
-     "median": 2.5,
-     "min": 2.5,
+     "median": 2.0,
+     "min": 1.5,
      "max": 2.5
     },
     "biceps": {
-     "median": 6,
-     "min": 6,
+     "median": 3.8,
+     "min": 1.5,
      "max": 6
     },
     "calves": {
-     "median": 1.5,
+     "median": 4.8,
      "min": 1.5,
-     "max": 1.5
+     "max": 8.0
     },
     "chest": {
-     "median": 6,
+     "median": 6.0,
      "min": 6,
      "max": 6
     },
+    "front_delts": {
+     "median": 3.0,
+     "min": 0,
+     "max": 6.0
+    },
     "glutes": {
-     "median": 18.5,
+     "median": 30.2,
      "min": 18.5,
-     "max": 18.5
+     "max": 42.0
     },
     "hamstrings": {
-     "median": 8.0,
+     "median": 14.2,
      "min": 8.0,
-     "max": 8.0
+     "max": 20.5
+    },
+    "hip_flexors": {
+     "median": 0.8,
+     "min": 0,
+     "max": 1.5
+    },
+    "lats": {
+     "median": 3.0,
+     "min": 0,
+     "max": 6
+    },
+    "lower_back": {
+     "median": 2.5,
+     "min": 0,
+     "max": 5.0
     },
     "obliques": {
-     "median": 4,
-     "min": 4,
+     "median": 3.8,
+     "min": 3.5,
      "max": 4
     },
     "quads": {
-     "median": 29.0,
-     "min": 29.0,
+     "median": 28.5,
+     "min": 28.0,
      "max": 29.0
     },
+    "rear_delts": {
+     "median": 1.5,
+     "min": 0,
+     "max": 3.0
+    },
     "side_delts": {
-     "median": 6,
-     "min": 6,
+     "median": 3.0,
+     "min": 0,
      "max": 6
     },
     "triceps": {
-     "median": 6,
-     "min": 6,
+     "median": 5.2,
+     "min": 4.5,
      "max": 6
     },
     "upper_back": {
-     "median": 6,
-     "min": 6,
+     "median": 5.2,
+     "min": 4.5,
      "max": 6
     }
    },
    "roles": {
     "warmup": {
-     "n": 8,
-     "sets": 2.0,
-     "reps": 5.0,
-     "hold_secs": null,
-     "rest_secs": null
-    },
-    "power": {
-     "n": 10,
-     "sets": 2.0,
-     "reps": 8.0,
-     "hold_secs": 20,
-     "rest_secs": null
-    },
-    "secondary": {
-     "n": 8,
-     "sets": 3.0,
+     "n": 19,
+     "sets": 2,
      "reps": 10.0,
      "hold_secs": null,
-     "rest_secs": null
+     "rest_secs": 30
     },
-    "accessory": {
-     "n": 10,
-     "sets": 3.0,
-     "reps": null,
-     "hold_secs": 8.0,
-     "rest_secs": null
-    },
-    "core": {
-     "n": 2,
+    "power": {
+     "n": 18,
      "sets": 2.0,
+     "reps": 6.0,
+     "hold_secs": 20,
+     "rest_secs": 60.0
+    },
+    "main": {
+     "n": 1,
+     "sets": 3,
      "reps": 8.0,
      "hold_secs": null,
-     "rest_secs": null
+     "rest_secs": 90
     },
-    "cooldown": {
-     "n": 1,
+    "secondary": {
+     "n": 20,
+     "sets": 3.0,
+     "reps": 8.0,
+     "hold_secs": null,
+     "rest_secs": 90.0
+    },
+    "accessory": {
+     "n": 15,
+     "sets": 3,
+     "reps": 8.0,
+     "hold_secs": 25.0,
+     "rest_secs": 15
+    },
+    "core": {
+     "n": 5,
      "sets": 2,
      "reps": 8.0,
      "hold_secs": null,
-     "rest_secs": null
+     "rest_secs": 15
+    },
+    "cooldown": {
+     "n": 5,
+     "sets": 2,
+     "reps": 10.0,
+     "hold_secs": 90.0,
+     "rest_secs": 15.0
     }
    },
    "role_position": {
-    "warmup": 0.1,
-    "power": 0.5,
-    "secondary": 0.6,
-    "accessory": 0.9,
-    "core": 0.0,
+    "warmup": 0.2,
+    "power": 0.6,
+    "main": 0.0,
+    "secondary": 0.5,
+    "accessory": 1.0,
+    "core": 0.2,
     "cooldown": 0.0
    },
    "progression": {
-    "weekly_sets_change": 0.0,
+    "weekly_sets_change": 0,
     "weekly_reps_change": 0.0,
-    "weekly_hold_change_secs": 0.0,
+    "weekly_hold_change_secs": 0,
     "reps_up_share": 0.0,
-    "block_weeks": 2,
+    "block_weeks": 2.0,
     "programs_with_deload": 0,
-    "volume_growth_first_to_last_week": 1.6
+    "volume_growth_first_to_last_week": 1.5
    },
    "superset_pairs": {
     "isolation_upper + isolation_upper": 6,
@@ -1937,6 +1993,80 @@
   },
   {
    "exercises": [
+    "3 Point Dumbbell Row",
+    "90/90 Single Power Jumps",
+    "90/90 Sprints",
+    "Dumbbell Bench Press",
+    "Dumbbell Bent-Over Row",
+    "Dumbbell Glute Bridge",
+    "Dumbbell Goblet Squat",
+    "Dumbbell Lateral Lunge",
+    "Dumbbell Romanian Deadlift",
+    "Falling Sprints",
+    "Forward Lunge Isometric",
+    "Glute Bridge Hold",
+    "Half Kneeling Single Arm Dumbbell Press",
+    "Hollow Hold Sit Up",
+    "Hook Plank",
+    "Lateral Bounds",
+    "Paused Squat Jumps",
+    "Power Skip",
+    "Prone Pull Through",
+    "Reverse Step Back Lunge",
+    "Single-Leg Elevated Hamstring Bridge",
+    "Single-Leg Glute Bridge",
+    "Yoga Pushup"
+   ],
+   "id": "hoopstudy_8wk_in_season",
+   "name": "HoopStudy 8-Week In-Season Strength",
+   "goal": "athletic",
+   "weeks": 8,
+   "days_per_week": 7,
+   "weekly_sets_by_muscle": {
+    "glutes": 42.0,
+    "quads": 28.0,
+    "hamstrings": 20.5,
+    "calves": 8.0,
+    "abs": 7,
+    "chest": 6,
+    "front_delts": 6.0,
+    "lats": 6,
+    "lower_back": 5.0,
+    "triceps": 4.5,
+    "upper_back": 4.5,
+    "obliques": 3.5,
+    "rear_delts": 3.0,
+    "hip_flexors": 1.5,
+    "adductors": 1.5,
+    "biceps": 1.5
+   },
+   "volume_growth": 1.38,
+   "total_sets_by_week": [
+    82,
+    82,
+    102,
+    102,
+    106,
+    106,
+    113,
+    113
+   ],
+   "exercises_kept_week_to_week": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "block_weeks": [
+    8
+   ],
+   "deload_weeks": []
+  },
+  {
+   "exercises": [
     "90/90 Copenhagen",
     "Band Pulling Hip Hurdle",
     "Banded March With Goblet Squat",
@@ -2063,10 +2193,59 @@
  "disagreements": [
   {
    "goal": "athletic",
+   "area": "volume",
+   "what": "biceps",
+   "rule": "6-8 sets/wk",
+   "coaches": "3.8 (range 1.5-6)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "chest",
+   "rule": "9-15 sets/wk",
+   "coaches": "6.0 (range 6-6)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "glutes",
+   "rule": "9-15 sets/wk",
+   "coaches": "30.2 (range 18.5-42.0)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "lats",
+   "rule": "6-12 sets/wk",
+   "coaches": "3.0 (range 0-6)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "quads",
+   "rule": "9-15 sets/wk",
+   "coaches": "28.5 (range 28.0-29.0)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "rear_delts",
+   "rule": "4-8 sets/wk",
+   "coaches": "1.5 (range 0-3.0)"
+  },
+  {
+   "goal": "athletic",
+   "area": "volume",
+   "what": "side_delts",
+   "rule": "6-8 sets/wk",
+   "coaches": "3.0 (range 0-6)"
+  },
+  {
+   "goal": "athletic",
    "area": "sets",
    "what": "warmup",
    "rule": 1,
-   "coaches": 2.0
+   "coaches": 2
   },
   {
    "goal": "athletic",
@@ -2074,6 +2253,34 @@
    "what": "power",
    "rule": 3,
    "coaches": 2.0
+  },
+  {
+   "goal": "athletic",
+   "area": "rest",
+   "what": "accessory",
+   "rule": "60s",
+   "coaches": "15s"
+  },
+  {
+   "goal": "athletic",
+   "area": "rest",
+   "what": "core",
+   "rule": "45s",
+   "coaches": "15s"
+  },
+  {
+   "goal": "athletic",
+   "area": "sets",
+   "what": "cooldown",
+   "rule": 1,
+   "coaches": 2
+  },
+  {
+   "goal": "athletic",
+   "area": "order",
+   "what": "accessory before core",
+   "rule": "yes",
+   "coaches": "accessory sits at 1.0, core at 0.2"
   },
   {
    "goal": "durability",

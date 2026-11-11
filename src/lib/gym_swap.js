@@ -51,7 +51,7 @@ export function gymReplacements(e, catalog, { gym = GYM_DEFAULT, learned = null,
   const have = new Set(['bodyweight', ...gym]);
   const favs = new Set(favorites), no = new Set(avoid);
   return catalog
-    .filter(c => c.name !== e.name && !used.has(c.name) && !no.has(c.name) && (c.video_url || c.video)
+    .filter(c => c.name !== e.name && !used.has(c.name) && !no.has(c.name) && (c.video_url || c.video) && !c.video_standin
       && c.pattern === e.pattern && c.primary_muscle === e.primary_muscle && sameJob(e.role, c.role)
       && (c.equipment || []).some(q => GYM_KIT.has(q) || q === 'dumbbell') && (c.equipment || []).every(q => have.has(q))
       && (c.level || 2) <= Math.max(level, (e.level || 2) + 1) && !/last resort|optional/i.test(c.name))

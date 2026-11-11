@@ -75,6 +75,7 @@ function check(params, label) {
         if ((e.level || 2) > maxL) fail('level', `${tag}: ${x.name} L${e.level} > L${params.level}`);
         if (easy.length && easyHit(e) && !isReq(x.name)) fail('go easy on', `${tag}: ${x.name}`);
         if (/last resort/i.test(x.name)) fail('no "last resort" picks', `${tag}: ${x.name}`);
+        if (e.video_standin) fail('no stand-in videos', `${tag}: ${x.name}`);
       }
       for (const x of d.exercises) {
         if (!x.sets || x.sets < 1) fail('sets', `${tag}: ${x.name}`);
