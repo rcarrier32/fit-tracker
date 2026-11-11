@@ -56,6 +56,11 @@ function check(params, label) {
   const easyHit = (e) => easy.some(z => (z.patterns || []).includes(e.pattern) || (z.names && new RegExp(z.names, 'i').test(e.name)));
 
   if (plan.weeks.length !== params.weeks) fail('weeks', `${label}: ${plan.weeks.length} weeks`);
+  // Every plan comes with a week: all its workouts placed, no three hard days in a row unless it can't fit.
+  {
+    const sw = plan.suggested_week, nTrain = Math.min(6, Math.max(2, params.days), 7 - (params.sport?.days?.length || 0));
+    if (!sw || sw.days.length !== 7 || sw.days.filter(t => t === 'train').length !== nTrain) fail('a week for every plan', `${label}: ${JSON.stringify(sw?.days)}`);
+  }
   // Sports days: games are the jumps/sprints (2+ a week: none in the plan), finishers stay easy, the week is laid out.
   if (params.sport) {
     const g = params.sport.days;
@@ -199,6 +204,20 @@ function check(params, label) {
   const allNames = plan.weeks.flatMap(w => w.days.flatMap(d => d.exercises.map(x => x.name)));
   stats.variety.push(new Set(allNames).size / Math.max(1, allNames.length));
   return plan;
+}
+
+// ── Recent check-ins: a plan starts a set lighter in phase 1 (and says so); later phases are unchanged ──
+{
+  const base = { goal: 'muscle', days: 4, minutes: 60, weeks: 6, level: 2, equipment: KITS.gym, seed: 7 };
+  const sets = (pl, w) => pl.weeks[w].days.flatMap(d => d.exercises).filter(x => x.round_group !== 'Cooldown').reduce((a, x) => a + (x.sets || 0), 0);
+  const normal = generatePlan(base, { exercises, rules, learned });
+  const tired = generatePlan({ ...base, profile: { ready: false, fatigue: { last: 3, heavy: 2 }, avoid: [], prefer: {}, favorites: [] } }, { exercises, rules, learned });
+  if (!(sets(tired, 0) < sets(normal, 0))) fail('check-ins: starts lighter', `phase 1 ${sets(tired, 0)} vs ${sets(normal, 0)}`);
+  if (!/a set lighter/.test(tired.weeks[0].days[0].notes.join(' ')) || !/running low/.test(tired.description)) fail('check-ins: says why', tired.description);
+  const mainOf = (pl) => pl.weeks[0].days.flatMap(d => d.exercises).filter(x => /main/.test(x.why || '') ).map(x => x.sets).join();
+  if (sets(tired, 4) < sets(normal, 4) - 1) fail('check-ins: later phases unchanged', `${sets(tired, 4)} vs ${sets(normal, 4)}`);
+  const ok1 = generatePlan({ ...base, profile: { ready: false, fatigue: { last: 3, heavy: 1 }, avoid: [], prefer: {}, favorites: [] } }, { exercises, rules, learned });
+  if (sets(ok1, 0) !== sets(normal, 0)) fail('check-ins: one hard day changes nothing', `${sets(ok1, 0)} vs ${sets(normal, 0)}`);
 }
 
 // ── The sweep ──

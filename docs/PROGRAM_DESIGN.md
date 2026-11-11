@@ -389,6 +389,10 @@ has its own video; `enrich_program_videos.mjs --apply` clears the mark. The test
 **Coach programs it learns from** (`data/learn_patterns.py`): PJF, BWS, Griffith/TrainHeroic and, since
 2026-11-11, HoopStudy's 8-week in-season program for the athletic goal.
 
+**Every generated plan comes with a week** (`suggested_week`, offered as **Set up my week** when you start it):
+training days spread out with Sunday rest, never three hard days in a row, Recovery & Mobility on spare days
+(3 days: Mon/Wed/Fri; 4 days: Mon Tue Thu Sat). It then runs with the week-flow rules (recovery after each pair).
+
 **Sports days** (Generate a plan → Sports you play → 🏀 Basketball and the game days; `--basketball 1,5`
 on the command line): pickup games are sprints, jumps, cuts and intervals, so with games in the week the plan
 - leaves out hard-interval finishers (Zone 2 instead), and with 2+ games a week no jumps, sprints or speed
@@ -400,6 +404,12 @@ on the command line): pickup games are sprints, jumps, cuts and intervals, so wi
   the games, and the start sheet sets the date to Day 1's weekday and offers **Set up my week**.
 On the days themselves the same app rules as Lean & Tone's basketball week apply: ✓ / ✕ on game days, no jumps
 or hard intervals the day after a game, Daily Mobility built for game recovery, recovery after each pair.
+
+**Recent check-ins set the starting size:** when 2 of your last 3 finished workouts were Too much, Drained, Low
+or had a tired note (`learn.js` fatigue), a new plan's first phase has one set fewer on secondary, accessory and
+core work (never under 2; main lifts and required moves unchanged) and fills to a lower time mark, about a
+fifth to a quarter fewer sets; the plan and week 1 say why, and phase 2 is back to normal. Works from the
+check-ins directly, before the profile has 6 workouts.
 
 **Filling the time asked** (`rules.fill`): a day under 85% of its minutes gets up to 3 accessories for the
 muscles trained on the fewest days this week (an upper day stays upper, a lower day lower), then one more

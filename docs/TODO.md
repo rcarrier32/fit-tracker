@@ -96,13 +96,26 @@ through with the user before building anything: what they'd want from it and whe
 
 ## 7. Plan builder: still to do *(decide with the user)*
 
-- **Check-ins set a new plan's starting size.** Recent "Too much" / Drained / Low / tired or very sore notes
-  could start a new plan a set lighter per exercise. Today they only shape Daily Mobility and the lighter-week
-  advice (`src/lib/feel.js`, `src/lib/learn.js`).
 - **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
   each needs its impact profile and a label on game days).
-- **Week patterns for plans without sports.** Generated plans only come with a week when there are games; a
-  "two on, recovery" week for every plan would use the same `week_plan.js`.
+
+## 8. FitKidHooper: commit the In-Season Hooper program (needs push access to `legendsyba/FitKidHooper`)
+
+A cloud session couldn't get write access to FKH, so the work is parked here:
+- [`handoff/fitkidhooper/IN_SEASON_PROGRAM_PROPOSAL.md`](handoff/fitkidhooper/IN_SEASON_PROGRAM_PROPOSAL.md): the
+  proposal (FKH format), built into FKH's existing program system: one 8-week `PROGRAMS` entry, 4 sessions a
+  week (2 strength, 2 speed & jumps), FKH's own drills and videos, HoopStudy's middle-school volume.
+- [`handoff/fitkidhooper/in-season-hooper.patch`](handoff/fitkidhooper/in-season-hooper.patch): the change
+  (program + `PROGRAM_WEEK_TIERS`, badge, `PROGRAM_KIND`). It passed FKH's `verify-programs` (21 programs OK),
+  `verify:path-gates` and `verify:exercise-skills` on 2026-11-11.
+
+In a session on FitKidHooper:
+1. `git apply <path>/in-season-hooper.patch` at the FKH repo root (re-check if `trainingCatalog.js` moved on).
+2. Add `in-season-hooper` to the `athletic-foundation` T2/T3 phases in `src/lib/developmentPathways.js`, and bump
+   `RELEASE_ID` / `WHATS_NEW` in `src/lib/changelog.js`.
+3. `npm install`, then `npm run build` (runs every verify step) and the Playwright suite.
+4. *(decide with the user)* Ship as an original FKH program (default), or ask HoopStudy first to feature theirs
+   by name. New programs ship on founder approval.
 
 ## Known limits (no action needed)
 

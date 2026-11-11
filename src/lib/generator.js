@@ -80,6 +80,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   // what you swap to and what's progressing, rotate what's stalled. Absent until there are enough logs.
   const prof = params.profile?.ready ? params.profile : null;
   const avoidSet = new Set(prof?.avoid || []);
+  // Recent check-ins (src/lib/learn.js fatigue: 2 of the last 3 finished workouts were Too much, Drained,
+  // Low or a tired note): the plan starts a set lighter on secondary and accessory work in its first phase.
+  // Uses the check-ins directly, so it applies before the profile has 6 workouts.
+  const startLighter = (params.profile?.fatigue?.heavy || 0) >= 2;
   const likeSet = new Set([...(prof?.favorites || []), ...Object.values(prof?.prefer || {})]);
   const upSet = new Set(prof?.progressing || []), stallSet = new Set(prof?.stalled || []);
   // Favourites (♡): chosen by you, so they count more than anything learned, and from day one.
@@ -374,6 +378,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       if (slot.role === 'accessory' && ramp >= 1.2) { sets += 1; ramped = true; }
     }
     if (p.minutes <= 30 && slot.role === 'accessory') { sets = 2; ramped = false; }
+    if (startLighter && ph === 0 && ['secondary', 'accessory', 'core'].includes(slot.role) && !req) sets = Math.max(2, sets - 1);
     if (deload) sets = Math.max(1, Math.round(sets * rules.phases.deload.sets_factor));
     const each = e.unilateral ? ' each side' : '';
     let reps = null, time = null;
@@ -481,6 +486,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   }
   function fillToTime(day, dayKey, di, ph, w) {
     if (!FILL || rules.days[dayKey].circuit || SPEED_DAY.test(dayKey) || isDeload(w)) return;
+
     const key = `${ph}:${di}`;
     let plan = fillCache[key];
     const insertAt = () => { const i = day.exercises.findIndex(x => x.round_group === 'Cooldown' || ['core', 'conditioning'].includes(byName.get(x.name)?.role)); return i < 0 ? day.exercises.length : i; };
@@ -491,7 +497,9 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     // (it may then use the trim budget, 110% of the time asked).
     const prev = ph > 0 ? fillCache[`${ph - 1}:${di}`] : null;
     const minAdds = prev?.adds.length || 0, minBumps = prev?.bump.size || 0;
-    const short = () => estimateMinutes(day, rules) < p.minutes * FILL.below;
+    // Starting lighter on purpose (recent check-ins): fill to a lower mark, so the session is shorter, not emptier.
+    const below = FILL.below * (startLighter && ph === 0 ? 0.8 : 1);
+    const short = () => estimateMinutes(day, rules) < p.minutes * below;
     const cap = (forced) => p.minutes * (forced ? 1.1 : 1);
     if (!plan) {
       plan = fillCache[key] = { adds: [], bump: new Set() };
@@ -703,6 +711,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
           deload ? 'Deload week: half the sets, same weights. Leave fresh.'
             : `Phase ${ph + 1} of ${nPhases}, week ${inPhaseWeek}. ${inPhaseWeek === 1 ? 'Find weights that leave 2 reps in the tank.' : 'Same exercises: once every set reaches the top of its rep range, add a little weight.'}`,
         ];
+        if (startLighter && ph === 0 && inPhaseWeek === 1) notes.push('Starts a set lighter: your recent check-ins say you\'ve been running low. The sets come back in phase 2.');
         if (!deload && nPhases > 1 && ph === nPhases - 1 && inPhaseWeek === 1 && (goal.set_ramp || 1) > 1) notes.push('Last phase: one more set on the secondary lifts' + ((goal.set_ramp || 1) >= 1.2 ? ' and accessories.' : '.'));
         if (goal.superset_all && exercises.some(x => /^Pair/.test(x.round_group || ''))) notes.push('Pairs: go straight from the first exercise to the second, then rest.');
         if (circuit) notes.push('Circuit: one exercise after another with no rest, 60 s after each round.');
@@ -744,7 +753,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   for (const k of Object.keys(summary)) summary[k] = Math.round(summary[k]);
   const goalLabel = goal.label;
   // The week, laid out around the games (src/lib/week_plan.js): Mixed Week slots the start sheet can set up.
-  const week = games ? planWeek(split.days.map(k => rules.days[k].focus), p.sport.days, { sport: p.sport.name || 'basketball' }) : null;
+  // Every plan gets one; with no games it's just training days spread out, Sunday rest, recovery on spare days.
+  const week = planWeek(split.days.map(k => rules.days[k].focus), games ? p.sport.days : [], { sport: p.sport?.name || 'basketball' });
   const DOWN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   return {
     id: `gen-${Date.now().toString(36)}`,
@@ -752,9 +762,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     source: 'custom',
     generated: { ...p },
     description: `${split.name}, ${p.minutes}-minute sessions, ${nPhases} phase${nPhases > 1 ? 's' : ''}${isDeload(p.weeks) ? ' + deload' : ''}.`
-      + (week ? ` Built around ${p.sport.name || 'basketball'} ${p.sport.days.map(d => DOWN[d]).join(' & ')}: the games are the jumps and hard conditioning.` : '')
-      + (askedDays > p.days ? ` ${askedDays} workouts plus ${p.sport.days.length} games won't fit a week, so it's ${p.days}.` : ''),
-    ...(week ? { suggested_week: { days: week.days, labels: { move30_recovery_mobility: 'Recovery & Mobility' }, start_dow: week.start_dow, note: week.note } } : {}),
+      + (games ? ` Built around ${p.sport.name || 'basketball'} ${p.sport.days.map(d => DOWN[d]).join(' & ')}: the games are the jumps and hard conditioning.` : '')
+      + (askedDays > p.days ? ` ${askedDays} workouts plus ${p.sport.days.length} games won't fit a week, so it's ${p.days}.` : '')
+      + (startLighter ? ' Starts a set lighter on the smaller lifts: your recent check-ins say you\'ve been running low.' : ''),
+    suggested_week: { days: week.days, labels: { move30_recovery_mobility: 'Recovery & Mobility' }, start_dow: games ? week.start_dow : null, note: week.note },
     sessions_per_week: p.days,
     session_length_min: p.minutes,
     weeks,
