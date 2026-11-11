@@ -36,4 +36,5 @@ login, YouTube access, API keys):
 - real demos for the stand-in videos (Daily Mobility and HoopStudy moves)
 - 28 catalog exercises with no video, and agility ladder drills
 - the optional weekly AI check-in (decide with the user first)
+- FitKidHooper: commit the In-Season Hooper program (`docs/handoff/fitkidhooper/`)
 - branch tidy-up

@@ -1,0 +1,689 @@
+diff --git a/src/data/trainingCatalog.js b/src/data/trainingCatalog.js
+index 76344a4..1ee4d70 100644
+--- a/src/data/trainingCatalog.js
++++ b/src/data/trainingCatalog.js
+@@ -2686,6 +2686,652 @@ const ALL_EXERCISES = Object.fromEntries(
+ );
+ 
+ const PROGRAMS = [
++{
++ "id": "in-season-hooper",
++ "name": "In-Season Hooper",
++ "emoji": "🏀",
++ "color": "#f97316",
++ "badgeId": "pgm-in-season",
++ "duration": 8,
++ "daysPerWeek": 4,
++ "ageRange": [
++  11,
++  14
++ ],
++ "equipment": [
++  "long_band"
++ ],
++ "equipmentFew": [
++  "dumbbells"
++ ],
++ "desc": "Stay strong, fast and fresh through your season. Two strength days and two speed & jump days a week, 8 weeks. Same moves every week — the sets go up as you get stronger. On the days between, do the Recovery Day workout or rest. Lift with a grown-up nearby, technique first: light weights, perfect reps.",
++ "weeks": [
++  {
++   "week": 1,
++   "goal": "Learn every move. Light weights, perfect reps, full rest between sprints.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "2x8",
++      "pushup": "2x8",
++      "band-row": "2x8",
++      "reverse-lunge": "2x8 each leg",
++      "hollow-hold": "2x20 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "4x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "3x3",
++      "lat-stick": "3x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "2x8",
++      "split-sq": "2x8 each leg",
++      "push-shoulder-taps": "2x8",
++      "glute-bridge": "2x8",
++      "side-plank": "2x20 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "4x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "3x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 2,
++   "goal": "Learn every move. Light weights, perfect reps, full rest between sprints.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "2x8",
++      "pushup": "2x8",
++      "band-row": "2x8",
++      "reverse-lunge": "2x8 each leg",
++      "hollow-hold": "2x20 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "4x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "3x3",
++      "lat-stick": "3x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "2x8",
++      "split-sq": "2x8 each leg",
++      "push-shoulder-taps": "2x8",
++      "glute-bridge": "2x8",
++      "side-plank": "2x20 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "4x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "3x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 3,
++   "goal": "Add a set. Same moves, a little more work.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "3x8",
++      "pushup": "3x8",
++      "band-row": "3x8",
++      "reverse-lunge": "3x8 each leg",
++      "hollow-hold": "3x20 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "6x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "4x3",
++      "lat-stick": "4x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "3x8",
++      "split-sq": "3x8 each leg",
++      "push-shoulder-taps": "3x8",
++      "glute-bridge": "3x8",
++      "side-plank": "3x20 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "6x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "4x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 4,
++   "goal": "Add a set. Same moves, a little more work.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "3x8",
++      "pushup": "3x8",
++      "band-row": "3x8",
++      "reverse-lunge": "3x8 each leg",
++      "hollow-hold": "3x20 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "6x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "4x3",
++      "lat-stick": "4x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "3x8",
++      "split-sq": "3x8 each leg",
++      "push-shoulder-taps": "3x8",
++      "glute-bridge": "3x8",
++      "side-plank": "3x20 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "6x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "4x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 5,
++   "goal": "Longer holds and more sprints. Stay sharp, not tired.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "3x8",
++      "pushup": "3x8",
++      "band-row": "3x8",
++      "reverse-lunge": "3x8 each leg",
++      "hollow-hold": "3x25 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "8x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "4x3",
++      "lat-stick": "4x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "3x8",
++      "split-sq": "3x8 each leg",
++      "push-shoulder-taps": "3x8",
++      "glute-bridge": "3x8",
++      "side-plank": "3x25 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "8x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "4x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 6,
++   "goal": "Longer holds and more sprints. Stay sharp, not tired.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "3x8",
++      "pushup": "3x8",
++      "band-row": "3x8",
++      "reverse-lunge": "3x8 each leg",
++      "hollow-hold": "3x25 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "8x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "broad-jump-stick": "4x3",
++      "lat-stick": "4x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "3x8",
++      "split-sq": "3x8 each leg",
++      "push-shoulder-taps": "3x8",
++      "glute-bridge": "3x8",
++      "side-plank": "3x25 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "8x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x10",
++      "squat-jumps": "4x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 7,
++   "goal": "Peak weeks: 4 sets, 10 sprints. Beat your best 10-yard time.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "4x8",
++      "pushup": "4x8",
++      "band-row": "4x8",
++      "reverse-lunge": "4x8 each leg",
++      "hollow-hold": "3x30 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "10x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x8",
++      "broad-jump-stick": "5x3",
++      "lat-stick": "5x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "4x8",
++      "split-sq": "4x8 each leg",
++      "push-shoulder-taps": "4x8",
++      "glute-bridge": "4x8",
++      "side-plank": "3x30 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "10x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x8",
++      "squat-jumps": "5x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  },
++  {
++   "week": 8,
++   "goal": "Peak weeks: 4 sets, 10 sprints. Beat your best 10-yard time.",
++   "sessions": [
++    {
++     "day": "Session 1",
++     "focus": "Strength A",
++     "exercises": [
++      "goblet-sq",
++      "pushup",
++      "band-row",
++      "reverse-lunge",
++      "hollow-hold"
++     ],
++     "dose": {
++      "goblet-sq": "4x8",
++      "pushup": "4x8",
++      "band-row": "4x8",
++      "reverse-lunge": "4x8 each leg",
++      "hollow-hold": "3x30 s"
++     }
++    },
++    {
++     "day": "Session 2",
++     "focus": "Speed & Jumps A",
++     "exercises": [
++      "acceleration-starts",
++      "high-knees",
++      "pogo-hops",
++      "broad-jump-stick",
++      "lat-stick"
++     ],
++     "dose": {
++      "acceleration-starts": "10x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x8",
++      "broad-jump-stick": "5x3",
++      "lat-stick": "5x3 each side"
++     }
++    },
++    {
++     "day": "Session 3",
++     "focus": "Strength B",
++     "exercises": [
++      "db-deadlift",
++      "split-sq",
++      "push-shoulder-taps",
++      "glute-bridge",
++      "side-plank"
++     ],
++     "dose": {
++      "db-deadlift": "4x8",
++      "split-sq": "4x8 each leg",
++      "push-shoulder-taps": "4x8",
++      "glute-bridge": "4x8",
++      "side-plank": "3x30 s each side"
++     }
++    },
++    {
++     "day": "Session 4",
++     "focus": "Speed & Jumps B",
++     "exercises": [
++      "three-step-burst",
++      "high-knees",
++      "pogo-hops",
++      "squat-jumps",
++      "snap-downs"
++     ],
++     "dose": {
++      "three-step-burst": "10x10 yards",
++      "high-knees": "2x10 yards",
++      "pogo-hops": "2x8",
++      "squat-jumps": "5x3",
++      "snap-downs": "2x5"
++     }
++    }
++   ]
++  }
++ ]
++},
+   {
+     id:"jump-higher", name:"Jump Higher", emoji:"⬆️", color:"#f97316",
+     badgeId:"pgm-jump-higher", duration:4, daysPerWeek:3, ageRange:[10,17], equipment:[],
+@@ -3519,6 +4165,7 @@ const PROGRAMS = [
+    consistently against the Legend paths' rarity. Indexed by week (0-based). Data only — a future
+    UI can badge each week ("Tier 1 · Foundation") from this; nothing renders it yet. */
+ const PROGRAM_WEEK_TIERS = {
++  "in-season-hooper": [1,1,1,2,2,2,3,3],
+   "jump-higher":          [1, 1, 2, 3],
+   "jump-higher-2":        [2, 2, 3, 3],
+   "guard-handles":        [1, 2, 2, 3],
+diff --git a/src/lib/badges.js b/src/lib/badges.js
+index 841a9dd..5c2ad8d 100644
+--- a/src/lib/badges.js
++++ b/src/lib/badges.js
+@@ -42,6 +42,7 @@ export const BADGES_DEF = [
+   { id:"pgm-become-shooter", cat:"program", name:"Pure Shooter",      emoji:"🎯", desc:"Complete Become a Shooter",                  color:"#8b5cf6" },
+   { id:"pgm-first-step",     cat:"program", name:"First Step Elite",  emoji:"⚡", desc:"Complete First Step Explosion",              color:"#f43f5e" },
+   { id:"pgm-complete-hooper",cat:"program", name:"Complete Hooper",   emoji:"🏆", desc:"Complete the Complete Hooper program",       color:"#f59e0b" },
++  { id:"pgm-in-season",      cat:"program", name:"In-Season Hooper", emoji:"🏀", desc:"Finish the 8-week In-Season Hooper program", color:"#f97316" },
+   { id:"pgm-bodyweight",     cat:"program", name:"Bodyweight Beast",  emoji:"💪", desc:"Complete the Bodyweight Beast program",      color:"#22c55e" },
+   { id:"pgm-bodyweight-2",   cat:"program", name:"Beast Mode",        emoji:"🦍", desc:"Complete Bodyweight Beast II",              color:"#16a34a" },
+   { id:"pgm-jump-rope",      cat:"program", name:"Rope Rhythm",       emoji:"🪢", desc:"Complete Jump Rope Basics",                  color:"#ec4899" },
+diff --git a/src/lib/programKind.js b/src/lib/programKind.js
+index dd87f09..8290958 100644
+--- a/src/lib/programKind.js
++++ b/src/lib/programKind.js
+@@ -3,6 +3,7 @@ export const PROGRAM_KIND = {
+   "jump-higher": "strength",
+   "jump-higher-2": "strength",
+   "bodyweight-beast": "strength",
++  "in-season-hooper": "strength",
+   "bodyweight-beast-2": "strength",
+   "jump-rope-basics": "strength",
+   "jump-rope-speed": "strength",
