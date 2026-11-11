@@ -98,6 +98,12 @@ The 2-minute band option rests on one RCT: **2 minutes a day, 5 days a week**, o
 
 Some of what keeps a 40-year-old's legs healthy does not respond to daily light work. About **75% of calf injuries in English FA data involved the soleus** ([FMPA](https://www.fmpa.co.uk/app/uploads/2026/03/Under-the-surface.pdf)). The Achilles adapts only to high-strain loading at about 90% of maximal effort ([Arampatzis 2007](https://cob.silverchair.com/jeb/article/210/15/2743/17005/Adaptational-responses-of-the-human-Achilles)). It still adapts in older adults, but over about 14 weeks ([Epro/Karamanidis](https://pmc.ncbi.nlm.nih.gov/articles/PMC5835978)). PJF reportedly calls tib raises "overrated" next to soleus and calf work ([Recapio summary of PJF ep. 058](https://recapio.com/digest/058-knee-health-myths-truth-about-tib-raises-stretching-and-more-pjf-podcast-by-pjfperformance)). Ben Patrick keeps them as strength work at about 2 × 15 ([Knee Ability series](https://kneesovertoesguy.substack.com/p/atg-knee-ability-series-3-of-10)). This block is a 10-12 minute add-on after the daily routine on two or three days a week, for example Tuesday, Thursday and Saturday.
 
+**These are a top-up, not a second program.** The daily routine and these additions sit beside the main
+training program the way the Durability Code sits beside it: like rehab. So each week, do only the ones the
+training program doesn't already include. If the plan has Copenhagens (durability and athletic plans do,
+2-3x/week; Lean & Tone has 90/90 Copenhagen), skip the Copenhagen row; if it has Nordics, soleus/calf raises or
+face pulls, skip those rows. Only what's missing gets added.
+
 | Exercise (app name) | Dose | Notes | Video |
 |---|---|---|---|
 | Soleus Raise | 3 × 12, loaded, slow 3 s down | PJF's dose. Add weight until the last 2-3 reps are hard | pjf |
@@ -131,6 +137,10 @@ The app's "Daily mobility" card shows a fixed BWS list from `library.json → wa
 *Data.* Add `daily_joint_health_a` and `daily_joint_health_b` warm-up entries (`day_types: ["any"]`) using the exact catalog names, doses and order from the A/B table, each row with a `phase` field (standing / floor / lunge-squat / finish). Add `daily_joint_health_min` for the 3-minute version. Keep `bws_daily_mobility` as a selectable alternative.
 
 *Selection.* `defaultRoutine()` alternates A/B based on the **last completed** routine, not calendar parity, so a missed day does not skip a version.
+
+*No double-ups with the training program.* The 2-3x/week additions are offered only when the active plan's
+current week doesn't already contain them (matched by name family: Copenhagen, Nordic, soleus/calf raise, face
+pull, knee isometric). A plan with Copenhagens on its lifting days means no Copenhagen on the mobility side.
 
 *Card UI.* Add a "Play flow" mode in the style of Sackmann's follow-along: rows advance on a per-move timer with the video beside them, building on the detail sheet's existing done/next navigation ([daily_mobility.js](../../src/views/daily_mobility.js), lines 96-118). Show an "A"/"B" label and a "3-min version" button. Replace the Add picker's name filter with tags (`role` in mobility/warmup/cooldown, `level ≤ 2`).
 
