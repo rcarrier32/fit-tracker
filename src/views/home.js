@@ -19,7 +19,7 @@ function macroPercents(p, c, f) {
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
-import { dailyStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
+import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
@@ -202,7 +202,7 @@ function renderDailyCard(d) {
   if (!d) return '';
   const { st, streak, letters, todayIdx, nextIdx } = d;
   const L = letters[todayIdx];
-  const fire = streak >= 1 ? ` · 🔥 ${streak}-day streak` : '';
+  const fire = '';   // the streak lives on Today's Workout (any training day counts)
   if (st.state === 'done' || st.state === 'skipped') {
     const done = st.state === 'done';
     return `
@@ -231,7 +231,7 @@ function renderDailyCard(d) {
   }
   return `
     <div class="card" style="margin-bottom:12px">
-      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min${streak >= 1 ? ` · 🔥${streak}` : ''}</span></div>
+      <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
       ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ Adjusted for yesterday's training</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
@@ -357,7 +357,8 @@ export async function renderHome(app) {
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
-  const hipInWorkout = !!hip && today_w.type === 'program';   // the workout starts with the hip warm-up
+  const hipInWorkout = !!hip && today_w.type === 'program';
+  const trainStreak = activeStreak(await getAll('sessions'), today());   // the workout starts with the hip warm-up
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -395,7 +396,7 @@ export async function renderHome(app) {
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Today's Workout</h2>
-        ${renderTodayBadge(today_w, activePlan)}
+        ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout)}

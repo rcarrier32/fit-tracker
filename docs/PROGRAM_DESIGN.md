@@ -218,7 +218,7 @@ day never moves. It replaced the old daily mobility checklist on the Move tab an
   **Start** (opens the first move) and **Skip today**.
 - **Started:** moves done, a progress bar, the next move, **Resume**.
 - **Done or skipped:** one line. Skipping keeps today's day for tomorrow and ends the streak.
-- **Streak:** days in a row finished, shown from day 1 (🔥 in the badge, and on the done line). Today not done yet doesn't break it; a skipped or missed day does.
+- **Streak:** on Today's Workout (in place of the program label): days in a row you trained, any finished workout or Daily Mobility (Daily Mobility on a rest day keeps it going). Today not done yet doesn't break it; a day with nothing finished does. `activeStreak` in `src/lib/daily_card.js`.
 - If Daily Mobility is itself the active program, the card is hidden (Today's Workout already shows it).
 
 ## One move, once a day

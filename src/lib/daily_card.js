@@ -13,6 +13,18 @@ export function prevDay(ymd) {
 const finished = (s) => s.done && !s.skipped;
 
 /**
+ * Days in a row you trained: any finished workout or Daily Mobility (Daily Mobility on a rest day keeps
+ * it going). Today not done yet doesn't break it; a day with nothing finished does.
+ */
+export function activeStreak(sessions, today) {
+  const days = new Set(sessions.filter(finished).map(s => s.date));
+  let d = days.has(today) ? today : prevDay(today);
+  let n = 0;
+  while (days.has(d)) { n++; d = prevDay(d); }
+  return n;
+}
+
+/**
  * Days in a row with Daily Mobility finished. Today not done yet doesn't break it (the streak runs
  * through yesterday until midnight); a skipped or missed day does.
  */
