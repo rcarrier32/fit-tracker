@@ -61593,7 +61593,7 @@
           {
             "day_name": "Daily C · Hips",
             "notes": [
-              "About 18 minutes. Your low-back reset, then hips: your Hip Mobility list (from your saved reels), PJF's pigeon and hip-flexor progressions, and the \"4 moves for tight hips\" reel.",
+              "About 13 minutes. Your low-back reset, then hips. Every move has more options from your saved reels and coaches one tap away: ⋯ → Swap → Plan alternatives.",
               "Work through the pigeon levels slowly (PJF: levels 3 and 4 are hard for many people)."
             ],
             "exercises": [
@@ -61664,24 +61664,9 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your \"rotating pigeon\". PJF's levels, slowly.",
+                "notes": "Your #1 \"rotating pigeon\". PJF's levels, slowly.",
                 "alternates": [
                   "Banded Incline Pigeon Rotation"
-                ]
-              },
-              {
-                "name": "Banded Incline Pigeon Rotation",
-                "round_group": "Pigeon",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": "8 each side",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": null,
-                "notes": "Your \"band pigeon\". A bench works too (the reel's bench pigeon).",
-                "alternates": [
-                  "Optional Pigeon Length Under Load"
                 ]
               },
               {
@@ -61696,22 +61681,8 @@
                 "rest": null,
                 "notes": "Your #2. On hands and knees, circle one bent knee out to the side and back, slow; each leg (Yoga With Katharine). Demo is a stand-in until your saved reel is linked.",
                 "alternates": [
-                  "Facing Wall Hip Circle Rotations",
-                  "Fire Hydrants"
-                ]
-              },
-              {
-                "name": "Standing Hip Internal/External Lifts",
-                "round_group": "Rotation",
-                "is_alternate": false,
-                "sets": 2,
-                "reps": "8 cycles each leg",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": "15s",
-                "notes": "Your #4 (likely match). Back to a wall, standing knee soft: turn the other leg in and lift, set down, turn out and lift. 8-10 cycles (Project Physical Therapy). Demo is a stand-in until your saved reel is linked.",
-                "alternates": [
+                  "Standing Hip Internal/External Lifts",
+                  "Quadruped Swing Throughs",
                   "Facing Wall Hip Circle Rotations"
                 ]
               },
@@ -61731,18 +61702,6 @@
                 ]
               },
               {
-                "name": "90/90 Knee Roll",
-                "round_group": "Rotation",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": "10 each side",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": null,
-                "notes": "Your 90/90 windshield wipers."
-              },
-              {
                 "name": "Banded Hip Distraction Pulling Into Hip Flexion",
                 "round_group": "Band",
                 "is_alternate": false,
@@ -61752,27 +61711,14 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your #8 (likely match): band low-anchored at the top of the thigh, knee to chest and across, different angles."
-              },
-              {
-                "name": "Knee Pull Heel Bridge",
-                "round_group": "Band",
-                "is_alternate": false,
-                "sets": 2,
-                "reps": "5 breaths",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": "10s",
-                "notes": "Your #9. On your back, hug one knee to the chest, lift the other foot's toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Demo is a stand-in until your saved reel is linked.",
+                "notes": "Your #8 (likely match): band low-anchored at the top of the thigh, knee to chest and across, different angles.",
                 "alternates": [
-                  "Posterior Pelvic Tilt Breathing",
-                  "Glute Bridge Hold"
+                  "Knee Pull Heel Bridge"
                 ]
               },
               {
                 "name": "Hamstring Floss",
-                "round_group": "Hamstrings & frog",
+                "round_group": "Hamstrings",
                 "is_alternate": false,
                 "sets": 1,
                 "reps": "8 each side",
@@ -61780,62 +61726,12 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your #18 \"lunge to hamstring\": tuck, then push the glute back."
-              },
-              {
-                "name": "Squat to Hamstring Stretch",
-                "round_group": "Hamstrings & frog",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": "5",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": null,
-                "notes": "Your #10 (likely match): deep squat → fold forward, straighten the legs → back down (raybeau_moves, 5 reps). Demo is a stand-in until your saved reel is linked.",
+                "notes": "Your #18 \"lunge to hamstring\": tuck, then push the glute back.",
                 "alternates": [
-                  "Hamstring Stretch",
-                  "Asian Squat"
+                  "Squat to Hamstring Stretch",
+                  "Optional Downward Frog",
+                  "Hip Flexor Rock Back"
                 ]
-              },
-              {
-                "name": "Quadruped Swing Throughs",
-                "round_group": "Hamstrings & frog",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": "8 each side",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": null,
-                "notes": "Your #19 (possible match): on hands and knees, swing one knee under you, then kick the leg back and up (Physical Therapy Session). Demo is a stand-in until your saved reel is linked.",
-                "alternates": [
-                  "Donkey Kicks"
-                ]
-              },
-              {
-                "name": "Optional Downward Frog",
-                "round_group": "Hamstrings & frog",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": null,
-                "weight": null,
-                "distance": null,
-                "time": "45s",
-                "rest": null,
-                "notes": "Your frog work: lean forward toward cobra."
-              },
-              {
-                "name": "Hip Flexor Rock Back",
-                "round_group": "Hamstrings & frog",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": "8",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": null,
-                "notes": "Your \"sit back, ankle tuck/untuck\"."
               },
               {
                 "name": "Hip Flexor Length Under Load",
@@ -61849,34 +61745,8 @@
                 "rest": null,
                 "notes": "Each side (PJF).",
                 "alternates": [
-                  "Hip Flexor/Quad Bridge"
-                ]
-              },
-              {
-                "name": "Lateral Lunge Length Under Load",
-                "round_group": "Length under load",
-                "is_alternate": false,
-                "sets": 2,
-                "reps": null,
-                "weight": null,
-                "distance": null,
-                "time": "45s",
-                "rest": null,
-                "notes": "Each side. The reel's bench lateral lunge works too."
-              },
-              {
-                "name": "Single Leg Full Range Step Downs or Leg Press",
-                "round_group": "Knees",
-                "is_alternate": false,
-                "sets": 2,
-                "reps": "8 each leg",
-                "weight": null,
-                "distance": null,
-                "time": null,
-                "rest": "30s",
-                "notes": "PJF's plate step-downs: slow, knee travels over the toes.",
-                "alternates": [
-                  "Poliquin Step Down"
+                  "Hip Flexor/Quad Bridge",
+                  "Lateral Lunge Length Under Load"
                 ]
               },
               {
@@ -61891,6 +61761,7 @@
                 "rest": null,
                 "notes": "Each side.",
                 "alternates": [
+                  "Single Leg Full Range Step Downs or Leg Press",
                   "Single Leg Stance"
                 ]
               }

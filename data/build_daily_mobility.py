@@ -37,6 +37,9 @@ NEW = {
     'Quadruped Swing Throughs': ('Donkey Kicks', dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'hamstrings'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
 }
+# These are options, not a checklist: Daily C uses some, the rest sit in its Swap lists, and all of
+# them are warm-up moves the plan generator can pick for training-day warm-ups (it prefers the
+# user's own moves: src/lib/generator.js, OWN_MOVES).
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'daily', tags=tags, video_from=borrow)
 
@@ -102,31 +105,24 @@ days = [
         r('Single-Leg Balance', time='30s', sets=2, group='Finish', notes='Each side. Eyes closed once 30 s is easy.', alts=['Single Leg Stance']),
     ]),
     day('Daily C · Hips', [
-        'About 18 minutes. Your low-back reset, then hips: your Hip Mobility list (from your saved reels), PJF\'s pigeon and hip-flexor progressions, and the "4 moves for tight hips" reel.',
+        'About 13 minutes. Your low-back reset, then hips. Every move has more options from your saved reels and coaches one tap away: ⋯ → Swap → Plan alternatives.',
         'Work through the pigeon levels slowly (PJF: levels 3 and 4 are hard for many people).'], [
-        r('Optional Pigeon Length Under Load', '5 each side', group='Pigeon', notes='Your "rotating pigeon". PJF\'s levels, slowly.', alts=['Banded Incline Pigeon Rotation']),
-        r('Banded Incline Pigeon Rotation', '8 each side', group='Pigeon', notes='Your "band pigeon". A bench works too (the reel\'s bench pigeon).', alts=['Optional Pigeon Length Under Load']),
-        r('Knee Circles', '5 each way', group='Rotation', alts=['Facing Wall Hip Circle Rotations', 'Fire Hydrants'],
+        r('Optional Pigeon Length Under Load', '5 each side', group='Pigeon', notes='Your #1 "rotating pigeon". PJF\'s levels, slowly.',
+          alts=['Banded Incline Pigeon Rotation']),
+        r('Knee Circles', '5 each way', group='Rotation',
+          alts=['Standing Hip Internal/External Lifts', 'Quadruped Swing Throughs', 'Facing Wall Hip Circle Rotations'],
           notes='Your #2. On hands and knees, circle one bent knee out to the side and back, slow; each leg (Yoga With Katharine). ' + STANDIN),
-        r('Standing Hip Internal/External Lifts', '8 cycles each leg', sets=2, group='Rotation', rest='15s', alts=['Facing Wall Hip Circle Rotations'],
-          notes='Your #4 (likely match). Back to a wall, standing knee soft: turn the other leg in and lift, set down, turn out and lift. 8-10 cycles (Project Physical Therapy). ' + STANDIN),
-        r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener.', alts=['90/90 Knee Roll']),
-        r('90/90 Knee Roll', '10 each side', group='Rotation', notes='Your 90/90 windshield wipers.'),
-        r('Banded Hip Distraction Pulling Into Hip Flexion', '8 each side', group='Band', notes='Your #8 (likely match): band low-anchored at the top of the thigh, knee to chest and across, different angles.'),
-        r('Knee Pull Heel Bridge', '5 breaths', sets=2, group='Band', rest='10s', alts=['Posterior Pelvic Tilt Breathing', 'Glute Bridge Hold'],
-          notes='Your #9. On your back, hug one knee to the chest, lift the other foot\'s toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). ' + STANDIN),
-        r('Hamstring Floss', '8 each side', group='Hamstrings & frog', notes='Your #18 "lunge to hamstring": tuck, then push the glute back.'),
-        r('Squat to Hamstring Stretch', '5', group='Hamstrings & frog', alts=['Hamstring Stretch', 'Asian Squat'],
-          notes='Your #10 (likely match): deep squat → fold forward, straighten the legs → back down (raybeau_moves, 5 reps). ' + STANDIN),
-        r('Quadruped Swing Throughs', '8 each side', group='Hamstrings & frog', alts=['Donkey Kicks'],
-          notes='Your #19 (possible match): on hands and knees, swing one knee under you, then kick the leg back and up (Physical Therapy Session). ' + STANDIN),
-        r('Optional Downward Frog', time='45s', group='Hamstrings & frog', notes='Your frog work: lean forward toward cobra.'),
-        r('Hip Flexor Rock Back', '8', group='Hamstrings & frog', notes='Your "sit back, ankle tuck/untuck".'),
-        r('Hip Flexor Length Under Load', time='45s', sets=2, group='Length under load', notes='Each side (PJF).', alts=['Hip Flexor/Quad Bridge']),
-        r('Lateral Lunge Length Under Load', time='45s', sets=2, group='Length under load', notes='Each side. The reel\'s bench lateral lunge works too.'),
-        r('Single Leg Full Range Step Downs or Leg Press', '8 each leg', sets=2, group='Knees', rest='30s',
-          notes='PJF\'s plate step-downs: slow, knee travels over the toes.', alts=['Poliquin Step Down']),
-        r('Single-Leg Balance', time='30s', sets=2, group='Finish', notes='Each side.', alts=['Single Leg Stance']),
+        r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener.',
+          alts=['90/90 Knee Roll']),
+        r('Banded Hip Distraction Pulling Into Hip Flexion', '8 each side', group='Band',
+          notes='Your #8 (likely match): band low-anchored at the top of the thigh, knee to chest and across, different angles.',
+          alts=['Knee Pull Heel Bridge']),
+        r('Hamstring Floss', '8 each side', group='Hamstrings', notes='Your #18 "lunge to hamstring": tuck, then push the glute back.',
+          alts=['Squat to Hamstring Stretch', 'Optional Downward Frog', 'Hip Flexor Rock Back']),
+        r('Hip Flexor Length Under Load', time='45s', sets=2, group='Length under load', notes='Each side (PJF).',
+          alts=['Hip Flexor/Quad Bridge', 'Lateral Lunge Length Under Load']),
+        r('Single-Leg Balance', time='30s', sets=2, group='Finish', notes='Each side.',
+          alts=['Single Leg Full Range Step Downs or Leg Press', 'Single Leg Stance']),
     ]),
 ]
 
