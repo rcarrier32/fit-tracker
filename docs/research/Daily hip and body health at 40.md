@@ -58,16 +58,21 @@ The recommended routine keeps Sackmann's shape (stand, floor, lunge-and-squat) a
 | | 2 | Arm Circles | same | 10 each way | catalog |
 | | 3 | Double Leg Functional Calf Raise (Optional) | Bent Knee Calf Raise (Optional) | × 15 | pjf |
 | | 4 | Resisted Ankle Circles (no band needed) | same | 10 each way, each foot | pjf |
-| Floor (~4 min) | 5 | Dead Bug: 5 slow breaths, then 10 alternating | 90/90 Lift with Internal Rotation* (interim: Posterior Pelvic Tilt Breathing) | ~1 min | trainheroic / catalog |
+| Floor (~4½ min) | 5a | Cat Cow (from the current card) | same | 8 slow reps | catalog |
+| | 5 | Dead Bug: 5 slow breaths, then 10 alternating | 90/90 Lift with Internal Rotation* (interim: Posterior Pelvic Tilt Breathing) | ~1 min | trainheroic / catalog |
 | | 6 | 90/90 Hip Opener: 5 s hold each way, then 5 transitions | same | ~1 min | pjf |
 | | 7 | Glute Bridge, 3 s squeeze | Single Leg ISO Heel Bridge Hold* (interim: Glute Bridge Hold) | 2 × 10 · 25 s/side | catalog |
-| Lunge & squat (~4 min) | 8 | World's Greatest Stretch (Spider-Man + T-spine reach) | same | 5/side | catalog |
+| Lunge & squat (~4 min) | 8 | World's Greatest Stretch (Spider-Man + T-spine reach) | Half Kneeling Thoracic Rotations (from the current card) | 5/side | catalog |
 | | 9 | Hip Flexor/Quad Bridge (PJF's couch stretch) | Half Kneeling Hip Flexor Stretch with overhead reach | 45 s/side | pjf |
 | | 10 | Asian Squat, then Wall Slides | same | 30-45 s + 8 | catalog |
 | Finish (~2 min) | 11 | Band Pull-Aparts + chin tucks* | Band External Rotations + chin tucks* | 15 or 10/side + 5 × 5 s | catalog |
 | | 12 | Single Leg Stance | Single-Leg Balance, eyes closed once 30 s is easy | 30 s/side | catalog |
 
 \* needs adding to the app. Until then, use the interim exercise in brackets, which already has a video.
+
+**All five moves on the current daily card stay in:** Cat Cow (5a), World's Greatest Stretch (A-day 8),
+Half Kneeling Thoracic Rotations (B-day 8), Asian Squat and Wall Slides (10). Cat Cow adds about 30-45 s,
+so the routine runs about 12-13 minutes.
 
 ### Why each block is there
 
@@ -99,7 +104,7 @@ Some of what keeps a 40-year-old's legs healthy does not respond to daily light 
 | Loaded Single Leg Calf Raise | 2-3 × 8/side, slow | Straight-knee calf | trainheroic |
 | 60 Degree Knee ISOs | 2-3 × 45 s | Spanish-squat stand-in. Isometrics relieve tendon pain for up to about 45 minutes but are not better than isotonics over weeks ([Clifford 2020](https://pubmed.ncbi.nlm.nih.gov/32818059/)) | pjf |
 | Eccentric Nordic Hamstring Curl | 2 × 3-5, 1-2x/week | Low volume still raises eccentric strength ([Cholp & Zemková 2025](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1631205/full)). Nordic programmes roughly halved hamstring injuries ([van Dyk et al. 2019](https://bjsm.bmj.com/content/early/2019/02/26/bjsports-2018-100045.long)) | pjf |
-| Copenhagen Side Plank (Knee) → Copenhagen Side Plank | 1-2 sets, up to 12-15/side or 20-30 s, 1x/week | 1x/week in season cut groin problems by 41% ([Harøy et al. 2019](https://pmc.ncbi.nlm.nih.gov/articles/PMC6851742)) | catalog / pjf |
+| Copenhagen Side Plank (Knee) → Copenhagen Side Plank | 1-2 sets, up to 12-15/side or 20-30 s, **2-3x/week on lifting days** (on a 4-day week: every lower or full-body day) | The Harøy 2019 programme (41% fewer groin problems, [Harøy et al. 2019](https://pmc.ncbi.nlm.nih.gov/articles/PMC6851742)) built up at 3x/week and kept 1x/week in season as its *minimum* maintenance dose, not a ceiling; with 4 training days, 2-3x/week keeps the build-up dose | catalog / pjf |
 | Balance progression: Single-Leg Pad Balance + Clock Reaches → Single-Leg Pad Balance + Ball Catches → Star Toe Tap | 3 × 5 reaches/side → 3 × 10 catches → 2 × 6 | Follows McGuine's floor-to-board progression ([AAFP](https://www.aafp.org/pubs/afp/issues/2006/1115/p1777.html)) | catalog / trainheroic |
 | Standing Face Pulls | 2 × 12-15 | Posterior cuff. PT-recommended for desk shoulders 3-4x/week ([Fit&Well](https://www.fitandwell.com/exercise/strength-workouts/this-is-the-one-move-a-physical-therapist-recommends-for-people-who-sit-a-lot-and-suffer-from-shoulder-pain)) | catalog |
 

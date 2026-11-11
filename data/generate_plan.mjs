@@ -42,7 +42,9 @@ if (args.includes('--sanity')) {
         && e.equipment.every(q => q === 'bodyweight' || eq.includes(q)));
       for (const w of possible ? plan.weeks : []) {
         const n = w.days.flatMap(d => d.exercises).filter(x => re.test(x.name) && !(not && not.test(x.name))).length;
-        const want = Math.min(r.per_week[Math.min(Math.floor((w.week_num - 1) / rules.phases.length_weeks), r.per_week.length - 1)], days);
+        // Hip-focus moves go on strength days only (speed/agility days have no hip slot).
+        const slotsDays = r.slot === 'hip_focus' ? w.days.filter(d => !/^(Speed|Agility)/.test(d.focus)).length : days;
+        const want = Math.min(r.per_week[Math.min(Math.floor((w.week_num - 1) / rules.phases.length_weeks), r.per_week.length - 1)], slotsDays);
         if (n < want) issues.push(`W${w.week_num} has ${n} × ${r.match}, wants ${want}`);
       }
     }

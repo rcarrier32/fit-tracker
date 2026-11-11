@@ -101,7 +101,7 @@ research in [research/Workout plan builder methods.md](research/Workout%20plan%2
   rest after a pair shortens by 15 s in the last phase, and non-main picks move up a level per
   phase (harder versions: single-leg, B-stance, 1¼ reps).
 - **Required moves** (`required`): durability plans always include the Copenhagen adductor drill,
-  3 times a week in the first phase and once a week after (the Harøy 2019 programme: 41% fewer groin
+  3 times a week in the first phase and twice a week after (athletic plans: twice a week throughout); the study's 1x/week in season is a minimum, not a target (the Harøy 2019 programme: 41% fewer groin
   problems), moving from the knee version up; and a Nordic hamstring lower once a week, 2-3 × 3-5 slow
   lowers, on the hamstring slot (or a new accessory slot on the hinge day when the split has none).
   These may be one level above the person's level, and trimming for time never removes them.

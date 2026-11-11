@@ -17,13 +17,17 @@
                             } },
     "athletic":   { "label": "Athletic / court",    "main_reps": ["6-8", "5-6", "4-5"], "secondary_reps": "8-10", "accessory_reps": "10-12", "power": true,  "conditioning": false, "hip_focus": true,
                             "volume_targets": { "abs": [4, 8], "obliques": [4, 8], "glutes": [12, 18] },
-                            "core_early": true, "set_ramp": 1.2, "max_contacts": 100, "cooldown": true },
+                            "core_early": true, "set_ramp": 1.2, "max_contacts": 100, "cooldown": true,
+                            "required": [
+                              { "match": "copenhagen", "not": "dynamic", "slot": "hip_focus", "per_week": [2],
+                                "why": "Groin injury prevention: the Copenhagen adductor programme (Harøy 2019) cut groin problems 41%; 2x/week on strength days." }
+                            ] },
     "durability": { "label": "Durability & hip",    "main_reps": ["8-10", "6-8", "6-8"], "secondary_reps": "8-12", "accessory_reps": "10-15", "power": false, "conditioning": false, "hip_focus": true,
                             "volume_targets": { "abs": [8, 12], "obliques": [10, 16], "glutes": [15, 22], "adductors": [4, 8] },
                             "core_sets": 3, "core_early": true, "set_ramp": 1.1, "cooldown": true,
                             "required": [
-                              { "match": "copenhagen", "not": "dynamic", "slot": "hip_focus", "per_week": [3, 1],
-                                "why": "Groin injury prevention: the Copenhagen adductor programme (Harøy 2019) cut groin problems 41%; 3x/week to start, then 1x/week." },
+                              { "match": "copenhagen", "not": "dynamic", "slot": "hip_focus", "per_week": [3, 2],
+                                "why": "Groin injury prevention: the Copenhagen adductor programme (Harøy 2019) cut groin problems 41%; 3x/week to start, then at least 2x/week (1x/week was the study's in-season minimum)." },
                               { "match": "nordic hamstring", "not": "reverse", "muscles": ["hamstrings", "glutes"], "per_week": [1],
                                 "dose": { "sets": [2, 3], "reps": "3-5 slow lowers", "rest": "90s" },
                                 "why": "Hamstring injury prevention: programmes with Nordics had about half the hamstring injuries (van Dyk 2019)." }

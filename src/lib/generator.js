@@ -378,7 +378,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       () => { let ch = false; for (const x of day.exercises) if (['accessory', 'core'].includes(roleOf(x)) && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
       () => { const i = day.exercises.map(x => reqOf(x) ? null : roleOf(x)).lastIndexOf('accessory'); if (i < 0) return false; day.exercises.splice(i, 1); return true; },
       () => { let ch = false; for (const x of day.exercises) if (roleOf(x) === 'secondary' && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
-      () => { const rs = day.exercises.map(roleOf); const i = rs.lastIndexOf('core'); if (i < 0 || rs.filter(r => r === 'core').length < 2) return false; day.exercises.splice(i, 1); return true; },
+      () => { const rs = day.exercises.map(x => reqOf(x) ? null : roleOf(x)); const i = rs.lastIndexOf('core'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'core').length < 2) return false; day.exercises.splice(i, 1); return true; },
       () => { const i = day.exercises.map(roleOf).lastIndexOf('secondary'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'secondary').length < 2) return false; day.exercises.splice(i, 1); return true; },
     ];
     for (const step of steps) {
