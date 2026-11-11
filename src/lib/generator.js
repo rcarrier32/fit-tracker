@@ -25,6 +25,7 @@ function rng(seed) {
 // Roles a slot accepts, best first (a home gym has no barbell "main" lift, so a
 // dumbbell "secondary" compound fills a main slot).
 const ROLE_FALLBACK = {
+  any: ['main', 'secondary', 'accessory', 'core'],
   main: ['main', 'secondary'],
   secondary: ['secondary', 'main'],
   accessory: ['accessory', 'secondary'],
@@ -95,11 +96,17 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const easyHit = (e) => easy.some(z => (z.patterns || []).includes(e.pattern) || (z.names && new RegExp(z.names, 'i').test(e.name)));
   const pool = exercises.filter(e =>
     e.pattern && e.role && hasVideo(e) && (e.level || 2) <= p.level &&
-    (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e));
+    (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/last resort/i.test(e.name));
 
   const byName = new Map(exercises.map(e => [e.name, e]));   // required moves can sit outside the pool
+  // One level above the person's level: the last resort for a slot nothing at their level fits.
+  const levelUpPool = exercises.filter(e => e.pattern && e.role && hasVideo(e) && (e.level || 2) === p.level + 1 &&
+    (e.equipment || ['bodyweight']).every(q => ['bodyweight', ...p.equipment].includes(q)) && !/last resort/i.test(e.name) && !easyHit(e));
+  const levelUp = new Set();
   const nDays = String(Math.min(6, Math.max(2, p.days)));
-  const splitSet = goal.splits?.[nDays] ? goal.splits : power && rules.athletic_splits[nDays] ? rules.athletic_splits : rules.splits;
+  // Speed and agility days are jumps, sprints and cuts: not with "go easy on knees".
+  const speedOk = !(p.easy || []).includes('knee');
+  const splitSet = goal.splits?.[nDays] ? goal.splits : power && speedOk && rules.athletic_splits[nDays] ? rules.athletic_splits : rules.splits;
   const split = splitSet[nDays];
   // Home kit (no barbell, cable or machine) can't keep adding load: progress by reps, rest and
   // harder versions instead, the way Lean & Tone and PJF's home programs do (rules.load_limited).
@@ -267,7 +274,27 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
         }
         if (!e) {
           const avoid = prev ? new Set([prev.name]) : null;
-          e = candidates(slot, usedToday, usedWeek, avoid, ph)[0] || null;
+          // Learned "avoid" is a hard rule whenever there's another choice.
+          const first = (list) => list.find(x => !avoidSet.has(x.name)) || null;
+          const exact = candidates(slot, usedToday, usedWeek, avoid, ph);
+          e = first(exact);
+          // Nothing fits (bodyweight-only or a thin kit): widen the slot step by step rather than leave it empty —
+          // any working role in the same movement, then the same muscles, then one level up.
+          if (!e && slot.role !== 'power' && slot.role !== 'conditioning') {
+            const wide = { ...slot, role: 'any', unilateral: false, hip_focus: false };
+            e = first(candidates(wide, usedToday, usedWeek, avoid, ph));
+            if (!e && slot.patterns) {
+              const ms = [...new Set(pool.filter(x => slot.patterns.includes(x.pattern)).map(x => x.primary_muscle))];
+              if (ms.length) e = first(candidates({ ...wide, patterns: null, muscles: ms }, usedToday, usedWeek, avoid, ph));
+            }
+            if (!e) {
+              const up = levelUpPool.filter(x => ROLE_FALLBACK.any.includes(x.role) && !usedToday.has(x.name) && !avoidSet.has(x.name)
+                && (slot.patterns ? slot.patterns.includes(x.pattern) : (slot.muscles || []).includes(x.primary_muscle)));
+              e = up[Math.floor(rand() * up.length)] || null;
+              if (e) levelUp.add(e.name);
+            }
+          }
+          if (!e) e = exact[0] || null;   // only an avoided exercise fits: better than an empty slot
         }
         if (e) {
           if (likeSet.has(e.name)) learnedFrom.preferred.add(e.name);
@@ -326,16 +353,18 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     // Coaches progress by adding sets, not reps: by the last phase secondaries get a set (set_ramp 1.1),
     // and accessories too (1.2).
     const ramp = goal.set_ramp || 1;
+    let ramped = false;
     if (nPhases > 1 && ph === nPhases - 1 && !deload) {
-      if (slot.role === 'secondary' && ramp >= 1.1) sets += 1;
-      if (slot.role === 'accessory' && ramp >= 1.2) sets += 1;
+      if (slot.role === 'secondary' && ramp >= 1.1) { sets += 1; ramped = true; }
+      if (slot.role === 'accessory' && ramp >= 1.2) { sets += 1; ramped = true; }
     }
-    if (p.minutes <= 30 && slot.role === 'accessory') sets = 2;
+    if (p.minutes <= 30 && slot.role === 'accessory') { sets = 2; ramped = false; }
     if (deload) sets = Math.max(1, Math.round(sets * rules.phases.deload.sets_factor));
     const each = e.unilateral ? ' each side' : '';
     let reps = null, time = null;
     if (slot.role === 'conditioning') {
-      const mins = slot.long ? (p.minutes <= 30 ? 15 : p.minutes <= 45 ? 20 : 25) + 5 * Math.min(ph, 1)
+      // The long Zone 2 block leaves room for the day's circuit: about 40% of a 30-min session, 45% of longer ones.
+      const mins = slot.long ? (p.minutes <= 30 ? 12 : p.minutes <= 45 ? 18 : 25) + (p.minutes <= 30 ? 2 : 5) * Math.min(ph, 1)
         : (p.minutes <= 30 ? 6 : p.minutes <= 45 ? 8 : 12);
       // Named intervals (Sprint 10s/Jog 20s/Walk 40s) are written as rounds; the app times each phase.
       const phases = (e.name.match(/(\d+)\s*s\b/g) || []).map(x => parseInt(x));
@@ -366,7 +395,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     if (loadLimited && nPhases > 1 && ph === nPhases - 1 && slot.role !== 'main' && /^\d+s$/.test(rest || '')) {
       rest = `${Math.max(30, parseInt(rest) - LL.last_phase_rest_drop_secs)}s`;
     }
-    return { sets, reps, time, rest };
+    return { sets, reps, time, rest, ramped };
   }
 
   // Trim a session to the time box: accessory sets to 2, then drop accessories from the end,
@@ -375,15 +404,38 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     const budget = p.minutes * 1.1;
     const roleOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)]?.role;
     const steps = [
+      // The last phase's extra set goes first: a session that can't fit it keeps the earlier phases' sets.
+      () => { let ch = false; for (const x of day.exercises) if (x._ramp) { x.sets -= 1; delete x._ramp; ch = true; } return ch; },
+      // Then the finisher gets shorter (down to 4 rounds / 4 min) before any lift loses a set.
+      () => { const x = day.exercises.find(q => roleOf(q) === 'conditioning'); if (!x) return false;
+        const m = /^(\d+):00$/.exec(x.time || ''), rr = /^(\d+) rounds$/.exec(x.reps || '');
+        if (m && +m[1] > 4) { x.time = `${+m[1] - 2}:00`; return true; }
+        if (rr && +rr[1] > 4) { x.reps = `${+rr[1] - 2} rounds`; return true; }
+        return false; },
       () => { let ch = false; for (const x of day.exercises) if (['accessory', 'core'].includes(roleOf(x)) && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
+      // Jumps added to a non-athletic goal ("Add jumps" ticked) give way before lifting sets do.
+      () => { if (goal.power) return false; let ch = false; for (const x of day.exercises) if (roleOf(x) === 'power' && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
       () => { const i = day.exercises.map(x => reqOf(x) ? null : roleOf(x)).lastIndexOf('accessory'); if (i < 0) return false; day.exercises.splice(i, 1); return true; },
       () => { let ch = false; for (const x of day.exercises) if (roleOf(x) === 'secondary' && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
       () => { const rs = day.exercises.map(x => reqOf(x) ? null : roleOf(x)); const i = rs.lastIndexOf('core'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'core').length < 2) return false; day.exercises.splice(i, 1); return true; },
       () => { const i = day.exercises.map(roleOf).lastIndexOf('secondary'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'secondary').length < 2) return false; day.exercises.splice(i, 1); return true; },
+      // Still long: fewer cooldown holds (breathing stays), then a shorter finisher.
+      () => { const holds = day.exercises.filter(x => x.round_group === 'Cooldown' && !/breathing/i.test(x.name)); if (holds.length < 2) return false; day.exercises.splice(day.exercises.indexOf(holds[holds.length - 1]), 1); return true; },
     ];
+    // A pair whose partner was trimmed rests after itself again (it was counted at 0-15 s).
+    const fixOrphans = () => {
+      const size = {};
+      for (const x of day.exercises) if (x.round_group) size[x.round_group] = (size[x.round_group] || 0) + 1;
+      for (const x of day.exercises) if (x.round_group && size[x.round_group] < 2 && x.round_group !== 'Cooldown') {
+        x.round_group = null;
+        if (/^0/.test(x.rest || '')) x.rest = '60s';
+      }
+    };
+    fixOrphans();   // a lone 'superset' member is estimated at half rest: settle it before measuring
     for (const step of steps) {
-      while (estimateMinutes(day, rules) > budget) if (!step()) break;
+      while (estimateMinutes(day, rules) > budget) { if (!step()) break; fixOrphans(); }
     }
+    for (const x of day.exercises) delete x._ramp;
   }
 
   // Pair every lift with one that doesn't compete for the same muscles (lower with upper, push with
@@ -427,7 +479,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     hip_flexors: 'hip flexors', calves: 'calves', chest: 'chest', front_delts: 'shoulders', side_delts: 'shoulders',
     lats: 'lats', upper_back: 'upper back', rear_delts: 'upper back', lower_back: 'lower back' };
   const regionsOf = (e) => { const o = {}; for (const m of e?.muscles || []) if (CREG[m]) o[CREG[m]] = Math.max(o[CREG[m]] || 0, 0.5); if (CREG[e?.primary_muscle]) o[CREG[e.primary_muscle]] = 1; return o; };
-  const coolPool = exercises.filter(e => hasVideo(e) && (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/foam|gentle|optional static|breathing|hang/i.test(e.name) && (
+  const coolPool = exercises.filter(e => hasVideo(e) && (e.level || 1) <= p.level && (e.equipment || ['bodyweight']).every(q => have.has(q)) && !easyHit(e) && !/foam|gentle|optional static|breathing|hang/i.test(e.name) && (
     e.role === 'cooldown' || (e.role === 'warmup' && e.pattern === 'mobility' && /opener|stretch/i.test(e.name))));
   const breathing = exercises.find(e => e.name === '7/11 Breathing' && hasVideo(e));
   function cooldownFor(rows) {
@@ -474,7 +526,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
                time: e.role === 'warmup' ? '30s' : '45s', rest: null, notes: serves.length ? `For today's ${why}.` : null,
                why: serves.length ? `Stretch for today's ${serves.join(', ')}` : 'Cooldown stretch' };
     });
-    if (breathing && out.length) out.push({ name: breathing.name, round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null,
+    if (breathing) out.push({ name: breathing.name, round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null,
       weight: null, distance: null, time: '3:00', rest: null, notes: 'Slow breathing to finish: in for 7, out for 11.', why: 'Wind down (PJF)' });
     return out;
   }
@@ -494,6 +546,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     else if (slot.role === 'power') bits.push(`Power first: ${PAT[e.pattern] || e.pattern}`);
     else if (slot.role === 'core') bits.push('Core');
     else bits.push(`${slot.role === 'secondary' ? 'Second lift' : 'Accessory'}: ${PAT[e.pattern] || muscleWord(e.primary_muscle)}`);
+    if (levelUp.has(e.name)) bits.push(`one level up: nothing at your level fits this slot with your equipment`);
     if (favSet.has(e.name)) bits.push('♥ your favourite');
     if (coachUse[e.name] && slot.role !== 'core') bits.push(`in ${coachUse[e.name]} of ${coachN} coach program${coachN === 1 ? '' : 's'}`);
     if (likeSet.has(e.name)) bits.push('one you swap to or add');
@@ -527,7 +580,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
             inPair = (inPair + 1) % 2;
           }
           return { name: e.name, round_group: group, is_alternate: false, sets: d.sets, reps: d.reps, weight: null,
-                   distance: null, time: d.time, rest: d.rest, notes: null, why: whyFor(slot, e, ph, di, si) };
+                   distance: null, time: d.time, rest: d.rest, notes: null, why: whyFor(slot, e, ph, di, si), _ramp: d.ramped || undefined };
         }).filter(Boolean);
         if (circuit) {
           const rows = exercises.filter(x => x.round_group === 'Circuit');

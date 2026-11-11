@@ -248,6 +248,18 @@ wherever you're already there.
 
 ## Generator
 
+**Extensive test:** `node data/test_generator.mjs` (add `--report` to write
+[GENERATOR_TEST_REPORT.md](GENERATOR_TEST_REPORT.md)) runs 2,700 plans: every goal × 2-6 days × 30/45/60
+min × 4 kits (bodyweight, home dumbbells, home plus, gym) × level 1-3 × 4/6/8 weeks, with random focus, jumps,
+"go easy on", a learned "avoid" and favourites on a third of them. Hard rules (must pass): no repeats in a day,
+3+ working exercises, video, equipment, level (one level up only for required moves or when nothing at the
+level fits, and then the why line says so), "go easy on", no "last resort" picks, sets and reps/time, supersets
+of 2+, pair rest, the time box, jump contacts, warm-up coverage, cooldown by goal, deload only where the rules
+say (and it halves the sets), required moves per week, a learned "avoid" stays out unless it's the only fit,
+the last phase keeps its lifting sets (within 8%; athletic exempt), same seed → same plan. Quality is reported:
+coach range and coach-exercise share by goal, session length vs asked, muscles trained twice a week,
+push:pull, variety.
+
 `src/lib/generator.js` turns these rules into plans, both in the app (Plans → Generate a plan)
 and in node (`node data/generate_plan.mjs`). `--sanity` runs every goal × days × minutes ×
 equipment combination and checks for:
