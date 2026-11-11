@@ -227,7 +227,7 @@ const SOURCE_SECTIONS = [
     criteria: [
       'Single leg stance 30 s per side with no pelvic drop',
       'All exercises completed with no pain above 3/10 during or after',
-      'No next-day flare — soreness settles within 24 h',
+      'Soreness settles within 24 h',
     ],
     exercises: [
       {
@@ -1053,7 +1053,7 @@ const SOURCE_SECTIONS = [
     tag: 'All day · Habits',
     accent: '#94a3b8',
     bg: 'rgba(100,116,139,0.12)',
-    description: 'What you do between sessions matters as much as the sessions. Prolonged sitting in a low car seat puts the hip in deep flexion for hours, which is one of the most reliable ways to provoke a flare.',
+    description: 'What you do between sessions matters as much as the sessions. Prolonged sitting in a low car seat puts the hip in deep flexion for hours, which is one of the most reliable ways to leave it stiff and sore.',
     guidance: [
       {
         id: 'rc-seat-height',
@@ -1079,11 +1079,6 @@ const SOURCE_SECTIONS = [
         id: 'rc-stretch-frequency',
         title: 'Short and frequent beats long and occasional',
         detail: 'For a tight hip flexor, several brief stretches spread through the day generally do more than one long session. If you can get the half-kneeling stretch in a few times a day rather than only before a workout, that is the higher-value version. Confirm the dose with your PT.',
-      },
-      {
-        id: 'rc-ice-heat',
-        title: 'Ice after flare-ups, heat before exercise',
-        detail: 'Ice 15–20 minutes after a session that irritated the hip. Heat 10–15 minutes before exercise when the joint feels stiff, never after a flare.',
       },
       {
         id: 'rc-track',
@@ -1721,8 +1716,8 @@ export function weeklySchedule(date = new Date()) {
 
 /**
  * What today's hip work is: the main section (the strength session on Mon/Wed/Fri,
- * Pelvic Reset otherwise) and how much of it is checked off. No pause or flare mode
- * (the user's call: no hip restrictions).
+ * Pelvic Reset otherwise) and how much of it is checked off. No hip restrictions
+ * (the user's call).
  * Shared by the Hip tab (which tab to open), the Home card and the Plans card.
  */
 export function hipToday({ done = {}, custom = [], date = new Date() } = {}) {
