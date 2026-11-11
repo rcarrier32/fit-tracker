@@ -190,6 +190,32 @@ missed day just pushes the order back. Starting on a Tuesday, for example: Thu D
 Sat Day 3, Sun rest, Mon Day 4, Tue recovery, Wed Day 1… ([`src/lib/week_flow.js`](../src/lib/week_flow.js),
 `node data/check_week_flow.mjs`).
 
+## Basketball week (Lean & Tone + pickup Mon & Fri)
+
+Pickup basketball is sprints, jumps and cuts, so the games replace Lean & Tone's jump work and treadmill
+time rather than adding to them (`basketball_week` in `data/build_lean_tone.py`): Sun rest · Mon 🏀 ·
+Tue Day 1 · Wed Day 2 · Thu Recovery & Mobility · Fri 🏀 · Sat Day 3 + Day 4's band circuit (one session
+finishes both days; Day 4's 25-min treadmill is what the games replace). Set it when starting Lean & Tone
+("🏀 With basketball Mon & Fri") or in Edit week ("🏀 Basketball week", keeps your place).
+- **Game days:** Today shows ▶ Warm-up (the Basketball Warm-up) and two icons, a basketball with a green ✓ (played) and a faded one with a red ✕ (didn't play), with ↺
+  Undo. A game is saved as a session (`src/lib/game.js`), so it counts toward the streak and This week.
+- **Played:** the next day's workout drops its jumps and hard intervals (power moves, sprint / Zone 4
+  finishers), and Daily Mobility treats the game as impact work for the tendons.
+- **Didn't play:** nothing is dropped, so Saturday keeps Day 3's swings, bounds and intervals; Today
+  suggests 25 minutes of easy cardio.
+- The "two on, recovery" order still follows what you finish (`src/lib/week_flow.js`): a game or rest day
+  starts a fresh run.
+
+## Basketball warm-up
+
+About 10 minutes before the user's 5:45 pickup games (`data/build_basketball_warmup.py`, program
+`basketball_warmup`): two moves at home (the low-back reset), then RAMP on court — raise (jog, cariocas),
+mobilise (World's Greatest Stretch, sprinter mobility, lateral lunge, hip airplanes, ankles), activate
+(single-leg balance for ankle sprains, glute bridge), build to game speed (skips, pogos, lateral bounds,
+3 × 10 yd at 60/80/95%). Opens from a "🏀 Basketball warm-up" line in the Daily Mobility card on Mon, Wed
+and Fri (`#/routine/basketball_warmup`), next to the plan; side routines don't show the gym toggle, band
+setup or day arrows. Its jumps and sprints count as impact for the next day's Daily Mobility.
+
 ## Hip warm-up inside the workout
 
 When the hip plan is in use, its warm-up (walk or bike, Cat-Cow, pelvic tilts, the hip stretches) is the

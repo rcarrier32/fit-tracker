@@ -384,6 +384,12 @@ program = {
     'suggested_week': {'days': ['rest', 'train', 'train', 'move30_recovery_mobility', 'train', 'train', 'move30_recovery_mobility'],
                        'labels': {'move30_recovery_mobility': 'Recovery & Mobility'}},
     'weeks': expand_weeks(6, days_with_rest),
+    # With pickup basketball Mon & Fri (5:45): the games are the conditioning and the jumps. Day 4's
+    # 25-min treadmill goes; its band circuit joins Day 3 on Saturday (one session, both days done).
+    # The day after a game drops jumps and hard intervals. See docs/PROGRAM_DESIGN.md "Basketball week".
+    'basketball_week': {'days': ['rest', 'basketball', 'train', 'train', 'move30_recovery_mobility', 'basketball', 'train'],
+                        'labels': {'move30_recovery_mobility': 'Recovery & Mobility'},
+                        'merge': {'into_day': 3, 'add_day': 4, 'add_groups': ['Band circuit']}},
 }
 lib.set_programs('lean_tone', [program])
 lib.save()

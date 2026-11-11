@@ -33,6 +33,7 @@ import { hipCredits } from '../lib/moves_today.js';
 import { HOME_CARDS, resolveLayout, moveCard, layoutToSave } from '../lib/home_layout.js';
 import { weekSummary, weightTrend, feelingSummary } from '../lib/home_extras.js';
 import { mountWeightChart } from '../lib/weight_chart.js';
+import { gameOn, setGame } from '../lib/game.js';
 
 const today = () => localDateStr();
 
@@ -166,6 +167,11 @@ const dayLetter = (name, i) => (/Daily ([A-Z])/.exec(name || '') || [])[1] || St
  * Not started → Start / Skip today, with what it changed for yesterday's training.
  * Started → progress and the next move. Done or skipped → one line.
  */
+async function findProgramById(id) {
+  const { programById } = await loadCatalogs();
+  return programById.get(id) || null;
+}
+
 async function dailyCardData(todaysSessions) {
   const dw = await dailyWorkout();
   if (!dw || dw.type !== 'program') return null;
@@ -194,8 +200,22 @@ async function dailyCardData(todaysSessions) {
   const finished = st.state === 'done'
     ? todaysSessions.filter(x => x.program_id === DAILY_ID && x.done && !x.skipped).sort((a, b) => (b.id || 0) - (a.id || 0))[0] : null;
   const todayIdx = finished ? (finished.day_index ?? 0) : i;
-  return { program, day, rows, st, streak, adjust, letters, todayIdx, nextIdx: (todayIdx + 1) % n,
+  // Basketball days: the week's Basketball slots (their card has the warm-up), else Mon, Wed, Fri mornings.
+  const sched = await pref('schedule');
+  const bballWeek = sched?.slots?.some(sl => sl?.label === 'Basketball');
+  const hoops = !bballWeek && [1, 3, 5].includes(new Date().getDay()) && (await findProgramById('basketball_warmup'))
+    ? { done: todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped) } : null;
+  return { program, day, rows, st, streak, adjust, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
     minutes: program.session_length_min || 13 };
+}
+
+/** Basketball days (Mon/Wed/Fri, 5:45): one line to the pre-game warm-up, next to the plan. */
+function hoopsRow(d) {
+  if (!d?.hoops) return '';
+  return `<div class="card-row" style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+        <div style="font-size:13px">🏀 Basketball warm-up <span class="muted">· ${d.hoops.done ? 'done ✓' : '10 min'}</span></div>
+        <button class="btn ghost" id="hoops-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${d.hoops.done ? 'View' : 'Open →'}</button>
+      </div>`;
 }
 
 function renderDailyCard(d) {
@@ -215,6 +235,7 @@ function renderDailyCard(d) {
         </div>
         <button class="btn ghost" id="daily-open" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${done ? 'View' : 'Do it anyway'}</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
   }
   if (st.state === 'started') {
@@ -227,6 +248,7 @@ function renderDailyCard(d) {
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" style="flex:2">▶ Resume</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
   }
   return `
@@ -237,6 +259,7 @@ function renderDailyCard(d) {
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
       </div>
+      ${hoopsRow(d)}
     </div>`;
 }
 
@@ -358,7 +381,8 @@ export async function renderHome(app) {
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
   // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
   const hipInWorkout = !!hip && today_w.type === 'program';
-  const trainStreak = activeStreak(await getAll('sessions'), today());   // the workout starts with the hip warm-up
+  const trainStreak = activeStreak(await getAll('sessions'), today());
+  const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -399,7 +423,7 @@ export async function renderHome(app) {
         ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
@@ -493,6 +517,15 @@ export async function renderHome(app) {
     }
     navigate('workout');
   };
+  app.querySelectorAll('[data-game]').forEach(b => b.onclick = async () => {
+    const v = b.dataset.game;
+    if (v === 'warmup') return navigate('routine/basketball_warmup');
+    await setGame(v === 'clear' ? null : v === 'played');
+    if (v === 'played') toast('Game logged 🏀');
+    renderHome(app);
+  });
+  const hoopsBtn = app.querySelector('#hoops-open');
+  if (hoopsBtn) hoopsBtn.onclick = () => navigate('routine/basketball_warmup');
   const dailyBtn = app.querySelector('#daily-open');
   if (dailyBtn) dailyBtn.onclick = async () => {
     if (dailyBtn.dataset.start) { try { sessionStorage.setItem('lift-autostart', '1'); } catch { /* private mode */ } }
@@ -604,7 +637,19 @@ function renderMacroPct(p, c, f) {
   return `<div class="muted" style="font-size:11px;margin-top:8px">Macro split: ${pct.p}% P · ${pct.c}% C · ${pct.f}% F</div>`;
 }
 
-function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false) {
+/**
+ * Basketball icons, flat and modern: one ball (Lucide-style seams) with a status badge — green ✓ played,
+ * faded ball with a red ✕ didn't play.
+ */
+const BALL = (faded) => `<circle cx="14" cy="14" r="11" fill="${faded ? '#64748b' : '#f97316'}"/>
+  <g fill="none" stroke="${faded ? '#334155' : '#7c2d12'}" stroke-width="1.4" stroke-linecap="round">
+    <path d="M3 14h22M14 3v22"/><path d="M6.2 6.2c3.6 3.6 3.6 12 0 15.6M21.8 6.2c-3.6 3.6-3.6 12 0 15.6"/></g>`;
+const BADGE = (ok) => `<circle cx="24" cy="24" r="7" fill="${ok ? '#22c55e' : '#ef4444'}" stroke="var(--bg-card, #1b2230)" stroke-width="2"/>
+  <path d="${ok ? 'M20.6 24.2l2.3 2.3 4.3-4.6' : 'M21.4 21.4l5.2 5.2M26.6 21.4l-5.2 5.2'}" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+const ICON_SCORED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(false)}${BADGE(true)}</svg>`;
+const ICON_MISSED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(true)}${BADGE(false)}</svg>`;
+
+function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -618,6 +663,24 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
         </div>
       </div>
     `;
+  }
+  if (today_w.type === 'tag' && today_w.tag === 'Basketball') {
+    // Game day: warm up, play, then one tap. Didn't play → the next workout keeps its jumps and intervals.
+    const iconBtn = (v, icon, label, on) => `<button class="btn ghost" data-game="${v}" aria-label="${label}" title="${label}"
+      style="flex:1;padding:6px 0;display:flex;align-items:center;justify-content:center;${on ? 'border-color:var(--accent);background:rgba(56,189,248,0.12)' : ''}">${icon}</button>`;
+    if (game) return `
+      <div class="card-row" style="margin-top:6px">
+        <div style="display:flex;align-items:center;gap:8px">${game.played ? ICON_SCORED : ICON_MISSED}
+          <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div>
+        <button class="btn ghost" data-game="clear" aria-label="Undo" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">↺</button>
+      </div>`;
+    return `
+      <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" data-game="warmup" style="flex:2">▶ Warm-up</button>
+        ${iconBtn('played', ICON_SCORED, 'Played')}
+        ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
+      </div>`;
   }
   if (today_w.type === 'tag') {
     const map = {

@@ -20,6 +20,14 @@ import { localDateStr } from '../lib/date.js';
 
 const DOW_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+/** Mixed Week slots from a program's week template ('train', 'rest', 'basketball' or a program id). */
+export function weekSlots(program, sw) {
+  return sw.days.map(d => d === 'train' ? { program_id: program.id, mode: 'follow' }
+    : d === 'rest' ? { label: 'Rest' }
+    : d === 'basketball' ? { label: 'Basketball' }
+    : { program_id: d, mode: 'follow' });
+}
+
 export async function openScheduleEditor() {
   const programs = await getAllPrograms();
   const current = (await pref('schedule')) || { type: 'weekly', slots: [null,null,null,null,null,null,null] };
@@ -39,6 +47,7 @@ export async function openScheduleEditor() {
 
       sheet.innerHTML = `
         <h2>Mixed Week schedule</h2>
+        <div id="bball-preset"></div>
         <div id="setup-panel"></div>
         <div id="slots"></div>
         <div class="btn-row" style="margin-top:14px">
@@ -47,6 +56,21 @@ export async function openScheduleEditor() {
         </div>
         <button class="btn ghost" id="toggle-setup" style="margin-top:8px">${isEmpty ? 'Hide Quick Setup' : 'Quick Setup'}</button>
       `;
+
+      // A program with a basketball week (Lean & Tone): one tap sets it up around Mon/Fri pickup games.
+      function renderBballPreset() {
+        const $b = sheet.querySelector('#bball-preset');
+        const prog = programs.find(p => p.basketball_week && editing.some(sl => sl?.program_id === p.id));
+        if (!prog) { $b.innerHTML = ''; return; }
+        $b.innerHTML = `<button class="btn secondary" id="use-bball" style="margin-bottom:12px;text-align:left;padding:10px 12px">
+          <div style="font-weight:600">🏀 Basketball week (Mon & Fri)</div>
+          <div style="font-size:12px;font-weight:400;opacity:0.85">Games Mon & Fri · Day 1 Tue · Day 2 Wed · recovery Thu · Day 3 + Day 4's glute circuit Sat · Sun rest</div></button>`;
+        $b.querySelector('#use-bball').onclick = () => {
+          editing = weekSlots(prog, prog.basketball_week);
+          renderSlots();
+          toast('Basketball week set: tap Save schedule');
+        };
+      }
 
       function renderSetupPanel() {
         const $p = sheet.querySelector('#setup-panel');
@@ -164,6 +188,7 @@ export async function openScheduleEditor() {
         }
       }
 
+      renderBballPreset();
       renderSetupPanel();
       renderSlots();
 
@@ -282,6 +307,7 @@ function describe(slot, programs) {
   if (slot.label === 'Rest') return '😴 Rest day';
   if (slot.label === 'Cardio') return '🏃 Zone 2 / cardio (untracked)';
   if (slot.label === 'Custom') return '✏️ Free-form (log whatever)';
+  if (slot.label === 'Basketball') return '🏀 Basketball (pickup game)';
   if (slot.program_id) {
     const p = programs.find(x => x.id === slot.program_id);
     if (!p) return slot.program_id;
@@ -314,6 +340,7 @@ function openSlotPicker(programs, current, onPick) {
       <div class="card list-item" data-pick="rest">😴 Rest day</div>
       <div class="card list-item" data-pick="cardio">🏃 Zone 2 / cardio (untracked)</div>
       <div class="card list-item" data-pick="custom">✏️ Free-form (log whatever)</div>
+      <div class="card list-item" data-pick="basketball">🏀 Basketball (pickup game)</div>
       ${custom.length ? `<div class="group-label">My plans</div><div id="custom-list"></div>` : ''}
       ${[...built.keys()].map((g, i) => `<div class="group-label">${g}</div><div id="built-list-${i}"></div>`).join('')}
       <div class="group-label">PJF programs</div>
@@ -324,7 +351,7 @@ function openSlotPicker(programs, current, onPick) {
     sheet.querySelectorAll('[data-pick]').forEach(el => {
       el.onclick = () => {
         const k = el.dataset.pick;
-        const labelMap = { rest: 'Rest', cardio: 'Cardio', custom: 'Custom' };
+        const labelMap = { rest: 'Rest', cardio: 'Cardio', custom: 'Custom', basketball: 'Basketball' };
         onPick({ label: labelMap[k] });
         close();
       };
@@ -564,8 +591,8 @@ export const DAILY_ID = 'daily_mobility';
  * Daily Mobility runs alongside whatever program is active (its own A → B → C cursor), opened from
  * its Home card at #/daily. Null if the program isn't in the library.
  */
-export async function dailyWorkout() {
-  const program = await findProgram(DAILY_ID);
+export async function dailyWorkout(id = DAILY_ID) {
+  const program = await findProgram(id);
   if (!program) return null;
   return { type: 'program', program, ...(await followPosition(program)), mode: 'follow', daily: true };
 }

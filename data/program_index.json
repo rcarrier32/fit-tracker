@@ -1361,6 +1361,51 @@
     "dumbbell"
    ],
    "description": "Adam Menner's HoopStudy program: dumbbell strength 3 days a week (all sets of 8), speed and jumps 2 days, recovery 2 days, for 8 weeks. Built for basketball players in season; uses the high-school volume (3×8, then 4×8 from week 3)."
+  },
+  {
+   "id": "basketball_warmup",
+   "name": "Basketball Warm-up",
+   "group": "Daily",
+   "kind": "rotation",
+   "weeks": null,
+   "days_per_week": 1,
+   "exercises_per_day": 15.0,
+   "day_focus": [
+    "Basketball warm-up"
+   ],
+   "week1_sets_by_muscle": {
+    "glutes": 8,
+    "calves": 3,
+    "hip_flexors": 2,
+    "lower_back": 1,
+    "front_delts": 1,
+    "full_body": 1,
+    "adductors": 1
+   },
+   "week1_sets_by_pattern": {
+    "mobility": 4,
+    "balance": 3,
+    "speed_accel": 3,
+    "plyo_bound_hop": 2,
+    "rotation": 1,
+    "conditioning": 1,
+    "agility_cod": 1,
+    "lunge_single_leg": 1,
+    "hinge": 1
+   },
+   "roles": {
+    "warmup": 5,
+    "secondary": 2,
+    "accessory": 2,
+    "power": 2,
+    "core": 1,
+    "conditioning": 1,
+    "cooldown": 1
+   },
+   "equipment": [
+    "band"
+   ],
+   "description": "About 10 minutes before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and sprints. Opens from Today on basketball days without changing your plan."
   }
  ]
 }

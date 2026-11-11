@@ -18,6 +18,7 @@ import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SI
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 import { doneElsewhere } from '../lib/same_move.js';
+import { GAME_ID } from '../lib/game.js';
 import { ENERGY, energyOf, readNote, noteSummary } from '../lib/feel.js';
 import { SECTIONS as HIP_SECTIONS } from '../lib/hip_protocol.js';
 import { movesToday } from '../lib/moves_today.js';
@@ -191,8 +192,10 @@ function openLiftDetail(btn) {
 let _noRefresh = false;   // Finish from the sheet: don't redraw the Lift page over the Done screen
 
 /** #/daily opens Daily Mobility (its Home card) without touching the active program. */
-const onDailyRoute = () => location.hash.startsWith('#/daily');
-const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout())) || todaysWorkout();
+// #/daily (Daily Mobility) and #/routine/<id> (Basketball Warm-up …) open a side routine next to the plan.
+const onDailyRoute = () => location.hash.startsWith('#/daily') || location.hash.startsWith('#/routine/');
+const routineId = () => (/^#\/routine\/([\w-]+)/.exec(location.hash) || [])[1];
+const whichWorkout = async () => (onDailyRoute() && (await dailyWorkout(routineId()))) || todaysWorkout();
 
 export async function renderWorkout(app, { keepRest = false } = {}) {
   const token = ++_renderToken;
@@ -255,7 +258,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   if (!session) {
     const allSwaps = (await pref('swaps')) || {};
     const dayKey = _sessionDayKey({ day_index, week, day });
-    const rawExercises = dayData.exercises.filter(e => !e.is_alternate && !isHeaderRow(e.name)).map(ex => ({
+    const toRow = (ex) => ({
       name: ex.name,
       orig_name: ex.name,
       target_reps: ex.reps || ex.set_targets?.[0] || '',
@@ -267,7 +270,39 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       video_url: ex.video_url || null,   // a plan can point a row at its own video (and start time)
       alternates: ex.alternates || null, // a plan's own swap list, like BWS alternates
       sets: [],
-    })).map(roundsAsSets);
+    });
+    let rawExercises = dayData.exercises.filter(e => !e.is_alternate && !isHeaderRow(e.name)).map(toRow).map(roundsAsSets);
+    // Basketball week (Lean & Tone + pickup Mon & Fri): Saturday's Day 3 also does Day 4's band circuit, since
+    // the games replace Day 4's treadmill. Finishing it counts both days.
+    const gameNotes = [];
+    const schedNow = today_w.daily ? null : await pref('schedule');
+    const bw = program.basketball_week;
+    let mergedDay = null;
+    if (bw?.merge && program.weeks && day === bw.merge.into_day && schedNow?.slots?.some(sl => sl?.label === 'Basketball')) {
+      const add = program.weeks.find(w2 => w2.week_num === week)?.days.find(d => d.day_num === bw.merge.add_day);
+      const extra = (add?.exercises || []).filter(e => bw.merge.add_groups.includes(e.round_group)).map(toRow).map(roundsAsSets);
+      if (extra.length) {
+        const at = rawExercises.findIndex(x => x.round_group === 'Cooldown' || /finisher/i.test(x.round_group || ''));
+        rawExercises.splice(at < 0 ? rawExercises.length : at, 0, ...extra);
+        mergedDay = bw.merge.add_day;
+        gameNotes.push(`Day ${bw.merge.add_day}'s ${bw.merge.add_groups.join(', ').toLowerCase()} is in here too: your games replace its treadmill, so this one session finishes both days.`);
+      }
+    }
+    // The day after (or the day of) a pickup game: no jumps or hard intervals, the game already did them.
+    if (!today_w.daily) {
+      const yd = new Date(); yd.setDate(yd.getDate() - 1);
+      const near = [...todaysSessions, ...(await getByIndex('sessions', 'date', localDateStr(yd)))];
+      if (near.some(x => x.program_id === GAME_ID && x.done && !x.skipped)) {
+        const { exerciseByName: byN } = await loadCatalogs();
+        const hard = (x) => { const e = byN.get(String(x.name).toLowerCase());
+          return e?.role === 'power' || (e?.role === 'conditioning' && /sprint|zone 4|interval|hiit/i.test(x.name)); };
+        const dropped = rawExercises.filter(hard).map(x => x.name);
+        if (dropped.length) {
+          rawExercises = rawExercises.filter(x => !hard(x));
+          gameNotes.push(`Basketball covered the jumps and hard intervals, so ${dropped.join(', ')} ${dropped.length > 1 ? 'are' : 'is'} off today.`);
+        }
+      }
+    }
     session = {
       date: today(),
       program_id: programId,
@@ -276,6 +311,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps, { week, day }) : rawExercises,
       done: false,
     };
+    if (mergedDay) session.merged_day = mergedDay;
+    if (gameNotes.length) session.adjust_note = gameNotes.join(' ');
     // Daily Mobility adjusts for yesterday's training (src/lib/daily_adjust.js): no pogos after jumps
     // or heavy legs, one more set of the holds for what was worked. Decided once, when today's session starts.
     if (programId === 'daily_mobility') {
@@ -352,15 +389,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
     ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
-    ${session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()])) ? `
+    ${!today_w.daily && (session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()]))) ? `
     <div style="display:flex;align-items:center;gap:8px;margin:10px 0">
       <button class="pill ${session.gym_day ? 'accent' : ''}" id="gym-toggle" style="cursor:pointer;padding:8px 14px;font-size:14px">🏋 ${session.gym_day ? 'At the gym today' : 'Going to the gym today?'}</button>
       <button class="pill" id="gym-kit" style="cursor:pointer;padding:8px 10px" aria-label="Gym equipment">⚙</button>
       <span class="muted" style="font-size:11px;flex:1">${session.gym_day ? 'Band and bodyweight stand-ins swapped for gym versions.' : 'Swaps band and bodyweight stand-ins for gym versions.'}</span>
     </div>` : ''}
-    ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
+    ${bandCats.length && !today_w.daily ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
-    ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
+    ${today_w.mode === 'follow' && (program.weeks || (program.days?.length || 0) > 1) ? `<div class="btn-row" style="margin:10px 0">
       <button class="btn ghost" data-action="prev">← Day</button>
       <button class="btn ghost" data-action="next">Day →</button>
     </div>` : ''}
@@ -445,7 +482,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     const wasDone = session.done;   // re-finishing an edited workout must not skip a day
     session.done = true;
     await saveSession(session);
-    if (today_w.mode === 'follow' && !wasDone) await advanceCursor(programId, 'follow');
+    if (today_w.mode === 'follow' && !wasDone) {
+      await advanceCursor(programId, 'follow');
+      if (session.merged_day) await advanceCursor(programId, 'follow');   // Day 3 + Day 4 in one session
+    }
     const allSessions = await getAll('sessions');
     const stats = computeSessionStats(session, allSessions);
     renderWorkoutComplete(app, session, stats, program, week, day);
@@ -463,7 +503,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     session.skipped = true;
     await saveSession(session);
     // Skipping Daily Mobility keeps its day for tomorrow (same as Skip today on its Home card).
-    if (today_w.mode === 'follow' && !wasDone && !today_w.daily) await advanceCursor(programId, 'follow');
+    if (today_w.mode === 'follow' && !wasDone && !today_w.daily) {
+      await advanceCursor(programId, 'follow');
+      if (session.merged_day) await advanceCursor(programId, 'follow');
+    }
     stopRestTimer();
     toast('Workout skipped');
     navigate('home');
@@ -1917,17 +1960,20 @@ async function renderTagDay(app, today_w) {
     'Rest':   { icon: '😴', txt: 'Rest day', sub: 'Recovery, stretching, walking — anything light is fine.' },
     'Cardio': { icon: '🏃', txt: 'Zone 2 cardio', sub: 'Log steady-state on the Move tab.' },
     'Custom': { icon: '✏️', txt: 'Free-form session', sub: 'Add exercises and log as you go.' },
+    'Basketball': { icon: '🏀', txt: 'Basketball day', sub: 'Warm up, play, then mark it Played or Didn\'t play on Today.' },
   };
   const m = map[today_w.tag] || { icon: '·', txt: today_w.tag, sub: '' };
   app.innerHTML = `
     <h1>${m.icon} ${m.txt}</h1>
     <div class="muted">${m.sub}</div>
     <div class="btn-row" style="margin-top:14px">
-      ${(await dailyWorkout()) ? '<button class="btn" id="mob-daily">Daily Mobility →</button>' : ''}
+      ${today_w.tag === 'Basketball' ? '<button class="btn" id="mob-hoops">🏀 Basketball warm-up →</button>' : ''}
+      ${(await dailyWorkout()) ? `<button class="btn${today_w.tag === 'Basketball' ? ' ghost' : ''}" id="mob-daily">Daily Mobility →</button>` : ''}
       <button class="btn ghost" id="mob-move">Move tab</button>
       <button class="btn ghost" id="back">Today</button>
     </div>
   `;
+  app.querySelector('#mob-hoops')?.addEventListener('click', () => navigate('routine/basketball_warmup'));
   const $daily = app.querySelector('#mob-daily');
   if ($daily) $daily.onclick = () => navigate('daily');
   app.querySelector('#back').onclick = () => navigate('home');

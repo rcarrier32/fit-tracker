@@ -60,7 +60,15 @@ export function flowProgram(slots, dow, sessions, today) {
   if (todays) return todays.program_id;
   const before = fin.filter(s => s.date < today);
   const lastRecovery = before.filter(s => s.program_id === f.companion).map(s => s.date).sort().pop() || null;
-  const since = before.filter(s => s.program_id === f.train && (!lastRecovery || s.date > lastRecovery))
+  // A rest or basketball day (a labelled slot) with no training done on it also starts a fresh run.
+  let lastReset = null;
+  for (let k = 1; k <= 7; k++) {
+    const d = new Date(today + 'T12:00:00'); d.setDate(d.getDate() - k);
+    const ds = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    if (slots[d.getDay()]?.label && !before.some(s => s.date === ds && s.program_id === f.train)) { lastReset = ds; break; }
+  }
+  const from = [lastRecovery, lastReset].filter(Boolean).sort().pop() || null;
+  const since = before.filter(s => s.program_id === f.train && (!from || s.date > from))
     .sort((a, b) => a.date.localeCompare(b.date) || (a.id || 0) - (b.id || 0));
   if (!since.length) return f.train;
   // Recovery after the last day of a pair (Day 2, Day 4); also after the week's longest run as a backstop.
