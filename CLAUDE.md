@@ -29,5 +29,11 @@ before pushing; it fails if any copy has drifted.
 
 ## Open to-dos
 
-- **Facebook exercise reels → Daily Mobility** (needs a session on the user's computer, where the
-  browser is logged into Facebook): see `docs/research/notes-daily-mobility/facebook_reels.md`.
+**Start with [`docs/TODO.md`](docs/TODO.md)**: everything a cloud session couldn't finish, each with
+what to run and how to check it. Most of it needs a session on the user's own computer (Facebook
+login, YouTube access, API keys):
+- Facebook exercise reels → Daily Mobility (`docs/research/notes-daily-mobility/facebook_reels.md`)
+- real demos for the stand-in videos (Daily Mobility and HoopStudy moves)
+- 28 catalog exercises with no video, and agility ladder drills
+- the optional weekly AI check-in (decide with the user first)
+- branch tidy-up
