@@ -48,5 +48,16 @@ st2(3, '2026-11-18', P, L('2026-11-18', 2, 2));            // Wed Day 2 (Mon gam
 st2(4, '2026-11-19', R, S('2026-11-19', R));               // Thu recovery
 st2(5, '2026-11-20', null);                                // Fri 🏀
 st2(6, '2026-11-21', P);                                   // Sat Day 3
+// The user's switch, mid-week (Wed 11-11): Tue Day 1, Wed recovery done; basketball week from now on.
+h = [L('2026-11-10', 1), S('2026-11-11', R)];
+const st3 = (dow, date, want, add) => { const got = flowProgram(bw, dow, h, date); ok(`switch week ${date}: ${want === P ? 'train' : want === R ? 'recovery' : 'label'}`, got === want, String(got)); if (add) h.push(add); };
+st3(4, '2026-11-12', P, L('2026-11-12', 2));               // Thu: Day 2 (a recovery slot, but only one workout since)
+st3(5, '2026-11-13', null);                                // Fri 🏀
+st3(6, '2026-11-14', P, L('2026-11-14', 3));               // Sat Day 3 (+ Day 4's circuit)
+st3(0, '2026-11-15', null);                                // Sun rest
+st3(1, '2026-11-16', null);                                // Mon 🏀
+st3(2, '2026-11-17', P, L('2026-11-17', 1, 2));            // Tue week 2 Day 1
+st3(3, '2026-11-18', P, L('2026-11-18', 2, 2));            // Wed Day 2
+st3(4, '2026-11-19', R);                                   // Thu recovery
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);
