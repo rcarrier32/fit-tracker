@@ -192,7 +192,7 @@ badge, at most one short line, and the buttons (what changed for yesterday is on
 
 ## Home order
 
-Today's cards come in the order you set with **↕ Customize Home** (bottom of Today): ↑ ↓ to move a
+Today's cards come in the order you set with **Customize Home** (👤 at the top right of Today): ↑ ↓ to move a
 card, Shown / Hidden to choose what's there, Reset to default. Saved as pref `home_layout`
 ([`src/lib/home_layout.js`](../src/lib/home_layout.js), `node data/check_home_layout.mjs`). Default:
 Today's Workout, Daily Mobility, Calories, Last week (Mondays), Tips, Body weight. Three optional cards
@@ -205,8 +205,8 @@ weight chart). The optional cards keep to a title row and a line or two.
 The weight chart ([`src/lib/weight_chart.js`](../src/lib/weight_chart.js), `node data/check_weight_chart.mjs`)
 is shared by that card and the Body tab: ranges 1M · 3M · 6M · 1Y · All (remembered), the 7-day
 average as the line, each weigh-in a faint dot, grid lines with weights, your goal pace dashed, the
-change and lb/week for the range, and tap a dot for its date and weight. Profile, calendar
-and backup buttons sit under the cards so hiding a card never hides them.
+change and lb/week for the range, and tap a dot for its date and weight. Profile & goal, Log weight, Customize Home, Workout reminders (calendar)
+and backups live behind the 👤 button at the top right of Today, so hiding a card never hides them.
 
 
 Daily Mobility runs next to whatever program is active, from its own card on Today (mockup:
