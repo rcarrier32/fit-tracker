@@ -35,5 +35,18 @@ step(2, '2026-11-17', R, S('2026-11-17', R));          // Tue recovery (after Da
 step(3, '2026-11-18', P, L('2026-11-18', 1, 2));       // Wed week 2 Day 1
 step(4, '2026-11-19', P, L('2026-11-19', 2, 2));       // Thu Day 2
 step(5, '2026-11-20', R);                              // Fri recovery
+// Basketball week: Sun rest, Mon 🏀, Tue Wed train, Thu recovery, Fri 🏀, Sat train (Day 3 + Day 4's circuit).
+const B = { label: 'Basketball' };
+const bw = [REST, B, T, T, REC, B, T];
+const fb = flowOf(bw);
+ok('basketball week: pairs end on day 2', fb.pairEnds.join() === '2' && fb.nTrain === 3, JSON.stringify(fb));
+h = [L('2026-11-14', 3)];                                  // Sat Day 3 (+4)
+const st2 = (dow, date, want, add) => { const got = flowProgram(bw, dow, h, date); ok(`basketball week ${date}: ${want ?? 'label'}`, got === want, String(got)); if (add) h.push(add); };
+st2(1, '2026-11-16', null);                                // Mon 🏀 (label)
+st2(2, '2026-11-17', P, L('2026-11-17', 1, 2));            // Tue Day 1
+st2(3, '2026-11-18', P, L('2026-11-18', 2, 2));            // Wed Day 2 (Mon game resets the count)
+st2(4, '2026-11-19', R, S('2026-11-19', R));               // Thu recovery
+st2(5, '2026-11-20', null);                                // Fri 🏀
+st2(6, '2026-11-21', P);                                   // Sat Day 3
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

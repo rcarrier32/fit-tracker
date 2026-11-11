@@ -3695,6 +3695,24 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "daily-basketball": {
+   "name": "Basketball",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "calves",
+    "glutes"
+   ],
+   "pattern": "agility_cod",
+   "role": "conditioning",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": false
+  },
   "daily-knee-circles": {
    "name": "Knee Circles",
    "primary_muscle": "glutes",

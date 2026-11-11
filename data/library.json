@@ -14450,6 +14450,31 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "daily-basketball",
+      "name": "Basketball",
+      "video_url": null,
+      "sources": [
+        "daily"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Basketball+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "calves",
+        "glutes"
+      ],
+      "pattern": "agility_cod",
+      "role": "conditioning",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -61111,7 +61136,28 @@
               }
             ]
           }
-        ]
+        ],
+        "basketball_week": {
+          "days": [
+            "rest",
+            "basketball",
+            "train",
+            "train",
+            "move30_recovery_mobility",
+            "basketball",
+            "train"
+          ],
+          "labels": {
+            "move30_recovery_mobility": "Recovery & Mobility"
+          },
+          "merge": {
+            "into_day": 3,
+            "add_day": 4,
+            "add_groups": [
+              "Band circuit"
+            ]
+          }
+        }
       }
     ],
     "recovery": [

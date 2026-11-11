@@ -190,6 +190,22 @@ missed day just pushes the order back. Starting on a Tuesday, for example: Thu D
 Sat Day 3, Sun rest, Mon Day 4, Tue recovery, Wed Day 1… ([`src/lib/week_flow.js`](../src/lib/week_flow.js),
 `node data/check_week_flow.mjs`).
 
+## Basketball week (Lean & Tone + pickup Mon & Fri)
+
+Pickup basketball is sprints, jumps and cuts, so the games replace Lean & Tone's jump work and treadmill
+time rather than adding to them (`basketball_week` in `data/build_lean_tone.py`): Sun rest · Mon 🏀 ·
+Tue Day 1 · Wed Day 2 · Thu Recovery & Mobility · Fri 🏀 · Sat Day 3 + Day 4's band circuit (one session
+finishes both days; Day 4's 25-min treadmill is what the games replace). Set it when starting Lean & Tone
+("🏀 With basketball Mon & Fri") or in Edit week ("🏀 Basketball week", keeps your place).
+- **Game days:** Today shows ▶ Warm-up (the Basketball Warm-up), **Played ✓** and **Didn't play**, with
+  Undo. A game is saved as a session (`src/lib/game.js`), so it counts toward the streak and This week.
+- **Played:** the next day's workout drops its jumps and hard intervals (power moves, sprint / Zone 4
+  finishers), and Daily Mobility treats the game as impact work for the tendons.
+- **Didn't play:** nothing is dropped, so Saturday keeps Day 3's swings, bounds and intervals; Today
+  suggests 25 minutes of easy cardio.
+- The "two on, recovery" order still follows what you finish (`src/lib/week_flow.js`): a game or rest day
+  starts a fresh run.
+
 ## Basketball warm-up
 
 About 10 minutes before the user's 5:45 pickup games (`data/build_basketball_warmup.py`, program

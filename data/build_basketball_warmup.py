@@ -15,6 +15,12 @@ from program_builder import Library, ex
 
 lib = Library()
 
+# The game itself, as an activity the app can log ("Played" on a basketball day): pickup ball is sprints,
+# jumps and cuts, so the next day's Daily Mobility and workout treat it as impact work. No demo needed:
+# it has no video, so plan generators never pick it.
+lib.ensure_exercise('Basketball', 'daily', tags=dict(primary_muscle='quads', muscles=['quads', 'calves', 'glutes'], pattern='agility_cod',
+                    role='conditioning', equipment=['bodyweight'], level=2, unilateral=False, plane='frontal', hip_focus=False))
+
 
 def r(name, reps=None, time=None, sets=1, notes=None, group=None, alts=None, rest=None):
     row = ex(name, reps=reps, time=time, sets=sets, rest=rest, notes=notes, group=group)

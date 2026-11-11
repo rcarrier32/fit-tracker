@@ -10,7 +10,7 @@ import { pref, getAll } from '../db.js';
 import { learnProfile, profileSummary } from '../lib/learn.js';
 import { comparePlan, compareLine } from '../lib/compare.js';
 import { favorites, loadFavorites } from '../lib/favorites.js';
-import { programName, selectSingleProgram, programKind } from './schedule.js';
+import { programName, selectSingleProgram, programKind, weekSlots } from './schedule.js';
 import { localDateStr } from '../lib/date.js';
 import { openBandDatabase } from './band_db.js';
 import { generatePlan, swapInPlan, estimateMinutes, FOCUS_GROUPS } from '../lib/generator.js';
@@ -260,6 +260,12 @@ function openStartPlanSheet(program, onConfirm) {
           <input type="checkbox" id="use-week" checked style="width:auto;margin-top:3px">
           <span><strong>Set up my week</strong><br><span class="muted" style="font-size:12px">${suggestedWeekLabel(program.suggested_week)}</span></span>
         </label>` : ''}
+      ${program.basketball_week ? `
+        <label style="display:flex;gap:10px;align-items:flex-start;margin-top:10px;font-size:14px;color:var(--fg)">
+          <input type="checkbox" id="use-bball" style="width:auto;margin-top:3px">
+          <span><strong>🏀 With basketball Mon &amp; Fri</strong><br><span class="muted" style="font-size:12px">Games replace the jumps and treadmill work:
+          Day 1 Tue · Day 2 Wed · recovery Thu · Day 3 + Day 4's glute circuit Sat · Sun rest. Mark each game Played or Didn't play.</span></span>
+        </label>` : ''}
 
       <button class="btn" id="confirm-btn" style="margin-top:18px">Start plan</button>
       <button class="btn ghost" id="cancel-btn" style="margin-top:8px">Cancel</button>
@@ -292,12 +298,10 @@ function openStartPlanSheet(program, onConfirm) {
       if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $start.value);
       // Optional companion week (e.g. Recovery & Mobility on off days) as a Mixed Week schedule.
-      if (program.suggested_week && sheet.querySelector('#use-week')?.checked) {
-        const sw = program.suggested_week;
-        const slots = sw.days.map(d => d === 'train' ? { program_id: program.id, mode: 'follow' }
-          : d === 'rest' ? { label: 'Rest' }
-          : { program_id: d, mode: 'follow' });
-        await pref('schedule', { type: 'weekly', slots });
+      if (program.basketball_week && sheet.querySelector('#use-bball')?.checked) {
+        await pref('schedule', { type: 'weekly', slots: weekSlots(program, program.basketball_week) });
+      } else if (program.suggested_week && sheet.querySelector('#use-week')?.checked) {
+        await pref('schedule', { type: 'weekly', slots: weekSlots(program, program.suggested_week) });
       }
       toast(`${programName(program)} started — Week 1 of ${w}`);
       close();
