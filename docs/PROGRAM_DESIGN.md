@@ -179,6 +179,15 @@ When a lift has gone up two sessions running and every set hit the top of the ra
 card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
 where it's working, the research report's volume rule.
 
+## A week that follows what you did
+
+A Mixed Week of one training program plus a recovery program (Lean & Tone's suggested week: Mon Tue
+Thu Fri train, Wed Sat Recovery & Mobility, Sun rest) runs as "two on, recovery": a recovery slot shows
+the training workout until you've finished as many training days since your last recovery as the week
+plans in a row (2), and a training slot shows recovery once you have. Rest slots stay rest; a finished
+session keeps its day. Start on a Tuesday or miss a day and the order still holds
+([`src/lib/week_flow.js`](../src/lib/week_flow.js), `node data/check_week_flow.mjs`).
+
 ## Hip warm-up inside the workout
 
 When the hip plan is in use, its warm-up (walk or bike, Cat-Cow, pelvic tilts, the hip stretches) is the

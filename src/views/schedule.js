@@ -12,7 +12,8 @@
  * 'follow' mode: each slot uses that program's current cursor and advances it after completion.
  * 'fixed'  mode: always loads the same (week, day) — useful for dedicated mobility/zone-2 days.
  */
-import { pref, getByIndex } from '../db.js';
+import { pref, getByIndex, getAll } from '../db.js';
+import { flowProgram } from '../lib/week_flow.js';
 import { openSheet, toast } from '../app.js';
 import { loadCatalogs, getAllPrograms, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
@@ -581,7 +582,10 @@ export async function todaysWorkout() {
     if (!slot) return { type: 'unset' };
     if (slot.label) return { type: 'tag', tag: slot.label };
     if (slot.program_id) {
-      const program = await findProgram(slot.program_id);
+      // Training + recovery week (Lean & Tone's suggested week): recovery comes after the planned run of
+      // training days you actually finished, not on a fixed weekday (src/lib/week_flow.js).
+      const flowId = slot.mode === 'follow' ? flowProgram(sched.slots, dow, await getAll('sessions'), localDateStr()) : null;
+      const program = await findProgram(flowId || slot.program_id);
       if (!program) return { type: 'unset', missingProgram: slot.program_id };
       if (slot.mode === 'follow') {
         const pos = await followPosition(program);
