@@ -2044,7 +2044,7 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
   app.querySelector('#done-home').onclick = () => navigate('home');
   app.querySelector('#done-body').onclick = () => navigate('body');
   app.querySelector('#done-next')?.addEventListener('click', () => {
-    allowNextWorkoutToday();
+    allowNextWorkoutToday(program.id);
     renderWorkout(app);
   });
 }
@@ -2056,7 +2056,7 @@ async function changeDay(delta) {
   const program = today_w.program;
   const programId = program.id;
   // Browsing days means moving on from anything already finished today.
-  allowNextWorkoutToday();
+  allowNextWorkoutToday(programId);
   if (program.weeks) {
     let week = today_w.week || 1;
     let day = (today_w.day || 1) + delta;

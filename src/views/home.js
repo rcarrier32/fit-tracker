@@ -183,8 +183,12 @@ async function dailyCardData(todaysSessions) {
     adjust = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup).note;
   }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
-  // dailyWorkout() already gives today's day even once it's finished (the cursor has moved on by then).
-  return { program, day, rows, st, streak, adjust, letters, todayIdx: i, nextIdx: (i + 1) % n,
+  // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
+  // "next workout" on Daily Mobility's own finish screen shows the cursor's day on Lift).
+  const finished = st.state === 'done'
+    ? todaysSessions.filter(x => x.program_id === DAILY_ID && x.done && !x.skipped).sort((a, b) => (b.id || 0) - (a.id || 0))[0] : null;
+  const todayIdx = finished ? (finished.day_index ?? 0) : i;
+  return { program, day, rows, st, streak, adjust, letters, todayIdx, nextIdx: (todayIdx + 1) % n,
     minutes: program.session_length_min || 13 };
 }
 

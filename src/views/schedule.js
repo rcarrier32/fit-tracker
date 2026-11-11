@@ -523,12 +523,15 @@ async function findProgram(id) {
   return customList.find(c => c.id === id) || null;
 }
 
-/** Day key for "I chose to move past today's finished workout". */
-const NEXT_KEY = () => `fit-lift-next-${localDateStr()}`;
-export function allowNextWorkoutToday() {
-  try { sessionStorage.setItem(NEXT_KEY(), '1'); } catch { /* private mode */ }
+/**
+ * Day key for "I chose to move past today's finished workout", per program: moving on in the
+ * training program must not move Daily Mobility's card (or the other way round).
+ */
+const NEXT_KEY = (programId) => `fit-lift-next-${localDateStr()}-${programId}`;
+export function allowNextWorkoutToday(programId) {
+  try { sessionStorage.setItem(NEXT_KEY(programId), '1'); } catch { /* private mode */ }
 }
-const nextAllowed = () => { try { return sessionStorage.getItem(NEXT_KEY()) === '1'; } catch { return false; } };
+const nextAllowed = (programId) => { try { return sessionStorage.getItem(NEXT_KEY(programId)) === '1'; } catch { return false; } };
 
 /**
  * Follow-mode position for a program. Finishing advances the cursor immediately, so if a
@@ -537,7 +540,7 @@ const nextAllowed = () => { try { return sessionStorage.getItem(NEXT_KEY()) === 
  */
 async function followPosition(program) {
   const completed = await pref(`completed:${program.id}`);
-  const doneToday = nextAllowed() ? null
+  const doneToday = nextAllowed(program.id) ? null
     : (await getByIndex('sessions', 'date', localDateStr()))
       .filter(x => x.program_id === program.id && x.done)
       .sort((a, b) => (b.id || 0) - (a.id || 0))[0];
