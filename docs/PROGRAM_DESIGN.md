@@ -182,11 +182,13 @@ where it's working, the research report's volume rule.
 ## A week that follows what you did
 
 A Mixed Week of one training program plus a recovery program (Lean & Tone's suggested week: Mon Tue
-Thu Fri train, Wed Sat Recovery & Mobility, Sun rest) runs as "two on, recovery": a recovery slot shows
-the training workout until you've finished as many training days since your last recovery as the week
-plans in a row (2), and a training slot shows recovery once you have. Rest slots stay rest; a finished
-session keeps its day. Start on a Tuesday or miss a day and the order still holds
-([`src/lib/week_flow.js`](../src/lib/week_flow.js), `node data/check_week_flow.mjs`).
+train, Wed Recovery & Mobility, Thu Fri train, Sat Recovery & Mobility, Sun rest) follows what you
+finish, not the weekday. The program's days keep the pairs the week puts them in (Days 1+2 strength,
+Days 3+4 power and conditioning), and recovery comes after the last day of each pair (Day 2, Day 4), so
+the power day always follows a recovery day. Rest slots stay rest; a finished session keeps its day; a
+missed day just pushes the order back. Starting on a Tuesday, for example: Thu Day 2, Fri recovery,
+Sat Day 3, Sun rest, Mon Day 4, Tue recovery, Wed Day 1… ([`src/lib/week_flow.js`](../src/lib/week_flow.js),
+`node data/check_week_flow.mjs`).
 
 ## Hip warm-up inside the workout
 

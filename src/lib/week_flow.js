@@ -1,8 +1,9 @@
 /**
  * A training week that follows what you did, not the calendar: for a Mixed Week of one training program
- * plus a recovery program (Lean & Tone's "two on, recovery"), recovery comes after you've finished as
- * many training days in a row as the week plans (2), whatever day that lands on. Miss a day and nothing
- * shifts early: the next workout waits for you. Rest slots (Sunday) stay rest.
+ * plus a recovery program (Lean & Tone: Mon Tue train, Wed recovery, Thu Fri train, Sat recovery, Sun
+ * rest), the program's days keep the pairs the week puts them in (Days 1+2, then Days 3+4) and recovery
+ * comes after the last day of each pair, whatever weekday that lands on. Miss a day and nothing shifts
+ * early: the next workout waits for you. Rest slots (Sunday) stay rest.
  * Plain module so it runs in node: `node data/check_week_flow.mjs`.
  */
 
@@ -20,7 +21,25 @@ export function flowOf(slots) {
   const order = [1, 2, 3, 4, 5, 6, 0].map(d => slots[d]);
   let run = 0, cur = 0;
   for (const s of [...order, ...order]) { cur = s?.program_id === train ? cur + 1 : 0; run = Math.max(run, Math.min(cur, 7)); }
-  return { train, companion, run: Math.max(1, Math.min(run, count[train])) };
+  // Which training days end a pair: in the week's own order (Monday first), the training slot whose next
+  // non-rest slot is recovery. Lean & Tone: training days 2 and 4 of its 4.
+  const seq = order.filter(s => s?.program_id);
+  const nTrain = seq.filter(s => s.program_id === train).length;
+  const pairEnds = [];
+  let k = 0;
+  seq.forEach((s, i) => {
+    if (s.program_id !== train) return;
+    k++;
+    const next = seq[(i + 1) % seq.length];
+    if (next?.program_id === companion) pairEnds.push(k);
+  });
+  return { train, companion, run: Math.max(1, Math.min(run, count[train])), nTrain, pairEnds };
+}
+
+/** Where a finished training session sits in the week's cycle (1..nTrain). */
+function dayInCycle(s, nTrain) {
+  const n = s.day_index != null && s.week == null ? s.day_index + 1 : s.day;
+  return n ? ((n - 1) % nTrain) + 1 : null;
 }
 
 /**
@@ -41,7 +60,11 @@ export function flowProgram(slots, dow, sessions, today) {
   if (todays) return todays.program_id;
   const before = fin.filter(s => s.date < today);
   const lastRecovery = before.filter(s => s.program_id === f.companion).map(s => s.date).sort().pop() || null;
-  const trainedSince = new Set(before.filter(s => s.program_id === f.train && (!lastRecovery || s.date > lastRecovery)).map(s => s.date)).size;
-  // No recovery yet and nothing trained: start with training.
-  return trainedSince < f.run ? f.train : f.companion;
+  const since = before.filter(s => s.program_id === f.train && (!lastRecovery || s.date > lastRecovery))
+    .sort((a, b) => a.date.localeCompare(b.date) || (a.id || 0) - (b.id || 0));
+  if (!since.length) return f.train;
+  // Recovery after the last day of a pair (Day 2, Day 4); also after the week's longest run as a backstop.
+  const pos = dayInCycle(since[since.length - 1], f.nTrain);
+  if (pos != null && f.pairEnds.includes(pos)) return f.companion;
+  return new Set(since.map(s => s.date)).size >= f.run ? f.companion : f.train;
 }
