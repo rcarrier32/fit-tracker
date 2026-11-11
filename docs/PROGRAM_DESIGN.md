@@ -179,6 +179,17 @@ When a lift has gone up two sessions running and every set hit the top of the ra
 card offers **+1 set** for today (up to 5, not while the check-ins say you're beat): volume goes
 where it's working, the research report's volume rule.
 
+## Daily Mobility follows yesterday's training
+
+When today's Daily Mobility session starts ([`src/lib/daily_adjust.js`](../src/lib/daily_adjust.js),
+`node data/check_daily_adjust.mjs`), it reads yesterday's logged training (not yesterday's mobility,
+not skipped sessions):
+- **Jumps, sprints, landings or a heavy leg day** (9+ leg sets): pogos become a single-leg balance
+  hold. Tendon and elastic loading is spaced across the week, not daily.
+- **Each area trained directly (4+ working sets)** gets one more set (max 3) of today's holds and
+  mobility moves for it: stretch what was worked, like generated cooldowns.
+- A note at the top says what changed and why. A rest day changes nothing.
+
 ## Learning from your logs
 
 [`src/lib/learn.js`](../src/lib/learn.js) works out a personal profile from the last 12 weeks of

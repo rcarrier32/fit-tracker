@@ -5,6 +5,7 @@ import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
+import { yesterdayLoad, adjustDaily } from '../lib/daily_adjust.js';
 import { isFav, toggleFav } from '../lib/favorites.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
@@ -276,6 +277,17 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps, { week, day }) : rawExercises,
       done: false,
     };
+    // Daily Mobility adjusts for yesterday's training (src/lib/daily_adjust.js): no pogos after jumps
+    // or heavy legs, one more set of the holds for what was worked. Decided once, when today's session starts.
+    if (programId === 'daily_mobility') {
+      const d = new Date(); d.setDate(d.getDate() - 1);
+      const yesterday = await getByIndex('sessions', 'date', localDateStr(d));
+      const { exerciseByName: byName } = await loadCatalogs();   // cached; exMap is built further down
+      const lookup = (n) => byName.get(String(n).toLowerCase());
+      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup);
+      session.exercises = adj.rows;
+      if (adj.note) session.adjust_note = adj.note;
+    }
   }
 
   // A session started before rounds became sets: upgrade any "N rounds" row not logged yet.
@@ -325,6 +337,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     ${pjfDayNotesHtml(program, week, day, dayData)}
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
+    ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
     ${bandCats.length ? `<div class="band-setup">Band setup: ${bandCats.map(c =>
       `<button class="band-setup-link" data-band-cat="${c.replace(/"/g, '&quot;')}">▶ ${BAND_SHORT[c] || c}</button>`).join('')}</div>` : ''}
     ${today_w.mode === 'follow' ? `<div class="btn-row" style="margin:10px 0">
