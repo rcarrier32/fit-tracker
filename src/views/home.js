@@ -238,6 +238,29 @@ function renderDailyCard(d) {
     </div>`;
 }
 
+/** The hip plan's row on the Today's Workout card: first (before the workout) or last. */
+function hipRow(hip, first) {
+  const wu = hip.warmup || { done: 0, total: 0 };
+  const wuDone = wu.total && wu.done >= wu.total;
+  const title = first
+    ? `Hip warm-up first${wu.total ? ` · ${wuDone ? 'done ✓' : `${wu.done} of ${wu.total}`}` : ''}`
+    : `Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}`;
+  const sub = hip.strength
+    ? `${first ? 'Walk or bike, then the hip stretches, before the workout. ' : ''}Session ${hip.session || 'A/B'} strength runs in Your Hip Plan on the Lift screen.`
+    : (first ? `${hip.label} · ` : '') + `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`;
+  return `
+        <div style="${first ? 'margin:10px 0 12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px' : 'margin-top:12px;padding-top:12px;border-top:1px solid var(--border)'}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div>
+              <div style="font-size:${first ? 13 : 12}px;font-weight:600">${title}</div>
+              <div style="font-size:11px;color:var(--fg-dim)">${sub}</div>
+              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
+            </div>
+            <button id="open-hip" class="btn ${first && !wuDone ? '' : 'ghost'}" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">${first && !wuDone ? 'Start →' : 'Open →'}</button>
+          </div>
+        </div>`;
+}
+
 export async function renderHome(app) {
   const userProfile = await pref('profile');
   if (!userProfile) {
@@ -295,6 +318,8 @@ export async function renderHome(app) {
     return Math.max(1, Math.floor(days / 7) + 1);
   })() : null;
   const workoutDoneToday = isWorkoutDoneToday(today_w, todaysSessions);
+  // A workout still to do today: the hip warm-up goes first, above it (the hip plan says to warm up before any lift).
+  const hipFirst = !!hip && today_w.type === 'program' && !workoutDoneToday;
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -334,6 +359,7 @@ export async function renderHome(app) {
         <h2 style="margin:0">Today's Workout</h2>
         ${renderTodayBadge(today_w, activePlan)}
       </div>
+      ${hipFirst ? hipRow(hip, true) : ''}
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
       ${renderTodayBody(today_w, schedule, workoutDoneToday)}
       ${tosProgress ? `
@@ -348,19 +374,7 @@ export async function renderHome(app) {
             <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>
         </div>` : ''}
-      ${hip ? `
-        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-            <div>
-              <div style="font-size:12px;font-weight:600">Hip · ${hip.strength ? 'Warm-up & mobility' : hip.label}</div>
-              <div style="font-size:11px;color:var(--fg-dim)">
-                ${hip.strength ? 'Strength (Session A/B) runs in Your Hip Plan on the Lift screen' : `${hip.sectionLabel} · ${hip.done} of ${hip.total} done`}
-              </div>
-              ${!hip.strength && hip.total && hip.done >= hip.total ? `<div class="pill accent" style="display:inline-block;margin-top:6px">Hip session complete ✓</div>` : ''}
-            </div>
-            <button id="open-hip" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
-          </div>
-        </div>` : ''}
+      ${hip && !hipFirst ? hipRow(hip, false) : ''}
     </div>
 
     <div class="card">

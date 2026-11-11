@@ -1732,9 +1732,15 @@ export function hipToday({ flare = null, paused = {}, done = {}, custom = [], da
   const section = SECTIONS.find(s => s.id === sectionId);
   const items = [...(section.exercises || []), ...custom.filter(c => c.sectionId === sectionId)]
     .filter(e => !paused[e.id]);
+  // The warm-up comes before any lift ("Do this before PT work, the pool, or any lift"), so Today
+  // shows its progress first, ahead of the day's workout.
+  const wu = [...(SECTIONS.find(s => s.id === 'warmup')?.exercises || []), ...custom.filter(c => c.sectionId === 'warmup')]
+    .filter(e => !paused[e.id]);
   return {
     sectionId,
     sectionLabel: section.label,
+    session: /^session-([a-z])$/.exec(sectionId)?.[1]?.toUpperCase() || null,
+    warmup: { done: wu.filter(e => done[e.id]).length, total: wu.length },
     label: flare ? 'Flare day · Pelvic Reset + short walk' : day.focus,
     strength: !flare && sectionId.startsWith('session-'),
     done: items.filter(e => done[e.id]).length,
