@@ -1266,7 +1266,7 @@
     "Daily C · Hips"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 21,
+    "glutes": 22,
     "hip_flexors": 10,
     "front_delts": 5,
     "abs": 4,
@@ -1274,24 +1274,25 @@
     "quads": 4,
     "upper_back": 4,
     "lower_back": 3,
+    "adductors": 2,
     "rear_delts": 1,
     "hamstrings": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 28,
+    "mobility": 29,
     "balance": 15,
     "hinge": 4,
+    "isometric": 4,
     "rotation": 3,
     "isolation_lower": 2,
-    "isometric": 2,
     "anti_extension": 1,
     "pull_horizontal": 1,
     "isolation_upper": 1
    },
    "roles": {
-    "warmup": 17,
+    "warmup": 16,
     "accessory": 11,
-    "cooldown": 9,
+    "cooldown": 11,
     "core": 4,
     "secondary": 1
    },

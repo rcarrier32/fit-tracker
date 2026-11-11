@@ -3722,7 +3722,7 @@
     "abs"
    ],
    "pattern": "isometric",
-   "role": "warmup",
+   "role": "cooldown",
    "equipment": [
     "bodyweight"
    ],
