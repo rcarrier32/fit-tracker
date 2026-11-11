@@ -5,9 +5,11 @@ const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); }
 const P = 'lean_tone_home_6wk', R = 'move30_recovery_mobility';
 const T = { program_id: P, mode: 'follow' }, REC = { program_id: R, mode: 'follow' }, REST = { label: 'Rest' };
 const week = [REST, T, T, REC, T, T, REC];   // Lean & Tone's suggested week, Sun..Sat
-ok('flow found: run of 2', JSON.stringify(flowOf(week)) === JSON.stringify({ train: P, companion: R, run: 2 }), JSON.stringify(flowOf(week)));
+const fw = flowOf(week);
+ok('flow found: run of 2, pairs end on days 2 and 4', fw.train === P && fw.companion === R && fw.run === 2 && fw.nTrain === 4 && fw.pairEnds.join() === '2,4', JSON.stringify(fw));
 ok('one program only → no flow', flowOf([REST, T, T, T, T, T, REST]) === null);
 const S = (date, program_id, extra = {}) => ({ date, program_id, done: true, ...extra });
+const L = (date, day, week = 1) => S(date, P, { week, day });
 // The user's week: Mon 11-09 nothing, Tue 11-10 Lean & Tone Day 1.
 const tue = [S('2026-11-10', P)];
 ok('Wed after only one workout → Lean & Tone, not recovery', flowProgram(week, 3, tue, '2026-11-11') === P);
@@ -21,5 +23,17 @@ ok('a Tue slot after two in a row → recovery', flowProgram(week, 2, [S('2026-1
 ok('skipped workouts don\'t count', flowProgram(week, 3, [S('2026-11-09', P), S('2026-11-10', P, { skipped: true })], '2026-11-11') === P);
 ok('first ever day → train', flowProgram(week, 1, [], '2026-11-09') === P);
 ok('two sessions one day count once', flowProgram(week, 3, [S('2026-11-10', P), S('2026-11-10', P)], '2026-11-11') === P);
+// Pairs kept: the user's weeks from here (Tue Day 1, Wed recovery).
+let h = [L('2026-11-10', 1), S('2026-11-11', R)];
+const step = (dow, date, want, add) => { const got = flowProgram(week, dow, h, date); ok(`${date}: ${want === P ? 'train' : want === R ? 'recovery' : 'rest'}`, got === want, String(got)); if (add) h.push(add); };
+step(4, '2026-11-12', P, L('2026-11-12', 2));          // Thu Day 2
+step(5, '2026-11-13', R, S('2026-11-13', R));          // Fri recovery (after Day 2)
+step(6, '2026-11-14', P, L('2026-11-14', 3));          // Sat Day 3 (not recovery: pair 3+4 starts)
+step(0, '2026-11-15', null);                           // Sun rest
+step(1, '2026-11-16', P, L('2026-11-16', 4));          // Mon Day 4
+step(2, '2026-11-17', R, S('2026-11-17', R));          // Tue recovery (after Day 4)
+step(3, '2026-11-18', P, L('2026-11-18', 1, 2));       // Wed week 2 Day 1
+step(4, '2026-11-19', P, L('2026-11-19', 2, 2));       // Thu Day 2
+step(5, '2026-11-20', R);                              // Fri recovery
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);
