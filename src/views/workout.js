@@ -17,6 +17,8 @@ import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
 import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
+import { doneElsewhere } from '../lib/same_move.js';
+import { movesToday } from '../lib/moves_today.js';
 
 const today = () => localDateStr();
 let _restInterval = null;
@@ -322,6 +324,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   const { ref: prevRef, bestE1RM: allTimeBestE1RM, history, profile } = await buildPrevReference(programId, session.id, today());
   if (stale()) return;
   _history = history;
+  _elsewhere = await movesToday();
+  if (stale()) return;
+  _sessionId = session.id ?? null;
   _profile = profile;
   const _deload = bandDay ? null : (deloadAdvice(session.exercises.map(x => targetFor(x, exMap[String(x.name).toLowerCase()]))) || profile?.fatigue?.advice || null);
 
@@ -458,10 +463,22 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   $root.addEventListener('click', async e => {
     // Compact re-expansion: tap anywhere on a compact card except action buttons
     const compactCard = e.target.closest('.exercise--compact');
-    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn, [data-rest], .add-set-sugg')) {
+    if (compactCard && !e.target.closest('.check, .inc-btn, .rpe-btn, .ex-menu, .video-link, .rest-stop, .timer-btn, [data-rest], .add-set-sugg, .credit-btn')) {
       compactCard.classList.remove('exercise--compact');
       const $sum = compactCard.querySelector('.exercise-summary');
       if ($sum) $sum.style.display = 'none';
+      return;
+    }
+
+    // Done today elsewhere: one tap fills its sets as done (marked as a credit, so it's not a second source).
+    if (e.target.closest('.credit-btn')) {
+      const card = e.target.closest('.exercise');
+      const x = session.exercises[+card.dataset.i];
+      const n = Math.max(1, +x.target_sets || (x.sets || []).length || 1);
+      const now = Date.now();
+      x.sets = Array.from({ length: n }, (_, k) => ({ ...(x.sets?.[k] || {}), done: true, at: now, credit: e.target.closest('.credit-btn').dataset.where }));
+      await saveSession(session);
+      renderWorkout(app, { keepRest: true });
       return;
     }
 
@@ -623,7 +640,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // Warm-up moves, then the exercises. Video on top, the Lift card's weight/rep rows under
   // it, rest countdown, and the last set moves on to the next exercise by itself.
   const wuKey = (n) => `wu:${today()}:${n}`;
-  const wuDone = (n) => { try { return sessionStorage.getItem(wuKey(n)) === '1'; } catch { return false; } };
+  const wuDone = (n) => { try { if (sessionStorage.getItem(wuKey(n)) === '1') return true; } catch { /* private mode */ }
+    return !!doneElsewhere(n, _elsewhere, _sessionId); };   // done in another workout or the hip plan today
   const steps = [
     ...(bandDay ? [] : (warmup?.exercises || []).map(w => ({ wu: w }))),
     ...session.exercises.map((_, i) => ({ i })),
@@ -843,7 +861,8 @@ function _warmupBlockHtml(warmup, exMap) {
         ? `<a class="video-link has-video" href="${lookup.video_url}" target="_blank">▶ Video</a>`
         : `<a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name)}" target="_blank">🔍 Find</a>`;
     const secs = !ex.reps && parseSecs(ex.time);
-    const isDone = done(ex.name);
+    const where = !done(ex.name) && doneElsewhere(ex.name, _elsewhere, _sessionId);
+    const isDone = done(ex.name) || !!where;
     return `
       <div class="exercise warmup-ex${isDone ? ' done' : ''}" style="padding:12px 14px">
         <div class="exercise-header" style="align-items:center">
@@ -852,6 +871,7 @@ function _warmupBlockHtml(warmup, exMap) {
             ${lookup?.pattern ? `<div style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
             ${target ? `<div class="exercise-target">${target}</div>` : ''}
             ${ex.notes ? `<div class="muted" style="font-size:12px;margin-top:2px">${ex.notes}</div>` : ''}
+            ${where ? `<div style="font-size:12px;margin-top:2px;color:var(--accent)">✓ Done today in ${esc(where.label)}</div>` : ''}
           </div>
           <div style="display:flex;gap:6px;align-items:center">
             ${secs ? `<button class="video-link hold-timer" data-secs="${secs}" data-sides="${sidesOf(ex) || ''}">▶ ${fmtSecs(secs)}${sidesOf(ex) ? ' ×2' : ''}</button>` : ''}
@@ -1410,6 +1430,18 @@ async function buildPrevReference(programId, currentSessionId, todayStr) {
 
 let _history = {};
 let _profile = null;
+// Moves done today somewhere else (another workout, the hip plan): src/lib/same_move.js.
+let _elsewhere = new Map();
+let _sessionId = null;
+function elsewhereHtml(ex) {
+  const credit = (ex.sets || []).find(st => st?.done && st.credit)?.credit;
+  if (credit) return `<div style="font-size:12px;margin-top:3px;color:var(--fg-dim)">✓ Counted from ${esc(credit)}</div>`;
+  if ((ex.sets || []).some(st => st?.done)) return '';
+  const hit = doneElsewhere(ex.name, _elsewhere, _sessionId);
+  if (!hit) return '';
+  return `<div class="done-elsewhere" style="font-size:12px;margin-top:3px;color:var(--accent)">✓ Done today in ${esc(hit.label)}
+    <button type="button" class="pill accent credit-btn" data-where="${esc(hit.label)}" style="cursor:pointer;font-size:11px;padding:3px 8px;margin-left:4px">Mark done</button></div>`;
+}
 let _notes = {};   // last note written on each exercise
 let _clock = null;
 let _learned = null;   // coach-program numbers (data/learned_patterns.json), for gym swaps
@@ -1681,6 +1713,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
         <div class="exercise-name">${ex.name}${isFav(ex.name) ? ' <span style="color:#f472b6;font-size:13px">♥</span>' : ''}${ex.swapped ? ' <span class="pill" style="font-size:10px">swapped</span>' : ''}${ex.added ? ' <span class="pill accent" style="font-size:10px">added</span>' : ''}${ex.hurt ? ' <span class="pill" style="font-size:10px;color:var(--danger)">hurt</span>' : ''}</div>
         ${lookup?.pattern ? `<div class="ex-tagline" style="font-size:11px;color:var(--fg-dim);margin-top:1px;text-transform:capitalize">${tagLine(lookup)}</div>` : ''}
         <div class="exercise-target">${formatTarget(ex)}</div>
+        ${elsewhereHtml(ex)}
         ${prevRef[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">Last: ${formatPrevSets(prevRef[ex.name].sets)} <span style="opacity:0.6">(${prevRef[ex.name].date})</span></div>` : ''}
         ${ex.user_note ? `<div style="font-size:12px;margin-top:2px">📝 ${esc(ex.user_note)}</div>`
           : _notes[ex.name] ? `<div class="muted" style="font-size:11px;margin-top:2px">📝 Last note: ${esc(_notes[ex.name])}</div>` : ''}

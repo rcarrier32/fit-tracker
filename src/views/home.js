@@ -29,6 +29,10 @@ import { burnCalories } from './cardio.js';
 import { getActivePlan, currentWeek, planProgress } from '../lib/plans.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { hipToday } from '../lib/hip_protocol.js';
+import { hipCredits } from '../lib/moves_today.js';
+import { HOME_CARDS, resolveLayout, moveCard, layoutToSave } from '../lib/home_layout.js';
+import { weekSummary, weightTrend, feelingSummary } from '../lib/home_extras.js';
+import { mountWeightChart } from '../lib/weight_chart.js';
 
 const today = () => localDateStr();
 
@@ -261,6 +265,56 @@ function hipRow(hip, first) {
         </div>`;
 }
 
+/** Workouts planned this week: Mixed Week program days, else the program's days per week. */
+function plannedThisWeek(schedule, today_w) {
+  if (schedule?.type === 'weekly' && schedule.slots?.some(sl => sl?.program_id)) return schedule.slots.filter(sl => sl?.program_id).length;
+  const p = today_w?.program;
+  if (!p || p.id === DAILY_ID) return null;
+  if (p.weeks) return p.weeks.find(w => w.week_num === today_w.week)?.days?.length || p.sessions_per_week || null;
+  return p.sessions_per_week || null;
+}
+
+// Optional cards stay light: a title row and one or two quiet lines.
+function renderWeekCard(w) {
+  const L = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  const dots = w.days.map((d, i) => `
+    <div style="flex:1;text-align:center">
+      <div style="width:22px;height:22px;margin:0 auto;border-radius:50%;font-size:10px;line-height:22px;
+        ${d.workout ? 'background:var(--accent);color:#0f172a;font-weight:700' : `border:1px solid ${d.today ? 'var(--accent)' : 'var(--border)'};color:var(--fg-dim)`}">${L[i]}</div>
+      <div style="height:4px;margin-top:3px">${d.daily ? '<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent)"></span>' : ''}</div>
+    </div>`).join('');
+  const extra = [w.dailyDays ? `mobility ${w.dailyDays}×` : '', w.cardioMin ? `${w.cardioMin} min active` : ''].filter(Boolean).join(' · ');
+  return `
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">This week</div>
+        <span class="muted" style="font-size:12px">${w.workouts}${w.planned ? ` of ${w.planned}` : ''} workout${(w.planned || w.workouts) === 1 ? '' : 's'}${extra ? ` · ${extra}` : ''}</span></div>
+      <div style="display:flex;gap:2px;margin-top:8px">${dots}</div>
+    </div>`;
+}
+
+function renderFeelingCard(f) {
+  const face = (r) => r.effort === 'hard' || r.energy === 1 ? '😫' : r.energy === 3 || r.effort === 'easy' ? '💪' : '🙂';
+  const line = !f ? 'Answer "How did it feel?" after a workout to see this.'
+    : f.advice ? '2 of your last 3 felt like too much: try a lighter week (half the sets, same weights).'
+    : 'Recovering fine. Keep building.';
+  return `
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">How you've been feeling</div>
+        ${f ? `<span style="font-size:15px;letter-spacing:2px" title="Last workouts, oldest first">${f.recent.slice(-3).map(face).join('')}</span>` : ''}</div>
+      <div class="muted" style="font-size:12px;margin-top:4px;${f?.advice ? 'color:var(--fg)' : ''}">${escH(line)}</div>
+      ${f?.hurts.length ? `<div class="muted" style="font-size:12px;margin-top:2px">Sore lately: ${f.hurts.map(escH).join(', ')}</div>` : ''}
+    </div>`;
+}
+
+function renderTrendCard(t) {
+  return `
+    <div class="card" style="padding:12px 14px">
+      <div class="card-row"><div style="font-weight:600">Weight</div>
+        <span class="muted" style="font-size:12px">${t ? `${t.avg} lb 7-day avg${t.change != null ? ` · ${t.change > 0 ? '+' : ''}${t.change} vs last week` : ''}` : 'Weigh in 3× a week for a trend'}</span></div>
+      <div id="home-wchart"></div>
+    </div>`;
+}
+
 export async function renderHome(app) {
   const userProfile = await pref('profile');
   if (!userProfile) {
@@ -305,7 +359,7 @@ export async function renderHome(app) {
   ]);
   // Only once the hip plan is in use — started, flaring, or anything ever checked off.
   const hip = (hipProgress || Object.keys(hipLogs).length)
-    ? hipToday({ custom: hipCustom, done: hipLogs[today()] || {} })
+    ? hipToday({ custom: hipCustom, done: { ...(await hipCredits(hipCustom || [])), ...(hipLogs[today()] || {}) } })
     : null;
 
   const tosDoneToday = tosProgress
@@ -322,13 +376,12 @@ export async function renderHome(app) {
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
 
-  app.innerHTML = `
-    <h1>Today</h1>
-    <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
-    ${renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday })}
-    ${renderWeeklySummary(weeklySummary)}
-    ${renderDailyCard(daily)}
-
+  // Cards in the order you chose (Customize Home, pref 'home_layout'; src/lib/home_layout.js).
+  const cards = {
+    tips: renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday }),
+    lastweek: renderWeeklySummary(weeklySummary),
+    daily: renderDailyCard(daily),
+    calories: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Calories</h2>
@@ -351,7 +404,8 @@ export async function renderHome(app) {
         <button class="btn secondary" data-action="log-activity">+ Activity</button>
       </div>
     </div>
-
+    `,
+    workout: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Today's Workout</h2>
@@ -374,7 +428,8 @@ export async function renderHome(app) {
         </div>` : ''}
       ${hip && !hipFirst ? hipRow(hip, false) : ''}
     </div>
-
+    `,
+    body: `
     <div class="card">
       <div class="card-row">
         <h2 style="margin:0">Body weight</h2>
@@ -383,20 +438,42 @@ export async function renderHome(app) {
       <div class="muted">Latest: ${userProfile.weight_lb} lb · target ${tdee.weekly_change_lb > 0 ? '+' : ''}${tdee.weekly_change_lb} lb/week · ${actualTdee ? ('actual TDEE ~' + actualTdee + ' kcal') : ('maintenance ~' + tdee.maintenance + ' kcal')}</div>
       <div class="btn-row" style="margin-top:8px">
         <button class="btn ghost" data-action="log-weight">${bodyToday ? 'Update' : 'Log'} today's weight</button>
-        <button class="btn ghost" data-action="edit-profile">Edit profile</button>
-        <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
-        <button class="btn ghost" data-action="export-data">Export data</button>
-        <button class="btn ghost" data-action="import-data">Import data</button>
       </div>
+    </div>
+    `,
+  };
+  const layout = resolveLayout(await pref('home_layout'));
+  // Optional cards: only gather their data when they're on.
+  const want = (id) => !layout.hidden.has(id);
+  const allSessions = (want('week') || want('feeling')) ? await getAll('sessions') : [];
+  if (want('week')) cards.week = renderWeekCard(weekSummary({ sessions: allSessions, cardio: await getAll('cardio'), today: today(), planned: plannedThisWeek(schedule, today_w) }));
+  if (want('feeling')) cards.feeling = renderFeelingCard(feelingSummary(allSessions, today()));
+  if (want('trend')) cards.trend = renderTrendCard(weightTrend(allBody, today()));
+  app.innerHTML = `
+    <h1>Today</h1>
+    <div class="muted">${new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+    ${layout.order.filter(id => !layout.hidden.has(id)).map(id => cards[id] || '').join('\n')}
+    <div class="btn-row" style="margin-top:4px">
+      <button class="btn ghost" data-action="customize-home">↕ Customize Home</button>
+      <button class="btn ghost" data-action="edit-profile">Edit profile</button>
+      <button class="btn ghost" data-action="calendar">📅 Add to calendar</button>
+      <button class="btn ghost" data-action="export-data">Export data</button>
+      <button class="btn ghost" data-action="import-data">Import data</button>
     </div>
   `;
 
-  app.querySelector('[data-action="log-meal"]').onclick = () => navigate('meals');
+  const $hw = app.querySelector('#home-wchart');
+  if ($hw && allBody.length >= 2) mountWeightChart($hw, allBody, { today: today(), range: (await pref('weight_chart_range')) || '1M',
+    goalPerWeek: userProfile.weekly_change_lb ?? null, height: 120, onRange: (r) => pref('weight_chart_range', r) });
+  app.querySelector('[data-action="customize-home"]').onclick = () => openHomeLayout(() => renderHome(app));
+  const logMeal = app.querySelector('[data-action="log-meal"]');
+  if (logMeal) logMeal.onclick = () => navigate('meals');
   const openTosBtn = app.querySelector('#open-tos');
   if (openTosBtn) openTosBtn.onclick = () => navigate('tos');
   const openHipBtn = app.querySelector('#open-hip');
   if (openHipBtn) openHipBtn.onclick = () => navigate('hip');
-  app.querySelector('[data-action="log-activity"]').onclick = () => navigate('cardio');
+  const logAct = app.querySelector('[data-action="log-activity"]');
+  if (logAct) logAct.onclick = () => navigate('cardio');
   const startOverBtn = app.querySelector('[data-action="program-start-over"]');
   if (startOverBtn) startOverBtn.onclick = async () => {
     await pref('completed:' + startOverBtn.dataset.programId, null);
@@ -430,7 +507,8 @@ export async function renderHome(app) {
     await openScheduleEditor();
     renderHome(app);
   };
-  app.querySelector('[data-action="log-weight"]').onclick = () => navigate('body');
+  const logW = app.querySelector('[data-action="log-weight"]');
+  if (logW) logW.onclick = () => navigate('body');
   app.querySelector('[data-action="edit-profile"]').onclick = () => showOnboarding(app);
 
   app.querySelector('[data-action="calendar"]').onclick = () => openCalendarExport();
@@ -656,6 +734,41 @@ function macroBox(label, val, target, unit) {
       <div class="bar" style="margin-top:4px"><div class="bar-fill" style="width:${pct}%"></div></div>
     </div>
   `;
+}
+
+/** Customize Home: move cards up and down, show or hide each. Saved as pref 'home_layout'. */
+async function openHomeLayout(onDone) {
+  let { order, hidden } = resolveLayout(await pref('home_layout'));
+  const label = Object.fromEntries(HOME_CARDS.map(c => [c.id, c.label]));
+  const save = () => pref('home_layout', layoutToSave(order, hidden));
+  openSheet((sheet, close, hooks) => {
+    hooks.onClose = onDone;   // Done, the backdrop or the back button: redraw Home in the new order
+    const draw = () => {
+      sheet.innerHTML = `
+        <h2>Customize Home</h2>
+        <div class="muted" style="margin-bottom:10px">Order the cards with ↑ ↓; tap Show / Hide to choose what's on Today.</div>
+        ${order.map((id, i) => `
+          <div class="list-item" style="cursor:default;gap:8px;${hidden.has(id) ? 'opacity:0.5' : ''}">
+            <div style="flex:1"><div class="list-item-title">${label[id]}</div></div>
+            <button class="pill" data-up="${id}" ${i === 0 ? 'disabled' : ''} style="cursor:pointer;padding:6px 10px" aria-label="Move up">↑</button>
+            <button class="pill" data-down="${id}" ${i === order.length - 1 ? 'disabled' : ''} style="cursor:pointer;padding:6px 10px" aria-label="Move down">↓</button>
+            <button class="pill ${hidden.has(id) ? '' : 'accent'}" data-vis="${id}" style="cursor:pointer;padding:6px 10px;min-width:58px">${hidden.has(id) ? 'Hidden' : 'Shown'}</button>
+          </div>`).join('')}
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn" id="hl-done">Done</button>
+          <button class="btn ghost" id="hl-reset">Reset to default</button>
+        </div>`;
+      sheet.querySelectorAll('[data-up]').forEach(b => b.onclick = async () => { order = moveCard(order, b.dataset.up, -1); await save(); draw(); });
+      sheet.querySelectorAll('[data-down]').forEach(b => b.onclick = async () => { order = moveCard(order, b.dataset.down, 1); await save(); draw(); });
+      sheet.querySelectorAll('[data-vis]').forEach(b => b.onclick = async () => {
+        const id = b.dataset.vis; if (hidden.has(id)) hidden.delete(id); else hidden.add(id);
+        await save(); draw();
+      });
+      sheet.querySelector('#hl-done').onclick = () => close();
+      sheet.querySelector('#hl-reset').onclick = async () => { await pref('home_layout', null); ({ order, hidden } = resolveLayout(null)); draw(); };
+    };
+    draw();
+  });
 }
 
 async function openProgramPicker() {
