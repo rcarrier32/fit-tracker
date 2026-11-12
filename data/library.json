@@ -372,7 +372,7 @@
     {
       "id": "ab-wheel-rollout",
       "name": "Ab Wheel Rollout",
-      "video_url": null,
+      "video_url": "https://youtu.be/MinlHnG7j4k",
       "sources": [
         "bws"
       ],
@@ -392,7 +392,8 @@
       "level": 1,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "achilles-negative-steps",
@@ -1440,7 +1441,7 @@
     {
       "id": "cable-external-rotation",
       "name": "Cable External Rotation",
-      "video_url": null,
+      "video_url": "https://youtu.be/meUts1w5mcI",
       "sources": [
         "bws"
       ],
@@ -1458,7 +1459,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "transverse",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "cable-lateral-raise",
@@ -1738,7 +1740,7 @@
     {
       "id": "chest-supported-t-bar-row",
       "name": "Chest Supported T-Bar Row",
-      "video_url": null,
+      "video_url": "https://youtu.be/-avLxYko1k0",
       "sources": [
         "bws"
       ],
@@ -1759,7 +1761,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "chin-ups-weighted",
@@ -1976,7 +1979,7 @@
     {
       "id": "concentration-curl",
       "name": "Concentration Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/os52QEIXQtM",
       "sources": [
         "bws"
       ],
@@ -1994,7 +1997,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "contrast-step-ups",
@@ -2437,7 +2441,7 @@
     {
       "id": "donkey-calf-raise",
       "name": "Donkey Calf Raise",
-      "video_url": null,
+      "video_url": "https://youtu.be/0MO5VS0iPoQ",
       "sources": [
         "bws"
       ],
@@ -2455,7 +2459,8 @@
       "level": 1,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "double-lateral-extensive-hops",
@@ -3384,7 +3389,7 @@
     {
       "id": "hack-squat",
       "name": "Hack Squat",
-      "video_url": null,
+      "video_url": "https://youtu.be/u_1a0nWG7vQ",
       "sources": [
         "bws"
       ],
@@ -3403,7 +3408,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "half-kneeling-hip-flexor-stretch",
@@ -4733,7 +4739,7 @@
     {
       "id": "lateral-raise-machine",
       "name": "Lateral Raise Machine",
-      "video_url": null,
+      "video_url": "https://youtu.be/0o07iGKUarI",
       "sources": [
         "bws"
       ],
@@ -4751,7 +4757,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "frontal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "lean-in-lateral-raise",
@@ -5042,7 +5049,7 @@
     {
       "id": "low-to-high-cable-fly",
       "name": "Low to High Cable Fly",
-      "video_url": null,
+      "video_url": "https://youtu.be/Lw2nYqhn0Ic",
       "sources": [
         "bws"
       ],
@@ -5060,7 +5067,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "lying-incline-lateral-raise",
@@ -5728,7 +5736,7 @@
     {
       "id": "preacher-curl",
       "name": "Preacher Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/fgYBENCgIME",
       "sources": [
         "bws"
       ],
@@ -5747,7 +5755,8 @@
       "level": 2,
       "unilateral": true,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "pull-up-negatives",
@@ -6303,7 +6312,7 @@
     {
       "id": "reverse-nordic-curl",
       "name": "Reverse Nordic Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/zQjySSbJ7mI",
       "sources": [
         "bws"
       ],
@@ -6321,7 +6330,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "rock-back-breathing",
@@ -6706,7 +6716,7 @@
     {
       "id": "seated-machine-overhead-press",
       "name": "Seated Machine Overhead Press",
-      "video_url": null,
+      "video_url": "https://youtu.be/Gkk-6q7Rq-s",
       "sources": [
         "bws"
       ],
@@ -6726,7 +6736,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "seated-mid-chest-cable-fly",
@@ -7172,7 +7183,7 @@
     {
       "id": "single-arm-cable-row",
       "name": "Single-Arm Cable Row",
-      "video_url": null,
+      "video_url": "https://youtu.be/1jN6qeXdvWA",
       "sources": [
         "bws"
       ],
@@ -7192,7 +7203,8 @@
       "level": 2,
       "unilateral": true,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "single-leg-leg-press",
@@ -7227,7 +7239,7 @@
     {
       "id": "single-leg-romanian-deadlift",
       "name": "Single-Leg Romanian Deadlift",
-      "video_url": null,
+      "video_url": "https://youtu.be/s32cCgmRV3I",
       "sources": [
         "bws"
       ],
@@ -7247,7 +7259,8 @@
       "level": 2,
       "unilateral": true,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "sissy-squat",
@@ -8697,7 +8710,7 @@
     {
       "id": "zottman-curl",
       "name": "Zottman Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/ZrpRBgswtHs",
       "sources": [
         "bws"
       ],
@@ -8716,7 +8729,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "arm-circles",

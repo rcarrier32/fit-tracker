@@ -1216,6 +1216,9 @@ const SOURCE_SECTIONS = [
           'Raise the bottom leg up toward the bench, lower slowly.',
           'Hips stay up the whole set.',
         ],
+        videoId: 'ncNf2whKbVA',
+        videoTitle: "Copenhagen Plank Bottom Leg Lifts",
+        channel: "Ambitious Athletics",
         search: 'copenhagen plank leg raise',
       },
       {

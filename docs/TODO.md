@@ -51,24 +51,24 @@ those names in the build script, re-run the build, then:
 Provider demos (PJF, BWS, Griffith) beat expert channels, which beat random ones
 ([ADDING_A_PROGRAM.md](ADDING_A_PROGRAM.md) §3).
 
-## 3. Catalog exercises with no video (needs YouTube)
+## 3. BWS moves on YouTube stand-ins (needs the user's BWS links)
 
-`node data/check_catalog.mjs` warns about 17 catalog exercises with no video. Search with
-`node data/enrich_program_videos.mjs --source bws --missing` (only moves with no video; the 2026-11-11 run
-without it spent the day's quota). `data/bws-video-review.json` has candidates for all 25 BWS moves (2026-11-12 run); 11 real demos applied 2026-11-12 (v149); the other 14 got only generic tips videos. The plan builder can't
-pick them, so filling them widens its choices:
+Done 2026-11-12 (v150): every catalog exercise has a video except Basketball (it's a game, not a move).
 
-Ab Wheel Rollout · Cable External Rotation · Chest Supported T-Bar Row · Concentration Curl ·
-Donkey Calf Raise · Hack Squat · Lateral Raise Machine · Low to High Cable Fly · Preacher Curl ·
-Reverse Nordic Curl · Seated Machine Overhead Press · Single-Arm Cable Row · Single-Leg Romanian
-Deadlift · Zottman Curl (BWS), Zone 5 Cardio (PJF), Basketball (Daily) — run `node data/check_catalog.mjs` for the current list.
+The 25 BWS moves below play public YouTube demos (picks in `data/bws-video-review.json`). The BWS
+Programs app has its own demos for most of them, but they're unlisted, so search can't find them: the
+user sends the links, and each one replaces the YouTube pick (provider videos first).
 
-Walk or Easy Bike: done 2026-11-12 (v148), plays PJF's Nasal Breathing Cardio Warm Up (`SAME_DEMO` in
-src/lib/local_videos.js and data/catalog.mjs).
+Ab Wheel Rollout · Band Pull-Apart · Cable External Rotation · Cable Pull-Through · Chest Supported
+T-Bar Row · Concentration Curl · Donkey Calf Raise · EZ Bar Curl · EZ Bar Overhead Tricep Extension ·
+Hack Squat · Hanging Knee Raises · Hip Abduction Machine · Lateral Raise Machine · Low to High Cable Fly ·
+Meadows Row · Nordic Hamstring Curl · Preacher Curl · Reverse Nordic Curl · Seated Machine Overhead
+Press · Single-Arm Cable Pushdown · Single-Arm Cable Row · Single-Leg Romanian Deadlift · Straight Arm
+Pulldown · Weighted Dips · Zottman Curl.
 
-Several may be duplicates of exercises that already have a video under another name (Band Pull-Apart
-vs Band Pull-Aparts, Nordic Hamstring Curl vs Eccentric Nordic Hamstring Curl): add an alias instead
-of a new video where that's true.
+Same-move links to provider demos are `alias_of` entries in `data/providers/*.json`: Walk or Easy Bike →
+PJF Nasal Breathing Cardio Warm Up, Bridge March → TrainHeroic Marching Glute Bridge With Hips Up.
+Copenhagen with Bottom-Leg Raises (hip plan) uses Ambitious Athletics' demo.
 
 ## 4. Agility ladder drills
 
