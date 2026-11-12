@@ -14107,7 +14107,7 @@
     {
       "id": "daily-knee-pull-heel-bridge",
       "name": "Knee Pull Heel Bridge",
-      "video_url": "https://youtu.be/LsPF-8U8hak",
+      "video_url": "https://youtu.be/Z6sv_sfNI5U",
       "sources": [
         "daily"
       ],
@@ -14128,7 +14128,7 @@
       "unilateral": true,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "daily-squat-to-hamstring-stretch",
@@ -14725,6 +14725,81 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "hoopstudy-90-90-hip-lift-with-internal-rotation",
+      "name": "90/90 Hip Lift with Internal Rotation",
+      "video_url": null,
+      "sources": [
+        "hoopstudy"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Hip+Lift+with+Internal+Rotation+form",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "abs",
+        "glutes"
+      ],
+      "pattern": "mobility",
+      "role": "cooldown",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "hoopstudy-single-leg-iso-hold",
+      "name": "Single Leg ISO Hold",
+      "video_url": null,
+      "sources": [
+        "hoopstudy"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single+Leg+ISO+Hold+form",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "hip_flexors"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "hoopstudy-single-leg-iso-heel-bridge-hold",
+      "name": "Single Leg ISO Heel Bridge Hold",
+      "video_url": null,
+      "sources": [
+        "hoopstudy"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single+Leg+ISO+Heel+Bridge+Hold+form",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hamstrings",
+        "hip_flexors"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
     }
   ],
   "programs": {
@@ -62293,7 +62368,7 @@
                 "distance": null,
                 "time": null,
                 "rest": "10s",
-                "notes": "Your #9. On your back, hug one knee to the chest, lift the other foot's toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Hip extension for the hours of sitting. Demo is a stand-in until your saved reel is linked.",
+                "notes": "Your #9. On your back, hug one knee to the chest, lift the other foot's toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Hip extension for the hours of sitting.",
                 "alternates": [
                   "Posterior Pelvic Tilt Breathing",
                   "Banded Hip Distraction Pulling Into Hip Flexion"
@@ -63025,7 +63100,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63034,7 +63109,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -63064,7 +63142,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63073,13 +63151,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63088,9 +63166,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -63130,7 +63209,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63139,7 +63218,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -63169,7 +63251,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63178,13 +63260,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63193,9 +63275,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -63823,7 +63906,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63832,7 +63915,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -63862,7 +63948,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63871,13 +63957,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63886,9 +63972,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -63928,7 +64015,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63937,7 +64024,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -63967,7 +64057,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63976,13 +64066,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -63991,9 +64081,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -64621,7 +64712,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64630,7 +64721,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -64660,7 +64754,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64669,13 +64763,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64684,9 +64778,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -64726,7 +64821,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64735,7 +64830,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -64765,7 +64863,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64774,13 +64872,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -64789,9 +64887,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -65419,7 +65518,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65428,7 +65527,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -65458,7 +65560,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65467,13 +65569,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65482,9 +65584,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -65524,7 +65627,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65533,7 +65636,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -65563,7 +65669,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65572,13 +65678,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -65587,9 +65693,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -66220,7 +66327,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66229,7 +66336,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -66259,7 +66369,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66268,13 +66378,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66283,9 +66393,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -66325,7 +66436,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66334,7 +66445,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -66364,7 +66478,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66373,13 +66487,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -66388,9 +66502,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -67018,7 +67133,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67027,7 +67142,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -67057,7 +67175,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67066,13 +67184,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67081,9 +67199,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -67123,7 +67242,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67132,7 +67251,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -67162,7 +67284,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67171,13 +67293,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67186,9 +67308,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -67816,7 +67939,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67825,7 +67948,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -67855,7 +67981,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67864,13 +67990,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67879,9 +68005,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -67921,7 +68048,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67930,7 +68057,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -67960,7 +68090,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67969,13 +68099,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -67984,9 +68114,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -68614,7 +68745,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68623,7 +68754,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -68653,7 +68787,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68662,13 +68796,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68677,9 +68811,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],
@@ -68719,7 +68854,7 @@
                     ]
                   },
                   {
-                    "name": "Posterior Pelvic Tilt Breathing",
+                    "name": "90/90 Hip Lift with Internal Rotation",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68728,7 +68863,10 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "HoopStudy's 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths."
+                    "notes": "On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.",
+                    "alternates": [
+                      "Posterior Pelvic Tilt Breathing"
+                    ]
                   },
                   {
                     "name": "Single-Leg Elevated Hamstring Bridge",
@@ -68758,7 +68896,7 @@
                     "notes": "HoopStudy's 90/90 knee rolls: knees side to side, slow."
                   },
                   {
-                    "name": "Forward Lunge Isometric",
+                    "name": "Single Leg ISO Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68767,13 +68905,13 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO hold: split stance, hold the bottom position. Each side.",
+                    "notes": "Split stance, both knees at 90°, hold the bottom. Each side.",
                     "alternates": [
-                      "Single-Leg Balance"
+                      "Forward Lunge Isometric"
                     ]
                   },
                   {
-                    "name": "Glute Bridge Hold",
+                    "name": "Single Leg ISO Heel Bridge Hold",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 2,
@@ -68782,9 +68920,10 @@
                     "distance": null,
                     "time": "25s",
                     "rest": "15s",
-                    "notes": "HoopStudy's single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.",
+                    "notes": "On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.",
                     "alternates": [
-                      "Knee Pull Heel Bridge"
+                      "Knee Pull Heel Bridge",
+                      "Glute Bridge Hold"
                     ]
                   }
                 ],

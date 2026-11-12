@@ -30,7 +30,7 @@ NEW = {
                      equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
     'Standing Hip Internal/External Lifts': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'adductors'],
                      pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
-    'Knee Pull Heel Bridge': ('On Bench Single Leg Glute Bridge', dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'abs'], pattern='isometric',
+    'Knee Pull Heel Bridge': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'abs'], pattern='isometric',
                      role='cooldown', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
     'Squat to Hamstring Stretch': (None, dict(primary_muscle='hamstrings', muscles=['hamstrings', 'adductors', 'glutes'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
@@ -84,6 +84,7 @@ for name, url in {
     'Knee Circles': 'https://youtu.be/E3GeFyXlOwI',                          # MDSportsInjury
     'Standing Hip Internal/External Lifts': 'https://youtu.be/AnkBK38UNhA',  # Strive2Move
     'Squat to Hamstring Stretch': 'https://youtu.be/1oQSsXhbhjk',            # Champion Physical Therapy
+    'Knee Pull Heel Bridge': 'https://youtu.be/Z6sv_sfNI5U',                 # Muscle & Strength (user's pick)
 }.items():
     e = lib.by_name[name.lower()]
     e['video_url'] = url
@@ -159,7 +160,7 @@ days = [
         r('Optional Pigeon Length Under Load', '5 each side', group='Rotation', notes='Your #1 "rotating pigeon". PJF\'s levels, slowly.',
           alts=['Banded Incline Pigeon Rotation']),
         r('Knee Pull Heel Bridge', '5 breaths', sets=2, group='Extension', rest='10s', alts=['Posterior Pelvic Tilt Breathing', 'Banded Hip Distraction Pulling Into Hip Flexion'],
-          notes='Your #9. On your back, hug one knee to the chest, lift the other foot\'s toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Hip extension for the hours of sitting. ' + STANDIN),
+          notes='Your #9. On your back, hug one knee to the chest, lift the other foot\'s toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Hip extension for the hours of sitting.'),
         r('Hip Flexor Length Under Load', time='45s', sets=2, group='Extension', notes='Each side (PJF). 45 s a side most days reaches the weekly stretch dose for range.',
           alts=['Hip Flexor/Quad Bridge', 'Half Kneeling Hip Flexor Stretch']),
         r('Lateral Lunge Length Under Load', time='45s', sets=2, group='Adductors', notes='Each side (PJF). The reel\'s bench lateral lunge works too.',

@@ -52,6 +52,13 @@ NEW = {
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     'Hook Plank': (None, dict(primary_muscle='abs', muscles=['abs', 'obliques', 'lower_back'], pattern='anti_extension', role='core',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
+    # Recovery day, named as HoopStudy's course videos name them (data/providers/hoopstudy.json).
+    '90/90 Hip Lift with Internal Rotation': (None, dict(primary_muscle='hamstrings', muscles=['hamstrings', 'abs', 'glutes'], pattern='mobility',
+                           role='cooldown', equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=True)),
+    'Single Leg ISO Hold': (None, dict(primary_muscle='quads', muscles=['quads', 'glutes', 'hip_flexors'], pattern='isometric', role='accessory',
+                           equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
+    'Single Leg ISO Heel Bridge Hold': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'hip_flexors'], pattern='isometric',
+                           role='accessory', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
 }
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'hoopstudy', tags=tags, video_from=borrow)
@@ -200,15 +207,17 @@ def recovery(n):
         r('Foam Roller Circuit', time='1:30', sets=1, notes='Foam roll and LAX ball: calves, hamstrings, glutes, 30 s each.'),
         r('Hook Plank', '10 breaths', sets=2, rest='15s', notes='On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.',
           alts=['Dead Bug']),
-        r('Posterior Pelvic Tilt Breathing', '10 breaths', sets=2, rest='15s',
-          notes='HoopStudy\'s 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths.'),
+        r('90/90 Hip Lift with Internal Rotation', '10 breaths', sets=2, rest='15s',
+          notes='On your back, feet on a wall with hips and knees at 90°, slight tuck, knees in, slow breaths.',
+          alts=['Posterior Pelvic Tilt Breathing']),
         r('Single-Leg Elevated Hamstring Bridge', '10 each side', sets=2, rest='15s', notes='HoopStudy\'s 90/90 single-leg bridge: feet on the wall at 90/90, bridge one leg.',
           alts=['Single-Leg Glute Bridge']),
         r('90/90 Knee Roll', '10 each side', sets=2, rest='15s', notes='HoopStudy\'s 90/90 knee rolls: knees side to side, slow.'),
-        r('Forward Lunge Isometric', time='25s', sets=2, rest='15s', notes='HoopStudy\'s single-leg ISO hold: split stance, hold the bottom position. Each side.',
-          alts=['Single-Leg Balance']),
-        r('Glute Bridge Hold', time='25s', sets=2, rest='15s', notes='HoopStudy\'s single-leg ISO heel bridge hold: one leg, drive through the heel. Each side.',
-          alts=['Knee Pull Heel Bridge']),
+        r('Single Leg ISO Hold', time='25s', sets=2, rest='15s', notes='Split stance, both knees at 90°, hold the bottom. Each side.',
+          alts=['Forward Lunge Isometric']),
+        r('Single Leg ISO Heel Bridge Hold', time='25s', sets=2, rest='15s',
+          notes='On your back, pull one knee to your chest, bridge on the other heel and hold the hips up. Each side.',
+          alts=['Knee Pull Heel Bridge', 'Glute Bridge Hold']),
     ]}
 
 

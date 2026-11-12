@@ -25,15 +25,16 @@ script); each row's note says the demo is a stand-in. Replace each with its real
 the stand-in sentence from the note.
 
 **Daily Mobility** (`data/build_daily_mobility.py`, `NEW`; the user's own reels should cover them, see §1):
-Knee Pull Heel Bridge is still a stand-in. Knee Circles, Standing Hip Internal/External Lifts and Squat to
-Hamstring Stretch play YouTube demos since 2026-11-12 (v151) until their reel links come in; Quadruped Swing
-Throughs plays its reel.
+No stand-ins left. Knee Circles, Standing Hip Internal/External Lifts and Squat to Hamstring Stretch play
+YouTube demos since 2026-11-12 (v151) until their reel links come in; Knee Pull Heel Bridge plays the user's
+YouTube pick (v153); Quadruped Swing Throughs plays its reel.
 
 **HoopStudy 8-Week**: done 2026-11-12 (v152). The 13 moves only this program uses play HoopStudy's own
 course demos from `data/providers/hoopstudy.json` (Wistia HLS links read from courses.hoopstudy.com with
 the user's login; the user OK'd committing them). Moves shared with other plans (e.g. Reverse Step Back
-Lunge) keep their current video. Still open: confirm "Single Leg ISO Hold" (the PDF names it without
-describing it).
+Lunge) keep their current video. v153: the recovery day uses HoopStudy's own names and videos for 90/90 Hip
+Lift with Internal Rotation, Single Leg ISO Hold (split-stance hold, both knees at 90°) and Single Leg ISO
+Heel Bridge Hold (the course lesson "Day 6 & Day 7 | Recovery" shows them).
 
 How: `node data/enrich_program_videos.mjs --source hoopstudy` (or `--source daily`) writes
 candidates to `data/<source>-video-review.json`. It needs `YOUTUBE_API_KEY` in the environment or a
