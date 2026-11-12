@@ -28,7 +28,7 @@ STANDIN = 'Demo is the closest match in the app; HoopStudy\'s PDF names this mov
 # Moves the app didn't have: tagged, with the nearest vetted demo borrowed (video_from).
 # None = has its own demo now (data/hoopstudy-video-review.json, applied 2026-11-11).
 NEW = {
-    'Hollow Hold Sit Up': ('Reverse 1/2 Crunch', dict(primary_muscle='abs', muscles=['abs', 'hip_flexors'], pattern='flexion', role='core',
+    'Hollow Hold Sit Up': (None, dict(primary_muscle='abs', muscles=['abs', 'hip_flexors'], pattern='flexion', role='core',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     'Prone Pull Through': ('(Weighted) Prone Arm Circles', dict(primary_muscle='upper_back', muscles=['upper_back', 'rear_delts', 'lower_back'], pattern='mobility',
                            role='accessory', equipment=['dumbbell'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
@@ -50,11 +50,20 @@ NEW = {
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=True)),
     'Paused Squat Jumps': (None, dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Hook Plank': ('Dead Bug', dict(primary_muscle='abs', muscles=['abs', 'obliques', 'lower_back'], pattern='anti_extension', role='core',
+    'Hook Plank': (None, dict(primary_muscle='abs', muscles=['abs', 'obliques', 'lower_back'], pattern='anti_extension', role='core',
                            equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
 }
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'hoopstudy', tags=tags, video_from=borrow)
+# Own demos found by a strict title-match search (approved 2026-11-12).
+for name, url in {
+    'Hollow Hold Sit Up': 'https://youtu.be/ZKuP8eKRs3E',   # Rein Fit
+    'Hook Plank': 'https://youtu.be/QRkWtrzfye0',           # Adrian Gonzalez, hook-lying breathing
+}.items():
+    e = lib.by_name[name.lower()]
+    e['video_url'] = url
+    e['video_own'] = True
+    e.pop('video_standin', None)
 
 
 def r(name, reps=None, time=None, sets=None, rest=None, notes=None, group=None, alts=None):
@@ -116,7 +125,7 @@ def day1(wk):
         r('Reverse Step Back Lunge', '8 each side', sets=s, rest='90s', notes='HoopStudy\'s dumbbell reverse lunge: hold dumbbells at your sides.',
           alts=['Reverse Lunges', 'Front Foot Elevated Reverse Lunge']),
         r('Hollow Hold Sit Up', '8', sets=s, rest='60s',
-          notes='Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. ' + STANDIN,
+          notes='Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.',
           alts=['Reverse 1/2 Crunch', 'Dead Bug']),
     ]}
 
@@ -184,7 +193,7 @@ def recovery(n):
     return {'focus': f'Day {n} · Recovery', 'notes': [
         'About 12 minutes, mostly lying down and breathing. Easy: this is recovery, not training.'], 'exercises': [
         r('Foam Roller Circuit', time='1:30', sets=1, notes='Foam roll and LAX ball: calves, hamstrings, glutes, 30 s each.'),
-        r('Hook Plank', '10 breaths', sets=2, rest='15s', notes='On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. ' + STANDIN,
+        r('Hook Plank', '10 breaths', sets=2, rest='15s', notes='On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.',
           alts=['Dead Bug']),
         r('Posterior Pelvic Tilt Breathing', '10 breaths', sets=2, rest='15s',
           notes='HoopStudy\'s 90/90 lift with internal rotation: on your back, feet on a wall with hips and knees at 90°, slight tuck, slow breaths.'),

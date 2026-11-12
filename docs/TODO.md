@@ -25,13 +25,14 @@ script); each row's note says the demo is a stand-in. Replace each with its real
 the stand-in sentence from the note.
 
 **Daily Mobility** (`data/build_daily_mobility.py`, `NEW`; the user's own reels should cover them, see §1):
-Knee Circles · Standing Hip Internal/External Lifts · Knee Pull Heel Bridge · Squat to Hamstring
-Stretch · Quadruped Swing Throughs.
+Knee Pull Heel Bridge is still a stand-in. Knee Circles, Standing Hip Internal/External Lifts and Squat to
+Hamstring Stretch play YouTube demos since 2026-11-12 (v151) until their reel links come in; Quadruped Swing
+Throughs plays its reel.
 
 **HoopStudy 8-Week** (`data/build_hoopstudy.py`, `NEW`; HoopStudy's PDF has no pictures or videos):
 done 2026-11-11 (v146) for A-March · A-Skip · Power Skip · OH March · Falling Sprints · Paused Squat Jumps ·
-Single Leg Wall Stride. Still stand-ins (search found nothing usable): Hollow Hold Sit Up · Prone Pull
-Through · 90/90 Sprints · 90/90 Single Power Jumps · Hook Plank. HoopStudy's course videos
+Single Leg Wall Stride; v151 (2026-11-12) for Hollow Hold Sit Up and Hook Plank. Still stand-ins (search found
+nothing usable): Prone Pull Through · 90/90 Sprints · 90/90 Single Power Jumps. HoopStudy's course videos
 (courses.hoopstudy.com, the user's login) are the best source for those. Also confirm what "90/90 Sprints",
 "90/90 Single Power Jumps", "Single Leg ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
 was assumed.
@@ -51,24 +52,17 @@ those names in the build script, re-run the build, then:
 Provider demos (PJF, BWS, Griffith) beat expert channels, which beat random ones
 ([ADDING_A_PROGRAM.md](ADDING_A_PROGRAM.md) §3).
 
-## 3. BWS moves on YouTube stand-ins (needs the user's BWS links)
+## 3. Catalog exercises with no video
 
 Done 2026-11-12 (v150): every catalog exercise has a video except Basketball (it's a game, not a move).
 
-The 25 BWS moves below play public YouTube demos (picks in `data/bws-video-review.json`). The BWS
-Programs app has its own demos for most of them, but they're unlisted, so search can't find them: the
-user sends the links, and each one replaces the YouTube pick (provider videos first).
-
-Ab Wheel Rollout · Band Pull-Apart · Cable External Rotation · Cable Pull-Through · Chest Supported
-T-Bar Row · Concentration Curl · Donkey Calf Raise · EZ Bar Curl · EZ Bar Overhead Tricep Extension ·
-Hack Squat · Hanging Knee Raises · Hip Abduction Machine · Lateral Raise Machine · Low to High Cable Fly ·
-Meadows Row · Nordic Hamstring Curl · Preacher Curl · Reverse Nordic Curl · Seated Machine Overhead
-Press · Single-Arm Cable Pushdown · Single-Arm Cable Row · Single-Leg Romanian Deadlift · Straight Arm
-Pulldown · Weighted Dips · Zottman Curl.
+The 25 BWS-tagged extras that got YouTube demos (Ab Wheel Rollout, Hack Squat, Zottman Curl and the rest;
+picks in `data/bws-video-review.json`) are in no BWS workbook and no BWS program: they've been catalog-only
+swap options since the first commit. The BWS workbook links (124 exercises, `data/bws_exercise_db.json`) are
+all applied already, so there's no BWS link to wait for.
 
 Same-move links to provider demos are `alias_of` entries in `data/providers/*.json`: Walk or Easy Bike →
 PJF Nasal Breathing Cardio Warm Up, Bridge March → TrainHeroic Marching Glute Bridge With Hips Up.
-Copenhagen with Bottom-Leg Raises (hip plan) uses Ambitious Athletics' demo.
 
 ## 4. Agility ladder drills
 

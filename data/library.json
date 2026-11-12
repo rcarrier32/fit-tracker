@@ -14055,7 +14055,7 @@
     {
       "id": "daily-knee-circles",
       "name": "Knee Circles",
-      "video_url": "https://youtu.be/nt4DnYjP-Xo",
+      "video_url": "https://youtu.be/E3GeFyXlOwI",
       "sources": [
         "daily"
       ],
@@ -14076,12 +14076,12 @@
       "unilateral": true,
       "plane": "transverse",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "daily-standing-hip-internal-external-lifts",
       "name": "Standing Hip Internal/External Lifts",
-      "video_url": "https://youtu.be/odvEl4NkZuo",
+      "video_url": "https://youtu.be/AnkBK38UNhA",
       "sources": [
         "daily"
       ],
@@ -14102,7 +14102,7 @@
       "unilateral": true,
       "plane": "transverse",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "daily-knee-pull-heel-bridge",
@@ -14133,7 +14133,7 @@
     {
       "id": "daily-squat-to-hamstring-stretch",
       "name": "Squat to Hamstring Stretch",
-      "video_url": "https://www.youtube.com/watch?v=m2f4XRZuHWc",
+      "video_url": "https://youtu.be/1oQSsXhbhjk",
       "sources": [
         "daily"
       ],
@@ -14154,7 +14154,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "daily-quadruped-swing-throughs",
@@ -14185,7 +14185,7 @@
     {
       "id": "hoopstudy-hollow-hold-sit-up",
       "name": "Hollow Hold Sit Up",
-      "video_url": "https://youtu.be/Lkafd6GkaPo",
+      "video_url": "https://youtu.be/ZKuP8eKRs3E",
       "sources": [
         "hoopstudy"
       ],
@@ -14205,7 +14205,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-prone-pull-through",
@@ -14470,7 +14470,7 @@
     {
       "id": "hoopstudy-hook-plank",
       "name": "Hook Plank",
-      "video_url": "https://youtu.be/UJ7b8gYa2Es",
+      "video_url": "https://youtu.be/QRkWtrzfye0",
       "sources": [
         "hoopstudy"
       ],
@@ -14491,7 +14491,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "daily-basketball",
@@ -62501,7 +62501,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -63019,7 +63019,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -63124,7 +63124,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -63299,7 +63299,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -63817,7 +63817,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -63922,7 +63922,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -64097,7 +64097,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -64615,7 +64615,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -64720,7 +64720,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -64895,7 +64895,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -65413,7 +65413,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -65518,7 +65518,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -65694,7 +65694,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -66214,7 +66214,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -66319,7 +66319,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -66494,7 +66494,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -67012,7 +67012,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -67117,7 +67117,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -67292,7 +67292,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -67810,7 +67810,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -67915,7 +67915,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -68090,7 +68090,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Hold a hollow body (low back pressed down, legs and shoulders off the floor), sit up, lower back to the hollow.",
                     "alternates": [
                       "Reverse 1/2 Crunch",
                       "Dead Bug"
@@ -68608,7 +68608,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]
@@ -68713,7 +68713,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "15s",
-                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "On your back, knees bent, feet flat (hook-lying), low back down, abs braced; 10 slow breaths.",
                     "alternates": [
                       "Dead Bug"
                     ]

@@ -26,13 +26,13 @@ GROUP = 'Daily'
 # docs/research/notes-daily-mobility/facebook_reels.md ("Stand-ins").
 STANDIN = 'Demo is a stand-in until your saved reel is linked.'
 NEW = {
-    'Knee Circles': ('Fire Hydrants', dict(primary_muscle='glutes', muscles=['glutes', 'abductors', 'hip_flexors'], pattern='mobility', role='warmup',
+    'Knee Circles': (None, dict(primary_muscle='glutes', muscles=['glutes', 'abductors', 'hip_flexors'], pattern='mobility', role='warmup',
                      equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
-    'Standing Hip Internal/External Lifts': ('Facing Wall Hip Circle Rotations', dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'adductors'],
+    'Standing Hip Internal/External Lifts': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'adductors'],
                      pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
     'Knee Pull Heel Bridge': ('On Bench Single Leg Glute Bridge', dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'abs'], pattern='isometric',
                      role='cooldown', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
-    'Squat to Hamstring Stretch': ('Hamstring Stretch', dict(primary_muscle='hamstrings', muscles=['hamstrings', 'adductors', 'glutes'], pattern='mobility',
+    'Squat to Hamstring Stretch': (None, dict(primary_muscle='hamstrings', muscles=['hamstrings', 'adductors', 'glutes'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
     'Quadruped Swing Throughs': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hip_flexors', 'hamstrings'], pattern='mobility',
                      role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
@@ -77,6 +77,16 @@ for name, (reel, tags) in REEL_NEW.items():
 for name, reel in {**{n: r for n, (r, _) in REEL_NEW.items()}, 'Quadruped Swing Throughs': 'igor_hips'}.items():
     e = lib.by_name[name.lower()]
     e['video_url'] = REEL[reel]
+    e['video_own'] = True
+    e.pop('video_standin', None)
+# YouTube demos until the user's reels are linked (strict title-match search, approved 2026-11-12).
+for name, url in {
+    'Knee Circles': 'https://youtu.be/E3GeFyXlOwI',                          # MDSportsInjury
+    'Standing Hip Internal/External Lifts': 'https://youtu.be/AnkBK38UNhA',  # Strive2Move
+    'Squat to Hamstring Stretch': 'https://youtu.be/1oQSsXhbhjk',            # Champion Physical Therapy
+}.items():
+    e = lib.by_name[name.lower()]
+    e['video_url'] = url
     e['video_own'] = True
     e.pop('video_standin', None)
 
