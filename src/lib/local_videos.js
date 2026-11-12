@@ -34,6 +34,14 @@ const words = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '')
 // PJF first: its demos are the closest match for PJF program names.
 const ORDER = (a, b) => (a === 'pjf' ? -1 : b === 'pjf' ? 1 : a.localeCompare(b));
 
+/**
+ * Our move → a provider demo of the same thing under another name. Only for true matches:
+ * PJF's Nasal Breathing Cardio Warm Up is "a fast walk OR a stationary bike" per its notes.
+ */
+const SAME_DEMO = {
+  'Walk or Easy Bike': 'Nasal Breathing Cardio Warm Up',
+};
+
 function index(sources) {
   _sources = sources || {};
   _byName = new Map();
@@ -51,6 +59,10 @@ function index(sources) {
       });
     }
     _dayNotes.push(...(data?.dayNotes || []).map(d => ({ ...d, exercises: (d.exercises || []).map(norm) })));
+  }
+  for (const [ours, theirs] of Object.entries(SAME_DEMO)) {
+    const hit = _byName.get(vkey(theirs));
+    if (hit && !_byName.has(vkey(ours))) _byName.set(vkey(ours), hit);
   }
   _words = [..._byName.values()].map(o => [words(o.name), vkey(o.name)]).sort((a, b) => b[0].length - a[0].length);
 }

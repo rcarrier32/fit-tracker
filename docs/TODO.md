@@ -53,9 +53,9 @@ Provider demos (PJF, BWS, Griffith) beat expert channels, which beat random ones
 
 ## 3. Catalog exercises with no video (needs YouTube)
 
-`node data/check_catalog.mjs` warns about 29 catalog exercises with no video. Search with
+`node data/check_catalog.mjs` warns about 28 catalog exercises with no video. Search with
 `node data/enrich_program_videos.mjs --source bws --missing` (only moves with no video; the 2026-11-11 run
-without it spent the day's quota). `data/bws-video-review.json` has first candidates for 8, mostly weak. The plan builder can't
+without it spent the day's quota). `data/bws-video-review.json` has candidates for all 25 BWS moves (2026-11-12 run); 11 look like real demos and await approval, the rest are generic tips videos. The plan builder can't
 pick them, so filling them widens its choices:
 
 Ab Wheel Rollout · Band Pull-Apart · Bridge March · Cable External Rotation · Cable Pull-Through ·
@@ -63,8 +63,11 @@ Chest Supported T-Bar Row · Concentration Curl · Copenhagen with Bottom-Leg Ra
 EZ Bar Curl · EZ Bar Overhead Tricep Extension · Hack Squat · Hanging Knee Raises · Hip Abduction
 Machine · Lateral Raise Machine · Low to High Cable Fly · Meadows Row · Nordic Hamstring Curl · Preacher
 Curl · Reverse Nordic Curl · Seated Machine Overhead Press · Single-Arm Cable Pushdown · Single-Arm Cable
-Row · Single-Leg Romanian Deadlift · Straight Arm Pulldown · Walk or Easy Bike · Weighted Dips ·
+Row · Single-Leg Romanian Deadlift · Straight Arm Pulldown · Weighted Dips ·
 Zottman Curl.
+
+Walk or Easy Bike: done 2026-11-12 (v148), plays PJF's Nasal Breathing Cardio Warm Up (`SAME_DEMO` in
+src/lib/local_videos.js and data/catalog.mjs).
 
 Several may be duplicates of exercises that already have a video under another name (Band Pull-Apart
 vs Band Pull-Aparts, Nordic Hamstring Curl vs Eccentric Nordic Hamstring Curl): add an alias instead

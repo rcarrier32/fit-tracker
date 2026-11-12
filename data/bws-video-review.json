@@ -1,6 +1,6 @@
 {
   "source": "bws",
-  "generated_for": 12,
+  "generated_for": 25,
   "max_seconds": 300,
   "exercises": [
     {
@@ -272,7 +272,7 @@
         },
         {
           "videoId": "xK6DoHBXTdw",
-          "title": "This Is Why Your Calves Won\u2019t Grow",
+          "title": "This Is Why Your Calves Won’t Grow",
           "channel": "Jeff Nippard",
           "seconds": 49,
           "trusted": true,
@@ -286,30 +286,162 @@
     {
       "id": "ez-bar-curl",
       "name": "EZ Bar Curl",
-      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
       "approved": null,
-      "candidates": []
+      "candidates": [
+        {
+          "videoId": "kjgk8EzxT6k",
+          "title": "Do THIS Bicep Curl For Bigger Arms",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/kjgk8EzxT6k",
+          "score": 7.81
+        },
+        {
+          "videoId": "_GziHDdJY10",
+          "title": "Don’t Skip These 3 Biceps Exercises",
+          "channel": "Jeff Nippard",
+          "seconds": 46,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/_GziHDdJY10",
+          "score": 4.35
+        },
+        {
+          "videoId": "zta8JuQZC_A",
+          "title": "The EZ Bar Curl is a great Upper Arm exercise - Save and try your next workout",
+          "channel": "Lyfta",
+          "seconds": 9,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/zta8JuQZC_A",
+          "score": 2.47
+        }
+      ]
     },
     {
       "id": "ez-bar-overhead-tricep-extension",
       "name": "EZ Bar Overhead Tricep Extension",
-      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
       "approved": null,
-      "candidates": []
+      "candidates": [
+        {
+          "videoId": "mMkVphu6cJA",
+          "title": "Grow Your Triceps 1.5x Faster (NEW RESEARCH!)",
+          "channel": "Jeremy Ethier",
+          "seconds": 43,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mMkVphu6cJA",
+          "score": 7.86
+        },
+        {
+          "videoId": "gcRZqG8t44c",
+          "title": "Seated EZ Bar Overhead Triceps Extension",
+          "channel": "Renaissance Periodization",
+          "seconds": 10,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/gcRZqG8t44c",
+          "score": 4.97
+        },
+        {
+          "videoId": "IdZ7HXnatko",
+          "title": "EZ Bar Overhead Triceps Exension",
+          "channel": "Renaissance Periodization",
+          "seconds": 10,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/IdZ7HXnatko",
+          "score": 4.97
+        }
+      ]
     },
     {
       "id": "hack-squat",
       "name": "Hack Squat",
-      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
       "approved": null,
-      "candidates": []
+      "candidates": [
+        {
+          "videoId": "iZTxa8NJH2g",
+          "title": "The PERFECT Squat (5 Steps)",
+          "channel": "Jeremy Ethier",
+          "seconds": 56,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/iZTxa8NJH2g",
+          "score": 7.81
+        },
+        {
+          "videoId": "YjYu6vrRWbU",
+          "title": "Why Does He Squat Like That? 🤔",
+          "channel": "Jeremy Ethier",
+          "seconds": 57,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/YjYu6vrRWbU",
+          "score": 7.81
+        },
+        {
+          "videoId": "izhaETcxZ-k",
+          "title": "The BEST Exercises for Growing Bigger Legs",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/izhaETcxZ-k",
+          "score": 6.31
+        }
+      ]
     },
     {
       "id": "hanging-knee-raises",
       "name": "Hanging Knee Raises",
-      "error": "rateLimitExceeded: Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:60873908896'.",
       "approved": null,
-      "candidates": []
+      "candidates": [
+        {
+          "videoId": "IHImpzGBqdM",
+          "title": "The #1 Ab Workout Mistake",
+          "channel": "Jeremy Ethier",
+          "seconds": 36,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/IHImpzGBqdM",
+          "score": 7.88
+        },
+        {
+          "videoId": "RD_A-Z15ER4",
+          "title": "Hanging Knee Raise",
+          "channel": "Renaissance Periodization",
+          "seconds": 9,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/RD_A-Z15ER4",
+          "score": 4.97
+        },
+        {
+          "videoId": "2n4UqRIJyk4",
+          "title": "How to Properly Perform Hanging Leg Raises With Good Form For Shredded Abs (Exercise Demonstration)",
+          "channel": "Gerardi Performance",
+          "seconds": 16,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/2n4UqRIJyk4",
+          "score": 2.45
+        }
+      ]
     },
     {
       "id": "hip-abduction-machine",
@@ -348,6 +480,526 @@
           "embeddable": true,
           "url": "https://youtu.be/Bfdmj4pp660",
           "score": 4.81
+        }
+      ]
+    },
+    {
+      "id": "lateral-raise-machine",
+      "name": "Lateral Raise Machine",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "fEeU_r-yc1M",
+          "title": "Want Bigger Shoulders? FIX YOUR LATERAL RAISES! #shorts",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 23,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/fEeU_r-yc1M",
+          "score": 8.92
+        },
+        {
+          "videoId": "2i_JQeCWCDs",
+          "title": "DO THIS During Lateral Raises (More Gains!) #shorts",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 27,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/2i_JQeCWCDs",
+          "score": 8.91
+        },
+        {
+          "videoId": "98KzbWueK9w",
+          "title": "Do THIS Lateral Raise For Wider Shoulders",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 45,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/98KzbWueK9w",
+          "score": 8.85
+        }
+      ]
+    },
+    {
+      "id": "low-to-high-cable-fly",
+      "name": "Low to High Cable Fly",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Q2ITVsP3i00",
+          "title": "Avoid THIS Cable Fly Mistake",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 49,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Q2ITVsP3i00",
+          "score": 7.84
+        },
+        {
+          "videoId": "Bd156yxr_6Q",
+          "title": "UNLOCK Upper Chest Growth (#1 Tip)",
+          "channel": "Jeremy Ethier",
+          "seconds": 55,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Bd156yxr_6Q",
+          "score": 7.82
+        },
+        {
+          "videoId": "Lw2nYqhn0Ic",
+          "title": "Low to high cable flye tutorial",
+          "channel": "TylerPath",
+          "seconds": 13,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Lw2nYqhn0Ic",
+          "score": 2.46
+        }
+      ]
+    },
+    {
+      "id": "meadows-row",
+      "name": "Meadows Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "xxhwG1KD36E",
+          "title": "3 Rear Delt Exercises For FAST Growth",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 42,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/xxhwG1KD36E",
+          "score": 8.36
+        },
+        {
+          "videoId": "D8BwMZGzmmk",
+          "title": "5 BEST exercises for back thickness!",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 56,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/D8BwMZGzmmk",
+          "score": 6.31
+        },
+        {
+          "videoId": "uexTkvxwMGM",
+          "title": "The Meadows Row #backday #backexercise #backworkout #workout #bodybuilding",
+          "channel": "Jeff Nippard Clips",
+          "seconds": 25,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/uexTkvxwMGM",
+          "score": 5.42
+        }
+      ]
+    },
+    {
+      "id": "nordic-hamstring-curl",
+      "name": "Nordic Hamstring Curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "htyDuCI8cm8",
+          "title": "How To Nordic Hamstring Curl",
+          "channel": "Squat University",
+          "seconds": 47,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/htyDuCI8cm8",
+          "score": 5.34
+        },
+        {
+          "videoId": "DAwJCKwMUIg",
+          "title": "BEST Way To Do Nordic Hamstring Curls",
+          "channel": "Squat University",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/DAwJCKwMUIg",
+          "score": 4.81
+        },
+        {
+          "videoId": "6NCN6kOagfY",
+          "title": "How to Do a Nordic Hamstring Curl",
+          "channel": "The Kneesovertoesguy",
+          "seconds": 288,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/6NCN6kOagfY",
+          "score": 4.54
+        }
+      ]
+    },
+    {
+      "id": "preacher-curl",
+      "name": "Preacher Curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "v5XyHiZpBIQ",
+          "title": "3 Methods to Speed Up Bicep Growth",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 48,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/v5XyHiZpBIQ",
+          "score": 7.84
+        },
+        {
+          "videoId": "kjgk8EzxT6k",
+          "title": "Do THIS Bicep Curl For Bigger Arms",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 58,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/kjgk8EzxT6k",
+          "score": 7.81
+        },
+        {
+          "videoId": "_GziHDdJY10",
+          "title": "Don’t Skip These 3 Biceps Exercises",
+          "channel": "Jeff Nippard",
+          "seconds": 46,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/_GziHDdJY10",
+          "score": 4.35
+        }
+      ]
+    },
+    {
+      "id": "reverse-nordic-curl",
+      "name": "Reverse Nordic Curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "60gZOXu5gcQ",
+          "title": "Top 4 QUAD Exercises (Brutal Stretch!)",
+          "channel": "Jeff Nippard",
+          "seconds": 49,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/60gZOXu5gcQ",
+          "score": 4.34
+        },
+        {
+          "videoId": "HJckiujT904",
+          "title": "The BEST Hamstring Exercise You Need!",
+          "channel": "Squat University",
+          "seconds": 54,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/HJckiujT904",
+          "score": 4.32
+        },
+        {
+          "videoId": "A9OxBT-6Mw0",
+          "title": "Top 3 Quad Exercises For Tree Trunk Legs",
+          "channel": "Jeff Nippard",
+          "seconds": 54,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/A9OxBT-6Mw0",
+          "score": 4.32
+        }
+      ]
+    },
+    {
+      "id": "seated-machine-overhead-press",
+      "name": "Seated Machine Overhead Press",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "xtsbSAgNBpI",
+          "title": "STOP Doing Shoulder Press Like This (Big Mistake)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 25,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/xtsbSAgNBpI",
+          "score": 5.92
+        },
+        {
+          "videoId": "osEKVtXBLlU",
+          "title": "How to Properly Setup for Seated Dumbbell Shoulder Press",
+          "channel": "TylerPath",
+          "seconds": 19,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/osEKVtXBLlU",
+          "score": 2.44
+        },
+        {
+          "videoId": "hLNDfC68mF4",
+          "title": "The BEST Way to do Seated Dumbbell Shoulder Press (For Muscle Growth)",
+          "channel": "TylerPath",
+          "seconds": 20,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/hLNDfC68mF4",
+          "score": 1.93
+        }
+      ]
+    },
+    {
+      "id": "single-arm-cable-pushdown",
+      "name": "Single-Arm Cable Pushdown",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "mMkVphu6cJA",
+          "title": "Grow Your Triceps 1.5x Faster (NEW RESEARCH!)",
+          "channel": "Jeremy Ethier",
+          "seconds": 43,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mMkVphu6cJA",
+          "score": 7.86
+        },
+        {
+          "videoId": "KA0bfBIOxHY",
+          "title": "Do This Instead Of Lat Pulldowns (MORE GAINS)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 42,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/KA0bfBIOxHY",
+          "score": 7.86
+        },
+        {
+          "videoId": "P37YgPF8reQ",
+          "title": "How To Actually Do Single Arm Cable Pushdowns (Fix Your Triceps) #tricepspushdown #tricepsexercise",
+          "channel": "Gymbro001 | Workout Form & Muscle Growth",
+          "seconds": 10,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/P37YgPF8reQ",
+          "score": 1.47
+        }
+      ]
+    },
+    {
+      "id": "single-arm-cable-row",
+      "name": "Single-Arm Cable Row",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "o78waFTrxtM",
+          "title": "How to Get WIDER Shoulders (2 Exercises)",
+          "channel": "Jeremy Ethier",
+          "seconds": 27,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/o78waFTrxtM",
+          "score": 8.41
+        },
+        {
+          "videoId": "8ZI6KJRCK1E",
+          "title": "How to Row for Width vs. Thickness #shorts",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 32,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/8ZI6KJRCK1E",
+          "score": 8.39
+        },
+        {
+          "videoId": "KA0bfBIOxHY",
+          "title": "Do This Instead Of Lat Pulldowns (MORE GAINS)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 42,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/KA0bfBIOxHY",
+          "score": 7.86
+        }
+      ]
+    },
+    {
+      "id": "single-leg-romanian-deadlift",
+      "name": "Single-Leg Romanian Deadlift",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "lDoRchHPsaI",
+          "title": "Avoid THIS Romanian Deadlift Mistake!",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 41,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/lDoRchHPsaI",
+          "score": 7.86
+        },
+        {
+          "videoId": "8np3vKDBJfc",
+          "title": "The PERFECT Deadlift (5 Steps)",
+          "channel": "Jeremy Ethier",
+          "seconds": 57,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/8np3vKDBJfc",
+          "score": 7.81
+        },
+        {
+          "videoId": "jpmFtbof2BM",
+          "title": "Single leg RDLs, which side is more effective for the glutes? #reels",
+          "channel": "Bret Contreras Glute Guy",
+          "seconds": 31,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/jpmFtbof2BM",
+          "score": 3.9
+        }
+      ]
+    },
+    {
+      "id": "straight-arm-pulldown",
+      "name": "Straight Arm Pulldown",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "KA0bfBIOxHY",
+          "title": "Do This Instead Of Lat Pulldowns (MORE GAINS)",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 42,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/KA0bfBIOxHY",
+          "score": 7.86
+        },
+        {
+          "videoId": "LKzY4K9l8Oc",
+          "title": "4 BEST Exercises For Back Width!",
+          "channel": "Jeremy Ethier Shorts",
+          "seconds": 55,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/LKzY4K9l8Oc",
+          "score": 6.32
+        },
+        {
+          "videoId": "G9uNaXGTJ4w",
+          "title": "Straight Arm Pulldown",
+          "channel": "Renaissance Periodization",
+          "seconds": 12,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/G9uNaXGTJ4w",
+          "score": 4.96
+        }
+      ]
+    },
+    {
+      "id": "weighted-dips",
+      "name": "Weighted Dips",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Bd156yxr_6Q",
+          "title": "UNLOCK Upper Chest Growth (#1 Tip)",
+          "channel": "Jeremy Ethier",
+          "seconds": 55,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Bd156yxr_6Q",
+          "score": 7.82
+        },
+        {
+          "videoId": "B84ab9WarVI",
+          "title": "Dips Aren’t Bad For Your Shoulders!",
+          "channel": "Renaissance Periodization",
+          "seconds": 45,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/B84ab9WarVI",
+          "score": 3.85
+        },
+        {
+          "videoId": "ZDOrGNvRdM0",
+          "title": "Weighted Dips Tutorial 💪",
+          "channel": "Tim Thies",
+          "seconds": 25,
+          "trusted": false,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/ZDOrGNvRdM0",
+          "score": 2.42
+        }
+      ]
+    },
+    {
+      "id": "zottman-curl",
+      "name": "Zottman Curl",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "LrXGP_Tda-A",
+          "title": "¡¿Quieres bíceps más grandes?! 💪 Haz estos 3 cambios en tus curls para unos brazos más fuertes 💥👊",
+          "channel": "Jeremy Ethier en Español",
+          "seconds": 37,
+          "trusted": true,
+          "isSource": true,
+          "embeddable": true,
+          "url": "https://youtu.be/LrXGP_Tda-A",
+          "score": 7.88
+        },
+        {
+          "videoId": "_GziHDdJY10",
+          "title": "Don’t Skip These 3 Biceps Exercises",
+          "channel": "Jeff Nippard",
+          "seconds": 46,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/_GziHDdJY10",
+          "score": 4.35
+        },
+        {
+          "videoId": "j5f_0rNkPwU",
+          "title": "Top 4 BICEPS Exercises (Brutal Stretch!)",
+          "channel": "Jeff Nippard",
+          "seconds": 56,
+          "trusted": true,
+          "isSource": false,
+          "embeddable": true,
+          "url": "https://youtu.be/j5f_0rNkPwU",
+          "score": 4.31
         }
       ]
     }

@@ -22,10 +22,17 @@ export const norm = (s) => String(s ?? '').toLowerCase().replace(/\(.*?\)/g, '')
 const vkey = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '').replace(/[^a-z0-9]/g, '');
 const words = (s) => String(s ?? '').toLowerCase().replace(/\(optional\)/g, '')
   .replace(/[^a-z0-9(]+/g, ' ').replace(/\s+/g, ' ').trim();
+// Our move → provider demo of the same thing under another name (keep in step with local_videos.js).
+const SAME_DEMO = {
+  'Walk or Easy Bike': 'Nasal Breathing Cardio Warm Up',
+};
 function providerMatcher(providers, order) {
   const byKey = new Map();
   for (const src of order) for (const o of Object.values(providers[src].videos || {})) {
     if (o?.name && !byKey.has(vkey(o.name))) byKey.set(vkey(o.name), { src, o });
+  }
+  for (const [ours, theirs] of Object.entries(SAME_DEMO)) {
+    if (byKey.has(vkey(theirs)) && !byKey.has(vkey(ours))) byKey.set(vkey(ours), byKey.get(vkey(theirs)));
   }
   const list = [...byKey.values()].map(x => [words(x.o.name), x]).sort((a, b) => b[0].length - a[0].length);
   return (name) => {
