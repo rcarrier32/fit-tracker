@@ -63,7 +63,7 @@ PJF Nasal Breathing Cardio Warm Up, Bridge March → TrainHeroic Marching Glute 
 
 Done 2026-11-11 (v147): Ladder Twist Hops, Ladder In & Out Hops, Ladder Lateral In & Outs, Ickey Shuffle and Ali Shuffle
 (Jtm_fit's reel, the user's save), in `data/build_daily_mobility.py` `REEL_NEW`. They're in the plan builder's pool when
-the agility ladder is ticked. One reel shows all five: replace with one demo each (YouTube) when the quota allows.
+the agility ladder is ticked. v154 (2026-11-12): each plays its own YouTube demo (picks in `data/build_daily_mobility.py`).
 
 ## 5. Weekly AI check-in with a Claude API key *(decide)*
 

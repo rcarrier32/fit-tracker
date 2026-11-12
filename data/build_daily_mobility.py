@@ -85,6 +85,12 @@ for name, url in {
     'Standing Hip Internal/External Lifts': 'https://youtu.be/AnkBK38UNhA',  # Strive2Move
     'Squat to Hamstring Stretch': 'https://youtu.be/1oQSsXhbhjk',            # Champion Physical Therapy
     'Knee Pull Heel Bridge': 'https://youtu.be/Z6sv_sfNI5U',                 # Muscle & Strength (user's pick)
+    # One demo per ladder drill (Jtm_fit's reel shows all five at once; approved 2026-11-12).
+    'Ladder Twist Hops': 'https://youtu.be/6mvsei1Ict4',                     # Spartan Sports Medicine
+    'Ladder In & Out Hops': 'https://youtu.be/PAqQQj3LE_g',                  # Gold's Gym India
+    'Ladder Lateral In & Outs': 'https://youtu.be/Ng5sOmAfeR0',              # Live Lean TV
+    'Ickey Shuffle': 'https://youtu.be/9PDkdZD2eWA',                         # Live Lean TV
+    'Ali Shuffle': 'https://youtu.be/_Tc751vW_lM',                           # NASM
 }.items():
     e = lib.by_name[name.lower()]
     e['video_url'] = url
