@@ -29,17 +29,11 @@ Knee Pull Heel Bridge is still a stand-in. Knee Circles, Standing Hip Internal/E
 Hamstring Stretch play YouTube demos since 2026-11-12 (v151) until their reel links come in; Quadruped Swing
 Throughs plays its reel.
 
-**HoopStudy 8-Week** (`data/build_hoopstudy.py`, `NEW`; HoopStudy's PDF has no pictures or videos):
-done 2026-11-11 (v146) for A-March · A-Skip · Power Skip · OH March · Falling Sprints · Paused Squat Jumps ·
-Single Leg Wall Stride; v151 (2026-11-12) for Hollow Hold Sit Up and Hook Plank. Still stand-ins (search found
-nothing usable): Prone Pull Through · 90/90 Sprints · 90/90 Single Power Jumps. HoopStudy's course videos
-(courses.hoopstudy.com, the user's login) are the best source for those. Also confirm what "90/90 Sprints",
-"90/90 Single Power Jumps", "Single Leg ISO Hold" and "Hook Plank" are: the PDF names them without describing them, and the notes say what
-was assumed.
-
-**Look in FitKidHooper first** (`legendsyba/FitKidHooper`, `src/data/trainingCatalog.js`): it already links
-vetted HoopStudy and other demos, including Hollow Body Hold (→ Hollow Hold Sit Up) and Squat Jumps
-(→ Paused Squat Jumps), and its HoopStudy candidate list (`docs/HOOPSTUDY_CANDIDATES.md`) may have the rest.
+**HoopStudy 8-Week**: done 2026-11-12 (v152). The 13 moves only this program uses play HoopStudy's own
+course demos from `data/providers/hoopstudy.json` (Wistia HLS links read from courses.hoopstudy.com with
+the user's login; the user OK'd committing them). Moves shared with other plans (e.g. Reverse Step Back
+Lunge) keep their current video. Still open: confirm "Single Leg ISO Hold" (the PDF names it without
+describing it).
 
 How: `node data/enrich_program_videos.mjs --source hoopstudy` (or `--source daily`) writes
 candidates to `data/<source>-video-review.json`. It needs `YOUTUBE_API_KEY` in the environment or a

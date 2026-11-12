@@ -144,7 +144,7 @@ function clipVideo(el) {
 }
 
 /** Provider files shipped with the app (data/providers/<source>.json). */
-export const BUNDLED_SOURCES = ['pjf', 'trainheroic'];
+export const BUNDLED_SOURCES = ['pjf', 'trainheroic', 'hoopstudy'];
 let _bundled = null;
 const bundled = () => _bundled ??= Promise.all(BUNDLED_SOURCES.map(src =>
   fetch(`data/providers/${src}.json`).then(r => (r.ok ? r.json() : null)).catch(() => null)

@@ -30,7 +30,7 @@ STANDIN = 'Demo is the closest match in the app; HoopStudy\'s PDF names this mov
 NEW = {
     'Hollow Hold Sit Up': (None, dict(primary_muscle='abs', muscles=['abs', 'hip_flexors'], pattern='flexion', role='core',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
-    'Prone Pull Through': ('(Weighted) Prone Arm Circles', dict(primary_muscle='upper_back', muscles=['upper_back', 'rear_delts', 'lower_back'], pattern='mobility',
+    'Prone Pull Through': (None, dict(primary_muscle='upper_back', muscles=['upper_back', 'rear_delts', 'lower_back'], pattern='mobility',
                            role='accessory', equipment=['dumbbell'], level=1, unilateral=False, plane='sagittal', hip_focus=False)),
     'Single Leg Wall Stride': (None, dict(primary_muscle='hip_flexors', muscles=['hip_flexors', 'glutes', 'calves'], pattern='speed_accel',
                            role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='sagittal', hip_focus=True)),
@@ -44,9 +44,9 @@ NEW = {
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
     'Falling Sprints': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
-    '90/90 Sprints': ('Sprint Accelerations', dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
+    '90/90 Sprints': (None, dict(primary_muscle='glutes', muscles=['glutes', 'hamstrings', 'quads'], pattern='speed_accel', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=True)),
-    '90/90 Single Power Jumps': ('Extensive Knee Dominant Jump', dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
+    '90/90 Single Power Jumps': (None, dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=True)),
     'Paused Squat Jumps': (None, dict(primary_muscle='quads', muscles=['quads', 'glutes', 'calves'], pattern='plyo_jump', role='power',
                            equipment=['bodyweight'], level=2, unilateral=False, plane='sagittal', hip_focus=False)),
@@ -55,6 +55,11 @@ NEW = {
 }
 for name, (borrow, tags) in NEW.items():
     lib.ensure_exercise(name, 'hoopstudy', tags=tags, video_from=borrow)
+# HoopStudy's own course demos play first (data/providers/hoopstudy.json, read 2026-11-12); these
+# library links are the fallback. No move here borrows another move's video any more.
+for name in ('Prone Pull Through', '90/90 Sprints', '90/90 Single Power Jumps'):
+    lib.by_name[name.lower()]['video_own'] = True
+    lib.by_name[name.lower()].pop('video_standin', None)
 # Own demos found by a strict title-match search (approved 2026-11-12).
 for name, url in {
     'Hollow Hold Sit Up': 'https://youtu.be/ZKuP8eKRs3E',   # Rein Fit
@@ -136,10 +141,10 @@ def day2(wk):
         'Have someone time your sprints and record the time (⋯ → Note on the sprint row).'],
         'exercises': speed_drills() + [
         r('90/90 Sprints', '10 yd', sets=sprint_reps(wk), rest='60-90s',
-          notes='10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. ' + STANDIN,
+          notes='10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.',
           alts=['Falling Sprints', 'Sprint Accelerations']),
         r('90/90 Single Power Jumps', '3', sets=jump_rounds(wk), rest='60s',
-          notes='One explosive jump at a time, reset between reps, land softly. ' + STANDIN, alts=['Extensive Knee Dominant Jump']),
+          notes='One explosive jump at a time, reset between reps, land softly.', alts=['Extensive Knee Dominant Jump']),
         r('Lateral Bounds', '3 each side', sets=jump_rounds(wk), rest='60s', notes='HoopStudy\'s lateral bounders: push off one leg sideways, stick the landing on the other.',
           alts=['Half Kneel Lateral Jump']),
     ]}
@@ -155,7 +160,7 @@ def day3(wk):
           alts=['Push Ups', 'Push Up To Shoulder Airplane']),
         r('Dumbbell Glute Bridge', '8', sets=s, rest='60s', alts=['Glute Bridge', 'Single-Leg Glute Bridge']),
         r('Prone Pull Through', '8', sets=s, rest='60s',
-          notes='Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. ' + STANDIN,
+          notes='Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.',
           alts=['(Weighted) Prone Arm Circles', 'Band Pull-Aparts']),
     ]}
 

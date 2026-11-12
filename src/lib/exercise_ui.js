@@ -203,7 +203,7 @@ function sheetVideo(ex) {
 function videoBlockHTML(ex, { full = false } = {}) {
   const { l, vid, src } = sheetVideo(ex);
   const clip = full ? null : clipFor(ex.name, src);
-  const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l ? 'Your program\'s demo' : '';
+  const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l?.source === 'hoopstudy' ? 'HoopStudy demo' : l ? 'Your program\'s demo' : '';
   const clipAttrs = clip ? `data-start="${clip.start}" data-end="${clip.end}"` : '';
   const clipLine = clip ? `✂ ${mmss(clip.start)}–${mmss(clip.end)} <button class="clip-full" type="button"
     style="background:none;border:none;padding:0;color:#7dd3fc;font-size:10.5px;cursor:pointer">full video</button>` : '';

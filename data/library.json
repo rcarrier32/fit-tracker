@@ -14231,7 +14231,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-single-leg-wall-stride",
@@ -14413,7 +14413,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-90-90-single-power-jumps",
@@ -14439,7 +14439,7 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": true,
-      "video_standin": true
+      "video_own": true
     },
     {
       "id": "hoopstudy-paused-squat-jumps",
@@ -62610,7 +62610,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -62626,7 +62626,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -62756,7 +62756,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -63408,7 +63408,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -63424,7 +63424,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -63554,7 +63554,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -64206,7 +64206,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -64222,7 +64222,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -64352,7 +64352,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -65004,7 +65004,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -65020,7 +65020,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -65150,7 +65150,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -65803,7 +65803,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -65819,7 +65819,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -65950,7 +65950,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -66603,7 +66603,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -66619,7 +66619,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -66749,7 +66749,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -67401,7 +67401,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -67417,7 +67417,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -67547,7 +67547,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"
@@ -68199,7 +68199,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60-90s",
-                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "10 yd at 100% effort, from a 90/90 start: sit on the ground in a 90/90 hip position, get up and sprint. Walk back between reps.",
                     "alternates": [
                       "Falling Sprints",
                       "Sprint Accelerations"
@@ -68215,7 +68215,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "One explosive jump at a time, reset between reps, land softly. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "One explosive jump at a time, reset between reps, land softly.",
                     "alternates": [
                       "Extensive Knee Dominant Jump"
                     ]
@@ -68345,7 +68345,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return. Demo is the closest match in the app; HoopStudy's PDF names this move without a picture or video.",
+                    "notes": "Lying face down, pass a light dumbbell from overhead, out to the sides and behind your back, and return.",
                     "alternates": [
                       "(Weighted) Prone Arm Circles",
                       "Band Pull-Aparts"

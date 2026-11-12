@@ -571,7 +571,7 @@ export async function renderHome(app) {
         const lv = await import('../lib/local_videos.js');
         if (lv.isLocalVideosFile(data)) {   // PJF demo videos + notes, kept on this device only
           const n = await lv.importLocalVideos(data);
-          const label = data.source === 'pjf' ? 'PJF' : data.source === 'trainheroic' ? 'TrainHeroic' : data.source;
+          const label = data.source === 'pjf' ? 'PJF' : data.source === 'trainheroic' ? 'TrainHeroic' : data.source === 'hoopstudy' ? 'HoopStudy' : data.source;
           const progs = (data.programs || []).length;
           toast(`${n} ${label} videos${progs ? ` and ${progs} program${progs > 1 ? 's' : ''}` : ''} added on this device`);
           // Private programs and exercises join the catalog at load: reload to pick them up.
