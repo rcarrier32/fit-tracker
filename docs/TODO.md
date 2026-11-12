@@ -73,11 +73,7 @@ through with the user before building anything: what they'd want from it and whe
 
 ## 6. Branch tidy-up
 
-Done 2026-11-12: the 5 merged branches are deleted. Two are left, both not in `main`; ask the user before deleting:
-- `claude/wizardly-babbage-yegr0y` (v129): YouTube links for Band Pull-Apart and Nordic Hamstring Curl.
-  `main` already gives both their own demos another way.
-- `claude/icon-update-not-applying-yc1asv` (v56, 2026-09-02): an old update-banner/icon fix. `main` has
-  reworked updates since.
+Done 2026-11-12: every branch except `main` is deleted (the user OK'd the two unmerged ones).
 
 ## 7. Plan builder: still to do *(decide with the user)*
 
