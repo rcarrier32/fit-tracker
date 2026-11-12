@@ -71,37 +71,23 @@ An optional weekly check-in would send a summary of the week's logs to the Claud
 notes. It needs an API key the user provides, and must not send names or the email address. Talk it
 through with the user before building anything: what they'd want from it and where the key lives.
 
-## 6. Branch tidy-up (GitHub refused deletes from cloud sessions)
+## 6. Branch tidy-up
 
-- `claude/charming-noether-gbkjh9`: merged (pull requests #5, #6, #7). Delete it unless new work is on it:
-  `git push origin --delete claude/charming-noether-gbkjh9`.
-- Other sessions' branches, **not** in `main`, so don't delete them without asking the user
-  (CLAUDE.md rules): `claude/admiring-planck-pxx2wg` (3 commits), `claude/icon-update-not-applying-yc1asv`
-  (58), `ccr-645a6c8f-v74bik` (77), `ccr-6b46d8ff-z08nyx` (9), `ccr-df5d237c-aov2jp` (66). Check each
-  with the user: merge, or delete if `main` already has the same change.
+Done 2026-11-12: the 5 merged branches are deleted. Two are left, both not in `main`; ask the user before deleting:
+- `claude/wizardly-babbage-yegr0y` (v129): YouTube links for Band Pull-Apart and Nordic Hamstring Curl.
+  `main` already gives both their own demos another way.
+- `claude/icon-update-not-applying-yc1asv` (v56, 2026-09-02): an old update-banner/icon fix. `main` has
+  reworked updates since.
 
 ## 7. Plan builder: still to do *(decide with the user)*
 
 - **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
   each needs its impact profile and a label on game days).
 
-## 8. FitKidHooper: commit the In-Season Hooper program (needs push access to `legendsyba/FitKidHooper`)
+## 8. FitKidHooper: In-Season Hooper program
 
-A cloud session couldn't get write access to FKH, so the work is parked here:
-- [`handoff/fitkidhooper/IN_SEASON_PROGRAM_PROPOSAL.md`](handoff/fitkidhooper/IN_SEASON_PROGRAM_PROPOSAL.md): the
-  proposal (FKH format), built into FKH's existing program system: one 8-week `PROGRAMS` entry, 4 sessions a
-  week (2 strength, 2 speed & jumps), FKH's own drills and videos, HoopStudy's middle-school volume.
-- [`handoff/fitkidhooper/in-season-hooper.patch`](handoff/fitkidhooper/in-season-hooper.patch): the change
-  (program + `PROGRAM_WEEK_TIERS`, badge, `PROGRAM_KIND`). It passed FKH's `verify-programs` (21 programs OK),
-  `verify:path-gates` and `verify:exercise-skills` on 2026-11-11.
-
-In a session on FitKidHooper:
-1. `git apply <path>/in-season-hooper.patch` at the FKH repo root (re-check if `trainingCatalog.js` moved on).
-2. Add `in-season-hooper` to the `athletic-foundation` T2/T3 phases in `src/lib/developmentPathways.js`, and bump
-   `RELEASE_ID` / `WHATS_NEW` in `src/lib/changelog.js`.
-3. `npm install`, then `npm run build` (runs every verify step) and the Playwright suite.
-4. *(decide with the user)* Ship as an original FKH program (default), or ask HoopStudy first to feature theirs
-   by name. New programs ship on founder approval.
+Done 2026-11-12: FKH pull request #4 merged into `legendsyba/FitKidHooper` and deployed (app.legendsyba.com).
+It ships as an original FKH program using HoopStudy's middle-school volume, not under HoopStudy's name.
 
 ## Known limits (no action needed)
 
