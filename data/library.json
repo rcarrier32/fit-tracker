@@ -661,7 +661,7 @@
     {
       "id": "band-pull-apart",
       "name": "Band Pull-Apart",
-      "video_url": null,
+      "video_url": "https://youtu.be/SLFDrgKarUs",
       "sources": [
         "bws"
       ],
@@ -680,7 +680,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "band-resisted-bridge-march",
@@ -1491,7 +1492,7 @@
     {
       "id": "cable-pull-through",
       "name": "Cable Pull-Through",
-      "video_url": null,
+      "video_url": "https://youtu.be/pv8e6OSyETE",
       "sources": [
         "bws"
       ],
@@ -1510,7 +1511,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "cable-pushdowns",
@@ -2885,7 +2887,7 @@
     {
       "id": "ez-bar-curl",
       "name": "EZ Bar Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/zta8JuQZC_A",
       "sources": [
         "bws"
       ],
@@ -2903,12 +2905,13 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "ez-bar-overhead-tricep-extension",
       "name": "EZ Bar Overhead Tricep Extension",
-      "video_url": null,
+      "video_url": "https://youtu.be/gcRZqG8t44c",
       "sources": [
         "bws"
       ],
@@ -2926,7 +2929,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "eccentric-nordic-hamstring-curl",
@@ -3587,7 +3591,7 @@
     {
       "id": "hanging-knee-raises",
       "name": "Hanging Knee Raises",
-      "video_url": null,
+      "video_url": "https://youtu.be/RD_A-Z15ER4",
       "sources": [
         "bws"
       ],
@@ -3606,7 +3610,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "hanging-leg-raises-lower-abs",
@@ -3772,7 +3777,7 @@
     {
       "id": "hip-abduction-machine",
       "name": "Hip Abduction Machine",
-      "video_url": null,
+      "video_url": "https://youtu.be/Bfdmj4pp660",
       "sources": [
         "bws"
       ],
@@ -3791,7 +3796,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "frontal",
-      "hip_focus": true
+      "hip_focus": true,
+      "video_own": true
     },
     {
       "id": "hip-bridge-horizontal-press",
@@ -5190,7 +5196,7 @@
     {
       "id": "meadows-row",
       "name": "Meadows Row",
-      "video_url": null,
+      "video_url": "https://youtu.be/uexTkvxwMGM",
       "sources": [
         "bws"
       ],
@@ -5211,7 +5217,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "metronome-decels",
@@ -5368,7 +5375,7 @@
     {
       "id": "nordic-hamstring-curl",
       "name": "Nordic Hamstring Curl",
-      "video_url": null,
+      "video_url": "https://youtu.be/htyDuCI8cm8",
       "sources": [
         "bws"
       ],
@@ -5387,7 +5394,8 @@
       "level": 3,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "one-leg-rdl-rotation-w-toes-off",
@@ -7140,7 +7148,7 @@
     {
       "id": "single-arm-cable-pushdown",
       "name": "Single-Arm Cable Pushdown",
-      "video_url": null,
+      "video_url": "https://youtu.be/P37YgPF8reQ",
       "sources": [
         "bws"
       ],
@@ -7158,7 +7166,8 @@
       "level": 2,
       "unilateral": true,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "single-arm-cable-row",
@@ -7807,7 +7816,7 @@
     {
       "id": "straight-arm-pulldown",
       "name": "Straight Arm Pulldown",
-      "video_url": null,
+      "video_url": "https://youtu.be/G9uNaXGTJ4w",
       "sources": [
         "bws"
       ],
@@ -7825,7 +7834,8 @@
       "level": 2,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "sumo-deadlift",
@@ -8404,7 +8414,7 @@
     {
       "id": "weighted-dips",
       "name": "Weighted Dips",
-      "video_url": null,
+      "video_url": "https://youtu.be/ZDOrGNvRdM0",
       "sources": [
         "bws"
       ],
@@ -8424,7 +8434,8 @@
       "level": 3,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": false
+      "hip_focus": false,
+      "video_own": true
     },
     {
       "id": "weighted-step-ups",
