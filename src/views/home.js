@@ -18,7 +18,7 @@ function macroPercents(p, c, f) {
 }
 import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
-import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName } from './schedule.js';
+import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName, catchUpOffer, setCatchUp } from './schedule.js';
 import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
@@ -384,6 +384,7 @@ export async function renderHome(app) {
   const hipInWorkout = !!hip && today_w.type === 'program';
   const trainStreak = activeStreak(await getAll('sessions'), today());
   const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
+  const catchUp = today_w.type === 'tag' ? await catchUpOffer() : null;   // a missed workout can be done today
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -424,7 +425,7 @@ export async function renderHome(app) {
         ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game, catchUp)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
@@ -523,6 +524,10 @@ export async function renderHome(app) {
     if (v === 'warmup') return navigate('routine/basketball_warmup');
     await setGame(v === 'clear' ? null : v === 'played');
     if (v === 'played') toast('Game logged 🏀');
+    renderHome(app);
+  });
+  app.querySelectorAll('[data-catch-up]').forEach(b => b.onclick = async () => {
+    await setCatchUp(b.dataset.catchUp || null);
     renderHome(app);
   });
   const hoopsBtn = app.querySelector('#hoops-open');
@@ -650,7 +655,14 @@ const BADGE = (ok) => `<circle cx="24" cy="24" r="7" fill="${ok ? '#22c55e' : '#
 const ICON_SCORED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(false)}${BADGE(true)}</svg>`;
 const ICON_MISSED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(true)}${BADGE(false)}</svg>`;
 
-function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null) {
+/** "Missed a workout? Do it today" under a labelled day (Basketball, Rest…). */
+function catchUpRow(c) {
+  if (!c) return '';
+  return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" style="margin-top:10px;font-size:13px;text-align:left">
+    ↺ Catch up instead: ${escH(c.name)} · ${escH(c.title)}</button>`;
+}
+
+function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null, catchUp = null) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -674,14 +686,14 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
         <div style="display:flex;align-items:center;gap:8px">${game.played ? ICON_SCORED : ICON_MISSED}
           <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div>
         <button class="btn ghost" data-game="clear" aria-label="Undo" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">↺</button>
-      </div>`;
+      </div>${catchUpRow(catchUp)}`;
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" data-game="warmup" style="flex:2">▶ Warm-up</button>
         ${iconBtn('played', ICON_SCORED, 'Played')}
         ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
-      </div>`;
+      </div>${catchUpRow(catchUp)}`;
   }
   if (today_w.type === 'tag') {
     const map = {
@@ -695,7 +707,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
       <div class="btn-row" style="margin-top:10px">
         <button class="btn" data-action="start-workout">${today_w.tag === 'Rest' ? 'Just log something' : 'Open log'}</button>
         <button class="btn ghost" data-action="schedule">Edit week</button>
-      </div>
+      </div>${catchUpRow(catchUp)}
     `;
   }
   if (today_w.type === 'program' && today_w.program) {
@@ -711,7 +723,8 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" data-action="start-workout" style="flex:2">${workoutDoneToday ? 'View workout' : 'Start workout'}</button>
         <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button>
-      </div>
+      </div>${today_w.catchUp && !workoutDoneToday ? `
+      <button class="btn ghost" data-catch-up="" style="margin-top:8px;font-size:13px">Back to today's plan (${escH(today_w.catchUp)})</button>` : ''}
     `;
   }
   return `

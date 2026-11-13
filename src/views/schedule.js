@@ -13,7 +13,7 @@
  * 'fixed'  mode: always loads the same (week, day) — useful for dedicated mobility/zone-2 days.
  */
 import { pref, getByIndex, getAll } from '../db.js';
-import { flowProgram } from '../lib/week_flow.js';
+import { flowProgram, flowOf } from '../lib/week_flow.js';
 import { openSheet, toast } from '../app.js';
 import { loadCatalogs, getAllPrograms, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
@@ -597,6 +597,27 @@ export async function dailyWorkout(id = DAILY_ID) {
   return { type: 'program', program, ...(await followPosition(program)), mode: 'follow', daily: true };
 }
 
+/**
+ * On a labelled day (Basketball, Rest, Cardio…) of a Mixed Week: the week's training program and its
+ * next day, so a missed workout can be done today. { programId, name, title } or null.
+ */
+export async function catchUpOffer() {
+  const sched = await pref('schedule');
+  if (sched?.type !== 'weekly') return null;
+  const ids = sched.slots.filter(sl => sl?.program_id && sl.mode === 'follow').map(sl => sl.program_id);
+  const id = flowOf(sched.slots)?.train || ids.find(i => i !== DAILY_ID && !/recovery|mobility/i.test(i)) || null;
+  const program = await findProgram(id);
+  if (!program) return null;
+  const pos = await followPosition(program);
+  if (pos.completedAt || pos.doneToday) return null;
+  const day = pos.day_index != null ? program.days?.[pos.day_index]
+    : program.weeks?.find(w => w.week_num === pos.week)?.days?.find(d => d.day_num === pos.day);
+  const title = String(day?.day_name || day?.focus || `Week ${pos.week}, Day ${pos.day}`).split(' · ')[0];
+  return { programId: program.id, name: program.program_name || program.name || program.id, title };
+}
+/** Turn catch-up on (programId) or off (null) for today. */
+export const setCatchUp = (programId) => pref('catch_up', programId ? { date: localDateStr(), program_id: programId } : null);
+
 /** Used by Home + Workout views to figure out today's prescription. */
 export async function todaysWorkout() {
   const sched = await pref('schedule');
@@ -607,7 +628,16 @@ export async function todaysWorkout() {
     const dow = new Date().getDay();
     const slot = sched.slots[dow];
     if (!slot) return { type: 'unset' };
-    if (slot.label) return { type: 'tag', tag: slot.label };
+    if (slot.label) {
+      // "Catch up" tapped on Home: today runs the training program's next day instead of the label.
+      const cu = await pref('catch_up');
+      const program = cu?.date === localDateStr() ? await findProgram(cu.program_id) : null;
+      if (program) {
+        const pos = await followPosition(program);
+        if (!pos.completedAt) return { type: 'program', program, ...pos, mode: 'follow', catchUp: slot.label };
+      }
+      return { type: 'tag', tag: slot.label };
+    }
     if (slot.program_id) {
       // Training + recovery week (Lean & Tone's suggested week): recovery comes after the planned run of
       // training days you actually finished, not on a fixed weekday (src/lib/week_flow.js).
