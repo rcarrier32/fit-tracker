@@ -306,6 +306,7 @@ function pjfNotesHTML(ex, accent) {
  * @param {string}   [o.completeLabel] shown once nothing is left
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
+ * @param {{ label: string, onClick: (close: Function) => void }[]} [o.menu]   extra ⋯ items (warm-up → Swap)
  * @param {{ name: string, steps: { name: string }[], current: number, note?: string,
  *           ready?: boolean, onChange: (step: number, close: Function) => void }} [o.ladder]
  *                                    progression ladder — easier/harder versions of this exercise
@@ -362,7 +363,7 @@ export function openExerciseDetail(ex, o = {}) {
             border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
           <button class="ex-fav" type="button" aria-label="Favourite" aria-pressed="${isFav(ex.name)}"
             style="background:none;border:none;font-size:20px;line-height:1;padding:2px 4px;cursor:pointer;color:${isFav(ex.name) ? '#f472b6' : '#64748b'}">${isFav(ex.name) ? '♥' : '♡'}</button>
-          ${sheetVideo(ex).src ? `<button class="ex-more" type="button" aria-label="More options"
+          ${sheetVideo(ex).src || o.menu?.length ? `<button class="ex-more" type="button" aria-label="More options"
             style="background:none;border:none;color:#64748b;font-size:18px;line-height:1;padding:2px 4px;cursor:pointer">⋯</button>` : ''}
         </div>
       </div>
@@ -476,16 +477,18 @@ export function openExerciseDetail(ex, o = {}) {
     };
     sheet.querySelector('.ex-more')?.addEventListener('click', () => {
       if (!$menu.hidden) { $menu.hidden = true; return; }
-      const cur = clipFor(ex.name, src);
+      const cur = src ? clipFor(ex.name, src) : null;
       $menu.innerHTML = `
-        <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px">
-          <button class="btn ghost" data-m="clip" style="width:auto;font-size:12px;padding:6px 10px">✂ ${cur ? 'Change clip' : 'Clip video'}</button>
+        <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px;flex-wrap:wrap">
+          ${(o.menu || []).map((m, i) => `<button class="btn ghost" data-m="x${i}" style="width:auto;font-size:12px;padding:6px 10px">${esc(m.label)}</button>`).join('')}
+          ${src ? `<button class="btn ghost" data-m="clip" style="width:auto;font-size:12px;padding:6px 10px">✂ ${cur ? 'Change clip' : 'Clip video'}</button>` : ''}
           ${cur?.mine ? `<button class="btn ghost" data-m="unclip" style="width:auto;font-size:12px;padding:6px 10px">Remove clip</button>` : ''}
         </div>`;
       $menu.hidden = false;
     });
     $menu.addEventListener('click', async (e) => {
       const m = e.target.closest('[data-m]')?.dataset.m;
+      if (m?.startsWith('x')) { $menu.hidden = true; o.menu[+m.slice(1)]?.onClick(close); return; }
       if (m === 'clip') openClipBar();
       if (m === 'unclip') { await saveClip(ex.name, src, null); $menu.hidden = true; redrawVideo(); toast('Clip removed'); }
     });

@@ -368,6 +368,19 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     const hipWarm = hipWarmupRows();
     warmup = { name: 'Warm-Up · hip first', exercises: [...hipWarm, ...(dayData.warmup?.length ? dayData.warmup : [])] };
   }
+  // Warm-up swaps: saved for this day (swaps pref, keyed "wu:<name>" so they never touch a main
+  // exercise of the same name) or just today (session.warmup_swaps).
+  if (warmup?.exercises?.length) {
+    const dk = _sessionDayKey(session);
+    const saved = (dk && ((await pref('swaps')) || {})[programId]?.[dk]) || {};
+    const pick = (n) => session.warmup_swaps?.[n] ?? saved[`wu:${n}`];
+    if (warmup.exercises.some(w => pick(w.name))) {
+      warmup = { ...warmup, exercises: warmup.exercises.map(w => {
+        const to = pick(w.name);
+        return to && to !== w.name ? { ...w, orig_name: w.name, name: to, alternates: w.alternates } : w;
+      }) };
+    }
+  }
   // Band workouts: one tap to each category's band-setup overview, in workout order.
   const bandCats = [...new Set(session.exercises
     .map(x => exMap[x.name.toLowerCase()])
@@ -757,6 +770,45 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     }
   }, 60);
 
+  // ⋯ → Swap on a warm-up move: the row's alternates, similar warm-up moves, or any exercise.
+  const openWarmupSwap = (w) => openSheet((s2, close2) => {
+    const orig = w.orig_name || w.name;
+    const lookup = exMap[orig.toLowerCase()];
+    const alts = (w.alternates || []).filter(n => n !== w.name && n !== orig);
+    const similar = rankSimilar(lookup, allExercises, { limit: 40 })
+      .filter(e => (e.role === 'warmup' || e.pattern === 'mobility') && e.name !== w.name && e.name !== orig && !alts.includes(e.name)).slice(0, 10);
+    const row = (n, meta = '') => `<div class="list-item" data-name="${esc(n)}" style="cursor:pointer"><div style="flex:1">
+      <div class="list-item-title">${esc(n)}${n === orig ? ' <span class="pill" style="font-size:10px">original</span>' : ''}</div>
+      <div class="list-item-meta" style="text-transform:capitalize">${meta}</div></div></div>`;
+    const meta = (e) => (e?.pattern ? tagLine(e) : '') + (hasVideo(e) ? ' · ▶' : '');
+    s2.innerHTML = `<h2>Swap: ${esc(w.name)}</h2>
+      ${w.name !== orig ? `<div class="group-label" style="margin:0 0 6px">The plan's move</div>${row(orig, meta(lookup))}` : ''}
+      ${alts.length ? `<div class="group-label" style="margin:0 0 6px">Plan alternatives</div>${alts.map(n => row(n, meta(exMap[n.toLowerCase()]))).join('')}` : ''}
+      ${similar.length ? `<div class="group-label" style="margin:12px 0 6px">Similar warm-up moves</div>${similar.map(e => row(e.name, meta(e))).join('')}` : ''}
+      <div class="group-label" style="margin:12px 0 6px">Any exercise</div>
+      <input type="text" id="wu-filter" placeholder="Search all exercises…" autocomplete="off">
+      <div id="wu-results"></div>`;
+    const pick = async (name) => {
+      session.warmup_swaps = { ...(session.warmup_swaps || {}), [orig]: name };
+      await saveSession(session);
+      if (name === orig) {   // back to the plan's move: drop a saved swap too
+        const dk = _sessionDayKey(session), all = (await pref('swaps')) || {};
+        if (dk && all[session.program_id]?.[dk]?.[`wu:${orig}`]) { delete all[session.program_id][dk][`wu:${orig}`]; await pref('swaps', all); }
+        close2(); renderWorkout(app); return;
+      }
+      close2(!(session.program_id && _sessionDayKey(session)));
+      _offerPermanentSwap(orig, name, session, `wu:${orig}`);
+    };
+    const wire = (root) => root.querySelectorAll('.list-item[data-name]').forEach(el => { el.onclick = () => pick(el.dataset.name); });
+    wire(s2);
+    const $f = s2.querySelector('#wu-filter'), $r = s2.querySelector('#wu-results');
+    $f.oninput = () => {
+      const q = $f.value.trim().toLowerCase();
+      $r.innerHTML = q ? allExercises.filter(e => e.name.toLowerCase().includes(q)).slice(0, 10).map(e => row(e.name, meta(e))).join('') : '';
+      wire($r);
+    };
+  });
+
   function openStep(k) {
     const st = steps[k];
     if (!st) return;
@@ -781,6 +833,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         subtitle: `Warm-up ${k + 1} of ${warmCount}`, source: 'Warm-up' }, {
         ...common,
         rx: target,
+        menu: [{ label: '🔄 Swap', onClick: (close) => { _noRefresh = true; close(false); openWarmupSwap(w); } }],
         isDone: () => wuDone(w.name),
         setDone: async (v) => {
           try { sessionStorage.setItem(wuKey(w.name), v ? '1' : '0'); } catch { /* private mode */ }
@@ -1111,7 +1164,7 @@ async function _saveSwap(programId, dayKey, originalName, newName) {
   await pref('swaps', swaps);
 }
 
-function _offerPermanentSwap(originalName, newName, session) {
+function _offerPermanentSwap(originalName, newName, session, saveKey = originalName) {
   const dayKey = _sessionDayKey(session);
   if (!session.program_id || !dayKey) {
     renderWorkout(document.getElementById('app'));
@@ -1131,7 +1184,7 @@ function _offerPermanentSwap(originalName, newName, session) {
       </div>
     `;
     s.querySelector('#swap-yes').onclick = async () => {
-      await _saveSwap(session.program_id, dayKey, originalName, newName);
+      await _saveSwap(session.program_id, dayKey, saveKey, newName);
       closeOffer();
       toast('Swap saved');
     };
