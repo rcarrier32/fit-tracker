@@ -308,6 +308,9 @@ function pjfNotesHTML(ex, accent) {
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
  * @param {{ label: string, onClick: (close: Function) => void }[]} [o.menu]   extra ⋯ items (warm-up → Swap)
  * @param {() => ({ name: string, open: Function } | null)} [o.prev]  ← back to the previous step
+ * @param {(close: Function) => void} [o.onSwap]  🔄 next to the name: straight to the swap list
+ * @param {(close: Function) => void} [o.onMore]  ⋯ opens this (the Lift card's options) instead of the inline menu
+ *   (each o.also item can carry its own onMore)
  * @param {{ ex: object, rx?: string, mountSets: (el: HTMLElement, changed: Function) => void }[]} [o.also]
  *   the rest of a superset or circuit, each with its own video and sets below the first (TrainHeroic-style)
  * @param {{ name: string, steps: { name: string }[], current: number, note?: string,
@@ -364,9 +367,11 @@ export function openExerciseDetail(ex, o = {}) {
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
           ${ex.source ? `<span style="font-size:9px;padding:2px 6px;border-radius:4px;
             border:1px solid rgba(255,255,255,0.1);color:#64748b;white-space:nowrap">${esc(ex.source)}</span>` : ''}
+          ${o.onSwap ? `<button class="ex-swap"  type="button" aria-label="Swap exercise" title="Swap"
+                style="background:none;border:none;color:#64748b;font-size:17px;line-height:1;padding:2px 4px;cursor:pointer">🔄</button>` : ''}
           <button class="ex-fav" type="button" aria-label="Favourite" aria-pressed="${isFav(ex.name)}"
             style="background:none;border:none;font-size:20px;line-height:1;padding:2px 4px;cursor:pointer;color:${isFav(ex.name) ? '#f472b6' : '#64748b'}">${isFav(ex.name) ? '♥' : '♡'}</button>
-          ${sheetVideo(ex).src || o.menu?.length ? `<button class="ex-more" type="button" aria-label="More options"
+          ${sheetVideo(ex).src || o.menu?.length || o.onMore ? `<button class="ex-more" type="button" aria-label="More options"
             style="background:none;border:none;color:#64748b;font-size:18px;line-height:1;padding:2px 4px;cursor:pointer">⋯</button>` : ''}
         </div>
       </div>
@@ -412,7 +417,17 @@ export function openExerciseDetail(ex, o = {}) {
         return `
         <div class="ex-also" style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
           ${videoBlockHTML(a.ex).replace('class="ex-video-wrap"', 'class="ex-video-wrap-also"')}
-          <h2 style="margin:12px 0 0;font-size:18px;line-height:1.25">${esc(a.ex.name)}</h2>
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:12px">
+            <h2 style="margin:0;font-size:18px;line-height:1.25;min-width:0">${esc(a.ex.name)}</h2>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+              ${a.onSwap ? `<button class="ex-swap-also" data-k="${k}" type="button" aria-label="Swap exercise" title="Swap"
+                style="background:none;border:none;color:#64748b;font-size:17px;line-height:1;padding:2px 4px;cursor:pointer">🔄</button>` : ''}
+              <button class="ex-fav-also" data-k="${k}" type="button" aria-label="Favourite" aria-pressed="${isFav(a.ex.name)}"
+                style="background:none;border:none;font-size:20px;line-height:1;padding:2px 4px;cursor:pointer;color:${isFav(a.ex.name) ? '#f472b6' : '#64748b'}">${isFav(a.ex.name) ? '♥' : '♡'}</button>
+              ${a.onMore ? `<button class="ex-more-also" data-k="${k}" type="button" aria-label="More options"
+                style="background:none;border:none;color:#64748b;font-size:18px;line-height:1;padding:2px 4px;cursor:pointer">⋯</button>` : ''}
+            </div>
+          </div>
           ${a.ex.subtitle ? `<div style="font-size:12px;color:#94a3b8;margin-top:3px">${esc(a.ex.subtitle)}</div>` : ''}
           ${chips ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">${chips}</div>` : ''}
           ${a.rx ? `<div style="margin-top:8px"><span style="font-size:11px;padding:4px 9px;border-radius:6px;background:rgba(255,255,255,0.06);color:#cbd5e1">
@@ -494,6 +509,7 @@ export function openExerciseDetail(ex, o = {}) {
       show();
     };
     sheet.querySelector('.ex-more')?.addEventListener('click', () => {
+      if (o.onMore) { o.onMore(close); return; }
       if (!$menu.hidden) { $menu.hidden = true; return; }
       const cur = src ? clipFor(ex.name, src) : null;
       $menu.innerHTML = `
@@ -594,6 +610,14 @@ export function openExerciseDetail(ex, o = {}) {
     }
     if (o.mountSets) o.mountSets(sheet.querySelector('#ex-sets'), () => paint());
     (o.also || []).forEach((a, k) => a.mountSets(sheet.querySelector(`.ex-also-sets[data-k="${k}"]`), () => paint()));
+    sheet.querySelectorAll('.ex-more-also').forEach(b => { b.onclick = () => o.also[+b.dataset.k].onMore(close); });
+    sheet.querySelectorAll('.ex-swap-also').forEach(b => { b.onclick = () => o.also[+b.dataset.k].onSwap(close); });
+    sheet.querySelector('.ex-swap')?.addEventListener('click', () => o.onSwap(close));
+    sheet.querySelectorAll('.ex-fav-also').forEach(b => { b.onclick = async () => {
+      const name = o.also[+b.dataset.k].ex.name, on = await toggleFav(name);
+      b.textContent = on ? '♥' : '♡'; b.style.color = on ? '#f472b6' : '#64748b'; b.setAttribute('aria-pressed', on);
+      toast(on ? 'Favourite: new plans pick it first' : 'Removed from favourites', 1800);
+    }; });
     paint();
 
     sheet.querySelector('#ex-rx')?.addEventListener('click', async () => {

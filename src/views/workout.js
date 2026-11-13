@@ -829,6 +829,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       el.addEventListener('click', () => setTimeout(changed, 0));
       paintRest();
     };
+    const more = (n, swapNow = false) => (close) => { _noRefresh = true; close(false); openExerciseMenu(session, idx[n], allExercises, exMap, { swapNow }); };
     const label = prettyGroup(exs[0].round_group);
     // Next →: the first unfinished step after the group, else any earlier one left.
     const next = () => {
@@ -843,16 +844,16 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       prev: prevOf(a),
       rx: formatTarget(exs[0]),
       doneLabel: `✓ Mark ${/superset/i.test(label) ? 'superset' : 'circuit'} done`,
-      // ⋯ → each move's options (Swap, notes, sets, This hurts…), same menu as its Lift card.
-      menu: exs.map((ex, n) => ({ label: `🔄 Swap / more: ${ex.name}`,
-        onClick: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, idx[n], allExercises, exMap); } })),
+      // Each move's ⋯ opens its options (Swap, notes, sets, This hurts…), same menu as its Lift card.
+      onMore: more(0),
+      onSwap: more(0, true),
       isDone: () => exs.every(exerciseDone),
       setDone: async (v) => {
         if (!v) return;
         for (const c of cards) c?.querySelectorAll('.set-row:not(.done) .check').forEach(x => x.click());
       },
       mountSets: mount(0),
-      also: exs.slice(1).map((ex, n) => ({ ex: { name: ex.name, ...vid(ex), notes: ex.notes }, rx: formatTarget(ex), mountSets: mount(n + 1) })),
+      also: exs.slice(1).map((ex, n) => ({ ex: { name: ex.name, ...vid(ex), notes: ex.notes }, rx: formatTarget(ex), mountSets: mount(n + 1), onMore: more(n + 1), onSwap: more(n + 1, true) })),
     });
   }
 
@@ -913,7 +914,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     openExerciseDetail({ name: ex.name, video_url: rowVideo || lookup?.video_url, rowVideo: !!rowVideo,
       subtitle: `Exercise ${i + 1} of ${session.exercises.length}${grp}`, notes: ex.notes }, {
       ...common,
-      menu: [{ label: '🔄 Swap / more', onClick: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap); } }],
+      onMore: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap); },
+      onSwap: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap, { swapNow: true }); },
       rx: formatTarget(ex),
       isDone: () => exerciseDone(ex),
       // ✓ Mark exercise done = tap each open set's ○, so prefilled weights and reps are logged.
@@ -1252,7 +1254,7 @@ function _offerPermanentSwap(originalName, newName, session, saveKey = originalN
   });
 }
 
-function openExerciseMenu(session, i, allExercises, exMap) {
+function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } = {}) {
   const ex = session.exercises[i];
   const lookup = exMap[ex.name.toLowerCase()];
   const primaryMuscle = lookup?.primary_muscle || null;
@@ -1264,6 +1266,8 @@ function openExerciseMenu(session, i, allExercises, exMap) {
   const planAlts = [...new Set([...(ex.swapped && ex.orig_name ? [ex.orig_name] : []), ...(ex.alternates || [])])]
     .filter(n => n !== ex.name && exMap[n.toLowerCase()]);
   openSheet((sheet, close) => {
+    // 🔄 on the workout screen: straight to the swap list.
+    if (swapNow) setTimeout(() => sheet.querySelector('#swap-all')?.click(), 0);
     sheet.innerHTML = `
       <h2>${ex.name}</h2>
       <div class="muted" style="margin-bottom:14px">${formatTarget(ex)}${muscleLabel ? ' · ' + muscleLabel : ''}</div>
