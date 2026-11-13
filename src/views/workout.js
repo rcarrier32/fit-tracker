@@ -433,6 +433,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       <button class="btn ghost" data-action="next">Day →</button>
     </div>` : ''}
     <button class="btn" id="start-flow" style="margin:12px 0 4px">▶ ${anyLogged ? 'Continue workout' : 'Start workout'}</button>
+    ${!today_w.daily && !bandDay && !session.done && (session.short || session.exercises.length > 4) ? `
+    <button class="btn ghost" id="short-day" style="margin:4px 0;font-size:13px">${session.short
+      ? `↺ Back to the full workout (${session.short.removed.length} moves set aside)` : '⏱ Short on time? Keep the main lifts, 2 sets each'}</button>` : ''}
     ${warmup ? _warmupBlockHtml(warmup, exMap) : ''}
     ${warmup ? '<div class="group-label" style="margin-top:14px">💪 Workout</div>' : ''}
     <div id="exercises"></div>
@@ -492,6 +495,36 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   });
   app.querySelector('[data-action="prev"]')?.addEventListener('click', () => changeDay(-1));
   app.querySelector('[data-action="next"]')?.addEventListener('click', () => changeDay(+1));
+  // ⏱ Short on time: set aside accessories, core, finishers and cooldown (not yet logged), and
+  // cap the rest at 2 sets. ↺ puts everything back where it was.
+  app.querySelector('#short-day')?.addEventListener('click', async () => {
+    if (session.short) {
+      const rows = [...session.exercises];
+      for (const { at, ex } of session.short.removed.sort((a, b) => a.at - b.at)) rows.splice(Math.min(at, rows.length), 0, ex);
+      for (const x of rows) if (x.full_sets != null) { x.target_sets = x.full_sets; delete x.full_sets; }
+      session.exercises = rows;
+      delete session.short;
+    } else {
+      const cut = (x) => {
+        if ((x.sets || []).some(st => st?.done)) return false;
+        if (/finisher|treadmill|cooldown|cardio/i.test(x.round_group || '')) return true;
+        return ['accessory', 'core', 'conditioning', 'cooldown', 'mobility'].includes(exMap[String(x.name).toLowerCase()]?.role);
+      };
+      const removed = [];
+      const kept = session.exercises.filter((x, at) => (cut(x) ? (removed.push({ at, ex: x }), false) : true));
+      if (!kept.length || !removed.length && kept.every(x => (parseInt(x.target_sets) || 3) <= 2)) { toast('Nothing to trim here'); return; }
+      for (const x of kept) {
+        const n = parseInt(x.target_sets) || 3;
+        if (n > 2 && !(x.sets || []).some(st => st?.done)) { x.full_sets = x.target_sets; x.target_sets = 2; }
+      }
+      session.exercises = kept;
+      session.short = { removed };
+      toast(`Short version: ${kept.length} moves, ${removed.length} set aside`);
+    }
+    await saveSession(session);
+    renderWorkout(app, { keepRest: true });
+  });
+
   app.querySelector('#add-ex').onclick = async () => {
     const picked = await pickExerciseFromLibrary(allExercises);
     if (!picked) return;
