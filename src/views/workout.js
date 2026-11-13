@@ -9,7 +9,7 @@ import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/d
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, dailyWorkout, advanceCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
+import { todaysWorkout, dailyWorkout, advanceCursor, retreatCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
@@ -31,9 +31,15 @@ let _renderToken = 0;   // newest renderWorkout wins; older in-flight renders ba
  * Sessions are created lazily: browsing to a day builds one in memory, and the first
  * real write (a set, a swap, Finish) stores it. Keeps the id once IndexedDB assigns it.
  */
-async function saveSession(session) {
-  const id = await put('sessions', session);
-  if (session.id == null) session.id = id;
+// Saves run one after another: two quick taps on a new workout used to both store it before
+// either got its id back, leaving duplicate sessions.
+let _saveChain = Promise.resolve();
+function saveSession(session) {
+  _saveChain = _saveChain.catch(() => {}).then(async () => {
+    const id = await put('sessions', session);
+    if (session.id == null) session.id = id;
+  });
+  return _saveChain;
 }
 
 /** Seconds from a program time: "00:00:45", "1:30", "45 sec", "2 min". */
@@ -189,7 +195,9 @@ function openLiftDetail(btn) {
   });
 }
 
-let _noRefresh = false;   // Finish from the sheet: don't redraw the Lift page over the Done screen
+let _noRefresh = false;
+let _editingId = null;   // Done screen → Edit: show the finished workout's sets again until Finish
+let _follow = false;     // today's workout moves a program cursor (follow mode, not a side routine)   // Finish from the sheet: don't redraw the Lift page over the Done screen
 
 /** #/daily opens Daily Mobility (its Home card) without touching the active program. */
 // #/daily (Daily Mobility) and #/routine/<id> (Basketball Warm-up …) open a side routine next to the plan.
@@ -205,6 +213,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   stopSetTimer();
   const today_w = await whichWorkout();
   if (stale()) return;
+  _follow = today_w.mode === 'follow' && !today_w.daily;
   if (today_w.type === 'unset') {
     app.innerHTML = `
       <div class="empty">
@@ -336,7 +345,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   session.exercises = session.exercises.map(x => (x.sets || []).some(st => st?.done) ? x : roundsAsSets(x));
 
   // Already finished today (Finish advances the cursor, but today stays this workout).
-  if (session.done && today_w.doneToday) {
+  if (session.done && today_w.doneToday && _editingId !== session.id) {
     const allSessions = await getAll('sessions');
     if (stale()) return;
     renderWorkoutComplete(app, session, computeSessionStats(session, allSessions), program, week, day);
@@ -502,6 +511,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     finishing = true;
     e.currentTarget.disabled = true;
     const wasDone = session.done;   // re-finishing an edited workout must not skip a day
+    _editingId = null;
     session.done = true;
     await saveSession(session);
     if (today_w.mode === 'follow' && !wasDone) {
@@ -2242,6 +2252,10 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
       </div>
       ${session.skipped ? '' : `<button class="btn ghost" id="done-next" style="margin-top:8px;font-size:13px">
         Do the next workout today →</button>`}
+      <div class="btn-row" style="margin-top:8px">
+        ${session.skipped ? '' : '<button class="btn ghost" id="done-edit" style="font-size:13px">✎ Edit sets</button>'}
+        <button class="btn ghost" id="done-undo" style="font-size:13px">↺ Undo ${session.skipped ? 'skip' : 'finish'}</button>
+      </div>
     </div>
   `;
 
@@ -2303,6 +2317,27 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     navigate('home');
   };
   app.querySelector('#done-body').onclick = async () => { clearTimeout(noteTimer); await saveNote(); navigate('body'); };
+  // ✎ Edit sets: the workout reopens with its sets; Finish saves it again (the program doesn't move twice).
+  app.querySelector('#done-edit')?.addEventListener('click', async () => {
+    clearTimeout(noteTimer); await saveNote();
+    _editingId = session.id;
+    renderWorkout(app);
+  });
+  // ↺ Undo: back to not finished, and the program steps back to this day.
+  app.querySelector('#done-undo')?.addEventListener('click', async () => {
+    if (!confirm(session.skipped ? 'Undo the skip? This workout comes back as today\'s.' : 'Undo finish? The workout reopens with your sets, and the program steps back to this day.')) return;
+    clearTimeout(noteTimer); await saveNote();
+    const wasSkipped = session.skipped;
+    session.done = false;
+    delete session.skipped;
+    await saveSession(session);
+    if (_follow && session.program_id) {
+      await retreatCursor(session.program_id);
+      if (session.merged_day) await retreatCursor(session.program_id);
+    }
+    toast(wasSkipped ? 'Skip undone' : 'Finish undone');
+    renderWorkout(app);
+  });
   app.querySelector('#done-next')?.addEventListener('click', () => {
     allowNextWorkoutToday(program.id);
     renderWorkout(app);

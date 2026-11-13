@@ -695,6 +695,25 @@ export async function selectSingleProgram(programId, { restart = false } = {}) {
 }
 
 /** Advance the cursor for whichever program was just completed. */
+/** Undo one advanceCursor: back a day (into the previous week at Day 1), and un-finish the program. */
+export async function retreatCursor(programId) {
+  const program = await findProgram(programId);
+  if (!program) return;
+  const wasDone = await pref(`completed:${programId}`);
+  if (wasDone) await pref(`completed:${programId}`, null);
+  const cur = { ...defaultCursor(program), ...((await pref(`cursor:${programId}`)) || {}) };
+  if (program.weeks) {
+    let week = cur.week || 1, day = cur.day || 1;
+    if (wasDone) { week = program.weeks.length; day = program.weeks[week - 1]?.days?.length || 1; }   // cursor had reset to 1/1
+    else if (day > 1) day -= 1;
+    else if (week > 1) { week -= 1; day = program.weeks.find(w => w.week_num === week)?.days?.length || 1; }
+    await pref(`cursor:${programId}`, { week, day });
+  } else if (program.days) {
+    const n = program.days.length;
+    await pref(`cursor:${programId}`, { day_index: ((cur.day_index || 0) - 1 + n) % n });
+  }
+}
+
 export async function advanceCursor(programId, mode) {
   if (mode !== 'follow') return; // fixed slots don't advance
   const { programById } = await loadCatalogs();
