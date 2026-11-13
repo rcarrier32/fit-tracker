@@ -3,7 +3,7 @@
  */
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
-import { nextTarget, deloadAdvice, repRange } from '../lib/adapt.js';
+import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
@@ -262,6 +262,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // rotation day, so treat missing as 0 rather than starting a duplicate session.
   const sameIndex = (a, b) => (a ?? 0) === (b ?? 0);
   let session = todaysSessions.find(s => s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index));
+  // Past midnight mid-workout: carry on with last night's unfinished session (a set in the last 6 h)
+  // instead of starting an empty one for the new date.
+  if (!session) {
+    const yd = new Date(); yd.setDate(yd.getDate() - 1);
+    const recent = (x) => (x.exercises || []).some(e => (e.sets || []).some(st => st?.done && st.at > Date.now() - 6 * 3600e3));
+    session = (await getByIndex('sessions', 'date', localDateStr(yd)))
+      .find(s => !s.done && s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index) && recent(s)) || undefined;
+    if (stale()) return;
+  }
   _restKey = `${today()}|${programId}|${week}|${day}|${day_index ?? 0}`;
   if (!keepRest && _rest && _rest.key !== _restKey) stopRestTimer();
   if (!session) {
@@ -615,7 +624,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const i = +card.dataset.i;
       const setIdx = +e.target.dataset.set;
       const wInput = e.target.closest('.set-row').querySelector('[data-field="weight"]');
-      const newVal = Math.round(((+wInput.value || 0) + 5) * 10) / 10;
+      // The step suits the kit: 2.5 lb for light dumbbells, 5 otherwise.
+      const step = +e.target.dataset.step || 5;
+      const newVal = Math.round(((+wInput.value || 0) + step) * 10) / 10;
       wInput.value = newVal;
       setAt(session.exercises[i], setIdx).weight = newVal;
       await saveSession(session);
@@ -1780,7 +1791,7 @@ function adjustRest(delta) {
   saveRest(); scheduleRestEnd();
   paintRest();
 }
-const REST_BTN = 'class="btn ghost" style="width:auto;min-height:0;padding:2px 8px;font-size:11px;margin-left:4px"';
+const REST_BTN = 'class="btn ghost" style="width:auto;min-height:36px;padding:6px 12px;font-size:13px;margin-left:6px"';
 const restControls = () => `<button type="button" data-rest="-15" ${REST_BTN}>−15</button><button type="button" data-rest="15" ${REST_BTN}>+15</button><button type="button" data-rest="skip" ${REST_BTN}>Skip</button>`;
 function wireRestControls(el) {
   el.querySelectorAll('[data-rest]').forEach(b => b.onclick = (e) => {
@@ -1957,6 +1968,8 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const timed = isTimed(ex);
   const next = targetFor(ex, lookup);
   const target = parseSecs(ex.time);
+  const lastW = +(ex.sets || []).find(st => st?.weight)?.weight || next?.weight || 0;
+  const incStep = weightStep(lastW || 10, lookup?.equipment || []);
   for (let s = 0; s < sets && timed; s++) {
     const set = ex.sets[s] || {};
     setRows += `
@@ -1980,7 +1993,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
       <div class="set-row ${done}">
         <span class="set-num">${s+1}</span>
         <input class="set-input" type="number" inputmode="decimal" placeholder="${wPh}" data-set="${s}" data-field="weight" value="${wVal}">
-        <button class="inc-btn" data-set="${s}">+5</button>
+        <button class="inc-btn" data-set="${s}" data-step="${incStep}">+${incStep}</button>
         <input class="set-input" type="number" inputmode="numeric" placeholder="${rPh}" data-set="${s}" data-field="reps" value="${rVal}">
         <button class="rpe-btn" data-set="${s}">${set.rpe ? '@' + set.rpe : 'RPE'}</button>
         <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>

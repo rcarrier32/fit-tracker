@@ -385,6 +385,13 @@ export async function renderHome(app) {
   const trainStreak = activeStreak(await getAll('sessions'), today());
   const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
   const catchUp = today_w.type === 'tag' ? await catchUpOffer() : null;   // a missed workout can be done today
+  // Back after a week or more off: say so, and ease in (adapt.js drops weights to ~90% at 14+ days).
+  if (today_w.type === 'program' && !today_w.doneToday) {
+    const lastTrained = (await getAll('sessions')).filter(x => x.done && !x.skipped && x.program_id !== DAILY_ID && x.date < today())
+      .map(x => x.date).sort().pop();
+    const away = lastTrained ? Math.floor((Date.parse(today()) - Date.parse(lastTrained)) / 864e5) : 0;
+    if (away >= 7) today_w.away = away;
+  }
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
   const actualTdee = computeActualTdee(allBody, allMeals);
@@ -747,6 +754,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">${escH(title)}${workoutDoneToday ? ' ✓' : ''}</div>
       <div class="muted" style="font-size:12px">${escH(line)}</div>
+      ${today_w.away && !workoutDoneToday ? `<div style="font-size:12px;margin-top:6px;color:var(--accent)">👋 Welcome back: ${today_w.away} days off. Go about 10% lighter today and stop 2-3 reps short; you'll be back to full in a session or two.</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" data-action="start-workout" style="flex:2">${workoutDoneToday ? 'View workout' : 'Start workout'}</button>
         <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button>

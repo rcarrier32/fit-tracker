@@ -82,6 +82,16 @@ next workout; Start plan offers Resume at Week X Day Y; the plan week and % foll
 and circuit rest comes after the round's last move; the chart counts ticked sets only; Body links to Lifting
 stats (the Dashboard). Still open: bug 3 (module `?v=`), bug 7 and the rest of the list below.
 
+## Fixed in v159-171 (2026-11-13)
+
+Warm-up swaps; supersets on one screen with 🔄 ♡ ⋯ per move; ← Back; superset rest; edit/undo a finished
+or skipped workout and a Past workouts list (fix sets, change date, delete); duplicate-session save race;
+end-of-rest alert (one AudioContext, notification when backgrounded, survives reload); weekly backup
+nudge + share-sheet export; Short on time; first-time / after-swap starting weight and RPE 9.5+ hold;
+44 px set-row targets and a +2.5 step for light dumbbells; welcome-back note after 7+ days; a workout
+past midnight stays one session; video fallback link. Still open: module `?v=` mixing (bug 3), global
+error handler (bug 7), kg setting, pain flag offering a swap, Apple Health / Google Fit export.
+
 ## 3. Suggested fixes, by impact
 
 | Priority | Fix | Size |

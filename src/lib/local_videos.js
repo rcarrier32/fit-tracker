@@ -215,6 +215,7 @@ export function attachMuxVideos(root) {
     _hls.then(Hls => {
       if (!Hls?.isSupported()) return;
       const h = new Hls();
+      h.on(Hls.Events.ERROR, (_e, d) => { if (d?.fatal) el.dispatchEvent(new Event('error')); });   // → the fallback link
       h.loadSource(src);
       h.attachMedia(el);
     }).catch(() => {});

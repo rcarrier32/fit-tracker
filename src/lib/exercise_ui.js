@@ -445,6 +445,13 @@ export function openExerciseDetail(ex, o = {}) {
     `;
 
     attachMuxVideos(sheet);
+    // A demo that won't load (bad gym signal, expired link): offer a YouTube search instead of a black box.
+    sheet.querySelectorAll('.ex-video video').forEach((v) => v.addEventListener('error', () => {
+      const name = v.closest('.ex-also')?.querySelector('h2')?.textContent || ex.name;
+      v.closest('.ex-video').outerHTML = `<a href="https://www.youtube.com/results?search_query=${encodeURIComponent(name + ' exercise')}" target="_blank" rel="noopener noreferrer"
+        style="display:flex;align-items:center;justify-content:center;gap:8px;height:96px;width:100%;border-radius:10px;background:#0f172a;
+        border:1px dashed rgba(255,255,255,0.15);color:#94a3b8;text-decoration:none;font-size:12px">Video won't load here · ▶ Search YouTube</a>`;
+    }, { once: true }));
     sheet.querySelector('.ex-fav').onclick = async (e) => {
       const b = e.currentTarget;   // gone after the await
       const on = await toggleFav(ex.name);

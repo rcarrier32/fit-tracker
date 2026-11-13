@@ -178,7 +178,7 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 /* ── Set log row ── */
 .set-row {
   display: grid;
-  grid-template-columns: 30px 1fr 28px 1fr 60px 36px;
+  grid-template-columns: 26px 1fr 38px 1fr 54px 46px;
   gap: 8px;
   align-items: center;
   margin: 6px 0;
@@ -189,14 +189,14 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   text-align: center;
   font-size: 13px;
 }
-.set-row input { padding: 10px; min-height: 40px; text-align: center; }
+.set-row input { padding: 10px; min-height: 44px; text-align: center; }
 .set-row .rpe-btn {
   background: var(--bg-input);
   border: 1px solid var(--border);
   color: var(--fg-dim);
   border-radius: 8px;
   padding: 0;
-  height: 40px;
+  height: 44px;
   font-size: 12px;
 }
 .set-row.done { opacity: 0.55; }
@@ -212,7 +212,7 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: 8px;
-  height: 40px;
+  height: 44px;
   font-size: 18px;
   color: var(--fg-dim);
 }
@@ -221,10 +221,11 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   background: none;
   border: none;
   color: var(--fg-dim);
-  font-size: 11px;
+  font-size: 12px;
   padding: 0;
-  height: 40px;
-  opacity: 0.55;
+  height: 44px;
+  opacity: 0.8;
+  border: 1px solid var(--border) !important;
   cursor: pointer;
   border-radius: 6px;
 }
