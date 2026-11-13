@@ -76,3 +76,26 @@ export function flowProgram(slots, dow, sessions, today) {
   if (pos != null && f.pairEnds.includes(pos)) return f.companion;
   return new Set(since.map(s => s.date)).size >= f.run ? f.companion : f.train;
 }
+
+/**
+ * How many training workouts behind this week's plan you are, before today: the week's training slots
+ * from Monday to yesterday, minus the training sessions finished (not skipped) since Monday. A session
+ * that also did the next day's work (merged_day) counts twice. 0 when on track or ahead.
+ * @param slots   the Mixed Week (Sun..Sat)
+ * @param trainId the training program
+ * @param today   'YYYY-MM-DD'
+ */
+export function behindThisWeek(slots, trainId, sessions, today) {
+  const t = new Date(today + 'T12:00:00');
+  const sinceMon = (t.getDay() + 6) % 7;                 // Mon 0 … Sun 6
+  const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  let planned = 0;
+  for (let k = 1; k <= sinceMon; k++) {
+    const d = new Date(t); d.setDate(d.getDate() - k);
+    if (slots?.[d.getDay()]?.program_id === trainId) planned++;
+  }
+  const mon = new Date(t); mon.setDate(mon.getDate() - sinceMon);
+  const done = (sessions || []).filter(s => s.program_id === trainId && s.done && !s.skipped && s.date >= ymd(mon) && s.date < today)
+    .reduce((n, s) => n + (s.merged_day ? 2 : 1), 0);
+  return Math.max(0, planned - done);
+}

@@ -1,5 +1,5 @@
 /** Checks src/lib/week_flow.js. `node data/check_week_flow.mjs` */
-import { flowOf, flowProgram } from '../src/lib/week_flow.js';
+import { flowOf, flowProgram, behindThisWeek } from '../src/lib/week_flow.js';
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
 const P = 'lean_tone_home_6wk', R = 'move30_recovery_mobility';
@@ -59,5 +59,15 @@ st3(1, '2026-11-16', null);                                // Mon 🏀
 st3(2, '2026-11-17', P, L('2026-11-17', 1, 2));            // Tue week 2 Day 1
 st3(3, '2026-11-18', P, L('2026-11-18', 2, 2));            // Wed Day 2
 st3(4, '2026-11-19', R);                                   // Thu recovery
+// Catch-up offer: behind this week's plan (basketball week: Tue Wed Sat train).
+const wk = [L('2026-11-10', 1), S('2026-11-11', R)];   // Tue Day 1, Wed recovery, Thu Day 2 missed
+ok('Fri after a missed day → 1 behind', behindThisWeek(bw, P, wk, '2026-11-13') === 1);
+ok('Fri, all done → 0 behind', behindThisWeek(bw, P, [L('2026-11-10', 1), L('2026-11-11', 2)], '2026-11-13') === 0);
+ok('Sat after Friday\'s catch-up → 0 behind', behindThisWeek(bw, P, [...wk, L('2026-11-13', 2)], '2026-11-14') === 0);
+ok('Monday never behind', behindThisWeek(bw, P, [], '2026-11-16') === 0);
+ok('Sun: Sat missed → behind', behindThisWeek(bw, P, [L('2026-11-10', 1), L('2026-11-11', 2)], '2026-11-15') === 1);
+ok('merged day counts twice', behindThisWeek([REST, B, T, T, T, B, T], P, [L('2026-11-10', 1), L('2026-11-11', 2, 1, )].map((x, i) => i ? { ...x, merged_day: 3 } : x), '2026-11-13') === 0);
+ok('skipped doesn\'t count', behindThisWeek(bw, P, [L('2026-11-10', 1), S('2026-11-11', P, { skipped: true })], '2026-11-13') === 1);
+ok('last week\'s sessions don\'t count', behindThisWeek(bw, P, [L('2026-11-03', 1), L('2026-11-04', 2)], '2026-11-13') === 2);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

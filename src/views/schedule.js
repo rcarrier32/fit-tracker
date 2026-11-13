@@ -13,7 +13,7 @@
  * 'fixed'  mode: always loads the same (week, day) — useful for dedicated mobility/zone-2 days.
  */
 import { pref, getByIndex, getAll } from '../db.js';
-import { flowProgram, flowOf } from '../lib/week_flow.js';
+import { flowProgram, flowOf, behindThisWeek } from '../lib/week_flow.js';
 import { openSheet, toast } from '../app.js';
 import { loadCatalogs, getAllPrograms, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
@@ -598,8 +598,8 @@ export async function dailyWorkout(id = DAILY_ID) {
 }
 
 /**
- * On a labelled day (Basketball, Rest, Cardio…) of a Mixed Week: the week's training program and its
- * next day, so a missed workout can be done today. { programId, name, title } or null.
+ * On a labelled day (Basketball, Rest, Cardio…) of a Mixed Week, when a training day earlier this week
+ * was missed: the week's training program and its next day, so it can be done today. { programId, name, title } or null.
  */
 export async function catchUpOffer() {
   const sched = await pref('schedule');
@@ -608,6 +608,8 @@ export async function catchUpOffer() {
   const id = flowOf(sched.slots)?.train || ids.find(i => i !== DAILY_ID && !/recovery|mobility/i.test(i)) || null;
   const program = await findProgram(id);
   if (!program) return null;
+  // Only when a training day earlier this week was missed: not for working ahead.
+  if (!behindThisWeek(sched.slots, program.id, await getAll('sessions'), localDateStr())) return null;
   const pos = await followPosition(program);
   if (pos.completedAt || pos.doneToday) return null;
   const day = pos.day_index != null ? program.days?.[pos.day_index]
