@@ -307,6 +307,8 @@ function pjfNotesHTML(ex, accent) {
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
  * @param {{ label: string, onClick: (close: Function) => void }[]} [o.menu]   extra ⋯ items (warm-up → Swap)
+ * @param {{ ex: object, rx?: string, mountSets: (el: HTMLElement, changed: Function) => void }[]} [o.also]
+ *   the rest of a superset or circuit, each with its own video and sets below the first (TrainHeroic-style)
  * @param {{ name: string, steps: { name: string }[], current: number, note?: string,
  *           ready?: boolean, onChange: (step: number, close: Function) => void }} [o.ladder]
  *                                    progression ladder — easier/harder versions of this exercise
@@ -402,6 +404,21 @@ export function openExerciseDetail(ex, o = {}) {
         <div style="margin-top:8px;font-size:12px;padding:7px 10px;background:rgba(56,189,248,0.08);
           border:1px solid rgba(56,189,248,0.22);border-radius:8px;color:#7dd3fc;line-height:1.45">
           <span style="font-weight:700;letter-spacing:0.04em">ASK YOUR PT · </span>${esc(ex.askPt)}</div>` : ''}
+
+      ${(o.also || []).map((a, k) => {
+        const c = a.ex.pattern ? a.ex : getCachedSync()?.exerciseByName?.get(String(a.ex.name).toLowerCase());
+        const chips = tagChipsHTML(c);
+        return `
+        <div class="ex-also" style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
+          ${videoBlockHTML(a.ex).replace('class="ex-video-wrap"', 'class="ex-video-wrap-also"')}
+          <h2 style="margin:12px 0 0;font-size:18px;line-height:1.25">${esc(a.ex.name)}</h2>
+          ${a.ex.subtitle ? `<div style="font-size:12px;color:#94a3b8;margin-top:3px">${esc(a.ex.subtitle)}</div>` : ''}
+          ${chips ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">${chips}</div>` : ''}
+          ${a.rx ? `<div style="margin-top:8px"><span style="font-size:11px;padding:4px 9px;border-radius:6px;background:rgba(255,255,255,0.06);color:#cbd5e1">
+            <span style="opacity:0.55">SETS </span>${esc(a.rx)}</span></div>` : ''}
+          <div class="ex-also-sets" data-k="${k}" style="margin-top:10px"></div>
+          ${a.ex.notes ? `<div style="font-size:13px;color:#cbd5e1;margin-top:10px;line-height:1.45">${esc(a.ex.notes)}</div>` : ''}
+        </div>`; }).join('')}
 
       <div id="ex-foot" class="ex-foot"></div>
       ${o.actions?.length ? `
@@ -550,7 +567,7 @@ export function openExerciseDetail(ex, o = {}) {
       // FKH footer: Mark done beside a Next → that skips ahead; once done, one big Next.
       $foot.innerHTML = !done
         ? `<div style="display:flex;gap:8px">
-             <button id="ex-all" class="btn" style="flex:1;background:${accent};color:#0f172a">✓ Mark exercise done</button>
+             <button id="ex-all" class="btn" style="flex:1;background:${accent};color:#0f172a">${esc(o.doneLabel || '✓ Mark exercise done')}</button>
              ${next ? `<button id="ex-skip" class="btn ghost" style="width:auto;padding:0 16px">Next →</button>` : ''}
            </div>`
         : next
@@ -571,6 +588,7 @@ export function openExerciseDetail(ex, o = {}) {
       $foot.querySelector('#ex-close')?.addEventListener('click', () => close());
     }
     if (o.mountSets) o.mountSets(sheet.querySelector('#ex-sets'), () => paint());
+    (o.also || []).forEach((a, k) => a.mountSets(sheet.querySelector(`.ex-also-sets[data-k="${k}"]`), () => paint()));
     paint();
 
     sheet.querySelector('#ex-rx')?.addEventListener('click', async () => {

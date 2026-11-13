@@ -809,6 +809,45 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     };
   });
 
+  function openGroup(a, b, common) {
+    const idx = []; for (let j = a; j <= b; j++) idx.push(steps[j].i);
+    const exs = idx.map(i => session.exercises[i]);
+    const cards = [];
+    const vid = (ex) => { const rv = !ex.swapped && ex.video_url ? ex.video_url : null;
+      return { video_url: rv || exMap[ex.name.toLowerCase()]?.video_url, rowVideo: !!rv }; };
+    const mount = (n) => (el, changed) => {
+      const card = exerciseCard(exs[n], idx[n], exMap, prevRef, allTimeBestE1RM);
+      card.classList.add('in-sheet');
+      card.querySelector('.rest-timer-line')?.classList.add('rest-live');
+      el.appendChild(card);
+      cards[n] = card;
+      wireCards(el);
+      el.addEventListener('click', () => setTimeout(changed, 0));
+      paintRest();
+    };
+    const label = prettyGroup(exs[0].round_group);
+    // Next →: the first unfinished step after the group, else any earlier one left.
+    const next = () => {
+      let j = steps.findIndex((st, x) => x > b && !stepDone(st));
+      if (j < 0) j = steps.findIndex((st, x) => x >= warmCount && x < a && !stepDone(st));
+      return j < 0 ? null : { name: stepName(steps[j]), open: () => openStep(j) };
+    };
+    openExerciseDetail({ name: exs[0].name, ...vid(exs[0]),
+      subtitle: `${label} · ${exs.length} moves, back to back`, notes: exs[0].notes }, {
+      ...common,
+      next,
+      rx: formatTarget(exs[0]),
+      doneLabel: `✓ Mark ${/superset/i.test(label) ? 'superset' : 'circuit'} done`,
+      isDone: () => exs.every(exerciseDone),
+      setDone: async (v) => {
+        if (!v) return;
+        for (const c of cards) c?.querySelectorAll('.set-row:not(.done) .check').forEach(x => x.click());
+      },
+      mountSets: mount(0),
+      also: exs.slice(1).map((ex, n) => ({ ex: { name: ex.name, ...vid(ex), notes: ex.notes }, rx: formatTarget(ex), mountSets: mount(n + 1) })),
+    });
+  }
+
   function openStep(k) {
     const st = steps[k];
     if (!st) return;
@@ -848,6 +887,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       });
     }
     const i = st.i;
+    // A superset or circuit opens as one screen: each move's video with its sets below (TrainHeroic-style).
+    const g0 = session.exercises[i].round_group;
+    if (/superset|circuit|round/i.test(g0 || '')) {
+      const inG = (j) => steps[j]?.i != null && session.exercises[steps[j].i].round_group === g0;
+      let a = k, b = k;
+      while (inG(a - 1)) a--;
+      while (inG(b + 1)) b++;
+      if (b > a) return openGroup(a, b, common);
+    }
     const ex = session.exercises[i];
     const lookup = exMap[ex.name.toLowerCase()];
     const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
