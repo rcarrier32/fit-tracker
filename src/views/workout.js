@@ -650,7 +650,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         const nx = session.exercises[i + 1];
         const midRound = /superset|circuit|round/i.test(ex.round_group || '') && nx?.round_group === ex.round_group
           && !nx.sets?.[setIdx]?.done;
-        if (!ex.intervals && !midRound) startRestTimer(card, ex);
+        // Logging a set means the rest is over: A1 of the next round stops A2's rest timer.
+        if (!ex.intervals && !midRound) startRestTimer(card, ex); else stopRestTimer();
         applyCompactState(card, ex);
         showUndo(e.target, session, i, setIdx);
       } else {
