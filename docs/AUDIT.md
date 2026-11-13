@@ -74,6 +74,14 @@ Legend: ✅ handled · 🟡 partial · ❌ missing
 | Streak | 🟡 | 🔥 breaks on a scheduled rest day if nothing (not even Daily Mobility) is done |
 | Sadie's phone | 🟡 | With no Basketball week, Daily Mobility still shows a "Basketball warm-up" row Mon/Wed/Fri for everyone |
 
+## Fixed in v157 (2026-11-13)
+
+Bugs 1-6, 8-10: update banner compares against the version that booted and checks every 30 s on return;
+the service worker carries the old cache over and falls back across `?v=` offline; Skip moves Today to the
+next workout; Start plan offers Resume at Week X Day Y; the plan week and % follow workouts done; superset
+and circuit rest comes after the round's last move; the chart counts ticked sets only; Body links to Lifting
+stats (the Dashboard). Still open: bug 3 (module `?v=`), bug 7 and the rest of the list below.
+
 ## 3. Suggested fixes, by impact
 
 | Priority | Fix | Size |

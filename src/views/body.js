@@ -3,7 +3,7 @@
  */
 import { put, get, getAll, pref } from '../db.js';
 import { profile, actualTdeeForWeek, bfPctNavy, bmiFromImperial, bmiCategory } from '../lib/tdee.js';
-import { toast, openSheet } from '../app.js';
+import { toast, openSheet, navigate } from '../app.js';
 import { localDateStr } from '../lib/date.js';
 import { renderProgressCard } from './progress.js';
 
@@ -42,6 +42,7 @@ export async function renderBody(app, date) {
       <button class="btn ghost" id="next-day" style="width:auto;padding:6px 10px" ${isToday ? 'disabled' : ''}>›</button>
     </div>
     <div class="muted" style="margin-bottom:12px">Morning weigh-in — after bathroom, before food</div>
+    <button class="btn ghost" id="open-stats" style="margin-bottom:12px;font-size:13px">📊 Lifting stats: best lifts, exercise history, volume</button>
 
     <div class="card" style="padding:12px 14px">
       <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap">
@@ -104,6 +105,7 @@ export async function renderBody(app, date) {
   }
 
   renderProgressCard(app.querySelector('#progress-check'), () => renderBody(app));
+  app.querySelector('#open-stats').onclick = () => navigate('dashboard');
 
   let pendingNotes = todayLog?.notes ?? '';
 

@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v156';
+const CACHE = 'fit-tracker-v157';
 
 self.addEventListener('install', e => {
   self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload
@@ -26,9 +26,18 @@ self.addEventListener('install', e => {
 });
 
 self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
-  );
+  // Carry the previous version's cached files over before deleting its cache: the new cache only
+  // fills as files load online, so without this the first offline launch after an update is blank.
+  e.waitUntil((async () => {
+    const cur = await caches.open(CACHE);
+    for (const k of (await caches.keys()).filter(k => k !== CACHE)) {
+      const old = await caches.open(k);
+      for (const req of await old.keys()) {
+        if (!(await cur.match(req))) { const res = await old.match(req); if (res) await cur.put(req, res); }
+      }
+      await caches.delete(k);
+    }
+  })());
   self.clients.claim();
 });
 
@@ -79,7 +88,10 @@ self.addEventListener('fetch', e => {
           }
           return res;
         })
-        .catch(() => caches.match(e.request).then(hit => hit || Promise.reject(new Error('offline, not cached'))))
+        .catch(() => caches.match(e.request)
+          // Offline right after an update: app.js?v=<new> isn't cached yet, the previous build's is.
+          .then(hit => hit || caches.match(e.request, { ignoreSearch: true }))
+          .then(hit => hit || Promise.reject(new Error('offline, not cached'))))
     );
     return;
   }

@@ -1,16 +1,17 @@
 /**
  * In-app update check via version.json only (avoids SW reload loops).
  *
- * The running build's version is whatever version.json said when this page booted — app
- * code always loads from the network (sw.js), so the page and that first read match.
- * Comparing against a hand-bumped constant instead is what left "Update now" showing
- * forever when index.html's __FIT_V fell behind version.json (36 vs 57).
+ * The running build is window.__FIT_V, the number in the index.html that actually booted
+ * (scripts/bump-version.sh keeps it equal to version.json; --check fails if they drift).
+ * Reading version.json at boot instead missed releases: GitHub Pages can serve a cached
+ * index.html for minutes after a deploy while version.json is already new, and the app then
+ * took the new number as its own and never showed "Update now".
  */
 export const LOCAL_V = 33; // floor only; window.__FIT_V and the boot-time read win
 
 const VERSION_URL = new URL('version.json', location.href).href;
 const RELOAD_GUARD_KEY = 'fit-update-reload-ts';
-const CHECK_INTERVAL_MS = 5 * 60 * 1000;
+const CHECK_INTERVAL_MS = 30 * 1000;   // every return to the app, at most twice a minute
 
 let _banner = null;
 let _lastCheck = 0;
@@ -18,8 +19,8 @@ let _bootV = null;   // version.json `v` as of this page load
 
 function getLocalV() {
   const htmlV = Number(window.__FIT_V);
-  const floor = Number.isFinite(htmlV) && htmlV > 0 ? htmlV : LOCAL_V;
-  return Math.max(floor, _bootV ?? 0);
+  // No __FIT_V (very old shell): fall back to the first read, as before.
+  return Number.isFinite(htmlV) && htmlV > 0 ? htmlV : Math.max(LOCAL_V, _bootV ?? 0);
 }
 
 function showUpdateBanner() {

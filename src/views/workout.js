@@ -632,7 +632,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
 
       if (set.done) {
-        if (!ex.intervals) startRestTimer(card, ex);   // interval rounds run straight into the next
+        // Interval rounds run straight into the next. In a superset or circuit, rest comes after the
+        // round's last move: A1 → A2 back to back.
+        const nx = session.exercises[i + 1];
+        const midRound = /superset|circuit|round/i.test(ex.round_group || '') && nx?.round_group === ex.round_group
+          && !nx.sets?.[setIdx]?.done;
+        if (!ex.intervals && !midRound) startRestTimer(card, ex);
         applyCompactState(card, ex);
         showUndo(e.target, session, i, setIdx);
       } else {
@@ -1418,7 +1423,7 @@ export async function openProgressionChart(exName) {
     for (const ex of (s.exercises || [])) {
       if (ex.name !== exName) continue;
       for (const set of (ex.sets || [])) {
-        if (!set?.weight || !set?.reps) continue;
+        if (!set?.done || !set?.weight || !set?.reps) continue;   // typed but never ticked doesn't count
         const e = rpeE1RM(set.weight, set.reps, set.rpe);
         if (e <= 0) continue;
         const wk = weekKey(s.date);

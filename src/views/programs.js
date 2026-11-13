@@ -219,7 +219,24 @@ function renderActiveTOSCard(progress) {
   `;
 }
 
-function openStartPlanSheet(program, onConfirm) {
+/**
+ * Where you left off in this program (its cursor), if you'd started it and not finished:
+ * "Week 2, Day 3" — so Start plan can resume instead of quietly going back to Day 1.
+ */
+async function savedPlace(program) {
+  const cur = await pref(`cursor:${program.id}`);
+  if (!cur || (await pref(`completed:${program.id}`))) return null;
+  if (program.weeks) return (cur.week || 1) > 1 || (cur.day || 1) > 1 ? `Week ${cur.week || 1}, Day ${cur.day || 1}` : null;
+  return (cur.day_index ?? 0) > 0 ? `Day ${(cur.day_index ?? 0) + 1}` : null;
+}
+const resumeHtml = (place) => place ? `
+      <div class="group-label">Where to start</div>
+      <label style="display:flex;gap:10px;align-items:center;font-size:14px;margin-bottom:6px"><input type="radio" name="resume" value="1" checked style="width:auto"> Resume at ${place}</label>
+      <label style="display:flex;gap:10px;align-items:center;font-size:14px"><input type="radio" name="resume" value="0" style="width:auto"> Start over at Day 1</label>` : '';
+const wantsRestart = (sheet) => sheet.querySelector('input[name="resume"]:checked')?.value !== '1';
+
+async function openStartPlanSheet(program, onConfirm) {
+  const place = await savedPlace(program);
   openSheet((sheet, close) => {
     // A fixed-length program (PJF) is exactly its own length; rotations run as long as you like.
     const recommended = program.weeks?.length || program.recommended_weeks || 12;
@@ -250,6 +267,7 @@ function openStartPlanSheet(program, onConfirm) {
         <span class="muted">weeks</span>
       </div>
 
+${resumeHtml(place)}
       <div class="group-label">Start date</div>
       <input type="date" id="start-date" value="${localDateStr()}">
 
@@ -294,8 +312,8 @@ function openStartPlanSheet(program, onConfirm) {
       const btn = e.currentTarget;
       if (btn.disabled) return;
       btn.disabled = true;
-      // Starting (or restarting) always begins at Week 1, Day 1 and makes this today's program.
-      if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
+      // Starts at Week 1, Day 1 unless you chose to resume where you left off; makes this today's program.
+      if (!(await selectSingleProgram(program.id, { restart: wantsRestart(sheet) }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $start.value);
       // Optional companion week (e.g. Recovery & Mobility on off days) as a Mixed Week schedule.
       if (program.basketball_week && sheet.querySelector('#use-bball')?.checked) {
@@ -374,6 +392,7 @@ function startFor(program) {
 }
 
 async function openStartCustomPlanSheet(program, onConfirm) {
+  const place = await savedPlace(program);
   openSheet((sheet, close) => {
     sheet.innerHTML = `
       <h2>${program.name}</h2>
@@ -385,6 +404,7 @@ async function openStartCustomPlanSheet(program, onConfirm) {
         <input type="number" id="weeks-input" value="${program.weeks?.length || 8}" min="1" max="52" inputmode="numeric" style="flex:1">
         <span class="muted">weeks</span>
       </div>
+${resumeHtml(place)}
       <div class="group-label">Start date</div>
       <input type="date" id="start-date" value="${startFor(program)}">
       <div id="end-preview" class="muted" style="margin-top:6px;font-size:13px"></div>
@@ -413,7 +433,7 @@ async function openStartCustomPlanSheet(program, onConfirm) {
       const btn = e.currentTarget;
       if (btn.disabled) return;
       btn.disabled = true;
-      if (!(await selectSingleProgram(program.id, { restart: true }))) { btn.disabled = false; return; }
+      if (!(await selectSingleProgram(program.id, { restart: wantsRestart(sheet) }))) { btn.disabled = false; return; }
       await startPlan(program.id, w, $s.value);
       if (program.suggested_week && sheet.querySelector('#use-week')?.checked) {
         await pref('schedule', { type: 'weekly', slots: weekSlots(program, program.suggested_week) });

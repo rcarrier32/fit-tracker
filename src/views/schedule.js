@@ -570,7 +570,9 @@ async function followPosition(program) {
   const completed = await pref(`completed:${program.id}`);
   const doneToday = nextAllowed(program.id) ? null
     : (await getByIndex('sessions', 'date', localDateStr()))
-      .filter(x => x.program_id === program.id && x.done)
+      // A skipped workout already moved the program on, so today is the next day, not "✓ done".
+      // (Skipping a side routine like Daily Mobility keeps its day for tomorrow, so it stays done.)
+      .filter(x => x.program_id === program.id && x.done && (!x.skipped || SIDE_ROUTINES.has(program.id)))
       .sort((a, b) => (b.id || 0) - (a.id || 0))[0];
   if (doneToday) {
     return {
@@ -587,6 +589,8 @@ async function followPosition(program) {
 }
 
 export const DAILY_ID = 'daily_mobility';
+// Side routines (opened at #/daily, #/routine/<id>): skipping one keeps its day, it doesn't move on.
+const SIDE_ROUTINES = new Set([DAILY_ID, 'basketball_warmup']);
 /**
  * Daily Mobility runs alongside whatever program is active (its own A → B → C cursor), opened from
  * its Home card at #/daily. Null if the program isn't in the library.
