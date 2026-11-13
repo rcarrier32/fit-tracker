@@ -48,12 +48,47 @@ export function parseRestSeconds(rest) {
   return secs > 0 && secs <= 600 ? secs : null;
 }
 
+/**
+ * One AudioContext for every beep, woken by the user's taps. Browsers only let a context made or
+ * resumed inside a tap play sound, and cap how many can exist: a new one per beep went silent.
+ */
+let _ac = null;
+export function audioCtx() {
+  try {
+    _ac ??= new (window.AudioContext || window.webkitAudioContext)();
+    if (_ac.state === 'suspended') _ac.resume().catch(() => {});
+  } catch { _ac = null; }
+  return _ac;
+}
+if (typeof document !== 'undefined') {
+  document.addEventListener('pointerdown', () => audioCtx(), { passive: true, capture: true });
+}
+
+/** "Rest over" as a phone notification, for when the app isn't on screen (needs permission). */
+export function notifyRestOver() {
+  try {
+    if (!document.hidden || typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+    navigator.serviceWorker?.ready.then(r => r.showNotification('Rest over · next set', {
+      tag: 'fit-rest', renotify: true, vibrate: [200, 100, 200, 100, 200], icon: 'icons/icon-192-v2.png', silent: false,
+    })).catch(() => {});
+  } catch { /* no notifications */ }
+}
+/** Ask once (inside a tap) whether rest-over notifications may show. */
+export function askRestNotifications() {
+  try {
+    if (typeof Notification === 'undefined' || Notification.permission !== 'default') return;
+    if (localStorage.getItem('fit-notif-asked')) return;
+    localStorage.setItem('fit-notif-asked', '1');
+    Notification.requestPermission().catch(() => {});
+  } catch { /* ignore */ }
+}
+
 /** Haptic + beep + voice for timer alerts (best-effort on mobile). Same cues as FKH. */
 export function timerAlert(kind, countValue) {
   const isBegin = kind === 'go' || kind === 'begin';
-  try { navigator.vibrate?.(isBegin ? [80, 40, 80] : [40]); } catch { /* ignore */ }
+  try { navigator.vibrate?.(isBegin ? [200, 80, 200] : [40]); } catch { /* ignore */ }
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audioCtx();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.connect(gain); gain.connect(ctx.destination);

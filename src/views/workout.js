@@ -14,7 +14,7 @@ import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
 import { localFor, dayNotesFor, playable } from '../lib/local_videos.js';
-import { parseRestSeconds, timerAlert, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
+import { parseRestSeconds, timerAlert, audioCtx, notifyRestOver, askRestNotifications, TIMER_WARN_SECS, TIMER_REST_WARN_SECS, SIDE_SWITCH_SECS, sidesOf, sideLabel, switchSpeech } from '../lib/exercise_session.js';
 import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE_GROUPS, TYPE_GROUPS, EQUIPMENT_LABEL, hasVideo, muscleLabel as mLabel } from '../lib/taxonomy.js';
 import { openProgressCheck } from './progress.js';
 import { doneElsewhere } from '../lib/same_move.js';
@@ -153,7 +153,7 @@ function runWorkTimer(btn, { secs, unit = null, intervals = null, idle, onDone }
 }
 function beep() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audioCtx();
     const o = ctx.createOscillator(); const g = ctx.createGain();
     o.frequency.value = 880; o.connect(g); g.connect(ctx.destination);
     g.gain.setValueAtTime(0.25, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
@@ -735,6 +735,15 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   _tickClock = tickClock;
   _clock = setInterval(tickClock, 15000);
   // A rest that was running when the sheet closed carries on, on that exercise's card.
+  if (!_rest) {   // reopened the app mid-rest: pick the timer back up
+    try {
+      const sv = JSON.parse(localStorage.getItem(REST_STORE) || 'null');
+      if (sv?.key === _restKey && Date.now() - sv.start < ((sv.target || 0) + 600) * 1000) {
+        _rest = { ...sv, last: null, alerted: !!sv.target && Date.now() - sv.start > sv.target * 1000 };
+        clearInterval(_restInterval); _restInterval = setInterval(paintRest, 250); scheduleRestEnd();
+      } else if (sv) localStorage.removeItem(REST_STORE);
+    } catch { /* ignore */ }
+  }
   if (_rest) $ex.querySelector(`.exercise[data-i="${_rest.i}"] .rest-timer-line`)?.classList.add('rest-live');
 
   // ── Start workout: the FKH flow, one exercise at a time in the shared exercise sheet ──
@@ -1697,9 +1706,22 @@ function formatPrevSets(sets) {
  */
 let _rest = null;   // { start, target, last, i, key }
 let _restKey = null;  // which workout the Lift tab shows
+document.addEventListener('visibilitychange', () => { if (!document.hidden && _rest) { _rest.last = null; paintRest(); } });
+const REST_STORE = 'fit-rest';   // the running rest survives a reload or the app being closed
+let _restEndT = null;
+function saveRest() { try { _rest ? localStorage.setItem(REST_STORE, JSON.stringify({ start: _rest.start, target: _rest.target, i: _rest.i, key: _rest.key })) : localStorage.removeItem(REST_STORE); } catch { /* ignore */ } }
+/** When rest ends with the app in the background: a notification (the in-app cues need it on screen). */
+function scheduleRestEnd() {
+  clearTimeout(_restEndT);
+  if (!_rest?.target) return;
+  const ms = _rest.start + _rest.target * 1000 - Date.now();
+  if (ms > 0) _restEndT = setTimeout(() => { if (_rest && !_rest.alerted) { notifyRestOver(); try { navigator.vibrate?.([200, 100, 200]); } catch { /* ignore */ } } }, ms);
+}
 function stopRestTimer() {
   if (_restInterval) { clearInterval(_restInterval); _restInterval = null; }
+  clearTimeout(_restEndT);
   _rest = null;
+  saveRest();
   document.querySelectorAll('.rest-timer-line, .rest-live').forEach(el => { el.innerHTML = ''; });
   document.getElementById('rest-float')?.remove();
 }
@@ -1710,6 +1732,8 @@ function adjustRest(delta) {
   const elapsed = Math.floor((Date.now() - _rest.start) / 1000);
   _rest.target = Math.max(elapsed + 1, (_rest.target || Math.max(elapsed, 60)) + delta);
   _rest.last = null;
+  _rest.alerted = false;
+  saveRest(); scheduleRestEnd();
   paintRest();
 }
 const REST_BTN = 'class="btn ghost" style="width:auto;min-height:0;padding:2px 8px;font-size:11px;margin-left:4px"';
@@ -1731,7 +1755,8 @@ function paintRest() {
       _rest.last = left;
       if (left === TIMER_REST_WARN_SECS && _rest.target > TIMER_REST_WARN_SECS) timerAlert('warn');
       else if (left >= 1 && left <= TIMER_WARN_SECS) timerAlert('count', left);
-      else if (left === 0) timerAlert('begin');
+      // At zero, or the first paint after it when the phone was locked through it.
+      else if (left <= 0 && !_rest.alerted && left > -60) { _rest.alerted = true; timerAlert('begin'); }
     }
     text = left > 0 ? `rest ${fmtSecs(left)}` : `go! · rest +${fmtSecs(-left)}`;
   } else {
@@ -1764,6 +1789,7 @@ function startRestTimer(card, ex) {
   document.querySelectorAll('.rest-timer-line.rest-live').forEach(el => el.classList.remove('rest-live'));
   card.querySelector('.rest-timer-line')?.classList.add('rest-live');
   _rest = { start: Date.now(), target: parseRestSeconds(ex?.rest), last: null, i: +card.dataset.i, key: _restKey };
+  saveRest(); scheduleRestEnd(); askRestNotifications();
   if (_rest.target) timerAlert('rest');
   paintRest();
   _restInterval = setInterval(paintRest, 250);

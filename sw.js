@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v166';
+const CACHE = 'fit-tracker-v167';
 
 self.addEventListener('install', e => {
   self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload
@@ -39,6 +39,15 @@ self.addEventListener('activate', e => {
     }
   })());
   self.clients.claim();
+});
+
+// "Rest over" notification: tapping it brings the app back.
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+    const c = list[0];
+    return c ? c.focus() : self.clients.openWindow('./#/workout');
+  }));
 });
 
 self.addEventListener('message', e => {
