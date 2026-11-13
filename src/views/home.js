@@ -461,6 +461,17 @@ export async function renderHome(app) {
   if (want('week')) cards.week = renderWeekCard(weekSummary({ sessions: allSessions, cardio: await getAll('cardio'), today: today(), planned: plannedThisWeek(schedule, today_w) }));
   if (want('feeling')) cards.feeling = renderFeelingCard(feelingSummary(allSessions, today()));
   if (want('trend')) cards.trend = renderTrendCard(weightTrend(allBody, today()));
+  // Backup nudge: once a week, after a few workouts (data lives only on this phone).
+  const lastBackup = await pref('last_backup');
+  const snooze = await pref('backup_snooze');
+  const daysSince = lastBackup ? Math.floor((Date.parse(today()) - Date.parse(lastBackup)) / 864e5) : null;
+  const sessionCount = (allSessions.length ? allSessions : await getAll('sessions')).filter(x => x.done).length;
+  const backupNudge = sessionCount >= 3 && (daysSince == null || daysSince >= 7) && !(snooze && snooze > today()) ? `
+    <div class="card" style="display:flex;align-items:center;gap:10px;padding:10px 14px">
+      <div style="flex:1;font-size:13px">💾 ${daysSince == null ? 'Your workouts live only on this phone. Back them up.' : `Last backup ${daysSince} days ago.`}</div>
+      <button class="btn" id="backup-now" style="width:auto;padding:6px 12px;font-size:13px">Back up</button>
+      <button class="btn ghost" id="backup-later" aria-label="Remind me next week" style="width:auto;padding:6px 10px;font-size:13px">Later</button>
+    </div>` : '';
   app.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
       <div>
@@ -470,6 +481,7 @@ export async function renderHome(app) {
       <button id="you-btn" aria-label="Profile and settings" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;margin-top:6px;
         border:1px solid var(--border);background:var(--bg-input);color:var(--fg);font-size:18px;cursor:pointer">👤</button>
     </div>
+    ${backupNudge}
     ${layout.order.filter(id => !layout.hidden.has(id)).map(id => cards[id] || '').join('\n')}
   `;
 
@@ -486,7 +498,7 @@ export async function renderHome(app) {
       ${item('weight', '⚖️', 'Log weight', bodyToday ? 'Logged today' : 'Not logged today')}
       ${item('layout', '↕', 'Customize Home', 'Order the cards, show or hide them')}
       ${item('calendar', '📅', 'Workout reminders', 'Training days in your calendar, with an alert')}
-      ${item('export', '💾', 'Back up data', 'Saves everything to a file')}
+      ${item('export', '💾', 'Back up data', lastBackup ? `Last backup ${daysSince === 0 ? 'today' : daysSince + ' days ago'}` : 'Never backed up: saves everything to a file')}
       ${item('import', '📂', 'Restore from a backup', 'Or add a video pack')}`;
     sheet.querySelectorAll('[data-you]').forEach(el => el.onclick = () => {
       const act = el.dataset.you;
@@ -553,15 +565,30 @@ export async function renderHome(app) {
   if (logW) logW.onclick = () => navigate('body');
   async function exportData() {
     const data = await exportAllData();
+    const name = `fit-tracker-backup-${localDateStr()}.json`;
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `fit-tracker-backup-${localDateStr()}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    toast('Data exported');
+    // The share sheet sends it straight to Drive, email or Files; else a download.
+    const file = new File([blob], name, { type: 'application/json' });
+    let shared = false;
+    try {
+      if (navigator.canShare?.({ files: [file] })) { await navigator.share({ files: [file], title: 'Fit Tracker backup' }); shared = true; }
+    } catch (e) { if (e?.name === 'AbortError') return; }
+    if (!shared) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name; a.click();
+      URL.revokeObjectURL(url);
+    }
+    await pref('last_backup', today());
+    toast('Backed up ✓');
+    renderHome(app);
   }
+  app.querySelector('#backup-now')?.addEventListener('click', exportData);
+  app.querySelector('#backup-later')?.addEventListener('click', async () => {
+    const d = new Date(); d.setDate(d.getDate() + 7);
+    await pref('backup_snooze', localDateStr(d));
+    renderHome(app);
+  });
 
   function importData() {
     const input = document.createElement('input');
