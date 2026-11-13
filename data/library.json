@@ -259,9 +259,9 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=3D%20Ankle%20Blaster",
-      "primary_muscle": "full_body",
+      "primary_muscle": "calves",
       "muscles": [
-        "full_body"
+        "calves"
       ],
       "pattern": "isolation_lower",
       "role": "accessory",
@@ -1968,8 +1968,7 @@
       "pattern": "push_vertical",
       "role": "secondary",
       "equipment": [
-        "dumbbell",
-        "landmine"
+        "dumbbell"
       ],
       "level": 2,
       "unilateral": false,
@@ -3025,8 +3024,8 @@
         "adductors",
         "abductors"
       ],
-      "pattern": "agility_cod",
-      "role": "power",
+      "pattern": "balance",
+      "role": "accessory",
       "equipment": [
         "bodyweight"
       ],
@@ -3057,7 +3056,7 @@
       "level": 2,
       "unilateral": true,
       "plane": "transverse",
-      "hip_focus": false
+      "hip_focus": true
     },
     {
       "id": "flat-dumbbell-press",
@@ -3893,7 +3892,7 @@
         "hip_flexors",
         "abs"
       ],
-      "pattern": "hinge",
+      "pattern": "mobility",
       "role": "cooldown",
       "equipment": [
         "bodyweight"
@@ -4020,7 +4019,7 @@
       ],
       "level": 2,
       "unilateral": false,
-      "plane": "sagittal",
+      "plane": "frontal",
       "hip_focus": true
     },
     {
@@ -4376,11 +4375,11 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Knee%20Step%20Overs",
-      "primary_muscle": "full_body",
+      "primary_muscle": "hip_flexors",
       "muscles": [
-        "full_body"
+        "hip_flexors"
       ],
-      "pattern": "isolation_lower",
+      "pattern": "lunge_single_leg",
       "role": "accessory",
       "equipment": [
         "bodyweight"
@@ -4469,8 +4468,7 @@
       "pattern": "push_vertical",
       "role": "secondary",
       "equipment": [
-        "dumbbell",
-        "landmine"
+        "dumbbell"
       ],
       "level": 2,
       "unilateral": false,
@@ -4495,8 +4493,7 @@
       "pattern": "pull_horizontal",
       "role": "secondary",
       "equipment": [
-        "dumbbell",
-        "landmine"
+        "dumbbell"
       ],
       "level": 2,
       "unilateral": false,
@@ -4549,7 +4546,6 @@
       "pattern": "pull_vertical",
       "role": "main",
       "equipment": [
-        "cable",
         "pullup_bar"
       ],
       "level": 2,
@@ -4601,9 +4597,9 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Lateral%20Ankle%20Slant%20Board%20Cooker",
-      "primary_muscle": "full_body",
+      "primary_muscle": "calves",
       "muscles": [
-        "full_body"
+        "calves"
       ],
       "pattern": "isolation_lower",
       "role": "accessory",
@@ -4826,8 +4822,9 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Loaded%20Lateral%20Line%20Stretch",
-      "primary_muscle": "hip_flexors",
+      "primary_muscle": "obliques",
       "muscles": [
+        "obliques",
         "hip_flexors",
         "glutes"
       ],
@@ -4880,8 +4877,8 @@
         "hamstrings",
         "glutes"
       ],
-      "pattern": "hinge",
-      "role": "secondary",
+      "pattern": "plyo_bound_hop",
+      "role": "power",
       "equipment": [
         "bodyweight"
       ],
@@ -6893,7 +6890,7 @@
       "pattern": "mobility",
       "role": "warmup",
       "equipment": [
-        "bodyweight"
+        "dumbbell"
       ],
       "level": 1,
       "unilateral": false,
@@ -7051,7 +7048,6 @@
       "pattern": "lunge_single_leg",
       "role": "secondary",
       "equipment": [
-        "machine",
         "box"
       ],
       "level": 2,
@@ -7331,9 +7327,7 @@
       "pattern": "hinge",
       "role": "secondary",
       "equipment": [
-        "cable",
-        "band",
-        "sled"
+        "band"
       ],
       "level": 2,
       "unilateral": false,
@@ -7518,7 +7512,7 @@
       "pattern": "mobility",
       "role": "warmup",
       "equipment": [
-        "bodyweight"
+        "dumbbell"
       ],
       "level": 2,
       "unilateral": true,
@@ -54987,7 +54981,9 @@
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "1¼ Goblet Squat",
+                      "Hip Shift Squat",
+                      "Heels Elevated Narrow Squat"
                     ]
                   },
                   {
@@ -55024,7 +55020,8 @@
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
                       "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Kickstand RDL",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -55042,7 +55039,8 @@
                       "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row"
                     ]
                   },
                   {
@@ -55062,7 +55060,8 @@
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
-                      "Walking Lunges (quad focus)"
+                      "Walking Lunges (quad focus)",
+                      "Back Leg Lunge (Peterson Lunge)"
                     ]
                   },
                   {
@@ -55079,7 +55078,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -55272,7 +55272,8 @@
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
                       "High Box Step Up",
-                      "Lateral Step-Down"
+                      "Lateral Step-Down",
+                      "Knee Step Overs"
                     ]
                   },
                   {
@@ -55291,7 +55292,9 @@
                       "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -55308,7 +55311,8 @@
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
-                      "Dumbbell Romanian Deadlift"
+                      "Dumbbell Romanian Deadlift",
+                      "One Leg RDL Rotation w/ Toes Off"
                     ]
                   },
                   {
@@ -55408,7 +55412,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -55425,7 +55430,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -55612,7 +55618,8 @@
                       "FFE Goblet Split Squat Isometric",
                       "Heel Elevated Split Squat",
                       "Reverse Lunges",
-                      "Front Foot Elevated Reverse Lunge"
+                      "Front Foot Elevated Reverse Lunge",
+                      "FFE Rotational Split Squat"
                     ]
                   },
                   {
@@ -56081,7 +56088,9 @@
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "1¼ Goblet Squat",
+                      "Hip Shift Squat",
+                      "Heels Elevated Narrow Squat"
                     ]
                   },
                   {
@@ -56118,7 +56127,8 @@
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
                       "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Kickstand RDL",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -56136,7 +56146,8 @@
                       "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row"
                     ]
                   },
                   {
@@ -56156,7 +56167,8 @@
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
-                      "Walking Lunges (quad focus)"
+                      "Walking Lunges (quad focus)",
+                      "Back Leg Lunge (Peterson Lunge)"
                     ]
                   },
                   {
@@ -56173,7 +56185,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -56366,7 +56379,8 @@
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
                       "High Box Step Up",
-                      "Lateral Step-Down"
+                      "Lateral Step-Down",
+                      "Knee Step Overs"
                     ]
                   },
                   {
@@ -56385,7 +56399,9 @@
                       "Dumbbell Row From Single Leg",
                       "Chest Supported DB Row (lat focus)",
                       "DB Split Stance Row",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -56402,7 +56418,8 @@
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
-                      "Dumbbell Romanian Deadlift"
+                      "Dumbbell Romanian Deadlift",
+                      "One Leg RDL Rotation w/ Toes Off"
                     ]
                   },
                   {
@@ -56502,7 +56519,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -56519,7 +56537,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -56706,7 +56725,8 @@
                       "FFE Goblet Split Squat Isometric",
                       "Heel Elevated Split Squat",
                       "Reverse Lunges",
-                      "Front Foot Elevated Reverse Lunge"
+                      "Front Foot Elevated Reverse Lunge",
+                      "FFE Rotational Split Squat"
                     ]
                   },
                   {
@@ -57175,7 +57195,9 @@
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "1¼ Goblet Squat",
+                      "Hip Shift Squat",
+                      "Heels Elevated Narrow Squat"
                     ]
                   },
                   {
@@ -57212,7 +57234,8 @@
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
                       "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Kickstand RDL",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -57230,7 +57253,8 @@
                       "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row"
                     ]
                   },
                   {
@@ -57250,7 +57274,8 @@
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
-                      "Walking Lunges (quad focus)"
+                      "Walking Lunges (quad focus)",
+                      "Back Leg Lunge (Peterson Lunge)"
                     ]
                   },
                   {
@@ -57267,7 +57292,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -57466,7 +57492,8 @@
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
                       "High Box Step Up",
-                      "Lateral Step-Down"
+                      "Lateral Step-Down",
+                      "Knee Step Overs"
                     ]
                   },
                   {
@@ -57601,7 +57628,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -57618,7 +57646,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -58276,7 +58305,9 @@
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
-                      "1¼ Goblet Squat"
+                      "1¼ Goblet Squat",
+                      "Hip Shift Squat",
+                      "Heels Elevated Narrow Squat"
                     ]
                   },
                   {
@@ -58313,7 +58344,8 @@
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
                       "B-Stance RDL",
-                      "Kickstand RDL"
+                      "Kickstand RDL",
+                      "RDL Row w/ Rotation"
                     ]
                   },
                   {
@@ -58331,7 +58363,8 @@
                       "Birddog Dumbbell Row",
                       "3 Point Dumbbell Row",
                       "DB Chest Supported Row (mid/upper back)",
-                      "Bent Over 1 Arm Row"
+                      "Bent Over 1 Arm Row",
+                      "Landmine or Dumbbell Rotational Row"
                     ]
                   },
                   {
@@ -58351,7 +58384,8 @@
                       "Curtsy Lunge",
                       "Deficit Reverse Lunge",
                       "Front Foot Elevated Reverse Lunge",
-                      "Walking Lunges (quad focus)"
+                      "Walking Lunges (quad focus)",
+                      "Back Leg Lunge (Peterson Lunge)"
                     ]
                   },
                   {
@@ -58368,7 +58402,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -58567,7 +58602,8 @@
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
                       "High Box Step Up",
-                      "Lateral Step-Down"
+                      "Lateral Step-Down",
+                      "Knee Step Overs"
                     ]
                   },
                   {
@@ -58702,7 +58738,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -58719,7 +58756,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -59464,7 +59502,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -59786,7 +59825,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -59803,7 +59843,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -60536,7 +60577,8 @@
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
-                      "Shoulder Press"
+                      "Shoulder Press",
+                      "Landmine or Dumbbell Dip Press"
                     ]
                   },
                   {
@@ -60858,7 +60900,8 @@
                     "notes": "Go straight into the next exercise; rest after the pair.",
                     "alternates": [
                       "Bird Dog with Ankle Weight or Band",
-                      "RKC Plank"
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
@@ -60875,7 +60918,8 @@
                     "alternates": [
                       "Half Kneeling Lateral Bend",
                       "Copenhagen Side Plank (Knee)",
-                      "Banded Side Plank Clamshell"
+                      "Banded Side Plank Clamshell",
+                      "Single Leg Lateral Tilts"
                     ]
                   },
                   {
@@ -61769,7 +61813,8 @@
             "day_name": "Daily A · Ankles, hips, T-spine",
             "notes": [
               "About 13 minutes. Your low-back reset, then stand → floor → lunge & squat → finish, like HoopStudy's Ten Minute Routine.",
-              "Smooth and steady, not a workout. Stop any move that hurts sharply."
+              "Smooth and steady, not a workout. Stop any move that hurts sharply.",
+              "On a lifting day, best after the workout or at another time: the 45 s holds are for range, not a warm-up."
             ],
             "exercises": [
               {
@@ -62015,7 +62060,8 @@
             "day_name": "Daily B · Breathing, glutes, shoulders",
             "notes": [
               "About 13 minutes. Your low-back reset, then the B versions: Menner's lying-down breathing and bridge hold, thoracic rotations, band rotations.",
-              "Smooth and steady, not a workout. Stop any move that hurts sharply."
+              "Smooth and steady, not a workout. Stop any move that hurts sharply.",
+              "On a lifting day, best after the workout or at another time: the 45 s holds are for range, not a warm-up."
             ],
             "exercises": [
               {

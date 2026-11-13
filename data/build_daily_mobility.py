@@ -124,7 +124,8 @@ def day(title, notes, rows):
 days = [
     day('Daily A · Ankles, hips, T-spine', [
         'About 13 minutes. Your low-back reset, then stand → floor → lunge & squat → finish, like HoopStudy\'s Ten Minute Routine.',
-        'Smooth and steady, not a workout. Stop any move that hurts sharply.'], [
+        'Smooth and steady, not a workout. Stop any move that hurts sharply.',
+        'On a lifting day, best after the workout or at another time: the 45 s holds are for range, not a warm-up.'], [
         r('Pogos', '25', group='Standing', alts=['Single Leg Stance']),
         r('Arm Circles', '10 each way', group='Standing'),
         r('Double Leg Functional Calf Raise (Optional)', '15', group='Standing', alts=['Bent Knee Calf Raise (Optional)']),
@@ -141,7 +142,8 @@ days = [
     ]),
     day('Daily B · Breathing, glutes, shoulders', [
         'About 13 minutes. Your low-back reset, then the B versions: Menner\'s lying-down breathing and bridge hold, thoracic rotations, band rotations.',
-        'Smooth and steady, not a workout. Stop any move that hurts sharply.'], [
+        'Smooth and steady, not a workout. Stop any move that hurts sharply.',
+        'On a lifting day, best after the workout or at another time: the 45 s holds are for range, not a warm-up.'], [
         r('Pogos', '25', group='Standing', alts=['Single Leg Stance']),
         r('Arm Circles', '10 each way', group='Standing'),
         r('Bent Knee Calf Raise (Optional)', '15', group='Standing', notes='Bent knee works the soleus.', alts=['Double Leg Functional Calf Raise (Optional)']),

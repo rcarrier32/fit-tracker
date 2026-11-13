@@ -169,6 +169,24 @@ ALTS = {
     'Incline Alternating Arms Dumbbell Press': ['Low Incline Dumbbell Press', 'Dumbbell Bench Press', 'Push Up To Shoulder Airplane'],
     'Kneeling Dumbbell Diagonal Chop': ['Palloff Press', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press'],
 }
+# PJF's Durability Code Prime: mobility-strength versions, offered as swaps (the plan's picks stay first).
+for k, extra in {
+    'Dumbbell Goblet Squat': ['Hip Shift Squat', 'Heels Elevated Narrow Squat'],
+    'Heel Elevated Goblet Squat': ['Heels Elevated Narrow Squat', 'Hip Shift Squat'],
+    'Reverse Lunges': ['Back Leg Lunge (Peterson Lunge)'],
+    'Bulgarian Split Squat': ['FFE Rotational Split Squat'],
+    'Weighted Step-Ups': ['Knee Step Overs'],
+    'Dumbbell Romanian Deadlift': ['RDL Row w/ Rotation'],
+    'Single-Leg RDL with Kettlebell': ['One Leg RDL Rotation w/ Toes Off'],
+    'Single-Leg RDL to Knee Drive': ['One Leg RDL Rotation w/ Toes Off'],
+    'Chest Supported DB Row (lat focus)': ['Landmine or Dumbbell Rotational Row'],
+    '3 Point Dumbbell Row': ['Landmine or Dumbbell Rotational Row', 'RDL Row w/ Rotation'],
+    'Standing Dumbbell Shoulder Press': ['Landmine or Dumbbell Dip Press'],
+    'Dead Bug': ['Bear Crawl (Movement)'],
+    'Side Plank with Top-Leg Raise': ['Single Leg Lateral Tilts'],
+}.items():
+    ALTS[k] = ALTS[k] + [n for n in extra if n not in ALTS[k]]
+
 
 
 def r(name, reps=None, time=None, sets=3, rest='60s', notes=None, group=None):

@@ -124,6 +124,7 @@
   "calves": [
    "10% Bodyweight Repeat Jumps",
    "2 Leg Metronome Plyo Progressions",
+   "3D Ankle Blaster",
    "A-Skip",
    "Achilles Negative Steps",
    "Ali Shuffle",
@@ -146,6 +147,7 @@
    "Ladder In & Out Hops",
    "Ladder Lateral In & Outs",
    "Ladder Twist Hops",
+   "Lateral Ankle Slant Board Cooker",
    "Lateral Bounds",
    "Lateral Hops",
    "Leg Press Calf Raise",
@@ -244,7 +246,6 @@
    "Standing Dumbbell Shoulder Press"
   ],
   "full_body": [
-   "3D Ankle Blaster",
    "Anti Ankle Collapse Progressions",
    "Backstroke",
    "Backward Walk",
@@ -262,8 +263,6 @@
    "Forward Walk",
    "Freestyle Swimming",
    "Gentle Full-Body Stretch",
-   "Knee Step Overs",
-   "Lateral Ankle Slant Board Cooker",
    "Med Ball Slam",
    "Nasal Breathing Cardio Warm Up",
    "Optional Foam Roll Circuit",
@@ -516,9 +515,9 @@
    "Hip Mobility ER/IR Skips",
    "Kettlebell Loaded Hip Flexor Lift",
    "Knee Pumps",
+   "Knee Step Overs",
    "Lateral Line Stretch",
    "Leg Swings",
-   "Loaded Lateral Line Stretch",
    "March in Place",
    "OH March",
    "Optional Static Stretch",
@@ -589,6 +588,7 @@
    "Lateral Bridge With Row",
    "Lateral Oblique Flexion",
    "Lateral Rip Through",
+   "Loaded Lateral Line Stretch",
    "MB Rapid Lateral Toss",
    "Modified Side Plank",
    "QB1 Spiral Line",
@@ -1088,6 +1088,7 @@
   "calves": [
    "10% Bodyweight Repeat Jumps",
    "2 Leg Metronome Plyo Progressions",
+   "3D Ankle Blaster",
    "90/90 Single Power Jumps",
    "A-March",
    "A-Skip",
@@ -1128,6 +1129,7 @@
    "Ladder In & Out Hops",
    "Ladder Lateral In & Outs",
    "Ladder Twist Hops",
+   "Lateral Ankle Slant Board Cooker",
    "Lateral Bounds",
    "Lateral Hops",
    "Leg Press Calf Raise",
@@ -1306,7 +1308,6 @@
    "Yoga Pushup"
   ],
   "full_body": [
-   "3D Ankle Blaster",
    "Anti Ankle Collapse Progressions",
    "Backstroke",
    "Backward Walk",
@@ -1324,8 +1325,6 @@
    "Forward Walk",
    "Freestyle Swimming",
    "Gentle Full-Body Stretch",
-   "Knee Step Overs",
-   "Lateral Ankle Slant Board Cooker",
    "Med Ball Slam",
    "Nasal Breathing Cardio Warm Up",
    "Optional Foam Roll Circuit",
@@ -1909,6 +1908,7 @@
    "Knee Circles",
    "Knee Pull Heel Bridge",
    "Knee Pumps",
+   "Knee Step Overs",
    "Ladder Twist Hops",
    "Lateral Line Stretch",
    "Leg Swings",
@@ -2082,6 +2082,7 @@
    "Lateral Lunge Adductor Stretch",
    "Lateral Oblique Flexion",
    "Lateral Rip Through",
+   "Loaded Lateral Line Stretch",
    "MB Rapid Lateral Toss",
    "Modified Side Plank",
    "One Leg RDL Rotation w/ Toes Off",
@@ -2492,7 +2493,6 @@
    "Diagonal Split Floor Touches",
    "Euro Step Freestyles",
    "Extensive Locomotion Cariocas",
-   "Eyes Closed Diagonal Steps",
    "Forward Extensive Split",
    "Goblet Squat Drop Step",
    "Ickey Shuffle",
@@ -2541,6 +2541,7 @@
    "Palloff Press"
   ],
   "balance": [
+   "Eyes Closed Diagonal Steps",
    "Facing Wall Hip Airplane",
    "Hip Airplane (No Support)",
    "Loaded Hip Airplane",
@@ -2649,7 +2650,6 @@
    "Hamstring Walk Outs",
    "Hand Supported SLDL Loaded",
    "Hip Extension",
-   "Hip Flexor/Quad Bridge",
    "Hip Thrust",
    "Hip Thrust Pulses",
    "Hyperextensions (back/hamstring)",
@@ -2658,7 +2658,6 @@
    "Kickstand RDL",
    "Kneeling Hip Thrust",
    "Landmine SLDL",
-   "Long Length Hamstring Rapid Loading",
    "Maximal Overcoming Hamstring/Hip Flexor Isometric",
    "On Bench Single Leg Glute Bridge",
    "One Leg RDL Rotation w/ Toes Off",
@@ -2720,7 +2719,6 @@
    "Hip Flexion",
    "Hip Hikes",
    "Kettlebell Loaded Hip Flexor Lift",
-   "Knee Step Overs",
    "Lateral Ankle Slant Board Cooker",
    "Lateral Step To Adductor Pull-In",
    "Leg Press Calf Raise",
@@ -2897,6 +2895,7 @@
    "Front Foot Elevated Reverse Lunges",
    "Heel Elevated Split Squat",
    "High Box Step Up",
+   "Knee Step Overs",
    "Landmine Reverse Lunge To Overhead Press",
    "Lateral Lunge",
    "Lateral Step-Down",
@@ -2985,6 +2984,7 @@
    "Hip Flexor Rock Back",
    "Hip Flexor Tilt",
    "Hip Flexor w/ Rotation/Breathing",
+   "Hip Flexor/Quad Bridge",
    "Hip Hinge Ankle Rocker",
    "Hip Mobility Band Freestyle",
    "Hip Mobility ER/IR Skips",
@@ -3056,6 +3056,7 @@
    "Lateral Hops",
    "Linear 1 Leg Forward Hops",
    "Linear Line Hops",
+   "Long Length Hamstring Rapid Loading",
    "MB High Toss/Extensive Jumps Contrast",
    "Metronome Dot Drill",
    "Mutli-direction Bounds",
@@ -3775,9 +3776,9 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "full_body",
+   "primary_muscle": "calves",
    "muscles": [
-    "full_body"
+    "calves"
    ],
    "pattern": "isolation_lower",
    "role": "accessory",
@@ -7096,8 +7097,7 @@
    "pattern": "push_vertical",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -9087,8 +9087,8 @@
     "adductors",
     "abductors"
    ],
-   "pattern": "agility_cod",
-   "role": "power",
+   "pattern": "balance",
+   "role": "accessory",
    "equipment": [
     "bodyweight"
    ],
@@ -9309,7 +9309,7 @@
    "level": 2,
    "unilateral": true,
    "plane": "transverse",
-   "hip_focus": false,
+   "hip_focus": true,
    "video": "https://stream.mux.com/6KAMB3Ye5FED00UIHrOxvtM01fyMIwsEZmM7Hodz8yHLk.m3u8",
    "video_from": "pjf"
   },
@@ -11100,7 +11100,7 @@
     "hip_flexors",
     "abs"
    ],
-   "pattern": "hinge",
+   "pattern": "mobility",
    "role": "cooldown",
    "equipment": [
     "bodyweight"
@@ -11293,7 +11293,7 @@
    ],
    "level": 2,
    "unilateral": false,
-   "plane": "sagittal",
+   "plane": "frontal",
    "hip_focus": true,
    "video": "https://stream.mux.com/XASLu6bfvaVDHxmtkKacXaLaP77XENnOzHX00ZaWFRTY.m3u8",
    "video_from": "pjf"
@@ -11855,11 +11855,11 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "full_body",
+   "primary_muscle": "hip_flexors",
    "muscles": [
-    "full_body"
+    "hip_flexors"
    ],
-   "pattern": "isolation_lower",
+   "pattern": "lunge_single_leg",
    "role": "accessory",
    "equipment": [
     "bodyweight"
@@ -12123,8 +12123,7 @@
    "pattern": "push_vertical",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -12148,8 +12147,7 @@
    "pattern": "pull_horizontal",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -12367,7 +12365,6 @@
    "pattern": "pull_vertical",
    "role": "main",
    "equipment": [
-    "cable",
     "pullup_bar"
    ],
    "level": 2,
@@ -12406,9 +12403,9 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "full_body",
+   "primary_muscle": "calves",
    "muscles": [
-    "full_body"
+    "calves"
    ],
    "pattern": "isolation_lower",
    "role": "accessory",
@@ -13071,8 +13068,9 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "obliques",
    "muscles": [
+    "obliques",
     "hip_flexors",
     "glutes"
    ],
@@ -13170,8 +13168,8 @@
     "hamstrings",
     "glutes"
    ],
-   "pattern": "hinge",
-   "role": "secondary",
+   "pattern": "plyo_bound_hop",
+   "role": "power",
    "equipment": [
     "bodyweight"
    ],
@@ -16966,7 +16964,7 @@
    "pattern": "mobility",
    "role": "warmup",
    "equipment": [
-    "bodyweight"
+    "dumbbell"
    ],
    "level": 1,
    "unilateral": false,
@@ -17432,7 +17430,6 @@
    "pattern": "lunge_single_leg",
    "role": "secondary",
    "equipment": [
-    "machine",
     "box"
    ],
    "level": 2,
@@ -18221,9 +18218,7 @@
    "pattern": "hinge",
    "role": "secondary",
    "equipment": [
-    "cable",
-    "band",
-    "sled"
+    "band"
    ],
    "level": 2,
    "unilateral": false,
@@ -18480,7 +18475,7 @@
    "pattern": "mobility",
    "role": "warmup",
    "equipment": [
-    "bodyweight"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": true,

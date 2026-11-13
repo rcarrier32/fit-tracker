@@ -18,16 +18,16 @@
     "Lower Body"
    ],
    "week1_sets_by_muscle": {
-    "hip_flexors": 39,
-    "calves": 35,
+    "calves": 41,
+    "hip_flexors": 35,
     "quads": 20,
-    "full_body": 19,
     "hamstrings": 18,
+    "obliques": 16,
     "adductors": 14,
     "upper_back": 14,
+    "full_body": 13,
     "biceps": 12,
     "abs": 12,
-    "obliques": 12,
     "triceps": 12,
     "glutes": 11,
     "lats": 8,
@@ -36,10 +36,10 @@
     "lower_back": 4
    },
    "week1_sets_by_pattern": {
-    "mobility": 76,
+    "mobility": 79,
     "isolation_upper": 24,
-    "hinge": 22,
-    "plyo_bound_hop": 19,
+    "plyo_bound_hop": 23,
+    "hinge": 15,
     "isolation_lower": 15,
     "anti_extension": 12,
     "lunge_single_leg": 11,
@@ -58,10 +58,10 @@
    "roles": {
     "warmup": 39,
     "cooldown": 20,
-    "secondary": 17,
     "accessory": 17,
+    "secondary": 16,
     "core": 10,
-    "power": 7,
+    "power": 8,
     "conditioning": 3,
     "main": 2
    },
@@ -73,7 +73,6 @@
     "box",
     "cable",
     "dumbbell",
-    "landmine",
     "machine",
     "pullup_bar"
    ],
@@ -139,9 +138,7 @@
     "band",
     "barbell",
     "box",
-    "cable",
     "dumbbell",
-    "landmine",
     "med_ball",
     "pullup_bar"
    ],
@@ -207,11 +204,9 @@
     "barbell",
     "bench",
     "box",
-    "cable",
     "dumbbell",
     "kettlebell",
-    "machine",
-    "sled"
+    "machine"
    ],
    "description": null
   },
@@ -1044,7 +1039,6 @@
     "barbell",
     "bench",
     "box",
-    "cable",
     "dumbbell",
     "kettlebell",
     "landmine",
@@ -1168,8 +1162,8 @@
     "hip_flexors": 1
    },
    "week1_sets_by_pattern": {
-    "hinge": 18,
-    "mobility": 16,
+    "mobility": 19,
+    "hinge": 15,
     "lunge_single_leg": 12,
     "push_horizontal": 9,
     "pull_horizontal": 9,
@@ -1279,12 +1273,12 @@
     "hamstrings": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 29,
+    "mobility": 31,
     "balance": 15,
-    "hinge": 4,
     "isometric": 4,
     "rotation": 3,
     "isolation_lower": 2,
+    "hinge": 2,
     "anti_extension": 1,
     "pull_horizontal": 1,
     "isolation_upper": 1

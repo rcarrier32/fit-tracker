@@ -122,9 +122,9 @@
   },
   "3d-ankle-blaster": {
    "name": "3D Ankle Blaster",
-   "primary_muscle": "full_body",
+   "primary_muscle": "calves",
    "muscles": [
-    "full_body"
+    "calves"
    ],
    "pattern": "isolation_lower",
    "role": "accessory",
@@ -3504,8 +3504,7 @@
    "pattern": "push_vertical",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -4491,8 +4490,8 @@
     "adductors",
     "abductors"
    ],
-   "pattern": "agility_cod",
-   "role": "power",
+   "pattern": "balance",
+   "role": "accessory",
    "equipment": [
     "bodyweight"
    ],
@@ -4548,7 +4547,7 @@
    "level": 2,
    "unilateral": true,
    "plane": "transverse",
-   "hip_focus": false
+   "hip_focus": true
   },
   "flat-dumbbell-press": {
    "name": "Flat Dumbbell Press",
@@ -5162,7 +5161,7 @@
     "hip_flexors",
     "abs"
    ],
-   "pattern": "hinge",
+   "pattern": "mobility",
    "role": "cooldown",
    "equipment": [
     "bodyweight"
@@ -5271,7 +5270,7 @@
    ],
    "level": 2,
    "unilateral": false,
-   "plane": "sagittal",
+   "plane": "frontal",
    "hip_focus": true
   },
   "hip-thrust": {
@@ -7786,11 +7785,11 @@
   },
   "knee-step-overs": {
    "name": "Knee Step Overs",
-   "primary_muscle": "full_body",
+   "primary_muscle": "hip_flexors",
    "muscles": [
-    "full_body"
+    "hip_flexors"
    ],
-   "pattern": "isolation_lower",
+   "pattern": "lunge_single_leg",
    "role": "accessory",
    "equipment": [
     "bodyweight"
@@ -7844,8 +7843,7 @@
    "pattern": "push_vertical",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -7863,8 +7861,7 @@
    "pattern": "pull_horizontal",
    "role": "secondary",
    "equipment": [
-    "dumbbell",
-    "landmine"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": false,
@@ -7898,7 +7895,6 @@
    "pattern": "pull_vertical",
    "role": "main",
    "equipment": [
-    "cable",
     "pullup_bar"
    ],
    "level": 2,
@@ -7925,9 +7921,9 @@
   },
   "lateral-ankle-slant-board-cooker": {
    "name": "Lateral Ankle Slant Board Cooker",
-   "primary_muscle": "full_body",
+   "primary_muscle": "calves",
    "muscles": [
-    "full_body"
+    "calves"
    ],
    "pattern": "isolation_lower",
    "role": "accessory",
@@ -8311,8 +8307,9 @@
   },
   "loaded-lateral-line-stretch": {
    "name": "Loaded Lateral Line Stretch",
-   "primary_muscle": "hip_flexors",
+   "primary_muscle": "obliques",
    "muscles": [
+    "obliques",
     "hip_flexors",
     "glutes"
    ],
@@ -8351,8 +8348,8 @@
     "hamstrings",
     "glutes"
    ],
-   "pattern": "hinge",
-   "role": "secondary",
+   "pattern": "plyo_bound_hop",
+   "role": "power",
    "equipment": [
     "bodyweight"
    ],
@@ -9733,7 +9730,7 @@
    "pattern": "mobility",
    "role": "warmup",
    "equipment": [
-    "bodyweight"
+    "dumbbell"
    ],
    "level": 1,
    "unilateral": false,
@@ -9886,7 +9883,6 @@
    "pattern": "lunge_single_leg",
    "role": "secondary",
    "equipment": [
-    "machine",
     "box"
    ],
    "level": 2,
@@ -10036,9 +10032,7 @@
    "pattern": "hinge",
    "role": "secondary",
    "equipment": [
-    "cable",
-    "band",
-    "sled"
+    "band"
    ],
    "level": 2,
    "unilateral": false,
@@ -10160,7 +10154,7 @@
    "pattern": "mobility",
    "role": "warmup",
    "equipment": [
-    "bodyweight"
+    "dumbbell"
    ],
    "level": 2,
    "unilateral": true,
