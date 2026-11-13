@@ -809,6 +809,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     };
   });
 
+  // ← Back: the step before this one (a superset reopens as its whole screen).
+  const prevOf = (k) => () => (k > 0 && steps[k - 1] ? { name: stepName(steps[k - 1]), open: () => openStep(k - 1) } : null);
+
   function openGroup(a, b, common) {
     const idx = []; for (let j = a; j <= b; j++) idx.push(steps[j].i);
     const exs = idx.map(i => session.exercises[i]);
@@ -836,6 +839,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       subtitle: `${label} · ${exs.length} moves, back to back`, notes: exs[0].notes }, {
       ...common,
       next,
+      prev: prevOf(a),
       rx: formatTarget(exs[0]),
       doneLabel: `✓ Mark ${/superset/i.test(label) ? 'superset' : 'circuit'} done`,
       isDone: () => exs.every(exerciseDone),
@@ -859,6 +863,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       accent: '#38bdf8',
       autoNext: true,
       next,
+      prev: prevOf(k),
       onClose: refreshSoon,
       completeLabel: 'Every exercise done',
       finish: { label: 'Finish workout ✓', onClick: (close) => { _noRefresh = true; close(); app.querySelector('#finish')?.click(); } },

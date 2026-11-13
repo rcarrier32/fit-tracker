@@ -307,6 +307,7 @@ function pjfNotesHTML(ex, accent) {
  * @param {string}   [o.extraHTML]     plan-specific block under the sets (last time, notes…)
  * @param {{ label: string, danger?: boolean, onClick: (close: Function) => void }[]} [o.actions]
  * @param {{ label: string, onClick: (close: Function) => void }[]} [o.menu]   extra ⋯ items (warm-up → Swap)
+ * @param {() => ({ name: string, open: Function } | null)} [o.prev]  ← back to the previous step
  * @param {{ ex: object, rx?: string, mountSets: (el: HTMLElement, changed: Function) => void }[]} [o.also]
  *   the rest of a superset or circuit, each with its own video and sets below the first (TrainHeroic-style)
  * @param {{ name: string, steps: { name: string }[], current: number, note?: string,
@@ -565,13 +566,16 @@ export function openExerciseDetail(ex, o = {}) {
       }
       wasDone = done;
       // FKH footer: Mark done beside a Next → that skips ahead; once done, one big Next.
+      const prev = o.prev?.() || null;
+      const back = prev ? `<button id="ex-prev" class="btn ghost" aria-label="Back to ${esc(prev.name)}" title="Back: ${esc(prev.name)}"
+        style="width:auto;padding:0 14px">←</button>` : '';
       $foot.innerHTML = !done
-        ? `<div style="display:flex;gap:8px">
+        ? `<div style="display:flex;gap:8px">${back}
              <button id="ex-all" class="btn" style="flex:1;background:${accent};color:#0f172a">${esc(o.doneLabel || '✓ Mark exercise done')}</button>
              ${next ? `<button id="ex-skip" class="btn ghost" style="width:auto;padding:0 16px">Next →</button>` : ''}
            </div>`
         : next
-          ? `<button id="ex-next" class="btn" style="background:${accent};color:#0f172a">Next: ${esc(next.name)} →</button>`
+          ? `<div style="display:flex;gap:8px">${back}<button id="ex-next" class="btn" style="flex:1;background:${accent};color:#0f172a">Next: ${esc(next.name)} →</button></div>`
           : `<div style="text-align:center;padding:12px;border-radius:10px;background:rgba(34,197,94,0.08);
               border:1px solid rgba(34,197,94,0.3);color:#22c55e;font-weight:700;font-size:14px">
               🎉 ${esc(o.completeLabel || 'All done')}</div>
@@ -584,6 +588,7 @@ export function openExerciseDetail(ex, o = {}) {
       });
       $foot.querySelector('#ex-next')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
       $foot.querySelector('#ex-skip')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
+      $foot.querySelector('#ex-prev')?.addEventListener('click', () => { clearTimeout(autoT); close(false); prev.open(); });
       $foot.querySelector('#ex-finish')?.addEventListener('click', () => o.finish.onClick(close));
       $foot.querySelector('#ex-close')?.addEventListener('click', () => close());
     }
