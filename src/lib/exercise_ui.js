@@ -325,10 +325,31 @@ function pjfNotesHTML(ex, accent) {
  */
 let _gravitySign = 0;   // +1 spec (Android), -1 iOS: the sign of y when held upright
 
+/**
+ * The video you're watching = the one nearest the middle of the screen (a superset screen stacks
+ * several). Only it goes full screen when the phone turns; tracked while upright, as you scroll.
+ */
+function trackActiveVideo(sheet) {
+  const pick = () => {
+    if (window.innerWidth > window.innerHeight && sheet.querySelector('.ex-video.is-active')) return;   // already sideways: keep the choice
+    const vids = [...sheet.querySelectorAll('.ex-video')];
+    if (!vids.length) return;
+    const mid = window.innerHeight / 2;
+    const best = vids.reduce((a, v) => { const r = v.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom) / 2 - mid);
+      return !a || d < a.d ? { v, d } : a; }, null).v;
+    vids.forEach(v => v.classList.toggle('is-active', v === best));
+  };
+  pick();
+  sheet.addEventListener('scroll', pick, { passive: true });
+  const mo = new MutationObserver(() => { if (!sheet.querySelector('.ex-video.is-active')) pick(); });   // clip tools redraw it
+  mo.observe(sheet, { childList: true, subtree: true });
+  return () => { sheet.removeEventListener('scroll', pick); mo.disconnect(); };
+}
+
 function startSidewaysVideo(sheet) {
   if (!sheet.querySelector('.ex-video') || !('DeviceMotionEvent' in window)) return () => {};
   const onMotion = (e) => {
-    const box = sheet.querySelector('.ex-video');   // looked up each time: the clip tools redraw it
+    const box = sheet.querySelector('.ex-video.is-active') || sheet.querySelector('.ex-video');   // looked up each time: the clip tools redraw it
     if (!box) return;
     const g = e.accelerationIncludingGravity;
     if (!g || g.x == null) return;
@@ -458,7 +479,9 @@ export function openExerciseDetail(ex, o = {}) {
       b.textContent = on ? '♥' : '♡'; b.style.color = on ? '#f472b6' : '#64748b'; b.setAttribute('aria-pressed', on);
       toast(on ? 'Favourite: new plans pick it first' : 'Removed from favourites', 1800);
     };
-    const stopSideways = startSidewaysVideo(sheet);
+    const stopTrack = trackActiveVideo(sheet);
+    const stopSideways0 = startSidewaysVideo(sheet);
+    const stopSideways = () => { stopSideways0(); stopTrack(); };
     const prevClose = hooks.onClose;
     let stopClock = () => {};
     hooks.onClose = () => { stopSideways(); stopClock(); prevClose?.(); o.onClose?.(); };

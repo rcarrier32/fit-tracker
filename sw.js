@@ -1,7 +1,7 @@
 /**
  * Service worker — offline fallback for catalogs; app code always loads from network.
  */
-const CACHE = 'fit-tracker-v171';
+const CACHE = 'fit-tracker-v172';
 
 self.addEventListener('install', e => {
   self.skipWaiting(); // activate immediately so stale HTTP-cached JS gets bypassed on next reload
@@ -86,8 +86,16 @@ self.addEventListener('fetch', e => {
     url.pathname.endsWith('.css') ||
     url.pathname.endsWith('version.json')
   ) {
+    // GitHub Pages' CDN keeps a file for up to ~10 min after a deploy, so a new app.js could load
+    // old views. Modules without their own ?v= are fetched with this build's number, so every file
+    // comes from the same release (cached under the plain URL for offline).
+    let net = e.request;
+    if (url.pathname.endsWith('.js') && !url.searchParams.has('v')) {
+      const u = new URL(url); u.searchParams.set('sv', CACHE.replace(/\D/g, ''));
+      net = new Request(u.href, { credentials: e.request.credentials });
+    }
     e.respondWith(
-      fetch(e.request, { cache: 'no-store' })
+      fetch(net, { cache: 'no-store' })
         .then(res => {
           // Stash a copy for offline. version.json is deliberately excluded — serving a
           // stale version number offline would fight the update checker.

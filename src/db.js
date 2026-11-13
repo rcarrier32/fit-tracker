@@ -38,7 +38,7 @@ export function db() {
     };
     r.onsuccess = () => { _db = r.result; res(_db); };
     r.onerror = () => rej(r.error);
-    r.onblocked = () => rej(new Error('DB blocked - close other tabs'));
+    r.onblocked = () => rej(new Error('Fit Tracker is open in another window: close it, then reopen this one'));
   });
   return _opening;
 }

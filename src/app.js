@@ -51,8 +51,39 @@ async function render() {
     await fn($app);
   } catch (err) {
     console.error(err);
-    $app.innerHTML = `<div class="card"><h2>Error</h2><pre style="white-space:pre-wrap;color:var(--danger)">${err.message}\n${err.stack||''}</pre></div>`;
+    const esc = (t) => String(t ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    $app.innerHTML = `<div class="card" style="text-align:center;padding:22px 16px">
+      <div style="font-size:28px">😬</div>
+      <h2 style="margin:8px 0 4px">This screen hit a snag</h2>
+      <div class="muted" style="font-size:13px;margin-bottom:14px">Your logged workouts are saved. Reloading usually fixes it.</div>
+      <button class="btn" id="err-reload">Reload</button>
+      <button class="btn ghost" id="err-home" style="margin-top:8px">Go to Today</button>
+      <details style="margin-top:12px;text-align:left"><summary class="muted" style="font-size:12px">Details</summary>
+        <pre style="white-space:pre-wrap;font-size:11px;color:var(--danger)">${esc(err.message)}\n${esc(err.stack)}</pre></details>
+    </div>`;
+    $app.querySelector('#err-reload').onclick = () => location.reload();
+    $app.querySelector('#err-home').onclick = () => { location.hash = '#/home'; };
   }
+}
+
+/**
+ * Anything that fails outside a screen render (a save in a tap handler, a timer): say so instead of
+ * failing silently, at most once every 10 s. Other sites' errors (YouTube, the CDN) are ignored.
+ */
+let _lastErrToast = 0;
+function reportError(msg) {
+  const m = String(msg || '');
+  if (/ResizeObserver|AbortError|NotAllowedError|play\(\) request|Load failed|NetworkError|Failed to fetch/i.test(m)) return;
+  if (Date.now() - _lastErrToast < 10000) return;
+  _lastErrToast = Date.now();
+  toast(/save|put|transaction|IDB|database|quota/i.test(m) ? 'Something didn\'t save. Reload and check your last set.' : 'Something went wrong. If the screen looks off, reload.', 4000);
+}
+if (FIRST_COPY) {
+  window.addEventListener('unhandledrejection', (e) => { console.error(e.reason); reportError(e.reason?.message || e.reason); });
+  window.addEventListener('error', (e) => {
+    if (e.filename && !e.filename.startsWith(location.origin)) return;
+    reportError(e.message);
+  });
 }
 
 if (FIRST_COPY) {

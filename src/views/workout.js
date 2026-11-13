@@ -1381,9 +1381,19 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
     sheet.querySelector('#ex-hurt').onclick = async () => {
       ex.hurt = !ex.hurt || undefined;
       await saveSession(session);
-      close();
-      if (ex.hurt) toast('Noted. Swap it (⋯ → Swap) if it keeps hurting.', 2600);
-      renderWorkout(document.getElementById('app'), { keepRest: true });
+      if (!ex.hurt) { close(); renderWorkout(document.getElementById('app'), { keepRest: true }); return; }
+      // Hurts: offer a swap right here (similar moves first) instead of pointing at the menu.
+      close(false);
+      openSheet((s3, close3, hooks) => {
+        hooks.onClose = () => renderWorkout(document.getElementById('app'), { keepRest: true });
+        s3.innerHTML = `
+          <div style="font-weight:600;font-size:15px">Noted: ${esc(ex.name)} hurts today</div>
+          <div class="muted" style="font-size:13px;margin:6px 0 14px">Swap it for a move that works the same muscles without the pain? If it hurts again another day, new plans leave it out.</div>
+          <button class="btn" id="hurt-swap">🔄 Show swaps</button>
+          <button class="btn ghost" id="hurt-keep" style="margin-top:8px">Keep it, go lighter</button>`;
+        s3.querySelector('#hurt-swap').onclick = () => { hooks.onClose = null; close3(false); openExerciseMenu(session, i, allExercises, exMap, { swapNow: true }); };
+        s3.querySelector('#hurt-keep').onclick = () => close3();
+      });
     };
     // Demo shows other moves too: play only this one's part (a one-off, so it lives here).
     sheet.querySelector('#clip-video')?.addEventListener('click', () => {

@@ -362,7 +362,8 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
 }
 .sheet:has(.ex-video.sideways) { overflow: hidden; }
 @media (orientation: landscape) and (max-height: 540px) {
-  .sheet .ex-video {
+  /* A superset screen has several videos: only the one you were watching fills the screen. */
+  .sheet .ex-video.is-active {
     position: fixed;
     inset: 0;
     z-index: 500;
@@ -373,7 +374,7 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
     border-radius: 0;
   }
   /* Keep the page behind still while the video is up. */
-  .sheet:has(.ex-video) { overflow: hidden; }
+  .sheet:has(.ex-video.is-active) { overflow: hidden; }
 }
 @keyframes slide-up { from { transform: translateY(100%); } }
 

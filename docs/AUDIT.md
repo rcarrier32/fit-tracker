@@ -89,8 +89,9 @@ or skipped workout and a Past workouts list (fix sets, change date, delete); dup
 end-of-rest alert (one AudioContext, notification when backgrounded, survives reload); weekly backup
 nudge + share-sheet export; Short on time; first-time / after-swap starting weight and RPE 9.5+ hold;
 44 px set-row targets and a +2.5 step for light dumbbells; welcome-back note after 7+ days; a workout
-past midnight stays one session; video fallback link. Still open: module `?v=` mixing (bug 3), global
-error handler (bug 7), kg setting, pain flag offering a swap, Apple Health / Google Fit export.
+past midnight stays one session; video fallback link. v172: modules fetched with the release number
+(bug 3), friendly crash card + global error toasts (bug 7), This hurts offers swaps, only the watched
+superset video goes full screen. Still open: kg setting, Apple Health / Google Fit export.
 
 ## 3. Suggested fixes, by impact
 
