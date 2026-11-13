@@ -6882,10 +6882,11 @@
       ],
       "aliases": [],
       "fallback_search": "https://www.youtube.com/@PJFPerformance/search?query=Shoulder%20Mobility%20Pullovers",
-      "primary_muscle": "upper_back",
+      "primary_muscle": "lats",
       "muscles": [
+        "lats",
         "upper_back",
-        "rear_delts"
+        "chest"
       ],
       "pattern": "mobility",
       "role": "warmup",
@@ -54956,9 +54957,9 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
-                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
+                    "notes": "Light dumbbell, slow reach overhead. Wakes up the lats for Chest Supported DB Row (lat focus).",
                     "time": null,
                     "sets": 2
                   }
@@ -55246,10 +55247,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   }
                 ],
@@ -56063,9 +56064,9 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
-                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
+                    "notes": "Light dumbbell, slow reach overhead. Wakes up the lats for Chest Supported DB Row (lat focus).",
                     "time": null,
                     "sets": 2
                   }
@@ -56353,10 +56354,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   }
                 ],
@@ -57170,9 +57171,9 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
-                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
+                    "notes": "Light dumbbell, slow reach overhead. Wakes up the lats for Chest Supported DB Row (lat focus).",
                     "time": null,
                     "sets": 2
                   }
@@ -57459,10 +57460,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   },
                   {
@@ -58280,9 +58281,9 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
-                    "notes": "Band anchored high. Wakes up the lats for Chest Supported DB Row (lat focus).",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
+                    "notes": "Light dumbbell, slow reach overhead. Wakes up the lats for Chest Supported DB Row (lat focus).",
                     "time": null,
                     "sets": 2
                   }
@@ -58569,10 +58570,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   },
                   {
@@ -59390,9 +59391,9 @@
                     "sets": 2
                   },
                   {
-                    "name": "Push-Up To Pike",
+                    "name": "Shoulder Mobility Pullovers",
                     "reps": "8",
-                    "notes": "Wakes up the chest for Dumbbell Bench Press.",
+                    "notes": "Light dumbbell, slow reach overhead. Wakes up the chest and lats for Dumbbell Bench Press, Dumbbell Row From Single Leg.",
                     "time": null,
                     "sets": 2
                   }
@@ -59668,10 +59669,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   }
                 ],
@@ -60743,10 +60744,10 @@
                     "sets": 2
                   },
                   {
-                    "name": "Banded Lat Pulldown",
-                    "reps": "10 light",
+                    "name": "Shoulder Mobility Pullovers",
+                    "reps": "8",
                     "time": null,
-                    "notes": "Band anchored high: wakes up the lats before the rows and pulldowns.",
+                    "notes": "PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.",
                     "sets": 2
                   }
                 ],

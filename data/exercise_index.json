@@ -562,6 +562,7 @@
    "Meadows Row",
    "Pull-Up Negatives",
    "Pull-Ups (Weighted)",
+   "Shoulder Mobility Pullovers",
    "Single-Arm Banded Lat Pulldown",
    "Single-Arm Cable Row",
    "Split Stance Lat Pull Down",
@@ -786,7 +787,6 @@
    "Prone Pull Through",
    "Rotational Row",
    "Seated Cable Row (mid/upper back)",
-   "Shoulder Mobility Pullovers",
    "Side Lying T-Spine Dumbbell Press",
    "T-Spine Wall Contour",
    "TRX Row",
@@ -1221,6 +1221,7 @@
    "Seated Flat Cable Press",
    "Seated Mid-Chest Cable Fly",
    "Seated Neutral-Grip DB Press",
+   "Shoulder Mobility Pullovers",
    "Side Lying T-Spine Dumbbell Press",
    "Single Arm Tricep Extension (Optional)",
    "Split Stance 1 Arm Rotational Press",
@@ -1995,6 +1996,7 @@
    "Pull-Ups (Weighted)",
    "Rotational Row",
    "Seated Cable Row (mid/upper back)",
+   "Shoulder Mobility Pullovers",
    "Single Leg Hinge To Row Combo",
    "Single-Arm Banded Lat Pulldown",
    "Single-Arm Cable Row",
@@ -2336,7 +2338,6 @@
    "Rolling Arm Bar w/ Screwdriver Rotation",
    "Rolling Shoulder Armbar",
    "Seated Cable Row (mid/upper back)",
-   "Shoulder Mobility Pullovers",
    "Standing Face Pulls",
    "TRX Row",
    "Wall Side T Spine Band Rotations",
@@ -16956,10 +16957,11 @@
    "sources": [
     "pjf"
    ],
-   "primary_muscle": "upper_back",
+   "primary_muscle": "lats",
    "muscles": [
+    "lats",
     "upper_back",
-    "rear_delts"
+    "chest"
    ],
    "pattern": "mobility",
    "role": "warmup",

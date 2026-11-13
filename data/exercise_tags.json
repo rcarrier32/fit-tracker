@@ -9722,10 +9722,11 @@
   },
   "shoulder-mobility-pullovers": {
    "name": "Shoulder Mobility Pullovers",
-   "primary_muscle": "upper_back",
+   "primary_muscle": "lats",
    "muscles": [
+    "lats",
     "upper_back",
-    "rear_delts"
+    "chest"
    ],
    "pattern": "mobility",
    "role": "warmup",

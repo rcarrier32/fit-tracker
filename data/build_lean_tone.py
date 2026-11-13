@@ -271,7 +271,7 @@ def days(wk):
               time=None if p == 3 else hold, sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
-        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], {**w('Banded Lat Pulldown', reps='10 light', notes='Band anchored high: wakes up the lats before the rows and pulldowns.'), 'sets': 2}], 'notes': notes, 'exercises': [
+        {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], {**w('Shoulder Mobility Pullovers', reps='8', notes='PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.'), 'sets': 2}], 'notes': notes, 'exercises': [
             r('Weighted Step Up with Leg Raise' if p == 3 else 'Weighted Step-Ups', each + ' leg', sets=S, rest=rest, group='Superset A'),
             r(pick('3 Point Dumbbell Row', 'Birddog Dumbbell Row', 'Contralateral Single Leg Row'), each + ' arm', sets=S, rest=rest, group='Superset A'),
             r(pick('Single-Leg RDL with Kettlebell', 'Hand Supported SLDL Loaded', 'SLDL With Loaded Hip Flexion'), each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
@@ -340,7 +340,7 @@ WARMUP_POOL = [
     ('Supported Lateral Squat', '8 each side', None),
     ('Push-Up To Pike', '8', None),
     ('Band Pull-Aparts', '15', None),
-    ('Banded Lat Pulldown', '10 light', 'Band anchored high.'),
+    ('Shoulder Mobility Pullovers', '8', 'Light dumbbell, slow reach overhead.'),
     ('Pogos', '20', None),
 ]
 COOLDOWN_REPORT = []
