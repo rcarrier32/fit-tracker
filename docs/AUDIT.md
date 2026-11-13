@@ -51,12 +51,36 @@ Legend: ✅ handled · 🟡 partial · ❌ missing
 7. **Silent save failures:** no `unhandledrejection` / `error` handler; a failed save in a tap handler shows
    ✓ with nothing stored. Crash card shows a raw stack trace with no Reload.
 
+8. **Skip leaves Today stuck on "✓ Done".** `followPosition` (`schedule.js:573`) counts a skipped session
+   as done today, and the Done screen hides "Do the next workout" for skipped sessions (`wk:2123`). Skip
+   says "moves to the next day", but there's no way to do it today.
+9. **Programs tab "Start plan" wipes your place** in that program with no warning
+   (`programs.js:298, 416` pass `restart: true`); no "Resume at Week X Day Y".
+10. **Plan badge counts calendar weeks, not workouts** (`plans.js:39-53`): after missed days it says
+    "Week 3 of 8" while you're on Week 2, and can offer "Close plan" mid-program.
+
+## Schedule situations (follow-up check)
+
+| Situation | Here | Notes |
+|---|---|---|
+| Missed day | ✅ | Program waits; catch-up on labelled days this week. A day with no slot set ("No workout assigned") offers none |
+| Whole week off | 🟡 | Picks up where you left off; 90% restart only at 14+ days and only for weighted lifts; no welcome-back |
+| Train on a different day / work ahead on a rest day | 🟡 | Single-program: any day. Mixed Week: rest day only offers "Just log something" unless you're behind |
+| Two workouts in a day | ✅ | "Do the next workout today →" |
+| Wrong Skip / Finish, undo | ❌ | No undo, no delete (see bug 8) |
+| Log a workout late (did it yesterday) | ❌ | Session date is always today |
+| Change the week mid-week | 🟡 | New slots apply back to Monday, so catch-up may count workouts you were never scheduled for |
+| Basketball | 🟡 | A game on a non-Basketball day can't be logged; Day 3 + Day 4 merge happens even if you didn't play either game |
+| Streak | 🟡 | 🔥 breaks on a scheduled rest day if nothing (not even Daily Mobility) is done |
+| Sadie's phone | 🟡 | With no Basketball week, Daily Mobility still shows a "Basketball warm-up" row Mon/Wed/Fri for everyone |
+
 ## 3. Suggested fixes, by impact
 
 | Priority | Fix | Size |
 |---|---|---|
 | 1 | Update banner + offline-after-update fixes (bugs 1-3) | S-M |
-| 2 | **Edit a finished workout** (Done screen → Edit, since re-finishing already works) + a past-workouts list with edit and delete | M |
+| 1 | **Skip → next workout today** (bug 8: one-line fix) and **Resume vs Start over** in Programs (bug 9) | S |
+| 2 | **Edit / undo a finished or skipped workout** (Done screen → Edit; Undo moves the program back a day) + a past-workouts list with edit, delete and change date (covers late logging) | M |
 | 3 | **Reliable rest alert on iPhone:** one AudioContext unlocked on first tap, speech "Go", a full-screen flash when you come back; save the rest timer so it survives a reload | S-M |
 | 4 | **Backup habit:** "Last backed up N days ago" + weekly nudge; Share sheet export (straight to iCloud Drive); atomic, version-checked restore | M |
 | 5 | **Short on time** button: drops accessory and finisher rows by catalog role, or 2 sets each | S |
