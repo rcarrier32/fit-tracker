@@ -59,5 +59,14 @@ eq('feeling beat → no extra set',
 eq('deload advice at 3 drops', !!deloadAdvice([{ kind: 'down' }, { kind: 'down' }, { kind: 'down' }, { kind: 'up' }]), true);
 eq('no deload advice at 2', deloadAdvice([{ kind: 'down' }, { kind: 'down' }]), null);
 
+// RPE 9.5+ at the top of the range holds the weight.
+{
+  const h = [{ date: '2026-11-10', sets: [{ weight: 50, reps: 12, done: true, rpe: 8 }, { weight: 50, reps: 12, done: true }, { weight: 50, reps: 12, done: true, rpe: 10 }] }];
+  const t = nextTarget({ history: h, target: '10-12', sets: 3, equipment: ['dumbbell'], today: '2026-11-13' });
+  if (t?.kind !== 'hold' || t.weight !== 50) { fail++; console.log('✗ RPE 10 should hold', JSON.stringify(t)); } else console.log('✓ RPE 10 at the top holds the weight');
+  const h2 = [{ date: '2026-11-10', sets: h[0].sets.map(x => ({ ...x, rpe: 8 })) }];
+  const t2 = nextTarget({ history: h2, target: '10-12', sets: 3, equipment: ['dumbbell'], today: '2026-11-13' });
+  if (t2?.kind !== 'up') { fail++; console.log('✗ RPE 8 should go up', JSON.stringify(t2)); } else console.log('✓ RPE 8 at the top goes up');
+}
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

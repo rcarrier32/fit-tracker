@@ -3,7 +3,7 @@
  */
 import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
-import { nextTarget, deloadAdvice } from '../lib/adapt.js';
+import { nextTarget, deloadAdvice, repRange } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
@@ -1720,9 +1720,20 @@ const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 /** Next-session target for a lift from its logged history (null for timed work or nothing logged). */
 function targetFor(ex, lookup) {
   if (isTimed(ex) || ex.intervals) return null;
-  return nextTarget({ history: _history[ex.name] || [], target: ex.target_reps, sets: parseInt(ex.target_sets) || 3,
+  const t = nextTarget({ history: _history[ex.name] || [], target: ex.target_reps, sets: parseInt(ex.target_sets) || 3,
                       equipment: lookup?.equipment || [], today: today(), profile: _profile });
+  if (t || _history[ex.name]?.length) return t;
+  // Never logged: a way to pick the first weight (after a swap, from the move it replaced).
+  const range = repRange(ex.target_reps);
+  const loaded = (lookup?.equipment || []).some(q => ['dumbbell', 'kettlebell', 'barbell', 'cable', 'machine', 'smith', 'trap_bar', 'landmine'].includes(q));
+  if (!range || !loaded) return null;
+  const [lo, hi] = range;
+  const was = ex.orig_name && working0(_history[ex.orig_name]?.[0]);
+  return { weight: null, reps: lo, kind: 'start',
+    note: was ? `New move: start lighter than the ${was} lb you used on ${ex.orig_name}, and find a weight you could lift ${hi + 2} times.`
+      : `First time: pick a weight you could lift about ${hi + 2} times. It sets your starting point.` };
 }
+const working0 = (s) => Math.max(0, ...((s?.sets) || []).filter(x => x?.done && x.weight).map(x => +x.weight)) || null;
 
 function formatPrevSets(sets) {
   return sets

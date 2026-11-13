@@ -73,6 +73,11 @@ export function nextTarget({ history = [], target, sets = 3, equipment = [], tod
   const prev = working(history[1]), prev2 = working(history[2]);
   const streak = allHit && prev && prev2 && prev.weight > prev2.weight && w > prev.weight - 1e-9 && sets < 5 && !profile?.fatigue?.advice;
   const withSet = (t) => streak && t.kind === 'up' ? { ...t, addSet: true, note: `${t.note} Going up every time: add a set if you have it in you.` } : t;
+  // Hit the top of the range but it was a grind (RPE 9.5+ at the working weight): earn it first.
+  const grind = Math.max(0, ...(history[0].sets || []).filter(st => st && st.reps && (st.done ?? true) && (+st.weight || 0) === w).map(st => +st.rpe || 0));
+  if (allHit && grind >= 9.5) {
+    return { weight: w, reps: hi, kind: 'hold', note: `Every set hit ${hi}, but at RPE ${grind}: same weight until it feels easier.` };
+  }
   if (allHit) {
     if (step / w > 0.1) {
       return { weight: w, reps: hi + 2, kind: 'reps', note: `Every set hit ${hi}. A ${step} lb jump is big at ${w} lb: aim for ${hi + 2} reps first.` };
