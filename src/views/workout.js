@@ -843,6 +843,9 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       prev: prevOf(a),
       rx: formatTarget(exs[0]),
       doneLabel: `✓ Mark ${/superset/i.test(label) ? 'superset' : 'circuit'} done`,
+      // ⋯ → each move's options (Swap, notes, sets, This hurts…), same menu as its Lift card.
+      menu: exs.map((ex, n) => ({ label: `🔄 Swap / more: ${ex.name}`,
+        onClick: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, idx[n], allExercises, exMap); } })),
       isDone: () => exs.every(exerciseDone),
       setDone: async (v) => {
         if (!v) return;
@@ -910,6 +913,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     openExerciseDetail({ name: ex.name, video_url: rowVideo || lookup?.video_url, rowVideo: !!rowVideo,
       subtitle: `Exercise ${i + 1} of ${session.exercises.length}${grp}`, notes: ex.notes }, {
       ...common,
+      menu: [{ label: '🔄 Swap / more', onClick: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap); } }],
       rx: formatTarget(ex),
       isDone: () => exerciseDone(ex),
       // ✓ Mark exercise done = tap each open set's ○, so prefilled weights and reps are logged.

@@ -498,7 +498,7 @@ export function openExerciseDetail(ex, o = {}) {
       const cur = src ? clipFor(ex.name, src) : null;
       $menu.innerHTML = `
         <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px;flex-wrap:wrap">
-          ${(o.menu || []).map((m, i) => `<button class="btn ghost" data-m="x${i}" style="width:auto;font-size:12px;padding:6px 10px">${esc(m.label)}</button>`).join('')}
+          ${(o.menu || []).map((m, i) => `<button class="btn ghost" data-m="x${i}" style="width:auto;max-width:100%;font-size:12px;padding:6px 10px;text-align:left">${esc(m.label)}</button>`).join('')}
           ${src ? `<button class="btn ghost" data-m="clip" style="width:auto;font-size:12px;padding:6px 10px">✂ ${cur ? 'Change clip' : 'Clip video'}</button>` : ''}
           ${cur?.mine ? `<button class="btn ghost" data-m="unclip" style="width:auto;font-size:12px;padding:6px 10px">Remove clip</button>` : ''}
         </div>`;
