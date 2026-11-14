@@ -262,6 +262,14 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // rotation day, so treat missing as 0 rather than starting a duplicate session.
   const sameIndex = (a, b) => (a ?? 0) === (b ?? 0);
   let session = todaysSessions.find(s => s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index));
+  // ▶ Resume it (the earlier-day prompt): carry on with that unfinished session, sets and all.
+  const resumeId = (() => { try { return +sessionStorage.getItem('resume_session') || null; } catch { return null; } })();
+  if (resumeId && !session?.exercises?.some(x => (x.sets || []).some(st => st?.done))) {
+    const r = (await getAll('sessions')).find(s => s.id === resumeId);
+    if (stale()) return;
+    if (r && !r.done && r.program_id === programId && r.week === week && r.day === day && sameIndex(r.day_index, day_index)) session = r;
+    else try { sessionStorage.removeItem('resume_session'); } catch {}
+  }
   // Past midnight mid-workout: carry on with last night's unfinished session (a set in the last 6 h)
   // instead of starting an empty one for the new date.
   if (!session) {
@@ -438,11 +446,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   app.innerHTML = `
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
-    <div class="muted" style="font-size:12px">${positionLabel(today_w)}<span id="session-clock"></span></div>
+    <div class="muted" style="font-size:12px">${positionLabel(today_w)}${session.date !== today() ? ` · resuming ${new Date(session.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long' })}'s workout` : ''}<span id="session-clock"></span></div>
     ${earlier ? `<div class="card" id="earlier-day" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">
-      You ${earlier.done ? 'finished' : 'logged sets for'} this day on ${new Date(earlier.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}${earlier.done ? '' : ' but didn\'t tap Finish'}. Count it and move on?
+      You ${earlier.done ? 'finished' : 'logged sets for'} this day on ${new Date(earlier.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}${earlier.done ? '' : ' but didn\'t tap Finish'}. ${earlier.done ? 'Count it and move on?' : 'Pick up where you left off, or count it and move on?'}
       <div class="btn-row" style="margin-top:8px">
-        <button class="btn" id="earlier-count" style="font-size:13px">✓ Count it</button>
+        ${earlier.done ? '' : '<button class="btn" id="earlier-resume" style="font-size:13px">▶ Resume it</button>'}
+        <button class="btn ${earlier.done ? '' : 'secondary'}" id="earlier-count" style="font-size:13px">✓ Count it</button>
         <button class="btn ghost" id="earlier-redo" style="font-size:13px">Doing it again</button>
       </div></div>` : ''}
     ${pjfDayNotesHtml(program, week, day, dayData)}
@@ -575,6 +584,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     toast('Counted. On to the next day');
     renderWorkout(app);
   });
+  app.querySelector('#earlier-resume')?.addEventListener('click', () => {
+    try { sessionStorage.setItem('resume_session', String(earlier.id)); } catch {}
+    renderWorkout(app);
+  });
   app.querySelector('#earlier-redo')?.addEventListener('click', async () => {
     await pref('earlier_day_dismissed', [...((await pref('earlier_day_dismissed')) || []), earlier.id].slice(-20));
     app.querySelector('#earlier-day')?.remove();
@@ -586,6 +599,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     e.currentTarget.disabled = true;
     const wasDone = session.done;   // re-finishing an edited workout must not skip a day
     _editingId = null;
+    try { sessionStorage.removeItem('resume_session'); } catch {}
     session.done = true;
     stopRestTimer();   // the workout's over: no rest bar following you to Home
     await saveSession(session);
@@ -606,6 +620,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     finishing = true;
     e.currentTarget.disabled = true;
     const wasDone = session.done;
+    try { sessionStorage.removeItem('resume_session'); } catch {}
     session.done = true;
     session.skipped = true;
     await saveSession(session);
@@ -805,7 +820,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   const tickClock = () => {
     const el = document.getElementById('session-clock');
     if (!el) return clearInterval(_clock);
-    const ts = session.exercises.flatMap(x => (x.sets || []).map(st => st?.done && st.at)).filter(Boolean);
+    // Sets from the last 4 h only: a workout resumed the next day times today's part.
+    const ts = session.exercises.flatMap(x => (x.sets || []).map(st => st?.done && st.at)).filter(t => t && t > Date.now() - 4 * 3600e3);
     el.textContent = ts.length && !session.done ? ` · ⏱ ${Math.max(1, Math.round((Date.now() - Math.min(...ts)) / 60000))} min` : '';
   };
   tickClock();
