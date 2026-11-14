@@ -989,11 +989,18 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const w = st.wu;
       const lookup = exMap[w.name.toLowerCase()];
       const target = [w.sets ? `${w.sets} ×` : '', w.reps || w.time || ''].join(' ').trim();
-      const secs = !w.reps && parseSecs(w.time);
+      // Timed moves get a timer; so do holds written into the reps ("3 x 5s hold each side").
+      const secs = (!w.reps && parseSecs(w.time)) || +(/(\d+)\s*s(?:ec)?\b[^,]*hold/i.exec(w.reps || '') || [])[1] || 0;
+      const setsKey = wuKey(w.name) + ':sets';
       return openExerciseDetail({ name: w.name, video_url: lookup?.video_url, notes: w.notes,
         subtitle: `Warm-up ${k + 1} of ${warmCount}`, source: 'Warm-up' }, {
         ...common,
         rx: target,
+        // One row per set with its own ✓, like the main lifts (kept for today, beside the move's check-off).
+        sets: {
+          get: () => { try { return JSON.parse(sessionStorage.getItem(setsKey) || '[]'); } catch { return []; } },
+          save: async (arr) => { try { sessionStorage.setItem(setsKey, JSON.stringify(arr)); } catch { /* private mode */ } },
+        },
         menu: [{ label: '🔄 Swap', onClick: (close) => { _noRefresh = true; close(false); openWarmupSwap(w); } }],
         isDone: () => wuDone(w.name),
         setDone: async (v) => {
