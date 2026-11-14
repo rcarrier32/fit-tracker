@@ -559,6 +559,10 @@ const NEXT_KEY = (programId) => `fit-lift-next-${localDateStr()}-${programId}`;
 export function allowNextWorkoutToday(programId) {
   try { sessionStorage.setItem(NEXT_KEY(programId), '1'); } catch { /* private mode */ }
 }
+/** Finishing a workout ends "do the next one today": today is the workout you just finished again. */
+export function clearNextWorkoutToday(programId) {
+  try { sessionStorage.removeItem(NEXT_KEY(programId)); } catch { /* private mode */ }
+}
 const nextAllowed = (programId) => { try { return sessionStorage.getItem(NEXT_KEY(programId)) === '1'; } catch { return false; } };
 
 /**

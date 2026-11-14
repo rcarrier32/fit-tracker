@@ -9,7 +9,7 @@ import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/d
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
-import { todaysWorkout, dailyWorkout, advanceCursor, retreatCursor, allowNextWorkoutToday, programName, positionLabel } from './schedule.js';
+import { todaysWorkout, dailyWorkout, advanceCursor, retreatCursor, allowNextWorkoutToday, clearNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
 import { openExerciseDetail, exerciseRowHTML, wireExerciseRows } from '../lib/exercise_ui.js';
@@ -19,7 +19,7 @@ import { tagLine, rankSimilar, levelNeighbors, progressesBy, LEVEL_LABEL, MUSCLE
 import { openProgressCheck } from './progress.js';
 import { doneElsewhere } from '../lib/same_move.js';
 import { GAME_ID } from '../lib/game.js';
-import { ENERGY, energyOf, readNote, noteSummary } from '../lib/feel.js';
+import { ENERGY, EFFORT, energyOf, effortOf, effortWord, readNote, noteSummary } from '../lib/feel.js';
 import { SECTIONS as HIP_SECTIONS } from '../lib/hip_protocol.js';
 import { movesToday } from '../lib/moves_today.js';
 
@@ -625,6 +625,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       await advanceCursor(programId, 'follow');
       if (session.merged_day) await advanceCursor(programId, 'follow');   // Day 3 + Day 4 in one session
     }
+    // "Do the next workout today" was for this one: now it's finished, Home shows it ✓, not the one after.
+    clearNextWorkoutToday(programId);
     const allSessions = await getAll('sessions');
     const stats = computeSessionStats(session, allSessions);
     renderWorkoutComplete(app, session, stats, program, week, day);
@@ -2424,19 +2426,25 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
   // How it felt (RP-style check-in): feeds the deload advice and what the app learns (src/lib/learn.js).
   const feel = session.feel || {};
   const energyNow = energyOf(feel);
-  const chip = (k, v, label) => `<button class="pill ${(k === 'energy5' ? energyNow === v : feel[k] === v) ? 'accent' : ''}" data-feel="${k}" data-v="${v}" style="cursor:pointer;font-size:13px;padding:${k === 'energy5' ? '6px 2px;border-radius:12px;text-align:center' : '7px 11px'}">${label}</button>`;
-  const doneNames = session.exercises.filter(x => (x.sets || []).some(st => st?.done)).map(x => x.name);
+  const effortNow = effortOf(feel);
+  const chip = (k, v, label) => `<button class="pill ${(k === 'energy5' ? energyNow === v : k === 'effort5' ? effortNow === v : feel[k] === v) ? 'accent' : ''}" data-feel="${k}" data-v="${v}" style="cursor:pointer;font-size:13px;padding:${k === 'energy5' || k === 'effort5' ? '6px 2px;border-radius:12px;text-align:center' : '7px 11px'}">${label}</button>`;
+  // Every move in workout order: 👍 helped / felt great, 👎 hurt or felt wrong, neither = fine.
+  const thumb = (x, i, kind) => `<button type="button" data-thumb="${kind}" data-i="${i}" aria-pressed="${!!x[kind]}" aria-label="${kind === 'helped' ? 'Felt great' : 'Hurt'}"
+    style="cursor:pointer;width:40px;height:34px;border-radius:10px;font-size:17px;line-height:1;border:1px solid ${x[kind] ? (kind === 'helped' ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.12)'};
+    background:${x[kind] ? (kind === 'helped' ? 'rgba(34,197,94,0.18)' : 'rgba(239,68,68,0.18)') : 'transparent'};filter:${x[kind] ? 'none' : 'grayscale(1) opacity(0.55)'}">${kind === 'helped' ? '👍' : '👎'}</button>`;
   const feelCard = session.skipped ? '' : `
     <div class="card" id="feel-card" style="padding:12px 14px;margin-bottom:14px">
       <div style="font-weight:600;margin-bottom:8px">How did it feel?</div>
-      <div class="muted" style="font-size:12px;margin-bottom:4px">The workout was</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${chip('effort', 'easy', 'Easy')}${chip('effort', 'right', 'About right')}${chip('effort', 'hard', 'Too much')}</div>
+      <div class="muted" style="font-size:12px;margin-bottom:4px">How hard was it?</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:10px">${EFFORT.map(x => chip('effort5', x.v, `<div style="font-size:12px;font-weight:600;line-height:1.2">${x.label}</div><div style="font-size:10px;opacity:0.6">RPE ${x.rpe}</div>`)).join('')}</div>
       <div class="muted" style="font-size:12px;margin-bottom:4px">Energy</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:10px">${ENERGY.map(x => chip('energy5', x.v, `<div style="font-size:18px;line-height:1.1">${x.emoji}</div><div style="font-size:11px">${x.label}</div>`)).join('')}</div>
-      ${doneNames.length ? `<div class="muted" style="font-size:12px;margin-bottom:4px">Anything hurt? (tap)</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.hurt ? 'accent' : ''}" data-hurt="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
-      ${doneNames.length ? `<div class="muted" style="font-size:12px;margin:10px 0 4px">Helped or felt great? (tap)</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">${doneNames.map(n => `<button class="pill ${session.exercises.find(x => x.name === n)?.helped ? 'accent' : ''}" data-helped="${esc(n)}" style="cursor:pointer;font-size:12px;padding:6px 10px">${esc(n)}</button>`).join('')}</div>` : ''}
+      ${session.exercises.length ? `<div class="muted" style="font-size:12px;margin-bottom:4px">Each move: 👍 felt great · 👎 hurt · neither = fine</div>
+      <div style="display:flex;flex-direction:column">${session.exercises.map((x, i) => `
+        <div style="display:flex;align-items:center;gap:6px;padding:5px 0;border-top:1px solid rgba(255,255,255,0.05)">
+          <div style="flex:1;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.name)}</div>
+          ${thumb(x, i, 'helped')}${thumb(x, i, 'hurt')}
+        </div>`).join('')}</div>` : ''}
       <textarea id="feel-note" rows="2" placeholder="Anything to note? e.g. quads sore from yesterday, slept badly" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
       <div id="note-read" class="muted" style="font-size:12px;margin-top:4px">${esc(noteSummary(readNote(session.note)))}</div>
       <div id="feel-saved" class="muted" style="font-size:11px;margin-top:4px;min-height:14px">Saves as you tap and type.</div>
@@ -2476,25 +2484,24 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     const v = isNaN(+b.dataset.v) ? b.dataset.v : +b.dataset.v;
     session.feel = { ...(session.feel || {}), [b.dataset.feel]: v };
     if (b.dataset.feel === 'energy5') delete session.feel.energy;   // the old 3-level answer
+    if (b.dataset.feel === 'effort5') session.feel.effort = effortWord(v);   // older readers (Home's faces, lighter-week rule)
     await saveSession(session);
     savedTick();
     app.querySelectorAll(`[data-feel="${b.dataset.feel}"]`).forEach(x => x.classList.toggle('accent', x === b));
   });
-  app.querySelectorAll('[data-helped]').forEach(b => b.onclick = async () => {
-    const x = session.exercises.find(q => q.name === b.dataset.helped);
+  // 👍 / 👎 per move: one or the other (or neither), saved as helped / hurt like before.
+  app.querySelector('#feel-card')?.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-thumb]');
+    if (!b) return;
+    const i = +b.dataset.i, x = session.exercises[i];
     if (!x) return;
-    x.helped = !x.helped || undefined;
+    const kind = b.dataset.thumb, other = kind === 'helped' ? 'hurt' : 'helped';
+    x[kind] = !x[kind] || undefined;
+    if (x[kind]) delete x[other];
+    const row = b.parentElement;
+    row.querySelectorAll('[data-thumb]').forEach(t => { t.outerHTML = thumb(x, i, t.dataset.thumb); });
     await saveSession(session);
     savedTick();
-    b.classList.toggle('accent', !!x.helped);
-  });
-  app.querySelectorAll('[data-hurt]').forEach(b => b.onclick = async () => {
-    const x = session.exercises.find(q => q.name === b.dataset.hurt);
-    if (!x) return;
-    x.hurt = !x.hurt || undefined;
-    await saveSession(session);
-    savedTick();
-    b.classList.toggle('accent', !!x.hurt);
   });
   // The note saves as you type (no submit needed) and shows what the app read from it.
   let noteTimer = null;

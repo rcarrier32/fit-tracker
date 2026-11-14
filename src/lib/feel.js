@@ -15,6 +15,25 @@ export const ENERGY = [
   { v: 5, emoji: '💪', label: 'Strong' },
 ];
 
+/**
+ * How hard the workout was, 5 steps on Borg's CR-10 / session-RPE scale (the one coaches use for session
+ * load): two RPE points per step. Old answers (Easy / About right / Too much) map across.
+ */
+export const EFFORT = [
+  { v: 1, label: 'Very easy', rpe: '1-2' },
+  { v: 2, label: 'Easy', rpe: '3-4' },
+  { v: 3, label: 'Just right', rpe: '5-6' },
+  { v: 4, label: 'Hard', rpe: '7-8' },
+  { v: 5, label: 'Too much', rpe: '9-10' },
+];
+export function effortOf(feel) {
+  if (!feel) return null;
+  if (feel.effort5 != null) return +feel.effort5;
+  return { easy: 2, right: 3, hard: 5 }[feel.effort] ?? null;
+}
+/** The old 3-way answer for a 5-step one, kept on the session so older readers still work. */
+export const effortWord = (v) => (v <= 2 ? 'easy' : v >= 5 ? 'hard' : 'right');
+
 /** Energy on the 5-point scale. Check-ins saved before it (1 Drained, 2 OK, 3 Strong) map across. */
 export function energyOf(feel) {
   if (!feel) return null;
@@ -76,7 +95,7 @@ export function readNote(text) {
 export function heavyCheckIn(s) {
   const f = s?.feel || {};
   const e = energyOf(f);
-  return f.effort === 'hard' || (e != null && e <= 2) || readNote(s?.note).tired;
+  return effortOf(f) >= 5 || (e != null && e <= 2) || readNote(s?.note).tired;
 }
 
 /** One line for the finish screen: what the app took from the note. */

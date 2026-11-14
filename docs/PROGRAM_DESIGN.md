@@ -290,7 +290,17 @@ not skipped sessions):
 
 ## How did it feel? (finish screen)
 
-Saves as you tap and type; **Save & finish** saves the note and goes back to Today. Energy has 5 levels
+Saves as you tap and type; **Save & finish** saves the note and goes back to Today.
+
+**How hard was it?** 5 steps on Borg's CR-10 / session-RPE scale, two RPE points each: Very easy (1-2), Easy (3-4),
+Just right (5-6), Hard (7-8), Too much (9-10). Saved as `feel.effort5`; `feel.effort` keeps the old 3-way word
+(1-2 easy, 3-4 right, 5 hard) and old answers map across (`effortOf` in feel.js). Only **Too much** counts toward
+the lighter-week advice: Hard is a normal training day.
+
+**Each move: 👍 / 👎** lists every move in workout order (not only the ones with logged sets): 👍 = helped or
+felt great (`helped`), 👎 = hurt (`hurt`), neither = fine. One or the other per move.
+
+Energy has 5 levels
 (Drained, Low, OK, Good, Strong; check-ins saved on the old 3-level scale map across). The note is read on
 the phone ([`src/lib/feel.js`](../src/lib/feel.js), `node data/check_feel.mjs`), and the screen says what
 it took from it:
@@ -300,7 +310,7 @@ it took from it:
 - **tired** (slept badly, drained…): counts toward the lighter-week advice, like Too much, Drained or Low.
 Soreness isn't a bad sign and doesn't count toward the lighter-week advice.
 
-**Helped or felt great? (tap)** marks moves that worked for you (the Peterson lunge that loosened sore
+**👍** marks moves that worked for you (the Peterson lunge that loosened sore
 quads). New plans favour them (`learn.js` favourites), and for 30 days Daily Mobility adds up to 2 of them
 when their area is sore (from a note) or was trained hard the day before (`daily_adjust.js` `helpedMoves`).
 
