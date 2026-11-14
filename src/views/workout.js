@@ -1033,8 +1033,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
 
   const startFlow = () => {
     if (bandDay) return bandStart?.();
-    // Fresh: from the top (warm-up). Part-way through: the first unfinished exercise.
-    const from = anyLogged ? warmCount : 0;
+    // Fresh: from the top (warm-up), even if some warm-up moves were ticked earlier today for another
+    // workout (check-offs are per day). Part-way through: the first unfinished exercise.
+    if (!anyLogged) return openStep(0);
+    const from = warmCount;
     let k = steps.findIndex((st, j) => j >= from && !stepDone(st));
     if (k < 0) k = steps.findIndex(st => !stepDone(st));
     openStep(k < 0 ? warmCount : k);
