@@ -417,6 +417,20 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   _history = history;
   _elsewhere = await movesToday();
   if (stale()) return;
+  // This day already done on an earlier date but the program never moved on (Finish not tapped, or the
+  // app closed first): offer to count it, instead of the plan sitting on a day you did.
+  let earlier = null;
+  if (today_w.mode === 'follow' && !today_w.daily && !session.done && !anyLogged) {
+    const dismissed = (await pref('earlier_day_dismissed')) || [];
+    for (let k = 1; k <= 3 && !earlier; k++) {
+      const d = new Date(); d.setDate(d.getDate() - k);
+      earlier = (await getByIndex('sessions', 'date', localDateStr(d)))
+        .filter(s => s.id !== session.id && s.program_id === programId && s.week === week && s.day === day && sameIndex(s.day_index, day_index)
+          && !s.skipped && !dismissed.includes(s.id) && (s.done || s.exercises?.some(x => (x.sets || []).some(st => st?.done))))
+        .sort((a, b) => (b.id || 0) - (a.id || 0))[0] || null;
+    }
+    if (stale()) return;
+  }
   _sessionId = session.id ?? null;
   _profile = profile;
   const _deload = bandDay ? null : (deloadAdvice(session.exercises.map(x => targetFor(x, exMap[String(x.name).toLowerCase()]))) || profile?.fatigue?.advice || null);
@@ -425,6 +439,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     <h1>${dayData.focus || dayData.day_name}</h1>
     <div class="muted">${programName(program)}</div>
     <div class="muted" style="font-size:12px">${positionLabel(today_w)}<span id="session-clock"></span></div>
+    ${earlier ? `<div class="card" id="earlier-day" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">
+      You ${earlier.done ? 'finished' : 'logged sets for'} this day on ${new Date(earlier.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}${earlier.done ? '' : ' but didn\'t tap Finish'}. Count it and move on?
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn" id="earlier-count" style="font-size:13px">✓ Count it</button>
+        <button class="btn ghost" id="earlier-redo" style="font-size:13px">Doing it again</button>
+      </div></div>` : ''}
     ${pjfDayNotesHtml(program, week, day, dayData)}
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
@@ -547,6 +567,18 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     await saveSession(session);
     renderWorkout(app);
   };
+  app.querySelector('#earlier-count')?.addEventListener('click', async (e) => {
+    e.currentTarget.disabled = true;
+    if (!earlier.done) { earlier.done = true; await put('sessions', earlier); }
+    await advanceCursor(programId, 'follow');
+    if (earlier.merged_day) await advanceCursor(programId, 'follow');
+    toast('Counted. On to the next day');
+    renderWorkout(app);
+  });
+  app.querySelector('#earlier-redo')?.addEventListener('click', async () => {
+    await pref('earlier_day_dismissed', [...((await pref('earlier_day_dismissed')) || []), earlier.id].slice(-20));
+    app.querySelector('#earlier-day')?.remove();
+  });
   let finishing = false;
   app.querySelector('#finish').onclick = async (e) => {
     if (finishing) return;
