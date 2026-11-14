@@ -945,8 +945,27 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       cards[n] = card;
       wireCards(el);
       el.addEventListener('click', () => setTimeout(changed, 0));
+      // Ticking a set moves you on to the next move's same set (A1 → A2 → A1 set 2…), not down this move's sets.
+      el.addEventListener('click', (e) => {
+        const chk = e.target.closest('.set-row .check');
+        if (!chk) return;
+        const s = +chk.dataset.set;
+        setTimeout(() => { if (chk.closest('.set-row')?.classList.contains('done')) goToNextSet(n, s); }, 80);
+      });
       paintRest();
     };
+    const openRow = (m, s) => cards[m]?.querySelectorAll('.set-row')[s];
+    const notDone = (row) => row && !row.classList.contains('done');
+    function goToNextSet(n, s) {
+      let row = null;
+      for (let m = n + 1; m < cards.length && !row; m++) if (notDone(openRow(m, s))) row = openRow(m, s);     // same round
+      for (let m = 0; m < cards.length && !row; m++) if (notDone(openRow(m, s + 1))) row = openRow(m, s + 1); // next round
+      if (!row) row = cards.map(c => [...(c?.querySelectorAll('.set-row') || [])].find(notDone)).find(Boolean);  // anything left
+      if (!row) return;
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.add('set-next');
+      setTimeout(() => row.classList.remove('set-next'), 1600);
+    }
     const more = (n, swapNow = false) => (close) => { _noRefresh = true; close(false); openExerciseMenu(session, idx[n], allExercises, exMap, { swapNow }); };
     const label = prettyGroup(exs[0].round_group);
     // Next →: the first unfinished step after the group, else any earlier one left.
