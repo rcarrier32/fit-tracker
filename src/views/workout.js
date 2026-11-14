@@ -907,6 +907,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       <input type="text" id="wu-filter" placeholder="Search all exercises…" autocomplete="off">
       <div id="wu-results"></div>`;
     const pick = async (name) => {
+      _reopenWu = orig;
       session.warmup_swaps = { ...(session.warmup_swaps || {}), [orig]: name };
       await saveSession(session);
       if (name === orig) {   // back to the plan's move: drop a saved swap too
@@ -1061,15 +1062,26 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
 
   const startFlow = () => {
     if (bandDay) return bandStart?.();
-    // Fresh: from the top (warm-up), even if some warm-up moves were ticked earlier today for another
-    // workout (check-offs are per day). Part-way through: the first unfinished exercise.
-    if (!anyLogged) return openStep(0);
-    const from = warmCount;
+    // Fresh: the first warm-up move not ticked for this workout. Part-way through: the first unfinished exercise.
+    const from = anyLogged ? warmCount : 0;
     let k = steps.findIndex((st, j) => j >= from && !stepDone(st));
     if (k < 0) k = steps.findIndex(st => !stepDone(st));
     openStep(k < 0 ? warmCount : k);
   };
   app.querySelector('#start-flow').onclick = startFlow;
+  if (!anyLogged && steps.some(st => st.wu && stepDone(st))) app.querySelector('#start-flow').textContent = '▶ Continue workout';
+  // Tap a warm-up card (not its buttons): open that move in the flow, like the exercise cards.
+  app.querySelector('.warmup-section')?.addEventListener('click', (e) => {
+    if (e.target.closest('button, a, input')) return;
+    const c = e.target.closest('.warmup-ex[data-k]');
+    if (c && steps[+c.dataset.k]?.wu) openStep(+c.dataset.k);
+  });
+  // Back from a warm-up swap: straight to the swapped move, so the flow carries on.
+  if (_reopenWu != null) {
+    const k = steps.findIndex(st => st.wu && (st.wu.orig_name || st.wu.name) === _reopenWu);
+    _reopenWu = null;
+    if (k >= 0) openStep(k);
+  }
   // 🏋 Gym today (src/lib/gym_swap.js): swap home stand-ins for better gym versions, or put the plan back.
   app.querySelector('#gym-toggle')?.addEventListener('click', async () => {
     const on = !session.gym_day;
@@ -1171,6 +1183,7 @@ function dayInfoHtml(program, dayData) {
  */
 // Hip warm-up check-offs for today (hip_logs), shared with the Hip tab.
 let _hipDone = {};
+let _reopenWu = null;   // a warm-up swap's original name: reopen that step after the redraw
 let _wuTag = '';        // which workout the warm-up ticks belong to (program:week:day:index)
 let _wuShared = true;   // the day's first workout: ticks from the Hip tab count too
 /** The hip plan's warm-up as workout warm-up rows ("3 × 30 s per side" → 3 sets of 30 s each side). */
@@ -1190,7 +1203,7 @@ function hipWarmupRows() {
 function _warmupBlockHtml(warmup, exMap) {
   const key = (n) => `wu:${today()}:${_wuTag}:${n}`;
   const done = (n, hipId) => { if (hipId && _hipDone[hipId]) return true; try { return sessionStorage.getItem(key(n)) === '1'; } catch { return false; } };
-  const cards = warmup.exercises.map(ex => {
+  const cards = warmup.exercises.map((ex, k) => {
     const lookup = exMap[ex.name.toLowerCase()];
     const _wYtId = ytVideoId(lookup?.video_url);
     const _wLocal = playable(localFor(ex.name));
@@ -1207,7 +1220,7 @@ function _warmupBlockHtml(warmup, exMap) {
     const where = _wuShared && !done(ex.name, ex.hip_id) && doneElsewhere(ex.name, _elsewhere, _sessionId);
     const isDone = done(ex.name, ex.hip_id) || !!where;
     return `
-      <div class="exercise warmup-ex${isDone ? ' done' : ''}" style="padding:12px 14px">
+      <div class="exercise warmup-ex${isDone ? ' done' : ''}" data-k="${k}" style="padding:12px 14px;cursor:pointer">
         <div class="exercise-header" style="align-items:center">
           <div style="flex:1;min-width:0">
             <div class="exercise-name" style="font-size:16px">${ex.name}</div>
