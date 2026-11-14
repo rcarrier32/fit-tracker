@@ -263,10 +263,24 @@ const parseTime = (s) => {
   return m ? (+(m[1] || 0)) * 60 + +m[2] : null;
 };
 
+/** A catalog move's own cues and who it's from (data/build_coach_moves.py: Portia Mitchell, FRC, ATG). */
+function coachCuesHTML(ex, accent) {
+  const c = getCachedSync()?.exerciseByName?.get(String(ex.name).toLowerCase());
+  if (!c?.cues?.length) return '';
+  return `
+    <div style="font-size:10px;letter-spacing:0.12em;color:#64748b;font-weight:700;margin:16px 0 6px">COACHING NOTES${c.credit ? ` · ${esc(c.credit.toUpperCase())}` : ''}</div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      ${c.cues.map(t => `
+        <div style="font-size:13px;color:#cbd5e1;display:flex;gap:7px;line-height:1.45">
+          <span style="flex-shrink:0;font-weight:700;color:${accent}">→</span><span>${esc(t)}</span>
+        </div>`).join('')}
+    </div>`;
+}
+
 /** PJF's own coaching notes and easier alternates, when the user imported them. */
 function pjfNotesHTML(ex, accent) {
   const l = localFor(ex.name);
-  if (!l || (!l.notes.length && !l.alts.length)) return '';
+  if (!l || (!l.notes.length && !l.alts.length)) return coachCuesHTML(ex, accent);
   // PJF writes "-Do this -Then that" and "Level 1 = … Level 2 = …"; give each its own line.
   const lines = l.notes.flatMap(n => n.split(/\s(?=-[A-Z])|\s(?=Level \d+ =)/).map(t => t.replace(/^-/, '').trim()))
     .filter(Boolean);

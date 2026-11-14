@@ -14795,6 +14795,520 @@
       "unilateral": true,
       "plane": "sagittal",
       "hip_focus": true
+    },
+    {
+      "id": "framedfit-seated-bench-hip-lift-outs",
+      "name": "Seated Bench Hip Lift-Outs",
+      "video_url": "https://www.facebook.com/reel/1120461587051506",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Bench+Hip+Lift-Outs+form",
+      "video_own": true,
+      "cues": [
+        "Sit tall on the edge of a bench, arms straight out in front.",
+        "Lift one knee as high as you can, take it out to the side, then back and down. Slow, no leaning back.",
+        "5-8 each side. The whole reel is this move (her NFL athlete, week 1 vs week 2)."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "glutes",
+        "abductors",
+        "abs"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-seated-bench-leg-lift-overs",
+      "name": "Seated Bench Leg Lift-Overs",
+      "video_url": "https://www.facebook.com/reel/1536781117967222",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Bench+Leg+Lift-Overs+form",
+      "video_own": true,
+      "cues": [
+        "Sit on a bench. Lift one leg up and over onto the bench beside you, then back to the floor.",
+        "Stay tall and keep the moving knee bent; control it both ways.",
+        "5-8 each side. The whole reel is this move."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors",
+        "abductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-bosu-single-leg-knee-drive-hold",
+      "name": "BOSU Single-Leg Knee Drive Hold",
+      "video_url": "https://www.facebook.com/reel/1412761060385011",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=BOSU+Single-Leg+Knee+Drive+Hold+form",
+      "video_own": true,
+      "cues": [
+        "Stand on one leg on a BOSU (or a pad). Drive the other knee up to hip height and hold.",
+        "Brace the core first: she shows the wobble stop the moment the core switches on.",
+        "20-30 s each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "abs",
+        "calves"
+      ],
+      "pattern": "balance",
+      "role": "warmup",
+      "equipment": [
+        "bosu_pad"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-bosu-single-leg-balance-with-kettlebell-foot-hold",
+      "name": "BOSU Single-Leg Balance with Kettlebell Foot Hold",
+      "video_url": "https://www.facebook.com/reel/1161788139355756",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=BOSU+Single-Leg+Balance+with+Kettlebell+Foot+Hold+form",
+      "video_own": true,
+      "cues": [
+        "On one leg on a BOSU, hook a light kettlebell on the toes of the raised foot, knee up.",
+        "Hold it level without leaning back. Start very light.",
+        "20-30 s each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "glutes",
+        "abs",
+        "calves"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bosu_pad",
+        "kettlebell"
+      ],
+      "level": 3,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-bosu-bottoms-up-kettlebell-knee-drive",
+      "name": "BOSU Bottoms-Up Kettlebell Knee Drive",
+      "video_url": "https://www.facebook.com/reel/2401400023649258",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=BOSU+Bottoms-Up+Kettlebell+Knee+Drive+form",
+      "video_own": true,
+      "cues": [
+        "On one leg on a BOSU, knee driven up, hold a kettlebell bottoms-up overhead on the same side as the raised knee.",
+        "In the reel at 6-8 s.",
+        "20 s each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "abs",
+        "side_delts"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bosu_pad",
+        "kettlebell"
+      ],
+      "level": 3,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-bosu-tap-downs",
+      "name": "BOSU Tap-Downs",
+      "video_url": "https://www.facebook.com/reel/2401400023649258",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=BOSU+Tap-Downs+form",
+      "video_own": true,
+      "cues": [
+        "Stand on a BOSU. Slowly lower one foot out to the side to tap the floor (or a ball), then stand back up.",
+        "The standing knee stays over the toes; slow down, quick up.",
+        "In the reel at 9-16 s. 6-8 each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "abductors"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bosu_pad"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-kettlebell-half-kneeling-adductor-rock",
+      "name": "Kettlebell Half-Kneeling Adductor Rock",
+      "video_url": "https://www.facebook.com/reel/1251238676855212",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Kettlebell+Half-Kneeling+Adductor+Rock+form",
+      "video_own": true,
+      "cues": [
+        "Half-kneeling, the other leg straight out to the side, kettlebell held at the chest.",
+        "Rock the hips side to side into the inner thigh, then back.",
+        "In the reel at 1-4 s. 8 each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "glutes",
+        "hip_flexors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "kettlebell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-kettlebell-lateral-lunge-reach",
+      "name": "Kettlebell Lateral Lunge Reach",
+      "video_url": "https://www.facebook.com/reel/1251238676855212",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Kettlebell+Lateral+Lunge+Reach+form",
+      "video_own": true,
+      "cues": [
+        "Lateral lunge holding a kettlebell; reach it to the floor beside the bent foot, other leg long.",
+        "Push back up through the bent leg.",
+        "In the reel at 6-11 s (her groin-health series). 6-8 each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "quads",
+        "glutes"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "kettlebell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-seated-banded-dorsiflexion",
+      "name": "Seated Banded Dorsiflexion",
+      "video_url": "https://www.facebook.com/reel/1350178646789004",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Banded+Dorsiflexion+form",
+      "video_own": true,
+      "cues": [
+        "Sit with legs long, band around the forefoot held in both hands.",
+        "Pull the toes back toward you against the band, then point. Slow.",
+        "In the reel at 1-6 s. 10-12 each foot."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "calves",
+      "muscles": [
+        "calves"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "framedfit-seated-kettlebell-leg-extension-hold",
+      "name": "Seated Kettlebell Leg Extension Hold",
+      "video_url": "https://www.facebook.com/reel/1350178646789004",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Kettlebell+Leg+Extension+Hold+form",
+      "video_own": true,
+      "cues": [
+        "Sit on a bench, a light kettlebell hooked on the foot. Straighten the knee and hold the leg up.",
+        "Sit tall; don't lean back to lift it.",
+        "In the reel at 29 s. 15-20 s holds, 2-3 each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "hip_flexors"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bench",
+        "kettlebell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "framedfit-tall-kneeling-kettlebell-hold",
+      "name": "Tall-Kneeling Kettlebell Hold",
+      "video_url": "https://www.facebook.com/reel/3355400421328031",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Tall-Kneeling+Kettlebell+Hold+form",
+      "video_own": true,
+      "cues": [
+        "Tall kneeling on a pad, kettlebell held at the chest.",
+        "Squeeze the glutes, ribs down, hips fully forward. Breathe.",
+        "In the reel at 19 s. 30 s."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abs",
+        "hip_flexors"
+      ],
+      "pattern": "isometric",
+      "role": "warmup",
+      "equipment": [
+        "kettlebell"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "framedfit-standing-banded-hip-flexion",
+      "name": "Standing Banded Hip Flexion",
+      "video_url": "https://www.facebook.com/reel/3355400421328031",
+      "sources": [
+        "framedfit"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Banded+Hip+Flexion+form",
+      "video_own": true,
+      "cues": [
+        "Band anchored low behind you around one ankle. Stand tall and drive that knee up against it, hold 2 s, lower slow.",
+        "Hold something for balance if needed.",
+        "In the reel at 40-43 s. 8-10 each side."
+      ],
+      "credit": "Portia Mitchell (FramedFIT)",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "abs"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "band"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "frc-hip-cars",
+      "name": "Hip CARs",
+      "video_url": "https://youtu.be/NNMW_h-fzLg",
+      "sources": [
+        "frc"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hip+CARs+form",
+      "cues": [
+        "Standing tall, holding a rack or wall. Make the biggest, slowest circle you can with one hip: knee up, out to the side, back, and in.",
+        "Only the hip moves: brace everything else. Full tension.",
+        "3 slow circles each way, each side."
+      ],
+      "credit": "Dr. Andreo Spina (FRC)",
+      "video_own": true,
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors",
+        "abductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "frc-90-90-hip-lift-offs",
+      "name": "90/90 Hip Lift-Offs",
+      "video_url": "https://youtu.be/C3SY7eL0WUk",
+      "sources": [
+        "frc"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Hip+Lift-Offs+form",
+      "cues": [
+        "Sit in 90/90. Keep the torso tall and lift the back knee and foot off the floor, hold 2 s, lower.",
+        "Then lift the front shin off the floor. Lean only as much as you need.",
+        "5 each side."
+      ],
+      "credit": "Dr. Andreo Spina (FRC)",
+      "video_own": true,
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "abductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "atg-tib-raise",
+      "name": "Tib Raise",
+      "video_url": "https://youtu.be/pQcvW08rnAk",
+      "sources": [
+        "atg"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Tib+Raise+form",
+      "cues": [
+        "Back against a wall, heels a foot or two out. Lift the toes as high as you can, lower slow.",
+        "Further from the wall = harder. Builds the shins that protect the knees.",
+        "2-3 sets of 15-25."
+      ],
+      "credit": "Ben Patrick (Knees Over Toes)",
+      "video_own": true,
+      "primary_muscle": "calves",
+      "muscles": [
+        "calves"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "atg-patrick-step",
+      "name": "Patrick Step",
+      "video_url": "https://youtu.be/XI4NdfD3Xfo",
+      "sources": [
+        "atg"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Patrick+Step+form",
+      "cues": [
+        "Stand on a low step on one leg. Slowly lower the other heel to the floor in front by letting the knee travel over the toes, then stand back up.",
+        "Heel of the standing foot stays down. Start on a very low step.",
+        "2 sets of 10-15 each side."
+      ],
+      "credit": "Ben Patrick (Knees Over Toes)",
+      "video_own": true,
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "accessory",
+      "equipment": [
+        "box"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {

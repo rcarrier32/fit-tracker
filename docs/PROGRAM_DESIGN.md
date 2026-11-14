@@ -358,6 +358,26 @@ The generator moves variation slots up a level per phase so the last phase lands
 offers the same movement one level harder or easier. A person can be at different levels on different movements: swap up
 wherever you're already there.
 
+## Mobility with control (Portia Mitchell, FRC, Knees Over Toes)
+
+Coaches who train pro athletes for mobility agree with Griffith on one point: range you can't control doesn't count.
+Their work adds four habits, and their moves are in the catalog (`data/build_coach_moves.py`, research in
+[portia-mitchell-and-similar.md](research/portia-mitchell-and-similar.md)):
+
+1. **Active range before passive stretching.** Lift the limb through the range yourself, slowly, without
+   compensating: Portia's seated bench hip lift-outs and leg lift-overs, FRC's Hip CARs and 90/90 lift-offs.
+   These are warm-up moves (`role: warmup`, `pattern: mobility`).
+2. **Single-leg control on an unstable base.** Brace first, then balance, then add a knee drive, a hooked kettlebell
+   or an overhead bottoms-up kettlebell (BOSU series, levels 2 → 3). That is a variation ladder, like Griffith's.
+3. **Load the end range.** Adductors take load at length (kettlebell half-kneeling adductor rock, kettlebell lateral
+   lunge reach, Copenhagen) because groin trouble comes from tissue that can't handle load, not "tightness".
+4. **Feet, ankles and shins count.** Banded dorsiflexion, tib raises and the Patrick step build the bottom of the chain
+   the knees and hips sit on.
+
+Dosing as these coaches run it: slow and controlled, 5–8 each side, holds 20–30 s, CARs 3 slow circles each way.
+In plans, they're options in the same pools as everything else (no preference): the warm-up builder can pick the
+active-range moves, and the Swap menu offers them as same-pattern neighbours.
+
 ## Exercise choice
 
 - Pick by `pattern` and `role` first, then `primary_muscle`, then the equipment available
