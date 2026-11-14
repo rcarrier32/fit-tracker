@@ -587,6 +587,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     const wasDone = session.done;   // re-finishing an edited workout must not skip a day
     _editingId = null;
     session.done = true;
+    stopRestTimer();   // the workout's over: no rest bar following you to Home
     await saveSession(session);
     if (today_w.mode === 'follow' && !wasDone) {
       await advanceCursor(programId, 'follow');
