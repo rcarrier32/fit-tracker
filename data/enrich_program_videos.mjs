@@ -31,9 +31,12 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import path from 'path';
+import { verdictFor, measuredPriors } from './verify-core.mjs';
 
 const ROOT         = path.resolve(import.meta.dirname, '..');
 const LIBRARY_PATH = path.join(ROOT, 'data/library.json');
+// Measured priors from the verification log nudge each candidate's score (empty until the log has data).
+const PRIORS       = measuredPriors(path.join(ROOT, 'data/verification-log.jsonl'));
 
 // ── args ──
 const args = process.argv.slice(2);
@@ -218,17 +221,26 @@ async function enrich(ex) {
       const goodHint = hits(title, GOOD_TITLE_HINTS);
       const badHint  = hits(title, BAD_TITLE_HINTS);
 
+      // Tier-1 content verdict + measured-prior nudge (nextplay/docs/VIDEO_CONTENT_VERIFICATION.md).
+      const tier1 = verdictFor({ id, title, desc: it.snippet.description, channel, seconds,
+        embeddable: detail?.status?.embeddable !== false }, { move: baseName });
+      const prior = PRIORS.get(channel);
+      const measuredNudge = (prior && prior.n >= 2 && prior.rate != null) ? (prior.rate - 0.5) * 2 : 0;
+
       const score =
         (isSource ? 4 : 0) +
         (trusted  ? 3 : 0) +
         (titleHit ? 1 : 0) +
         (goodHint ? 0.5 : 0) +
         (badHint ? -2 : 0) +
-        Math.max(0, (MAX_SECONDS - seconds) / MAX_SECONDS);
+        Math.max(0, (MAX_SECONDS - seconds) / MAX_SECONDS) +
+        measuredNudge;
 
       seen.set(id, {
         videoId: id, title, channel, seconds, trusted, isSource,
         embeddable: detail?.status?.embeddable !== false,
+        verdict: tier1.verdict, move_match: tier1.move_match, flags: tier1.flags,
+        measuredRate: prior?.rate ?? null, measuredN: prior?.n ?? 0,
         url: `https://youtu.be/${id}`,
         score: +score.toFixed(2),
       });
@@ -236,6 +248,7 @@ async function enrich(ex) {
   }
   return [...seen.values()]
     .filter(c => c.embeddable && c.seconds <= MAX_SECONDS)
+    .filter(c => c.verdict !== 'reject')   // drop avoid-list / wrong-exercise picks before review
     .sort((a, b) => b.score - a.score)
     .slice(0, TOP);
 }
