@@ -163,7 +163,20 @@ function beep() {
 }
 
 const setsDoneCount = (ex) => (ex.sets || []).filter(st => st?.done).length;
-const exerciseDone = (ex) => setsDoneCount(ex) >= (parseInt(ex.target_sets) || 3);
+// Finished = every set ticked or skipped. A skipped set is one left blank when you tapped "Done":
+// it is never logged as done, so progression and learning only see what you actually did.
+const exerciseDone = (ex) => (ex.sets || []).filter(st => st?.done || st?.skipped).length >= (parseInt(ex.target_sets) || 3);
+/** "Done" on an exercise: the sets you didn't tick become skipped (not done). Returns how many. */
+function skipRest(ex) {
+  const n = Math.max(parseInt(ex.target_sets) || 3, (ex.sets || []).length);
+  let k = 0;
+  for (let j = 0; j < n; j++) { const st = setAt(ex, j); if (!st.done && !st.skipped) { st.skipped = true; k++; } }
+  return k;
+}
+/** Show a card's blank sets as skipped (dimmed, –), without a redraw. */
+function paintSkipped(card) {
+  card?.querySelectorAll('.set-row:not(.done)').forEach(r => { r.classList.add('skipped'); const c = r.querySelector('.check'); if (c) c.textContent = '–'; });
+}
 
 /** Set k of an exercise, creating any missing sets before it (sparse arrays break Stats). */
 function setAt(ex, k) {
@@ -717,6 +730,8 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       }
 
       set.done = !set.done;
+      delete set.skipped;   // ticking a skipped set means you did it after all
+      e.target.closest('.set-row').classList.remove('skipped');
       if (set.done) set.at = Date.now(); else delete set.at;   // set times give real session length (src/lib/learn.js)
       await saveSession(session);
       _tickClock();
@@ -955,7 +970,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       paintRest();
     };
     const openRow = (m, s) => cards[m]?.querySelectorAll('.set-row')[s];
-    const notDone = (row) => row && !row.classList.contains('done');
+    const notDone = (row) => row && !row.classList.contains('done') && !row.classList.contains('skipped');
     function goToNextSet(n, s) {
       let row = null;
       for (let m = n + 1; m < cards.length && !row; m++) if (notDone(openRow(m, s))) row = openRow(m, s);     // same round
@@ -980,14 +995,17 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       next,
       prev: prevOf(a),
       rx: formatTarget(exs[0]),
-      doneLabel: `✓ Mark ${/superset/i.test(label) ? 'superset' : 'circuit'} done`,
+      doneLabel: `✓ ${/superset/i.test(label) ? 'Superset' : 'Circuit'} done · blank sets skipped`,
       // Each move's ⋯ opens its options (Swap, notes, sets, This hurts…), same menu as its Lift card.
       onMore: more(0),
       onSwap: more(0, true),
       isDone: () => exs.every(exerciseDone),
+      // Done: blank sets are skipped, not logged (leaving a set blank means you skipped it).
       setDone: async (v) => {
         if (!v) return;
-        for (const c of cards) c?.querySelectorAll('.set-row:not(.done) .check').forEach(x => x.click());
+        exs.forEach((x, n) => { skipRest(x); paintSkipped(cards[n]); });
+        stopRestTimer();
+        await saveSession(session);
       },
       mountSets: mount(0),
       also: exs.slice(1).map((ex, n) => ({ ex: { name: ex.name, ...vid(ex), notes: ex.notes }, rx: formatTarget(ex), mountSets: mount(n + 1), onMore: more(n + 1), onSwap: more(n + 1, true) })),
@@ -1062,11 +1080,14 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       onSwap: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap, { swapNow: true }); },
       rx: formatTarget(ex),
       isDone: () => exerciseDone(ex),
-      // ✓ Mark exercise done = tap each open set's ○, so prefilled weights and reps are logged.
+      // Done: blank sets are skipped, not logged (leaving a set blank means you skipped it).
       setDone: async (v) => {
         if (!v || !card) return;
-        card.querySelectorAll('.set-row:not(.done) .check').forEach(c => c.click());
+        skipRest(ex); paintSkipped(card);
+        stopRestTimer();
+        await saveSession(session);
       },
+      doneLabel: '✓ Done · blank sets skipped',
       mountSets: (el, changed) => {
         card = exerciseCard(ex, i, exMap, prevRef, allTimeBestE1RM);
         card.classList.add('in-sheet');
@@ -2031,7 +2052,7 @@ function showUndo(btn, session, i, setIdx) {
 
 function applyCompactState(card, ex) {
   const targetSets = parseInt(ex.target_sets) || 3;
-  const doneCount = (ex.sets || []).filter(s => s?.done).length;
+  const doneCount = (ex.sets || []).filter(s => s?.done || s?.skipped).length;
   if (doneCount < targetSets) return;
   const $summary = card.querySelector('.exercise-summary');
   if ($summary) {
@@ -2080,11 +2101,11 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   for (let s = 0; s < sets && timed; s++) {
     const set = ex.sets[s] || {};
     setRows += `
-      <div class="set-row timed ${set.done ? 'done' : ''}">
+      <div class="set-row timed ${set.done ? 'done' : set.skipped ? 'skipped' : ''}">
         <span class="set-num">${s + 1}</span>
         <span class="timed-target">${set.secs ? fmtSecs(set.secs) : fmtSecs(target)}${ex.intervals ? '<small class="muted"> round</small>' : sidesOf(ex) ? `<small class="muted"> each ${sidesOf(ex)}</small>` : ''}</span>
         <button class="timer-btn" data-set="${s}" data-secs="${target}">▶ Start</button>
-        <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>
+        <button class="check" data-set="${s}">${set.done ? '✓' : set.skipped ? '–' : '○'}</button>
       </div>`;
   }
   for (let s = 0; s < sets && !timed; s++) {
@@ -2097,13 +2118,13 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
     const wPh  = wVal === '' ? 'lb'   : '';
     const rPh  = rVal === '' ? 'reps' : '';
     setRows += `
-      <div class="set-row ${done}">
+      <div class="set-row ${done || (set.skipped ? 'skipped' : '')}">
         <span class="set-num">${s+1}</span>
         <input class="set-input" type="number" inputmode="decimal" placeholder="${wPh}" data-set="${s}" data-field="weight" value="${wVal}">
         <button class="inc-btn" data-set="${s}" data-step="${incStep}">+${incStep}</button>
         <input class="set-input" type="number" inputmode="numeric" placeholder="${rPh}" data-set="${s}" data-field="reps" value="${rVal}">
         <button class="rpe-btn" data-set="${s}">${set.rpe ? '@' + set.rpe : 'RPE'}</button>
-        <button class="check" data-set="${s}">${set.done ? '✓' : '○'}</button>
+        <button class="check" data-set="${s}">${set.done ? '✓' : set.skipped ? '–' : '○'}</button>
       </div>
     `;
   }
