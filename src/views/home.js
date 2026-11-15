@@ -20,7 +20,7 @@ import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName, catchUpOffer, setCatchUp } from './schedule.js';
 import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, isGameLabel } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -195,6 +195,13 @@ async function dailyCardData(todaysSessions) {
     const adj = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) });
     adjust = adj.note ? (adj.game ? 'game' : 'training') : null;
   }
+  // Tomorrow's game gets prep moves in today's routine (daily_adjust.js prepForTomorrow): say so on the card.
+  let prepFor = null;
+  if (st.state === 'todo') {
+    const slots = (await pref('schedule'))?.slots;
+    const t = slots?.[(new Date().getDay() + 1) % 7];
+    if (t && isGameLabel(t.label)) prepFor = t.label.toLowerCase();
+  }
   const letters = program.days.map((d, k) => dayLetter(d.day_name, k));
   // Done: today is the finished session's day, whatever the cursor says (it has moved on, and
   // "next workout" on Daily Mobility's own finish screen shows the cursor's day on Lift).
@@ -206,7 +213,7 @@ async function dailyCardData(todaysSessions) {
   const bballWeek = sched?.slots?.some(sl => sl?.label === 'Basketball');
   const hoops = !bballWeek && [1, 3, 5].includes(new Date().getDay()) && (await findProgramById('basketball_warmup'))
     ? { done: todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped) } : null;
-  return { program, day, rows, st, streak, adjust, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
+  return { program, day, rows, st, streak, adjust, prepFor, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
     minutes: program.session_length_min || 13 };
 }
 
@@ -255,7 +262,8 @@ function renderDailyCard(d) {
   return `
     <div class="card" style="margin-bottom:12px">
       <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
-      ${d.adjust ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ ${d.adjust === 'game' ? "Recovery from yesterday's game built in" : "Adjusted for yesterday's training"}</div>` : ''}
+      ${d.adjust || d.prepFor ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ ${[d.adjust === 'game' ? "Recovery from yesterday's game built in" : d.adjust ? "Adjusted for yesterday's training" : '',
+        d.prepFor ? `${d.adjust ? 'r' : 'R'}eady for tomorrow's ${escH(d.prepFor)}` : ''].filter(Boolean).join(' · ')}</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
