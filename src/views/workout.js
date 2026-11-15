@@ -5,7 +5,7 @@ import { pref, put, del, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, isGameLabel } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
@@ -373,7 +373,16 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const prep = prepForTomorrow(adj.rows, tSlot ? { label: tSlot.label || null, programId: tSlot.program_id || null } : null, lookup,
         { restToday: /rest/i.test(slots?.[dow]?.label || ''), load });
       session.exercises = prep.rows;
-      const note = [adj.note, prep.note].filter(Boolean).join(' ');
+      // No workout today (rest or recovery label, not a game, which has its own warm-up): the hip plan's
+      // warm-up folds in here, only what today's routine doesn't already cover.
+      let hipNote = null;
+      const hipOn = (await pref('hip_progress')) || Object.keys((await pref('hip_logs')) || {}).length;
+      const todaySlot = slots?.[dow];
+      if (hipOn && todaySlot && !todaySlot.program_id && !isGameLabel(todaySlot.label)) {
+        const fold = foldHipWarmup(session.exercises, hipWarmupRows());
+        session.exercises = fold.rows; hipNote = fold.note;
+      }
+      const note = [adj.note, prep.note, hipNote].filter(Boolean).join(' ');
       if (note) session.adjust_note = note;
     }
   }
@@ -785,6 +794,13 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         if (!ex.intervals && !midRound) startRestTimer(card, ex); else stopRestTimer();
         applyCompactState(card, ex);
         showUndo(e.target, session, i, setIdx);
+        // A hip-plan move folded into Daily Mobility, or a row that covers one (Cat Camel for Cat-Cow): check it on the Hip tab too.
+        const hipIds = [ex.hip_id, ...(ex.covers_hip || [])].filter(Boolean);
+        if (hipIds.length && exerciseDone(ex)) {
+          const logs = (await pref('hip_logs')) || {};
+          logs[today()] = { ...(logs[today()] || {}), ...Object.fromEntries(hipIds.map(id => [id, true])) };
+          await pref('hip_logs', logs);
+        }
       } else {
         // Un-check: clear the timer only if it is running on this exercise
         if (_rest?.i === i) stopRestTimer();

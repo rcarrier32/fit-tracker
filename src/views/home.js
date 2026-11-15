@@ -264,6 +264,7 @@ function renderDailyCard(d) {
       <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
       ${d.adjust || d.prepFor ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ ${[d.adjust === 'game' ? "Recovery from yesterday's game built in" : d.adjust ? "Adjusted for yesterday's training" : '',
         d.prepFor ? `${d.adjust ? 'r' : 'R'}eady for tomorrow's ${escH(d.prepFor)}` : ''].filter(Boolean).join(' · ')}</div>` : ''}
+      ${d.hipIn ? '<div class="muted" style="font-size:12px;margin-top:2px">🦴 Hip warm-up included today</div>' : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
@@ -402,6 +403,12 @@ export async function renderHome(app) {
   }
   // Daily Mobility is its own card unless it's already the program on the Today's Workout card.
   const daily = today_w.program?.id === DAILY_ID ? null : await dailyCardData(todaysSessions);
+  // No workout and no game today: the hip warm-up is folded into Daily Mobility (workout.js foldHipWarmup),
+  // so it isn't listed separately, unless Daily Mobility was skipped.
+  const todaySlot = schedule?.slots?.[new Date().getDay()];
+  const hipInDaily = !!hip && !hipInWorkout && !!daily && daily.st.state !== 'skipped'
+    && today_w.type === 'tag' && !isGameLabel(today_w.tag) && !!todaySlot && !todaySlot.program_id;
+  if (daily) daily.hipIn = hipInDaily;
   const actualTdee = computeActualTdee(allBody, allMeals);
 
   // Cards in the order you chose (Customize Home, pref 'home_layout'; src/lib/home_layout.js).
@@ -453,7 +460,7 @@ export async function renderHome(app) {
             <button id="open-tos" class="btn ghost" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">Open →</button>
           </div>
         </div>` : ''}
-      ${hip && !hipInWorkout ? hipRow(hip) : ''}
+      ${hip && !hipInWorkout && !hipInDaily ? hipRow(hip) : ''}
     </div>
     `,
     body: `

@@ -176,3 +176,37 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
   }
   return { rows: out, note: notes.length ? notes.join(' ') : null };
 }
+
+/**
+ * A day with no workout: the hip plan's warm-up folds into Daily Mobility instead of being a separate list.
+ * Only its moves today's routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor
+ * hold covers the hip-flexor stretches, pigeon or figure-4 covers the piriformis…). The walk stays out: on a
+ * rest day the note already suggests one. Each added row keeps its hip_id, so ticking it checks it on the Hip tab.
+ * @param rows     today's rows
+ * @param hipRows  the hip plan's warm-up ({ name, hip_id, sets, time, reps, notes })
+ */
+const HIP_COVER = [
+  [/walk|bike/i, /.^/],   // never added (see above)
+  [/cat.?cow/i, /cat.?(cow|camel)/i],
+  [/pelvic tilt/i, /pelvic tilt/i],
+  [/hip flexor/i, /hip flexor|couch stretch/i],
+  [/piriformis/i, /piriformis|pigeon|figure.?4/i],
+  [/hamstring/i, /hamstring/i],
+];
+export function foldHipWarmup(rows, hipRows) {
+  const out = rows.map(r => ({ ...r }));
+  const added = [];
+  for (const h of hipRows || []) {
+    const rule = HIP_COVER.find(([m]) => m.test(h.name));
+    if (rule && rule[0].source === 'walk|bike') continue;
+    const cover = rule ? out.find(r => rule[1].test(r.name)) : out.find(r => r.name.toLowerCase() === h.name.toLowerCase());
+    if (cover) { (cover.covers_hip ||= []).push(h.hip_id); continue; }   // doing that row checks this one on the Hip tab
+    const at = out.findLastIndex(r => /single.?leg (stance|balance)/i.test(r.name));
+    out.splice(at < 0 ? out.length : at, 0, { name: h.name, orig_name: h.name, sets: [], target_sets: h.sets || 1,
+      target_reps: h.reps || '', time: h.time || null, hip_id: h.hip_id, hip_add: true,
+      notes: [h.notes, 'From your hip plan\'s warm-up: ticking it here checks it on the Hip tab.'].filter(Boolean).join(' ') });
+    added.push(h.name);
+  }
+  return { rows: out, note: added.length ? `Your hip warm-up is in here today (no workout): added ${added.join(', ')}; the rest is already covered.`
+    : 'Your hip warm-up is covered by today\'s routine.' };
+}

@@ -1,6 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow } from '../src/lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -75,5 +75,17 @@ ok('training tomorrow → unchanged', prepForTomorrow(A, { label: null, programI
 p = prepForTomorrow(A, null, lookup, { restToday: true, load: legs });
 ok('rest day after heavy legs → walk suggested, rows unchanged', /walk or ride/.test(p.note || '') && p.rows === A, p.note);
 ok('rest day after an easy day → nothing', prepForTomorrow(A, null, lookup, { restToday: true, load: upper }).note === null);
+// No workout today: the hip warm-up folds in, only what isn't covered.
+const HIP = [{ name: 'Walk or Easy Bike', hip_id: 'w', time: '5:00' }, { name: 'Cat-Cow', hip_id: 'c', reps: '10' }, { name: 'Pelvic Tilts', hip_id: 'p', reps: '15' },
+  { name: 'Half-Kneeling Hip Flexor Stretch', hip_id: 'h', sets: 3, time: '30s' }, { name: 'Thomas Hip Flexor Stretch', hip_id: 't', sets: 2, time: '30s' },
+  { name: 'Piriformis Stretch', hip_id: 'pi', sets: 3, time: '30s' }, { name: 'Hamstring Stretch', hip_id: 'hs', sets: 3, time: '30s' }];
+let f = foldHipWarmup(A, HIP);
+const addedH = f.rows.filter(x => x.hip_add).map(x => x.name);
+ok('Daily A: adds pelvic tilts, piriformis, hamstring (cat camel and hip-flexor bridge cover the rest; no walk)',
+  ['Pelvic Tilts', 'Piriformis Stretch', 'Hamstring Stretch'].every(n => addedH.includes(n)) && !addedH.some(n => /walk|cat|hip flexor/i.test(n)), addedH.join(', '));
+ok('folded rows keep their hip_id', f.rows.filter(x => x.hip_add).every(x => x.hip_id));
+ok('covered moves ride on the row that covers them', f.rows.find(x => x.name === 'Cat Camel')?.covers_hip?.includes('c'), JSON.stringify(f.rows.find(x => x.name === 'Cat Camel')));
+f = foldHipWarmup(C, HIP);
+ok('Daily C (pigeon, hamstring floss): piriformis and hamstring covered', !f.rows.some(x => x.hip_add && /piriformis|hamstring/i.test(x.name)), f.rows.filter(x => x.hip_add).map(x => x.name).join(', '));
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

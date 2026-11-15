@@ -298,6 +298,13 @@ not skipped sessions):
   which clears soreness better than sitting still.
 - A training day tomorrow adds nothing: that day's own warm-up prepares it.
 
+**No workout today, hip warm-up folds in** (`foldHipWarmup`): on a rest or recovery day (a labelled slot that isn't a game,
+which has its own warm-up), the hip plan's warm-up joins Daily Mobility instead of being a separate list. Only its moves
+the routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor hold covers the hip-flexor stretches,
+pigeon or figure-4 covers the piriformis, any hamstring move covers the hamstring stretch); the walk stays out, since the
+rest-day note suggests one. Ticking an added move, or a row that covers one, checks it on the Hip tab. Home hides the
+separate "Hip warm-up" row those days and says "Hip warm-up included today" (it comes back if Daily Mobility is skipped).
+
 A note at the top says what changed and why. A rest day after an easy day changes nothing. The adjustment is
 decided once, when the day's session starts.
 
