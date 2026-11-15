@@ -163,15 +163,22 @@ function beep() {
 }
 
 const setsDoneCount = (ex) => (ex.sets || []).filter(st => st?.done).length;
-// Finished = every set ticked or skipped. A skipped set is one left blank when you tapped "Done":
+// Finished = every set ticked or skipped. A skipped set is one left blank when you tapped "Next →":
 // it is never logged as done, so progression and learning only see what you actually did.
 const exerciseDone = (ex) => (ex.sets || []).filter(st => st?.done || st?.skipped).length >= (parseInt(ex.target_sets) || 3);
-/** "Done" on an exercise: the sets you didn't tick become skipped (not done). Returns how many. */
+/** "Next →" on an unfinished exercise: the sets you didn't tick become skipped (not done). Returns how many. */
 function skipRest(ex) {
   const n = Math.max(parseInt(ex.target_sets) || 3, (ex.sets || []).length);
   let k = 0;
   for (let j = 0; j < n; j++) { const st = setAt(ex, j); if (!st.done && !st.skipped) { st.skipped = true; k++; } }
   return k;
+}
+/** "Done" on an exercise: tick every set not ticked yet, through the normal ✓ (same numbers, timers, Hip tab). */
+async function tickRest(card) {
+  for (const c of [...(card?.querySelectorAll('.set-row:not(.done) .check') || [])]) {
+    c.click();
+    await new Promise(r => setTimeout(r, 30));   // each tick saves before the next copies its numbers
+  }
 }
 /** Show a card's blank sets as skipped (dimmed, –), without a redraw. */
 function paintSkipped(card) {
@@ -1022,14 +1029,19 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       next,
       prev: prevOf(a),
       rx: formatTarget(exs[0]),
-      doneLabel: `✓ ${/superset/i.test(label) ? 'Superset' : 'Circuit'} done · blank sets skipped`,
+      doneLabel: `✓ ${/superset/i.test(label) ? 'Superset' : 'Circuit'} done`,
       // Each move's ⋯ opens its options (Swap, notes, sets, This hurts…), same menu as its Lift card.
       onMore: more(0),
       onSwap: more(0, true),
       isDone: () => exs.every(exerciseDone),
-      // Done: blank sets are skipped, not logged (leaving a set blank means you skipped it).
+      // Done: every set left is done. Next →: the ones left blank are skipped, not logged.
       setDone: async (v) => {
         if (!v) return;
+        for (const c of cards) await tickRest(c);
+        stopRestTimer();
+        await saveSession(session);
+      },
+      onSkip: async () => {
         exs.forEach((x, n) => { skipRest(x); paintSkipped(cards[n]); });
         stopRestTimer();
         await saveSession(session);
@@ -1107,14 +1119,20 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       onSwap: (close) => { _noRefresh = true; close(false); openExerciseMenu(session, i, allExercises, exMap, { swapNow: true }); },
       rx: formatTarget(ex),
       isDone: () => exerciseDone(ex),
-      // Done: blank sets are skipped, not logged (leaving a set blank means you skipped it).
+      // Done: every set left is done. Next →: the ones left blank are skipped, not logged.
       setDone: async (v) => {
         if (!v || !card) return;
+        await tickRest(card);
+        stopRestTimer();
+        await saveSession(session);
+      },
+      onSkip: async () => {
+        if (!card) return;
         skipRest(ex); paintSkipped(card);
         stopRestTimer();
         await saveSession(session);
       },
-      doneLabel: '✓ Done · blank sets skipped',
+      doneLabel: '✓ Done',
       mountSets: (el, changed) => {
         card = exerciseCard(ex, i, exMap, prevRef, allTimeBestE1RM);
         card.classList.add('in-sheet');

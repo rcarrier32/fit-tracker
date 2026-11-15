@@ -293,6 +293,10 @@ not skipped sessions):
 session with it, and so does Daily Mobility now (after the balance finish, and after a recovery day's walk). Posterior
 Pelvic Tilt Breathing on Day B stays where it is: that's a positional pelvic reset, not the calm-down.
 
+**Done vs Next → on an exercise** (v196): **✓ Done** ticks every set left, through the normal ✓ (numbers carried
+down, timers, Hip tab). **Next →** on an unfinished exercise marks the sets you left blank as *skipped*: never logged as
+done, so progression and learning only see what you did. Same for a superset or circuit as a whole.
+
 **Daily Mobility looks both ways.** It also reads tomorrow's slot in your week (`prepForTomorrow`):
 - **The day before a game** (Basketball or another sport label): up to 3 prep moves for what a pickup game
   loads most, skipping any today's routine already covers: **Hip CARs** (hips through full rotation),

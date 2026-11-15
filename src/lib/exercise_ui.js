@@ -309,6 +309,7 @@ function pjfNotesHTML(ex, accent) {
  * @param {() => boolean}  [o.isDone]
  * @param {(v: boolean) => Promise<void>} [o.setDone]
  * @param {() => ({ name: string, open: () => void } | null)} [o.next]  next undone exercise
+ * @param {() => Promise<void>} [o.onSkip]  Next → before the exercise is done: runs first (blank sets become skipped)
  * @param {boolean}  [o.autoNext]      FKH flow: finishing the last set moves on to next() by itself
  * @param {(el: HTMLElement, changed: () => void) => void} [o.mountSets]
  *                                    plan draws its own set logging (Lift: weight/reps) into el
@@ -647,7 +648,7 @@ export function openExerciseDetail(ex, o = {}) {
         paint();
       });
       $foot.querySelector('#ex-next')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
-      $foot.querySelector('#ex-skip')?.addEventListener('click', () => { clearTimeout(autoT); close(false); next.open(); });
+      $foot.querySelector('#ex-skip')?.addEventListener('click', async () => { clearTimeout(autoT); await o.onSkip?.(); close(false); next.open(); });
       $foot.querySelector('#ex-prev')?.addEventListener('click', () => { clearTimeout(autoT); close(false); prev.open(); });
       $foot.querySelector('#ex-finish')?.addEventListener('click', () => o.finish.onClick(close));
       $foot.querySelector('#ex-close')?.addEventListener('click', () => close());
