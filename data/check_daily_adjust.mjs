@@ -73,8 +73,10 @@ p = prepForTomorrow(C, { label: 'Basketball' }, lookup);
 ok('Daily C already has a lateral lunge: no adductor prep', !p.rows.some(x => x.prep_add && x.name === 'Adductor Rock Back'), p.note);
 ok('training tomorrow → unchanged', prepForTomorrow(A, { label: null, programId: 'lean_tone_home_6wk' }, lookup).note === null);
 p = prepForTomorrow(A, null, lookup, { restToday: true, load: legs });
-ok('rest day after heavy legs → walk suggested, rows unchanged', /walk or ride/.test(p.note || '') && p.rows === A, p.note);
-ok('rest day after an easy day → nothing', prepForTomorrow(A, null, lookup, { restToday: true, load: upper }).note === null);
+ok('rest day after heavy legs → walk suggested', /walk or ride/.test(p.note || ''), p.note);
+ok('rest day → starts with the PJF foam roll circuit', p.rows[0].name === 'Foam Roller Circuit' && p.rows.length === A.length + 1);
+ok('rest day after an easy day → no walk note', prepForTomorrow(A, null, lookup, { restToday: true, load: upper }).note === null);
+ok('not a rest day → no foam roll', !prepForTomorrow(A, null, lookup, { load: upper }).rows.some(x => /foam/i.test(x.name)));
 // No workout today: the hip warm-up folds in, only what isn't covered.
 const HIP = [{ name: 'Walk or Easy Bike', hip_id: 'w', time: '5:00' }, { name: 'Cat-Cow', hip_id: 'c', reps: '10' }, { name: 'Pelvic Tilts', hip_id: 'p', reps: '15' },
   { name: 'Half-Kneeling Hip Flexor Stretch', hip_id: 'h', sets: 3, time: '30s' }, { name: 'Thomas Hip Flexor Stretch', hip_id: 't', sets: 2, time: '30s' },

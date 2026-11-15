@@ -140,6 +140,8 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
  *   when today's routine doesn't already cover them: hips through their full rotation (Hip CARs), the groin
  *   (Adductor Rock Back: groin strains are the classic pickup injury) and ankle dorsiflexion (Hip Hinge
  *   Ankle Rocker: cutting and landing need it). Low intensity, no extra impact.
+ * - Every rest day starts with PJF's 5-minute foam roll circuit (from PJF's Recovery + Correctives day):
+ *   quads, glutes, calves, lats, upper back. Rest & Recover is the recovery day, so it gets the release work.
  * - A rest day after a big one (9+ leg sets or impact work): suggest an easy 15-20 min walk or ride on top,
  *   which clears soreness better than sitting still.
  * @param rows      today's rows (after adjustDaily)
@@ -152,6 +154,7 @@ export const GAME_PREP = [
   { name: 'Adductor Rock Back', target_sets: 1, target_reps: '8 each side', area: 'groin', covered: /adductor|groin|lateral lunge|cossack/i },
   { name: 'Hip Hinge Ankle Rocker', target_sets: 1, target_reps: '10 each side', area: 'ankles', covered: /ankle rocker|dorsiflex|ankle mobility/i },
 ];
+export const FOAM_ROLL = 'Foam Roller Circuit';
 export const isGameLabel = (label) => /basketball|pickup|game|soccer|tennis|pickleball/i.test(label || '');
 
 export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, load = null } = {}) {
@@ -170,6 +173,10 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
     notes.push(added.length
       ? `Getting you ready for tomorrow's ${tomorrow.label.toLowerCase()}: added ${added.join(', ')}. Easy and controlled, no extra jumping.`
       : `Tomorrow is ${tomorrow.label.toLowerCase()}: today's routine already covers hips, groin and ankles. Keep it easy.`);
+  }
+  if (restToday && !out.some(r => /foam roll/i.test(r.name)) && lookup(FOAM_ROLL)) {
+    out = [{ name: FOAM_ROLL, orig_name: FOAM_ROLL, sets: [], target_sets: 1, target_reps: '', time: '5:00',
+      notes: 'Rest & Recover: quads, glutes, calves, lats, upper back. Slow passes, breathe, about 30s an area.', prep_add: true }, ...out];
   }
   if (restToday && load && (load.legSets >= 9 || load.impact >= 3)) {
     notes.push('Rest day after a big one: an easy 15-20 min walk or ride on top of this helps the legs recover.');
