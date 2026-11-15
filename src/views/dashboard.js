@@ -184,6 +184,8 @@ function openPastWorkout(s, onDone) {
       if (!confirm(isToday ? 'Delete this workout? Its sets leave your history, and the program steps back to this day.'
         : 'Delete this workout? Its sets leave your history. This can\'t be undone.')) return;
       await del('sessions', s.id);
+      // Its watch calories (finish screen ⌚) go with it.
+      for (const c of (await getAll('cardio')).filter(c => c.session_id === s.id)) await del('cardio', c.id);
       if (isToday && !['daily_mobility', 'basketball_warmup'].includes(s.program_id)) {
         await retreatCursor(s.program_id);
         if (s.merged_day) await retreatCursor(s.program_id);

@@ -330,6 +330,12 @@ when their area is sore (from a note) or was trained hard the day before (`daily
 A knee only counts when the note says the knee itself is sore or hurts ("from above the knee up to the
 hip flexor" names the quads and hip flexors).
 
+**⌚ Calories from your watch** (Garmin): logged as that day's Strength activity, the same as Home's + Activity, so it
+raises the calorie budget. One entry per workout (`cardio.session_id`): editing replaces it, clearing or deleting the
+workout removes it. No automatic Garmin sync: Garmin only opens its data to approved business partners, and a web app
+can't write to Health Connect, so the watch keeps heart rate and calories and Fit Tracker keeps sets and the plan
+(paste Share summary into the Garmin activity's notes to have both in one place).
+
 **Share summary** sends a short text of the workout (best set per exercise, PRs, time) through the
 phone's share sheet, or copies it.
 

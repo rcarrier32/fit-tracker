@@ -1,7 +1,7 @@
 /**
  * Workout view: today's session — exercises, sets logging, RPE, video links.
  */
-import { pref, put, getByIndex, getAll } from '../db.js';
+import { pref, put, del, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
@@ -2452,6 +2452,10 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
           <div style="flex:1;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.name)}</div>
           ${thumb(x, i, 'helped')}${thumb(x, i, 'hurt')}
         </div>`).join('')}</div>` : ''}
+      <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+        <label for="watch-kcal" style="font-size:13px;flex:1">⌚ Calories from your watch <span class="muted" style="font-size:11px">(adds to today's budget)</span></label>
+        <input id="watch-kcal" type="number" inputmode="numeric" min="0" placeholder="kcal" style="width:90px">
+      </div>
       <textarea id="feel-note" rows="2" placeholder="Anything to note? e.g. quads sore from yesterday, slept badly" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
       <div id="note-read" class="muted" style="font-size:12px;margin-top:4px">${esc(noteSummary(readNote(session.note)))}</div>
       <div id="feel-saved" class="muted" style="font-size:11px;margin-top:4px;min-height:14px">Saves as you tap and type.</div>
@@ -2510,6 +2514,25 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
     await saveSession(session);
     savedTick();
   });
+  // ⌚ Calories from the watch (Garmin): logged as today's Strength activity, the same as Home's + Activity,
+  // so it raises the calorie budget. One entry per workout (session_id): editing replaces it, clearing removes it.
+  const $kcal = app.querySelector('#watch-kcal');
+  if ($kcal && session.id != null) {
+    const mine = async () => (await getAll('cardio')).find(c => c.session_id === session.id) || null;
+    mine().then(c => { if (c) $kcal.value = c.calories_burned; });
+    let kcalTimer = null;
+    $kcal.addEventListener('input', () => {
+      clearTimeout(kcalTimer);
+      kcalTimer = setTimeout(async () => {
+        const kcal = parseInt($kcal.value), old = await mine();
+        if (kcal > 0) {
+          await put('cardio', { ...(old || {}), date: session.date, activity: 'strength', intensity: 'moderate',
+            duration_min: sessionMinutes(session) || old?.duration_min || 45, calories_burned: kcal, source: 'watch', session_id: session.id });
+        } else if (old) await del('cardio', old.id);
+        savedTick();
+      }, 600);
+    });
+  }
   // The note saves as you type (no submit needed) and shows what the app read from it.
   let noteTimer = null;
   const saveNote = async () => {
