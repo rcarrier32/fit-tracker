@@ -749,7 +749,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
     const L = letters[todayIdx];
     const head = (t) => `<div style="margin-top:6px;font-size:18px">😴 ${t}</div>`;
     const small = `<button class="btn ghost" data-action="schedule" style="width:auto;padding:4px 10px;font-size:12px;margin-top:8px">Edit week</button>`;
-    if (st.state === 'done') return `${head('Rest &amp; recover ✓')}
+    if (st.state === 'done') return `${head('Rest &amp; Recover ✓')}
       <div class="muted" style="font-size:12px">Daily Mobility Day ${L} done${st.minutes ? ` · ${st.minutes} min` : ''} · tomorrow: Day ${letters[nextIdx]}</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn ghost" id="daily-open" style="flex:1">View</button>
         <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button></div>${catchUpRow(catchUp)}`;
@@ -757,11 +757,11 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
       <div class="muted" style="font-size:12px">Daily Mobility skipped · Day ${L} waits for tomorrow</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn ghost" id="daily-open" style="flex:1">Do it anyway</button>
         <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button></div>${catchUpRow(catchUp)}`;
-    if (st.state === 'started') return `${head('Rest &amp; recover')}
+    if (st.state === 'started') return `${head('Rest &amp; Recover')}
       <div class="muted" style="font-size:12px">Daily Mobility · ${st.done} of ${st.total}${st.next ? ` · next: ${escH(st.next.name)}` : ''}</div>
       <div class="bar"><div class="bar-fill" style="width:${Math.round(st.done / Math.max(1, st.total) * 100)}%"></div></div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn" id="daily-open" style="flex:1">▶ Resume</button></div>${small}${catchUpRow(catchUp)}`;
-    return `${head('Rest &amp; recover')}
+    return `${head('Rest &amp; Recover')}
       <div class="muted" style="font-size:12px">Daily Mobility · Day ${L} · ${daily.minutes} min</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>

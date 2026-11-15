@@ -305,7 +305,7 @@ pigeon or figure-4 covers the piriformis, any hamstring move covers the hamstrin
 rest-day note suggests one. Ticking an added move, or a row that covers one, checks it on the Hip tab. Home hides the
 separate "Hip warm-up" row those days (it comes back if Daily Mobility is skipped).
 
-**Rest day on Home:** Today's Workout *is* Daily Mobility: "😴 Rest & recover · Daily Mobility · Day A · 14 min" with
+**Rest day on Home:** Today's Workout *is* Daily Mobility: "😴 Rest & Recover · Daily Mobility · Day A · 14 min" with
 Start / Skip today, and no separate Daily Mobility card. The Home cards don't explain the adjustments (the user
 didn't want that text); the routine's own screen says what changed.
 
