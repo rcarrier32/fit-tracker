@@ -206,7 +206,9 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
         notes: `Recovery day: ${swap[3]}` });
     }
     if (big && !out.some(r => /walk|bike|zone 2|ride/i.test(r.name)) && lookup(RECOVER_WALK)) {
-      out.push({ name: RECOVER_WALK, orig_name: RECOVER_WALK, sets: [], target_sets: 1, target_reps: '', time: '20:00', recover_add: true,
+      // Before the closing breathing: the calm-down stays last.
+      const calm = out.length && /7\/11|breathing/i.test(out[out.length - 1].name) ? out.length - 1 : out.length;
+      out.splice(calm, 0, { name: RECOVER_WALK, orig_name: RECOVER_WALK, sets: [], target_sets: 1, target_reps: '', time: '20:00', recover_add: true,
         alternates: ['Easy Bike Ride', 'Zone 2 Low Impact'],
         notes: `Zone 2 after yesterday's ${load.impact >= 3 ? 'jumps and sprints' : 'leg day'}: easy, conversational pace. Swap for a bike ride if you'd rather.` });
     }

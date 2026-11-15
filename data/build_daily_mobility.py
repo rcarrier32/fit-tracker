@@ -113,13 +113,16 @@ LOW_BACK = [
       alts=['Half Kneeling Hip Flexor Stretch', 'Half Kneeling Thoracic Rotations', 'Rolling Arm Bar w/ Screwdriver Rotation', "World's Greatest Stretch"]),
     r('Hip Airplane (No Support)', '3 each side', sets=3, group='Low back reset', rest='15s',
       notes='Your hip airplanes (split-lunge rotation): slow open and close.', alts=['Facing Wall Hip Airplane']),
-    r('7/11 Breathing', time='1:00', group='Low back reset',
-      notes='Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11.'),
 ]
+# Ends every day: 7/11 breathing is a nervous-system calm-down (PJF closes every session with it), so it goes last,
+# after the balance finish (and after a recovery day's walk), never in the middle.
+CALM = r('7/11 Breathing', time='1:00', group='Calm down',
+         notes='Last thing: lie back, knees bent (or stand tall, reaching overhead). In through the nose for 7, out for 11. '
+               'Slows everything down after the session; stay longer if you like (PJF does 3 min).')
 
 
 def day(title, notes, rows):
-    return {'day_name': title, 'notes': notes, 'exercises': LOW_BACK + rows}
+    return {'day_name': title, 'notes': notes, 'exercises': LOW_BACK + rows + [CALM]}
 
 
 days = [

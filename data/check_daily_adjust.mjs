@@ -76,6 +76,7 @@ p = prepForTomorrow(A, null, lookup, { restToday: true, load: legs });
 ok('rest day after heavy legs → starts with the PJF foam roll circuit', p.rows[0].name === 'Foam Roller Circuit');
 ok('…aimed at the legs that were worked', /quads|glutes|hamstrings/.test(p.rows[0].notes), p.rows[0].notes);
 ok('…standing split-stance reach → PJF floor rotation', !p.rows.some(x => /split stance lunge/i.test(x.name)) && p.rows.some(x => /rolling arm bar/i.test(x.name)));
+ok('…7/11 breathing still ends it, after the walk', p.rows[p.rows.length - 1].name === '7/11 Breathing' && p.rows[p.rows.length - 2].name === 'Brisk Walk', p.rows.slice(-2).map(x => x.name).join(', '));
 ok('…and a 20 min Zone 2 walk you tick', p.rows.some(x => x.name === 'Brisk Walk' && x.time === '20:00'));
 const easy = prepForTomorrow(A, null, lookup, { restToday: true, load: upper });
 ok('rest day after an upper day → split-stance reach stays', easy.rows.some(x => /split stance lunge/i.test(x.name)));

@@ -62513,18 +62513,6 @@
                 ]
               },
               {
-                "name": "7/11 Breathing",
-                "round_group": "Low back reset",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": null,
-                "weight": null,
-                "distance": null,
-                "time": "1:00",
-                "rest": null,
-                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
-              },
-              {
                 "name": "Pogos",
                 "round_group": "Standing",
                 "is_alternate": false,
@@ -62703,6 +62691,18 @@
                 "alternates": [
                   "Single-Leg Balance"
                 ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Calm down",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Last thing: lie back, knees bent (or stand tall, reaching overhead). In through the nose for 7, out for 11. Slows everything down after the session; stay longer if you like (PJF does 3 min)."
               }
             ]
           },
@@ -62761,18 +62761,6 @@
                 "alternates": [
                   "Facing Wall Hip Airplane"
                 ]
-              },
-              {
-                "name": "7/11 Breathing",
-                "round_group": "Low back reset",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": null,
-                "weight": null,
-                "distance": null,
-                "time": "1:00",
-                "rest": null,
-                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
               },
               {
                 "name": "Pogos",
@@ -62956,6 +62944,18 @@
                 "alternates": [
                   "Single Leg Stance"
                 ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Calm down",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Last thing: lie back, knees bent (or stand tall, reaching overhead). In through the nose for 7, out for 11. Slows everything down after the session; stay longer if you like (PJF does 3 min)."
               }
             ]
           },
@@ -63013,18 +63013,6 @@
                 "alternates": [
                   "Facing Wall Hip Airplane"
                 ]
-              },
-              {
-                "name": "7/11 Breathing",
-                "round_group": "Low back reset",
-                "is_alternate": false,
-                "sets": 1,
-                "reps": null,
-                "weight": null,
-                "distance": null,
-                "time": "1:00",
-                "rest": null,
-                "notes": "Your standing stretch with breath: stand tall, reach overhead, in for 7, out for 11."
               },
               {
                 "name": "90/90 Hip Opener",
@@ -63138,6 +63126,18 @@
                 "alternates": [
                   "Single Leg Stance"
                 ]
+              },
+              {
+                "name": "7/11 Breathing",
+                "round_group": "Calm down",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": null,
+                "weight": null,
+                "distance": null,
+                "time": "1:00",
+                "rest": null,
+                "notes": "Last thing: lie back, knees bent (or stand tall, reaching overhead). In through the nose for 7, out for 11. Slows everything down after the session; stay longer if you like (PJF does 3 min)."
               }
             ]
           }

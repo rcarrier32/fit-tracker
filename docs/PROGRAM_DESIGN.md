@@ -289,6 +289,10 @@ not skipped sessions):
 - **Moves you marked 👍** come back for a sore or worked area (max 2), only mobility, stretch, balance or
   unloaded moves (a Peterson lunge, not a loaded split squat).
 
+**7/11 breathing closes the session, never the middle** (v195). It's a nervous-system calm-down: PJF ends every
+session with it, and so does Daily Mobility now (after the balance finish, and after a recovery day's walk). Posterior
+Pelvic Tilt Breathing on Day B stays where it is: that's a positional pelvic reset, not the calm-down.
+
 **Daily Mobility looks both ways.** It also reads tomorrow's slot in your week (`prepForTomorrow`):
 - **The day before a game** (Basketball or another sport label): up to 3 prep moves for what a pickup game
   loads most, skipping any today's routine already covers: **Hip CARs** (hips through full rotation),
