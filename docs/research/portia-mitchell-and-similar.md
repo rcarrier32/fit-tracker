@@ -48,6 +48,21 @@ Reels have no per-move timestamps on Facebook, so the note says where in the ree
 Caveat: the reels have no reps or cues on screen, so doses come from how she runs them (slow, controlled, 5–8 each
 side, holds 20–30 s).
 
+## Second pass (2026-11-15): 33 of her 81 reels read
+
+Added (v186): **BOSU Single-Leg Airplane** (28461603656808078), **BOSU Single-Leg Squat** (3124315827757447, 9-12 s),
+**90/90 Overhead Dowel Reach** (923450963851725), **Seated Leg Hurdle Lift-Overs** (941634598293800, 18-24 s).
+
+Read and already covered: 2010927572928821, 1021835717609027 (team session), 27950355227966090 (loaded 90/90, split-stance
+plate rotation = PJF Split Stance Loaded Hip Rotations), 1048507487733701, 876354911566264 (banded march = Banded Hip Flexor
+March), 1020873750293402, 1266157635582587 (NFL off-season group), 1716435716391520 (promo), 1475783337299321,
+2643013619418198, 4493725370838987 (talk), 957738256588136 (baseball team), 1249469880665900, 1429980048637159,
+881323271274220, 884789507501102 (testimonial), 911795748087658, 1421649206352586 (BOSU knee drive + press),
+1194619462760070, 2078632479576283 (group class).
+
+**Not read (48):** her older, lower-view reels. The last 15 read turned up only these four; the rest repeat her core set
+(seated bench hip work, BOSU single-leg series, half-kneeling hip work, 90/90, adductor loading, ankles).
+
 ## Similar coaches (pro athletes, mobility with control)
 
 | Coach | Pro work (self-reported unless noted) | What they'd add here | Videos |

@@ -86,6 +86,25 @@ MOVES = {
         'Hold something for balance if needed.', 'In the reel at 40-43 s. 8-10 each side.'],
         T('hip_flexors', ['hip_flexors', 'abs'], 'isolation_lower', 'accessory', ['band'], 2)),
 
+    # Second pass through her reels (2026-11-15): 33 of 81 read; these four were new.
+    'BOSU Single-Leg Airplane': ('framedfit', REEL('28461603656808078'), PORTIA, [
+        'Stand on one leg on a BOSU, arms out to the sides. Hinge forward as the free leg reaches back, then open the hips and chest to the side and back.',
+        'Slow; stop the wobble before you move. Hold a wall at first if you need to.', '5 each side.'],
+        T('glutes', ['glutes', 'hamstrings', 'abductors', 'abs'], 'balance', 'accessory', ['bosu_pad'], 3, plane='transverse')),
+    'BOSU Single-Leg Squat': ('framedfit', REEL('3124315827757447'), PORTIA, [
+        'Stand on one leg on a BOSU, the other foot off the dome. Sit back into a shallow squat and stand up.',
+        'Knee tracks over the middle toes, no caving in. Only as deep as you can control.', 'In the reel at 9-12 s. 5-6 each side.'],
+        T('quads', ['quads', 'glutes', 'abductors'], 'lunge_single_leg', 'accessory', ['bosu_pad'], 3)),
+    '90/90 Overhead Dowel Reach': ('framedfit', REEL('923450963851725'), PORTIA, [
+        'Sit in 90/90, a dowel, towel or band held overhead with straight arms.',
+        'Sit tall, rotate toward the front knee and lean over it, back to the middle, then turn to the back leg.', '5 each way, then switch sides.'],
+        T('glutes', ['glutes', 'obliques', 'upper_back', 'hip_flexors'], 'mobility', 'warmup', ['bodyweight'], 2, plane='transverse')),
+    'Seated Leg Hurdle Lift-Overs': ('framedfit', REEL('941634598293800'), PORTIA, [
+        'Sit on the floor leaning back on your hands, a kettlebell or ball beside one leg.',
+        'Lift the straight leg up and over it and back, without rocking the trunk. Add a second "hurdle" as it gets easy.',
+        'In the reel at 18-24 s. 6-8 each side.'],
+        T('hip_flexors', ['hip_flexors', 'abductors', 'adductors', 'abs'], 'mobility', 'warmup', ['bodyweight'], 2, plane='frontal')),
+
     # ── Dr. Andreo Spina, Functional Range Conditioning ──
     'Hip CARs': ('frc', None, 'Dr. Andreo Spina (FRC)', [
         'Standing tall, holding a rack or wall. Make the biggest, slowest circle you can with one hip: knee up, out to the side, back, and in.',
