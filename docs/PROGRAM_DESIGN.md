@@ -303,7 +303,11 @@ which has its own warm-up), the hip plan's warm-up joins Daily Mobility instead 
 the routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor hold covers the hip-flexor stretches,
 pigeon or figure-4 covers the piriformis, any hamstring move covers the hamstring stretch); the walk stays out, since the
 rest-day note suggests one. Ticking an added move, or a row that covers one, checks it on the Hip tab. Home hides the
-separate "Hip warm-up" row those days and says "Hip warm-up included today" (it comes back if Daily Mobility is skipped).
+separate "Hip warm-up" row those days (it comes back if Daily Mobility is skipped).
+
+**Rest day on Home:** Today's Workout *is* Daily Mobility: "😴 Rest & recover · Daily Mobility · Day A · 14 min" with
+Start / Skip today, and no separate Daily Mobility card. The Home cards don't explain the adjustments (the user
+didn't want that text); the routine's own screen says what changed.
 
 A note at the top says what changed and why. A rest day after an easy day changes nothing. The adjustment is
 decided once, when the day's session starts.

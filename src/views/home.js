@@ -262,9 +262,6 @@ function renderDailyCard(d) {
   return `
     <div class="card" style="margin-bottom:12px">
       <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
-      ${d.adjust || d.prepFor ? `<div class="muted" style="font-size:12px;margin-top:4px">↻ ${[d.adjust === 'game' ? "Recovery from yesterday's game built in" : d.adjust ? "Adjusted for yesterday's training" : '',
-        d.prepFor ? `${d.adjust ? 'r' : 'R'}eady for tomorrow's ${escH(d.prepFor)}` : ''].filter(Boolean).join(' · ')}</div>` : ''}
-      ${d.hipIn ? '<div class="muted" style="font-size:12px;margin-top:2px">🦴 Hip warm-up included today</div>' : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
@@ -409,13 +406,14 @@ export async function renderHome(app) {
   const hipInDaily = !!hip && !hipInWorkout && !!daily && daily.st.state !== 'skipped'
     && today_w.type === 'tag' && !isGameLabel(today_w.tag) && !!todaySlot && !todaySlot.program_id;
   if (daily) daily.hipIn = hipInDaily;
+  const restIsDaily = !!daily && today_w.type === 'tag' && today_w.tag === 'Rest';
   const actualTdee = computeActualTdee(allBody, allMeals);
 
   // Cards in the order you chose (Customize Home, pref 'home_layout'; src/lib/home_layout.js).
   const cards = {
     tips: renderCoachMessage({ eaten, target, cardio_burned, macroT, today_w, bodyToday, activePlan, workoutDoneToday }),
     lastweek: renderWeeklySummary(weeklySummary),
-    daily: renderDailyCard(daily),
+    daily: restIsDaily ? '' : renderDailyCard(daily),
     calories: `
     <div class="card">
       <div class="card-row">
@@ -447,7 +445,7 @@ export async function renderHome(app) {
         ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game, catchUp)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game, catchUp, restIsDaily ? daily : null)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
@@ -711,7 +709,7 @@ function catchUpRow(c) {
     ↺ Catch up instead: ${escH(c.name)} · ${escH(c.title)}</button>`;
 }
 
-function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null, catchUp = null) {
+function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null, catchUp = null, daily = null) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -743,6 +741,32 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
         ${iconBtn('played', ICON_SCORED, 'Played')}
         ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
       </div>${catchUpRow(catchUp)}`;
+  }
+  // Rest day: recovering IS today's workout, and that's Daily Mobility (adjusted for yesterday and tomorrow,
+  // with the hip warm-up folded in). Its own card isn't shown separately.
+  if (today_w.type === 'tag' && today_w.tag === 'Rest' && daily) {
+    const { st, letters, todayIdx, nextIdx } = daily;
+    const L = letters[todayIdx];
+    const head = (t) => `<div style="margin-top:6px;font-size:18px">😴 ${t}</div>`;
+    const small = `<button class="btn ghost" data-action="schedule" style="width:auto;padding:4px 10px;font-size:12px;margin-top:8px">Edit week</button>`;
+    if (st.state === 'done') return `${head('Rest &amp; recover ✓')}
+      <div class="muted" style="font-size:12px">Daily Mobility Day ${L} done${st.minutes ? ` · ${st.minutes} min` : ''} · tomorrow: Day ${letters[nextIdx]}</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn ghost" id="daily-open" style="flex:1">View</button>
+        <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button></div>${catchUpRow(catchUp)}`;
+    if (st.state === 'skipped') return `${head('Rest day')}
+      <div class="muted" style="font-size:12px">Daily Mobility skipped · Day ${L} waits for tomorrow</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn ghost" id="daily-open" style="flex:1">Do it anyway</button>
+        <button class="btn ghost" data-action="schedule" style="flex:1">Edit week</button></div>${catchUpRow(catchUp)}`;
+    if (st.state === 'started') return `${head('Rest &amp; recover')}
+      <div class="muted" style="font-size:12px">Daily Mobility · ${st.done} of ${st.total}${st.next ? ` · next: ${escH(st.next.name)}` : ''}</div>
+      <div class="bar"><div class="bar-fill" style="width:${Math.round(st.done / Math.max(1, st.total) * 100)}%"></div></div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn" id="daily-open" style="flex:1">▶ Resume</button></div>${small}${catchUpRow(catchUp)}`;
+    return `${head('Rest &amp; recover')}
+      <div class="muted" style="font-size:12px">Daily Mobility · Day ${L} · ${daily.minutes} min</div>
+      <div class="btn-row" style="margin-top:10px;margin-bottom:0">
+        <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
+        <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
+      </div>${small}${catchUpRow(catchUp)}`;
   }
   if (today_w.type === 'tag') {
     const map = {
