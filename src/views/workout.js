@@ -5,7 +5,7 @@ import { pref, put, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
@@ -365,9 +365,16 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       // Notes from yesterday's and today's workouts: areas called sore get their stretches.
       const sore = soreFromNotes([...yesterday, ...todaysSessions]);
       const helped = helpedMoves(await getAll('sessions'), today());
-      const adj = adjustDaily(session.exercises, yesterdayLoad(yesterday, lookup), lookup, { sore, helped });
-      session.exercises = adj.rows;
-      if (adj.note) session.adjust_note = adj.note;
+      const load = yesterdayLoad(yesterday, lookup);
+      const adj = adjustDaily(session.exercises, load, lookup, { sore, helped });
+      // ...and tomorrow's plan: the day before a game gets game prep; a rest day after a big one, a walk.
+      const slots = (await pref('schedule'))?.slots;
+      const dow = new Date().getDay(), tSlot = slots?.[(dow + 1) % 7];
+      const prep = prepForTomorrow(adj.rows, tSlot ? { label: tSlot.label || null, programId: tSlot.program_id || null } : null, lookup,
+        { restToday: /rest/i.test(slots?.[dow]?.label || ''), load });
+      session.exercises = prep.rows;
+      const note = [adj.note, prep.note].filter(Boolean).join(' ');
+      if (note) session.adjust_note = note;
     }
   }
 

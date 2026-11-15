@@ -1,6 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves } from '../src/lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -22,7 +22,7 @@ ok('rest day → unchanged', r.note === null && r.rows === A);
 const legs = yesterdayLoad([sess('x', [done('Barbell Back Squat', 4), done('Dumbbell Romanian Deadlift', 3), done('Bulgarian Split Squat', 3), done('Lying Leg Curls', 3)])], lookup);
 ok('legs counted', legs.legSets >= 9, JSON.stringify(legs.direct));
 r = adjustDaily(A, legs, lookup);
-ok('pogos swapped after heavy legs', r.rows.some(x => x.name === 'Single Leg Stance' && x.orig_name === 'Pogos') && !r.rows.some(x => x.name === 'Pogos'));
+ok('pogos off after heavy legs, no second balance hold', !r.rows.some(x => x.name === 'Pogos') && r.rows.filter(x => /single leg stance/i.test(x.name)).length === 1, r.note);
 const hf = r.rows.find(x => x.name === 'Hip Flexor/Quad Bridge');
 ok('quad/hip-flexor hold gets a set', hf && hf.target_sets === 3, JSON.stringify(hf));
 ok('note explains', /yesterday/i.test(r.note) && /quads/.test(r.note), r.note);
@@ -38,7 +38,8 @@ ok('upper day bumps a shoulder/upper-back move', r.rows.some((x, i) => x.target_
 // Jumps yesterday (light legs) still swap pogos.
 const jumps = yesterdayLoad([sess('x', [done('Pogos', 2), done('Lateral Hops', 3)])], lookup);
 ok('jumps counted', jumps.impact >= 3, JSON.stringify(jumps));
-ok('pogos swapped after jumps', adjustDaily(A, jumps, lookup).rows.some(x => x.orig_name === 'Pogos'));
+ok('pogos off after jumps', !adjustDaily(A, jumps, lookup).rows.some(x => x.name === 'Pogos'));
+ok('a loaded lift you liked is not added to mobility', !adjustDaily(A, legs, lookup, { helped: [{ name: 'Bulgarian Split Squat', target_sets: 2, target_reps: '8' }] }).rows.some(x => x.helped_add));
 
 // Yesterday's Daily Mobility doesn't count as training.
 const mob = yesterdayLoad([sess('daily_mobility', [done('Pogos', 3), done('Hip Flexor/Quad Bridge', 2)])], lookup);
@@ -63,5 +64,16 @@ r = adjustDaily(A, yesterdayLoad([], lookup), lookup, { sore: ['quads'], helped 
 ok('sore quads → Peterson lunge added', r.rows.some(x => x.name === 'Back Leg Lunge (Peterson Lunge)' && x.helped_add) && /added what helped/.test(r.note), r.note);
 ok('a helped move for an area that\'s fine stays out', !r.rows.some(x => x.name === 'Wall Slides' && x.helped_add));
 ok('nothing sore → nothing added', adjustDaily(A, yesterdayLoad([], lookup), lookup, { helped }).note === null);
+// Tomorrow: a game → game prep added (only what today's routine lacks); rest day after big legs → a walk.
+let p = prepForTomorrow(A, { label: 'Basketball' }, lookup);
+const addedA = p.rows.filter(x => x.prep_add).map(x => x.name);
+ok('before a game: Daily A gets hip CARs, adductor and ankle prep', ['Hip CARs', 'Adductor Rock Back', 'Hip Hinge Ankle Rocker'].every(n => addedA.includes(n)), addedA.join(', '));
+ok('prep goes before the balance finish', p.rows.findIndex(x => x.prep_add) < p.rows.findIndex(x => /single leg stance/i.test(x.name)));
+p = prepForTomorrow(C, { label: 'Basketball' }, lookup);
+ok('Daily C already has a lateral lunge: no adductor prep', !p.rows.some(x => x.prep_add && x.name === 'Adductor Rock Back'), p.note);
+ok('training tomorrow → unchanged', prepForTomorrow(A, { label: null, programId: 'lean_tone_home_6wk' }, lookup).note === null);
+p = prepForTomorrow(A, null, lookup, { restToday: true, load: legs });
+ok('rest day after heavy legs → walk suggested, rows unchanged', /walk or ride/.test(p.note || '') && p.rows === A, p.note);
+ok('rest day after an easy day → nothing', prepForTomorrow(A, null, lookup, { restToday: true, load: upper }).note === null);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

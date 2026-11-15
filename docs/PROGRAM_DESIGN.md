@@ -282,11 +282,24 @@ Once a move is done in one of them today, the others show it as done there
 When today's Daily Mobility session starts ([`src/lib/daily_adjust.js`](../src/lib/daily_adjust.js),
 `node data/check_daily_adjust.mjs`), it reads yesterday's logged training (not yesterday's mobility,
 not skipped sessions):
-- **Jumps, sprints, landings or a heavy leg day** (9+ leg sets): pogos become a single-leg balance
-  hold. Tendon and elastic loading is spaced across the week, not daily.
+- **Jumps, sprints, landings or a heavy leg day** (9+ leg sets): pogos come out (or become a single-leg
+  balance hold when the routine has none). Tendon and elastic loading is spaced across the week, not daily.
 - **Each area trained directly (4+ working sets)** gets one more set (max 3) of today's holds and
   mobility moves for it: stretch what was worked, like generated cooldowns.
-- A note at the top says what changed and why. A rest day changes nothing.
+- **Moves you marked 👍** come back for a sore or worked area (max 2), only mobility, stretch, balance or
+  unloaded moves (a Peterson lunge, not a loaded split squat).
+
+**Daily Mobility looks both ways.** It also reads tomorrow's slot in your week (`prepForTomorrow`):
+- **The day before a game** (Basketball or another sport label): up to 3 prep moves for what a pickup game
+  loads most, skipping any today's routine already covers: **Hip CARs** (hips through full rotation),
+  **Adductor Rock Back** (groin strains are the classic pickup injury) and **Hip Hinge Ankle Rocker** (ankle
+  dorsiflexion for cutting and landing). Low intensity, no extra jumping, so you arrive loose, not tired.
+- **A rest day after a big one** (9+ leg sets or jump work): suggests an easy 15-20 min walk or ride on top,
+  which clears soreness better than sitting still.
+- A training day tomorrow adds nothing: that day's own warm-up prepares it.
+
+A note at the top says what changed and why. A rest day after an easy day changes nothing. The adjustment is
+decided once, when the day's session starts.
 
 ## How did it feel? (finish screen)
 

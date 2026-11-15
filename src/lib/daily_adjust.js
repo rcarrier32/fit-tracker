@@ -87,10 +87,17 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
 
   // Tendons: no pogos the day after impact work or a heavy leg day.
   if (load.impact >= 3 || load.legSets >= 9) {
-    for (const r of out) if (/^pogos?$/i.test(r.name)) {
-      Object.assign(r, { name: 'Single Leg Stance', orig_name: r.orig_name || r.name, target_reps: '', time: '30s', target_sets: 2,
-        notes: 'Swapped from pogos: your tendons get a day after ' + (load.impact >= 3 ? 'yesterday\'s jumps and sprints.' : 'yesterday\'s heavy legs.') + ' Each side.' });
-      changes.push('pogos → balance hold (tendons rest after ' + (load.impact >= 3 ? 'jumps/sprints' : 'heavy legs') + ')');
+    const why = load.impact >= 3 ? 'jumps/sprints' : 'heavy legs';
+    const hasBalance = out.some(r => /single.?leg (stance|balance)/i.test(r.name));
+    for (let j = out.length - 1; j >= 0; j--) if (/^pogos?$/i.test(out[j].name)) {
+      if (hasBalance) {   // the routine already ends on a balance hold: drop the pogos rather than doubling it
+        out.splice(j, 1);
+        changes.push(`pogos off today (tendons rest after ${why}; the balance hold stays)`);
+      } else {
+        Object.assign(out[j], { name: 'Single Leg Stance', orig_name: out[j].orig_name || out[j].name, target_reps: '', time: '30s', target_sets: 2,
+          notes: 'Swapped from pogos: your tendons get a day after ' + (load.impact >= 3 ? 'yesterday\'s jumps and sprints.' : 'yesterday\'s heavy legs.') + ' Each side.' });
+        changes.push(`pogos → balance hold (tendons rest after ${why})`);
+      }
     }
   }
   // Stretch what was worked.
@@ -109,10 +116,13 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
   for (const h of helped) {
     if (brought.length >= 2 || have.has(h.name.toLowerCase())) continue;
     const e = lookup(h.name);
+    // Mobility, stretch and balance moves, or unloaded ones (a Peterson lunge): a loaded lift you liked isn't mobility.
+    const unloaded = e && (e.equipment || ['bodyweight']).every(q => ['bodyweight', 'band', 'mini_band'].includes(q)) && e.role !== 'main';
+    if (!STRETCHY(e) && !unloaded) continue;
     const regions = new Set([REGION[e?.primary_muscle], ...(e?.muscles || []).map(m => REGION[m])].filter(Boolean));
     const hit = worked.find(w => regions.has(w));
     if (!hit) continue;
-    const at = out.findIndex(r => /single.?leg (stance|balance)/i.test(r.name));
+    const at = out.findLastIndex(r => /single.?leg (stance|balance)/i.test(r.name));
     out.splice(at < 0 ? out.length : at, 0, { name: h.name, orig_name: h.name, sets: [], target_sets: h.target_sets, target_reps: h.target_reps, time: h.time,
       notes: `You marked this as helping last time: for your ${hit}.`, helped_add: true });
     have.add(h.name.toLowerCase()); brought.push(`${h.name} (${hit})`);
@@ -122,4 +132,47 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
   const what = worked.slice(0, 3).map(w => (load.by[w] || []).length ? `${w} (${load.by[w].slice(0, 2).join(', ')})` : `${w} (sore, from your note)`).join('; ');
   const game = (load.by.quads || []).includes('Basketball') || Object.values(load.by).some(l => l.includes('Basketball'));
   return { rows: out, note: `Adjusted for ${game ? "yesterday's game" : "yesterday's training"}${what ? ` — ${what}` : ''}: ${changes.join('; ')}.`, game };
+}
+
+/**
+ * Tomorrow's plan shapes today's routine too (research: docs/PROGRAM_DESIGN.md "Daily Mobility looks both ways").
+ * - The day before a game (a Basketball/game slot): add up to 3 prep moves for what a pickup game loads most,
+ *   when today's routine doesn't already cover them: hips through their full rotation (Hip CARs), the groin
+ *   (Adductor Rock Back: groin strains are the classic pickup injury) and ankle dorsiflexion (Hip Hinge
+ *   Ankle Rocker: cutting and landing need it). Low intensity, no extra impact.
+ * - A rest day after a big one (9+ leg sets or impact work): suggest an easy 15-20 min walk or ride on top,
+ *   which clears soreness better than sitting still.
+ * @param rows      today's rows (after adjustDaily)
+ * @param tomorrow  { label, programId } for tomorrow's slot, or null
+ * @param opts      { restToday: today is a rest slot, load: yesterdayLoad(...) }
+ * @returns { rows, note } (note null when nothing changed)
+ */
+export const GAME_PREP = [
+  { name: 'Hip CARs', target_sets: 1, target_reps: '3 slow circles each way, each side', area: 'hips', covered: /hip car|hip circle|knee circle/i },
+  { name: 'Adductor Rock Back', target_sets: 1, target_reps: '8 each side', area: 'groin', covered: /adductor|groin|lateral lunge|cossack/i },
+  { name: 'Hip Hinge Ankle Rocker', target_sets: 1, target_reps: '10 each side', area: 'ankles', covered: /ankle rocker|dorsiflex|ankle mobility/i },
+];
+export const isGameLabel = (label) => /basketball|pickup|game|soccer|tennis|pickleball/i.test(label || '');
+
+export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, load = null } = {}) {
+  const notes = [];
+  let out = rows;
+  if (tomorrow && isGameLabel(tomorrow.label)) {
+    out = rows.map(r => ({ ...r }));
+    const added = [];
+    for (const p of GAME_PREP) {
+      if (out.some(r => p.covered.test(r.name)) || !lookup(p.name)) continue;
+      const at = out.findLastIndex(r => /single.?leg (stance|balance)/i.test(r.name));
+      out.splice(at < 0 ? out.length : at, 0, { name: p.name, orig_name: p.name, sets: [], target_sets: p.target_sets,
+        target_reps: p.target_reps, time: null, notes: `Ready for tomorrow's ${tomorrow.label.toLowerCase()}: ${p.area}.`, prep_add: true });
+      added.push(`${p.name} (${p.area})`);
+    }
+    notes.push(added.length
+      ? `Getting you ready for tomorrow's ${tomorrow.label.toLowerCase()}: added ${added.join(', ')}. Easy and controlled, no extra jumping.`
+      : `Tomorrow is ${tomorrow.label.toLowerCase()}: today's routine already covers hips, groin and ankles. Keep it easy.`);
+  }
+  if (restToday && load && (load.legSets >= 9 || load.impact >= 3)) {
+    notes.push('Rest day after a big one: an easy 15-20 min walk or ride on top of this helps the legs recover.');
+  }
+  return { rows: out, note: notes.length ? notes.join(' ') : null };
 }
