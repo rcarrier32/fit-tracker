@@ -75,8 +75,10 @@ ok('training tomorrow → unchanged', prepForTomorrow(A, { label: null, programI
 p = prepForTomorrow(A, null, lookup, { restToday: true, load: legs });
 ok('rest day after heavy legs → starts with the PJF foam roll circuit', p.rows[0].name === 'Foam Roller Circuit');
 ok('…aimed at the legs that were worked', /quads|glutes|hamstrings/.test(p.rows[0].notes), p.rows[0].notes);
+ok('…standing split-stance reach → PJF floor rotation', !p.rows.some(x => /split stance lunge/i.test(x.name)) && p.rows.some(x => /rolling arm bar/i.test(x.name)));
 ok('…and a 20 min Zone 2 walk you tick', p.rows.some(x => x.name === 'Brisk Walk' && x.time === '20:00'));
 const easy = prepForTomorrow(A, null, lookup, { restToday: true, load: upper });
+ok('rest day after an upper day → split-stance reach stays', easy.rows.some(x => /split stance lunge/i.test(x.name)));
 ok('rest day after an upper day → foam roll, no walk', easy.rows[0].name === 'Foam Roller Circuit' && !easy.rows.some(x => x.name === 'Brisk Walk'));
 const hipAfter = foldHipWarmup(p.rows, [{ name: 'Walk or Easy Bike', hip_id: 'w', time: '5:00' }]);
 ok('hip warm-up walk → checked by the recovery walk', hipAfter.rows.find(x => x.name === 'Brisk Walk').covers_hip?.includes('w'));

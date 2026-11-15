@@ -145,6 +145,8 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
  *   - It opens with PJF's 5-minute Foam Roller Circuit. After a training day the time goes to what was
  *     worked (yesterdayLoad regions); post-workout rolling reduces next-day soreness a little
  *     (Wiewelhove 2019 meta-analysis), the main thing a day after heavy legs needs.
+ *   - After a big day, the standing Split Stance Lunge Overhead Reach becomes PJF's floor version
+ *     (Rolling Arm Bar w/ Screwdriver Rotation): same reach and rotation, legs off.
  *   - After a big day (9+ leg sets or impact work) it also gets a Zone 2 walk or ride (20 min) as a row
  *     you tick, not a note: easy blood flow clears soreness better than sitting still.
  * @param rows      today's rows (after adjustDaily)
@@ -159,6 +161,11 @@ export const GAME_PREP = [
 ];
 export const FOAM_ROLL = 'Foam Roller Circuit', RECOVER_WALK = 'Brisk Walk';
 // Areas a foam roller reaches, in the order to roll them.
+// Recovery-day swaps after a big day: [row name, PJF recovery move, dose, why].
+const RECOVERY_SWAPS = [
+  [/split stance lunge/i, 'Rolling Arm Bar w/ Screwdriver Rotation', '5 each side',
+    'the same reach and rotation on the floor, from PJF\'s recovery day, so your legs get the day off.'],
+];
 const ROLL_AREAS = ['quads', 'glutes', 'hamstrings', 'adductors', 'calves', 'lats', 'upper back'];
 export const isGameLabel = (label) => /basketball|pickup|game|soccer|tennis|pickleball/i.test(label || '');
 
@@ -189,6 +196,14 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
         notes: roll.length
           ? `Recovery from yesterday: most of the time on your ${roll.join(', ')} (about 60s each), then a quick pass on the rest. Slow, breathe, no grinding on sore spots.`
           : 'Quads, glutes, calves, lats, upper back: about 30-60s each. Slow passes, breathe.' });
+    }
+    // After a big day, standing split-stance work loads the legs you're recovering: PJF's recovery day does its
+    // rotation on the floor instead (Rolling Arm Bar w/ Screwdriver Rotation, from Recovery + Correctives).
+    if (big) for (const r of out) {
+      const swap = RECOVERY_SWAPS.find(([m]) => m.test(r.name));
+      if (!swap || !lookup(swap[1])) continue;
+      Object.assign(r, { orig_name: r.orig_name || r.name, name: swap[1], target_reps: swap[2], target_sets: 1, time: null, recover_add: true,
+        notes: `Recovery day: ${swap[3]}` });
     }
     if (big && !out.some(r => /walk|bike|zone 2|ride/i.test(r.name)) && lookup(RECOVER_WALK)) {
       out.push({ name: RECOVER_WALK, orig_name: RECOVER_WALK, sets: [], target_sets: 1, target_reps: '', time: '20:00', recover_add: true,

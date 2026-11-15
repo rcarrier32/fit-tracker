@@ -301,9 +301,14 @@ not skipped sessions):
   - **PJF's 5-min Foam Roller Circuit first.** After a training day the time goes to what was worked
     (regions with 4+ sets yesterday, ~60 s each). Rolling after training slightly lowers next-day soreness
     ([Wiewelhove 2019](https://pubmed.ncbi.nlm.nih.gov/31024339/)), which is what the day after heavy legs needs.
+  - **After a big day, no standing split-stance work:** Split Stance Lunge Overhead Reach becomes PJF's
+    Rolling Arm Bar w/ Screwdriver Rotation (the same reach and rotation on the floor, from their recovery day). (v194)
   - **After a big day (9+ leg sets or jump work): a 20-min Zone 2 walk as a row you tick** (swap to a bike),
     not just a note. It also checks off the hip plan's walk.
   - Home's card shows it: "Daily Mobility + foam roll + 20 min walk · 39 min".
+  - **Swap lists for mobility moves only show mobility moves** (`isGentle` in `src/lib/taxonomy.js`): no
+    loaded chops or landmine rotations because they share a "rotation" tag. Ties between the many drills
+    tagged "hip flexors, glutes" break on plane and on name words (half kneeling, reach, rotation…). (v194)
   - *Why this was missed before (v181-v191):* the adjustments were added one request at a time (pogos,
     +1 set, game prep, hip fold) and never checked against how the source programs build their own recovery
     days, and the research note had filed foam rolling as "a warm-up tool". Rule: when Daily Mobility gains

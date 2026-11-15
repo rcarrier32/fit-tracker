@@ -1261,22 +1261,21 @@
    ],
    "week1_sets_by_muscle": {
     "glutes": 22,
-    "hip_flexors": 10,
-    "front_delts": 5,
+    "hip_flexors": 13,
     "abs": 4,
     "calves": 4,
     "quads": 4,
     "upper_back": 4,
     "lower_back": 3,
+    "front_delts": 2,
     "adductors": 2,
     "rear_delts": 1,
     "hamstrings": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 31,
+    "mobility": 34,
     "balance": 15,
     "isometric": 4,
-    "rotation": 3,
     "isolation_lower": 2,
     "hinge": 2,
     "anti_extension": 1,
@@ -1284,10 +1283,10 @@
     "isolation_upper": 1
    },
    "roles": {
-    "warmup": 16,
+    "warmup": 19,
     "accessory": 11,
     "cooldown": 11,
-    "core": 4,
+    "core": 1,
     "secondary": 1
    },
    "equipment": [
@@ -1369,30 +1368,27 @@
    ],
    "week1_sets_by_muscle": {
     "glutes": 8,
+    "hip_flexors": 3,
     "calves": 3,
-    "hip_flexors": 2,
     "lower_back": 1,
-    "front_delts": 1,
     "full_body": 1,
     "adductors": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 4,
+    "mobility": 5,
     "balance": 3,
     "speed_accel": 3,
     "plyo_bound_hop": 2,
-    "rotation": 1,
     "conditioning": 1,
     "agility_cod": 1,
     "lunge_single_leg": 1,
     "hinge": 1
    },
    "roles": {
-    "warmup": 5,
+    "warmup": 6,
     "secondary": 2,
     "accessory": 2,
     "power": 2,
-    "core": 1,
     "conditioning": 1,
     "cooldown": 1
    },

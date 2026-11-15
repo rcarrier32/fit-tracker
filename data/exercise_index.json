@@ -244,7 +244,6 @@
    "Seated Machine Overhead Press",
    "Serratus Slides",
    "Shoulder Press",
-   "Split Stance Lunge Overhead Reach with Rotation",
    "Split Stance Single Arm Dumbbell Press",
    "Standing Barbell Overhead Press",
    "Standing Dumbbell Shoulder Press"
@@ -545,6 +544,7 @@
    "Side-to-Side Leg Swings",
    "Single Leg Wall Stride",
    "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Standing Banded Hip Flexion",
    "Standing Banded March (No Wall)",
    "Standing Hip Flexion Supported With ISO Hold",
@@ -1344,7 +1344,6 @@
    "Shoulder Press",
    "Side Lying T-Spine Dumbbell Press",
    "Split Stance Cable Press",
-   "Split Stance Lunge Overhead Reach with Rotation",
    "Split Stance Single Arm Dumbbell Press",
    "Standing Barbell Overhead Press",
    "Standing Dumbbell Shoulder Press",
@@ -1734,6 +1733,7 @@
    "Smith Machine Hip Thrust",
    "Smith Machine Squat",
    "Split Stance Loaded Hip Rotations",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Split Stance Lunge Rotational Press",
    "Split Stance Lunge Rotational Row",
    "Split Stance Switch & Stick",
@@ -2014,6 +2014,7 @@
    "SLDL With Loaded Hip Flexion",
    "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
    "Split Stance Loaded Hip Rotations",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Standing Banded Hip Flexion",
    "Standing Banded March (No Wall)",
    "Standing Hip Flexion Supported With ISO Hold",
@@ -2186,6 +2187,7 @@
    "Single Leg Lateral Tilts",
    "Single-Arm Banded Lat Pulldown",
    "Slant Board Isometric Progressions",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Split Stance Single Arm Dumbbell Press",
    "Staggered Adductor Grab From Punch",
    "Standing Knee-to-Elbow Crunch",
@@ -2439,7 +2441,6 @@
    "Lying Incline Lateral Raise",
    "Lying Incline Lateral Raises",
    "Rotational Shoulder Raise",
-   "Split Stance Lunge Overhead Reach with Rotation",
    "Wide Grip BB Upright Row (last resort)"
   ],
   "triceps": [
@@ -2495,7 +2496,6 @@
    "Single Arm Tricep Extension (Optional)",
    "Single-Arm Cable Pushdown",
    "Split Stance Cable Press",
-   "Split Stance Lunge Overhead Reach with Rotation",
    "Split Stance Single Arm Dumbbell Press",
    "Standing Barbell Overhead Press",
    "Standing Dumbbell Shoulder Press",
@@ -2554,6 +2554,7 @@
    "Side Lying T-Spine Dumbbell Press",
    "Single Leg Hinge To Row Combo",
    "Single-Arm Cable Row",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Standing Face Pulls",
    "Suitcase Carry",
    "T-Spine Wall Contour",
@@ -3129,6 +3130,7 @@
    "Single Hinge To Hip Flexor Flow From Elevated Surface",
    "Split Stance Hip Flexor 2-Way Reach with Band Distraction",
    "Split Stance Loaded Hip Rotations",
+   "Split Stance Lunge Overhead Reach with Rotation",
    "Squat to Hamstring Stretch",
    "Standing Hip Internal/External Lifts",
    "Supine Long Length Hamstring Raise",
@@ -3322,7 +3324,6 @@
    "Lateral Rip Through",
    "MB Rapid Lateral Toss",
    "Shoulder MB Rapid Loading",
-   "Split Stance Lunge Overhead Reach with Rotation",
    "Staggered Adductor Grab From Punch"
   ],
   "speed_accel": [
@@ -19011,21 +19012,22 @@
     "pjf",
     "band"
    ],
-   "primary_muscle": "front_delts",
+   "primary_muscle": "hip_flexors",
    "muscles": [
-    "front_delts",
-    "triceps",
-    "side_delts"
+    "hip_flexors",
+    "glutes",
+    "obliques",
+    "upper_back"
    ],
-   "pattern": "rotation",
-   "role": "core",
+   "pattern": "mobility",
+   "role": "warmup",
    "equipment": [
     "band"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "transverse",
-   "hip_focus": false,
+   "hip_focus": true,
    "video": "https://youtu.be/HG7Sz9h9BOQ",
    "video_from": "catalog"
   },

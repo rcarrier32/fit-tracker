@@ -2476,21 +2476,22 @@
   },
   "band-split-stance-lunge-overhead-reach-with-rotation": {
    "name": "Split Stance Lunge Overhead Reach with Rotation",
-   "primary_muscle": "front_delts",
+   "primary_muscle": "hip_flexors",
    "muscles": [
-    "front_delts",
-    "triceps",
-    "side_delts"
+    "hip_flexors",
+    "glutes",
+    "obliques",
+    "upper_back"
    ],
-   "pattern": "rotation",
-   "role": "core",
+   "pattern": "mobility",
+   "role": "warmup",
    "equipment": [
     "band"
    ],
-   "level": 2,
+   "level": 1,
    "unilateral": true,
    "plane": "transverse",
-   "hip_focus": false
+   "hip_focus": true
   },
   "band-split-stance-lunge-rotational-press": {
    "name": "Split Stance Lunge Rotational Press",

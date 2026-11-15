@@ -10645,18 +10645,19 @@
       "equipment": [
         "band"
       ],
-      "primary_muscle": "front_delts",
+      "primary_muscle": "hip_flexors",
       "muscles": [
-        "front_delts",
-        "triceps",
-        "side_delts"
+        "hip_flexors",
+        "glutes",
+        "obliques",
+        "upper_back"
       ],
-      "pattern": "rotation",
-      "role": "core",
-      "level": 2,
+      "pattern": "mobility",
+      "role": "warmup",
+      "level": 1,
       "unilateral": true,
       "plane": "transverse",
-      "hip_focus": false
+      "hip_focus": true
     },
     {
       "id": "band-lateral-rip-through",
@@ -62490,7 +62491,10 @@
                 "rest": null,
                 "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
                 "alternates": [
-                  "Half Kneeling Hip Flexor Stretch"
+                  "Half Kneeling Hip Flexor Stretch",
+                  "Half Kneeling Thoracic Rotations",
+                  "Rolling Arm Bar w/ Screwdriver Rotation",
+                  "World's Greatest Stretch"
                 ]
               },
               {
@@ -62737,7 +62741,10 @@
                 "rest": null,
                 "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
                 "alternates": [
-                  "Half Kneeling Hip Flexor Stretch"
+                  "Half Kneeling Hip Flexor Stretch",
+                  "Half Kneeling Thoracic Rotations",
+                  "Rolling Arm Bar w/ Screwdriver Rotation",
+                  "World's Greatest Stretch"
                 ]
               },
               {
@@ -62986,7 +62993,10 @@
                 "rest": null,
                 "notes": "Your \"lunge with overhead reach\": tuck the back-leg glute, reach long.",
                 "alternates": [
-                  "Half Kneeling Hip Flexor Stretch"
+                  "Half Kneeling Hip Flexor Stretch",
+                  "Half Kneeling Thoracic Rotations",
+                  "Rolling Arm Bar w/ Screwdriver Rotation",
+                  "World's Greatest Stretch"
                 ]
               },
               {

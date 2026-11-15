@@ -109,7 +109,8 @@ def r(name, reps=None, time=None, sets=1, notes=None, group=None, alts=None, res
 LOW_BACK = [
     r('Cat Camel', '7', group='Low back reset', notes='Slow, segment by segment. (Cat Cow works too: it\'s in the swaps.)', alts=['Cat Cow']),
     r('Split Stance Lunge Overhead Reach with Rotation', '6 each side', group='Low back reset',
-      notes='Your "lunge with overhead reach": tuck the back-leg glute, reach long.', alts=['Half Kneeling Hip Flexor Stretch']),
+      notes='Your "lunge with overhead reach": tuck the back-leg glute, reach long.',
+      alts=['Half Kneeling Hip Flexor Stretch', 'Half Kneeling Thoracic Rotations', 'Rolling Arm Bar w/ Screwdriver Rotation', "World's Greatest Stretch"]),
     r('Hip Airplane (No Support)', '3 each side', sets=3, group='Low back reset', rest='15s',
       notes='Your hip airplanes (split-lunge rotation): slow open and close.', alts=['Facing Wall Hip Airplane']),
     r('7/11 Breathing', time='1:00', group='Low back reset',

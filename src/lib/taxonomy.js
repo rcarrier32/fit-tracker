@@ -74,8 +74,17 @@ export function tagLine(e) {
  * Exercises like `ex`, best first: same pattern + same primary muscle, then same pattern,
  * then same primary muscle. Only ones with a video; equipment you have (if given) ranks higher.
  */
+const STOP = new Set(['with', 'and', 'the', 'w', 'to', 'of', 'on', 'a', 'in', 'band', 'banded', 'dumbbell', 'kettlebell', 'optional', 'hold', 'stretch', 'drill']);
+const words = (n) => String(n || '').toLowerCase().replace(/rotations?/g, 'rotation').split(/[^a-z0-9]+/).filter(w => w.length > 1 && !STOP.has(w));
+const GENTLE = new Set(['mobility', 'isometric', 'balance', 'breathing']);
+const LOADED = new Set(['dumbbell', 'barbell', 'kettlebell', 'landmine', 'cable', 'machine', 'ez_bar', 'trap_bar', 'sled', 'plate', 'med_ball']);
+/** Mobility, stretch, hold or balance work: what a warm-up, cooldown or recovery row is. */
+export const isGentle = (e) => !!e && (GENTLE.has(e.pattern) || e.role === 'warmup' || e.role === 'cooldown') && !(e.equipment || []).some(q => LOADED.has(q));
 export function rankSimilar(ex, all, { have = null, limit = 12 } = {}) {
   if (!ex) return [];
+  // A mobility move swaps for mobility moves, never a loaded lift that happens to share a muscle or pattern.
+  if (isGentle(ex)) all = all.filter(isGentle);
+  const exWords = new Set(words(ex.name));
   const score = (e) => {
     let s = 0;
     if (ex.pattern && e.pattern === ex.pattern) s += 4;
@@ -84,6 +93,10 @@ export function rankSimilar(ex, all, { have = null, limit = 12 } = {}) {
     if (ex.role && e.role === ex.role) s += 1;
     if (have && (e.equipment || []).every(q => q === 'bodyweight' || have.includes(q))) s += 1.5;
     if (e.unilateral === ex.unilateral) s += 0.25;
+    if (ex.plane && e.plane === ex.plane) s += 0.75;
+    // Mobility tags are coarse (many share "hip flexors, glutes"), so the name breaks ties: half kneeling,
+    // split stance, reach, rotation, lunge… say more about how alike two drills are.
+    s += words(e.name).filter(w => exWords.has(w)).length * 0.75;
     return s;
   };
   return all
