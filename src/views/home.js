@@ -20,7 +20,7 @@ import { profile, actualTdeeForWeek } from '../lib/tdee.js';
 import { navigate, openSheet, toast } from '../app.js';
 import { openScheduleEditor, todaysWorkout, dailyWorkout, DAILY_ID, selectSingleProgram, positionLabel, programName, catchUpOffer, setCatchUp } from './schedule.js';
 import { dailyStreak, activeStreak, dailyState, rowTarget, prevDay } from '../lib/daily_card.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, isGameLabel } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, isGameLabel, prepForTomorrow } from '../lib/daily_adjust.js';
 import { buildIcs } from '../lib/calendar.js';
 import { learnProfile } from '../lib/learn.js';
 import { getAllPrograms } from '../lib/static_data.js';
@@ -185,7 +185,7 @@ async function dailyCardData(todaysSessions) {
   const st = dailyState(todaysSessions, { programId: DAILY_ID, skippedToday, dayRows: rows });
   const all = await getAll('sessions');
   const streak = dailyStreak(all, today(), DAILY_ID);
-  let adjust = null;
+  let adjust = null, recover = null;
   if (st.state === 'todo') {
     const yest = all.filter(x => x.date === prevDay(today()));
     const { exerciseByName } = await loadCatalogs();
@@ -194,6 +194,13 @@ async function dailyCardData(todaysSessions) {
     const sore = soreFromNotes([...yest, ...todaysSessions]);
     const adj = adjustDaily(rows, yesterdayLoad(yest, lookup), lookup, { sore, helped: helpedMoves(all, today()) });
     adjust = adj.note ? (adj.game ? 'game' : 'training') : null;
+    // No workout today: a recovery day (foam roll; after a big day, a 20 min walk). Same call as the workout screen.
+    const sl = (await pref('schedule'))?.slots?.[new Date().getDay()];
+    if (sl && !sl.program_id && !isGameLabel(sl.label)) {
+      const added = prepForTomorrow(adj.rows, null, lookup, { restToday: true, load: yesterdayLoad(yest, lookup) }).rows.filter(r => r.recover_add);
+      recover = { parts: added.map(r => /walk/i.test(r.name) ? '20 min walk' : 'foam roll'),
+        extra: added.reduce((m, r) => m + (parseInt(r.time) || 0), 0) };
+    }
   }
   // Tomorrow's game gets prep moves in today's routine (daily_adjust.js prepForTomorrow): say so on the card.
   let prepFor = null;
@@ -213,8 +220,8 @@ async function dailyCardData(todaysSessions) {
   const bballWeek = sched?.slots?.some(sl => sl?.label === 'Basketball');
   const hoops = !bballWeek && [1, 3, 5].includes(new Date().getDay()) && (await findProgramById('basketball_warmup'))
     ? { done: todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped) } : null;
-  return { program, day, rows, st, streak, adjust, prepFor, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
-    minutes: program.session_length_min || 13 };
+  return { program, day, rows, st, streak, adjust, prepFor, recover, letters, todayIdx, hoops, nextIdx: (todayIdx + 1) % n,
+    minutes: (program.session_length_min || 13) + (recover?.extra || 0) };
 }
 
 /** Basketball days (Mon/Wed/Fri, 5:45): one line to the pre-game warm-up, next to the plan. */
@@ -262,6 +269,7 @@ function renderDailyCard(d) {
   return `
     <div class="card" style="margin-bottom:12px">
       <div class="card-row"><h2 style="margin:0">Daily Mobility</h2><span class="pill accent">Day ${L} · ${d.minutes} min</span></div>
+      ${d.recover?.parts.length ? `<div class="muted" style="font-size:12px">+ ${d.recover.parts.join(' + ')}</div>` : ''}
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>
@@ -762,7 +770,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
       <div class="bar"><div class="bar-fill" style="width:${Math.round(st.done / Math.max(1, st.total) * 100)}%"></div></div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0"><button class="btn" id="daily-open" style="flex:1">▶ Resume</button></div>${small}${catchUpRow(catchUp)}`;
     return `${head('Rest &amp; Recover')}
-      <div class="muted" style="font-size:12px">Daily Mobility · Day ${L} · ${daily.minutes} min</div>
+      <div class="muted" style="font-size:12px">Daily Mobility${daily.recover?.parts.length ? ` + ${daily.recover.parts.join(' + ')}` : ''} · Day ${L} · ${daily.minutes} min</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
         <button class="btn" id="daily-open" data-start="1" style="flex:2">▶ Start</button>
         <button class="btn ghost" id="daily-skip" style="flex:1">Skip today</button>

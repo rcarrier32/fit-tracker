@@ -140,10 +140,13 @@ export function adjustDaily(rows, load, lookup, { sore = [], helped = [] } = {})
  *   when today's routine doesn't already cover them: hips through their full rotation (Hip CARs), the groin
  *   (Adductor Rock Back: groin strains are the classic pickup injury) and ankle dorsiflexion (Hip Hinge
  *   Ankle Rocker: cutting and landing need it). Low intensity, no extra impact.
- * - Every rest day starts with PJF's 5-minute foam roll circuit (from PJF's Recovery + Correctives day):
- *   quads, glutes, calves, lats, upper back. Rest & Recover is the recovery day, so it gets the release work.
- * - A rest day after a big one (9+ leg sets or impact work): suggest an easy 15-20 min walk or ride on top,
- *   which clears soreness better than sitting still.
+ * - A day with no workout is a recovery day, built the way PJF's Durability Code builds its own
+ *   (Lower, Upper, then "Recovery + Correctives": foam roll, correctives, easy locomotion, a hold, Zone 2):
+ *   - It opens with PJF's 5-minute Foam Roller Circuit. After a training day the time goes to what was
+ *     worked (yesterdayLoad regions); post-workout rolling reduces next-day soreness a little
+ *     (Wiewelhove 2019 meta-analysis), the main thing a day after heavy legs needs.
+ *   - After a big day (9+ leg sets or impact work) it also gets a Zone 2 walk or ride (20 min) as a row
+ *     you tick, not a note: easy blood flow clears soreness better than sitting still.
  * @param rows      today's rows (after adjustDaily)
  * @param tomorrow  { label, programId } for tomorrow's slot, or null
  * @param opts      { restToday: today is a rest slot, load: yesterdayLoad(...) }
@@ -154,7 +157,9 @@ export const GAME_PREP = [
   { name: 'Adductor Rock Back', target_sets: 1, target_reps: '8 each side', area: 'groin', covered: /adductor|groin|lateral lunge|cossack/i },
   { name: 'Hip Hinge Ankle Rocker', target_sets: 1, target_reps: '10 each side', area: 'ankles', covered: /ankle rocker|dorsiflex|ankle mobility/i },
 ];
-export const FOAM_ROLL = 'Foam Roller Circuit';
+export const FOAM_ROLL = 'Foam Roller Circuit', RECOVER_WALK = 'Brisk Walk';
+// Areas a foam roller reaches, in the order to roll them.
+const ROLL_AREAS = ['quads', 'glutes', 'hamstrings', 'adductors', 'calves', 'lats', 'upper back'];
 export const isGameLabel = (label) => /basketball|pickup|game|soccer|tennis|pickleball/i.test(label || '');
 
 export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, load = null } = {}) {
@@ -174,12 +179,23 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
       ? `Getting you ready for tomorrow's ${tomorrow.label.toLowerCase()}: added ${added.join(', ')}. Easy and controlled, no extra jumping.`
       : `Tomorrow is ${tomorrow.label.toLowerCase()}: today's routine already covers hips, groin and ankles. Keep it easy.`);
   }
-  if (restToday && !out.some(r => /foam roll/i.test(r.name)) && lookup(FOAM_ROLL)) {
-    out = [{ name: FOAM_ROLL, orig_name: FOAM_ROLL, sets: [], target_sets: 1, target_reps: '', time: '5:00',
-      notes: 'Rest & Recover: quads, glutes, calves, lats, upper back. Slow passes, breathe, about 30s an area.', prep_add: true }, ...out];
-  }
-  if (restToday && load && (load.legSets >= 9 || load.impact >= 3)) {
-    notes.push('Rest day after a big one: an easy 15-20 min walk or ride on top of this helps the legs recover.');
+  if (restToday) {
+    if (out === rows) out = rows.map(r => ({ ...r }));
+    const big = !!load && (load.legSets >= 9 || load.impact >= 3);
+    const worked = load ? Object.entries(load.direct || {}).filter(([, n]) => n >= 4).sort((a, b) => b[1] - a[1]).map(([r]) => r) : [];
+    const roll = ROLL_AREAS.filter(a => worked.includes(a));
+    if (!out.some(r => /foam roll/i.test(r.name)) && lookup(FOAM_ROLL)) {
+      out.unshift({ name: FOAM_ROLL, orig_name: FOAM_ROLL, sets: [], target_sets: 1, target_reps: '', time: '5:00', recover_add: true,
+        notes: roll.length
+          ? `Recovery from yesterday: most of the time on your ${roll.join(', ')} (about 60s each), then a quick pass on the rest. Slow, breathe, no grinding on sore spots.`
+          : 'Quads, glutes, calves, lats, upper back: about 30-60s each. Slow passes, breathe.' });
+    }
+    if (big && !out.some(r => /walk|bike|zone 2|ride/i.test(r.name)) && lookup(RECOVER_WALK)) {
+      out.push({ name: RECOVER_WALK, orig_name: RECOVER_WALK, sets: [], target_sets: 1, target_reps: '', time: '20:00', recover_add: true,
+        alternates: ['Easy Bike Ride', 'Zone 2 Low Impact'],
+        notes: `Zone 2 after yesterday's ${load.impact >= 3 ? 'jumps and sprints' : 'leg day'}: easy, conversational pace. Swap for a bike ride if you'd rather.` });
+    }
+    notes.push(`Recovery day: foam roll${roll.length ? ` (mostly ${roll.join(', ')})` : ''}${big ? ' and a 20 min easy walk' : ''}.`);
   }
   return { rows: out, note: notes.length ? notes.join(' ') : null };
 }
@@ -187,13 +203,13 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
 /**
  * A day with no workout: the hip plan's warm-up folds into Daily Mobility instead of being a separate list.
  * Only its moves today's routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor
- * hold covers the hip-flexor stretches, pigeon or figure-4 covers the piriformis…). The walk stays out: on a
- * rest day the note already suggests one. Each added row keeps its hip_id, so ticking it checks it on the Hip tab.
+ * hold covers the hip-flexor stretches, pigeon or figure-4 covers the piriformis…). The walk is only added
+ * as the recovery walk (prepForTomorrow, after a big day), which then checks it. Each added row keeps its hip_id, so ticking it checks it on the Hip tab.
  * @param rows     today's rows
  * @param hipRows  the hip plan's warm-up ({ name, hip_id, sets, time, reps, notes })
  */
 const HIP_COVER = [
-  [/walk|bike/i, /.^/],   // never added (see above)
+  [/walk|bike/i, /walk|bike|ride|zone 2/i],   // covered by the recovery walk when there is one, never added
   [/cat.?cow/i, /cat.?(cow|camel)/i],
   [/pelvic tilt/i, /pelvic tilt/i],
   [/hip flexor/i, /hip flexor|couch stretch/i],
@@ -205,9 +221,9 @@ export function foldHipWarmup(rows, hipRows) {
   const added = [];
   for (const h of hipRows || []) {
     const rule = HIP_COVER.find(([m]) => m.test(h.name));
-    if (rule && rule[0].source === 'walk|bike') continue;
     const cover = rule ? out.find(r => rule[1].test(r.name)) : out.find(r => r.name.toLowerCase() === h.name.toLowerCase());
     if (cover) { (cover.covers_hip ||= []).push(h.hip_id); continue; }   // doing that row checks this one on the Hip tab
+    if (rule && rule[0].source === 'walk|bike') continue;
     const at = out.findLastIndex(r => /single.?leg (stance|balance)/i.test(r.name));
     out.splice(at < 0 ? out.length : at, 0, { name: h.name, orig_name: h.name, sets: [], target_sets: h.sets || 1,
       target_reps: h.reps || '', time: h.time || null, hip_id: h.hip_id, hip_add: true,

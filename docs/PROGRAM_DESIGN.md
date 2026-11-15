@@ -294,20 +294,30 @@ not skipped sessions):
   loads most, skipping any today's routine already covers: **Hip CARs** (hips through full rotation),
   **Adductor Rock Back** (groin strains are the classic pickup injury) and **Hip Hinge Ankle Rocker** (ankle
   dorsiflexion for cutting and landing). Low intensity, no extra jumping, so you arrive loose, not tired.
-- **Every rest day** starts with PJF's 5-minute Foam Roller Circuit (quads, glutes, calves, lats, upper back),
-  the release block from PJF's Recovery + Correctives day. Rest & Recover is the recovery day, so it gets it (v192).
-- **A rest day after a big one** (9+ leg sets or jump work): suggests an easy 15-20 min walk or ride on top,
-  which clears soreness better than sitting still.
+- **A day with no workout is a recovery day**, built the way PJF builds one. The Durability Code runs
+  Lower → Upper → *Recovery + Correctives* (foam roll, correctives, easy locomotion, a hold, Zone 2), so
+  recovery work is planned off the training before it, not left to a generic routine. Rest & Recover is
+  Daily Mobility plus that day's recovery block (v193):
+  - **PJF's 5-min Foam Roller Circuit first.** After a training day the time goes to what was worked
+    (regions with 4+ sets yesterday, ~60 s each). Rolling after training slightly lowers next-day soreness
+    ([Wiewelhove 2019](https://pubmed.ncbi.nlm.nih.gov/31024339/)), which is what the day after heavy legs needs.
+  - **After a big day (9+ leg sets or jump work): a 20-min Zone 2 walk as a row you tick** (swap to a bike),
+    not just a note. It also checks off the hip plan's walk.
+  - Home's card shows it: "Daily Mobility + foam roll + 20 min walk · 39 min".
+  - *Why this was missed before (v181-v191):* the adjustments were added one request at a time (pogos,
+    +1 set, game prep, hip fold) and never checked against how the source programs build their own recovery
+    days, and the research note had filed foam rolling as "a warm-up tool". Rule: when Daily Mobility gains
+    a new case, check what PJF/BWS/Griffith do on that kind of day first.
 - A training day tomorrow adds nothing: that day's own warm-up prepares it.
 
 **No workout today, hip warm-up folds in** (`foldHipWarmup`): on a rest or recovery day (a labelled slot that isn't a game,
 which has its own warm-up), the hip plan's warm-up joins Daily Mobility instead of being a separate list. Only its moves
 the routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor hold covers the hip-flexor stretches,
-pigeon or figure-4 covers the piriformis, any hamstring move covers the hamstring stretch); the walk stays out, since the
-rest-day note suggests one. Ticking an added move, or a row that covers one, checks it on the Hip tab. Home hides the
+pigeon or figure-4 covers the piriformis, any hamstring move covers the hamstring stretch); the walk is never added, but the recovery
+walk (after a big day) checks it off. Ticking an added move, or a row that covers one, checks it on the Hip tab. Home hides the
 separate "Hip warm-up" row those days (it comes back if Daily Mobility is skipped).
 
-**Rest day on Home:** Today's Workout *is* Daily Mobility: "😴 Rest & Recover · Daily Mobility · Day A · 14 min" with
+**Rest day on Home:** Today's Workout *is* Daily Mobility: "😴 Rest & Recover · Daily Mobility + foam roll · Day A · 19 min" with
 Start / Skip today, and no separate Daily Mobility card. The Home cards don't explain the adjustments (the user
 didn't want that text); the routine's own screen says what changed.
 

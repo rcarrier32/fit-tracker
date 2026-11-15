@@ -370,8 +370,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       // ...and tomorrow's plan: the day before a game gets game prep; a rest day after a big one, a walk.
       const slots = (await pref('schedule'))?.slots;
       const dow = new Date().getDay(), tSlot = slots?.[(dow + 1) % 7];
+      // A day with no workout (rest/recovery label, not a game) is a recovery day.
+      const tdSlot = slots?.[dow];
       const prep = prepForTomorrow(adj.rows, tSlot ? { label: tSlot.label || null, programId: tSlot.program_id || null } : null, lookup,
-        { restToday: /rest/i.test(slots?.[dow]?.label || ''), load });
+        { restToday: !!tdSlot && !tdSlot.program_id && !isGameLabel(tdSlot.label), load });
       session.exercises = prep.rows;
       // No workout today (rest or recovery label, not a game, which has its own warm-up): the hip plan's
       // warm-up folds in here, only what today's routine doesn't already cover.
