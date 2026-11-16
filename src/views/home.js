@@ -1,7 +1,7 @@
 /**
  * Home/Today view: snapshot of macros + active workout + body weight + quick actions.
  */
-import { pref, getByIndex, get, getAll, exportAllData, importAllData } from '../db.js';
+import { pref, getByIndex, get, getAll, put, del, exportAllData, importAllData } from '../db.js';
 import { localDateStr } from '../lib/date.js';
 
 function macroPercents(p, c, f) {
@@ -564,7 +564,17 @@ export async function renderHome(app) {
     const v = b.dataset.game;
     if (v === 'warmup') return navigate('routine/basketball_warmup');
     await setGame(v === 'clear' ? null : v === 'played');
-    if (v === 'played') toast('Game logged 🏀');
+    // Played finishes the game: it goes in Activity too (calories burned), same length and effort as last time
+    // (else 60 min, moderate). Undo takes that entry back out; one you logged yourself stays.
+    const logs = await getByIndex('cardio', 'date', today());
+    for (const c of logs.filter(c => c.auto_game)) await del('cardio', c.id);
+    if (v === 'played' && !logs.some(c => c.activity === 'basketball' && !c.auto_game)) {
+      const last = (await getAll('cardio')).filter(c => c.activity === 'basketball' && c.date < today()).sort((a, b) => a.date < b.date ? 1 : -1)[0];
+      const dur = last?.duration_min || 60, intensity = last?.intensity || 'moderate';
+      const kcal = burnCalories('basketball', intensity, dur, (await pref('profile'))?.weight_lb || 180);
+      await put('cardio', { date: today(), activity: 'basketball', duration_min: dur, intensity, calories_burned: kcal, auto_game: true });
+      toast(`Game logged 🏀 · ${dur} min, ${kcal} kcal (edit in Move)`);
+    }
     renderHome(app);
   });
   app.querySelectorAll('[data-catch-up]').forEach(b => b.onclick = async () => {
@@ -735,8 +745,8 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
   }
   if (today_w.type === 'tag' && today_w.tag === 'Basketball') {
     // Game day: warm up, play, then one tap. Didn't play → the next workout keeps its jumps and intervals.
-    const iconBtn = (v, icon, label, on) => `<button class="btn ghost" data-game="${v}" aria-label="${label}" title="${label}"
-      style="flex:1;padding:6px 0;display:flex;align-items:center;justify-content:center;${on ? 'border-color:var(--accent);background:rgba(56,189,248,0.12)' : ''}">${icon}</button>`;
+    const iconBtn = (v, icon, label, primary) => `<button class="btn${primary ? '' : ' ghost'}" data-game="${v}" aria-label="${label}"
+      style="flex:1;padding:6px 4px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px">${icon}<span>${label}</span></button>`;
     if (game) return `
       <div class="card-row" style="margin-top:6px">
         <div style="display:flex;align-items:center;gap:8px">${game.played ? ICON_SCORED : ICON_MISSED}
@@ -747,8 +757,11 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
-        <button class="btn${wuDone ? ' ghost' : ''}" data-game="warmup" style="flex:2">${wuDone ? 'Warm-up ✓' : '▶ Warm-up'}</button>
-        ${iconBtn('played', ICON_SCORED, 'Played')}
+        <button class="btn${wuDone ? ' ghost' : ''}" data-game="warmup" style="flex:1">${wuDone ? 'Warm-up ✓' : '▶ Warm-up'}</button>
+      </div>
+      <div class="muted" style="font-size:12px;margin-top:10px">After the game:</div>
+      <div class="btn-row" style="margin-top:6px;margin-bottom:0">
+        ${iconBtn('played', ICON_SCORED, 'Finish game', wuDone)}
         ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
       </div>${catchUpRow(catchUp)}`;
   }
