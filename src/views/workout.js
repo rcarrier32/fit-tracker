@@ -2488,10 +2488,10 @@ function renderWorkoutComplete(app, session, stats, program, week, day) {
           <div style="flex:1;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.name)}</div>
           ${thumb(x, i, 'helped')}${thumb(x, i, 'hurt')}
         </div>`).join('')}</div>` : ''}
-      <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+      ${session.program_id === 'basketball_warmup' ? `<div class="muted" style="font-size:12px;margin-top:12px">⌚ Watch calories go in after the game: Today → Finish game (warm-up + game in one).</div>` : `<div style="display:flex;align-items:center;gap:8px;margin-top:12px">
         <label for="watch-kcal" style="font-size:13px;flex:1">⌚ Calories from your watch <span class="muted" style="font-size:11px">(adds to today's budget)</span></label>
         <input id="watch-kcal" type="number" inputmode="numeric" min="0" placeholder="kcal" style="width:90px">
-      </div>
+      </div>`}
       <textarea id="feel-note" rows="2" placeholder="Anything to note? e.g. quads sore from yesterday, slept badly" style="width:100%;margin-top:10px">${esc(session.note || '')}</textarea>
       <div id="note-read" class="muted" style="font-size:12px;margin-top:4px">${esc(noteSummary(readNote(session.note)))}</div>
       <div id="feel-saved" class="muted" style="font-size:11px;margin-top:4px;min-height:14px">Saves as you tap and type.</div>

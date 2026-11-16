@@ -563,19 +563,43 @@ export async function renderHome(app) {
   app.querySelectorAll('[data-game]').forEach(b => b.onclick = async () => {
     const v = b.dataset.game;
     if (v === 'warmup') return navigate('routine/basketball_warmup');
-    await setGame(v === 'clear' ? null : v === 'played');
-    // Played finishes the game: it goes in Activity too (calories burned), same length and effort as last time
-    // (else 60 min, moderate). Undo takes that entry back out; one you logged yourself stays.
     const logs = await getByIndex('cardio', 'date', today());
-    for (const c of logs.filter(c => c.auto_game)) await del('cardio', c.id);
-    if (v === 'played' && !logs.some(c => c.activity === 'basketball' && !c.auto_game)) {
-      const last = (await getAll('cardio')).filter(c => c.activity === 'basketball' && c.date < today()).sort((a, b) => a.date < b.date ? 1 : -1)[0];
-      const dur = last?.duration_min || 60, intensity = last?.intensity || 'moderate';
-      const kcal = burnCalories('basketball', intensity, dur, (await pref('profile'))?.weight_lb || 180);
-      await put('cardio', { date: today(), activity: 'basketball', duration_min: dur, intensity, calories_burned: kcal, auto_game: true });
-      toast(`Game logged 🏀 · ${dur} min, ${kcal} kcal (edit in Move)`);
+    const wuIds = new Set((await getByIndex('sessions', 'date', today())).filter(x => x.program_id === 'basketball_warmup').map(x => x.id));
+    const wuWatch = logs.filter(c => c.session_id != null && wuIds.has(c.session_id));   // watch kcal typed on the warm-up's finish screen
+    if (v !== 'played') {
+      await setGame(v === 'clear' ? null : false);
+      for (const c of logs.filter(c => c.auto_game)) await del('cardio', c.id);   // undo takes the game's entry back out
+      return renderHome(app);
     }
-    renderHome(app);
+    // Finish game: one watch number for the morning (warm-up + game) goes in Activity as Basketball and
+    // raises today's calorie budget. Blank = an estimate from the game's length.
+    const mine = logs.find(c => c.activity === 'basketball' && !c.auto_game);
+    const last = (await getAll('cardio')).filter(c => c.activity === 'basketball' && c.date < today()).sort((x, y) => x.date < y.date ? 1 : -1)[0];
+    const dur0 = mine?.duration_min || last?.duration_min || 60;
+    const kcal0 = mine?.calories_burned || wuWatch.reduce((m, c) => m + (c.calories_burned || 0), 0) || '';
+    openSheet((sheet, close) => {
+      sheet.innerHTML = `<h2>🏀 Finish game</h2>
+        <div class="group-label">⌚ Calories from your watch <span class="muted">(warm-up + game)</span></div>
+        <input type="number" id="g-kcal" inputmode="numeric" min="0" placeholder="Blank = estimate" value="${kcal0}">
+        <div class="group-label">Minutes played</div>
+        <input type="number" id="g-min" inputmode="numeric" min="5" max="240" value="${dur0}">
+        <button class="btn" id="g-save" style="margin-top:16px">Save game</button>
+        <button class="btn ghost" id="g-cancel" style="margin-top:8px">Cancel</button>`;
+      sheet.querySelector('#g-cancel').onclick = close;
+      sheet.querySelector('#g-save').onclick = async () => {
+        const dur = Math.max(5, parseInt(sheet.querySelector('#g-min').value) || dur0);
+        const watch = parseInt(sheet.querySelector('#g-kcal').value);
+        const intensity = last?.intensity || 'moderate';
+        const kcal = watch > 0 ? watch : burnCalories('basketball', intensity, dur, (await pref('profile'))?.weight_lb || 180);
+        await setGame(true);
+        for (const c of [...logs.filter(c => c.auto_game), ...wuWatch]) await del('cardio', c.id);
+        if (mine) await put('cardio', { ...mine, duration_min: dur, calories_burned: kcal, ...(watch > 0 ? { source: 'watch' } : {}) });
+        else await put('cardio', { date: today(), activity: 'basketball', duration_min: dur, intensity, calories_burned: kcal, auto_game: true, ...(watch > 0 ? { source: 'watch' } : {}) });
+        close();
+        toast(`Game logged 🏀 · ${dur} min, ${kcal} kcal${watch > 0 ? '' : ' (estimate)'}`);
+        renderHome(app);
+      };
+    });
   });
   app.querySelectorAll('[data-catch-up]').forEach(b => b.onclick = async () => {
     await setCatchUp(b.dataset.catchUp || null);
