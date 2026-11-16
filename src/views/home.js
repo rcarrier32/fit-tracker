@@ -398,7 +398,8 @@ export async function renderHome(app) {
   const hipInWorkout = !!hip && today_w.type === 'program';
   const trainStreak = activeStreak(await getAll('sessions'), today());
   const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
-  const catchUp = today_w.type === 'tag' ? await catchUpOffer() : null;   // a missed workout can be done today
+  const catchUp = today_w.type === 'tag' ? await catchUpOffer() : null;
+  const wuDone = todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped);   // a missed workout can be done today
   // Back after a week or more off: say so, and ease in (adapt.js drops weights to ~90% at 14+ days).
   if (today_w.type === 'program' && !today_w.doneToday) {
     const lastTrained = (await getAll('sessions')).filter(x => x.done && !x.skipped && x.program_id !== DAILY_ID && x.date < today())
@@ -453,7 +454,7 @@ export async function renderHome(app) {
         ${trainStreak >= 1 ? `<span class="pill accent" title="Days in a row you trained (workouts or Daily Mobility)">🔥 ${trainStreak} day${trainStreak === 1 ? '' : 's'}</span>` : renderTodayBadge(today_w, activePlan)}
       </div>
       ${activePlan && activePlan.program_id === today_w.program?.id ? renderPlanProgress(activePlan) : ''}
-      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game, catchUp, restIsDaily ? daily : null)}
+      ${renderTodayBody(today_w, schedule, workoutDoneToday, hipInWorkout, game, catchUp, restIsDaily ? daily : null, wuDone)}
       ${tosProgress ? `
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
@@ -717,7 +718,7 @@ function catchUpRow(c) {
     ↺ Catch up instead: ${escH(c.name)} · ${escH(c.title)}</button>`;
 }
 
-function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null, catchUp = null, daily = null) {
+function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst = false, game = null, catchUp = null, daily = null, wuDone = false) {
   const editLine = `<button class="btn ghost" data-action="schedule" style="margin-top:8px">${schedule ? 'Edit weekly schedule' : 'Set up Mixed Week'}</button>`;
   if (today_w.type === 'completed') {
     const name = today_w.program?.name || today_w.program?.program_name || today_w.programId || 'Program';
@@ -739,13 +740,14 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
     if (game) return `
       <div class="card-row" style="margin-top:6px">
         <div style="display:flex;align-items:center;gap:8px">${game.played ? ICON_SCORED : ICON_MISSED}
-          <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div>
+          <div><div style="font-size:15px;font-weight:600">${game.played ? 'Played ✓' : "Didn't play"}${wuDone ? ' · warm-up ✓' : ''}</div>
+          <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div></div>
         <button class="btn ghost" data-game="clear" aria-label="Undo" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">↺</button>
       </div>${catchUpRow(catchUp)}`;
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
-        <button class="btn" data-game="warmup" style="flex:2">▶ Warm-up</button>
+        <button class="btn${wuDone ? ' ghost' : ''}" data-game="warmup" style="flex:2">${wuDone ? 'Warm-up ✓' : '▶ Warm-up'}</button>
         ${iconBtn('played', ICON_SCORED, 'Played')}
         ${iconBtn('skipped', ICON_MISSED, "Didn't play")}
       </div>${catchUpRow(catchUp)}`;

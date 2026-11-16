@@ -3,6 +3,7 @@
  * Separate from lifting sessions. Duration + intensity → estimated kcal burn.
  */
 import { getAll, getByIndex, put, del, pref } from '../db.js';
+import { GAME_ID, gameOn, setGame } from '../lib/game.js';
 import { toast, openSheet } from '../app.js';
 import { localDateStr } from '../lib/date.js';
 
@@ -270,6 +271,8 @@ function openLogSheet(weight_lb, dateKey, onSaved) {
         intensity: selectedIntensity,
         calories_burned: kcal,
       });
+      // Basketball here is the game too: Today's card shows it Played and tomorrow drops its jumps.
+      if (selectedActivity === GAME_ID && !(await gameOn(dateKey))) await setGame(true, dateKey);
       toast('Activity logged');
       close();
       onSaved();
