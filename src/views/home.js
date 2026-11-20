@@ -398,7 +398,8 @@ export async function renderHome(app) {
   const hipInWorkout = !!hip && today_w.type === 'program';
   const trainStreak = activeStreak(await getAll('sessions'), today());
   const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
-  const catchUp = today_w.type === 'tag' ? await catchUpOffer() : null;
+  // Didn't play: the free day can be the next workout, whether or not a day was missed this week.
+  const catchUp = today_w.type === 'tag' ? await catchUpOffer({ anyway: game?.played === false }) : null;
   const wuDone = todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped);   // a missed workout can be done today
   // Back after a week or more off: say so, and ease in (adapt.js drops weights to ~90% at 14+ days).
   if (today_w.type === 'program' && !today_w.doneToday) {
@@ -746,8 +747,11 @@ const ICON_SCORED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden
 const ICON_MISSED = `<svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">${BALL(true)}${BADGE(false)}</svg>`;
 
 /** "Missed a workout? Do it today" under a labelled day (Basketball, Rest…). */
-function catchUpRow(c) {
+function catchUpRow(c, primary = false) {
   if (!c) return '';
+  if (primary) return `<button class="btn" data-catch-up="${escH(c.programId)}" style="margin-top:10px">
+    ▶ Work out instead: ${escH(c.title)}</button>
+    <div class="muted" style="font-size:12px;margin-top:4px;text-align:center">${escH(c.name)} · the next workout in your week</div>`;
   return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" style="margin-top:10px;font-size:13px;text-align:left">
     ↺ Catch up instead: ${escH(c.name)} · ${escH(c.title)}</button>`;
 }
@@ -777,7 +781,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
           <div><div style="font-size:15px;font-weight:600">${game.played ? 'Played ✓' : "Didn't play"}${wuDone ? ' · warm-up ✓' : ''}</div>
           <div class="muted" style="font-size:12px">${game.played ? 'Tomorrow skips its jumps and hard intervals.' : 'Next workout keeps its jumps. 25 min easy cardio if you can.'}</div></div></div>
         <button class="btn ghost" data-game="clear" aria-label="Undo" style="width:auto;padding:4px 10px;font-size:12px;flex-shrink:0">↺</button>
-      </div>${catchUpRow(catchUp)}`;
+      </div>${catchUpRow(catchUp, !game.played)}`;
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">🏀 Basketball day</div>
       <div class="btn-row" style="margin-top:10px;margin-bottom:0">
