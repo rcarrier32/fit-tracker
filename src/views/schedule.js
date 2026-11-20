@@ -608,8 +608,9 @@ export async function dailyWorkout(id = DAILY_ID) {
 /**
  * On a labelled day (Basketball, Rest, Cardio…) of a Mixed Week, when a training day earlier this week
  * was missed: the week's training program and its next day, so it can be done today. { programId, name, title } or null.
+ * `anyway`: offer it even when not behind (a game day you didn't play is a free day for the next workout).
  */
-export async function catchUpOffer() {
+export async function catchUpOffer({ anyway = false } = {}) {
   const sched = await pref('schedule');
   if (sched?.type !== 'weekly') return null;
   const ids = sched.slots.filter(sl => sl?.program_id && sl.mode === 'follow').map(sl => sl.program_id);
@@ -617,7 +618,7 @@ export async function catchUpOffer() {
   const program = await findProgram(id);
   if (!program) return null;
   // Only when a training day earlier this week was missed: not for working ahead.
-  if (!behindThisWeek(sched.slots, program.id, await getAll('sessions'), localDateStr())) return null;
+  if (!anyway && !behindThisWeek(sched.slots, program.id, await getAll('sessions'), localDateStr())) return null;
   const pos = await followPosition(program);
   if (pos.completedAt || pos.doneToday) return null;
   const day = pos.day_index != null ? program.days?.[pos.day_index]
