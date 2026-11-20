@@ -137,3 +137,9 @@ Read by expanding each caption and sampling frames. **Used** = what the app does
 Project Physical Therapy (#4), raybeau_moves (#10, #13). Those stay screen recordings only, so Knee Circles,
 Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to Hamstring Stretch keep their stand-ins. Still not
 seen anywhere: #3, #6, #7, #11, #12, #14, #16 (#16 only partly, Igor reel).
+
+## New links to read (saved from a cloud session)
+
+| Saved | Link | User's note | Move(s) | Creator | Used for |
+|---|---|---|---|---|---|
+| 2026-11-20 | https://www.facebook.com/share/r/1CSLk3j8vu/ | "Looks like a good Daily Mobility or warm-up" | | | ask: Daily Mobility, Basketball Warm-up, or both |

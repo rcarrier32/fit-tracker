@@ -15,6 +15,11 @@ and what the app uses. Quadruped Swing Throughs plays its reel; Griffith's "Moti
 drills were added. The reels that match Knee Circles, Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to
 Hamstring Stretch are screen recordings, not links: send those links to replace the stand-ins.
 
+**New, not read yet (saved 2026-11-20):** https://www.facebook.com/share/r/1CSLk3j8vu/ — the user thinks it's a good
+Daily Mobility or warm-up routine. In a logged-in local session: open it, list the moves (name, reps/time, creator), match
+them to existing exercises, then ask the user where it goes: Daily Mobility (A/B/C), the Basketball Warm-up
+(`basketball_warmup`), or both. Log it in the reels table below.
+
 Undecided *(decide with the user)*: heel clicks, hip opener into knee lean back, and whether the 90/90 variants get their
 own rows (no reel showed them clearly).
 
