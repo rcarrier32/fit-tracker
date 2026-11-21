@@ -15,8 +15,8 @@ and what the app uses. Quadruped Swing Throughs plays its reel; Griffith's "Moti
 drills were added. The reels that match Knee Circles, Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to
 Hamstring Stretch are screen recordings, not links: send those links to replace the stand-ins.
 
-**Uncle Shen reel (saved 2026-11-20, read 2026-11-21):** one move, the same as Half Kneeling Thoracic Rotations
-(already in Daily Mobility). *(decide)* whether it also goes in the Basketball Warm-up; see the reels table.
+**Uncle Shen reel (saved 2026-11-20, read 2026-11-21):** one move, the same as Half Kneeling Thoracic Rotations.
+Done (v203): it's in Daily Mobility and, at the user's call, the Basketball Warm-up.
 
 Undecided *(decide with the user)*: heel clicks, hip opener into knee lean back, and whether the 90/90 variants get their
 own rows (no reel showed them clearly).

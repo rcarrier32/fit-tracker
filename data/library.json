@@ -70383,6 +70383,18 @@
                 "notes": null
               },
               {
+                "name": "Half Kneeling Thoracic Rotations",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Hands behind the head: turn the chest open, reach the elbow toward the floor, side-bend, back up. Keep it moving."
+              },
+              {
                 "name": "Walking Sprinters Mobility",
                 "round_group": "Mobilise",
                 "is_alternate": false,
@@ -70795,6 +70807,88 @@
       "plane": "sagittal",
       "hip_focus": true
     },
+    "hiprx-lh-bridge-band-abd": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lh-sit-to-stand": {
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "squat",
+      "role": "secondary",
+      "equipment": [
+        "box"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lh-supine-abd-iso": {
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    "hiprx-lh-wall-abd-iso": {
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    "hiprx-lh-weight-shift": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
     "hiprx-lv-airplane-free": {
       "primary_muscle": "glutes",
       "muscles": [
@@ -70949,6 +71043,23 @@
       "role": "secondary",
       "equipment": [
         "box"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    "hiprx-lv-lateral-step-stick": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
       ],
       "level": 2,
       "unilateral": true,
@@ -71145,6 +71256,23 @@
       ],
       "level": 1,
       "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lv-step-stick": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
       "plane": "sagittal",
       "hip_focus": true
     },
@@ -71980,122 +72108,6 @@
       "level": 1,
       "unilateral": false,
       "plane": "sagittal",
-      "hip_focus": true
-    },
-    "hiprx-lh-supine-abd-iso": {
-      "primary_muscle": "abductors",
-      "muscles": [
-        "abductors",
-        "glutes"
-      ],
-      "pattern": "isometric",
-      "role": "accessory",
-      "equipment": [
-        "mini_band"
-      ],
-      "level": 1,
-      "unilateral": false,
-      "plane": "frontal",
-      "hip_focus": true
-    },
-    "hiprx-lh-wall-abd-iso": {
-      "primary_muscle": "abductors",
-      "muscles": [
-        "abductors",
-        "glutes"
-      ],
-      "pattern": "isometric",
-      "role": "accessory",
-      "equipment": [
-        "bodyweight"
-      ],
-      "level": 1,
-      "unilateral": true,
-      "plane": "frontal",
-      "hip_focus": true
-    },
-    "hiprx-lh-weight-shift": {
-      "primary_muscle": "glutes",
-      "muscles": [
-        "glutes",
-        "abductors",
-        "quads"
-      ],
-      "pattern": "balance",
-      "role": "accessory",
-      "equipment": [
-        "bodyweight"
-      ],
-      "level": 1,
-      "unilateral": true,
-      "plane": "sagittal",
-      "hip_focus": true
-    },
-    "hiprx-lh-bridge-band-abd": {
-      "primary_muscle": "glutes",
-      "muscles": [
-        "glutes",
-        "abductors",
-        "hamstrings"
-      ],
-      "pattern": "hinge",
-      "role": "secondary",
-      "equipment": [
-        "mini_band"
-      ],
-      "level": 1,
-      "unilateral": false,
-      "plane": "sagittal",
-      "hip_focus": true
-    },
-    "hiprx-lh-sit-to-stand": {
-      "primary_muscle": "quads",
-      "muscles": [
-        "quads",
-        "glutes"
-      ],
-      "pattern": "squat",
-      "role": "secondary",
-      "equipment": [
-        "box"
-      ],
-      "level": 1,
-      "unilateral": false,
-      "plane": "sagittal",
-      "hip_focus": true
-    },
-    "hiprx-lv-step-stick": {
-      "primary_muscle": "glutes",
-      "muscles": [
-        "glutes",
-        "abductors",
-        "quads"
-      ],
-      "pattern": "balance",
-      "role": "accessory",
-      "equipment": [
-        "bodyweight"
-      ],
-      "level": 2,
-      "unilateral": true,
-      "plane": "sagittal",
-      "hip_focus": true
-    },
-    "hiprx-lv-lateral-step-stick": {
-      "primary_muscle": "glutes",
-      "muscles": [
-        "glutes",
-        "abductors",
-        "quads"
-      ],
-      "pattern": "balance",
-      "role": "accessory",
-      "equipment": [
-        "bodyweight"
-      ],
-      "level": 2,
-      "unilateral": true,
-      "plane": "frontal",
       "hip_focus": true
     }
   }

@@ -39,6 +39,9 @@ rows = [
     r('Extensive Locomotion Cariocas', '1 length each way', group='Raise', notes='Easy rhythm, hips turning.'),
     # Mobilise: the ranges the game uses.
     r("World's Greatest Stretch", '3 each side', group='Mobilise'),
+    # The user's save (Uncle Shen reel, 2026-11-20): opens the upper back for shooting and contact.
+    r('Half Kneeling Thoracic Rotations', '5 each side', group='Mobilise',
+      notes='Hands behind the head: turn the chest open, reach the elbow toward the floor, side-bend, back up. Keep it moving.'),
     r('Walking Sprinters Mobility', '6 each side', group='Mobilise'),
     r('Lateral Lunge', '5 each side', group='Mobilise', notes='No band needed. Sit back into the hip: the groin takes the cuts and slides.'),
     r('Hip Airplane (No Support)', '3 each side', group='Mobilise', notes='Slow open and close.'),

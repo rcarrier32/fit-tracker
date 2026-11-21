@@ -1363,7 +1363,7 @@
    "kind": "rotation",
    "weeks": null,
    "days_per_week": 1,
-   "exercises_per_day": 15.0,
+   "exercises_per_day": 16.0,
    "day_focus": [
     "Basketball warm-up"
    ],
@@ -1373,10 +1373,11 @@
     "calves": 3,
     "lower_back": 1,
     "full_body": 1,
-    "adductors": 1
+    "adductors": 1,
+    "upper_back": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 5,
+    "mobility": 6,
     "balance": 3,
     "speed_accel": 3,
     "plyo_bound_hop": 2,
@@ -1386,7 +1387,7 @@
     "hinge": 1
    },
    "roles": {
-    "warmup": 6,
+    "warmup": 7,
     "secondary": 2,
     "accessory": 2,
     "power": 2,
