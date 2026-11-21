@@ -9469,6 +9469,79 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "proformance-bench-pigeon-rotation": {
+   "name": "Bench Pigeon Rotation",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "abductors",
+    "adductors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-prone-banded-hip-ir": {
+   "name": "Prone Banded Hip IR",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-side-lying-hip-ir-lift-with-roller": {
+   "name": "Side-Lying Hip IR Lift with Roller",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "abductors"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-standing-bench-hip-rotations-with-med-ball": {
+   "name": "Standing Bench Hip Rotations with Med Ball",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "adductors",
+    "obliques"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bench",
+    "med_ball"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
   "proprioception-progressions": {
    "name": "Proprioception Progressions",
    "primary_muscle": "calves",

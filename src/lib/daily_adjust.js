@@ -220,7 +220,7 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
 /**
  * A day with no workout: the hip plan's warm-up folds into Daily Mobility instead of being a separate list.
  * Only its moves today's routine doesn't already cover are added (Cat Camel covers Cat-Cow, any hip-flexor
- * hold covers the hip-flexor stretches, pigeon or figure-4 covers the piriformis…). The walk is only added
+ * hold covers the hip-flexor stretches, a 90/90 or pigeon covers the 90/90 opener, adductor work covers the rock back…). The walk is only added
  * as the recovery walk (prepForTomorrow, after a big day), which then checks it. Each added row keeps its hip_id, so ticking it checks it on the Hip tab.
  * @param rows     today's rows
  * @param hipRows  the hip plan's warm-up ({ name, hip_id, sets, time, reps, notes })
@@ -231,6 +231,8 @@ const HIP_COVER = [
   [/pelvic tilt/i, /pelvic tilt/i],
   [/hip flexor/i, /hip flexor|couch stretch/i],
   [/piriformis/i, /piriformis|pigeon|figure.?4/i],
+  [/90.?90/i, /90.?90|pigeon/i],                     // the hip warm-up's 90/90 Hip Opener (v204)
+  [/adductor rock|frog/i, /adductor|frog|lateral lunge/i],
   [/hamstring/i, /hamstring/i],
 ];
 export function foldHipWarmup(rows, hipRows) {

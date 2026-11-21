@@ -15441,6 +15441,135 @@
       "unilateral": true,
       "plane": "frontal",
       "hip_focus": true
+    },
+    {
+      "id": "proformance-bench-pigeon-rotation",
+      "name": "Bench Pigeon Rotation",
+      "video_url": "https://www.facebook.com/reel/2300750430439720",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Bench+Pigeon+Rotation+form",
+      "video_own": true,
+      "cues": [
+        "Sit on a bench with one shin across it in front of you, knee out (pigeon), the other foot on the floor.",
+        "Lift that knee up and turn it down and in toward the bench (the hip turns in), then back out to pigeon. Slow, sitting tall.",
+        "Feet stay wide of your midline as the knee drops in. In the reel at 0-3 s. 6-8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "abductors",
+        "adductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-side-lying-hip-ir-lift-with-roller",
+      "name": "Side-Lying Hip IR Lift with Roller",
+      "video_url": "https://youtu.be/iQhEqtez11k",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Side-Lying+Hip+IR+Lift+with+Roller+form",
+      "video_own": true,
+      "cues": [
+        "Lie on your side, knees bent, a foam roller or firm pillow between the knees.",
+        "Keep the knees on the roller and lift the top foot toward the ceiling (the top hip turns in), hold 2 s, lower slowly.",
+        "Pad under the bottom hip and keep sets short on the sore side. Second of the four moves in the clip. 10-12 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-standing-bench-hip-rotations-with-med-ball",
+      "name": "Standing Bench Hip Rotations with Med Ball",
+      "video_url": "https://youtu.be/iQhEqtez11k",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Bench+Hip+Rotations+with+Med+Ball+form",
+      "video_own": true,
+      "cues": [
+        "Stand facing along a bench with one heel up on it, leg long, a ball held at your chest.",
+        "Turn your hips and chest toward the raised leg, then away: the standing hip rotates under you. Stay tall, no leaning.",
+        "Third of the four moves in the clip. 8 each way, each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors",
+        "obliques"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bench",
+        "med_ball"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-prone-banded-hip-ir",
+      "name": "Prone Banded Hip IR",
+      "video_url": "https://youtu.be/iQhEqtez11k",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Prone+Banded+Hip+IR+form",
+      "video_own": true,
+      "cues": [
+        "Lie face down, one knee bent to 90°, a long band from that foot to your hands.",
+        "Let the foot fall out to the side (the hip turns in), ease a little further with the band, then bring the foot back to the middle with the hip.",
+        "Hips stay flat on the floor. Last of the four moves in the clip. 10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
     }
   ],
   "programs": {
@@ -52304,6 +52433,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
                     "is_alternate": false,
@@ -52616,6 +52757,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "SL Hip Airplane w/ Foam Roller",
                     "round_group": null,
                     "is_alternate": false,
@@ -52735,6 +52888,18 @@
                   "Log the load you use so next week starts from it."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -53053,6 +53218,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "SL Hip Airplane w/ Foam Roller",
                     "round_group": null,
                     "is_alternate": false,
@@ -53172,6 +53349,18 @@
                   "Same exercises as last week: add a rep, a few seconds, or a little load."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -53485,6 +53674,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "SL Hip Airplane w/ Foam Roller",
                     "round_group": null,
                     "is_alternate": false,
@@ -53609,6 +53810,18 @@
                   "Log the load you use so next week starts from it."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -53922,6 +54135,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "Hip Airplane (No Support)",
                     "round_group": null,
                     "is_alternate": false,
@@ -54041,6 +54266,18 @@
                   "Log the load you use so next week starts from it."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -54359,6 +54596,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "Hip Airplane (No Support)",
                     "round_group": null,
                     "is_alternate": false,
@@ -54478,6 +54727,18 @@
                   "Same exercises as last week: add a rep, a few seconds, or a little load."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -54791,6 +55052,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "Hip Airplane (No Support)",
                     "round_group": null,
                     "is_alternate": false,
@@ -54915,6 +55188,18 @@
                   "Log the load you use so next week starts from it."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -55228,6 +55513,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "Weighted Hip Airplane",
                     "round_group": null,
                     "is_alternate": false,
@@ -55347,6 +55644,18 @@
                   "Log the load you use so next week starts from it."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -55665,6 +55974,18 @@
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
                   },
                   {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
                     "name": "Weighted Hip Airplane",
                     "round_group": null,
                     "is_alternate": false,
@@ -55784,6 +56105,18 @@
                   "Same exercises as last week: add a rep, a few seconds, or a little load."
                 ],
                 "exercises": [
+                  {
+                    "name": "Prone Banded Hip IR",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
@@ -56095,6 +56428,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stack the hips vertically; do not roll backward as the leg lifts."
+                  },
+                  {
+                    "name": "Side-Lying Hip IR Lift with Roller",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10–12 per side, 2 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
                   },
                   {
                     "name": "Weighted Hip Airplane",
@@ -63682,18 +64027,21 @@
                 ]
               },
               {
-                "name": "Optional Pigeon Length Under Load",
+                "name": "Bench Pigeon Rotation",
                 "round_group": "Rotation",
                 "is_alternate": false,
                 "sets": 1,
-                "reps": "5 each side",
+                "reps": "6 each side",
                 "weight": null,
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "Your #1 \"rotating pigeon\". PJF's levels, slowly.",
+                "notes": "Your #1 \"rotating pigeon\" and Proformance's bench pigeon: knee out, then up and down-and-in. Turning the hip in is the range that's usually short after FAI surgery.",
                 "alternates": [
-                  "Banded Incline Pigeon Rotation"
+                  "Optional Pigeon Length Under Load",
+                  "Banded Incline Pigeon Rotation",
+                  "Standing Bench Hip Rotations with Med Ball",
+                  "Prone Banded Hip IR"
                 ]
               },
               {

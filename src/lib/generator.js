@@ -118,6 +118,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const levelUpPool = exercises.filter(e => e.pattern && e.role && hasVideo(e) && !e.video_standin && (e.level || 2) === p.level + 1 &&
     (e.equipment || ['bodyweight']).every(q => ['bodyweight', ...p.equipment].includes(q)) && !/last resort/i.test(e.name) && !easyHit(e));
   const levelUp = new Set();
+  const avoidFallback = new Set();   // `${ph}:${di}:${si}` where a learned "avoid" was the only fit left that day
   const nDays = String(Math.min(6, Math.max(2, p.days)));
   // Speed and agility days are jumps, sprints and cuts: not with "go easy on knees".
   const speedOk = !(p.easy || []).includes('knee') && games < 2;
@@ -313,7 +314,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
               if (e) levelUp.add(e.name);
             }
           }
-          if (!e) e = exact[0] || null;   // only an avoided exercise fits: better than an empty slot
+          if (!e) {   // only an avoided exercise fits (given today's other picks): better than an empty slot
+            e = exact[0] || null;
+            if (e && avoidSet.has(e.name)) avoidFallback.add(`${ph}:${di}:${si}`);
+          }
         }
         if (e) {
           if (likeSet.has(e.name)) learnedFrom.preferred.add(e.name);
@@ -668,6 +672,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     else if (slot.role === 'core') bits.push('Core');
     else bits.push(`${slot.role === 'secondary' ? 'Second lift' : 'Accessory'}: ${PAT[e.pattern] || muscleWord(e.primary_muscle)}`);
     if (levelUp.has(e.name)) bits.push(`one level up: nothing at your level fits this slot with your equipment`);
+    if (avoidFallback.has(`${ph}:${di}:${si}`)) bits.push('one you usually skip: nothing else fits this slot today with your equipment');
     if (favSet.has(e.name)) bits.push('♥ your favourite');
     if (coachUse[e.name] && slot.role !== 'core') bits.push(`in ${coachUse[e.name]} of ${coachN} coach program${coachN === 1 ? '' : 's'}`);
     if (likeSet.has(e.name)) bits.push('one you swap to or add');

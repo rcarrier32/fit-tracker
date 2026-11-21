@@ -106,22 +106,36 @@ const SOURCE_SECTIONS = [
         channel: "www.sportsinjuryclinic.net",
         search: 'Thomas stretch hip flexor couch stretch table edge how to',
       },
+      // v204: the figure-4 Piriformis Stretch moved out of the warm-up (it pulls the thigh across the body,
+      // which presses on the outer-hip tendons). 90/90 Hip Opener still stretches the back of the hip and
+      // turns it out, without the cross-body pull, and turns the back hip in. Piriformis Stretch stays in
+      // the catalog and in the Lateral Hip section's index so old logs keep their name.
       {
-        id: 'wu-piriformis',
-        name: 'Piriformis Stretch',
-        subtitle: 'Deep external rotators — common source of referred posterior hip pain',
-        sets: '3 × 30 s per side',
+        id: 'wu-90-90-opener',
+        name: '90/90 Hip Opener',
+        subtitle: 'Back of the hip and both rotations, no squeeze on the outer hip',
+        sets: '5 per side',
         freq: 'Daily',
         cues: [
-          'Figure-4 on your back: ankle across the opposite knee, pull that thigh in.',
-          'Keep both hips square on the floor — do not let the pelvis rotate.',
-          'Stretch should sit deep in the glute, not in the front of the hip.',
+          'Sit with both knees bent to 90°: front shin across in front of you, back shin out to the side.',
+          'Sit tall and lean the chest over the front shin for 2-3 breaths (back of the hip), then turn to face the back knee (the back hip turns in).',
+          'Switch sides by swinging both knees over. Hands on the floor behind you if you need them.',
         ],
-        askPt: 'Two reasons to ask about this one. (1) You have to force external rotation to walk balanced — and the piriformis is an external rotator you stretch daily. (2) Figure-4 puts the hip into adduction, which compresses the gluteal tendons if the lateral pain is tendinopathy. Not saying drop it — saying ask whether it fits your case.',
-        videoId: 'THeoEsh_Trw',
-        videoTitle: "Supine Piriformis Stretch (figure four stretch)",
-        channel: "FitLife Fitness, Aquatics and Physical Therapy",
-        search: 'piriformis stretch physical therapy figure 4',
+        video_url: 'https://youtu.be/iPqysXFsvTQ',   // the catalog's demo for this move
+        search: '90 90 hip opener',
+      },
+      {
+        id: 'wu-adductor-rock',
+        name: 'Adductor Rock Back',
+        subtitle: 'Frog-position rocks: inner thigh and hip flexion, knees wide',
+        sets: '8 reps',
+        freq: 'Daily',
+        cues: [
+          'On hands and knees, knees as wide as is comfortable, feet out behind.',
+          'Rock the hips back toward the heels and forward again, back flat. Go only as deep as the inner thigh allows.',
+        ],
+        video_url: 'https://www.facebook.com/share/v/1FLcHuHnk8/',   // the catalog's demo (the user's saved video)
+        search: 'adductor rock back quadruped frog',
       },
       {
         id: 'wu-hamstring',
@@ -632,6 +646,7 @@ const SOURCE_SECTIONS = [
         freq: 'Per Motion RC plan',
         cues: [
           'Lying down, let the knee drop inward to a gentle stretch on the outside of the hip.',
+          'Feet wider than the hips, so the knee drops in toward the floor rather than across the other leg (crossing over presses on the outer-hip tendons).',
           'Hold lightly — stretch, not pinch.',
         ],
         videoId: 'Q9HF6G04L04',
@@ -648,6 +663,7 @@ const SOURCE_SECTIONS = [
         cues: [
           'Sit tall on a box, band around the ankle pulling inward.',
           'Swing the foot out (hip rotates in) against the band and return slowly. Thigh stays still.',
+          'Knees about hip-width: the hip turns in without the thigh drifting across your midline.',
         ],
         videoId: '6sYTrwpgQuE',
         videoTitle: "Seated Banded Hip Internal Rotation - strengthening Exercise",
@@ -1187,6 +1203,58 @@ const SOURCE_SECTIONS = [
         channel: "PT Solutions Physical Therapy",
         search: 'sit to stand exercise physical therapy hip',
       },
+      // Out of the warm-up since v204 (figure-4 presses on the outer-hip tendons); kept here, unpicked,
+      // so old Hip-tab logs keep its name. Still a catalog move and a swap option.
+      {
+        id: 'wu-piriformis',
+        name: 'Piriformis Stretch',
+        subtitle: 'Deep external rotators — common source of referred posterior hip pain',
+        sets: '3 × 30 s per side',
+        freq: 'Swap option',
+        cues: [
+          'Figure-4 on your back: ankle across the opposite knee, pull that thigh in.',
+          'Keep both hips square on the floor — do not let the pelvis rotate.',
+          'Stretch should sit deep in the glute, not in the front of the hip.',
+        ],
+        videoId: 'THeoEsh_Trw',
+        videoTitle: "Supine Piriformis Stretch (figure four stretch)",
+        channel: "FitLife Fitness, Aquatics and Physical Therapy",
+        search: 'piriformis stretch physical therapy figure 4',
+      },
+      // Proformance (a physical therapist; the user's saved reel, 2026-11-21): hip internal rotation,
+      // the range that is usually short after FAI surgery. Same moves as the catalog's coach moves.
+      {
+        id: 'pf-prone-banded-ir',
+        name: 'Prone Banded Hip IR',
+        subtitle: 'Hip turning in with the hip straight: no squeeze on the outer hip',
+        sets: '2 × 10 per side',
+        freq: 'Session A',
+        cues: [
+          'Lie face down, one knee bent to 90°, a long band from that foot to your hands.',
+          'Let the foot fall out to the side (the hip turns in), ease a little further with the band, then bring the foot back to the middle with the hip.',
+          'Hips stay flat on the floor. Left side first, then match it on the right. Last of the four moves in the clip.',
+        ],
+        videoId: 'iQhEqtez11k',
+        videoTitle: 'This is why hips feel tight!',
+        channel: 'Proformance',
+        search: 'prone banded hip internal rotation',
+      },
+      {
+        id: 'pf-side-lying-ir-lift',
+        name: 'Side-Lying Hip IR Lift with Roller',
+        subtitle: 'Strength for turning the hip in: the deep rotators and front of the glute med',
+        sets: '2 × 10–12 per side, 2 s hold',
+        freq: 'Session B',
+        cues: [
+          'Lie on your side, knees bent, a foam roller or firm pillow between the knees.',
+          'Keep the knees on the roller and lift the top foot toward the ceiling (the top hip turns in), hold 2 s, lower slowly.',
+          'Working the right hip means lying on the left: pad under it and keep that set short. Second of the four moves in the clip.',
+        ],
+        videoId: 'iQhEqtez11k',
+        videoTitle: 'This is why hips feel tight!',
+        channel: 'Proformance',
+        search: 'side lying hip internal rotation foam roller between knees',
+      },
     ],
   },
 
@@ -1705,7 +1773,7 @@ function pick(session, ids) {
     if (!ex) throw new Error(`hip_protocol: unknown exercise ${id}`);
     return {
       ...ex,
-      source: id.startsWith('mrc-') ? 'Motion RC' : id.startsWith('lh-') ? 'Lateral hip' : 'PT',
+      source: id.startsWith('mrc-') ? 'Motion RC' : id.startsWith('lh-') ? 'Lateral hip' : id.startsWith('pf-') ? 'Proformance' : 'PT',
       freq: BOTH.includes(id) ? 'Sessions A & B' : `Session ${session}`,
       ...(id === 'mrc-tfl-ir-stretch' ? { optional: true } : {}),
     };
@@ -1730,7 +1798,7 @@ const SESSION_A = {
   description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout.',
   criteria: SESSION_CRITERIA,
   exercises: pick('A', [
-    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
+    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'pf-prone-banded-ir',
     'mrc-quadruped-hip-hike',
     'lh-wall-abd-iso',
     'pt-sl-balance-pad',
@@ -1766,6 +1834,7 @@ const SESSION_B = {
     'mrc-copenhagen-knee',
     'mrc-standing-hip-hike',
     'pt-side-lying-abduction',
+    'pf-side-lying-ir-lift',
     'mrc-hip-airplane',
     'pt-slr',
     'pt-prone-ext-bent',

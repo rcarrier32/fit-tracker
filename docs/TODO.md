@@ -96,6 +96,14 @@ Done 2026-11-21 (v202): the six v201 moves play short PT demos, the four sources
 Note: `node data/enrich_hip_videos.mjs --apply` re-applies every "approved" id in the review file and blanks the
 title of a pick that isn't among its candidates; check `git diff src/lib/hip_protocol.js` after running it.
 
+## 10. Proformance (Dr. Alyssa Lu, PT): more moves *(decide with the user)*
+
+v204 (2026-11-21) added her hip internal-rotation moves (see the reels table, #17 and #20) and moved the figure-4
+Piriformis Stretch out of the hip warm-up (90/90 Hip Opener + Adductor Rock Back instead). Her YouTube channel
+@proformancesportstherapy (~400 shorts) plays inside the app, unlike her Facebook reels. The survey of her other
+reels and shorts is in [`research/proformance.md`](research/proformance.md): go through its "best new moves" with the user.
+Bench Pigeon Rotation still plays the Facebook reel; swap in her YouTube short if the survey finds one.
+
 ## Known limits (no action needed)
 
 - Generated plans on a bodyweight-only kit leave upper-body days short (about 3% of test days): with no

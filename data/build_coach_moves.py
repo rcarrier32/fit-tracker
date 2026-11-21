@@ -18,7 +18,10 @@ from program_builder import Library
 lib = Library()
 
 PORTIA = 'Portia Mitchell (FramedFIT)'
+PROFORMANCE = 'Proformance'
 REEL = lambda rid: f'https://www.facebook.com/reel/{rid}'
+# Her YouTube short of the hip-IR reel (FB 4146226679040642): same four moves, plays in the app.
+PF_IR = 'https://youtu.be/iQhEqtez11k'
 
 
 def T(primary, muscles, pattern, role, equipment, level, unilateral=True, plane='sagittal', hip_focus=True,
@@ -125,6 +128,30 @@ MOVES = {
         'Stand on a low step on one leg. Slowly lower the other heel to the floor in front by letting the knee travel over the toes, then stand back up.',
         'Heel of the standing foot stays down. Start on a very low step.', '2 sets of 10-15 each side.'],
         T('quads', ['quads', 'glutes'], 'lunge_single_leg', 'accessory', ['box'], 1, hip_focus=False, progresses_by='variation')),
+
+    # ── Proformance (a physical therapist; the user's saved reels, read frame by frame 2026-11-21) ──
+    # Hip internal rotation, which she says is what usually limits tight, pinchy hips. Survey of her other
+    # reels: docs/research/proformance.md.
+    'Bench Pigeon Rotation': ('proformance', REEL('2300750430439720'), PROFORMANCE, [
+        'Sit on a bench with one shin across it in front of you, knee out (pigeon), the other foot on the floor.',
+        'Lift that knee up and turn it down and in toward the bench (the hip turns in), then back out to pigeon. Slow, sitting tall.',
+        'Feet stay wide of your midline as the knee drops in. In the reel at 0-3 s. 6-8 each side.'],
+        T('glutes', ['glutes', 'hip_flexors', 'abductors', 'adductors'], 'mobility', 'warmup', ['bench'], 1, plane='transverse')),
+    'Side-Lying Hip IR Lift with Roller': ('proformance', PF_IR, PROFORMANCE, [
+        'Lie on your side, knees bent, a foam roller or firm pillow between the knees.',
+        'Keep the knees on the roller and lift the top foot toward the ceiling (the top hip turns in), hold 2 s, lower slowly.',
+        'Pad under the bottom hip and keep sets short on the sore side. Second of the four moves in the clip. 10-12 each side.'],
+        T('glutes', ['glutes', 'abductors'], 'isolation_lower', 'accessory', ['bodyweight'], 1, plane='transverse')),
+    'Standing Bench Hip Rotations with Med Ball': ('proformance', PF_IR, PROFORMANCE, [
+        'Stand facing along a bench with one heel up on it, leg long, a ball held at your chest.',
+        'Turn your hips and chest toward the raised leg, then away: the standing hip rotates under you. Stay tall, no leaning.',
+        'Third of the four moves in the clip. 8 each way, each side.'],
+        T('glutes', ['glutes', 'hip_flexors', 'adductors', 'obliques'], 'mobility', 'warmup', ['bench', 'med_ball'], 2, plane='transverse')),
+    'Prone Banded Hip IR': ('proformance', PF_IR, PROFORMANCE, [
+        'Lie face down, one knee bent to 90°, a long band from that foot to your hands.',
+        'Let the foot fall out to the side (the hip turns in), ease a little further with the band, then bring the foot back to the middle with the hip.',
+        'Hips stay flat on the floor. Last of the four moves in the clip. 10 each side.'],
+        T('glutes', ['glutes', 'hip_flexors'], 'mobility', 'warmup', ['band'], 1, plane='transverse')),
 }
 
 for name, (src, video, credit, cues, tags) in MOVES.items():

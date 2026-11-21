@@ -1088,15 +1088,15 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 14.3,
+   "exercises_per_day": 15.3,
    "day_focus": [
     "Session A · Posterior & Single-Leg",
     "Session B · Lateral & Adductors",
     "Session A · Posterior & Single-Leg"
    ],
    "week1_sets_by_muscle": {
+    "glutes": 41,
     "abductors": 36,
-    "glutes": 35,
     "hamstrings": 21,
     "adductors": 12,
     "abs": 9,
@@ -1106,18 +1106,20 @@
    "week1_sets_by_pattern": {
     "hinge": 30,
     "isometric": 24,
-    "isolation_lower": 19,
+    "isolation_lower": 21,
     "lunge_single_leg": 18,
     "balance": 17,
     "lateral_flexion": 6,
     "anti_extension": 6,
+    "mobility": 4,
     "flexion": 3,
     "squat": 3
    },
    "roles": {
-    "accessory": 18,
+    "accessory": 19,
     "secondary": 17,
-    "core": 8
+    "core": 8,
+    "warmup": 2
    },
    "equipment": [
     "band",
@@ -1284,14 +1286,15 @@
     "isolation_upper": 1
    },
    "roles": {
-    "warmup": 19,
+    "warmup": 20,
     "accessory": 11,
-    "cooldown": 11,
+    "cooldown": 10,
     "core": 1,
     "secondary": 1
    },
    "equipment": [
-    "band"
+    "band",
+    "bench"
    ],
    "description": "Hips and whole body, 12-15 minutes a day, rotating A → B → C. Opens with your low-back reset, then ankles, hips, T-spine, shoulders and balance, shaped like HoopStudy's Ten Minute Routine. Runs next to your training plan (Copenhagen and Nordics stay in the training)."
   },

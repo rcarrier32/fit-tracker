@@ -160,7 +160,10 @@ function check(params, label) {
   // Learned "avoid" respected.
   if (params.profile) {
     const used = new Set(plan.weeks.flatMap(w => w.days.flatMap(d => d.exercises.map(x => x.name))));
-    if (used.has(params.profile.avoid[0]) && !isReq(params.profile.avoid[0])) {
+    // The generator marks a pick it made only because nothing else fit that slot that day (its other picks
+    // took the alternatives); those are allowed. A run without the move in the catalog can roll differently.
+    const unmarked = plan.weeks.some(w => w.days.some(d => d.exercises.some(x => x.name === params.profile.avoid[0] && !/usually skip/.test(x.why || ''))));
+    if (used.has(params.profile.avoid[0]) && unmarked && !isReq(params.profile.avoid[0])) {
       // Allowed only when it's the only thing that fits: without it in the catalog, a slot would go empty.
       const without = generatePlan(params, { exercises: exercises.filter(e => e.name !== params.profile.avoid[0]), rules, learned });
       const count = (pl) => pl.weeks.flatMap(w => w.days.flatMap(d => d.exercises)).length;

@@ -169,8 +169,8 @@ days = [
         'Holds here are for daily range, not before lifting: long holds (60 s+) right before training cost a little power.'], [
         r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener. Hip rotation is the range most tied to hip and groin trouble.',
           alts=['90/90 Knee Roll', 'Knee Circles', 'Standing Hip Internal/External Lifts', 'Quadruped Swing Throughs', 'Side Lying Hip Opener']),
-        r('Optional Pigeon Length Under Load', '5 each side', group='Rotation', notes='Your #1 "rotating pigeon". PJF\'s levels, slowly.',
-          alts=['Banded Incline Pigeon Rotation']),
+        r('Bench Pigeon Rotation', '6 each side', group='Rotation', notes='Your #1 "rotating pigeon" and Proformance\'s bench pigeon: knee out, then up and down-and-in. Turning the hip in is the range that\'s usually short after FAI surgery.',
+          alts=['Optional Pigeon Length Under Load', 'Banded Incline Pigeon Rotation', 'Standing Bench Hip Rotations with Med Ball', 'Prone Banded Hip IR']),
         r('Knee Pull Heel Bridge', '5 breaths', sets=2, group='Extension', rest='10s', alts=['Posterior Pelvic Tilt Breathing', 'Banded Hip Distraction Pulling Into Hip Flexion'],
           notes='Your #9. On your back, hug one knee to the chest, lift the other foot\'s toes, drive that heel and lift the hip, low back pressed down. Hold 5 breaths (exhale back down, inhale hip up); each side (Dr. Devon Hoffman). Hip extension for the hours of sitting.'),
         r('Hip Flexor Length Under Load', time='45s', sets=2, group='Extension', notes='Each side (PJF). 45 s a side most days reaches the weekly stretch dose for range.',
