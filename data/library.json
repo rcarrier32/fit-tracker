@@ -56704,7 +56704,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -56717,7 +56717,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -56735,14 +56735,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -56755,7 +56771,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -56793,7 +56809,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Step Back Lunge",
                       "Slider Lunge",
@@ -56813,13 +56829,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Shift onto the front foot over 2 s and hold 3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Step and Stick",
+                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds"
                     ]
                   },
                   {
@@ -56832,7 +56864,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Kneeling Dumbbell Diagonal Chop",
                       "Half Kneeling Lateral Bend",
@@ -56855,38 +56887,6 @@
                       "Copenhagen Side Plank (Knee)",
                       "Side Bridge Adductor Scissor",
                       "Copenhagen Straight Leg"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "20s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Split-Stance Weight Shift",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Shift onto the front foot over 2 s and hold 3 s, pelvis level.",
-                    "alternates": [
-                      "Step and Stick",
-                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds"
                     ]
                   },
                   {
@@ -57026,7 +57026,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -57039,7 +57039,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
@@ -57079,7 +57079,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
@@ -57115,7 +57115,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -57148,7 +57148,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Arm Banded Lat Pulldown",
                       "Band Pullover"
@@ -57163,8 +57163,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
@@ -57173,7 +57173,23 @@
                   },
                   {
                     "name": "Side-Lying Hip IR Lift with Roller",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Prone Banded Hip IR",
+                      "Seated Banded Hip IR"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "10 each side",
@@ -57181,15 +57197,16 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
-                      "Prone Banded Hip IR",
-                      "Seated Banded Hip IR"
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -57336,7 +57353,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -57349,7 +57366,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -57384,7 +57401,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "FFE Dumbbell Split Squats",
                       "FFE Goblet Split Squat Isometric",
@@ -57421,7 +57438,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
@@ -57456,7 +57473,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": "0-15s",
-                    "notes": "On the BOSU. Go straight into the next exercise; rest after the pair.",
+                    "notes": "On the BOSU. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Pad Balance + Ball Catches",
                       "Weighted Hip Airplane"
@@ -57488,7 +57505,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -57505,7 +57522,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -57521,7 +57538,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Quadruped Abduction Lift-Overs",
                       "Mini Band Monster Walk"
@@ -57639,7 +57656,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.",
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest).",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -57852,7 +57869,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -57865,7 +57882,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -57883,14 +57900,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "20s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -57903,7 +57936,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -57941,7 +57974,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Step Back Lunge",
                       "Slider Lunge",
@@ -57961,13 +57994,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Shift onto the front foot over 2 s and hold 3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Step and Stick",
+                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds"
                     ]
                   },
                   {
@@ -57980,7 +58029,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Anchor the band at chest height. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Kneeling Dumbbell Diagonal Chop",
                       "Half Kneeling Lateral Bend",
@@ -58003,38 +58052,6 @@
                       "Copenhagen Side Plank (Knee)",
                       "Side Bridge Adductor Scissor",
                       "Copenhagen Straight Leg"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "20s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Split-Stance Weight Shift",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Shift onto the front foot over 2 s and hold 3 s, pelvis level.",
-                    "alternates": [
-                      "Step and Stick",
-                      "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds"
                     ]
                   },
                   {
@@ -58174,7 +58191,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -58187,7 +58204,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
@@ -58227,7 +58244,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL to Knee Drive",
                       "Kickstand RDL",
@@ -58263,7 +58280,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -58296,7 +58313,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Arm Banded Lat Pulldown",
                       "Band Pullover"
@@ -58311,8 +58328,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
@@ -58321,7 +58338,23 @@
                   },
                   {
                     "name": "Side-Lying Hip IR Lift with Roller",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Prone Banded Hip IR",
+                      "Seated Banded Hip IR"
+                    ]
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "10 each side",
@@ -58329,15 +58362,16 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
-                      "Prone Banded Hip IR",
-                      "Seated Banded Hip IR"
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
                     ]
                   },
                   {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -58484,7 +58518,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair."
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest)."
                 ],
                 "exercises": [
                   {
@@ -58497,7 +58531,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -58532,7 +58566,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "FFE Dumbbell Split Squats",
                       "FFE Goblet Split Squat Isometric",
@@ -58569,7 +58603,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Adductor Slider Lunge",
@@ -58604,7 +58638,7 @@
                     "distance": null,
                     "time": "30s",
                     "rest": "0-15s",
-                    "notes": "On the BOSU. Go straight into the next exercise; rest after the pair.",
+                    "notes": "On the BOSU. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Pad Balance + Ball Catches",
                       "Weighted Hip Airplane"
@@ -58636,7 +58670,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -58653,7 +58687,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -58669,7 +58703,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Quadruped Abduction Lift-Overs",
                       "Mini Band Monster Walk"
@@ -58787,7 +58821,7 @@
                   }
                 ],
                 "notes": [
-                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.",
+                  "Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest).",
                   "Treadmill first, then the band circuit 3 times through."
                 ],
                 "exercises": [
@@ -59020,7 +59054,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -59038,14 +59072,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": "3-second pause at the bottom of every rep.",
+                    "rest": "0-15s",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -59058,7 +59108,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -59096,7 +59146,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Step Back Lunge",
                       "Slider Lunge",
@@ -59116,13 +59166,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Step and Stick",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Stick each landing for 2-3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Split-Stance Weight Shift",
+                      "Lateral Step and Stick"
                     ]
                   },
                   {
@@ -59135,7 +59201,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Palloff Press",
                       "Half Kneeling Lateral Bend",
@@ -59157,38 +59223,6 @@
                       "90/90 Copenhagen",
                       "Copenhagen Side Plank (Long Lever)",
                       "Dynamic Copenhagen"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "25s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Step and Stick",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Stick each landing for 2-3 s, pelvis level.",
-                    "alternates": [
-                      "Split-Stance Weight Shift",
-                      "Lateral Step and Stick"
                     ]
                   },
                   {
@@ -59348,7 +59382,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
@@ -59385,7 +59419,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "SLDL With Loaded Hip Flexion",
@@ -59420,7 +59454,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -59453,7 +59487,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Arm Banded Lat Pulldown",
                       "Band Pullover"
@@ -59468,8 +59502,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
@@ -59478,23 +59512,40 @@
                   },
                   {
                     "name": "Hip Flexor + IR Combo",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
+                    "sets": 3,
                     "reps": "8 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip IR Lift with Roller",
                       "Bench IR Knee Taps"
                     ]
                   },
                   {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
+                    ]
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -59654,7 +59705,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -59689,7 +59740,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Bulgarian Split Squat",
                       "FFE Floating Heel",
@@ -59723,7 +59774,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Dumbbell Lateral Lunge",
@@ -59757,7 +59808,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Hip Airplane",
                       "Weighted Hip Airplane",
@@ -59790,7 +59841,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -59807,7 +59858,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -59823,7 +59874,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip Abduction",
                       "Standing Fire Hydrant"
@@ -60178,7 +60229,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Heel Elevated Goblet Squat",
                       "Dumbbell Sumo Squat",
@@ -60196,14 +60247,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": "3-second pause at the bottom of every rep.",
+                    "rest": "0-15s",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "25s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -60216,7 +60283,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Staggered Stance RDL w/ Same Side Load",
@@ -60254,7 +60321,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Step Back Lunge",
                       "Slider Lunge",
@@ -60274,13 +60341,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Step and Stick",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Stick each landing for 2-3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Split-Stance Weight Shift",
+                      "Lateral Step and Stick"
                     ]
                   },
                   {
@@ -60293,7 +60376,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Palloff Press",
                       "Half Kneeling Lateral Bend",
@@ -60315,38 +60398,6 @@
                       "90/90 Copenhagen",
                       "Copenhagen Side Plank (Long Lever)",
                       "Dynamic Copenhagen"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "25s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Step and Stick",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Stick each landing for 2-3 s, pelvis level.",
-                    "alternates": [
-                      "Split-Stance Weight Shift",
-                      "Lateral Step and Stick"
                     ]
                   },
                   {
@@ -60506,7 +60557,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step Up with Leg Raise",
                       "Weighted Side Step-Ups",
@@ -60543,7 +60594,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "SLDL With Loaded Hip Flexion",
@@ -60578,7 +60629,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -60611,7 +60662,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Arm Banded Lat Pulldown",
                       "Band Pullover"
@@ -60626,8 +60677,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "60s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls",
@@ -60636,23 +60687,40 @@
                   },
                   {
                     "name": "Hip Flexor + IR Combo",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
+                    "sets": 3,
                     "reps": "8 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip IR Lift with Roller",
                       "Bench IR Knee Taps"
                     ]
                   },
                   {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
+                    ]
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -60812,7 +60880,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Med Ball Slam",
                       "Penultimate Box Jumps (Optional)",
@@ -60847,7 +60915,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the pair.",
+                    "notes": "3-second pause at the bottom of every rep. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Bulgarian Split Squat",
                       "FFE Floating Heel",
@@ -60881,7 +60949,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Dumbbell Lateral Lunge",
@@ -60915,7 +60983,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Hip Airplane",
                       "Weighted Hip Airplane",
@@ -60948,7 +61016,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -60965,7 +61033,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -60981,7 +61049,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip Abduction",
                       "Standing Fire Hydrant"
@@ -61329,7 +61397,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Goblet Squat",
                       "Heel Elevated Goblet Squat",
@@ -61345,14 +61413,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "rest": "0-15s",
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -61365,7 +61449,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Dumbbell Romanian Deadlift",
@@ -61399,7 +61483,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Lunges",
                       "Deficit Reverse Lunge",
@@ -61415,13 +61499,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "rest": "0-15s",
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Step and Stick",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Stick each landing for 2-3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Step and Stick",
+                      "Lateral Bounds"
                     ]
                   },
                   {
@@ -61434,7 +61534,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Palloff Press",
                       "Half Kneeling Lateral Bend",
@@ -61455,38 +61555,6 @@
                     "alternates": [
                       "Copenhagen Straight Leg",
                       "Copenhagen Side Plank (Long Lever)"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "30s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Lateral Step and Stick",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Stick each landing for 2-3 s, pelvis level.",
-                    "alternates": [
-                      "Step and Stick",
-                      "Lateral Bounds"
                     ]
                   },
                   {
@@ -61528,7 +61596,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. For today's glutes (Curtsy Lunge, Standing Wall Hip-Abduction Isometric); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
+                    "notes": "Each side. For today's glutes (Standing Wall Hip-Abduction Isometric, Curtsy Lunge); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
@@ -61561,7 +61629,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. For today's glutes (Curtsy Lunge, Standing Wall Hip-Abduction Isometric).",
+                    "notes": "Each side. For today's glutes (Standing Wall Hip-Abduction Isometric, Curtsy Lunge).",
                     "alternates": [
                       "Brettzel Stretch",
                       "90/90 Hip Opener"
@@ -61639,7 +61707,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step-Ups",
                       "Weighted Side Step-Ups",
@@ -61673,7 +61741,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Hand Supported SLDL Loaded",
                       "Single-Leg RDL to Knee Drive",
@@ -61707,7 +61775,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -61740,7 +61808,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Banded Lat Pulldown",
                       "Band Pullover"
@@ -61755,8 +61823,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls"
@@ -61764,23 +61832,40 @@
                   },
                   {
                     "name": "Hip Flexor + IR Combo",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
                     "is_alternate": false,
-                    "sets": 2,
+                    "sets": 3,
                     "reps": "8 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip IR Lift with Roller",
                       "Bench IR Knee Taps"
                     ]
                   },
                   {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
+                    ]
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -61928,7 +62013,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Kettlebell Swing",
                       "Explosive Step Up",
@@ -61961,7 +62046,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "FFE Dumbbell Split Squats",
                       "Dynamic Kettlebell Split Squat Drops",
@@ -61995,7 +62080,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Dumbbell Lateral Lunge",
@@ -62029,7 +62114,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Facing Wall Hip Airplane",
                       "Weighted Hip Airplane"
@@ -62061,7 +62146,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -62078,7 +62163,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -62094,7 +62179,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side Plank with Top-Leg Raise",
                       "Quadruped Abduction Lift-Overs"
@@ -62452,7 +62537,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Goblet Squat",
                       "Heel Elevated Goblet Squat",
@@ -62468,14 +62553,30 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "rest": "0-15s",
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Incline Alternating Arms Dumbbell Press",
                       "Low Incline Dumbbell Press",
                       "Neutral Grip DB Press",
                       "Push Ups",
                       "Band Resisted Push Up"
+                    ]
+                  },
+                  {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": "Superset A",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "45s",
+                    "notes": "Each side, knee into the wall, while the chest recovers. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Supine Banded Hip Abduction Isometric",
+                      "Side Plank with Top-Leg Raise"
                     ]
                   },
                   {
@@ -62488,7 +62589,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Single-Leg RDL with Kettlebell",
                       "Dumbbell Romanian Deadlift",
@@ -62522,7 +62623,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Reverse Lunges",
                       "Deficit Reverse Lunge",
@@ -62538,13 +62639,29 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works.",
+                    "rest": "0-15s",
+                    "notes": "Alternate arms: one dumbbell holds locked out (isometric) while the other works. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Arnold Press",
                       "Seated Dumbbell Shoulder Press",
                       "Shoulder Press",
                       "Landmine or Dumbbell Dip Press"
+                    ]
+                  },
+                  {
+                    "name": "Lateral Step and Stick",
+                    "round_group": "Superset C",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "45s",
+                    "notes": "Stick each landing for 2-3 s, pelvis level. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
+                    "alternates": [
+                      "Step and Stick",
+                      "Lateral Bounds"
                     ]
                   },
                   {
@@ -62557,7 +62674,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Palloff Press",
                       "Half Kneeling Lateral Bend",
@@ -62578,38 +62695,6 @@
                     "alternates": [
                       "Copenhagen Straight Leg",
                       "Copenhagen Side Plank (Long Lever)"
-                    ]
-                  },
-                  {
-                    "name": "Standing Wall Hip-Abduction Isometric",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": null,
-                    "weight": null,
-                    "distance": null,
-                    "time": "30s",
-                    "rest": "0-15s",
-                    "notes": "Each side, knee into the wall. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
-                    "alternates": [
-                      "Supine Banded Hip Abduction Isometric",
-                      "Side Plank with Top-Leg Raise"
-                    ]
-                  },
-                  {
-                    "name": "Lateral Step and Stick",
-                    "round_group": "Hip block",
-                    "is_alternate": false,
-                    "sets": 2,
-                    "reps": "8 each side",
-                    "weight": null,
-                    "distance": null,
-                    "time": null,
-                    "rest": "30s",
-                    "notes": "Stick each landing for 2-3 s, pelvis level.",
-                    "alternates": [
-                      "Step and Stick",
-                      "Lateral Bounds"
                     ]
                   },
                   {
@@ -62651,7 +62736,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. For today's glutes (Curtsy Lunge, Standing Wall Hip-Abduction Isometric); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
+                    "notes": "Each side. For today's glutes (Standing Wall Hip-Abduction Isometric, Curtsy Lunge); hamstrings (B-Stance RDL, Dumbbell Row From Single Leg).",
                     "alternates": [
                       "Optional Post Chain Stretch",
                       "Hamstring Floss"
@@ -62684,7 +62769,7 @@
                     "distance": null,
                     "time": "45s",
                     "rest": null,
-                    "notes": "Each side. For today's glutes (Curtsy Lunge, Standing Wall Hip-Abduction Isometric).",
+                    "notes": "Each side. For today's glutes (Standing Wall Hip-Abduction Isometric, Curtsy Lunge).",
                     "alternates": [
                       "Brettzel Stretch",
                       "90/90 Hip Opener"
@@ -62762,7 +62847,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Weighted Step-Ups",
                       "Weighted Side Step-Ups",
@@ -62796,7 +62881,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Hand Supported SLDL Loaded",
                       "Single-Leg RDL to Knee Drive",
@@ -62830,7 +62915,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Shoulders on the bench. 3-second squeeze at the top. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Dumbbell Hip Thrust",
                       "Single-Leg Glute Bridge",
@@ -62863,7 +62948,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Band anchored high in the garage, kneeling. Your vertical pull. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Banded Lat Pulldown",
                       "Band Pullover"
@@ -62878,8 +62963,8 @@
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "45s",
-                    "notes": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Slider Hamstring Curl",
                       "Dumbbell Lying Leg Curls"
@@ -62887,23 +62972,40 @@
                   },
                   {
                     "name": "Hip Flexor + IR Combo",
-                    "round_group": "Hip block",
+                    "round_group": "Superset D",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
                     "weight": null,
                     "distance": null,
                     "time": null,
-                    "rest": "0-15s",
-                    "notes": "The hip turning in: the range that is usually short after FAI surgery. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "rest": "45s",
+                    "notes": "The hip turning in: the range that is usually short after FAI surgery. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side-Lying Hip IR Lift with Roller",
                       "Bench IR Knee Taps"
                     ]
                   },
                   {
+                    "name": "Dead Bug",
+                    "round_group": "Superset E",
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 each side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "0-15s",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
+                    "alternates": [
+                      "Bird Dog with Ankle Weight or Band",
+                      "RKC Plank",
+                      "Bear Crawl (Movement)"
+                    ]
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
-                    "round_group": "Hip block",
+                    "round_group": "Superset E",
                     "is_alternate": false,
                     "sets": 2,
                     "reps": "8 each side",
@@ -63051,7 +63153,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the pair.",
+                    "notes": "Full effort. Got a slam ball? Swap to Med Ball Slam (not with a heavy hard med ball). Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Kettlebell Swing",
                       "Explosive Step Up",
@@ -63084,7 +63186,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "FFE Dumbbell Split Squats",
                       "Dynamic Kettlebell Split Squat Drops",
@@ -63118,7 +63220,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Loaded Lateral Squat",
                       "Dumbbell Lateral Lunge",
@@ -63152,7 +63254,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the pair.",
+                    "notes": "Slow open and close, pelvis level. Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Facing Wall Hip Airplane",
                       "Weighted Hip Airplane"
@@ -63184,7 +63286,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Seated Dumbbell Curls",
                       "Incline Dumbbell Curls",
@@ -63201,7 +63303,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "0-15s",
-                    "notes": "Go straight into the next exercise; rest after the pair.",
+                    "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
                       "Tricep Extension",
                       "Close-Grip Push-Ups"
@@ -63217,7 +63319,7 @@
                     "distance": null,
                     "time": null,
                     "rest": "30s",
-                    "notes": "Side hip through its range, hips stacked. Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.",
+                    "notes": "Side hip through its range, hips stacked. From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.",
                     "alternates": [
                       "Side Plank with Top-Leg Raise",
                       "Quadruped Abduction Lift-Overs"

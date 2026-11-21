@@ -240,7 +240,7 @@ def phase(wk):
 
 
 NOTE = {
-    1: 'Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Pairs run back to back; rest after the pair.',
+    1: 'Weeks 1–2: working weights from day one, 10–12 reps leaving 1–2 in the tank. Superset moves run back to back; rest after the last one (the hip moves are your active rest).',
     2: 'Weeks 3–4: same moves, more reps (12–15) and a 3-second pause at the hardest point of every rep. Same dumbbells: the pause and reps are the progression.',
     3: 'Week 5: single-leg and single-arm versions with isometric holds (one side holds while the other works). Harder without going heavier.',
 }
@@ -248,14 +248,15 @@ PAUSE = '3-second pause at the bottom of every rep.'
 
 # v207: the Hip Plan's strength work folded in (one active plan at a time; the Hip tab is now the check-in hub).
 # Lean & Tone already covers the Copenhagen, single-leg RDL, hip thrust, side plank, lateral lunge, balance /
-# airplane, monster walk and hip-flexor slots; the Hip block adds the ones it didn't have. Each steps up with the
-# phase, mirroring HIP_LADDERS in src/lib/hip_protocol.js (keep the two in step).
+# airplane, monster walk and hip-flexor slots; the hip moves below add the ones it didn't have. They ride in the
+# supersets next to an upper-body lift (v208, the PJF / Griffith way: hip work in the lift's rest), and each steps
+# up with the phase, mirroring HIP_LADDERS in src/lib/hip_protocol.js (keep the two in step).
 HIP_LADDER = {
     'weight_shift': ('Split-Stance Weight Shift', 'Step and Stick', 'Lateral Step and Stick'),
     'ir':           ('Side-Lying Hip IR Lift with Roller', 'Hip Flexor + IR Combo', 'Hip Flexor + IR Combo'),
     'side_lying':   ('Side-Lying Hip Abduction', 'Quadruped Abduction Lift-Overs', 'Two-Bench Side Plank with Top-Leg Abduction'),
 }
-HIP_NOTE = 'Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.'
+HIP_NOTE = 'From your Hip Plan: left side first, then match it on the right. Steps up every 2 weeks.'
 
 
 def days(wk):
@@ -279,19 +280,20 @@ def days(wk):
         {'focus': 'Day 1 · Full Body A: Squat, Push, Pull', 'warmup': PREP['lower'][p] + PREP['upper'][p], 'notes': notes, 'exercises': [
             r(pick('Dumbbell Goblet Squat', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'), reps, sets=S, rest=rest, group='Superset A', notes=pause),
             r('Dumbbell Bench Press', reps, sets=S, rest=rest, group='Superset A', notes=alt_iso if p == 3 else pause),
+            r('Standing Wall Hip-Abduction Isometric', time=hold, sets=S, rest='45s', group='Superset A',
+              notes='Each side, knee into the wall, while the chest recovers. ' + HIP_NOTE),
             r(pick('Dumbbell Romanian Deadlift', 'Dumbbell Romanian Deadlift', 'B-Stance RDL'), reps if p < 3 else each + ' leg', sets=S, rest=rest, group='Superset B', notes=pause),
             r(pick('Chest Supported DB Row (lat focus)', 'Chest Supported DB Row (lat focus)', 'Dumbbell Row From Single Leg'), reps if p < 3 else each + ' arm', sets=S, rest=rest,
               group='Superset B', notes='Bench on an incline.' if p < 3 else 'Stand on the leg on the rowing side, hinge, 2-second hold at the top.'),
             r(pick('Reverse Lunges', 'Reverse Lunges', 'Curtsy Lunge'), each + ' leg', sets=s, rest=rest, group='Superset C', notes=pause),
             r('Standing Dumbbell Shoulder Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
+            r(HIP_LADDER['weight_shift'][p - 1], '8 each side', sets=s, rest='45s', group='Superset C',
+              notes=('Shift onto the front foot over 2 s and hold 3 s, pelvis level.' if p == 1 else 'Stick each landing for 2-3 s, pelvis level.') + ' ' + HIP_NOTE),
             r('Palloff Press', '12 each side', sets=2, rest='30s', group='Superset D', notes='Anchor the band at chest height.') if p == 1 else
             r('Kneeling Dumbbell Diagonal Chop', '10 each side', sets=2, rest='30s', group='Superset D',
               notes='Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square.'),
             r(pick('90/90 Copenhagen', 'Copenhagen Straight Leg', 'Dynamic Copenhagen'), reps='6 each side' if p == 3 else None,
               time=None if p == 3 else hold, sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
-            r('Standing Wall Hip-Abduction Isometric', time=hold, sets=2, rest='0-15s', group='Hip block', notes='Each side, knee into the wall. ' + HIP_NOTE),
-            r(HIP_LADDER['weight_shift'][p - 1], '8 each side', sets=2, rest='30s', group='Hip block',
-              notes='Shift onto the front foot over 2 s and hold 3 s, pelvis level.' if p == 1 else 'Stick each landing for 2-3 s, pelvis level.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
         {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], {**w('Shoulder Mobility Pullovers', reps='8', notes='PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.'), 'sets': 2}], 'notes': notes, 'exercises': [
@@ -306,9 +308,10 @@ def days(wk):
             r('Single-Arm Banded Lat Pulldown' if p == 3 else 'Banded Lat Pulldown', '12-15' if p < 3 else '12 each arm', sets=s, rest=rest, group='Superset D',
               notes='Band anchored high in the garage, kneeling. Your vertical pull.'),
             r('Single-Leg Slider Hamstring Curl' if p == 3 else 'Slider Hamstring Curl', each + ' leg' if p == 3 else '12', sets=s, rest=rest, group='Superset D'),
-            r(HIP_LADDER['ir'][p - 1], '10 each side' if p == 1 else '8 each side', sets=2, rest='0-15s', group='Hip block',
+            r(HIP_LADDER['ir'][p - 1], '10 each side' if p == 1 else '8 each side', sets=s, rest='45s', group='Superset D',
               notes='The hip turning in: the range that is usually short after FAI surgery. ' + HIP_NOTE),
-            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Hip block'),
+            r('Dead Bug', '10 each side', sets=2, rest='30s', group='Superset E'),
+            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Superset E'),
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
         {'focus': 'Day 3 · Power, Stability + Bands', 'warmup': PREP['power'][p], 'notes': notes, 'exercises': [
@@ -399,14 +402,14 @@ def match_warmup(day):
 
 
 def superset_rest(day):
-    """In a superset only the last exercise rests: A1 → straight to A2 (≤15 s), rest after A2."""
+    """In a superset only the last exercise rests: A1 → straight to A2 (and A3) (≤15 s), rest after the last."""
     ex_ = day['exercises']
     for i, x in enumerate(ex_):
         g = x.get('round_group') or ''
         nxt = ex_[i + 1] if i + 1 < len(ex_) else None
         if g.startswith('Superset') and nxt and nxt.get('round_group') == g:
             x['rest'] = '0-15s'
-            x['notes'] = ' '.join(filter(None, [x.get('notes'), f'Go straight into the next exercise; rest after the pair.']))
+            x['notes'] = ' '.join(filter(None, [x.get('notes'), 'Go straight into the next exercise; rest after the last one in the superset.']))
     return day
 
 
