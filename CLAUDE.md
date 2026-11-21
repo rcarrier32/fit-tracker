@@ -34,4 +34,4 @@ what to run and how to check it. Most of it needs a session on the user's own co
 login, YouTube access, API keys):
 - optional: the user's own reel links for Knee Circles, Standing Hip IR/ER Lifts and Squat to Hamstring Stretch
   (they already play YouTube demos; every exercise has a video)
-- the optional weekly AI check-in (decide with the user first)
+- the optional weekly AI check-in: parked by the user (2026-11-21); only if they bring it up

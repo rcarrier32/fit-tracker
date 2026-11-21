@@ -71,7 +71,7 @@ the agility ladder is ticked. v154 (2026-11-12): each plays its own YouTube demo
 
 ## 5. Weekly AI check-in with a Claude API key *(decide)*
 
-Deferred by the user. The app learns on the phone with no AI (`src/lib/learn.js`, `src/lib/adapt.js`).
+Deferred by the user (again 2026-11-21: "leave it parked"; don't raise it unless they do). The app learns on the phone with no AI (`src/lib/learn.js`, `src/lib/adapt.js`).
 An optional weekly check-in would send a summary of the week's logs to the Claude API for coaching
 notes. It needs an API key the user provides, and must not send names or the email address. Talk it
 through with the user before building anything: what they'd want from it and where the key lives.
