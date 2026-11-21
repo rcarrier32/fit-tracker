@@ -112,9 +112,8 @@ v206 (2026-11-21) restructured Hip Plan A/B to the new rehab rule (docs/PROGRAM_
 sessions"): 3 prep drills + 9-10 working moves, one per slot (~50-55 min with the hip warm-up), the other versions
 under Swap (`HIP_SWAPS`) or as later ladder steps. The PT's own program had 15 exercises a session: worth confirming
 the slot picks with the PT. The hip warm-up (8 moves, the PT's daily warm-up) still runs before every workout.
-v207: the Hip block in Lean & Tone carries the strength work day to day (the Hip tab's strength card names Lean &
-Tone; make it follow whatever plan is active if the user switches). The Hip tab's "Side-hip exercises: plan ~12"
-still counts Hip Plan A/B, not the Hip block.
+v209: the Hip tab's strength card lists the hip moves built into the active plan's current week, day by day, and
+the side-hip counter plans from that week (+ Pelvic Reset's daily hold) and counts side-hip moves logged in workouts.
 
 ## Known limits (no action needed)
 

@@ -5,10 +5,10 @@
  * Self-contained: the playbook's weekly schedule is shown here as reference and does
  * NOT touch pref('schedule') or the lifting program rotation.
  */
-import { pref } from '../db.js';
+import { pref, getAll } from '../db.js';
 import { navigate, toast, openSheet } from '../app.js';
 import {
-  SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, sideHipCount, plannedSideHip,
+  SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, sideHipCount, plannedSideHip, SIDE_HIP_IDS,
   AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE,
   HIP_LADDERS, LADDER_UNLOCK_SESSIONS, HIP_CHECK_TESTS, HIP_CHECK_EVERY_DAYS,
@@ -47,6 +47,38 @@ export async function renderHip(app) {
   // v207: the hip strength work lives in the training plan (Lean & Tone's Hip block, or the Hip Plan when run on
   // its own), so the schedule shown here is the real week from Plans, with the daily dose on every day.
   const weekSlots = (await pref('schedule'))?.slots || null;
+  // The hip moves built into your active plan's current week (v209): every Hip-tab exercise or ladder step by name.
+  const hipNameSet = new Set(Object.values(EXERCISE_INDEX).map(e => e.name.toLowerCase()));
+  const sideHipNames = new Set();
+  for (const id of SIDE_HIP_IDS) {
+    if (EXERCISE_INDEX[id]) sideHipNames.add(EXERCISE_INDEX[id].name.toLowerCase());
+    for (const st of HIP_LADDERS[id]?.steps || []) if (EXERCISE_INDEX[st]) sideHipNames.add(EXERCISE_INDEX[st].name.toLowerCase());
+  }
+  let planHip = null;
+  try {
+    const { getActivePlan } = await import('../lib/plans.js');
+    const plan = await getActivePlan();
+    if (plan) {
+      const { programById } = await (await import('../lib/static_data.js')).loadCatalogs();
+      const prog = programById.get(plan.program_id) || ((await pref('custom_programs')) || []).find(c => c.id === plan.program_id);
+      const wkNum = plan._place?.week || 1;
+      const wk = prog?.weeks ? prog.weeks[Math.min(prog.weeks.length, wkNum) - 1] : { days: prog?.days || [] };
+      if (prog) planHip = {
+        name: prog.program_name || prog.name, week: prog.weeks ? wkNum : null,
+        days: (wk.days || []).map((d, i) => ({
+          label: String(d.focus || d.day_name || `Day ${i + 1}`).split(':')[0].replace(/·.*$/, '').trim() || `Day ${i + 1}`,
+          moves: [...new Set((d.exercises || []).filter(x => hipNameSet.has(String(x.name).toLowerCase())).map(x => x.name))],
+          side: (d.exercises || []).filter(x => sideHipNames.has(String(x.name).toLowerCase())).length,
+        })),
+      };
+    }
+  } catch { planHip = null; }
+  // Side-hip moves logged in workouts this Sun–Sat week (the Hip tab's own check-offs are counted separately).
+  const weekStart = (() => { const d = new Date(); d.setDate(d.getDate() - d.getDay()); return localDateStr(d); })();
+  const liftSideHip = (await getAll('sessions'))
+    .filter(x => x.done && !x.skipped && x.date >= weekStart)
+    .flatMap(x => (x.exercises || []).filter(e => sideHipNames.has(String(e.name).toLowerCase()) && (e.sets || []).some(st => st?.done))
+      .map(e => `${x.date}|${String(e.name).toLowerCase()}`));
   const progNames = {};
   if (weekSlots?.some(sl => sl?.program_id)) {
     try {
@@ -841,9 +873,11 @@ export async function renderHip(app) {
     const logs = { ...allLogs, [day]: completed };
     const now = new Date();
     const lastWeek = new Date(now); lastWeek.setDate(now.getDate() - 7);
-    const thisN = sideHipCount(logs, now, extra);
+    const thisN = sideHipCount(logs, now, extra) + new Set(liftSideHip).size;
     const lastN = sideHipCount(logs, lastWeek, extra);
-    const planned = plannedSideHip(now);
+    // Planned: the side-hip moves in your active plan's week, plus Pelvic Reset's daily side-hip hold.
+    const dailySide = (SECTIONS.find(x => x.id === 'pelvic-reset')?.exercises || []).filter(e => SIDE_HIP_IDS.has(e.id)).length * 7;
+    const planned = planHip ? planHip.days.reduce((n, d) => n + d.side, 0) + dailySide : plannedSideHip(now);
     return `
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;
         padding:2px 0 10px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06)">
@@ -899,7 +933,7 @@ export async function renderHip(app) {
           <div>
             <h1 style="margin:0;font-size:20px">Hip Recovery</h1>
             <div style="font-size:11px;color:var(--fg-dim);margin-top:1px">
-              Daily dose · Hip Check · pain log${week ? ` · Week ${week}` : ''}
+              Daily dose · Hip Check · pain log${week ? ` · tracking week ${week}` : ''}
             </div>
           </div>
         </div>
@@ -929,8 +963,12 @@ export async function renderHip(app) {
         </div>
 
         <button id="hip-program" class="btn" style="margin-bottom:10px;text-align:left;padding:10px 12px">
-          <div style="font-weight:700">🏋️ Hip strength is in your workouts</div>
-          <div style="font-size:12px;font-weight:400;opacity:0.85">Lean & Tone's Hip block (side-hip hold, weight acceptance, internal rotation, side-plank steps) steps up every 2 weeks with the rest of the plan. The full Hip Plan (Sessions A & B) still runs on its own from Plans if you start it.</div>
+          <div style="font-weight:700">🏋️ Hip strength in your workouts</div>
+          ${planHip && planHip.days.some(d => d.moves.length) ? `
+            <div style="font-size:11.5px;font-weight:400;opacity:0.85;margin:2px 0 4px">This week${planHip.week ? ` (week ${planHip.week})` : ''}, from your hip plan:</div>
+            ${planHip.days.filter(d => d.moves.length).map(d => `
+              <div style="font-size:11.5px;font-weight:400;line-height:1.4;margin-top:2px"><b>${esc(d.label)}</b> · ${d.moves.map(esc).join(', ')}</div>`).join('')}`
+          : `<div style="font-size:12px;font-weight:400;opacity:0.85">No hip moves in a running plan yet: start a plan from Plans, or the full Hip Plan on its own.</div>`}
         </button>
         <div id="hip-tabs" style="display:flex;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none;
           -webkit-overflow-scrolling:touch">
@@ -1022,11 +1060,12 @@ export async function renderHip(app) {
     });
 
     app.querySelector('#hip-program')?.addEventListener('click', async () => {
-      // Already running it (alone or in a Mixed Week)? Go lift. Otherwise open Plans to start it.
+      // Hip moves in a running plan (or the Hip Plan itself running)? Go lift. Otherwise open Plans.
       const sched = await pref('schedule');
-      const running = (await pref('active_program')) === HIP_PROGRAM_ID || sched?.slots?.some(sl => sl?.program_id === HIP_PROGRAM_ID);
+      const running = planHip?.days.some(d => d.moves.length) || (await pref('active_program')) === HIP_PROGRAM_ID
+        || sched?.slots?.some(sl => sl?.program_id === HIP_PROGRAM_ID);
       navigate(running ? 'workout' : 'programs');
-      if (!running) toast('Start "Hip Plan: PT + Motion RC" under Your Hip Plan');
+      if (!running) toast('Start a plan, or "Hip Plan: PT + Motion RC" under Your Hip Plan');
     });
     app.querySelector('#hip-add')?.addEventListener('click', () => openAddSheet(section));
 
