@@ -15412,7 +15412,7 @@
     {
       "id": "framedfit-seated-leg-hurdle-lift-overs",
       "name": "Seated Leg Hurdle Lift-Overs",
-      "video_url": "https://www.facebook.com/reel/941634598293800",
+      "video_url": "https://youtu.be/InrgFXjTsTE?t=11",
       "sources": [
         "framedfit"
       ],
@@ -15422,7 +15422,7 @@
       "cues": [
         "Sit on the floor leaning back on your hands, a kettlebell or ball beside one leg.",
         "Lift the straight leg up and over it and back, without rocking the trunk. Add a second \"hurdle\" as it gets easy.",
-        "In the reel at 18-24 s. 6-8 each side."
+        "Proformance's short shows it from 11 s (chair-assisted first, then roller height). 6-8 each side."
       ],
       "credit": "Portia Mitchell (FramedFIT)",
       "primary_muscle": "hip_flexors",
@@ -15570,6 +15570,419 @@
       "unilateral": true,
       "plane": "transverse",
       "hip_focus": true
+    },
+    {
+      "id": "proformance-two-bench-side-plank-with-top-leg-abduction",
+      "name": "Two-Bench Side Plank with Top-Leg Abduction",
+      "video_url": "https://youtu.be/LDhUmFAOflY",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Two-Bench+Side+Plank+with+Top-Leg+Abduction+form",
+      "video_own": true,
+      "cues": [
+        "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank.",
+        "Lift the straight top leg up and lower it slowly, hips stacked and level. The bottom side holds you up.",
+        "Her answer to outer-hip pain: the side hip works through its range without being squeezed. Regress: knees on the bench. 8-10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes",
+        "obliques"
+      ],
+      "pattern": "lateral_flexion",
+      "role": "accessory",
+      "equipment": [
+        "bench"
+      ],
+      "level": 3,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-quadruped-abduction-lift-overs",
+      "name": "Quadruped Abduction Lift-Overs",
+      "video_url": "https://youtu.be/LDhUmFAOflY?t=2",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Quadruped+Abduction+Lift-Overs+form",
+      "video_own": true,
+      "cues": [
+        "On hands and knees with a foam roller standing up beside one knee.",
+        "Lift that knee out to the side, up and over the roller, tap down on the far side, and back. Hips stay level, no leaning away.",
+        "End-range hip opening without lying on the sore side. 6-8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-cossack-squat",
+      "name": "Cossack Squat",
+      "video_url": "https://youtu.be/QINs-Pfd-fw?t=4",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Cossack+Squat+form",
+      "video_own": true,
+      "cues": [
+        "Wide stance, toes slightly out. Sit down over one leg while the other stays straight, toes up; then shift across to the other side.",
+        "Heel of the bent leg stays down, chest up. Hold a post or the bench at first; later a kettlebell at the chest.",
+        "Regress (in the clip): a wide squat with hands on the floor, shifting side to side. 5-6 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "glutes",
+        "quads"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-cossack-switches",
+      "name": "Cossack Switches",
+      "video_url": "https://youtu.be/5hvYmoK3rl0",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Cossack+Switches+form",
+      "video_own": true,
+      "cues": [
+        "Drop into a low Cossack on one side, hands at the chest, then switch to the other side without standing up.",
+        "Quick but controlled, like a goalie or a defender sliding: stay low, heels down.",
+        "8-10 switches."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "quads",
+        "glutes"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-seated-straight-leg-raise-with-rotation",
+      "name": "Seated Straight-Leg Raise with Rotation",
+      "video_url": "https://youtu.be/InrgFXjTsTE?t=7",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Straight-Leg+Raise+with+Rotation+form",
+      "video_own": true,
+      "cues": [
+        "Sit tall on the floor, legs straight, hands beside the hips.",
+        "Lift one straight leg with the toes turned out, lower; then with the toes turned in, lower. Don't lean back.",
+        "Hip-flexor strength at short range. 5 each way, each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "quads",
+        "abs"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-hip-flexor-ir-combo",
+      "name": "Hip Flexor + IR Combo",
+      "video_url": "https://youtu.be/bTbeSTI5ZHc?t=7",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hip+Flexor+++IR+Combo+form",
+      "video_own": true,
+      "cues": [
+        "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90).",
+        "Hands at the chest, sit tall and lift the straight front leg, then lower it. The back hip holds its turned-in position.",
+        "Active hip internal rotation under load. 8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "glutes",
+        "abs"
+      ],
+      "pattern": "mobility",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-bench-ir-knee-taps",
+      "name": "Bench IR Knee Taps",
+      "video_url": "https://youtu.be/1zXtCNDtZE8?t=11",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Bench+IR+Knee+Taps+form",
+      "video_own": true,
+      "cues": [
+        "Sit on the end of a bench with one foot up on it, knee bent, and the other leg long and wide to the floor.",
+        "Drop the bent knee down and in toward the bench (the hip turns in), then lift it back up. Sit tall.",
+        "Feet stay wide so the knee drops in without crossing over. 10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-squat-knee-taps",
+      "name": "Squat Knee Taps",
+      "video_url": "https://youtu.be/STBUgwmceFs?t=3",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Squat+Knee+Taps+form",
+      "video_own": true,
+      "cues": [
+        "Sit in a deep squat, hands in front for balance.",
+        "Drop one knee in toward the floor (that hip turns in), back up, then the other.",
+        "Only as deep as the front of the hip stays comfortable. 6 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "adductors",
+        "quads"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-squat-shifts",
+      "name": "Squat Shifts",
+      "video_url": "https://youtu.be/STBUgwmceFs?t=5",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Squat+Shifts+form",
+      "video_own": true,
+      "cues": [
+        "In a deep squat, shift your weight slowly onto one foot, then across to the other, staying low.",
+        "Heels down, chest up. 6 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "glutes",
+        "quads"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-si-joint-band-traction-side-lying-rotations",
+      "name": "SI-Joint Band-Traction Side-Lying Rotations",
+      "video_url": "https://youtu.be/nqpRbvZgTQ0",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=SI-Joint+Band-Traction+Side-Lying+Rotations+form",
+      "video_own": true,
+      "cues": [
+        "Lie on your side, knees bent with a foam roller between them, a long band looped high around the top thigh and anchored behind you so it gently pulls the hip.",
+        "Turn the top hip open and closed against that pull, slowly.",
+        "For the SI joint and low back. Pad under the bottom hip on the sore side. 12 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "lower_back",
+        "hip_flexors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-weighted-standing-side-bend",
+      "name": "Weighted Standing Side Bend",
+      "video_url": "https://youtu.be/lJCvShYI_OA?t=7",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Weighted+Standing+Side+Bend+form",
+      "video_own": true,
+      "cues": [
+        "Stand tall, a dumbbell or kettlebell in one hand.",
+        "Bend sideways toward the weight, then come back up past the middle, ribs and hips stacked, no twisting.",
+        "Light weight, smooth range. 10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "obliques",
+      "muscles": [
+        "obliques",
+        "lower_back"
+      ],
+      "pattern": "lateral_flexion",
+      "role": "core",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": false
+    },
+    {
+      "id": "proformance-standing-bench-pigeon-hinge",
+      "name": "Standing Bench Pigeon Hinge",
+      "video_url": "https://youtu.be/S3QAKuUbWjQ?t=3",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Standing+Bench+Pigeon+Hinge+form",
+      "video_own": true,
+      "cues": [
+        "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands.",
+        "Hinge forward over the shin with a long back, then stand tall. The front hip turns out under load.",
+        "8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "hamstrings"
+      ],
+      "pattern": "mobility",
+      "role": "accessory",
+      "equipment": [
+        "bench",
+        "kettlebell"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-isometric-wall-sit",
+      "name": "Isometric Wall Sit",
+      "video_url": "https://youtu.be/xNHQup7c2x8?t=12",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Isometric+Wall+Sit+form",
+      "video_own": true,
+      "cues": [
+        "Back flat on a wall, slide down until the knees are at about 90°, feet hip-width.",
+        "Hold, weight through the whole foot. Knees over the middle toes.",
+        "For the knees: 3-5 holds of 30-45 s."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -52445,6 +52858,18 @@
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
                   },
                   {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
+                  },
+                  {
                     "name": "Standing Wall Hip-Abduction Isometric",
                     "round_group": null,
                     "is_alternate": false,
@@ -52565,6 +52990,18 @@
                     "notes": "Hinge at the hip, back flat, stance knee softly bent."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Banded Hip Flexor March",
                     "round_group": null,
                     "is_alternate": false,
@@ -52575,6 +53012,18 @@
                     "time": "25s",
                     "rest": "30s",
                     "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -52733,6 +53182,18 @@
                     "notes": "Side plank with the top knee on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -52767,6 +53228,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "SL Hip Airplane w/ Foam Roller",
@@ -52839,6 +53312,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -52899,6 +53384,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -53021,6 +53518,18 @@
                     "notes": "Hinge at the hip, back flat, stance knee softly bent."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Banded Hip Flexor March",
                     "round_group": null,
                     "is_alternate": false,
@@ -53031,6 +53540,18 @@
                     "time": "25s",
                     "rest": "30s",
                     "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -53194,6 +53715,18 @@
                     "notes": "Side plank with the top knee on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -53228,6 +53761,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "SL Hip Airplane w/ Foam Roller",
@@ -53300,6 +53845,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -53360,6 +53917,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -53482,6 +54051,18 @@
                     "notes": "Hinge at the hip, back flat, stance knee softly bent."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Banded Hip Flexor March",
                     "round_group": null,
                     "is_alternate": false,
@@ -53492,6 +54073,18 @@
                     "time": "25s",
                     "rest": "30s",
                     "notes": "Lean into a wall, band around the feet."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -53650,6 +54243,18 @@
                     "notes": "Side plank with the top knee on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -53684,6 +54289,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "SL Hip Airplane w/ Foam Roller",
@@ -53756,6 +54373,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               }
@@ -53821,6 +54450,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -53943,6 +54584,18 @@
                     "notes": "Kettlebell or dumbbell in the opposite hand."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -53953,6 +54606,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -54111,6 +54776,18 @@
                     "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -54145,6 +54822,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Hip Airplane (No Support)",
@@ -54217,6 +54906,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -54277,6 +54978,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -54399,6 +55112,18 @@
                     "notes": "Kettlebell or dumbbell in the opposite hand."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -54409,6 +55134,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -54572,6 +55309,18 @@
                     "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -54606,6 +55355,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Hip Airplane (No Support)",
@@ -54678,6 +55439,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -54738,6 +55511,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -54860,6 +55645,18 @@
                     "notes": "Kettlebell or dumbbell in the opposite hand."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -54870,6 +55667,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -55028,6 +55837,18 @@
                     "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -55062,6 +55883,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Hip Airplane (No Support)",
@@ -55134,6 +55967,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               }
@@ -55199,6 +56044,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -55321,6 +56178,18 @@
                     "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -55331,6 +56200,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -55489,6 +56370,18 @@
                     "notes": "Long-lever Copenhagen position."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -55523,6 +56416,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Weighted Hip Airplane",
@@ -55595,6 +56500,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -55655,6 +56572,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -55777,6 +56706,18 @@
                     "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -55787,6 +56728,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -55950,6 +56903,18 @@
                     "notes": "Long-lever Copenhagen position."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -55984,6 +56949,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Weighted Hip Airplane",
@@ -56056,6 +57033,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               },
@@ -56116,6 +57105,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie face down, one knee bent to 90°, a long band from that foot to your hands."
+                  },
+                  {
+                    "name": "Bench IR Knee Taps",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit on the end of a bench with one foot up on it, knee bent, the other leg long and wide to the floor."
                   },
                   {
                     "name": "Standing Wall Hip-Abduction Isometric",
@@ -56238,6 +57239,18 @@
                     "notes": "Single-leg RDL down, then stand and drive the free knee up to hip height."
                   },
                   {
+                    "name": "Standing Bench Pigeon Hinge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands."
+                  },
+                  {
                     "name": "Standing Banded March (No Wall)",
                     "round_group": null,
                     "is_alternate": false,
@@ -56248,6 +57261,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Band around the forefeet, stand tall without holding on."
+                  },
+                  {
+                    "name": "Hip Flexor + IR Combo",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90)."
                   },
                   {
                     "name": "Prone Hip Extension",
@@ -56406,6 +57431,18 @@
                     "notes": "Long-lever Copenhagen position."
                   },
                   {
+                    "name": "Two-Bench Side Plank with Top-Leg Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank."
+                  },
+                  {
                     "name": "Standing Hip Hikes",
                     "round_group": null,
                     "is_alternate": false,
@@ -56440,6 +57477,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Lie on your side, knees bent, a foam roller or firm pillow between the knees."
+                  },
+                  {
+                    "name": "Quadruped Abduction Lift-Overs",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "8 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "On hands and knees with a foam roller standing up beside one knee."
                   },
                   {
                     "name": "Weighted Hip Airplane",
@@ -56512,6 +57561,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Load: 20 lb Standing leg bent, other foot on a slider."
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "5 per side",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Wide stance, toes slightly out. Sit over one leg while the other stays straight, toes up; then shift across."
                   }
                 ]
               }
@@ -63469,7 +64530,9 @@
                 "rest": null,
                 "notes": "Slow, segment by segment. (Cat Cow works too: it's in the swaps.)",
                 "alternates": [
-                  "Cat Cow"
+                  "Cat Cow",
+                  "SI-Joint Band-Traction Side-Lying Rotations",
+                  "Weighted Standing Side Bend"
                 ]
               },
               {
@@ -63641,7 +64704,25 @@
                 "distance": null,
                 "time": "45s",
                 "rest": null,
-                "notes": "Hold, then rock side to side."
+                "notes": "Hold, then rock side to side.",
+                "alternates": [
+                  "Squat Shifts"
+                ]
+              },
+              {
+                "name": "Squat Knee Taps",
+                "round_group": "Lunge & squat",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Proformance: from the bottom of the squat, drop one knee in at a time (the hip turns in).",
+                "alternates": [
+                  "Squat Shifts"
+                ]
               },
               {
                 "name": "Wall Slides",
@@ -63719,7 +64800,9 @@
                 "rest": null,
                 "notes": "Slow, segment by segment. (Cat Cow works too: it's in the swaps.)",
                 "alternates": [
-                  "Cat Cow"
+                  "Cat Cow",
+                  "SI-Joint Band-Traction Side-Lying Rotations",
+                  "Weighted Standing Side Bend"
                 ]
               },
               {
@@ -63894,7 +64977,11 @@
                 "distance": null,
                 "time": "45s",
                 "rest": null,
-                "notes": "Hold, then rock side to side."
+                "notes": "Hold, then rock side to side.",
+                "alternates": [
+                  "Squat Shifts",
+                  "Squat Knee Taps"
+                ]
               },
               {
                 "name": "Wall Slides",
@@ -63971,7 +65058,9 @@
                 "rest": null,
                 "notes": "Slow, segment by segment. (Cat Cow works too: it's in the swaps.)",
                 "alternates": [
-                  "Cat Cow"
+                  "Cat Cow",
+                  "SI-Joint Band-Traction Side-Lying Rotations",
+                  "Weighted Standing Side Bend"
                 ]
               },
               {
@@ -64038,10 +65127,12 @@
                 "rest": null,
                 "notes": "Your #1 \"rotating pigeon\" and Proformance's bench pigeon: knee out, then up and down-and-in. Turning the hip in is the range that's usually short after FAI surgery.",
                 "alternates": [
+                  "Bench IR Knee Taps",
                   "Optional Pigeon Length Under Load",
                   "Banded Incline Pigeon Rotation",
                   "Standing Bench Hip Rotations with Med Ball",
-                  "Prone Banded Hip IR"
+                  "Prone Banded Hip IR",
+                  "Hip Flexor + IR Combo"
                 ]
               },
               {
@@ -64090,6 +65181,7 @@
                 "alternates": [
                   "Optional Downward Frog",
                   "Adductor Rock Back",
+                  "Cossack Squat",
                   "Hip Pry to Lateral Stretch"
                 ]
               },
@@ -64106,6 +65198,38 @@
                 "notes": "Your #18 \"lunge to hamstring\": tuck, then push the glute back.",
                 "alternates": [
                   "Squat to Hamstring Stretch"
+                ]
+              },
+              {
+                "name": "Seated Straight-Leg Raise with Rotation",
+                "round_group": "Hip flexors",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "5 each way",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Each side (Proformance): toes out, then toes in. Hip-flexor strength at short range.",
+                "alternates": [
+                  "Seated Leg Hurdle Lift-Overs",
+                  "Straight Leg Raise"
+                ]
+              },
+              {
+                "name": "Quadruped Abduction Lift-Overs",
+                "round_group": "Side hip",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "6 each side",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Proformance: knee out and over a standing foam roller, hips level.",
+                "alternates": [
+                  "Fire Hydrants",
+                  "Side Plank with Top-Leg Raise"
                 ]
               },
               {
@@ -70764,7 +71888,22 @@
                 "distance": null,
                 "time": null,
                 "rest": null,
-                "notes": "No band needed. Sit back into the hip: the groin takes the cuts and slides."
+                "notes": "No band needed. Sit back into the hip: the groin takes the cuts and slides.",
+                "alternates": [
+                  "Cossack Squat"
+                ]
+              },
+              {
+                "name": "Cossack Switches",
+                "round_group": "Mobilise",
+                "is_alternate": false,
+                "sets": 1,
+                "reps": "8 switches",
+                "weight": null,
+                "distance": null,
+                "time": null,
+                "rest": null,
+                "notes": "Low, quick but controlled, heels down. Like a defensive slide."
               },
               {
                 "name": "Hip Airplane (No Support)",

@@ -9469,6 +9469,24 @@
    "plane": "sagittal",
    "hip_focus": false
   },
+  "proformance-bench-ir-knee-taps": {
+   "name": "Bench IR Knee Taps",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "adductors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
   "proformance-bench-pigeon-rotation": {
    "name": "Bench Pigeon Rotation",
    "primary_muscle": "glutes",
@@ -9488,11 +9506,135 @@
    "plane": "transverse",
    "hip_focus": true
   },
+  "proformance-cossack-squat": {
+   "name": "Cossack Squat",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "glutes",
+    "quads"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "proformance-cossack-switches": {
+   "name": "Cossack Switches",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "quads",
+    "glutes"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "proformance-hip-flexor-ir-combo": {
+   "name": "Hip Flexor + IR Combo",
+   "primary_muscle": "hip_flexors",
+   "muscles": [
+    "hip_flexors",
+    "glutes",
+    "abs"
+   ],
+   "pattern": "mobility",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-isometric-wall-sit": {
+   "name": "Isometric Wall Sit",
+   "primary_muscle": "quads",
+   "muscles": [
+    "quads",
+    "glutes"
+   ],
+   "pattern": "isometric",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "proformance-prone-banded-hip-ir": {
    "name": "Prone Banded Hip IR",
    "primary_muscle": "glutes",
    "muscles": [
     "glutes",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-quadruped-abduction-lift-overs": {
+   "name": "Quadruped Abduction Lift-Overs",
+   "primary_muscle": "abductors",
+   "muscles": [
+    "abductors",
+    "glutes"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "proformance-seated-straight-leg-raise-with-rotation": {
+   "name": "Seated Straight-Leg Raise with Rotation",
+   "primary_muscle": "hip_flexors",
+   "muscles": [
+    "hip_flexors",
+    "quads",
+    "abs"
+   ],
+   "pattern": "isolation_lower",
+   "role": "accessory",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": true
+  },
+  "proformance-si-joint-band-traction-side-lying-rotations": {
+   "name": "SI-Joint Band-Traction Side-Lying Rotations",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "lower_back",
     "hip_flexors"
    ],
    "pattern": "mobility",
@@ -9522,6 +9664,42 @@
    "plane": "transverse",
    "hip_focus": true
   },
+  "proformance-squat-knee-taps": {
+   "name": "Squat Knee Taps",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "adductors",
+    "quads"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-squat-shifts": {
+   "name": "Squat Shifts",
+   "primary_muscle": "adductors",
+   "muscles": [
+    "adductors",
+    "glutes",
+    "quads"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "bodyweight"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "frontal",
+   "hip_focus": true
+  },
   "proformance-standing-bench-hip-rotations-with-med-ball": {
    "name": "Standing Bench Hip Rotations with Med Ball",
    "primary_muscle": "glutes",
@@ -9541,6 +9719,60 @@
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true
+  },
+  "proformance-standing-bench-pigeon-hinge": {
+   "name": "Standing Bench Pigeon Hinge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "hip_flexors",
+    "hamstrings"
+   ],
+   "pattern": "mobility",
+   "role": "accessory",
+   "equipment": [
+    "bench",
+    "kettlebell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-two-bench-side-plank-with-top-leg-abduction": {
+   "name": "Two-Bench Side Plank with Top-Leg Abduction",
+   "primary_muscle": "abductors",
+   "muscles": [
+    "abductors",
+    "glutes",
+    "obliques"
+   ],
+   "pattern": "lateral_flexion",
+   "role": "accessory",
+   "equipment": [
+    "bench"
+   ],
+   "level": 3,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": true
+  },
+  "proformance-weighted-standing-side-bend": {
+   "name": "Weighted Standing Side Bend",
+   "primary_muscle": "obliques",
+   "muscles": [
+    "obliques",
+    "lower_back"
+   ],
+   "pattern": "lateral_flexion",
+   "role": "core",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "frontal",
+   "hip_focus": false
   },
   "proprioception-progressions": {
    "name": "Proprioception Progressions",

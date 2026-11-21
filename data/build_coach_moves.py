@@ -22,6 +22,7 @@ PROFORMANCE = 'Proformance'
 REEL = lambda rid: f'https://www.facebook.com/reel/{rid}'
 # Her YouTube short of the hip-IR reel (FB 4146226679040642): same four moves, plays in the app.
 PF_IR = 'https://youtu.be/iQhEqtez11k'
+PF = lambda vid, t: f'https://youtu.be/{vid}' + (f'?t={t}' if t else '')   # her YouTube short, from the move's second
 
 
 def T(primary, muscles, pattern, role, equipment, level, unilateral=True, plane='sagittal', hip_focus=True,
@@ -105,7 +106,7 @@ MOVES = {
     'Seated Leg Hurdle Lift-Overs': ('framedfit', REEL('941634598293800'), PORTIA, [
         'Sit on the floor leaning back on your hands, a kettlebell or ball beside one leg.',
         'Lift the straight leg up and over it and back, without rocking the trunk. Add a second "hurdle" as it gets easy.',
-        'In the reel at 18-24 s. 6-8 each side.'],
+        'Proformance\'s short shows it from 11 s (chair-assisted first, then roller height). 6-8 each side.'],
         T('hip_flexors', ['hip_flexors', 'abductors', 'adductors', 'abs'], 'mobility', 'warmup', ['bodyweight'], 2, plane='frontal')),
 
     # ── Dr. Andreo Spina, Functional Range Conditioning ──
@@ -152,6 +153,74 @@ MOVES = {
         'Let the foot fall out to the side (the hip turns in), ease a little further with the band, then bring the foot back to the middle with the hip.',
         'Hips stay flat on the floor. Last of the four moves in the clip. 10 each side.'],
         T('glutes', ['glutes', 'hip_flexors'], 'mobility', 'warmup', ['band'], 1, plane='transverse')),
+
+    # Her survey's best moves (docs/research/proformance.md), the user's "all" (2026-11-21). Each plays her
+    # YouTube short from the second the move starts. Read frame by frame where the cues say how.
+    'Two-Bench Side Plank with Top-Leg Abduction': ('proformance', PF('LDhUmFAOflY', 0), PROFORMANCE, [
+        'Two benches a body-length apart: forearm or hand on one, the bottom shin on the other, hips up in a side plank.',
+        'Lift the straight top leg up and lower it slowly, hips stacked and level. The bottom side holds you up.',
+        'Her answer to outer-hip pain: the side hip works through its range without being squeezed. Regress: knees on the bench. 8-10 each side.'],
+        T('abductors', ['abductors', 'glutes', 'obliques'], 'lateral_flexion', 'accessory', ['bench'], 3, plane='frontal')),
+    'Quadruped Abduction Lift-Overs': ('proformance', PF('LDhUmFAOflY', 2), PROFORMANCE, [
+        'On hands and knees with a foam roller standing up beside one knee.',
+        'Lift that knee out to the side, up and over the roller, tap down on the far side, and back. Hips stay level, no leaning away.',
+        'End-range hip opening without lying on the sore side. 6-8 each side.'],
+        T('abductors', ['abductors', 'glutes'], 'isolation_lower', 'accessory', ['bodyweight'], 2, plane='frontal')),
+    'Cossack Squat': ('proformance', PF('QINs-Pfd-fw', 4), PROFORMANCE, [
+        'Wide stance, toes slightly out. Sit down over one leg while the other stays straight, toes up; then shift across to the other side.',
+        'Heel of the bent leg stays down, chest up. Hold a post or the bench at first; later a kettlebell at the chest.',
+        'Regress (in the clip): a wide squat with hands on the floor, shifting side to side. 5-6 each side.'],
+        T('adductors', ['adductors', 'glutes', 'quads'], 'lunge_single_leg', 'secondary', ['bodyweight'], 2, plane='frontal')),
+    'Cossack Switches': ('proformance', PF('5hvYmoK3rl0', 0), PROFORMANCE, [
+        'Drop into a low Cossack on one side, hands at the chest, then switch to the other side without standing up.',
+        'Quick but controlled, like a goalie or a defender sliding: stay low, heels down.',
+        '8-10 switches.'],
+        T('adductors', ['adductors', 'quads', 'glutes'], 'mobility', 'warmup', ['bodyweight'], 2, plane='frontal')),
+    'Seated Straight-Leg Raise with Rotation': ('proformance', PF('InrgFXjTsTE', 7), PROFORMANCE, [
+        'Sit tall on the floor, legs straight, hands beside the hips.',
+        'Lift one straight leg with the toes turned out, lower; then with the toes turned in, lower. Don\'t lean back.',
+        'Hip-flexor strength at short range. 5 each way, each side.'],
+        T('hip_flexors', ['hip_flexors', 'quads', 'abs'], 'isolation_lower', 'accessory', ['bodyweight'], 2, plane='sagittal')),
+    'Hip Flexor + IR Combo': ('proformance', PF('bTbeSTI5ZHc', 7), PROFORMANCE, [
+        'Sit with one leg straight in front and the other bent behind you to the side (back hip turned in, like the back leg of a 90/90).',
+        'Hands at the chest, sit tall and lift the straight front leg, then lower it. The back hip holds its turned-in position.',
+        'Active hip internal rotation under load. 8 each side.'],
+        T('hip_flexors', ['hip_flexors', 'glutes', 'abs'], 'mobility', 'accessory', ['bodyweight'], 2, plane='transverse')),
+    'Bench IR Knee Taps': ('proformance', PF('1zXtCNDtZE8', 11), PROFORMANCE, [
+        'Sit on the end of a bench with one foot up on it, knee bent, and the other leg long and wide to the floor.',
+        'Drop the bent knee down and in toward the bench (the hip turns in), then lift it back up. Sit tall.',
+        'Feet stay wide so the knee drops in without crossing over. 10 each side.'],
+        T('glutes', ['glutes', 'hip_flexors', 'adductors'], 'mobility', 'warmup', ['bench'], 1, plane='transverse')),
+    'Squat Knee Taps': ('proformance', PF('STBUgwmceFs', 3), PROFORMANCE, [
+        'Sit in a deep squat, hands in front for balance.',
+        'Drop one knee in toward the floor (that hip turns in), back up, then the other.',
+        'Only as deep as the front of the hip stays comfortable. 6 each side.'],
+        T('glutes', ['glutes', 'adductors', 'quads'], 'mobility', 'warmup', ['bodyweight'], 2, plane='transverse')),
+    'Squat Shifts': ('proformance', PF('STBUgwmceFs', 5), PROFORMANCE, [
+        'In a deep squat, shift your weight slowly onto one foot, then across to the other, staying low.',
+        'Heels down, chest up. 6 each side.'],
+        T('adductors', ['adductors', 'glutes', 'quads'], 'mobility', 'warmup', ['bodyweight'], 1, unilateral=False, plane='frontal')),
+    'SI-Joint Band-Traction Side-Lying Rotations': ('proformance', PF('nqpRbvZgTQ0', 0), PROFORMANCE, [
+        'Lie on your side, knees bent with a foam roller between them, a long band looped high around the top thigh and anchored behind you so it gently pulls the hip.',
+        'Turn the top hip open and closed against that pull, slowly.',
+        'For the SI joint and low back. Pad under the bottom hip on the sore side. 12 each side.'],
+        T('glutes', ['glutes', 'lower_back', 'hip_flexors'], 'mobility', 'warmup', ['band'], 1, plane='transverse')),
+    'Weighted Standing Side Bend': ('proformance', PF('lJCvShYI_OA', 7), PROFORMANCE, [
+        'Stand tall, a dumbbell or kettlebell in one hand.',
+        'Bend sideways toward the weight, then come back up past the middle, ribs and hips stacked, no twisting.',
+        'Light weight, smooth range. 10 each side.'],
+        T('obliques', ['obliques', 'lower_back'], 'lateral_flexion', 'core', ['dumbbell'], 1, plane='frontal', hip_focus=False,
+          progresses_by='load')),
+    'Standing Bench Pigeon Hinge': ('proformance', PF('S3QAKuUbWjQ', 3), PROFORMANCE, [
+        'Stand at a bench and lay one shin across it in a pigeon, the other leg straight under you, a kettlebell in your hands.',
+        'Hinge forward over the shin with a long back, then stand tall. The front hip turns out under load.',
+        '8 each side.'],
+        T('glutes', ['glutes', 'hip_flexors', 'hamstrings'], 'mobility', 'accessory', ['bench', 'kettlebell'], 2, plane='transverse')),
+    'Isometric Wall Sit': ('proformance', PF('xNHQup7c2x8', 12), PROFORMANCE, [
+        'Back flat on a wall, slide down until the knees are at about 90°, feet hip-width.',
+        'Hold, weight through the whole foot. Knees over the middle toes.',
+        'For the knees: 3-5 holds of 30-45 s.'],
+        T('quads', ['quads', 'glutes'], 'isometric', 'accessory', ['bodyweight'], 1, unilateral=False, hip_focus=False)),
 }
 
 for name, (src, video, credit, cues, tags) in MOVES.items():
@@ -171,6 +240,7 @@ YT = {
     'Tib Raise': 'https://youtu.be/pQcvW08rnAk',             # Physio Room Co, wall tib raise
     'Patrick Step': 'https://youtu.be/XI4NdfD3Xfo',          # Vernon Griffith's Poliquin Step Down: the same move Patrick's step comes from
 }
+YT['Seated Leg Hurdle Lift-Overs'] = PF('InrgFXjTsTE', 11)   # Proformance's seated straddle lift-overs: same move, plays in-app
 for name, url in YT.items():
     e = lib.by_name[name.lower()]
     e['video_url'] = url

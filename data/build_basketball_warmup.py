@@ -43,7 +43,10 @@ rows = [
     r('Half Kneeling Thoracic Rotations', '5 each side', group='Mobilise',
       notes='Hands behind the head: turn the chest open, reach the elbow toward the floor, side-bend, back up. Keep it moving.'),
     r('Walking Sprinters Mobility', '6 each side', group='Mobilise'),
-    r('Lateral Lunge', '5 each side', group='Mobilise', notes='No band needed. Sit back into the hip: the groin takes the cuts and slides.'),
+    r('Lateral Lunge', '5 each side', group='Mobilise', notes='No band needed. Sit back into the hip: the groin takes the cuts and slides.',
+      alts=['Cossack Squat']),
+    # Proformance's goalie drill: stays low and switches sides, like sliding on defence.
+    r('Cossack Switches', '8 switches', group='Mobilise', notes='Low, quick but controlled, heels down. Like a defensive slide.'),
     r('Hip Airplane (No Support)', '3 each side', group='Mobilise', notes='Slow open and close.'),
     r('Resisted Ankle Circles', '10 each way', group='Mobilise', notes='Each foot, no band.'),
     # Activate: ankles and glutes on.

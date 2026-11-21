@@ -1088,44 +1088,45 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 15.3,
+   "exercises_per_day": 18.3,
    "day_focus": [
     "Session A · Posterior & Single-Leg",
     "Session B · Lateral & Adductors",
     "Session A · Posterior & Single-Leg"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 41,
-    "abductors": 36,
+    "glutes": 49,
+    "abductors": 41,
     "hamstrings": 21,
-    "adductors": 12,
+    "adductors": 15,
     "abs": 9,
     "quads": 9,
-    "hip_flexors": 4
+    "hip_flexors": 8
    },
    "week1_sets_by_pattern": {
     "hinge": 30,
     "isometric": 24,
-    "isolation_lower": 21,
-    "lunge_single_leg": 18,
+    "isolation_lower": 23,
+    "lunge_single_leg": 21,
     "balance": 17,
-    "lateral_flexion": 6,
+    "mobility": 16,
+    "lateral_flexion": 9,
     "anti_extension": 6,
-    "mobility": 4,
     "flexion": 3,
     "squat": 3
    },
    "roles": {
-    "accessory": 19,
-    "secondary": 17,
+    "accessory": 25,
+    "secondary": 18,
     "core": 8,
-    "warmup": 2
+    "warmup": 4
    },
    "equipment": [
     "band",
     "bench",
     "bosu_pad",
     "box",
+    "kettlebell",
     "mini_band",
     "slider"
    ],
@@ -1256,15 +1257,15 @@
    "kind": "rotation",
    "weeks": null,
    "days_per_week": 3,
-   "exercises_per_day": 15.0,
+   "exercises_per_day": 16.0,
    "day_focus": [
     "Daily A · Ankles, hips, T-spine",
     "Daily B · Breathing, glutes, shoulders",
     "Daily C · Hips"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 22,
-    "hip_flexors": 13,
+    "glutes": 23,
+    "hip_flexors": 14,
     "calves": 4,
     "abs": 4,
     "quads": 4,
@@ -1273,21 +1274,22 @@
     "front_delts": 2,
     "adductors": 2,
     "rear_delts": 1,
-    "hamstrings": 1
+    "hamstrings": 1,
+    "abductors": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 34,
+    "mobility": 35,
     "balance": 15,
+    "isolation_lower": 4,
     "isometric": 4,
-    "isolation_lower": 2,
     "hinge": 2,
     "anti_extension": 1,
     "pull_horizontal": 1,
     "isolation_upper": 1
    },
    "roles": {
-    "warmup": 20,
-    "accessory": 11,
+    "warmup": 21,
+    "accessory": 13,
     "cooldown": 10,
     "core": 1,
     "secondary": 1
@@ -1366,7 +1368,7 @@
    "kind": "rotation",
    "weeks": null,
    "days_per_week": 1,
-   "exercises_per_day": 16.0,
+   "exercises_per_day": 17.0,
    "day_focus": [
     "Basketball warm-up"
    ],
@@ -1374,13 +1376,13 @@
     "glutes": 8,
     "hip_flexors": 3,
     "calves": 3,
+    "adductors": 2,
     "lower_back": 1,
     "full_body": 1,
-    "adductors": 1,
     "upper_back": 1
    },
    "week1_sets_by_pattern": {
-    "mobility": 6,
+    "mobility": 7,
     "balance": 3,
     "speed_accel": 3,
     "plyo_bound_hop": 2,
@@ -1390,7 +1392,7 @@
     "hinge": 1
    },
    "roles": {
-    "warmup": 7,
+    "warmup": 8,
     "secondary": 2,
     "accessory": 2,
     "power": 2,

@@ -2,7 +2,14 @@
 
 Researched 2026-11-21 for the hip plan (left hip scope, labral repair + FAI, 7 months out; outer-hip / gluteal
 tendon symptoms; pickup basketball; "fix, not avoid").
-**Nothing here is in the app yet.** Approve moves below, then they go in as tagged catalog exercises. Her
+**In the app since v205 (2026-11-21, the user's "all"):** the ten best moves plus Standing Bench Pigeon Hinge and
+Isometric Wall Sit, as tagged coach moves (`data/build_coach_moves.py`, source `proformance`), each playing her YouTube
+short from the second the move starts. Where they went: Hip Plan Session A (Bench IR Knee Taps, optional; Standing Bench
+Pigeon Hinge; Hip Flexor + IR Combo), Session B (Two-Bench Side Plank with Top-Leg Abduction; Quadruped Abduction
+Lift-Overs; Cossack Squat), Daily A (Squat Knee Taps), Daily C (Seated Straight-Leg Raise with Rotation; Quadruped
+Abduction Lift-Overs), Basketball Warm-up (Cossack Switches); swaps: Squat Shifts, SI-Joint Band-Traction Side-Lying
+Rotations and Weighted Standing Side Bend (low-back reset), Cossack Squat (warm-up, Daily C adductors); Isometric Wall
+Sit is catalog-only. Seated Leg Hurdle Lift-Overs now plays her YouTube short. The rest below is still just research. Her
 YouTube shorts play inside the app, so the **YouTube id** column is the video to use; the Facebook reel is the
 fallback.
 

@@ -101,7 +101,9 @@ title of a pick that isn't among its candidates; check `git diff src/lib/hip_pro
 v204 (2026-11-21) added her hip internal-rotation moves (see the reels table, #17 and #20) and moved the figure-4
 Piriformis Stretch out of the hip warm-up (90/90 Hip Opener + Adductor Rock Back instead). Her YouTube channel
 @proformancesportstherapy (~400 shorts) plays inside the app, unlike her Facebook reels. The survey of her other
-reels and shorts is in [`research/proformance.md`](research/proformance.md): go through its "best new moves" with the user.
+reels and shorts is in [`research/proformance.md`](research/proformance.md); its best moves went in at v205 (the user's
+"all"). What's left there is optional: the ~25 relevant shorts listed but not frame-checked, and her 720+ Facebook reels
+(247 ids captured).
 Bench Pigeon Rotation still plays the Facebook reel; swap in her YouTube short if the survey finds one.
 
 ## Known limits (no action needed)
