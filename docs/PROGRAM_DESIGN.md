@@ -112,6 +112,34 @@ research in [research/Workout plan builder methods.md](research/Workout%20plan%2
 
 **Session size:** 6-8 exercises fit 60 min. For 45 min, use 5-6. For 30 min, use 5 exercises,
 mostly supersets, and cut isolation first (BWS express versions drop about 25% of sets).
+This counts **working lifts**. Prep and mobility drills (1-2 sets, a minute each) are counted apart, the way
+PJF and Griffith list 6-8 of them before the lifts.
+
+### Rehab and mobility sessions (v206)
+
+The lifting rule above doesn't fit a rehab plan or a mobility routine: those hold more, shorter items (Griffith's
+Runners Mobility & Strength: 1-2 + 11 per 50 min; PJF Durability Code Prime: 10-33 rows a day, mostly 1-2 set
+drills; the user's PT program: 15 exercises 3×/week). Cap them by **minutes and working sets**, not rows:
+
+- **Two layers.** A short daily dose of 4-6 targeted moves (the LEAP gluteal-tendinopathy trial: 4-6 exercises
+  daily, abductor strength and control of the knee falling in, beat an injection at 8 weeks; Mellor et al., BMJ
+  2018), plus 2-3 strength days a week. In the app: Pelvic Reset + the hip warm-up daily, Hip Plan A/B 3×/week.
+- **Strength day:** about 5 min of prep (2-3 drills), then **8-10 working moves, one per slot**, 50-60 min with
+  the warm-up. Other versions of a slot are swaps, not extra rows.
+- **Progress by load and steps, criteria-gated.** Tendons respond to load that rises slowly: harder steps every
+  2-week phase (`HIP_LADDERS`), add weight when a set is easy two sessions running, and gate return-to-sport
+  steps on measured left-vs-right numbers (Hip Check, 80% / 90%). Matches Personalised Hip Therapy (control and
+  balance → resistance → sport-specific) and the criteria-plus-time hip arthroscopy protocols (ISHA, MGH).
+- **Stretching dose:** about 5-10 min a week per muscle group gets most of the range gain (Thomas et al. 2018;
+  a 2025 meta-analysis found nothing extra past ~10 min/week). Daily Mobility's 45 s a side most days is there.
+- **Fewer exercises for adherence is weak evidence** (the 2 vs 5 vs 8 home-exercise trial found no compliance
+  difference); the reason to cap is time and fatigue.
+
+Sources: [LEAP](https://pmc.ncbi.nlm.nih.gov/articles/PMC5930290) ·
+[Personalised Hip Therapy](https://pmc.ncbi.nlm.nih.gov/articles/PMC5036255) ·
+[post-arthroscopy rehab review 2024](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11642080/) ·
+[Thomas 2018](https://pubmed.ncbi.nlm.nih.gov/29506306/) · [stretching dose 2025](https://pubmed.ncbi.nlm.nih.gov/39614059/) ·
+[Henry 1999](https://search.pedro.org.au/search-results/record-detail/1880).
 
 ## Progression (PJF style)
 

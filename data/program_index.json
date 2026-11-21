@@ -1088,49 +1088,43 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 18.3,
+   "exercises_per_day": 9.3,
    "day_focus": [
     "Session A · Posterior & Single-Leg",
     "Session B · Lateral & Adductors",
     "Session A · Posterior & Single-Leg"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 49,
-    "abductors": 41,
-    "hamstrings": 21,
-    "adductors": 15,
-    "abs": 9,
-    "quads": 9,
-    "hip_flexors": 8
+    "glutes": 28,
+    "abductors": 21,
+    "hamstrings": 12,
+    "adductors": 12,
+    "hip_flexors": 4,
+    "quads": 3
    },
    "week1_sets_by_pattern": {
-    "hinge": 30,
-    "isometric": 24,
-    "isolation_lower": 23,
-    "lunge_single_leg": 21,
+    "isometric": 19,
     "balance": 17,
-    "mobility": 16,
-    "lateral_flexion": 9,
-    "anti_extension": 6,
-    "flexion": 3,
+    "hinge": 15,
+    "isolation_lower": 11,
+    "lunge_single_leg": 9,
+    "lateral_flexion": 6,
     "squat": 3
    },
    "roles": {
-    "accessory": 25,
-    "secondary": 18,
-    "core": 8,
-    "warmup": 4
+    "accessory": 14,
+    "secondary": 9,
+    "core": 5
    },
    "equipment": [
     "band",
     "bench",
     "bosu_pad",
     "box",
-    "kettlebell",
     "mini_band",
     "slider"
    ],
-   "description": "Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week with your PT and Motion RC exercises, and every 2 weeks each exercise moves up its progression (single-leg bench bridge, long-lever Copenhagen, unsupported airplanes…)."
+   "description": "Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week, 3 prep drills and one exercise per slot from your PT, Motion RC and Proformance work, with the other versions under Swap. Every 2 weeks each exercise moves up its progression (single-leg bridges, long-lever Copenhagen, two-bench side plank, Cossack…). Pelvic Reset stays the daily dose."
   },
   {
    "id": "lean_tone_home_6wk",
@@ -1368,12 +1362,12 @@
    "kind": "rotation",
    "weeks": null,
    "days_per_week": 1,
-   "exercises_per_day": 17.0,
+   "exercises_per_day": 15.0,
    "day_focus": [
     "Basketball warm-up"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 8,
+    "glutes": 6,
     "hip_flexors": 3,
     "calves": 3,
     "adductors": 2,
@@ -1387,13 +1381,10 @@
     "speed_accel": 3,
     "plyo_bound_hop": 2,
     "conditioning": 1,
-    "agility_cod": 1,
-    "lunge_single_leg": 1,
-    "hinge": 1
+    "agility_cod": 1
    },
    "roles": {
     "warmup": 8,
-    "secondary": 2,
     "accessory": 2,
     "power": 2,
     "conditioning": 1,
@@ -1402,7 +1393,7 @@
    "equipment": [
     "band"
    ],
-   "description": "About 10 minutes before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and sprints. Opens from Today on basketball days without changing your plan."
+   "description": "About 12 minutes on court (plus two moves at home) before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and sprints. Opens from Today on basketball days without changing your plan."
   }
  ]
 }

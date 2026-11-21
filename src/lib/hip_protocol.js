@@ -1856,8 +1856,8 @@ export const EXERCISE_INDEX = Object.fromEntries(
 );
 
 const sourceSection = (id) => SOURCE_SECTIONS.find(s => s.id === id);
-const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
-  'mrc-quadruped-hip-hike', 'pt-sl-balance-pad', 'mrc-copenhagen-knee', 'lh-wall-abd-iso', 'lh-weight-shift'];
+const BOTH = ['mrc-distraction-ir', 'mrc-seated-banded-ir', 'mrc-quadruped-hip-hike', 'pt-sl-balance-pad',
+  'mrc-copenhagen-knee', 'lh-weight-shift'];
 
 /** Pull exercises from the catalog, tagged with where they came from and which session(s). */
 function pick(session, ids) {
@@ -1868,8 +1868,7 @@ function pick(session, ids) {
       ...ex,
       source: id.startsWith('mrc-') ? 'Motion RC' : id.startsWith('lh-') ? 'Lateral hip' : id.startsWith('pf-') ? 'Proformance' : 'PT',
       freq: BOTH.includes(id) ? 'Sessions A & B' : `Session ${session}`,
-      ...(['mrc-tfl-ir-stretch', 'pf-bench-ir-taps'].includes(id) ? { optional: true } : {}),
-    };
+          };
   });
 }
 
@@ -1882,30 +1881,29 @@ const SESSION_CRITERIA = sourceSection('pt').criteria;
  * the BOSU/pad single-leg balance (replaced flat-ground stance), and the Copenhagen. Dropped as duplicates:
  * Modified Side Plank (covered by the side plank clamshell) and Band Walks (Monster Walk).
  */
+// v206 restructure (docs/research: LEAP, Personalised Hip Therapy; docs/PROGRAM_DESIGN.md "Rehab sessions"):
+// a short daily dose (Pelvic Reset + the hip warm-up) plus 3 strength days of 3 prep drills and 9-10 working
+// moves, one per slot. Every other variation is a swap on the Lift card (HIP_SWAPS), and the harder ones come in
+// as later-phase ladder steps (HIP_LADDERS), so load and difficulty go up every 2 weeks. Nothing was removed.
 const SESSION_A = {
   id: 'session-a',
   label: 'Session A',
   tag: 'Strength · Alternates with B',
   accent: '#22d3ee',
   bg: 'rgba(2,132,199,0.10)',
-  description: 'Merged PT + Motion RC plan. Three strength days a week, alternating A and B. Mobility prep first, then one exercise per slot — the overlapping version of each lives in Session B. Quality over load; pelvis level throughout.',
+  description: 'Three strength days a week, alternating A and B. Three prep drills, then one exercise per slot: side-hip hold, weight acceptance, balance, bridge, side plank, single-leg hinge, hip flexors, step-up, Copenhagen. Other versions of each are swaps; every 2 weeks each one moves a step up. Quality over load; pelvis level throughout.',
   criteria: SESSION_CRITERIA,
   exercises: pick('A', [
-    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'pf-prone-banded-ir', 'pf-bench-ir-taps',
-    'mrc-quadruped-hip-hike',
+    'mrc-distraction-ir', 'mrc-seated-banded-ir', 'mrc-quadruped-hip-hike',
     'lh-wall-abd-iso',
-    'pt-sl-balance-pad',
     'lh-weight-shift',
+    'pt-sl-balance-pad',
     'mrc-elevated-ham-bridge',
-    'lh-bridge-band-abd',
     'mrc-side-plank-clamshell',
-    'mrc-copenhagen-knee',
-    'mrc-monster-walk', 'pt-fire-hydrant',
-    'pt-sl-rdl', 'pf-bench-pigeon-hinge',
-    'mrc-hip-flexor-march', 'pf-hip-flexor-ir',
-    'pt-prone-ext', 'pt-bird-dog',
+    'pt-sl-rdl',
+    'mrc-hip-flexor-march',
     'pt-step-ups',
-    'pt-posterior-lunge',
+    'mrc-copenhagen-knee',
   ]),
 };
 
@@ -1915,28 +1913,45 @@ const SESSION_B = {
   tag: 'Strength · Alternates with A',
   accent: '#e879f9',
   bg: 'rgba(192,38,211,0.10)',
-  description: 'Merged PT + Motion RC plan — the partner to Session A, with the other version of each movement slot. Same mobility prep. Quality over load; pelvis level throughout.',
+  description: 'The partner to Session A: the same three prep drills, then weight acceptance, balance, bridge, side hip, pelvic control, internal-rotation strength, airplane, sit-to-stand, a lateral lunge and the Copenhagen. Other versions are swaps; every 2 weeks each moves a step up. Quality over load; pelvis level throughout.',
   criteria: SESSION_CRITERIA,
   exercises: pick('B', [
-    'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
-    'mrc-quadruped-hip-hike',
-    'lh-wall-abd-iso',
-    'pt-sl-balance-pad',
+    'mrc-distraction-ir', 'mrc-seated-banded-ir', 'mrc-quadruped-hip-hike',
     'lh-weight-shift',
+    'pt-sl-balance-pad',
     'pt-bridge-squeeze',
-    'mrc-copenhagen-knee',
-    'pf-two-bench-side-plank',
-    'mrc-standing-hip-hike',
     'pt-side-lying-abduction',
-    'pf-side-lying-ir-lift', 'pf-abduction-lift-overs',
+    'mrc-standing-hip-hike',
+    'pf-side-lying-ir-lift',
     'mrc-hip-airplane',
-    'pt-slr',
-    'pt-prone-ext-bent',
     'lh-sit-to-stand',
-    'pt-lateral-step-ups',
     'mrc-adductor-slider-lunge',
-    'pf-cossack',
+    'mrc-copenhagen-knee',
   ]),
+};
+
+/** The three prep drills that open each strength day (the Lift card shows them as the warm-up). */
+export const SESSION_PREP_IDS = ['mrc-distraction-ir', 'mrc-seated-banded-ir', 'mrc-quadruped-hip-hike'];
+
+/**
+ * Swaps per slot (by the slot's main exercise id): the other versions of that movement, shown under Swap on
+ * the Lift card. Ladder steps (HIP_LADDERS) aren't repeated here: they come in on their own phase.
+ */
+export const HIP_SWAPS = {
+  'mrc-distraction-ir':       ['mrc-distraction-er', 'pf-bench-ir-taps'],
+  'mrc-seated-banded-ir':     ['pf-prone-banded-ir', 'mrc-tfl-ir-stretch'],
+  'mrc-quadruped-hip-hike':   ['pt-bird-dog'],
+  'mrc-elevated-ham-bridge':  ['lh-bridge-band-abd', 'pt-prone-ext'],
+  'mrc-side-plank-clamshell': ['mrc-monster-walk', 'pt-fire-hydrant'],
+  'pt-sl-rdl':                ['pf-bench-pigeon-hinge'],
+  'mrc-hip-flexor-march':     ['pf-hip-flexor-ir', 'pt-slr'],
+  'pt-step-ups':              ['pt-posterior-lunge'],
+  'pt-bridge-squeeze':        ['lh-bridge-band-abd', 'pt-prone-ext-bent'],
+  'pt-side-lying-abduction':  ['mrc-monster-walk', 'mrc-side-plank-clamshell'],
+  'mrc-standing-hip-hike':    ['pt-fire-hydrant'],
+  'pf-side-lying-ir-lift':    ['pf-prone-banded-ir'],
+  'lh-sit-to-stand':          ['pt-lateral-step-ups'],
+  'mrc-adductor-slider-lunge': ['pt-lateral-step-ups'],
 };
 
 /** Pool work isn't happening right now — kept at the end, marked optional. */
@@ -2152,6 +2167,7 @@ export const SIDE_HIP_IDS = new Set([
   'mrc-monster-walk', 'mrc-quadruped-hip-hike', 'mrc-standing-hip-hike',
   'mrc-side-plank-clamshell', 'mrc-copenhagen-knee', 'ps-abduction',
   'lh-wall-abd-iso', 'lh-supine-abd-iso', 'lh-bridge-band-abd',
+  'pf-two-bench-side-plank', 'pf-abduction-lift-overs',
 ]);
 
 /** Side-hip exercises checked off in the Sun–Sat week containing `date`. */
@@ -2238,6 +2254,10 @@ export const HIP_LADDERS = {
   'lh-weight-shift':          { name: 'Weight shift → step and stick → lateral', steps: ['lh-weight-shift', 'lv-step-stick', 'lv-lateral-step-stick'] },
   'lh-sit-to-stand':          { name: 'Sit-to-stand → box squat', steps: ['lh-sit-to-stand', 'lv-box-squat'] },
   'lh-bridge-band-abd':       { name: 'Banded bridge → march → single leg', steps: ['lh-bridge-band-abd', 'lv-bridge-march', 'lv-sl-bridge'] },
+  // v206: Proformance's harder moves come in as later steps rather than extra rows.
+  'pt-side-lying-abduction':  { name: 'Side-lying → lift-overs → two-bench side plank', steps: ['pt-side-lying-abduction', 'pf-abduction-lift-overs', 'pf-two-bench-side-plank'] },
+  'pf-side-lying-ir-lift':    { name: 'Side-lying IR → hip flexor + IR', steps: ['pf-side-lying-ir-lift', 'pf-hip-flexor-ir'] },
+  'mrc-adductor-slider-lunge': { name: 'Slider lunge → Cossack', steps: ['mrc-adductor-slider-lunge', 'pf-cossack'] },
 };
 export const LADDER_UNLOCK_SESSIONS = 4;
 

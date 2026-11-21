@@ -43,15 +43,15 @@ rows = [
     r('Half Kneeling Thoracic Rotations', '5 each side', group='Mobilise',
       notes='Hands behind the head: turn the chest open, reach the elbow toward the floor, side-bend, back up. Keep it moving.'),
     r('Walking Sprinters Mobility', '6 each side', group='Mobilise'),
-    r('Lateral Lunge', '5 each side', group='Mobilise', notes='No band needed. Sit back into the hip: the groin takes the cuts and slides.',
-      alts=['Cossack Squat']),
-    # Proformance's goalie drill: stays low and switches sides, like sliding on defence.
-    r('Cossack Switches', '8 switches', group='Mobilise', notes='Low, quick but controlled, heels down. Like a defensive slide.'),
+    # Proformance's goalie drill: the groin through its range while staying low and switching sides, like sliding on
+    # defence. Takes the lateral lunge's slot (v206) to keep the warm-up near 10-12 minutes.
+    r('Cossack Switches', '8 switches', group='Mobilise', notes='Low, quick but controlled, heels down. Like a defensive slide.',
+      alts=['Lateral Lunge', 'Cossack Squat']),
     r('Hip Airplane (No Support)', '3 each side', group='Mobilise', notes='Slow open and close.'),
     r('Resisted Ankle Circles', '10 each way', group='Mobilise', notes='Each foot, no band.'),
     # Activate: ankles and glutes on.
-    r('Single-Leg Balance', time='20s', sets=2, group='Activate', notes='Each side. Balance work prevents ankle sprains better than anything else in a warm-up.'),
-    r('Glute Bridge', '10', group='Activate', notes='2 s squeeze at the top.'),
+    r('Single-Leg Balance', time='20s', sets=2, group='Activate', notes='Each side. Balance work prevents ankle sprains better than anything else in a warm-up.',
+      alts=['Glute Bridge']),
     # Potentiate: build to game speed.
     r('Extensive Locomotive Skips', '1 length', group='Build to game speed', notes='A-skips: knee up, quick off the ground.'),
     r('Pogos', '15', sets=2, rest='20s', group='Build to game speed', notes='Quick and springy off the ankles.'),
@@ -65,9 +65,9 @@ program = {
     'program_name': 'Basketball Warm-up',
     'group': 'Daily',
     'source': 'Daily',
-    'description': 'About 10 minutes before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and '
+    'description': 'About 12 minutes on court (plus two moves at home) before an early pickup game: raise, mobilise, activate, then build to game-speed jumps and '
                    'sprints. Opens from Today on basketball days without changing your plan.',
-    'sessions_per_week': 2, 'session_length_min': 10, 'level': 'All levels',
+    'sessions_per_week': 2, 'session_length_min': 12, 'level': 'All levels',
     'rotation_note': 'before each game',
     'equipment': ['A court or 15 yards of space'],
     'goal': 'Get game-ready at 5:45 and keep ankles, groin and hamstrings healthy.',
@@ -79,7 +79,7 @@ program = {
             'Play the first 5 minutes at about 70%: your body is coldest early in the morning.']},
     ],
     'days': [{'day_name': 'Basketball warm-up', 'notes': [
-        'About 10 minutes. Early morning means a colder body: if you feel stiff, add another lap of the jog and the skips.',
+        'About 12 minutes on court. Early morning means a colder body: if you feel stiff, add another lap of the jog and the skips.',
         'Then the first few minutes of the game at about 70%.'], 'exercises': rows}],
 }
 lib.set_programs('basketball_warmup', [program])

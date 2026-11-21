@@ -11,13 +11,14 @@
  */
 import { readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-import { SECTIONS, EXERCISE_INDEX, HIP_LADDERS } from '../src/lib/hip_protocol.js';
+import { SECTIONS, EXERCISE_INDEX, HIP_LADDERS, HIP_SWAPS, SESSION_PREP_IDS } from '../src/lib/hip_protocol.js';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const LIB = path.join(ROOT, 'data/library.json');
 const lib = JSON.parse(readFileSync(LIB, 'utf8'));
 
-const WARMUP_IDS = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch', 'mrc-quadruped-hip-hike'];
+const WARMUP_IDS = SESSION_PREP_IDS;
+const swapsFor = (slotId) => (HIP_SWAPS[slotId] || []).map(id => EXERCISE_INDEX[id]?.name).filter(Boolean);
 const WEEKS = 6;
 const session = (id) => SECTIONS.find(s => s.id === id).exercises;
 
@@ -43,27 +44,29 @@ function atPhase(id, phase) {
   return steps[0];
 }
 
-const rowFor = (ex) => {
+const rowFor = (ex, slotId) => {
   const rx = parseRx(ex.sets);
+  const alts = swapsFor(slotId).filter(n => n !== ex.name);
   return {
+    ...(alts.length ? { alternates: alts } : {}),
     name: ex.name, round_group: null, is_alternate: false, sets: rx.sets, reps: rx.reps || null, weight: null,
     distance: null, time: rx.time || null, rest: rx.time ? '30s' : '60s',
     notes: [rx.note, ex.cues?.[0]].filter(Boolean).join(' ') || null,
   };
 };
 
-const warmup = WARMUP_IDS.map(id => EXERCISE_INDEX[id]).map(ex => {
+// Three prep drills (the hip warm-up itself runs before them on the Lift card): about 5 minutes, per the rehab rule.
+const warmup = WARMUP_IDS.map(id => [id, EXERCISE_INDEX[id]]).map(([id, ex]) => {
   const rx = parseRx(ex.sets);
-  return { name: ex.name, reps: rx.reps || null, time: rx.time || null, notes: ex.subtitle || null };
+  const alts = swapsFor(id);
+  return { name: ex.name, reps: rx.reps || null, time: rx.time || null, notes: ex.subtitle || null, ...(alts.length ? { alternates: alts } : {}) };
 });
-// The Hip tab warm-up is all hips; Session A also works core hard, so add one core move (Griffith's demo).
-warmup.push({ name: 'Dead Bug', reps: '5 each side', time: null, notes: 'Slow, low back pressed down: wakes up the core.' });
 
 function dayFor(sessionId, dayNum, phase, week) {
   const label = sessionId === 'session-a' ? 'Session A' : 'Session B';
   const exercises = session(sessionId)
     .filter(ex => !WARMUP_IDS.includes(ex.id))
-    .map(ex => rowFor({ ...atPhase(ex.id, phase), sets: atPhase(ex.id, phase).sets || ex.sets }));
+    .map(ex => rowFor({ ...atPhase(ex.id, phase), sets: atPhase(ex.id, phase).sets || ex.sets }, ex.id));
   const inPhase = ((week - 1) % 2) + 1;
   return {
     day_num: dayNum,
@@ -71,6 +74,7 @@ function dayFor(sessionId, dayNum, phase, week) {
     warmup,
     notes: [
       `Phase ${phase + 1} of 3, week ${inPhase}: ${phase === 0 ? 'your PT and Motion RC exercises as prescribed.' : 'every exercise moved one step up its progression.'}`,
+      'One exercise per slot; the other versions are under Swap. Tendons like load that goes up slowly: when a set feels easy two sessions running, add a little weight or the next step.',
       inPhase === 2 ? 'Same exercises as last week: add a rep, a few seconds, or a little load.' : 'Log the load you use so next week starts from it.',
     ],
     exercises,
@@ -89,10 +93,11 @@ const program = {
   program_name: 'Hip Plan: PT + Motion RC',
   group: 'Your Hip Plan',
   source: 'Hip',
-  description: 'Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week with your PT and Motion RC exercises, '
-    + 'and every 2 weeks each exercise moves up its progression (single-leg bench bridge, long-lever Copenhagen, unsupported airplanes…).',
+  description: 'Your Hip tab sessions on the Lift screen: Session A and B alternate 3 days a week, 3 prep drills and one exercise per '
+    + 'slot from your PT, Motion RC and Proformance work, with the other versions under Swap. Every 2 weeks each exercise moves up its '
+    + 'progression (single-leg bridges, long-lever Copenhagen, two-bench side plank, Cossack…). Pelvic Reset stays the daily dose.',
   sessions_per_week: 3,
-  session_length_min: 45,
+  session_length_min: 55,
   level: 'Your plan',
   equipment: ['Long band', 'Mini band', 'Bench or box', 'Slider', 'Foam roller', 'BOSU or pad', 'Dumbbell or kettlebell'],
   goal: 'Build the hip: strength, control and range, then load it.',

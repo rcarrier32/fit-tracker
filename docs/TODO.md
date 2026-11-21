@@ -106,6 +106,13 @@ reels and shorts is in [`research/proformance.md`](research/proformance.md); its
 (247 ids captured).
 Bench Pigeon Rotation still plays the Facebook reel; swap in her YouTube short if the survey finds one.
 
+## 11. Hip Plan length *(check with the PT)*
+
+v206 (2026-11-21) restructured Hip Plan A/B to the new rehab rule (docs/PROGRAM_DESIGN.md "Rehab and mobility
+sessions"): 3 prep drills + 9-10 working moves, one per slot (~50-55 min with the hip warm-up), the other versions
+under Swap (`HIP_SWAPS`) or as later ladder steps. The PT's own program had 15 exercises a session: worth confirming
+the slot picks with the PT. The hip warm-up (8 moves, the PT's daily warm-up) still runs before every workout.
+
 ## Known limits (no action needed)
 
 - Generated plans on a bodyweight-only kit leave upper-body days short (about 3% of test days): with no
