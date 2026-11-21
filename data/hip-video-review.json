@@ -1,46 +1,7 @@
 {
-  "generated_for": 23,
+  "generated_for": 17,
   "max_seconds": 360,
   "exercises": [
-    {
-      "id": "wu-walk",
-      "name": "Walk or Easy Bike",
-      "section": "warmup",
-      "query": "brisk walking warm up 5 minutes before workout low impact",
-      "approved": null,
-      "candidates": [
-        {
-          "videoId": "WBhmNTykYiE",
-          "title": "3 best walking warm up exercises to walk easier ✅",
-          "channel": "Alyssa Kuhn, Arthritis Adventure",
-          "seconds": 38,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/WBhmNTykYiE",
-          "score": 2.39
-        },
-        {
-          "videoId": "7yOxOrdE9aU",
-          "title": "How-To Warm Up Before A Long Walk",
-          "channel": "Justin Agustin",
-          "seconds": 58,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/7yOxOrdE9aU",
-          "score": 1.84
-        },
-        {
-          "videoId": "CGQqj-OOfHY",
-          "title": "5 minute pre-run warm up | Bupa Health",
-          "channel": "Bupa Health",
-          "seconds": 316,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/CGQqj-OOfHY",
-          "score": 0.12
-        }
-      ]
-    },
     {
       "id": "pr-bench-hip-lift",
       "name": "Bench Hip Lift with Roller Squeeze",
@@ -434,7 +395,7 @@
       "name": "Mini Band Monster Walk",
       "section": "session-a",
       "query": "mini band monster walk",
-      "approved": "aX5zg0LYYI0",
+      "approved": "kfm8QOPfD9k",
       "candidates": [
         {
           "videoId": "kqkzFCCkflc",
@@ -512,7 +473,7 @@
       "name": "Banded Hip Flexor March",
       "section": "session-a",
       "query": "banded hip flexor march wall",
-      "approved": "Za5Vu_uK084",
+      "approved": "43biWt64RKQ",
       "candidates": [
         {
           "videoId": "7_cK3XVqN9M",
@@ -590,7 +551,7 @@
       "name": "Standing Hip Hikes",
       "section": "session-b",
       "query": "standing elevated hip hike exercise",
-      "approved": "TTENeiJ8IYk",
+      "approved": "STIFr84E7yQ",
       "candidates": [
         {
           "videoId": "AXDy-GrK4Ww",
@@ -668,7 +629,7 @@
       "name": "Adductor Slider Lunge",
       "section": "session-b",
       "query": "adductor slider lateral lunge",
-      "approved": "SkH6Da-M9Zo",
+      "approved": "CqbUjSW6n2M",
       "candidates": [
         {
           "videoId": "0z23N-7cV40",
@@ -699,45 +660,6 @@
           "embeddable": true,
           "url": "https://youtu.be/I5bmkGM7tQU",
           "score": 1.98
-        }
-      ]
-    },
-    {
-      "id": "pm-hip-circles",
-      "name": "Hip Circles",
-      "section": "pool-mobility",
-      "query": "aquatic therapy hip range of motion exercises pool wall standing",
-      "approved": null,
-      "candidates": [
-        {
-          "videoId": "Ij62eXy_qQA",
-          "title": "Aquatics - Hip Abduction ABD",
-          "channel": "Hope Physical Therapy and Aquatics",
-          "seconds": 16,
-          "trusted": true,
-          "embeddable": true,
-          "url": "https://youtu.be/Ij62eXy_qQA",
-          "score": 4.96
-        },
-        {
-          "videoId": "G_hz954kSxQ",
-          "title": "5 Gentle Hip Water Exercises for Beginners",
-          "channel": "Justin Agustin",
-          "seconds": 50,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/G_hz954kSxQ",
-          "score": 2.36
-        },
-        {
-          "videoId": "RmNYutuhZBw",
-          "title": "Aquatic Exercise (Demonstration)",
-          "channel": "Dr. Alex  PT, DPT",
-          "seconds": 16,
-          "trusted": false,
-          "embeddable": true,
-          "url": "https://youtu.be/RmNYutuhZBw",
-          "score": 1.46
         }
       ]
     },
@@ -898,14 +820,6 @@
       ]
     },
     {
-      "id": "lv-bridge-march",
-      "name": "Bridge March",
-      "section": "progressions",
-      "error": "backendError: Internal error encountered.",
-      "approved": null,
-      "candidates": []
-    },
-    {
       "id": "lv-sl-bridge",
       "name": "Single-Leg Glute Bridge",
       "section": "progressions",
@@ -1027,7 +941,7 @@
       "name": "Slider Hamstring Curl",
       "section": "progressions",
       "query": "slider hamstring curl",
-      "approved": "kkkTfzi2gj4",
+      "approved": "g5TbbbzDqZ8",
       "candidates": [
         {
           "videoId": "SLRv1VZIpQs",
@@ -1105,7 +1019,7 @@
       "name": "Copenhagen Side Plank (Long Lever)",
       "section": "progressions",
       "query": "copenhagen plank long lever",
-      "approved": "aGuAemGeyvA",
+      "approved": "aDsaGBnvDQo",
       "candidates": [
         {
           "videoId": "aGuAemGeyvA",
@@ -1261,7 +1175,7 @@
       "name": "Weighted Hip Airplane",
       "section": "progressions",
       "query": "weighted hip airplane",
-      "approved": "oSU3zh1fLFI",
+      "approved": "HnR7Nz02Mms",
       "candidates": [
         {
           "videoId": "oSU3zh1fLFI",
@@ -1300,7 +1214,7 @@
       "name": "Single-Leg RDL with Kettlebell",
       "section": "progressions",
       "query": "single leg rdl kettlebell",
-      "approved": "s32cCgmRV3I",
+      "approved": "ejaC0QxtzN0",
       "candidates": [
         {
           "videoId": "s32cCgmRV3I",
@@ -1417,7 +1331,7 @@
       "name": "High Box Step Up",
       "section": "progressions",
       "query": "high box step up",
-      "approved": "jcGbLEETLxs",
+      "approved": "RhYwWOd87dI",
       "candidates": [
         {
           "videoId": "jcGbLEETLxs",
@@ -1760,6 +1674,1021 @@
           "embeddable": true,
           "url": "https://youtu.be/P-Lu4rltctI",
           "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "wu-walk",
+      "name": "Walk or Easy Bike",
+      "section": "warmup",
+      "query": "brisk walking warm up 5 minutes before workout low impact",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "WBhmNTykYiE",
+          "title": "3 best walking warm up exercises to walk easier ✅",
+          "channel": "Alyssa Kuhn, Arthritis Adventure",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/WBhmNTykYiE",
+          "score": 2.39
+        },
+        {
+          "videoId": "7yOxOrdE9aU",
+          "title": "How-To Warm Up Before A Long Walk",
+          "channel": "Justin Agustin",
+          "seconds": 58,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/7yOxOrdE9aU",
+          "score": 1.84
+        },
+        {
+          "videoId": "DsqS-yuthWk",
+          "title": "5 Minute Warm-Up before EVERY RUN | Follow Along Pre-Run Routine",
+          "channel": "Global Triathlon Network",
+          "seconds": 328,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/DsqS-yuthWk",
+          "score": 1.09
+        },
+        {
+          "videoId": "XNjgbkeKy1Q",
+          "title": "5 Minute WARM UP FOR AT HOME WORKOUTS | A WARM UP for strength training or other workouts",
+          "channel": "Improved Health",
+          "seconds": 323,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/XNjgbkeKy1Q",
+          "score": 0.1
+        },
+        {
+          "videoId": "AJkrwcn3lpw",
+          "title": "5 Min. Running Warm Up | All Standing - No Talking | Mobility & Dynamic Stretches | Prevent Injury",
+          "channel": "mobility by julia reppel",
+          "seconds": 332,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/AJkrwcn3lpw",
+          "score": 0.08
+        }
+      ]
+    },
+    {
+      "id": "lh-supine-abd-iso",
+      "name": "Supine Banded Hip Abduction Isometric",
+      "section": "pelvic-reset",
+      "query": "supine hip abduction isometric band physical therapy",
+      "approved": "jybaCNbYOOs",
+      "candidates": [
+        {
+          "videoId": "jybaCNbYOOs",
+          "title": "Isometric Supine Hip Abduction against Band",
+          "channel": "Your Rehab Physio",
+          "seconds": 15,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/jybaCNbYOOs",
+          "score": 4.96
+        },
+        {
+          "videoId": "UpLGBKgKjh4",
+          "title": "Supine Isometric Hip Abduction with Band | Revive Physical Therapy & Wellness, Sharon MA",
+          "channel": "Leeza Meteleva",
+          "seconds": 7,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/UpLGBKgKjh4",
+          "score": 2.48
+        },
+        {
+          "videoId": "JCay8fWu5G0",
+          "title": "Supine Isometric Hip Abduction",
+          "channel": "TopTierPT",
+          "seconds": 21,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/JCay8fWu5G0",
+          "score": 1.94
+        },
+        {
+          "videoId": "HoGCwAu1khI",
+          "title": "Supine with Pillow Under Knees - Banded Hip Abduction Isometrics",
+          "channel": "Keep It Moving Physical Therapy & Wellness",
+          "seconds": 34,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/HoGCwAu1khI",
+          "score": 1.91
+        },
+        {
+          "videoId": "bed_Rlu_0sc",
+          "title": "Supine hip abduction and adduction",
+          "channel": "Gear Up Physical Therapy and Wellness",
+          "seconds": 33,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/bed_Rlu_0sc",
+          "score": 1.91
+        }
+      ]
+    },
+    {
+      "id": "lh-wall-abd-iso",
+      "name": "Standing Wall Hip-Abduction Isometric",
+      "section": "session-a",
+      "query": "standing wall hip abduction isometric physical therapy",
+      "approved": "NIycWL3cZEE",
+      "candidates": [
+        {
+          "videoId": "sl0v4rWZC6Q",
+          "title": "Isometric Standing Hip Abduction Phase 1",
+          "channel": "Next Level Physio",
+          "seconds": 77,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/sl0v4rWZC6Q",
+          "score": 4.79
+        },
+        {
+          "videoId": "NIycWL3cZEE",
+          "title": "Glute Med Wall Isometric",
+          "channel": "Evolutio Sports Physio Richmond (Melbourne)",
+          "seconds": 12,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/NIycWL3cZEE",
+          "score": 3.97
+        },
+        {
+          "videoId": "TS7tLpZhhPA",
+          "title": "How to Do a Standing Isometric Hip Abduction with Knee at Wall Exercise | 30 Seconds | MedBridge",
+          "channel": "Medbridge",
+          "seconds": 35,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/TS7tLpZhhPA",
+          "score": 2.4
+        },
+        {
+          "videoId": "rJdG5f6KCkU",
+          "title": "Standing Isometric Hip Abduction",
+          "channel": "Athletic Edge Physical Therapy",
+          "seconds": 20,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/rJdG5f6KCkU",
+          "score": 1.94
+        },
+        {
+          "videoId": "8XUfkb5JnNY",
+          "title": "Isometric Hip Abduction in standing",
+          "channel": "Umana Health",
+          "seconds": 35,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/8XUfkb5JnNY",
+          "score": 1.9
+        }
+      ]
+    },
+    {
+      "id": "lh-weight-shift",
+      "name": "Split-Stance Weight Shift",
+      "section": "session-a",
+      "query": "split stance weight shift hip physical therapy weight acceptance",
+      "approved": "-xCit32uabY",
+      "candidates": [
+        {
+          "videoId": "-xCit32uabY",
+          "title": "Split Stance Weight Shifts",
+          "channel": "Total Performance Physical Therapy",
+          "note": "manual search, 2026-11-21"
+        },
+        {
+          "videoId": "Ygauqcsbb9s",
+          "title": "Split Stance Overhead Pallof Press: Anti-Rotation & Hip Stability Exercise | BeFit Physio",
+          "channel": "The BeFit Physio Method",
+          "seconds": 28,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Ygauqcsbb9s",
+          "score": 4.42
+        },
+        {
+          "videoId": "zbvaQkVrQ4I",
+          "title": "Split Stance Weight Shift on Foam",
+          "channel": "The Mobile Athlete",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/zbvaQkVrQ4I",
+          "score": 0.97
+        },
+        {
+          "videoId": "PHws3vDX22I",
+          "title": "Front Foot Elevated Split Squat with Hip Shift",
+          "channel": "Restore Physical Therapy",
+          "seconds": 13,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/PHws3vDX22I",
+          "score": 0.96
+        },
+        {
+          "videoId": "RBhXKn2a3TU",
+          "title": "Split Stance - Weight Shift",
+          "channel": "The Movement",
+          "seconds": 18,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/RBhXKn2a3TU",
+          "score": 0.95
+        },
+        {
+          "videoId": "LlXORkrIas4",
+          "title": "Split Stance Lateral Weight Shift",
+          "channel": "Big Cat Performance & Physical Therapy",
+          "seconds": 21,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/LlXORkrIas4",
+          "score": 0.94
+        }
+      ]
+    },
+    {
+      "id": "lh-bridge-band-abd",
+      "name": "Banded Glute Bridge with Abduction",
+      "section": "session-a",
+      "query": "banded glute bridge abduction physical therapy",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "p5N_fok9YCM",
+          "title": "Banded Glute Bridge #howtoexercise #theraband #exercisedemo",
+          "channel": "FIT Sisters - Lucy & Rosie",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/p5N_fok9YCM",
+          "score": 2.48
+        },
+        {
+          "videoId": "tv9dFw4zPA0",
+          "title": "Banded Glute Bridge with Abduction #howtoexercise #theraband #exercisedemo",
+          "channel": "FIT Sisters - Lucy & Rosie",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/tv9dFw4zPA0",
+          "score": 2.47
+        },
+        {
+          "videoId": "rIYADalJKfY",
+          "title": "Add Resistance To Your Bridge With Banded Glute Bridges",
+          "channel": "Dr. Carl Baird",
+          "seconds": 58,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/rIYADalJKfY",
+          "score": 1.84
+        },
+        {
+          "videoId": "gy69t6ZoaSk",
+          "title": "Banded Glute Bridge Abductions",
+          "channel": "The Chiropractic Spa",
+          "seconds": 72,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/gy69t6ZoaSk",
+          "score": 1.8
+        },
+        {
+          "videoId": "HeAkXWob2UU",
+          "title": "Banded Glute Bridge For IT Band Syndrome | San Diego Chiropractic",
+          "channel": "Peak Form Health Center",
+          "seconds": 136,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/HeAkXWob2UU",
+          "score": 1.62
+        }
+      ]
+    },
+    {
+      "id": "lh-sit-to-stand",
+      "name": "Elevated Sit-to-Stand",
+      "section": "session-b",
+      "query": "sit to stand exercise physical therapy hip",
+      "approved": "VT8zoJ-gXQY",
+      "candidates": [
+        {
+          "videoId": "b9--dPDiBDM",
+          "title": "FAST Hip Pain Relief With Just Two Exercises! From A Physical Therapist #shorts",
+          "channel": "Tone and Tighten",
+          "seconds": 60,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/b9--dPDiBDM",
+          "score": 4.33
+        },
+        {
+          "videoId": "bJiCwgpTQx4",
+          "title": "Sit to Stand",
+          "channel": "Hope Physical Therapy and Aquatics",
+          "seconds": 37,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/bJiCwgpTQx4",
+          "score": 3.9
+        },
+        {
+          "videoId": "t9VcbcNEW4E",
+          "title": "Sit to Stand PT Exercise | OneStep Digital Physical Therapy",
+          "channel": "OneStep Digital Physical Therapy",
+          "seconds": 31,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/t9VcbcNEW4E",
+          "score": 1.41
+        },
+        {
+          "videoId": "VT8zoJ-gXQY",
+          "title": "How to do the sit-to-stand exercise",
+          "channel": "PT Solutions Physical Therapy",
+          "seconds": 38,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/VT8zoJ-gXQY",
+          "score": 1.39
+        },
+        {
+          "videoId": "qveKmiXEkIQ",
+          "title": "How to Do a Sit to Stand: A Guide from Physical Therapists",
+          "channel": "Hinge Health",
+          "seconds": 58,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/qveKmiXEkIQ",
+          "score": 1.34
+        }
+      ]
+    },
+    {
+      "id": "court-pogos",
+      "name": "Resisted Pogos",
+      "section": "court",
+      "query": "pogo hops",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "EjwLFHvrHss",
+          "title": "Pogo Hops | Exercise Demonstration",
+          "channel": "The Irish Physio TV",
+          "seconds": 24,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/EjwLFHvrHss",
+          "score": 4.43
+        },
+        {
+          "videoId": "7SIfCcfP4g0",
+          "title": "Pogo hops | plyometric exercise for runners",
+          "channel": "The Irish Physio TV",
+          "seconds": 46,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7SIfCcfP4g0",
+          "score": 4.37
+        },
+        {
+          "videoId": "j0nl5dWuqN4",
+          "title": "Pogo Jumps Tutorial - Proper Form and Technique",
+          "channel": "Runna",
+          "seconds": 28,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/j0nl5dWuqN4",
+          "score": 1.42
+        },
+        {
+          "videoId": "lz6BM6WyJ0k",
+          "title": "How To Do Pogo Hops",
+          "channel": "Swift Movement Academy",
+          "seconds": 44,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/lz6BM6WyJ0k",
+          "score": 1.38
+        },
+        {
+          "videoId": "eGlyz_4h8yw",
+          "title": "HOW to DO POGO JUMPS to RUN FASTER 🔥 #running #education #training #beginners",
+          "channel": "Marsha Dunkel",
+          "seconds": 46,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/eGlyz_4h8yw",
+          "score": 1.37
+        }
+      ]
+    },
+    {
+      "id": "court-switch-stick",
+      "name": "Split Stance Switch & Stick",
+      "section": "court",
+      "query": "split stance switch and stick",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "K_LoUuzOa2s",
+          "title": "SPLIT STANCE SWITCH",
+          "channel": "Domagoj Penava",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/K_LoUuzOa2s",
+          "score": 1.99
+        },
+        {
+          "videoId": "TC6rXUfZ4oo",
+          "title": "Explosive Split Stance Quick Switch Lateral Bound to Sprint",
+          "channel": "Tony Fusco",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/TC6rXUfZ4oo",
+          "score": 1.99
+        },
+        {
+          "videoId": "7yIiJlR-KFc",
+          "title": "Split Stance Switch to Sprint",
+          "channel": "Joe Garland",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/7yIiJlR-KFc",
+          "score": 1.99
+        },
+        {
+          "videoId": "EOzrTQx4BCQ",
+          "title": "Split Stance Switch Jump",
+          "channel": "Anthony Adams",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/EOzrTQx4BCQ",
+          "score": 1.98
+        },
+        {
+          "videoId": "EWHMN-Dcv0M",
+          "title": "Alternating Split Stance Pogo Jumps | PerformHQ",
+          "channel": "PerformHQ",
+          "seconds": 6,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/EWHMN-Dcv0M",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "court-linear-decel",
+      "name": "Linear Deceleration",
+      "section": "court",
+      "query": "linear deceleration drill",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "4M1sCl_-6Z8",
+          "title": "LINEAR ACCELERATION + DECELERATION",
+          "channel": "Train with KOUTCH",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/4M1sCl_-6Z8",
+          "score": 1.99
+        },
+        {
+          "videoId": "b9fJBIQ_7Cc",
+          "title": "Linear Deceleration Agility Drill",
+          "channel": "Jordan Weber Fitness",
+          "seconds": 23,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/b9fJBIQ_7Cc",
+          "score": 1.94
+        },
+        {
+          "videoId": "hAVbTn45DOs",
+          "title": "Linear Deceleration",
+          "channel": "Henry Performance",
+          "seconds": 22,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/hAVbTn45DOs",
+          "score": 1.94
+        },
+        {
+          "videoId": "jt3CZIhxlIU",
+          "title": "Linear Acceleration - 5 Yard Acceleration to Deceleration",
+          "channel": "Linsacum Training Institute",
+          "seconds": 24,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/jt3CZIhxlIU",
+          "score": 1.93
+        },
+        {
+          "videoId": "EB5nDxFkrkM",
+          "title": "Linear Deceleration: Agility Drills",
+          "channel": "Nilan Lansing",
+          "seconds": 163,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/EB5nDxFkrkM",
+          "score": 1.55
+        }
+      ]
+    },
+    {
+      "id": "court-lateral-landing",
+      "name": "Lateral Landing Progressions",
+      "section": "court",
+      "query": "lateral landing progression",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "Rs1zxDgyUXA",
+          "title": "How to get more out of your lateral bounds",
+          "channel": "Coach Griffin",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Rs1zxDgyUXA",
+          "score": 2.47
+        },
+        {
+          "videoId": "5RUTgU_VKu0",
+          "title": "MB Lateral Bound , Return & Stick",
+          "channel": "High Performance Cricket #2",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/5RUTgU_VKu0",
+          "score": 1.99
+        },
+        {
+          "videoId": "m1JDpuGzCZw",
+          "title": "Singe Leg Lateral Broad Jump to 90 Degree 2 Foot Landing",
+          "channel": "IGNITE Athletics",
+          "seconds": 6,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/m1JDpuGzCZw",
+          "score": 1.98
+        },
+        {
+          "videoId": "7-Qfb881k7o",
+          "title": "Skater Bounds with Stick Landings | Build Lateral Power & Balance for Athletes",
+          "channel": "uoasportsagility",
+          "seconds": 8,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/7-Qfb881k7o",
+          "score": 1.98
+        },
+        {
+          "videoId": "Z_8qAdcaklY",
+          "title": "Lateral Jump Progression - Single Leg Snap Down Jump of 1 Land on 2",
+          "channel": "Ben McConnell",
+          "seconds": 6,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Z_8qAdcaklY",
+          "score": 1.98
+        }
+      ]
+    },
+    {
+      "id": "court-lateral-decels",
+      "name": "Lateral Split Stance Decels",
+      "section": "court",
+      "query": "lateral split stance deceleration",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "7C94w-QrrPw",
+          "title": "Lateral Cable Resisted Split Stance Linear Deceleration Drop with Arm Drive and Stick - Continuous",
+          "channel": "AccelerateSP",
+          "seconds": 6,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/7C94w-QrrPw",
+          "score": 1.98
+        },
+        {
+          "videoId": "tFVWvdg0Hjg",
+          "title": "Lateral Deceleration Bench Hops",
+          "channel": "Hirt Locker",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/tFVWvdg0Hjg",
+          "score": 1.98
+        },
+        {
+          "videoId": "gH9hNJ6DZR8",
+          "title": "Lateral Cable Resisted Split Stance Linear Deceleration Drop with Arm Drive and Stick NON Continuous",
+          "channel": "AccelerateSP",
+          "seconds": 11,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/gH9hNJ6DZR8",
+          "score": 1.97
+        },
+        {
+          "videoId": "qttmio4TYFA",
+          "title": "4 Step Lateral Deceleration",
+          "channel": "Patrick Stefanski",
+          "seconds": 28,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/qttmio4TYFA",
+          "score": 1.92
+        },
+        {
+          "videoId": "IBWXZTEVDVs",
+          "title": "How to: Split Stance Deceleration",
+          "channel": "Core Blend Training",
+          "seconds": 15,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/IBWXZTEVDVs",
+          "score": 1.46
+        }
+      ]
+    },
+    {
+      "id": "court-lateral-bounds",
+      "name": "Lateral Bounds",
+      "section": "court",
+      "query": "lateral bounds",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "soqQy4dzEts",
+          "title": "How To Lateral Bound",
+          "channel": "Third Space London",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/soqQy4dzEts",
+          "score": 2.48
+        },
+        {
+          "videoId": "Rs1zxDgyUXA",
+          "title": "How to get more out of your lateral bounds",
+          "channel": "Coach Griffin",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Rs1zxDgyUXA",
+          "score": 2.47
+        },
+        {
+          "videoId": "niEGdFUQ6sY",
+          "title": "How to Lateral Bound",
+          "channel": "LPS Athletic",
+          "seconds": 40,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/niEGdFUQ6sY",
+          "score": 2.39
+        },
+        {
+          "videoId": "LhTfDGb5z6E",
+          "title": "Lateral Bound to Single Leg Hop",
+          "channel": "Vail Cote",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/LhTfDGb5z6E",
+          "score": 1.99
+        },
+        {
+          "videoId": "WJddYHHB-Jk",
+          "title": "Weighted lateral bounds",
+          "channel": "PaveFit",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/WJddYHHB-Jk",
+          "score": 1.99
+        }
+      ]
+    },
+    {
+      "id": "pm-hip-circles",
+      "name": "Hip Circles",
+      "section": "pool-mobility",
+      "query": "aquatic therapy hip range of motion exercises pool wall standing",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "xVQrCh9yokU",
+          "title": "Hip Pain Relief",
+          "channel": "Lakeway Aquatic Physical Therapy",
+          "seconds": 320,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/xVQrCh9yokU",
+          "score": 4.11
+        },
+        {
+          "videoId": "G_hz954kSxQ",
+          "title": "5 Gentle Hip Water Exercises for Beginners",
+          "channel": "Justin Agustin",
+          "seconds": 50,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/G_hz954kSxQ",
+          "score": 2.36
+        },
+        {
+          "videoId": "TcL5e8dBEP4",
+          "title": "Hip Exercises",
+          "channel": "SwimEx Hydrotherapy, Plunge Pools, Fitness Pools",
+          "seconds": 68,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/TcL5e8dBEP4",
+          "score": 2.31
+        },
+        {
+          "videoId": "zFMdPn2Grog",
+          "title": "THE BEST Pool Exercises To Do After Hip Surgery - Ep 51",
+          "channel": "ReStart Living",
+          "seconds": 305,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/zFMdPn2Grog",
+          "score": 1.65
+        },
+        {
+          "videoId": "RmNYutuhZBw",
+          "title": "Aquatic Exercise (Demonstration)",
+          "channel": "Dr. Alex  PT, DPT",
+          "seconds": 16,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/RmNYutuhZBw",
+          "score": 1.46
+        }
+      ]
+    },
+    {
+      "id": "lv-bridge-march",
+      "name": "Bridge March",
+      "section": "progressions",
+      "query": "glute bridge march exercise",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "dVjj5RMCg4Y",
+          "title": "Glute Bridge March",
+          "channel": "IPA Physio",
+          "seconds": 28,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/dVjj5RMCg4Y",
+          "score": 4.92
+        },
+        {
+          "videoId": "KsYwYl13IDc",
+          "title": "Glute Bridge March",
+          "channel": "Foundation Chiropractic + Physiotherapy",
+          "seconds": 59,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/KsYwYl13IDc",
+          "score": 4.84
+        },
+        {
+          "videoId": "V8zH6MpcxJA",
+          "title": "How To Perform The Glute Bridge March | Glute Bridge Progressions",
+          "channel": "Dr. Carl Baird",
+          "seconds": 76,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/V8zH6MpcxJA",
+          "score": 2.29
+        },
+        {
+          "videoId": "IxDVTDKDxSU",
+          "title": "Core Exercise: Bridge with March",
+          "channel": "Children's Hospital Colorado",
+          "seconds": 83,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/IxDVTDKDxSU",
+          "score": 2.27
+        },
+        {
+          "videoId": "rXAbcneAr3I",
+          "title": "How to Do the Glute Bridge March | Abs Workout",
+          "channel": "Howcast",
+          "seconds": 83,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/rXAbcneAr3I",
+          "score": 2.27
+        }
+      ]
+    },
+    {
+      "id": "lv-step-stick",
+      "name": "Step and Stick",
+      "section": "progressions",
+      "query": "step and stick single leg balance physical therapy",
+      "approved": "F1K8Q1XmSwQ",
+      "candidates": [
+        {
+          "videoId": "wCHTzIHiSeM",
+          "title": "Single leg hop and stick",
+          "channel": "Delta Physio",
+          "seconds": 8,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/wCHTzIHiSeM",
+          "score": 3.98
+        },
+        {
+          "videoId": "tINmmt_VG-M",
+          "title": "Single leg balance training - with reaches",
+          "channel": "The Physio Centre",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/tINmmt_VG-M",
+          "score": 3.97
+        },
+        {
+          "videoId": "mjzu4CEkTLE",
+          "title": "Single Leg Balance Clock",
+          "channel": "Movement Physio",
+          "seconds": 15,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/mjzu4CEkTLE",
+          "score": 3.96
+        },
+        {
+          "videoId": "F1K8Q1XmSwQ",
+          "title": "Step and Stick Exercise",
+          "channel": "Kevin Sheehan's Running Exercises and Drills",
+          "seconds": 9,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/F1K8Q1XmSwQ",
+          "score": 2.48
+        },
+        {
+          "videoId": "f6z4J9gLBn4",
+          "title": "Low Box Multidirectional Single Leg Step Off and Stick",
+          "channel": "Alex Bunt",
+          "seconds": 63,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/f6z4J9gLBn4",
+          "score": 1.82
+        }
+      ]
+    },
+    {
+      "id": "lv-lateral-step-stick",
+      "name": "Lateral Step and Stick",
+      "section": "progressions",
+      "query": "lateral step and stick hip stability",
+      "approved": "kzjp2dQLhfk",
+      "candidates": [
+        {
+          "videoId": "kzjp2dQLhfk",
+          "title": "Lateral Step & Stick",
+          "channel": "Keep It Moving Physical Therapy & Wellness",
+          "note": "manual search, 2026-11-21"
+        },
+        {
+          "videoId": "Vr7G2yzb9f4",
+          "title": "Lateral Step-up",
+          "channel": "Movement Physio",
+          "seconds": 11,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/Vr7G2yzb9f4",
+          "score": 4.97
+        },
+        {
+          "videoId": "qqS_g5oGKiw",
+          "title": "Lateral Step Downs",
+          "channel": "Sports Movement Physio & Performance",
+          "seconds": 30,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/qqS_g5oGKiw",
+          "score": 4.92
+        },
+        {
+          "videoId": "XezcynKU8YI",
+          "title": "Hip Mobility Hack THAT WORKS!",
+          "channel": "Squat University",
+          "seconds": 21,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/XezcynKU8YI",
+          "score": 3.94
+        },
+        {
+          "videoId": "CB_v-YIijMs",
+          "title": "How to perform the Single Leg Lateral Hop and Stick",
+          "channel": "Zaffino Training",
+          "seconds": 65,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/CB_v-YIijMs",
+          "score": 2.32
+        },
+        {
+          "videoId": "NC6On7xEe_E",
+          "title": "Lateral Step Down",
+          "channel": "Evolution Physical Therapy & Fitness",
+          "seconds": 12,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/NC6On7xEe_E",
+          "score": 1.97
+        }
+      ]
+    },
+    {
+      "id": "lv-box-squat",
+      "name": "Box Squat",
+      "section": "progressions",
+      "query": "box squat",
+      "approved": null,
+      "candidates": [
+        {
+          "videoId": "7LpLZOdz68A",
+          "title": "Bodyweight Box Squat | Step-by-Step Tutorial",
+          "channel": "Physio Plus Fitness",
+          "seconds": 33,
+          "trusted": true,
+          "embeddable": true,
+          "url": "https://youtu.be/7LpLZOdz68A",
+          "score": 5.41
+        },
+        {
+          "videoId": "2aIgi73HIw8",
+          "title": "Box Squat Correctly #shorts",
+          "channel": "Hazzytrainer",
+          "seconds": 14,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/2aIgi73HIw8",
+          "score": 2.46
+        },
+        {
+          "videoId": "rMEPHwNhQfo",
+          "title": "Box Squat Movement Demo",
+          "channel": "The Active Life",
+          "seconds": 22,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/rMEPHwNhQfo",
+          "score": 2.44
+        },
+        {
+          "videoId": "sWKlUCGfX9s",
+          "title": "How To Perform The Box Squat | Beginner Squat Variation",
+          "channel": "Dr. Carl Baird",
+          "seconds": 99,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/sWKlUCGfX9s",
+          "score": 2.23
+        },
+        {
+          "videoId": "Zx2rnO4mI0k",
+          "title": "Quads VS Glutes: Box Squat edition #fitnesstips #glutes",
+          "channel": "Linda Ham",
+          "seconds": 5,
+          "trusted": false,
+          "embeddable": true,
+          "url": "https://youtu.be/Zx2rnO4mI0k",
+          "score": 1.99
         }
       ]
     }

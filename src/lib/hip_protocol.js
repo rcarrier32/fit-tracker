@@ -226,7 +226,9 @@ const SOURCE_SECTIONS = [
           'Medium effort (about 5–7/10) you could hold all day. Both sides work at once, so it trains both hips evenly.',
           'Progress: stronger band, then 45 s holds. Regress: no band, press the knees into your hands.',
         ],
-        videoId: null,   // verify locally: see docs/research/notes-hip/chatgpt-lateral-hip-plan.md
+        videoId: 'jybaCNbYOOs',
+        videoTitle: "Isometric Supine Hip Abduction against Band",
+        channel: "Your Rehab Physio",
         search: 'supine hip abduction isometric band physical therapy',
       },
     ],
@@ -1096,6 +1098,11 @@ const SOURCE_SECTIONS = [
         detail: 'Shifting your weight onto the left side while sitting keeps one hip loaded and the other gripping. Feet flat and level, weight even on both sit bones, and when you notice the shift, reset rather than fight it. Stand up the same way: even on both feet (Elevated Sit-to-Stand in Session B trains it).',
       },
       {
+        id: 'rc-tendon-positions',
+        title: 'Sleep and stand without squeezing the outer hip',
+        detail: 'The tendons on the outside of the hip get irritated by being pressed on for hours, not by training. At night: sleep with the sore side up and a pillow between your knees (so the top knee does not drop across), or on your back. During the day: stand on both feet instead of hanging on one hip, and uncross your legs when sitting. This is about resting positions; keep training the hip as written. (Locala NHS lateral hip pain guide.)',
+      },
+      {
         id: 'rc-stretch-frequency',
         title: 'Short and frequent beats long and occasional',
         detail: 'For a tight hip flexor, several brief stretches spread through the day generally do more than one long session. If you can get the half-kneeling stretch in a few times a day rather than only before a workout, that is the higher-value version. Confirm the dose with your PT.',
@@ -1127,7 +1134,9 @@ const SOURCE_SECTIONS = [
           'Medium effort (5–7/10) you can hold steady the whole time. Do the left side first, then match it on the right.',
           'Progress: 45 s holds, then harder press. Regress: stand on both feet and just press the leg out.',
         ],
-        videoId: null,   // verify locally: see docs/research/notes-hip/chatgpt-lateral-hip-plan.md
+        videoId: 'NIycWL3cZEE',
+        videoTitle: "Glute Med Wall Isometric",
+        channel: "Evolutio Sports Physio Richmond (Melbourne)",
         search: 'standing wall hip abduction isometric physical therapy',
       },
       {
@@ -1142,7 +1151,9 @@ const SOURCE_SECTIONS = [
           'Hold 3 s fully on the front leg, then shift back. Left leg first, then right, same reps.',
           'If the outer hip pulls, make the stance shorter and the shift slower rather than stopping.',
         ],
-        videoId: null,   // verify locally
+        videoId: '-xCit32uabY',
+        videoTitle: "Split Stance Weight Shifts",
+        channel: "Total Performance Physical Therapy",
         search: 'split stance weight shift hip physical therapy weight acceptance',
       },
       {
@@ -1153,7 +1164,7 @@ const SOURCE_SECTIONS = [
         freq: 'Session A',
         cues: [
           'Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s.',
-          'Hips level, ribs down, no low-back arch. Lower slowly with the knees still pushing out.',
+          'Hips level, ribs down, no low-back arch. Feet stay flat; don\'t let them roll onto their outside edges as the knees push out. Lower slowly with the knees still pushing out.',
           'Feel it in the side and back of both hips, evenly. If one side does all the work, slow down until both share it.',
         ],
         video_url: 'https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985',   // same demo as the Home Beginner plan's Banded Bridge Hold Abductions
@@ -1171,7 +1182,9 @@ const SOURCE_SECTIONS = [
           'Lower over 3 s and touch down lightly. Two bathroom scales under the feet show whether you load them evenly.',
           'Progress: lower seat, then hold a dumbbell (box squat). Regress: higher seat or a hand on your thighs.',
         ],
-        videoId: null,   // verify locally
+        videoId: 'VT8zoJ-gXQY',
+        videoTitle: "How to do the sit-to-stand exercise",
+        channel: "PT Solutions Physical Therapy",
         search: 'sit to stand exercise physical therapy hip',
       },
     ],
@@ -1645,7 +1658,9 @@ const SOURCE_SECTIONS = [
           'Step forward, land on the whole foot and stand on that leg for 2–3 s, the back foot just off the floor.',
           'Pelvis level, knee over the middle toes, no hip sliding out. Left leg first.',
         ],
-        videoId: null,   // verify locally
+        videoId: 'F1K8Q1XmSwQ',
+        videoTitle: "Step and Stick Exercise",
+        channel: "Kevin Sheehan's Running Exercises and Drills",
         search: 'step and stick single leg balance physical therapy',
       },
       {
@@ -1655,7 +1670,9 @@ const SOURCE_SECTIONS = [
         sets: '2 × 8 per side',
         freq: 'Per session',
         cues: ['Big step sideways, stick on the landing leg for 2–3 s.', 'The landing hip stays under you; the trunk does not lean over it.'],
-        videoId: null,   // verify locally
+        videoId: 'kzjp2dQLhfk',
+        videoTitle: "Lateral Step & Stick",
+        channel: "Keep It Moving Physical Therapy & Wellness",
         search: 'lateral step and stick hip stability',
       },
       {

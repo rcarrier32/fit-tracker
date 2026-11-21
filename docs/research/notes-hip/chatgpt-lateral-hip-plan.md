@@ -36,35 +36,49 @@ Added in v201 (the gaps it pointed at):
 | Hip Check (L vs R every 2 weeks: single-leg stance, side plank, single-leg bridge, step-downs) | Back to Court tab, `pref('hip_checks')`, in the PT summary | measurable both-sides progress; gates the court steps (80% / 90%) |
 | Back to Court: pogos → switch & stick → linear decel → lateral landing → lateral decels → lateral bounds | new Hip tab | return-to-basketball ladder, then Court Ready / HoopStudy. All six use PJF demos already in the catalog |
 
-## Sources to read in a local session (blocked from cloud sessions)
+## Sources (read 2026-11-21 in a local session)
 
-The cloud proxy can't reach these hosts. Open them on the user's computer, pull out anything useful
-(dosing, progressions, education), and note it here.
+- **Locala NHS, *Lateral Hip Pain — Info for Patients*** ([PDF](https://www.locala.org.uk/fileadmin/Services/MSK/Hip/Lateral_Hip_Pain_-_Info_for_Patients.pdf)).
+  The useful one. GTPS = the gluteal tendons, not the bursa; irritated by overload **and by compression** in daily
+  positions; strengthening is the fix (injections only buy time). Exercises: side-lying leg-lift *hold* (top leg at hip
+  height, pelvis stacked, no hitch) 1 min × 2–3; single-leg balance 30 s with the pelvis level (hand on the wall
+  allowed); step-ups leading with the weaker leg, slow lower; "advanced": side-lying hips-up hold with the top leg
+  lifted, 30 s/side. Compressive positions: hanging on one hip, crossed legs/knees, side-lying with the top knee
+  dropped across. Sleep: sore side up with a pillow between the knees, or on the back.
+  **Used:** new Driving & Recovery tip `rc-tendon-positions` (sleep/stand/sit positions; the user side-sleeps on the
+  left and it aggravates). Exercises already covered at a harder level (supine/standing abduction isos, pad balance,
+  step-ups, side plank / Copenhagen). Nothing removed: it is about resting positions, not training.
+- **University of Washington, *Lower Body Exercises While Standing***: the English version is
+  [here](https://healthonline.washington.edu/sites/default/files/record_pdfs/Lower-Body-Exercises-While-Standing.pdf)
+  (the cited "-RU" link is the Russian copy). Basic standing set, 1 × 10 → 2 × 15, 3×/day. Sit-to-stand cue ("hips
+  to the front of the seat, equal weight over each foot, sit down slowly") matches ours. Nothing new.
+- **NHS Northamptonshire MSK page**: a clinic venue page, no exercise content. Nothing to use.
+- **The Prehab Guys, *Isometric Bridge – Hip Abduction, Band***: video is paywalled (53 s); the text is free:
+  bridge, tuck the tailbone, push the knees out hard, keep the hips up throughout; don't arch; **don't let the feet
+  roll out**. **Used:** that feet cue added to Banded Glute Bridge with Abduction.
 
-- Locala NHS, *Lateral Hip Pain — Info for Patients* (PDF): https://www.locala.org.uk/fileadmin/Services/MSK/Hip/Lateral_Hip_Pain_-_Info_for_Patients.pdf
-  (ChatGPT cited it for supported single-leg balance; likely also has GTPS education: load, positions, sleep.)
-- University of Washington, *Lower Body Exercises While Standing* (PDF): https://healthonline.washington.edu/sites/default/files/record_pdfs/Lower-Body-Exercises-While-Standing-RU.pdf
-  (cited for sit-to-stand; the "-RU" suffix suggests it may be the Russian-language version, so look for the English one.)
-- NHS Northamptonshire MSK physiotherapy page (cited for step-ups; it's a clinic venue page, probably not a demo):
-  https://nhft-nhs-web.verseonecloud.com/physiotherapy/venue/msk-physiotherapy-isebrook-hospital-wellingborough-233/
-- The Prehab Guys library, *Isometric Bridge Hip Abduction Band* (likely paywalled):
-  https://library.theprehabguys.com/vimeo-video/isometric-bridge-hip-abduction-band/
+## Video candidates from ChatGPT (checked 2026-11-21)
 
-## Video candidates from ChatGPT (UNVERIFIED — do not apply without checking)
+All five ids are real and match their titles (ChatGPT didn't invent them this time), but four are 2½–3½ min talking
+videos from Knob Noster PT, so short demos were used instead.
 
-ChatGPT often invents YouTube ids. Check each one plays, is a short single-exercise demo, and matches the move.
-
-| Move | ChatGPT's id | Claimed title / channel |
+| Move | ChatGPT's id | Checked |
 |---|---|---|
-| Supine Banded Hip Abduction Isometric | `JkvdQonRI-k` | "Seated/Supine Hip Abduction Isometrics" (a PT) |
-| Glute bridge (already has videos) | `CPb8yRUxWBQ` | "Glute Bridge 101", Knob Noster PT |
-| Standing hip abduction (not added) | `jA1CCqp5e9g` | Physical Therapy First |
-| Standing Wall Hip-Abduction Isometric | `acBVAPPRYIw` | Knob Noster PT |
-| Band walks (already has videos) | `ZvXFnpUnX-c` | Knob Noster PT |
+| Supine Banded Hip Abduction Isometric | `JkvdQonRI-k` | real, Knob Noster PT, 3:20 |
+| Glute bridge (already has videos) | `CPb8yRUxWBQ` | real, Knob Noster PT, 2:38 |
+| Standing hip abduction (not added) | `jA1CCqp5e9g` | real, Physical Therapy First, 0:29 |
+| Standing Wall Hip-Abduction Isometric | `acBVAPPRYIw` | real, Knob Noster PT, 2:54 |
+| Band walks (already has videos) | `ZvXFnpUnX-c` | real, Knob Noster PT, 3:35 |
 
-## Still without a video (show "🔍 Find" / a YouTube search)
+## Videos applied (v202)
 
-Standing Wall Hip-Abduction Isometric, Supine Banded Hip Abduction Isometric, Split-Stance Weight Shift,
-Elevated Sit-to-Stand, Step and Stick, Lateral Step and Stick. The plan builder for the Lift program skips
-ladder steps without a video, so Step and Stick / Lateral Step and Stick only show in the Hip tab until they get one.
-See docs/TODO.md §9 for the steps.
+| Move | Video | Channel |
+|---|---|---|
+| Supine Banded Hip Abduction Isometric | `jybaCNbYOOs` (15 s) | Your Rehab Physio |
+| Standing Wall Hip-Abduction Isometric | `NIycWL3cZEE` (12 s) | Evolutio Sports Physio (knee-to-wall shown; MedBridge's clip had no wall in frame and a subscribe overlay) |
+| Split-Stance Weight Shift | `-xCit32uabY` (27 s) | Total Performance Physical Therapy |
+| Elevated Sit-to-Stand | `VT8zoJ-gXQY` (38 s) | PT Solutions Physical Therapy |
+| Step and Stick | `F1K8Q1XmSwQ` (9 s) | Kevin Sheehan's Running Exercises and Drills |
+| Lateral Step and Stick | `kzjp2dQLhfk` (24 s) | Keep It Moving Physical Therapy (manual search; the script's query returned hops and step-downs) |
+
+Picks checked by API (exists, embeddable, title) and by sampled frames. No PJF/BWS/TrainHeroic demo exists for any.

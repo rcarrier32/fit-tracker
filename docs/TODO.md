@@ -15,10 +15,8 @@ and what the app uses. Quadruped Swing Throughs plays its reel; Griffith's "Moti
 drills were added. The reels that match Knee Circles, Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to
 Hamstring Stretch are screen recordings, not links: send those links to replace the stand-ins.
 
-**New, not read yet (saved 2026-11-20):** https://www.facebook.com/share/r/1CSLk3j8vu/ — the user thinks it's a good
-Daily Mobility or warm-up routine. In a logged-in local session: open it, list the moves (name, reps/time, creator), match
-them to existing exercises, then ask the user where it goes: Daily Mobility (A/B/C), the Basketball Warm-up
-(`basketball_warmup`), or both. Log it in the reels table below.
+**Uncle Shen reel (saved 2026-11-20, read 2026-11-21):** one move, the same as Half Kneeling Thoracic Rotations
+(already in Daily Mobility). *(decide)* whether it also goes in the Basketball Warm-up; see the reels table.
 
 Undecided *(decide with the user)*: heel clicks, hip opener into knee lean back, and whether the 90/90 variants get their
 own rows (no reel showed them clearly).
@@ -91,22 +89,12 @@ Done 2026-11-12: every branch except `main` is deleted (the user OK'd the two un
 Done 2026-11-12: FKH pull request #4 merged into `legendsyba/FitKidHooper` and deployed (app.legendsyba.com).
 It ships as an original FKH program using HoopStudy's middle-school volume, not under HoopStudy's name.
 
-## 9. Hip plan: new lateral-hip moves need videos + the source PDFs *(needs YouTube API / local browser)*
+## 9. Hip plan: lateral-hip moves
 
-Added 2026-11-21 (v201) from the user's ChatGPT lateral-hip plan; details and what's unverified in
-[`research/notes-hip/chatgpt-lateral-hip-plan.md`](research/notes-hip/chatgpt-lateral-hip-plan.md).
-
-1. **Videos.** Six moves have `videoId: null` in `src/lib/hip_protocol.js` (marked `// verify locally`): Standing Wall
-   Hip-Abduction Isometric, Supine Banded Hip Abduction Isometric, Split-Stance Weight Shift, Elevated Sit-to-Stand,
-   Step and Stick, Lateral Step and Stick. With `YOUTUBE_API_KEY` set:
-   `node data/enrich_hip_videos.mjs --missing`, review `data/hip-video-review.json` (also check ChatGPT's candidate ids
-   in the research note: open each, don't trust them), approve, then `node data/enrich_hip_videos.mjs --apply`.
-2. Rebuild and check: `node data/build_hip_program.mjs && python3 data/tag_exercises.py`, then
-   `node data/check_catalog.mjs` and `node data/check_program.mjs hip_plan_pt_motion_rc` (should go back to OK; today it
-   lists those moves as "no video").
-3. **PDFs.** Open the four source links in the research note in a browser, note anything useful (dosing, progressions,
-   GTPS education) in that file, and fold it into the cues if it changes anything.
-4. Bump the version and push as usual.
+Done 2026-11-21 (v202): the six v201 moves play short PT demos, the four sources are read, and what they changed
+(a resting-positions tip, a bridge cue) is in [`research/notes-hip/chatgpt-lateral-hip-plan.md`](research/notes-hip/chatgpt-lateral-hip-plan.md).
+Note: `node data/enrich_hip_videos.mjs --apply` re-applies every "approved" id in the review file and blanks the
+title of a pick that isn't among its candidates; check `git diff src/lib/hip_protocol.js` after running it.
 
 ## Known limits (no action needed)
 

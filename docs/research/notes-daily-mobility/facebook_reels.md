@@ -138,8 +138,8 @@ Project Physical Therapy (#4), raybeau_moves (#10, #13). Those stay screen recor
 Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to Hamstring Stretch keep their stand-ins. Still not
 seen anywhere: #3, #6, #7, #11, #12, #14, #16 (#16 only partly, Igor reel).
 
-## New links to read (saved from a cloud session)
+## Later links
 
 | Saved | Link | User's note | Move(s) | Creator | Used for |
 |---|---|---|---|---|---|
-| 2026-11-20 | https://www.facebook.com/share/r/1CSLk3j8vu/ | "Looks like a good Daily Mobility or warm-up" | | | ask: Daily Mobility, Basketball Warm-up, or both |
+| 2026-11-20 (read 2026-11-21) | https://www.facebook.com/share/r/1CSLk3j8vu/ (reel 1673545644151032) | "Looks like a good Daily Mobility or warm-up" | One 8 s move, "One Flow To Open Up Everything": half-kneeling, hands behind the head; rotate the chest open, reach the elbow down toward the floor, side-bend, back up. No reps given | Uncle Shen | Same move as **Half Kneeling Thoracic Rotations** (already in Daily Mobility, 5 each side, and a swap for World's Greatest Stretch). Placement (Daily Mobility, Basketball Warm-up, or both): waiting on the user |
