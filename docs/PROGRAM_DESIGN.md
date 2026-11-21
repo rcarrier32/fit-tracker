@@ -140,6 +140,11 @@ drills; the user's PT program: 15 exercises 3×/week). Cap them by **minutes and
   and the day before a plan workout Daily Mobility adds at most one mobility move for tomorrow's main area when
   today's routine doesn't reach it (`PLAN_PREP` in `src/lib/daily_adjust.js`; providers keep targeted prep in the
   day's own warm-up, so this stays small).
+- **One warm-up on lifting days (v210):** the hip warm-up and the plan's own prep merge (`mergeHipWarmup` in
+  `src/lib/daily_adjust.js`): raise and mobilise from the hip list, then the plan's prep; a hip move the prep already
+  reaches is dropped (it still checks off on the Hip tab), the long stretch holds ride on the cool-down when it holds
+  the same area, and the hip-flexor hold is one round. Lean & Tone: 13 → 10 drills (days 1-2), 12 → 8 (day 3).
+  The user is fine with more than 6 warm-up drills, not 13.
 - **Fewer exercises for adherence is weak evidence** (the 2 vs 5 vs 8 home-exercise trial found no compliance
   difference); the reason to cap is time and fatigue.
 

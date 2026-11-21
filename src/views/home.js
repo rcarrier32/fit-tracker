@@ -840,7 +840,7 @@ function renderTodayBody(today_w, schedule, workoutDoneToday = false, hipFirst =
       : p.weeks?.find(w => w.week_num === today_w.week)?.days?.find(d => d.day_num === today_w.day);
     const title = String(day?.day_name || day?.focus || `Week ${today_w.week}, Day ${today_w.day}`).split(' · ')[0];
     const moves = (day?.exercises || []).filter(e => !e.is_alternate && !isHeaderRow(e.name)).length;
-    const line = [p.program_name || p.name || p.id, moves ? `${moves} moves` : '', hipFirst ? 'hip warm-up first' : ''].filter(Boolean).join(' · ');
+    const line = [p.program_name || p.name || p.id, moves ? `${moves} moves` : '', hipFirst ? 'hip + plan warm-up' : ''].filter(Boolean).join(' · ');
     return `
       <div style="font-size:17px;font-weight:600;margin-top:6px">${escH(title)}${workoutDoneToday ? ' ✓' : ''}</div>
       <div class="muted" style="font-size:12px">${escH(line)}</div>

@@ -889,11 +889,11 @@ export async function renderHip(app) {
       </div>`;
   }
 
-  /** Your real week (Plans → schedule) with the daily dose: "Workout (hip warm-up first) + Pelvic Reset". */
+  /** Your real week (Plans → schedule) with the daily dose: "Workout (hip warm-up built in) + Pelvic Reset". */
   function slotLabel(sl) {
     const what = sl?.label || (sl?.program_id ? (progNames[sl.program_id] || 'Workout') : 'Rest');
     const lift = !!sl?.program_id;
-    return `${what}${lift ? ' (hip warm-up first)' : ''} + Pelvic Reset`;
+    return `${what}${lift ? ' (hip warm-up built in)' : ''} + Pelvic Reset`;
   }
 
   function scheduleHTML() {

@@ -1,6 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup } from '../src/lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, mergeHipWarmup } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -107,5 +107,19 @@ pp = prepForTomorrow(C, { label: null, programId: lt.id, day: ltDay2 }, lookup);
 ok('Daily C already reaches hinge-day areas → nothing added', !pp.rows.some(x => x.prep_add) || pp.rows.filter(x => x.prep_add).length <= 1, JSON.stringify(pp.rows.filter(x => x.prep_add).map(x => x.name)));
 pp = prepForTomorrow(B, { label: 'Basketball', programId: null, day: ltDay2 }, lookup);
 ok('a game tomorrow still gets game prep, not plan prep', pp.rows.some(x => x.prep_add) && /game|basketball/i.test(pp.note || ''), pp.note);
+// Lifting day (v210): one merged warm-up, no repeats, everything still checks off on the Hip tab.
+const HIPW = [{ name: 'Walk or Easy Bike', hip_id: 'w', time: '5:00' }, { name: 'Cat-Cow', hip_id: 'c', reps: '10' }, { name: 'Pelvic Tilts', hip_id: 'p', reps: '15' },
+  { name: 'Half-Kneeling Hip Flexor Stretch', hip_id: 'h', sets: 3, time: '30s' }, { name: 'Thomas Hip Flexor Stretch', hip_id: 't', sets: 2, time: '30s' },
+  { name: '90/90 Hip Opener', hip_id: 'n', reps: '5 per side' }, { name: 'Adductor Rock Back', hip_id: 'a', reps: '8' }, { name: 'Hamstring Stretch', hip_id: 'hs', sets: 3, time: '30s' }];
+for (const [i, d] of lib.programs.lean_tone[0].weeks[0].days.entries()) {
+  const cd = d.exercises.filter(x => /cooldown/i.test(x.round_group || ''));
+  const m = mergeHipWarmup(HIPW, d.warmup || [], cd);
+  const names = m.rows.map(x => x.name.toLowerCase());
+  const ids = new Set([...m.rows.flatMap(x => [x.hip_id, ...(x.covers_hip || [])]), ...Object.values(m.cooldownCovers).flat()].filter(Boolean));
+  ok(`Lean & Tone day ${i + 1}: merged warm-up is shorter, no duplicate names`, m.rows.length < HIPW.length + (d.warmup || []).length && names.length === new Set(names).size, m.rows.map(x => x.name).join(', '));
+  ok(`Lean & Tone day ${i + 1}: every hip warm-up move is still done or covered`, HIPW.every(h => ids.has(h.hip_id)), [...ids].join(','));
+}
+const mh = mergeHipWarmup(HIPW, [], []);
+ok('no plan prep, no cool-down: only Pelvic Tilts rides on Cat-Cow; hip-flexor hold is one round', mh.rows.length === HIPW.length - 1 && mh.rows.find(x => /half/i.test(x.name)).sets === 1);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

@@ -5,7 +5,7 @@ import { pref, put, del, getByIndex, getAll } from '../db.js';
 import { rpeE1RM } from '../lib/e1rm.js';
 import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js';
 import { learnProfile } from '../lib/learn.js';
-import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, isGameLabel } from '../lib/daily_adjust.js';
+import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, isGameLabel, mergeHipWarmup } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
 import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
@@ -452,8 +452,14 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   _wuShared = !todaysSessions.some(x => x.done && !x.skipped && x.id !== session.id && !['daily_mobility', 'basketball_warmup'].includes(x.program_id));
   if (!_wuShared) _hipDone = {};
   if (!today_w.daily && ((await pref('hip_progress')) || Object.keys(hipLogsAll).length)) {
-    const hipWarm = hipWarmupRows();
-    warmup = { name: 'Warm-Up · hip first', exercises: [...hipWarm, ...(dayData.warmup?.length ? dayData.warmup : [])] };
+    // One warm-up (v210): the hip plan's warm-up merged with the program's own prep, no repeats.
+    const cdIdx = session.exercises.map((x, i) => [x, i]).filter(([x]) => /cooldown/i.test(x.round_group || ''));
+    const merged = mergeHipWarmup(hipWarmupRows(), dayData.warmup?.length ? dayData.warmup : [], cdIdx.map(([x]) => x));
+    for (const [k, ids] of Object.entries(merged.cooldownCovers)) {
+      const x = session.exercises[cdIdx[+k][1]];
+      x.covers_hip = [...new Set([...(x.covers_hip || []), ...ids])];
+    }
+    warmup = { name: 'Warm-Up · hip + plan prep', exercises: merged.rows };
   }
   // Warm-up swaps: saved for this day (swaps pref, keyed "wu:<name>" so they never touch a main
   // exercise of the same name) or just today (session.warmup_swaps).
@@ -557,9 +563,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         chk.textContent = on ? '✓' : '○';
         chk.closest('.warmup-ex').classList.toggle('done', on);
         try { sessionStorage.setItem(`wu:${today()}:${_wuTag}:${chk.dataset.wu}`, on ? '1' : '0'); } catch {}
-        if (chk.dataset.hip) {   // the hip plan's warm-up: same check-off on the Hip tab
+        const hipIds = (chk.dataset.hip || '').split(',').filter(Boolean);
+        if (hipIds.length) {   // the hip plan's warm-up (and the hip moves this row covers): same check-off on the Hip tab
           const logs = (await pref('hip_logs')) || {};
-          logs[today()] = { ...(logs[today()] || {}), [chk.dataset.hip]: on };
+          logs[today()] = { ...(logs[today()] || {}), ...Object.fromEntries(hipIds.map(id => [id, on])) };
           await pref('hip_logs', logs);
           if (_wuShared) _hipDone = logs[today()];
         }
@@ -1105,9 +1112,10 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         isDone: () => wuDone(w.name),
         setDone: async (v) => {
           try { sessionStorage.setItem(wuKey(w.name), v ? '1' : '0'); } catch { /* private mode */ }
-          if (w.hip_id) {   // the hip plan's warm-up: same check-off on the Hip tab
+          const hipIds = [w.hip_id, ...(w.covers_hip || [])].filter(Boolean);
+          if (hipIds.length) {   // the hip plan's warm-up (and moves this row covers): same check-off on the Hip tab
             const logs = (await pref('hip_logs')) || {};
-            logs[today()] = { ...(logs[today()] || {}), [w.hip_id]: v };
+            logs[today()] = { ...(logs[today()] || {}), ...Object.fromEntries(hipIds.map(id => [id, v])) };
             await pref('hip_logs', logs);
             if (_wuShared) _hipDone = logs[today()];
           }
@@ -1335,7 +1343,7 @@ function _warmupBlockHtml(warmup, exMap) {
           <div style="display:flex;gap:6px;align-items:center">
             ${secs ? `<button class="video-link hold-timer" data-secs="${secs}" data-sides="${sidesOf(ex) || ''}">▶ ${fmtSecs(secs)}${sidesOf(ex) ? ' ×2' : ''}</button>` : ''}
             ${videoHtml}
-            <button class="check warmup-check" data-wu="${_wNameEsc}"${ex.hip_id ? ` data-hip="${ex.hip_id}"` : ''} aria-label="Done">${isDone ? '✓' : '○'}</button>
+            <button class="check warmup-check" data-wu="${_wNameEsc}"${(ex.hip_id || ex.covers_hip?.length) ? ` data-hip="${[ex.hip_id, ...(ex.covers_hip || [])].filter(Boolean).join(',')}"` : ''} aria-label="Done">${isDone ? '✓' : '○'}</button>
           </div>
         </div>
       </div>`;

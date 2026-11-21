@@ -294,3 +294,46 @@ export function foldHipWarmup(rows, hipRows) {
   return { rows: out, note: added.length ? `Your hip warm-up is in here today (no workout): added ${added.join(', ')}; the rest is already covered.`
     : 'Your hip warm-up is covered by today\'s routine.' };
 }
+
+/**
+ * v210: a lifting day has ONE warm-up: the hip plan's warm-up merged with the program's own prep, RAMP order
+ * (raise → mobilise from the hip list, then the plan's activation and prep). A hip move the plan's prep already
+ * reaches is dropped and rides on that row (covers_hip, so ticking it checks the Hip tab); the long stretch
+ * holds ride on the day's cool-down when it holds the same area; Pelvic Tilts ride on Cat-Cow; the hip-flexor
+ * hold drops to one round (the cool-down repeats it). Rest days keep the whole hip warm-up (foldHipWarmup).
+ * @param hipRows   the hip plan's warm-up rows ({ name, hip_id, sets, time, reps, notes })
+ * @param planRows  the program day's own warm-up rows
+ * @param cooldown  the day's cool-down rows (names only matter)
+ * @returns { rows, cooldownCovers: { [cooldown index]: [hip ids] }, dropped: [names] }
+ */
+const WU_COVER = [
+  [/walk|bike/i, /walk|bike|ride|zone 2|jog/i],
+  [/cat.?cow/i, /cat.?(cow|camel)/i],
+  [/90.?90/i, /90.?90|pigeon|shin box/i],
+  [/adductor rock|frog/i, /adductor|groin|lateral squat|lateral lunge|cossack|frog/i],
+  [/hamstring/i, /hamstring/i],
+  [/half.?kneeling hip flexor/i, /hip flexor stretch|couch stretch/i],
+];
+const CD_COVER = [
+  [/thomas/i, /hip flexor|couch|quad bridge/i],
+  [/hamstring/i, /hamstring|post chain|rdl length|rotational rdl/i],
+];
+export function mergeHipWarmup(hipRows, planRows = [], cooldown = []) {
+  const plan = planRows.map(r => ({ ...r }));
+  const head = [], cooldownCovers = {}, dropped = [];
+  const catCow = () => head.find(r => /cat.?cow/i.test(r.name)) || plan.find(r => /cat.?(cow|camel)/i.test(r.name));
+  for (const h of hipRows || []) {
+    const rule = WU_COVER.find(([m]) => m.test(h.name));
+    const cover = rule && plan.find(r => rule[1].test(r.name));
+    if (cover) { (cover.covers_hip ||= []).push(h.hip_id); dropped.push(h.name); continue; }
+    if (/pelvic tilt/i.test(h.name) && catCow()) { (catCow().covers_hip ||= []).push(h.hip_id); dropped.push(h.name); continue; }
+    const cd = CD_COVER.find(([m]) => m.test(h.name));
+    const ci = cd ? cooldown.findIndex(r => cd[1].test(r.name)) : -1;
+    if (ci >= 0) { (cooldownCovers[ci] ||= []).push(h.hip_id); dropped.push(h.name); continue; }
+    head.push(/half.?kneeling hip flexor/i.test(h.name) && (h.sets || 1) > 1
+      ? { ...h, sets: 1, notes: [h.notes, 'One round before lifting; the cool-down holds it again.'].filter(Boolean).join(' ') }
+      : { ...h });
+  }
+  return { rows: [...head, ...plan], cooldownCovers, dropped };
+}
+
