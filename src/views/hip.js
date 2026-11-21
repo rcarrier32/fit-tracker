@@ -11,7 +11,7 @@ import {
   SECTIONS, EXERCISE_INDEX, weeklySchedule, hipToday, sideHipCount, plannedSideHip,
   AEROBIC_PROGRESSION, POST_POOL,
   PROTOCOL_PHASES, PROTOCOL_GAPS, PROTOCOL_SOURCE,
-  HIP_LADDERS, LADDER_UNLOCK_SESSIONS,
+  HIP_LADDERS, LADDER_UNLOCK_SESSIONS, HIP_CHECK_TESTS, HIP_CHECK_EVERY_DAYS,
 } from '../lib/hip_protocol.js';
 import { localDateStr } from '../lib/date.js';
 
@@ -43,6 +43,7 @@ export async function renderHip(app) {
   let surgeryDate = (await pref('hip_surgery_date')) || '';
   let surgerySide = (await pref('hip_surgery_side')) || '';        // 'left' | 'right' | ''
   let surgeryProc = (await pref('hip_surgery_procedure')) || '';   // free text
+  let hipChecks   = (await pref('hip_checks')) || {};              // { date: { testId: { l, r } } }
 
   let started    = savedProgress?.started || null;
   let activeId   = SECTIONS[0].id;
@@ -294,6 +295,9 @@ export async function renderHip(app) {
       lines.push('PAIN — nothing logged yet.');
       lines.push('');
     }
+
+    const checkLines = hipCheckSummary();
+    if (checkLines.length) { lines.push(...checkLines, ''); }
 
     const sessionDays = Object.keys(allLogs).filter(d => Object.values(allLogs[d] || {}).some(Boolean));
     if (sessionDays.length) {
@@ -645,6 +649,77 @@ export async function renderHip(app) {
     return Math.max(0, Math.floor((Date.now() - d) / 864e5 / 7));
   }
 
+  // ── Hip Check (left vs right, Back to Court tab) ──────────────────────────
+  const opSide = () => (surgerySide === 'right' ? 'r' : 'l');   // the operated side; left unless set otherwise
+  const checkDates = () => Object.keys(hipChecks).filter(d => Object.keys(hipChecks[d] || {}).length).sort();
+  /** Operated side as a % of the other for one test, or null. */
+  function sym(v) {
+    const a = +v?.[opSide()], b = +v?.[opSide() === 'l' ? 'r' : 'l'];
+    return a > 0 && b > 0 ? Math.round(a / b * 100) : null;
+  }
+  function hipCheckSummary() {
+    const ds = checkDates();
+    if (!ds.length) return [];
+    const out = [`HIP CHECK (${opSide() === 'l' ? 'left' : 'right'} = operated side, % of the other side)`];
+    for (const d of ds) {
+      out.push(`  ${d}: ` + HIP_CHECK_TESTS.map(t => {
+        const v = hipChecks[d][t.id];
+        if (!v) return null;
+        const p = sym(v);
+        return `${t.name} L ${v.l ?? '-'} / R ${v.r ?? '-'} ${t.unit}${p ? ` (${p}%)` : ''}`;
+      }).filter(Boolean).join(' · '));
+    }
+    return out;
+  }
+  function hipCheckHTML(section) {
+    const ds = checkDates();
+    const last = ds[ds.length - 1];
+    const prev = ds[ds.length - 2];
+    const entry = hipChecks[day] || {};
+    const due = last ? (() => { const d = new Date(last + 'T12:00:00'); d.setDate(d.getDate() + HIP_CHECK_EVERY_DAYS); return localDateStr(d); })() : null;
+    const pcts = last ? HIP_CHECK_TESTS.map(t => sym(hipChecks[last][t.id])).filter(p => p != null) : [];
+    const worst = pcts.length ? Math.min(...pcts) : null;
+    const gate = worst == null ? 'Do your first Hip Check to see which step you can start.'
+      : worst >= 90 ? 'Every test within 90%: all steps open, then Court Ready / HoopStudy.'
+      : worst >= 80 ? 'Every test at 80%+: start the steps. Aim for 90% before Court Ready.'
+      : 'Below 80% on at least one test: keep building in Sessions A/B before the court steps.';
+    const input = (t, side) => `<input type="number" inputmode="decimal" min="0" data-check="${t.id}" data-cside="${side}"
+      value="${entry[t.id]?.[side] ?? ''}" placeholder="${side.toUpperCase()}"
+      style="width:64px;padding:6px;border-radius:6px;background:var(--bg-input);border:1px solid rgba(255,255,255,0.1);color:var(--fg);font-size:13px">`;
+    const row = (t) => {
+      const lv = last ? hipChecks[last][t.id] : null, pv = prev ? hipChecks[prev][t.id] : null;
+      const p = sym(lv), pp = sym(pv);
+      return `<div style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.06)">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <div style="min-width:0"><div style="font-size:12.5px;font-weight:600;color:#f1f5f9">${esc(t.name)} <span style="color:#64748b;font-weight:400">(${t.unit})</span></div>
+            <div style="font-size:10.5px;color:#64748b;line-height:1.4">${esc(t.how)}</div></div>
+          <div style="display:flex;gap:4px;flex-shrink:0">${input(t, 'l')}${input(t, 'r')}</div>
+        </div>
+        ${lv ? `<div style="font-size:11px;color:#94a3b8;margin-top:4px">Last (${last.slice(5)}): L ${lv.l ?? '–'} · R ${lv.r ?? '–'}${p ? ` · <b style="color:${p >= 90 ? '#34d399' : p >= 80 ? '#fbbf24' : '#f87171'}">${p}%</b>` : ''}${pp && p ? ` (was ${pp}%)` : ''}</div>` : ''}
+      </div>`;
+    };
+    return `
+      <div style="padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+          <div style="font-size:13px;font-weight:700;color:#f1f5f9">Hip Check: left vs right</div>
+          <div style="font-size:10.5px;color:#64748b">${due ? (due <= day ? 'Due now' : `Next ${due.slice(5)}`) : 'Every 2 weeks'}</div>
+        </div>
+        <div style="font-size:11.5px;color:${section.accent};margin:4px 0 6px;line-height:1.4">${esc(gate)}</div>
+        <div style="font-size:10.5px;color:#64748b;margin-bottom:4px">Enter today's numbers; they save as you go. % = ${opSide() === 'l' ? 'left' : 'right'} (operated) side as a share of the other.</div>
+        ${HIP_CHECK_TESTS.map(row).join('')}
+      </div>`;
+  }
+  async function saveCheck(testId, side, raw) {
+    const n = raw === '' ? null : Math.max(0, +raw);
+    const e = { ...(hipChecks[day] || {}) };
+    const v = { ...(e[testId] || {}) };
+    if (n == null || isNaN(n)) delete v[side]; else v[side] = n;
+    if (Object.keys(v).length) e[testId] = v; else delete e[testId];
+    hipChecks = { ...hipChecks };
+    if (Object.keys(e).length) hipChecks[day] = e; else delete hipChecks[day];
+    await pref('hip_checks', hipChecks);
+  }
+
   /** Published-protocol comparison. Reference only — see PROTOCOL_SOURCE. */
   function benchmarksHTML(section) {
     const wk = weeksPostOp();
@@ -827,10 +902,12 @@ export async function renderHip(app) {
 
           </div>
           <div style="font-size:11.5px;color:#94a3b8;line-height:1.45">
-            PT thinks a tight psoas is driving this. That makes the hip flexor stretches the
-            treatment rather than a warm-up afterthought — and makes the exercises that load the
-            psoas worth a conversation. Surgeon said to come back if it is still bothering you at
-            three months; the pain log below is what you bring to that visit.
+            PT thinks a tight psoas is driving this, so the hip flexor stretches are treatment, not
+            an afterthought. Newer (Nov 2026): the outer-hip pull when the left foot lands and the
+            right-glute gripping point to the left side not taking load evenly, so the plan now adds
+            side-hip holds, weight-acceptance drills and a left-vs-right Hip Check (Back to Court tab).
+            These are working theories, not a diagnosis; the pain log and Hip Check are what you bring
+            to a PT or surgeon visit.
           </div>
         </div>
 
@@ -874,6 +951,7 @@ export async function renderHip(app) {
         </div>
       </div>
 
+      ${section.hipCheck ? hipCheckHTML(section) : ''}
       ${sectionVideoHTML(section)}
 
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
@@ -961,6 +1039,11 @@ export async function renderHip(app) {
     if ($proc) $proc.addEventListener('blur', async () => {
       surgeryProc = $proc.value.trim();
       await pref('hip_surgery_procedure', surgeryProc || null);
+    });
+
+    // Saved on change (blur/enter), and the card re-renders so the % updates.
+    app.querySelectorAll('[data-check]').forEach(inp => {
+      inp.addEventListener('change', async () => { await saveCheck(inp.dataset.check, inp.dataset.cside, inp.value.trim()); mount(); });
     });
 
     const $note = app.querySelector('#hip-note');

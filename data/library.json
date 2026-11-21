@@ -52304,6 +52304,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -52316,6 +52328,18 @@
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -52326,6 +52350,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Banded Side Plank Clamshell",
@@ -52496,6 +52532,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -52506,6 +52554,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -52592,6 +52652,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Elevated Sit-to-Stand",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "High chair or box (hips above knees), feet hip-width and even. Sit evenly on both sit bones before every rep."
+                  },
+                  {
                     "name": "Side Step-Ups",
                     "round_group": null,
                     "is_alternate": false,
@@ -52664,6 +52736,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -52676,6 +52760,18 @@
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -52686,6 +52782,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Banded Side Plank Clamshell",
@@ -52861,6 +52969,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -52871,6 +52991,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -52957,6 +53089,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Elevated Sit-to-Stand",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "High chair or box (hips above knees), feet hip-width and even. Sit evenly on both sit bones before every rep."
+                  },
+                  {
                     "name": "Side Step-Ups",
                     "round_group": null,
                     "is_alternate": false,
@@ -53029,6 +53173,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -53041,6 +53197,18 @@
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -53051,6 +53219,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On your back, heels on a box."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Banded Side Plank Clamshell",
@@ -53221,6 +53401,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds",
                     "round_group": null,
                     "is_alternate": false,
@@ -53231,6 +53423,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on one leg on a BOSU (dome up) or a soft balance pad, knee soft, pelvis LEVEL."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -53317,6 +53521,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Elevated Sit-to-Stand",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "High chair or box (hips above knees), feet hip-width and even. Sit evenly on both sit bones before every rep."
+                  },
+                  {
                     "name": "Side Step-Ups",
                     "round_group": null,
                     "is_alternate": false,
@@ -53394,6 +53610,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -53406,6 +53634,18 @@
                     "notes": "Stand on the pad on one leg."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Single-Leg Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -53416,6 +53656,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Side Plank with Top-Leg Raise",
@@ -53586,6 +53838,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -53596,6 +53860,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -53682,6 +53958,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                  },
+                  {
                     "name": "Lateral Step-Down",
                     "round_group": null,
                     "is_alternate": false,
@@ -53754,6 +54042,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -53766,6 +54066,18 @@
                     "notes": "Stand on the pad on one leg."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Single-Leg Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -53776,6 +54088,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Side Plank with Top-Leg Raise",
@@ -53951,6 +54275,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -53961,6 +54297,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -54047,6 +54395,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                  },
+                  {
                     "name": "Lateral Step-Down",
                     "round_group": null,
                     "is_alternate": false,
@@ -54119,6 +54479,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -54131,6 +54503,18 @@
                     "notes": "Stand on the pad on one leg."
                   },
                   {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
+                  },
+                  {
                     "name": "Single-Leg Elevated Hamstring Bridge",
                     "round_group": null,
                     "is_alternate": false,
@@ -54141,6 +54525,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "One heel on a box or bench, other leg pointing up or knee bent."
+                  },
+                  {
+                    "name": "Banded Glute Bridge with Abduction",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "12",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s."
                   },
                   {
                     "name": "Side Plank with Top-Leg Raise",
@@ -54311,6 +54707,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Clock Reaches",
                     "round_group": null,
                     "is_alternate": false,
@@ -54321,6 +54729,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Stand on the pad on one leg."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Bridge with Ball Squeeze",
@@ -54407,6 +54827,18 @@
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
                   },
                   {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                  },
+                  {
                     "name": "Lateral Step-Down",
                     "round_group": null,
                     "is_alternate": false,
@@ -54484,6 +54916,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -54494,6 +54938,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Slider Hamstring Curl",
@@ -54508,6 +54964,18 @@
                     "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
                   },
                   {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
@@ -54520,16 +54988,16 @@
                     "notes": "Side plank from the elbow and feet (or knees to start)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Mini Band Monster Walk",
@@ -54676,6 +55144,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -54686,6 +55166,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Single-Leg Glute Bridge",
@@ -54700,16 +55192,16 @@
                     "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Standing Hip Hikes",
@@ -54770,6 +55262,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -54844,6 +55348,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -54854,6 +55370,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Slider Hamstring Curl",
@@ -54868,6 +55396,18 @@
                     "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
                   },
                   {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
@@ -54880,16 +55420,16 @@
                     "notes": "Side plank from the elbow and feet (or knees to start)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Mini Band Monster Walk",
@@ -55041,6 +55581,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -55051,6 +55603,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Single-Leg Glute Bridge",
@@ -55065,16 +55629,16 @@
                     "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Standing Hip Hikes",
@@ -55135,6 +55699,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -55209,6 +55785,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -55219,6 +55807,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Slider Hamstring Curl",
@@ -55233,6 +55833,18 @@
                     "notes": "Heels on sliders or a towel on a smooth floor, bridge up."
                   },
                   {
+                    "name": "Single-Leg Glute Bridge",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "10 per leg",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
+                  },
+                  {
                     "name": "Side Plank with Top-Leg Raise",
                     "round_group": null,
                     "is_alternate": false,
@@ -55245,16 +55857,16 @@
                     "notes": "Side plank from the elbow and feet (or knees to start)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Mini Band Monster Walk",
@@ -55401,6 +56013,18 @@
                 ],
                 "exercises": [
                   {
+                    "name": "Standing Wall Hip-Abduction Isometric",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 5,
+                    "reps": null,
+                    "weight": null,
+                    "distance": null,
+                    "time": "30s",
+                    "rest": "30s",
+                    "notes": "per side Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps)."
+                  },
+                  {
                     "name": "Single-Leg Pad Balance + Ball Catches",
                     "round_group": null,
                     "is_alternate": false,
@@ -55411,6 +56035,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "On the pad, catch and return a ball from a partner or off a wall."
+                  },
+                  {
+                    "name": "Split-Stance Weight Shift",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 2,
+                    "reps": "10 per side, 3 s hold",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s."
                   },
                   {
                     "name": "Single-Leg Glute Bridge",
@@ -55425,16 +56061,16 @@
                     "notes": "Working foot flat, other knee hugged in (easier) or leg straight out (harder)."
                   },
                   {
-                    "name": "Copenhagen Side Plank (Long Lever)",
+                    "name": "Copenhagen with Bottom-Leg Raises",
                     "round_group": null,
                     "is_alternate": false,
-                    "sets": 3,
-                    "reps": null,
+                    "sets": 2,
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
-                    "time": "20s",
-                    "rest": "30s",
-                    "notes": "per side Side plank with the inside of the top foot/ankle on a bench, bottom leg free."
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Long-lever Copenhagen position."
                   },
                   {
                     "name": "Standing Hip Hikes",
@@ -55495,6 +56131,18 @@
                     "time": null,
                     "rest": "60s",
                     "notes": "Bend the knee to 90° and keep it bent for the whole set."
+                  },
+                  {
+                    "name": "Box Squat",
+                    "round_group": null,
+                    "is_alternate": false,
+                    "sets": 3,
+                    "reps": "8",
+                    "weight": null,
+                    "distance": null,
+                    "time": null,
+                    "rest": "60s",
+                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
                   },
                   {
                     "name": "Weighted Side Step-Ups",
@@ -71332,6 +71980,122 @@
       "level": 1,
       "unilateral": false,
       "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lh-supine-abd-iso": {
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    "hiprx-lh-wall-abd-iso": {
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes"
+      ],
+      "pattern": "isometric",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    "hiprx-lh-weight-shift": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lh-bridge-band-abd": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "hamstrings"
+      ],
+      "pattern": "hinge",
+      "role": "secondary",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lh-sit-to-stand": {
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "pattern": "squat",
+      "role": "secondary",
+      "equipment": [
+        "box"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lv-step-stick": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    "hiprx-lv-lateral-step-stick": {
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "quads"
+      ],
+      "pattern": "balance",
+      "role": "accessory",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
       "hip_focus": true
     }
   }

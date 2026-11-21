@@ -91,6 +91,23 @@ Done 2026-11-12: every branch except `main` is deleted (the user OK'd the two un
 Done 2026-11-12: FKH pull request #4 merged into `legendsyba/FitKidHooper` and deployed (app.legendsyba.com).
 It ships as an original FKH program using HoopStudy's middle-school volume, not under HoopStudy's name.
 
+## 9. Hip plan: new lateral-hip moves need videos + the source PDFs *(needs YouTube API / local browser)*
+
+Added 2026-11-21 (v201) from the user's ChatGPT lateral-hip plan; details and what's unverified in
+[`research/notes-hip/chatgpt-lateral-hip-plan.md`](research/notes-hip/chatgpt-lateral-hip-plan.md).
+
+1. **Videos.** Six moves have `videoId: null` in `src/lib/hip_protocol.js` (marked `// verify locally`): Standing Wall
+   Hip-Abduction Isometric, Supine Banded Hip Abduction Isometric, Split-Stance Weight Shift, Elevated Sit-to-Stand,
+   Step and Stick, Lateral Step and Stick. With `YOUTUBE_API_KEY` set:
+   `node data/enrich_hip_videos.mjs --missing`, review `data/hip-video-review.json` (also check ChatGPT's candidate ids
+   in the research note: open each, don't trust them), approve, then `node data/enrich_hip_videos.mjs --apply`.
+2. Rebuild and check: `node data/build_hip_program.mjs && python3 data/tag_exercises.py`, then
+   `node data/check_catalog.mjs` and `node data/check_program.mjs hip_plan_pt_motion_rc` (should go back to OK; today it
+   lists those moves as "no video").
+3. **PDFs.** Open the four source links in the research note in a browser, note anything useful (dosing, progressions,
+   GTPS education) in that file, and fold it into the cues if it changes anything.
+4. Bump the version and push as usual.
+
 ## Known limits (no action needed)
 
 - Generated plans on a bodyweight-only kit leave upper-body days short (about 3% of test days): with no

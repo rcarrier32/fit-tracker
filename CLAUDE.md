@@ -34,5 +34,6 @@ what to run and how to check it. Most of it needs a session on the user's own co
 login, YouTube access, API keys):
 - reel links for Knee Circles, Standing Hip Internal/External Lifts and Squat to Hamstring Stretch (the user
   sends them; they play YouTube demos until then)
+- videos for six new hip-plan moves and four source PDFs to read (TODO §9), plus a new Facebook reel to watch (TODO §1)
 - the optional weekly AI check-in (decide with the user first)
 - plan builder sports other than basketball (decide with the user)

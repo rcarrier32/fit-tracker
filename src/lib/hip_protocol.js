@@ -214,6 +214,21 @@ const SOURCE_SECTIONS = [
         channel: "Anytime Mobility",
         search: 'Anytime Mobility hip rotation extension frog leg lift ball',
       },
+      {
+        id: 'lh-supine-abd-iso',
+        name: 'Supine Banded Hip Abduction Isometric',
+        subtitle: 'Steady side-hip load with no squeeze on the tendon: glute med/min',
+        sets: '5 × 30 s',
+        freq: 'Daily',
+        cues: [
+          'On your back, knees bent, light mini band just above the knees, feet hip-width.',
+          'Press the knees out into the band and hold. Pelvis stays still, low back stays quiet.',
+          'Medium effort (about 5–7/10) you could hold all day. Both sides work at once, so it trains both hips evenly.',
+          'Progress: stronger band, then 45 s holds. Regress: no band, press the knees into your hands.',
+        ],
+        videoId: null,   // verify locally: see docs/research/notes-hip/chatgpt-lateral-hip-plan.md
+        search: 'supine hip abduction isometric band physical therapy',
+      },
     ],
   },
 
@@ -1076,6 +1091,11 @@ const SOURCE_SECTIONS = [
         detail: 'Sitting holds the psoas in a shortened position, which is the pattern behind pain that shows up after you have been down a while. The 30–45 minute rule applies at a desk, on a couch, and on a plane — not only in the car. Standing up and taking a few steps is enough; you do not need to stretch every time.',
       },
       {
+        id: 'rc-sit-even',
+        title: 'Sit evenly on both sit bones',
+        detail: 'Shifting your weight onto the left side while sitting keeps one hip loaded and the other gripping. Feet flat and level, weight even on both sit bones, and when you notice the shift, reset rather than fight it. Stand up the same way: even on both feet (Elevated Sit-to-Stand in Session B trains it).',
+      },
+      {
         id: 'rc-stretch-frequency',
         title: 'Short and frequent beats long and occasional',
         detail: 'For a tight hip flexor, several brief stretches spread through the day generally do more than one long session. If you can get the half-kneeling stretch in a few times a day rather than only before a workout, that is the higher-value version. Confirm the dose with your PT.',
@@ -1087,6 +1107,160 @@ const SOURCE_SECTIONS = [
       },
     ],
   },
+  {
+    id: 'lateral-hip',
+    label: 'Lateral Hip & Weight Acceptance',
+    tag: 'Added 2026-11 · merged into Sessions A/B',
+    accent: '#fb923c',
+    bg: 'rgba(234,88,12,0.10)',
+    description: 'Added for the outer-hip pull when the left foot lands and the right-glute gripping: steady side-hip loading, controlled weight acceptance through each leg, and even loading on both feet. Not shown as its own tab; the exercises live in Sessions A and B.',
+    exercises: [
+      {
+        id: 'lh-wall-abd-iso',
+        name: 'Standing Wall Hip-Abduction Isometric',
+        subtitle: 'Both hips at once: the wall side presses, the standing side holds the pelvis level',
+        sets: '5 × 30 s per side',
+        freq: 'Sessions A & B, first',
+        cues: [
+          'Stand side-on to a wall, the near knee bent to 90° with the outside of the knee/thigh against the wall (a folded towel helps).',
+          'Press into the wall and hold. The standing leg is working too: pelvis level, standing knee soft, trunk upright.',
+          'Medium effort (5–7/10) you can hold steady the whole time. Do the left side first, then match it on the right.',
+          'Progress: 45 s holds, then harder press. Regress: stand on both feet and just press the leg out.',
+        ],
+        videoId: null,   // verify locally: see docs/research/notes-hip/chatgpt-lateral-hip-plan.md
+        search: 'standing wall hip abduction isometric physical therapy',
+      },
+      {
+        id: 'lh-weight-shift',
+        name: 'Split-Stance Weight Shift',
+        subtitle: 'Weight acceptance: the moment the front foot takes your weight, done slowly',
+        sets: '2 × 10 per side, 3 s hold',
+        freq: 'Sessions A & B',
+        cues: [
+          'Short split stance, hand on a counter if you want it. Shift your weight forward onto the front foot over 2 s.',
+          'As the foot takes the weight: knee tracks over the middle toes, pelvis stays level, the hip does not slide out to the side.',
+          'Hold 3 s fully on the front leg, then shift back. Left leg first, then right, same reps.',
+          'If the outer hip pulls, make the stance shorter and the shift slower rather than stopping.',
+        ],
+        videoId: null,   // verify locally
+        search: 'split stance weight shift hip physical therapy weight acceptance',
+      },
+      {
+        id: 'lh-bridge-band-abd',
+        name: 'Banded Glute Bridge with Abduction',
+        subtitle: 'The push-out partner to Session B\'s ball-squeeze bridge',
+        sets: '3 × 12',
+        freq: 'Session A',
+        cues: [
+          'Mini band just above the knees. Bridge up, then press the knees out against the band at the top and hold 2 s.',
+          'Hips level, ribs down, no low-back arch. Lower slowly with the knees still pushing out.',
+          'Feel it in the side and back of both hips, evenly. If one side does all the work, slow down until both share it.',
+        ],
+        video_url: 'https://www.youtube.com/watch?v=z-lsr8cVuqo&t=985',   // same demo as the Home Beginner plan's Banded Bridge Hold Abductions
+        search: 'banded glute bridge abduction physical therapy',
+      },
+      {
+        id: 'lh-sit-to-stand',
+        name: 'Elevated Sit-to-Stand',
+        subtitle: 'Standing up evenly after sitting, the thing that hurts most',
+        sets: '3 × 8',
+        freq: 'Session B',
+        cues: [
+          'High chair or box (hips above knees), feet hip-width and even. Sit evenly on both sit bones before every rep.',
+          'Lean forward, stand up smoothly with equal weight on both feet. No shifting toward the left.',
+          'Lower over 3 s and touch down lightly. Two bathroom scales under the feet show whether you load them evenly.',
+          'Progress: lower seat, then hold a dumbbell (box squat). Regress: higher seat or a hand on your thighs.',
+        ],
+        videoId: null,   // verify locally
+        search: 'sit to stand exercise physical therapy hip',
+      },
+    ],
+  },
+
+  {
+    id: 'court',
+    label: 'Back to Court',
+    tag: 'Return to basketball · gated',
+    accent: '#f97316',
+    bg: 'rgba(249,115,22,0.10)',
+    description: 'The steps from strength work back to playing: landing, stopping, then lateral power. Unlock each step with your Hip Check numbers, do it 2 sessions with no next-morning flare, then move to the next. After the last step, Court Ready and HoopStudy take over.',
+    hipCheck: true,
+    criteria: [
+      'Start: Hip Check left side at least 80% of the right on every test, walking and stairs comfortable',
+      'Single-leg stance 30 s with a level pelvis and 10 clean step-downs, each side',
+      'Move up a step after 2 sessions at it with no flare the next morning',
+      'Last step: left side within 90% of the right, then Court Ready / HoopStudy',
+    ],
+    exercises: [
+      {
+        id: 'court-pogos',
+        name: 'Resisted Pogos',
+        subtitle: 'Step 1 · small, quick ankle hops: the first impact',
+        sets: '3 × 20 s',
+        freq: '2× / week',
+        cues: [
+          'Start without the band: small quick hops off the balls of the feet, knees soft, landing even on both feet.',
+          'Add the band once 3 × 20 s feels easy and the left hip stays quiet the next morning.',
+        ],
+        video_url: 'https://youtu.be/EgDlPE_dyvA',
+        search: 'pogo hops',
+      },
+      {
+        id: 'court-switch-stick',
+        name: 'Split Stance Switch & Stick',
+        subtitle: 'Step 2 · land and stick: weight acceptance at speed',
+        sets: '3 × 6 per side',
+        freq: '2× / week',
+        cues: [
+          'Switch legs in the air, land in a split stance and freeze for 2 s.',
+          'On landing: front knee over toes, pelvis level, no hip sliding out. Left-leg landings first.',
+        ],
+        video_url: 'https://youtu.be/FDoBMzSwuKQ',
+        search: 'split stance switch and stick',
+      },
+      {
+        id: 'court-linear-decel',
+        name: 'Linear Deceleration',
+        subtitle: 'Step 3 · stopping in a straight line',
+        sets: '4 × 3',
+        freq: '2× / week',
+        cues: ['Jog a few steps, stop in 2–3 short steps and hold the athletic stance.', 'Build speed over weeks, not sessions.'],
+        video_url: 'https://youtu.be/5JEm0wCzaTg',
+        search: 'linear deceleration drill',
+      },
+      {
+        id: 'court-lateral-landing',
+        name: 'Lateral Landing Progressions',
+        subtitle: 'Step 4 · landing sideways on one leg',
+        sets: '3 × 5 per side',
+        freq: '2× / week',
+        cues: ['Hop sideways onto one leg and stick it 2 s.', 'The landing hip stays under you: no hip drop, no knee caving.'],
+        video_url: 'https://youtu.be/WcAzOUYlaB8',
+        search: 'lateral landing progression',
+      },
+      {
+        id: 'court-lateral-decels',
+        name: 'Lateral Split Stance Decels',
+        subtitle: 'Step 5 · stopping sideways: the defensive slide stop',
+        sets: '4 × 3 per side',
+        freq: '2× / week',
+        cues: ['Shuffle and stop hard into a wide split stance.', 'Stop on the left as often as the right.'],
+        video_url: 'https://youtu.be/hJqZaIUzFaQ',
+        search: 'lateral split stance deceleration',
+      },
+      {
+        id: 'court-lateral-bounds',
+        name: 'Lateral Bounds',
+        subtitle: 'Step 6 · lateral power, then cutting and full court',
+        sets: '3 × 5 per side',
+        freq: '2× / week',
+        cues: ['Bound side to side, stick each landing 1 s.', 'When these feel easy both ways: Court Ready, then HoopStudy, then pickup.'],
+        video_url: 'https://youtu.be/f3lz0RI03Co',
+        search: 'lateral bounds',
+      },
+    ],
+  },
+
   {
     id: 'progressions',
     label: 'Progressions',
@@ -1461,6 +1635,39 @@ const SOURCE_SECTIONS = [
         channel: "Eric Cressey",
         search: 'bird dog with band',
       },
+      {
+        id: 'lv-step-stick',
+        name: 'Step and Stick',
+        subtitle: 'Step forward onto one leg and freeze: weight acceptance with a real step',
+        sets: '2 × 8 per side',
+        freq: 'Per session',
+        cues: [
+          'Step forward, land on the whole foot and stand on that leg for 2–3 s, the back foot just off the floor.',
+          'Pelvis level, knee over the middle toes, no hip sliding out. Left leg first.',
+        ],
+        videoId: null,   // verify locally
+        search: 'step and stick single leg balance physical therapy',
+      },
+      {
+        id: 'lv-lateral-step-stick',
+        name: 'Lateral Step and Stick',
+        subtitle: 'Step sideways onto one leg and freeze: the side-to-side version',
+        sets: '2 × 8 per side',
+        freq: 'Per session',
+        cues: ['Big step sideways, stick on the landing leg for 2–3 s.', 'The landing hip stays under you; the trunk does not lean over it.'],
+        videoId: null,   // verify locally
+        search: 'lateral step and stick hip stability',
+      },
+      {
+        id: 'lv-box-squat',
+        name: 'Box Squat',
+        subtitle: 'The sit-to-stand with a lower box and load',
+        sets: '3 × 8',
+        freq: 'Per session',
+        cues: ['Sit back to a box at knee height, touch lightly, stand up evenly on both feet.', 'Hold a dumbbell at the chest once 3 × 8 is easy.'],
+        video_url: 'https://youtu.be/rMEPHwNhQfo',   // PJF's Box Squat demo
+        search: 'box squat',
+      },
     ],
   },
 ];
@@ -1472,7 +1679,7 @@ export const EXERCISE_INDEX = Object.fromEntries(
 
 const sourceSection = (id) => SOURCE_SECTIONS.find(s => s.id === id);
 const BOTH = ['mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
-  'mrc-quadruped-hip-hike', 'pt-sl-balance-pad', 'mrc-copenhagen-knee'];
+  'mrc-quadruped-hip-hike', 'pt-sl-balance-pad', 'mrc-copenhagen-knee', 'lh-wall-abd-iso', 'lh-weight-shift'];
 
 /** Pull exercises from the catalog, tagged with where they came from and which session(s). */
 function pick(session, ids) {
@@ -1481,7 +1688,7 @@ function pick(session, ids) {
     if (!ex) throw new Error(`hip_protocol: unknown exercise ${id}`);
     return {
       ...ex,
-      source: id.startsWith('mrc-') ? 'Motion RC' : 'PT',
+      source: id.startsWith('mrc-') ? 'Motion RC' : id.startsWith('lh-') ? 'Lateral hip' : 'PT',
       freq: BOTH.includes(id) ? 'Sessions A & B' : `Session ${session}`,
       ...(id === 'mrc-tfl-ir-stretch' ? { optional: true } : {}),
     };
@@ -1508,8 +1715,11 @@ const SESSION_A = {
   exercises: pick('A', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
     'mrc-quadruped-hip-hike',
+    'lh-wall-abd-iso',
     'pt-sl-balance-pad',
+    'lh-weight-shift',
     'mrc-elevated-ham-bridge',
+    'lh-bridge-band-abd',
     'mrc-side-plank-clamshell',
     'mrc-copenhagen-knee',
     'mrc-monster-walk', 'pt-fire-hydrant',
@@ -1532,7 +1742,9 @@ const SESSION_B = {
   exercises: pick('B', [
     'mrc-distraction-ir', 'mrc-distraction-er', 'mrc-seated-banded-ir', 'mrc-tfl-ir-stretch',
     'mrc-quadruped-hip-hike',
+    'lh-wall-abd-iso',
     'pt-sl-balance-pad',
+    'lh-weight-shift',
     'pt-bridge-squeeze',
     'mrc-copenhagen-knee',
     'mrc-standing-hip-hike',
@@ -1540,6 +1752,7 @@ const SESSION_B = {
     'mrc-hip-airplane',
     'pt-slr',
     'pt-prone-ext-bent',
+    'lh-sit-to-stand',
     'pt-lateral-step-ups',
     'mrc-adductor-slider-lunge',
   ]),
@@ -1557,6 +1770,7 @@ export const SECTIONS = [
   SESSION_A,
   SESSION_B,
   sourceSection('recovery'),
+  sourceSection('court'),
   sourceSection('benchmarks'),
   optionalPool('pool-mobility'),
   optionalPool('pool-strength'),
@@ -1756,6 +1970,7 @@ export const SIDE_HIP_IDS = new Set([
   'pt-side-lying-abduction', 'pt-side-plank', 'pt-band-walks', 'pt-fire-hydrant',
   'mrc-monster-walk', 'mrc-quadruped-hip-hike', 'mrc-standing-hip-hike',
   'mrc-side-plank-clamshell', 'mrc-copenhagen-knee', 'ps-abduction',
+  'lh-wall-abd-iso', 'lh-supine-abd-iso', 'lh-bridge-band-abd',
 ]);
 
 /** Side-hip exercises checked off in the Sun–Sat week containing `date`. */
@@ -1812,7 +2027,7 @@ export const HIP_CATALOG_ENTRIES = Object.values(EXERCISE_INDEX).map(ex => {
     name: ex.name,
     primary_muscle: tags.includes('bridge') ? 'glutes' : tags.includes('hinge') ? 'hamstrings' : 'hips',
     muscles: [],
-    video_url: ex.videoId ? `https://www.youtube.com/watch?v=${ex.videoId}` : null,
+    video_url: ex.videoId ? `https://www.youtube.com/watch?v=${ex.videoId}` : (ex.video_url || null),
     fallback_search: `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`,
     sources: ['hip'],
     aliases: [],
@@ -1839,8 +2054,24 @@ export const HIP_LADDERS = {
   'mrc-hip-flexor-march':     { name: 'Wall march → standing', steps: ['mrc-hip-flexor-march', 'lv-standing-march'] },
   'pt-posterior-lunge':       { name: 'Lunge → deficit → split squat', steps: ['pt-posterior-lunge', 'lv-deficit-reverse-lunge', 'lv-bulgarian-split-squat'] },
   'pt-bird-dog':              { name: 'Bird dog → loaded', steps: ['pt-bird-dog', 'lv-bird-dog-loaded'] },
+  'lh-weight-shift':          { name: 'Weight shift → step and stick → lateral', steps: ['lh-weight-shift', 'lv-step-stick', 'lv-lateral-step-stick'] },
+  'lh-sit-to-stand':          { name: 'Sit-to-stand → box squat', steps: ['lh-sit-to-stand', 'lv-box-squat'] },
+  'lh-bridge-band-abd':       { name: 'Banded bridge → march → single leg', steps: ['lh-bridge-band-abd', 'lv-bridge-march', 'lv-sl-bridge'] },
 };
 export const LADDER_UNLOCK_SESSIONS = 4;
+
+/**
+ * Hip Check: four left-vs-right tests, every 2 weeks (Back to Court tab). Saved per date in
+ * pref('hip_checks') as { [date]: { [test id]: { l, r } } }. The operated side as a % of the other
+ * gates the Back to Court steps: 80% to start, 90% before Court Ready / HoopStudy.
+ */
+export const HIP_CHECK_TESTS = [
+  { id: 'sls',      name: 'Single-leg stance', unit: 's',    how: 'Seconds on one leg with the pelvis level (stop at 60 or when the hip drops).' },
+  { id: 'plank',    name: 'Side plank',        unit: 's',    how: 'Seconds held on the forearm, feet stacked, hips in line (stop when they sag).' },
+  { id: 'slbridge', name: 'Single-leg bridge', unit: 'reps', how: 'Reps with the hips level, until form breaks.' },
+  { id: 'stepdown', name: 'Step-down',         unit: 'reps', how: 'Slow step-downs off a stair with the knee over the toes and the pelvis level, until one is not clean.' },
+];
+export const HIP_CHECK_EVERY_DAYS = 14;
 
 /** Every non-plan exercise a ladder can show — the video enrichment script targets these too. */
 export const LEVEL_EXERCISES = (SOURCE_SECTIONS.find(s => s.id === 'progressions')?.exercises || []);

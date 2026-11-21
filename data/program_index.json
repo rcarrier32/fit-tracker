@@ -1088,34 +1088,35 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 11.3,
+   "exercises_per_day": 14.3,
    "day_focus": [
     "Session A · Posterior & Single-Leg",
     "Session B · Lateral & Adductors",
     "Session A · Posterior & Single-Leg"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 23,
+    "abductors": 36,
+    "glutes": 35,
     "hamstrings": 21,
-    "abductors": 21,
     "adductors": 12,
     "abs": 9,
-    "quads": 6,
+    "quads": 9,
     "hip_flexors": 4
    },
    "week1_sets_by_pattern": {
-    "hinge": 24,
+    "hinge": 30,
+    "isometric": 24,
     "isolation_lower": 19,
     "lunge_single_leg": 18,
-    "balance": 11,
-    "isometric": 9,
+    "balance": 17,
     "lateral_flexion": 6,
     "anti_extension": 6,
-    "flexion": 3
+    "flexion": 3,
+    "squat": 3
    },
    "roles": {
-    "secondary": 14,
-    "accessory": 12,
+    "accessory": 18,
+    "secondary": 17,
     "core": 8
    },
    "equipment": [
