@@ -204,7 +204,7 @@ MOVES = {
         'Lie on your side, knees bent with a foam roller between them, a long band looped high around the top thigh and anchored behind you so it gently pulls the hip.',
         'Turn the top hip open and closed against that pull, slowly.',
         'For the SI joint and low back. Pad under the bottom hip on the sore side. 12 each side.'],
-        T('glutes', ['glutes', 'lower_back', 'hip_flexors'], 'mobility', 'warmup', ['band'], 1, plane='transverse')),
+        T('glutes', ['glutes', 'lower_back', 'hip_flexors'], 'mobility', 'warmup', ['band', 'foam_roller'], 1, plane='transverse')),
     'Weighted Standing Side Bend': ('proformance', PF('lJCvShYI_OA', 7), PROFORMANCE, [
         'Stand tall, a dumbbell or kettlebell in one hand.',
         'Bend sideways toward the weight, then come back up past the middle, ribs and hips stacked, no twisting.',

@@ -107,7 +107,7 @@ ALTS = {
     'Single-Leg Hip Thrust': ['Dumbbell Hip Thrust', 'Single-Leg Glute Bridge', 'Dumbbell Glute Bridge'],
     'Dumbbell Lateral Raise': ['Lean In Lateral Raise', 'Lateral Raise'],
     'Dead Bug': ['Bird Dog with Ankle Weight or Band', 'RKC Plank'],
-    'Side Plank with Top-Leg Raise': ['Half Kneeling Lateral Bend', 'Copenhagen Side Plank (Knee)', 'Banded Side Plank Clamshell'],
+    'Side Plank with Top-Leg Raise': ['Half Kneeling Lateral Bend', 'Copenhagen Side Plank (Knee)', 'Banded Side Plank Clamshell', 'Dead Bug'],
     'Zone 2 Low Impact': ['Brisk Walk', 'Easy Outdoor Run', 'Easy Bike Ride'],
     'Bulgarian Split Squat': ['FFE Dumbbell Split Squats', 'FFE Goblet Split Squat Isometric', 'Heel Elevated Split Squat', 'Reverse Lunges', 'Front Foot Elevated Reverse Lunge'],
     'Band Resisted Push Up': ['Push Up To Shoulder Airplane', 'Push Ups', 'Dumbbell Bench Press'],
@@ -168,6 +168,15 @@ ALTS = {
     'Birddog Dumbbell Row': ['3 Point Dumbbell Row', 'Contralateral Single Leg Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)'],
     'Incline Alternating Arms Dumbbell Press': ['Low Incline Dumbbell Press', 'Dumbbell Bench Press', 'Push Up To Shoulder Airplane'],
     'Kneeling Dumbbell Diagonal Chop': ['Palloff Press', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press'],
+    'Standing Wall Hip-Abduction Isometric': ['Supine Banded Hip Abduction Isometric', 'Side Plank with Top-Leg Raise'],
+    'Split-Stance Weight Shift': ['Step and Stick', 'Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds'],
+    'Step and Stick': ['Split-Stance Weight Shift', 'Lateral Step and Stick'],
+    'Lateral Step and Stick': ['Step and Stick', 'Lateral Bounds'],
+    'Side-Lying Hip IR Lift with Roller': ['Prone Banded Hip IR', 'Seated Banded Hip IR'],
+    'Hip Flexor + IR Combo': ['Side-Lying Hip IR Lift with Roller', 'Bench IR Knee Taps'],
+    'Side-Lying Hip Abduction': ['Quadruped Abduction Lift-Overs', 'Mini Band Monster Walk'],
+    'Quadruped Abduction Lift-Overs': ['Side-Lying Hip Abduction', 'Standing Fire Hydrant'],
+    'Two-Bench Side Plank with Top-Leg Abduction': ['Side Plank with Top-Leg Raise', 'Quadruped Abduction Lift-Overs'],
 }
 # PJF's Durability Code Prime: mobility-strength versions, offered as swaps (the plan's picks stay first).
 for k, extra in {
@@ -237,6 +246,17 @@ NOTE = {
 }
 PAUSE = '3-second pause at the bottom of every rep.'
 
+# v207: the Hip Plan's strength work folded in (one active plan at a time; the Hip tab is now the check-in hub).
+# Lean & Tone already covers the Copenhagen, single-leg RDL, hip thrust, side plank, lateral lunge, balance /
+# airplane, monster walk and hip-flexor slots; the Hip block adds the ones it didn't have. Each steps up with the
+# phase, mirroring HIP_LADDERS in src/lib/hip_protocol.js (keep the two in step).
+HIP_LADDER = {
+    'weight_shift': ('Split-Stance Weight Shift', 'Step and Stick', 'Lateral Step and Stick'),
+    'ir':           ('Side-Lying Hip IR Lift with Roller', 'Hip Flexor + IR Combo', 'Hip Flexor + IR Combo'),
+    'side_lying':   ('Side-Lying Hip Abduction', 'Quadruped Abduction Lift-Overs', 'Two-Bench Side Plank with Top-Leg Abduction'),
+}
+HIP_NOTE = 'Hip block (your Hip Plan): left side first, then match it on the right. Steps up every 2 weeks.'
+
 
 def days(wk):
     p = phase(wk)
@@ -269,6 +289,9 @@ def days(wk):
               notes='Tall kneeling: dig the dumbbell to the outside hip, then chop it high across the body. Hips stay square.'),
             r(pick('90/90 Copenhagen', 'Copenhagen Straight Leg', 'Dynamic Copenhagen'), reps='6 each side' if p == 3 else None,
               time=None if p == 3 else hold, sets=2, rest='30s', group='Superset D', notes='Each side, top leg on the bench.'),
+            r('Standing Wall Hip-Abduction Isometric', time=hold, sets=2, rest='0-15s', group='Hip block', notes='Each side, knee into the wall. ' + HIP_NOTE),
+            r(HIP_LADDER['weight_shift'][p - 1], '8 each side', sets=2, rest='30s', group='Hip block',
+              notes='Shift onto the front foot over 2 s and hold 3 s, pelvis level.' if p == 1 else 'Stick each landing for 2-3 s, pelvis level.'),
             r('Sprint 10s/Jog 20s/Walk 40s', f'{sprint_rounds} rounds', sets=1, rest=None, group='Treadmill finisher', notes='10 s fast, 20 s jog, 40 s walk.'),
         ]},
         {'focus': 'Day 2 · Full Body B: Hinge, Single-Leg, Pull', 'warmup': PREP['lower'][p] + [PREP['upper'][p][0], {**w('Shoulder Mobility Pullovers', reps='8', notes='PJF: light dumbbell (5-10 lb), slow reach overhead. Opens the lats and shoulders before the rows and pulldowns.'), 'sets': 2}], 'notes': notes, 'exercises': [
@@ -283,8 +306,9 @@ def days(wk):
             r('Single-Arm Banded Lat Pulldown' if p == 3 else 'Banded Lat Pulldown', '12-15' if p < 3 else '12 each arm', sets=s, rest=rest, group='Superset D',
               notes='Band anchored high in the garage, kneeling. Your vertical pull.'),
             r('Single-Leg Slider Hamstring Curl' if p == 3 else 'Slider Hamstring Curl', each + ' leg' if p == 3 else '12', sets=s, rest=rest, group='Superset D'),
-            r('Dead Bug', '10 each side', sets=2, rest='30s', group='Superset E'),
-            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Superset E'),
+            r(HIP_LADDER['ir'][p - 1], '10 each side' if p == 1 else '8 each side', sets=2, rest='0-15s', group='Hip block',
+              notes='The hip turning in: the range that is usually short after FAI surgery. ' + HIP_NOTE),
+            r('Side Plank with Top-Leg Raise', '8 each side', sets=2, rest='30s', group='Hip block'),
             r('Zone 2 Low Impact', time=walk, sets=1, rest=None, group='Treadmill finisher', notes='Incline walk, conversational pace.'),
         ]},
         {'focus': 'Day 3 · Power, Stability + Bands', 'warmup': PREP['power'][p], 'notes': notes, 'exercises': [
@@ -302,6 +326,8 @@ def days(wk):
             r('Arnold Press', reps, sets=s, rest=rest, group='Superset C', notes=alt_iso if p == 3 else None),
             r('Hammer Curls', '12-15', sets=2, rest='30s', group='Superset D'),
             r('Incline DB Overhead Extensions', '12-15', sets=2, rest='30s', group='Superset D'),
+            r(HIP_LADDER['side_lying'][p - 1], '12 each side' if p == 1 else '8 each side', sets=2, rest='30s', group='Superset D',
+              notes='Side hip through its range, hips stacked. ' + HIP_NOTE),
             r('Zone 4 Workout', f'{intervals} rounds', sets=1, rest=None, group='Treadmill finisher', notes='1 min hard, 1 min easy.'),
         ]},
         {'focus': 'Day 4 · Conditioning + Glutes', 'warmup': PREP['lower'][p][:2], 'notes': notes + ['Treadmill first, then the band circuit 3 times through.'], 'exercises': [
@@ -393,9 +419,9 @@ program = {
     'program_name': 'Lean & Tone: Home Full Body',
     'group': GROUP,
     'source': 'Athletic',
-    'description': '4 days a week, ~50 min including a PJF-style cooldown matched to the day\'s work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
+    'description': '4 days a week, ~55 min including a PJF-style cooldown matched to the day\'s work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). '
                    'Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives.',
-    'sessions_per_week': 4, 'session_length_min': 50, 'level': 'Intermediate',
+    'sessions_per_week': 4, 'session_length_min': 55, 'level': 'Intermediate',
     'equipment': ['Dumbbells', 'Bench', 'Step / box', 'Mini band + long band (PJF heavy band)', 'BOSU', 'Treadmill'],
     'goal': 'Lose fat, keep muscle, look and move athletic.',
     # Sun..Sat: 4 training days, Recovery & Mobility on 2 off days, 1 full rest day.

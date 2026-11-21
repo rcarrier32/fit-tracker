@@ -160,6 +160,32 @@ export const GAME_PREP = [
   { name: 'Hip Hinge Ankle Rocker', target_sets: 1, target_reps: '10 each side', area: 'ankles', covered: /ankle rocker|dorsiflex|ankle mobility/i },
 ];
 export const FOAM_ROLL = 'Foam Roller Circuit', RECOVER_WALK = 'Brisk Walk';
+// v207: the day before a plan workout, one mobility move for the area it loads most, when today's routine doesn't
+// already reach it. Small on purpose: PJF and Griffith put a day's targeted prep in that day's own warm-up (which
+// the app does too); this only leans today's easy mobility toward tomorrow.
+export const PLAN_PREP = [
+  { region: 'hamstrings', name: 'Hamstring Floss', target_reps: '8 each side', covered: /hamstring/i },
+  { region: 'adductors', name: 'Adductor Rock Back', target_reps: '8', covered: /adductor|groin|lateral lunge|cossack|frog/i },
+  { region: 'glutes', name: 'Hip CARs', target_reps: '3 slow circles each way, each side', covered: /hip car|hip circle|90\/90|pigeon/i },
+  { region: 'quads', name: 'Hip Flexor/Quad Bridge', time: '45s', target_reps: '', covered: /hip flexor|couch|quad/i },
+  { region: 'hip flexors', name: 'Hip Flexor/Quad Bridge', time: '45s', target_reps: '', covered: /hip flexor|couch|quad/i },
+  { region: 'upper back', name: 'Wall Side T Spine Opener', target_reps: '5 each side', covered: /t.?spine|thoracic|world'?s greatest/i },
+  { region: 'lats', name: 'Wall Side T Spine Opener', target_reps: '5 each side', covered: /t.?spine|thoracic|world'?s greatest|pullover/i },
+];
+
+/** Planned working sets per region for a program day's rows (warm-up and cool-down rows don't count). */
+export function plannedLoad(rows, lookup) {
+  const direct = {};
+  for (const x of rows || []) {
+    const e = lookup(x.name);
+    if (!e || e.role === 'warmup' || e.role === 'cooldown' || STRETCHY(e)) continue;
+    const r = REGION[e.primary_muscle];
+    if (!r) continue;
+    const n = Array.isArray(x.sets) ? (x.target_sets || x.sets.length || 3) : (+x.sets || +x.target_sets || 3);
+    direct[r] = (direct[r] || 0) + n;
+  }
+  return direct;
+}
 // Areas a foam roller reaches, in the order to roll them.
 // Recovery-day swaps after a big day: [row name, PJF recovery move, dose, why].
 const RECOVERY_SWAPS = [
@@ -185,6 +211,22 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
     notes.push(added.length
       ? `Getting you ready for tomorrow's ${tomorrow.label.toLowerCase()}: added ${added.join(', ')}. Easy and controlled, no extra jumping.`
       : `Tomorrow is ${tomorrow.label.toLowerCase()}: today's routine already covers hips, groin and ankles. Keep it easy.`);
+  }
+  // Tomorrow is a plan workout: lean today's mobility toward the area it loads most (one move at most).
+  if (tomorrow && !isGameLabel(tomorrow.label) && tomorrow.day?.exercises?.length) {
+    const planned = Object.entries(plannedLoad(tomorrow.day.exercises, lookup)).filter(([, n]) => n >= 6).sort((a, b) => b[1] - a[1]);
+    for (const [region] of planned) {
+      const p = PLAN_PREP.find(x => x.region === region);
+      if (!p || !lookup(p.name)) continue;
+      if (out.some(r => p.covered.test(r.name))) break;    // today already reaches tomorrow's main area
+      if (out === rows) out = rows.map(r => ({ ...r }));
+      const what = tomorrow.day.focus || tomorrow.day.day_name || 'workout';
+      const at = out.findLastIndex(r => /single.?leg (stance|balance)/i.test(r.name));
+      out.splice(at < 0 ? out.length : at, 0, { name: p.name, orig_name: p.name, sets: [], target_sets: 1, target_reps: p.target_reps,
+        time: p.time || null, notes: `Ready for tomorrow (${what}): ${region}.`, prep_add: true });
+      notes.push(`Tomorrow's ${what} works your ${region} most: added ${p.name}, easy.`);
+      break;
+    }
   }
   if (restToday) {
     if (out === rows) out = rows.map(r => ({ ...r }));

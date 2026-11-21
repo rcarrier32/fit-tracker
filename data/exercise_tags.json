@@ -4645,7 +4645,7 @@
    "pattern": "mobility",
    "role": "cooldown",
    "equipment": [
-    "bodyweight"
+    "foam_roller"
    ],
    "level": 1,
    "unilateral": false,
@@ -6352,7 +6352,7 @@
    "pattern": "balance",
    "role": "accessory",
    "equipment": [
-    "bodyweight"
+    "foam_roller"
    ],
    "level": 2,
    "unilateral": true,
@@ -9258,7 +9258,7 @@
    "pattern": "mobility",
    "role": "cooldown",
    "equipment": [
-    "bodyweight"
+    "foam_roller"
    ],
    "level": 1,
    "unilateral": false,

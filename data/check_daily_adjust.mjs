@@ -96,5 +96,16 @@ ok('folded rows keep their hip_id', f.rows.filter(x => x.hip_add).every(x => x.h
 ok('covered moves ride on the row that covers them', f.rows.find(x => x.name === 'Cat Camel')?.covers_hip?.includes('c'), JSON.stringify(f.rows.find(x => x.name === 'Cat Camel')));
 f = foldHipWarmup(C, HIP);
 ok('Daily C (pigeon, hamstring floss): piriformis and hamstring covered', !f.rows.some(x => x.hip_add && /piriformis|hamstring/i.test(x.name)), f.rows.filter(x => x.hip_add).map(x => x.name).join(', '));
+// Tomorrow is a plan workout (v207): one prep move for its main area, unless today already reaches it.
+const lt = lib.programs.lean_tone[0];
+const ltDay2 = lt.weeks[0].days[1];   // hinge, single-leg, pull
+const B = rowsOf(prog.days[1]);
+let pp = prepForTomorrow(B, { label: null, programId: lt.id, day: ltDay2 }, lookup);
+const ppAdd = pp.rows.filter(x => x.prep_add);
+ok('plan day tomorrow: at most one prep move, with a note', ppAdd.length <= 1 && (ppAdd.length === 0 || /tomorrow/i.test(pp.note || '')), JSON.stringify(ppAdd.map(x => x.name)) + ' ' + pp.note);
+pp = prepForTomorrow(C, { label: null, programId: lt.id, day: ltDay2 }, lookup);
+ok('Daily C already reaches hinge-day areas → nothing added', !pp.rows.some(x => x.prep_add) || pp.rows.filter(x => x.prep_add).length <= 1, JSON.stringify(pp.rows.filter(x => x.prep_add).map(x => x.name)));
+pp = prepForTomorrow(B, { label: 'Basketball', programId: null, day: ltDay2 }, lookup);
+ok('a game tomorrow still gets game prep, not plan prep', pp.rows.some(x => x.prep_add) && /game|basketball/i.test(pp.note || ''), pp.note);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

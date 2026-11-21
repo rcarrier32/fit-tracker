@@ -73,6 +73,7 @@
     "box",
     "cable",
     "dumbbell",
+    "foam_roller",
     "machine",
     "pullup_bar"
    ],
@@ -139,6 +140,7 @@
     "barbell",
     "box",
     "dumbbell",
+    "foam_roller",
     "med_ball",
     "pullup_bar"
    ],
@@ -205,6 +207,7 @@
     "bench",
     "box",
     "dumbbell",
+    "foam_roller",
     "kettlebell",
     "machine"
    ],
@@ -984,6 +987,7 @@
     "bench",
     "bosu_pad",
     "box",
+    "foam_roller",
     "kettlebell",
     "mini_band",
     "slider"
@@ -1088,7 +1092,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 3,
-   "exercises_per_day": 9.3,
+   "exercises_per_day": 12.3,
    "day_focus": [
     "Session A · Posterior & Single-Leg",
     "Session B · Lateral & Adductors",
@@ -1097,9 +1101,10 @@
    "week1_sets_by_muscle": {
     "glutes": 28,
     "abductors": 21,
-    "hamstrings": 12,
-    "adductors": 12,
-    "hip_flexors": 4,
+    "hamstrings": 14,
+    "adductors": 13,
+    "hip_flexors": 7,
+    "abs": 3,
     "quads": 3
    },
    "week1_sets_by_pattern": {
@@ -1108,12 +1113,14 @@
     "hinge": 15,
     "isolation_lower": 11,
     "lunge_single_leg": 9,
+    "mobility": 9,
     "lateral_flexion": 6,
     "squat": 3
    },
    "roles": {
     "accessory": 14,
     "secondary": 9,
+    "cooldown": 9,
     "core": 5
    },
    "equipment": [
@@ -1121,6 +1128,7 @@
     "bench",
     "bosu_pad",
     "box",
+    "foam_roller",
     "mini_band",
     "slider"
    ],
@@ -1133,7 +1141,7 @@
    "kind": "progression",
    "weeks": 6,
    "days_per_week": 4,
-   "exercises_per_day": 14.0,
+   "exercises_per_day": 14.8,
    "day_focus": [
     "Day 1 · Full Body A: Squat, Push, Pull",
     "Day 2 · Full Body B: Hinge, Single-Leg, Pull",
@@ -1141,18 +1149,18 @@
     "Day 4 · Conditioning + Glutes"
    ],
    "week1_sets_by_muscle": {
-    "glutes": 22,
+    "glutes": 27,
     "quads": 15,
-    "hamstrings": 12,
     "lats": 12,
+    "hamstrings": 11,
     "chest": 9,
-    "abs": 8,
+    "abductors": 7,
     "front_delts": 6,
+    "abs": 6,
     "upper_back": 6,
     "side_delts": 3,
     "full_body": 3,
     "calves": 3,
-    "abductors": 3,
     "adductors": 2,
     "obliques": 2,
     "biceps": 2,
@@ -1163,27 +1171,27 @@
     "mobility": 19,
     "hinge": 15,
     "lunge_single_leg": 12,
+    "isolation_lower": 10,
     "push_horizontal": 9,
     "pull_horizontal": 9,
     "isolation_upper": 7,
     "squat": 6,
     "push_vertical": 6,
     "pull_vertical": 6,
-    "isolation_lower": 6,
+    "balance": 5,
     "conditioning": 4,
     "plyo_bound_hop": 3,
-    "balance": 3,
     "anti_rotation": 2,
-    "anti_extension": 2,
+    "isometric": 2,
     "lateral_flexion": 2
    },
    "roles": {
     "secondary": 18,
     "cooldown": 16,
-    "accessory": 7,
+    "accessory": 11,
     "conditioning": 4,
-    "core": 3,
     "warmup": 3,
+    "core": 2,
     "power": 2,
     "main": 1
    },
@@ -1197,7 +1205,7 @@
     "mini_band",
     "slider"
    ],
-   "description": "4 days a week, ~50 min including a PJF-style cooldown matched to the day's work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
+   "description": "4 days a week, ~55 min including a PJF-style cooldown matched to the day's work, built for a home setup (dumbbells, bench, step, bands, BOSU, treadmill). Paired supersets plus a treadmill finisher. Progresses by reps, pauses, isometric holds and single-leg/arm work rather than heavier weight; week 6 deload. Every exercise has swap alternatives."
   },
   {
    "id": "move30_recovery_mobility",
@@ -1240,6 +1248,7 @@
    "equipment": [
     "bike",
     "dumbbell",
+    "foam_roller",
     "mini_band"
    ],
    "description": "Two off-day sessions (30-45 min) from PJF's recovery day and BWS daily mobility + prehab, plus easy cardio. Pair it with a training plan through Today → Set up Mixed Week."
@@ -1351,7 +1360,8 @@
    "equipment": [
     "band",
     "bench",
-    "dumbbell"
+    "dumbbell",
+    "foam_roller"
    ],
    "description": "Adam Menner's HoopStudy program: dumbbell strength 3 days a week (all sets of 8), speed and jumps 2 days, recovery 2 days, for 8 weeks. Built for basketball players in season; uses the high-school volume (3×8, then 4×8 from week 3)."
   },

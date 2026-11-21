@@ -62,11 +62,27 @@ const warmup = WARMUP_IDS.map(id => [id, EXERCISE_INDEX[id]]).map(([id, ex]) => 
   return { name: ex.name, reps: rx.reps || null, time: rx.time || null, notes: ex.subtitle || null, ...(alts.length ? { alternates: alts } : {}) };
 });
 
+// PJF's close, as Lean & Tone does it (session_prep.pick_cooldown): length-under-load holds for what the day
+// worked, then 3 min of 7/11 breathing. Session A is posterior / single-leg, Session B lateral / adductors.
+const COOLDOWN = {
+  'session-a': [['Hip Flexor Length Under Load', '45s', 'Each side. Slow breaths, sink a little deeper each exhale.'],
+                ['Rotational RDL Length Under Load', '45s', 'Each side: hamstrings and the back of the hip.']],
+  'session-b': [['Lateral Lunge Length Under Load', '45s', 'Each side: the inner thigh after the Copenhagen and lateral work.'],
+                ['Hip Flexor Length Under Load', '45s', 'Each side. Slow breaths, sink a little deeper each exhale.']],
+};
+const cooldownRows = (sessionId) => [
+  ...COOLDOWN[sessionId].map(([name, time, notes]) => ({ name, round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null, weight: null,
+    distance: null, time, rest: null, notes })),
+  { name: '7/11 Breathing', round_group: 'Cooldown', is_alternate: false, sets: 1, reps: null, weight: null, distance: null, time: '3:00', rest: null,
+    notes: 'Lie on your back: in through the nose for 7, out for 11.' },
+];
+
 function dayFor(sessionId, dayNum, phase, week) {
   const label = sessionId === 'session-a' ? 'Session A' : 'Session B';
   const exercises = session(sessionId)
     .filter(ex => !WARMUP_IDS.includes(ex.id))
     .map(ex => rowFor({ ...atPhase(ex.id, phase), sets: atPhase(ex.id, phase).sets || ex.sets }, ex.id));
+  exercises.push(...cooldownRows(sessionId));
   const inPhase = ((week - 1) % 2) + 1;
   return {
     day_num: dayNum,
@@ -97,7 +113,7 @@ const program = {
     + 'slot from your PT, Motion RC and Proformance work, with the other versions under Swap. Every 2 weeks each exercise moves up its '
     + 'progression (single-leg bridges, long-lever Copenhagen, two-bench side plank, Cossack…). Pelvic Reset stays the daily dose.',
   sessions_per_week: 3,
-  session_length_min: 55,
+  session_length_min: 60,
   level: 'Your plan',
   equipment: ['Long band', 'Mini band', 'Bench or box', 'Slider', 'Foam roller', 'BOSU or pad', 'Dumbbell or kettlebell'],
   goal: 'Build the hip: strength, control and range, then load it.',

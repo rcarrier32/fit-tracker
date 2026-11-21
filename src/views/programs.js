@@ -622,7 +622,7 @@ function infoBox(value, label) {
 // ── Plan generator (src/lib/generator.js, rules in data/design_rules.json) ──────────────
 
 const GEN_EQUIPMENT = ['dumbbell', 'kettlebell', 'barbell', 'trap_bar', 'bench', 'box', 'pullup_bar', 'cable', 'machine',
-  'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'sled', 'smith', 'suspension', 'bike', 'pool', 'agility_ladder'];
+  'band', 'mini_band', 'landmine', 'med_ball', 'slider', 'bosu_pad', 'foam_roller', 'sled', 'smith', 'suspension', 'bike', 'pool', 'agility_ladder'];
 let _rules = null;
 const loadRules = async () => (_rules ||= await fetch('data/design_rules.json').then(r => r.json()));
 let _learned = null;   // the coach-program numbers (data/learn_patterns.py)
@@ -641,7 +641,7 @@ async function openGeneratorWizard(onSaved) {
   // First time: start from how you actually train (days a week, session length), when the logs say.
   if (!saved.days && profile.days.per_week) saved.days = Math.min(6, Math.max(2, Math.round(profile.days.per_week)));
   if (!saved.minutes && profile.duration) saved.minutes = [30, 45, 60].reduce((a, b) => Math.abs(b - profile.duration.median_min) < Math.abs(a - profile.duration.median_min) ? b : a);
-  const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band'];
+  const equipment = (await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band', 'foam_roller'];
   const st = { goal: 'muscle', days: 3, minutes: 60, weeks: 6, level: 2, plyo: false, focus: [], easy: [], ...saved, equipment };
   openSheet((sheet, close) => {
     const chips = (key, options, multi = false) => options.map(([val, label]) => {

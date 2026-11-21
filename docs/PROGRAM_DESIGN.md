@@ -132,6 +132,13 @@ drills; the user's PT program: 15 exercises 3×/week). Cap them by **minutes and
   balance → resistance → sport-specific) and the criteria-plus-time hip arthroscopy protocols (ISHA, MGH).
 - **Stretching dose:** about 5-10 min a week per muscle group gets most of the range gain (Thomas et al. 2018;
   a 2025 meta-analysis found nothing extra past ~10 min/week). Daily Mobility's 45 s a side most days is there.
+- **One active plan at a time (v207).** Hip strength rides inside the training plan as a short "Hip block"
+  (Lean & Tone: 1-2 moves on days 1-3, stepping up with the phase, mirroring `HIP_LADDERS`) instead of a second
+  plan. The Hip tab is the check-in hub (daily dose, Hip Check, pain log, Back to Court); the full Hip Plan still
+  runs on its own if started. Plan builds close with length-under-load holds + 7/11 breathing (Hip Plan included),
+  and the day before a plan workout Daily Mobility adds at most one mobility move for tomorrow's main area when
+  today's routine doesn't reach it (`PLAN_PREP` in `src/lib/daily_adjust.js`; providers keep targeted prep in the
+  day's own warm-up, so this stays small).
 - **Fewer exercises for adherence is weak evidence** (the 2 vs 5 vs 8 home-exercise trial found no compliance
   difference); the reason to cap is time and fatigue.
 

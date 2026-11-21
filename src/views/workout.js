@@ -379,7 +379,25 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
       const dow = new Date().getDay(), tSlot = slots?.[(dow + 1) % 7];
       // A day with no workout (rest/recovery label, not a game) is a recovery day.
       const tdSlot = slots?.[dow];
-      const prep = prepForTomorrow(adj.rows, tSlot ? { label: tSlot.label || null, programId: tSlot.program_id || null } : null, lookup,
+      // Tomorrow's plan day (v207): the cursor's day, or the one after it when today runs the same plan and isn't done.
+      let tDay = null;
+      if (tSlot?.program_id) {
+        try {
+          const { programById } = await loadCatalogs();
+          const prog = programById.get(tSlot.program_id) || ((await pref('custom_programs')) || []).find(c => c.id === tSlot.program_id);
+          if (prog?.weeks?.length) {
+            const cur = (await pref(`cursor:${prog.id}`)) || {};
+            let wi = Math.max(0, Math.min(prog.weeks.length, cur.week || 1) - 1);
+            const sameToday = tdSlot?.program_id === prog.id && !todaysSessions.some(x => x.program_id === prog.id && x.done);
+            let di = tSlot.mode === 'fixed' && Number.isInteger(tSlot.day_index) ? tSlot.day_index : (cur.day || 1) - 1 + (sameToday ? 1 : 0);
+            if (di >= (prog.weeks[wi].days || []).length) { di = 0; wi = Math.min(prog.weeks.length - 1, wi + 1); }
+            tDay = prog.weeks[wi].days?.[di] || null;
+          } else if (prog?.days?.length) {
+            tDay = prog.days[Number.isInteger(tSlot.day_index) ? tSlot.day_index : 0] || null;
+          }
+        } catch { tDay = null; }
+      }
+      const prep = prepForTomorrow(adj.rows, tSlot ? { label: tSlot.label || null, programId: tSlot.program_id || null, day: tDay } : null, lookup,
         { restToday: !!tdSlot && !tdSlot.program_id && !isGameLabel(tdSlot.label), load });
       session.exercises = prep.rows;
       // No workout today (rest or recovery label, not a game, which has its own warm-up): the hip plan's

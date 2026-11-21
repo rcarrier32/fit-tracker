@@ -44,6 +44,16 @@ export async function renderHip(app) {
   let surgerySide = (await pref('hip_surgery_side')) || '';        // 'left' | 'right' | ''
   let surgeryProc = (await pref('hip_surgery_procedure')) || '';   // free text
   let hipChecks   = (await pref('hip_checks')) || {};              // { date: { testId: { l, r } } }
+  // v207: the hip strength work lives in the training plan (Lean & Tone's Hip block, or the Hip Plan when run on
+  // its own), so the schedule shown here is the real week from Plans, with the daily dose on every day.
+  const weekSlots = (await pref('schedule'))?.slots || null;
+  const progNames = {};
+  if (weekSlots?.some(sl => sl?.program_id)) {
+    try {
+      const { programById } = await (await import('../lib/static_data.js')).loadCatalogs();
+      for (const sl of weekSlots) if (sl?.program_id) progNames[sl.program_id] = programById.get(sl.program_id)?.program_name || null;
+    } catch { /* names are a nicety */ }
+  }
 
   let started    = savedProgress?.started || null;
   let activeId   = SECTIONS[0].id;
@@ -845,6 +855,13 @@ export async function renderHip(app) {
       </div>`;
   }
 
+  /** Your real week (Plans → schedule) with the daily dose: "Workout (hip warm-up first) + Pelvic Reset". */
+  function slotLabel(sl) {
+    const what = sl?.label || (sl?.program_id ? (progNames[sl.program_id] || 'Workout') : 'Rest');
+    const lift = !!sl?.program_id;
+    return `${what}${lift ? ' (hip warm-up first)' : ''} + Pelvic Reset`;
+  }
+
   function scheduleHTML() {
     const dow = new Date().getDay();
     return `
@@ -859,7 +876,7 @@ export async function renderHip(app) {
             ${i === dow ? 'color:#f1f5f9;font-weight:600' : 'color:#64748b'}">
             <span style="width:30px;flex-shrink:0;font-size:11px;
               color:${i === dow ? '#38bdf8' : '#475569'}">${d.day}</span>
-            <span style="font-size:11.5px;line-height:1.4">${esc(d.focus)}</span>
+            <span style="font-size:11.5px;line-height:1.4">${esc(weekSlots ? slotLabel(weekSlots[i]) : d.focus)}</span>
             ${i === dow ? '<span style="font-size:9px;color:#38bdf8;letter-spacing:0.06em">TODAY</span>' : ''}
           </div>`).join('')}
       </div>`;
@@ -882,13 +899,13 @@ export async function renderHip(app) {
           <div>
             <h1 style="margin:0;font-size:20px">Hip Recovery</h1>
             <div style="font-size:11px;color:var(--fg-dim);margin-top:1px">
-              Sessions A/B · Pelvic Reset · Driving strategy${week ? ` · Week ${week}` : ''}
+              Daily dose · Hip Check · pain log${week ? ` · Week ${week}` : ''}
             </div>
           </div>
         </div>
 
         <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:10px">
-          ${['Warm-up · Reset · Recovery · Pool', 'Build the Hip'].map(t =>
+          ${['Daily: Warm-up + Pelvic Reset', 'Strength: in your workouts', 'Check-in: Hip Check + pain log'].map(t =>
             `<span class="pill" style="font-size:10px;padding:2px 8px">${t}</span>`
           ).join('')}
         </div>
@@ -912,8 +929,8 @@ export async function renderHip(app) {
         </div>
 
         <button id="hip-program" class="btn" style="margin-bottom:10px;text-align:left;padding:10px 12px">
-          <div style="font-weight:700">🏋️ Strength: Your Hip Plan</div>
-          <div style="font-size:12px;font-weight:400;opacity:0.85">Sessions A & B now run on the Lift screen with weights, reps, timers and weekly progressions.</div>
+          <div style="font-weight:700">🏋️ Hip strength is in your workouts</div>
+          <div style="font-size:12px;font-weight:400;opacity:0.85">Lean & Tone's Hip block (side-hip hold, weight acceptance, internal rotation, side-plank steps) steps up every 2 weeks with the rest of the plan. The full Hip Plan (Sessions A & B) still runs on its own from Plans if you start it.</div>
         </button>
         <div id="hip-tabs" style="display:flex;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none;
           -webkit-overflow-scrolling:touch">

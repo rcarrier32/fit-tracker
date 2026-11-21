@@ -32,7 +32,7 @@ const pick = (a) => a[Math.floor(rnd() * a.length)];
 const KITS = {
   bodyweight: [],
   home_db: ['dumbbell', 'bench', 'band', 'mini_band'],
-  home_plus: ['dumbbell', 'kettlebell', 'bench', 'box', 'band', 'mini_band', 'slider', 'bosu_pad', 'med_ball', 'agility_ladder'],
+  home_plus: ['dumbbell', 'kettlebell', 'bench', 'box', 'band', 'mini_band', 'slider', 'bosu_pad', 'foam_roller', 'med_ball', 'agility_ladder'],
   gym: ['dumbbell', 'barbell', 'trap_bar', 'bench', 'box', 'cable', 'machine', 'pullup_bar', 'band', 'mini_band', 'landmine', 'kettlebell', 'med_ball', 'smith'],
 };
 const GOALS = Object.keys(rules.goals);
