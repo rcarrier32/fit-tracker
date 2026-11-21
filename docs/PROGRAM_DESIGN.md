@@ -110,6 +110,10 @@ research in [research/Workout plan builder methods.md](research/Workout%20plan%2
 - **Warm-up rounds** (`session_minutes.<min>.warmup_rounds`, `warmup_rounds`): 1 round for 30 min,
   2 for 45 and 60, 3 for fat loss at 60 min (PJF writes 2-3).
 
+**Time box (v212):** a generated session runs at most **5 minutes over** the time asked (the user's limit):
+trim accessories, then the finisher, secondaries and cool-down holds, then as last resorts one warm-up round,
+2 sets of jumps and 3 sets on the main lifts; checked again after filling (`OVER_MAX` in `src/lib/generator.js`).
+
 **Session size:** 6-8 exercises fit 60 min. For 45 min, use 5-6. For 30 min, use 5 exercises,
 mostly supersets, and cut isolation first (BWS express versions drop about 25% of sets).
 This counts **working lifts**. Prep and mobility drills (1-2 sets, a minute each) are counted apart, the way

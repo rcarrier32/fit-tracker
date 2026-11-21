@@ -106,7 +106,7 @@ function check(params, label) {
       // Time box.
       const mins = estimateMinutes(d, rules);
       stats.minutes.push(mins / params.minutes);
-      if (mins > params.minutes * 1.15) fail('fits the time asked', `${tag}: ~${mins} min > ${params.minutes}`);
+      if (mins > params.minutes + 5) fail('fits the time asked (at most 5 min over)', `${tag}: ~${mins} min > ${params.minutes}`);
       if (!/^(Speed|Agility)/.test(d.focus) && mins < params.minutes * 0.55) stats.short++;
       // Jump contacts.
       const contacts = d.exercises.reduce((a, x) => a + (PLYO.includes(byName.get(x.name)?.pattern) ? (x.sets || 1) * (parseInt(x.reps) || 0) * (/each/.test(x.reps || '') ? 2 : 1) : 0), 0);

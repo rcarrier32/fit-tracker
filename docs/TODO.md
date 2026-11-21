@@ -107,14 +107,10 @@ reels and shorts is in [`research/proformance.md`](research/proformance.md); its
 (247 ids captured).
 Bench Pigeon Rotation still plays the Facebook reel; swap in her YouTube short if the survey finds one.
 
-## 11. Hip Plan length *(check with the PT)*
+## 11. Hip Plan length
 
-v206 (2026-11-21) restructured Hip Plan A/B to the new rehab rule (docs/PROGRAM_DESIGN.md "Rehab and mobility
-sessions"): 3 prep drills + 9-10 working moves, one per slot (~50-55 min with the hip warm-up), the other versions
-under Swap (`HIP_SWAPS`) or as later ladder steps. The PT's own program had 15 exercises a session: worth confirming
-the slot picks with the PT. The hip warm-up (8 moves, the PT's daily warm-up) still runs before every workout.
-v209: the Hip tab's strength card lists the hip moves built into the active plan's current week, day by day, and
-the side-hip counter plans from that week (+ Pelvic Reset's daily hold) and counts side-hip moves logged in workouts.
+Done (v206-v210): Hip Plan A/B follow the rehab rule; the hip strength work rides in Lean & Tone's supersets; one
+merged warm-up on lifting days. No PT to confirm with (the user, 2026-11-21): dropped.
 
 ## Known limits (no action needed)
 

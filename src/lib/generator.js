@@ -429,8 +429,10 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
   const phaseSets = {};
   const liftSets = (day, roleOf) => day.exercises.filter(x => x.round_group !== 'Cooldown' && !['power', 'conditioning'].includes(roleOf(x)))
     .reduce((a, x) => a + (x.sets || 0), 0);
+  // The user's limit (2026-11-21): a session may run at most 5 minutes over the time asked.
+  const OVER_MAX = p.minutes + 5;
   function fitToTime(day, slots, dayPicks, ph = 0, di = 0) {
-    const budget = p.minutes * 1.1;
+    const budget = Math.min(p.minutes * 1.1, OVER_MAX);
     const roleOf = (x) => slots[dayPicks.findIndex(e => e?.name === x.name)]?.role;
     const steps = [
       // The last phase's extra set goes first: a session that can't fit it keeps the earlier phases' sets.
@@ -450,6 +452,12 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
       () => { const i = day.exercises.map(roleOf).lastIndexOf('secondary'); if (i < 0 || day.exercises.map(roleOf).filter(r => r === 'secondary').length < 2) return false; day.exercises.splice(i, 1); return true; },
       // Still long: fewer cooldown holds (breathing stays), then a shorter finisher.
       () => { const holds = day.exercises.filter(x => x.round_group === 'Cooldown' && !/breathing/i.test(x.name)); if (holds.length < 2) return false; day.exercises.splice(day.exercises.indexOf(holds[holds.length - 1]), 1); return true; },
+      // Last resorts for the 5-minute limit: one warm-up round, 2 sets of jumps, 3 sets on the main lifts,
+      // the last cool-down hold (breathing stays).
+      () => { let ch = false; for (const w of day.warmup || []) if ((w.sets || 1) > 1) { w.sets = 1; ch = true; } return ch; },
+      () => { let ch = false; for (const x of day.exercises) if (roleOf(x) === 'power' && x.sets > 2) { x.sets = 2; ch = true; } return ch; },
+      () => { let ch = false; for (const x of day.exercises) if (roleOf(x) === 'main' && x.sets > 3) { x.sets = 3; ch = true; } return ch; },
+      () => { const holds = day.exercises.filter(x => x.round_group === 'Cooldown' && !/breathing/i.test(x.name)); if (!holds.length) return false; day.exercises.splice(day.exercises.indexOf(holds[holds.length - 1]), 1); return true; },
     ];
     // A pair whose partner was trimmed rests after itself again (it was counted at 0-15 s).
     const fixOrphans = () => {
@@ -462,7 +470,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     };
     fixOrphans();   // a lone 'superset' member is estimated at half rest: settle it before measuring
     const floor = ph > 0 ? phaseSets[`${ph - 1}:${di}`] : null;
-    const keep = () => floor != null && liftSets(day, roleOf) <= floor && estimateMinutes(day, rules) <= p.minutes * 1.15;
+    const keep = () => floor != null && liftSets(day, roleOf) <= floor && estimateMinutes(day, rules) <= OVER_MAX;
     for (const step of steps) {
       while (estimateMinutes(day, rules) > budget && !keep()) { if (!step()) break; fixOrphans(); }
     }
@@ -504,7 +512,7 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
     // Starting lighter on purpose (recent check-ins): fill to a lower mark, so the session is shorter, not emptier.
     const below = FILL.below * (startLighter && ph === 0 ? 0.8 : 1);
     const short = () => estimateMinutes(day, rules) < p.minutes * below;
-    const cap = (forced) => p.minutes * (forced ? 1.1 : 1);
+    const cap = (forced) => forced ? Math.min(p.minutes * 1.1, p.minutes + 5) : p.minutes;
     if (!plan) {
       plan = fillCache[key] = { adds: [], bump: new Set() };
       if (!short() && !minAdds && !minBumps) return;
@@ -740,6 +748,8 @@ export function generatePlan(params, { exercises, rules, hasVideo = (e) => !!e.v
           x.round_group = null;
           if (/^0/.test(x.rest || '')) x.rest = '60s';   // its partner was trimmed: rest after it instead
         }
+        // Filling and un-pairing can add time after the trim: hold the 5-minute limit once more.
+        if (estimateMinutes(day, rules) > OVER_MAX) fitToTime(day, daySlots[di], picks[ph][di], ph, di);
         return day;
       }),
     });
