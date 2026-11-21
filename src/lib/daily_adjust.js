@@ -160,6 +160,10 @@ export const GAME_PREP = [
   { name: 'Hip Hinge Ankle Rocker', target_sets: 1, target_reps: '10 each side', area: 'ankles', covered: /ankle rocker|dorsiflex|ankle mobility/i },
 ];
 export const FOAM_ROLL = 'Foam Roller Circuit', RECOVER_WALK = 'Brisk Walk';
+// The lacrosse ball, as PJF's foam roll circuit (feet) and HoopStudy's tissue work (calves, hamstrings, glutes) use it.
+// Glutes yes (the right-side gripping), but around the side of the hip, never on the bony point: pressing there
+// squeezes the outer-hip tendons (Locala NHS lateral hip guide).
+const LAX = 'Then the lacrosse ball: 30-60s on each glute (the right one where it grips), staying off the bony point on the side of the hip, and 30s under each foot.';
 // v207: the day before a plan workout, one mobility move for the area it loads most, when today's routine doesn't
 // already reach it. Small on purpose: PJF and Griffith put a day's targeted prep in that day's own warm-up (which
 // the app does too); this only leans today's easy mobility toward tomorrow.
@@ -236,8 +240,8 @@ export function prepForTomorrow(rows, tomorrow, lookup, { restToday = false, loa
     if (!out.some(r => /foam roll/i.test(r.name)) && lookup(FOAM_ROLL)) {
       out.unshift({ name: FOAM_ROLL, orig_name: FOAM_ROLL, sets: [], target_sets: 1, target_reps: '', time: '5:00', recover_add: true,
         notes: roll.length
-          ? `Recovery from yesterday: most of the time on your ${roll.join(', ')} (about 60s each), then a quick pass on the rest. Slow, breathe, no grinding on sore spots.`
-          : 'Quads, glutes, calves, lats, upper back: about 30-60s each. Slow passes, breathe.' });
+          ? `Recovery from yesterday: most of the time on your ${roll.join(', ')} (about 60s each), then a quick pass on the rest. Slow, breathe, no grinding on sore spots. ${LAX}`
+          : `Quads, glutes, calves, lats, upper back: about 30-60s each. Slow passes, breathe. ${LAX}` });
     }
     // After a big day, standing split-stance work loads the legs you're recovering: PJF's recovery day does its
     // rotation on the floor instead (Rolling Arm Bar w/ Screwdriver Rotation, from Recovery + Correctives).

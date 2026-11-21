@@ -29,7 +29,8 @@ the stand-in sentence from the note.
 
 **Daily Mobility** (`data/build_daily_mobility.py`, `NEW`; the user's own reels should cover them, see §1):
 No stand-ins left. Knee Circles, Standing Hip Internal/External Lifts and Squat to Hamstring Stretch play
-YouTube demos since 2026-11-12 (v151) until their reel links come in; Knee Pull Heel Bridge plays the user's
+YouTube demos since 2026-11-12 (v151). Optional: swap in the user's own reel links if they send them (every
+catalog exercise has a video; only Basketball, the game, has none); Knee Pull Heel Bridge plays the user's
 YouTube pick (v153); Quadruped Swing Throughs plays its reel.
 
 **HoopStudy 8-Week**: done 2026-11-12 (v152). The 13 moves only this program uses play HoopStudy's own
@@ -81,8 +82,8 @@ Done 2026-11-12: every branch except `main` is deleted (the user OK'd the two un
 
 ## 7. Plan builder: still to do *(decide with the user)*
 
-- **Other sports.** Sports days are basketball only (`sport: { name, days }` in the generator is ready for more:
-  each needs its impact profile and a label on game days).
+- **Other sports: not needed.** The user only plays basketball (2026-11-21: "basketball and agility or strength in
+  addition to my core stuff"). `sport: { name, days }` stays ready if that changes.
 
 ## 8. FitKidHooper: In-Season Hooper program
 

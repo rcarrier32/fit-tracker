@@ -32,7 +32,6 @@ before pushing; it fails if any copy has drifted.
 **Start with [`docs/TODO.md`](docs/TODO.md)**: everything a cloud session couldn't finish, each with
 what to run and how to check it. Most of it needs a session on the user's own computer (Facebook
 login, YouTube access, API keys):
-- reel links for Knee Circles, Standing Hip Internal/External Lifts and Squat to Hamstring Stretch (the user
-  sends them; they play YouTube demos until then)
+- optional: the user's own reel links for Knee Circles, Standing Hip IR/ER Lifts and Squat to Hamstring Stretch
+  (they already play YouTube demos; every exercise has a video)
 - the optional weekly AI check-in (decide with the user first)
-- plan builder sports other than basketball (decide with the user)
