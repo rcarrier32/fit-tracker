@@ -114,6 +114,12 @@ research in [research/Workout plan builder methods.md](research/Workout%20plan%2
 trim accessories, then the finisher, secondaries and cool-down holds, then as last resorts one warm-up round,
 2 sets of jumps and 3 sets on the main lifts; checked again after filling (`OVER_MAX` in `src/lib/generator.js`).
 
+**Alternates know your equipment (v220).** Sources: the plan's own alternatives, BWS's (127 lifts, 524 alternates, every
+gym lift has a home one), PJF's (27 moves), Griffith's levels (harder/easier), then the same movement and main muscle.
+The swap list shows only what your home kit covers (Plans → Generate equipment) unless "Going to the gym today?" is on,
+and says how many gym-only options it hid. A plan row your kit can't do is swapped when today's session starts
+(`applyHomeKit` in `src/lib/gym_swap.js`, same order as above), with a note; the gym toggle puts it back.
+
 **Session size:** 6-8 exercises fit 60 min. For 45 min, use 5-6. For 30 min, use 5 exercises,
 mostly supersets, and cut isolation first (BWS express versions drop about 25% of sets).
 This counts **working lifts**. Prep and mobility drills (1-2 sets, a minute each) are counted apart, the way

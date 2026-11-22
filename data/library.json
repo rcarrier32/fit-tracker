@@ -16493,6 +16493,62 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "lean-single-arm-dumbbell-overhead-extension",
+      "name": "Single-Arm Dumbbell Overhead Extension",
+      "video_url": "https://youtu.be/_w3ggqafzqU",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single-Arm+Dumbbell+Overhead+Extension+form",
+      "cues": [
+        "Standing or seated, one dumbbell overhead, upper arm by your ear, other hand supporting the elbow if you like.",
+        "Lower the dumbbell behind your head until the elbow is fully bent, then straighten. The upper arm stays still.",
+        "Ribs down, no arching. 10-12 each arm."
+      ],
+      "primary_muscle": "triceps",
+      "muscles": [
+        "triceps"
+      ],
+      "pattern": "isolation_upper",
+      "role": "accessory",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": false
+    },
+    {
+      "id": "lean-seated-dumbbell-overhead-extension",
+      "name": "Seated Dumbbell Overhead Extension",
+      "video_url": "https://youtu.be/whmm-eStKws",
+      "sources": [
+        "lean"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Seated+Dumbbell+Overhead+Extension+form",
+      "cues": [
+        "Sit tall on a bench or chair, both hands cupping one dumbbell overhead.",
+        "Lower it behind your head with the elbows pointing up, then press back up. Elbows stay narrow.",
+        "Back supported if your low back arches. 10-12 reps."
+      ],
+      "primary_muscle": "triceps",
+      "muscles": [
+        "triceps"
+      ],
+      "pattern": "isolation_upper",
+      "role": "accessory",
+      "equipment": [
+        "dumbbell"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -58096,6 +58152,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",
@@ -59274,6 +59332,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",
@@ -60459,6 +60519,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",
@@ -61648,6 +61710,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",
@@ -62790,6 +62854,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",
@@ -63942,6 +64008,8 @@
                     "rest": "0-15s",
                     "notes": "Go straight into the next exercise; rest after the last one in the superset.",
                     "alternates": [
+                      "Single-Arm Dumbbell Overhead Extension",
+                      "Seated Dumbbell Overhead Extension",
                       "Incline Dumbbell Kickback",
                       "Tricep Extension (Optional)",
                       "Single Arm Tricep Extension (Optional)",

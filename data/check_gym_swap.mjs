@@ -1,6 +1,6 @@
 /** Checks src/lib/gym_swap.js on the real catalog and Lean & Tone. `node data/check_gym_swap.mjs` */
 import { readFileSync } from 'fs';
-import { applyGymDay, isStandIn, GYM_DEFAULT } from '../src/lib/gym_swap.js';
+import { applyGymDay, isStandIn, GYM_DEFAULT, applyHomeKit, fitsKit } from '../src/lib/gym_swap.js';
 
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
@@ -58,5 +58,27 @@ ok('respects the gym\'s equipment', small.rows.every(x => (lookup(x.name).equipm
 // Applying twice changes nothing more.
 ok('idempotent', applyGymDay(on.rows, true, lookup, exercises, { learned }).swaps.length === 0);
 
+// Home swap (v220): a gym-heavy BWS day at home ends up doable with the home kit, same movement.
+const HOME = new Set(['bodyweight', 'dumbbell', 'bench', 'band', 'mini_band', 'foam_roller']);
+const bwsProg = Object.values(lib.programs).flat().find(p => p && /^bws_4day/.test(p.id));
+let hs = 0, unfit = 0, sameMove = 0;
+for (const d of (bwsProg.weeks ? bwsProg.weeks[0].days : bwsProg.days)) {
+  const rows = d.exercises.filter(x => !x.is_alternate).map(x => ({ name: x.name, orig_name: x.name, notes: null, sets: [], alternates: x.alternates || null }));
+  const r = applyHomeKit(rows, lookup, exercises, { kit: HOME, learned });
+  hs += r.swaps.length;
+  for (const x of r.rows) {
+    const e = lookup(x.name);
+    if (e && !fitsKit(e, HOME)) unfit++;
+    if (x.home_swap && lookup(x.home_swap.from)?.primary_muscle === e?.primary_muscle) sameMove++;
+  }
+  const back = applyHomeKit(r.rows, lookup, exercises, { on: false });
+  ok(`BWS ${d.focus || d.day_name}: undo puts the plan back`, back.rows.every((x, i) => x.name === rows[i].name));
+}
+ok(`BWS 4-day at home: ${hs} swaps, every row doable with the home kit`, hs > 0 && unfit === 0, `${unfit} left needing gym kit`);
+ok('home swaps keep the main muscle', sameMove === hs, `${sameMove}/${hs}`);
+const fav = applyHomeKit([{ name: 'Cable Pushdowns', sets: [] }], lookup, exercises, { kit: HOME, favorites: ['Cable Pushdowns'] });
+ok('a ♥ favourite is never home-swapped', fav.swaps.length === 0);
+const lt = applyHomeKit(rowsOf(lean.weeks[0].days[0]), lookup, exercises, { kit: new Set([...HOME, 'kettlebell', 'box', 'slider', 'bosu_pad', 'med_ball']) });
+ok('Lean & Tone (built for home) needs no home swaps', lt.swaps.length === 0, JSON.stringify(lt.swaps));
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

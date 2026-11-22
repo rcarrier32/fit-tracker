@@ -8795,6 +8795,22 @@
    "plane": "sagittal",
    "hip_focus": true
   },
+  "lean-seated-dumbbell-overhead-extension": {
+   "name": "Seated Dumbbell Overhead Extension",
+   "primary_muscle": "triceps",
+   "muscles": [
+    "triceps"
+   ],
+   "pattern": "isolation_upper",
+   "role": "accessory",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
   "lean-single-arm-banded-lat-pulldown": {
    "name": "Single-Arm Banded Lat Pulldown",
    "primary_muscle": "lats",
@@ -8807,6 +8823,22 @@
    "role": "secondary",
    "equipment": [
     "band"
+   ],
+   "level": 1,
+   "unilateral": true,
+   "plane": "sagittal",
+   "hip_focus": false
+  },
+  "lean-single-arm-dumbbell-overhead-extension": {
+   "name": "Single-Arm Dumbbell Overhead Extension",
+   "primary_muscle": "triceps",
+   "muscles": [
+    "triceps"
+   ],
+   "pattern": "isolation_upper",
+   "role": "accessory",
+   "equipment": [
+    "dumbbell"
    ],
    "level": 1,
    "unilateral": true,

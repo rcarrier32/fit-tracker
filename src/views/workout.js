@@ -7,7 +7,7 @@ import { nextTarget, deloadAdvice, repRange, weightStep } from '../lib/adapt.js'
 import { learnProfile } from '../lib/learn.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, isGameLabel, mergeHipWarmup } from '../lib/daily_adjust.js';
 import { isFav, toggleFav, favorites } from '../lib/favorites.js';
-import { applyGymDay, isStandIn, GYM_DEFAULT } from '../lib/gym_swap.js';
+import { applyGymDay, isStandIn, GYM_DEFAULT, applyHomeKit } from '../lib/gym_swap.js';
 import { toast, openSheet, navigate } from '../app.js';
 import { todaysWorkout, dailyWorkout, advanceCursor, retreatCursor, allowNextWorkoutToday, clearNextWorkoutToday, programName, positionLabel } from './schedule.js';
 import { loadCatalogs, isHeaderRow } from '../lib/static_data.js';
@@ -392,6 +392,16 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     };
     if (mergedDay) session.merged_day = mergedDay;
     if (afterGame) session.after_game = true;
+    // Home swap (v220): a row your home equipment can't do becomes the first alternate you can (the plan's,
+    // BWS's, PJF's, then the same movement). A gym day undoes it.
+    if (!today_w.daily && !session.gym_day) {
+      const cat = await loadCatalogs();
+      const kitH = new Set(['bodyweight', ...((await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band', 'foam_roller'])]);
+      const hk = applyHomeKit(session.exercises, (n) => cat.exerciseByName.get(String(n).toLowerCase()), cat.exercises,
+        { kit: kitH, providerAlts: (n) => localFor(n)?.alts || [], favorites: favorites() });
+      session.exercises = hk.rows;
+      if (hk.swaps.length) gameNotes.push(`Home swap: ${hk.swaps.map(x => `${x.from} → ${x.to}`).join(', ')} (your equipment).`);
+    }
     if (gameNotes.length) session.adjust_note = gameNotes.join(' ');
     // Daily Mobility adjusts for yesterday's training (src/lib/daily_adjust.js): no pogos after jumps
     // or heavy legs, one more set of the holds for what was worked. Decided once, when today's session starts.
@@ -557,7 +567,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     ${dayInfoHtml(program, dayData)}
     ${_deload ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px;border-color:var(--accent)">🔄 ${_deload}</div>` : ''}
     ${session.adjust_note ? `<div class="card" style="margin:10px 0;padding:10px 12px;font-size:13px">↺ ${esc(session.adjust_note)}</div>` : ''}
-    ${!today_w.daily && (session.gym_day || session.exercises.some(x => isStandIn(exMap[String(x.name).toLowerCase()]))) ? `
+    ${!today_w.daily && (session.gym_day || session.exercises.some(x => x.home_swap || isStandIn(exMap[String(x.name).toLowerCase()]))) ? `
     <div style="display:flex;align-items:center;gap:8px;margin:10px 0">
       <button class="pill ${session.gym_day ? 'accent' : ''}" id="gym-toggle" style="cursor:pointer;padding:8px 14px;font-size:14px">🏋 ${session.gym_day ? 'At the gym today' : 'Going to the gym today?'}</button>
       <button class="pill" id="gym-kit" style="cursor:pointer;padding:8px 10px" aria-label="Gym equipment">⚙</button>
@@ -1230,9 +1240,12 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     const on = !session.gym_day;
     const [gym, learned] = await Promise.all([pref('gym_equipment'), _loadLearned()]);
     const lookup = (n) => exMap[String(n).toLowerCase()];
-    const { rows, swaps } = applyGymDay(session.exercises, on, lookup, allExercises,
+    const kitH = new Set(['bodyweight', ...((await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band', 'foam_roller'])]);
+    let base = on ? applyHomeKit(session.exercises, lookup, allExercises, { on: false }).rows : session.exercises;   // the plan's moves first
+    const { rows, swaps } = applyGymDay(base, on, lookup, allExercises,
       { gym: gym || GYM_DEFAULT, learned, favorites: favorites(), avoid: _profile?.avoid || [] });
-    session.exercises = rows;
+    session.exercises = on ? rows : applyHomeKit(rows, lookup, allExercises,
+      { kit: kitH, providerAlts: (n) => localFor(n)?.alts || [], favorites: favorites(), learned }).rows;
     session.gym_day = on || undefined;
     await saveSession(session);
     const real = swaps.filter(x => x.from !== x.to);
@@ -1634,10 +1647,15 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
           : primaryMuscle ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name) : [];
         const similarExercises = similarAll.filter(fits);
         const bwsFit = bwsAlts.filter(n => fits(exMap[n.toLowerCase()]));
-        const hiddenGym = (bwsAlts.length - bwsFit.length) + (similarAll.length - similarExercises.length);
-        const planSection = planAlts.length ? `
+        // PJF's own alternates (v220): shown with BWS's, same kit filter.
+        const pjfAll = (localFor(ex.name)?.alts || []).filter(n => n !== ex.name && exMap[n.toLowerCase()] && !bwsAlts.includes(n));
+        const pjfFit = pjfAll.filter(n => fits(exMap[n.toLowerCase()]));
+        const planFit = planAlts.filter(n => n === ex.orig_name || fits(exMap[n.toLowerCase()]));
+        const hiddenGym = (bwsAlts.length - bwsFit.length) + (pjfAll.length - pjfFit.length) + (planAlts.length - planFit.length)
+          + (similarAll.length - similarExercises.length);
+        const planSection = planFit.length ? `
           <div class="group-label" style="margin:0 0 6px">Plan alternatives</div>
-          ${planAlts.map(name => {
+          ${planFit.map(name => {
             const alt = exMap[name.toLowerCase()];
             return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
@@ -1655,6 +1673,17 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
               <div style="flex:1">
                 <div class="list-item-title">${name}</div>
                 <div class="list-item-meta">${muscle}${alt?.video_url ? ' · ▶' : ''}</div>
+              </div>
+            </div>`;
+          }).join('')}` : '';
+        const pjfSection = pjfFit.length ? `
+          <div class="group-label" style="margin:12px 0 6px">PJF alternates</div>
+          ${pjfFit.map(name => {
+            const alt = exMap[name.toLowerCase()];
+            return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
+              <div style="flex:1">
+                <div class="list-item-title">${name}</div>
+                <div class="list-item-meta" style="text-transform:capitalize">${alt?.pattern ? tagLine(alt) : ''}${hasVideo(alt) ? ' · ▶' : ''}</div>
               </div>
             </div>`;
           }).join('')}` : '';
@@ -1687,6 +1716,7 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
           ${planSection}
           ${levelSection}
           ${bwsSection}
+          ${pjfSection}
           ${similarSection}
           ${hiddenGym ? `<div class="muted" style="font-size:12px;margin:8px 0">${hiddenGym} gym-only option${hiddenGym === 1 ? '' : 's'} hidden at home: tap "🏋 Going to the gym today?" to see them.</div>` : ''}
           <div class="group-label" style="margin:12px 0 6px">Any exercise</div>

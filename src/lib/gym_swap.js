@@ -110,3 +110,60 @@ export function applyGymDay(rows, on, lookup, catalog, opts = {}) {
   }
   return { rows: out, swaps };
 }
+
+const KIT_WORD = { cable: 'a cable', machine: 'a machine', barbell: 'a barbell', smith: 'a Smith machine', trap_bar: 'a trap bar',
+  landmine: 'a landmine', pullup_bar: 'a pull-up bar', sled: 'a sled', suspension: 'TRX straps', pool: 'a pool', bike: 'a bike',
+  agility_ladder: 'an agility ladder', kettlebell: 'a kettlebell', box: 'a box', bench: 'a bench', med_ball: 'a med ball',
+  bosu_pad: 'a BOSU or pad', slider: 'sliders', foam_roller: 'a foam roller', dumbbell: 'dumbbells', band: 'a band', mini_band: 'a mini band' };
+/** Does this catalog entry fit the kit? */
+export const fitsKit = (e, kit) => !!e && (e.equipment || ['bodyweight']).every(q => q === 'bodyweight' || kit.has(q));
+
+/**
+ * v220, the other way round from the gym swap: at home, a plan row your equipment can't do becomes the first
+ * alternate you can: the plan's own alternatives, then BWS's, then PJF's, then the same movement and main muscle
+ * (dumbbells first, at most one level harder, a video). Never swapped: rows with a set logged, ♥ favourites,
+ * required moves. Undo: { on: false } puts the plan's moves back (for a gym day).
+ * @param opts { kit: Set, on: true|false, providerAlts: (name) => names[], favorites, learned }
+ */
+export function applyHomeKit(rows, lookup, catalog, opts = {}) {
+  const kit = opts.kit || new Set(['bodyweight']);
+  const logged = (x) => (x.sets || []).some(s => s?.done);
+  const out = rows.map(x => ({ ...x }));
+  const swaps = [];
+  if (opts.on === false) {
+    for (const x of out) if (x.home_swap && !logged(x)) {
+      swaps.push({ from: x.name, to: x.home_swap.from });
+      x.name = x.home_swap.from; x.notes = x.home_swap.notes ?? null; x.swapped = x.home_swap.wasSwapped || undefined;
+      delete x.home_swap;
+    }
+    return { rows: out, swaps };
+  }
+  const favs = new Set(opts.favorites || []);
+  const used = new Set(out.map(x => x.name));
+  for (const x of out) {
+    if (x.home_swap || x.gym_swap || logged(x) || favs.has(x.name) || REQUIRED.test(x.name)) continue;
+    const e = lookup(x.name);
+    if (!e || fitsKit(e, kit) || /cooldown/i.test(x.round_group || '')) continue;
+    const named = [...(x.alternates || []), ...(e.bws_alternates || []), ...((opts.providerAlts && opts.providerAlts(x.name)) || [])];
+    let best = named.map(n => lookup(n)).find(c => c && c.name !== x.name && !used.has(c.name) && fitsKit(c, kit) && (c.video_url || c.video));
+    if (!best) {
+      best = catalog.filter(c => c.name !== e.name && !used.has(c.name) && (c.video_url || c.video) && !c.video_standin
+          && c.pattern === e.pattern && c.primary_muscle === e.primary_muscle && fitsKit(c, kit)
+          && (c.level || 2) <= (e.level || 2) + 1 && !/last resort/i.test(c.name))
+        .map(c => [coachShare(opts.learned, c.name) * 3 + (favs.has(c.name) ? 2 : 0) + ((c.equipment || []).includes('dumbbell') ? 2 : 0)
+          + (!!c.unilateral === !!e.unilateral ? 0.5 : 0) + (c.role === e.role ? 0.5 : 0) + 1.5 * shared(e.name, c.name) - (COMBO.test(c.name) ? 2 : 0), c])
+        .sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name))[0]?.[1];
+    }
+    if (!best) continue;
+    const need = (e.equipment || []).filter(q => q !== 'bodyweight' && !kit.has(q)).map(q => KIT_WORD[q] || q.replace(/_/g, ' '));
+    x.home_swap = { from: x.name, notes: x.notes ?? null, wasSwapped: !!x.swapped };
+    swaps.push({ from: x.name, to: best.name });
+    used.add(best.name);
+    x.name = best.name;
+    x.swapped = true;
+    x.notes = `Home swap: ${x.home_swap.from} needs ${need.join(' and ') || 'gym equipment'} → ${best.name}, same sets and reps. "Going to the gym today?" puts it back.`
+      + (x.home_swap.notes ? ` ${x.home_swap.notes}` : '');
+  }
+  return { rows: out, swaps };
+}
+

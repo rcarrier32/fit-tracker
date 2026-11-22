@@ -96,6 +96,21 @@ _kb['cues'] = ['Chest on a bench set at 45-60°, a dumbbell in each hand, upper 
                'Straighten the elbows until the arms point back, squeeze 1 s, lower slowly. Only the forearms move.',
                'Built With Science: start lighter than you think; the stretched long head does the work.']
 KNOWN.add('incline dumbbell kickback')
+# The user's ask (2026-11-22): dumbbell overhead extensions, single arm standing or seated, and the two-hand seated one.
+for _n, _yt, _t, _cues in [
+    ('Single-Arm Dumbbell Overhead Extension', '_w3ggqafzqU', {'unilateral': True},
+     ['Standing or seated, one dumbbell overhead, upper arm by your ear, other hand supporting the elbow if you like.',
+      'Lower the dumbbell behind your head until the elbow is fully bent, then straighten. The upper arm stays still.',
+      'Ribs down, no arching. 10-12 each arm.']),
+    ('Seated Dumbbell Overhead Extension', 'whmm-eStKws', {'unilateral': False},
+     ['Sit tall on a bench or chair, both hands cupping one dumbbell overhead.',
+      'Lower it behind your head with the elbows pointing up, then press back up. Elbows stay narrow.',
+      'Back supported if your low back arches. 10-12 reps.'])]:
+    _e = lib.ensure_exercise(_n, 'lean', tags={'primary_muscle': 'triceps', 'muscles': ['triceps'], 'pattern': 'isolation_upper',
+        'role': 'accessory', 'equipment': ['dumbbell'], 'level': 1, 'plane': 'sagittal', 'hip_focus': False, **_t})
+    _e['video_url'] = f'https://youtu.be/{_yt}'
+    _e['cues'] = _cues
+    KNOWN.add(_n.lower())
 
 ALTS = {
     'Dumbbell Goblet Squat': ['Banded March With Goblet Squat', 'Heel Elevated Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
@@ -128,7 +143,7 @@ ALTS = {
     'Weighted Hip Airplane': ['Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds', 'Hip Airplane (No Support)'],
     'Arnold Press': ['Standing Dumbbell Shoulder Press', 'Seated Dumbbell Shoulder Press'],
     'Hammer Curls': ['Seated Dumbbell Curls', 'Incline Dumbbell Curls', 'Bicep Curl'],
-    'Incline DB Overhead Extensions': ['Incline Dumbbell Kickback', 'Tricep Extension (Optional)', 'Single Arm Tricep Extension (Optional)', 'Close-Grip Dumbbell Press', 'Towel Tricep Extension', 'Close-Grip Push-Ups', 'Tricep Extension'],
+    'Incline DB Overhead Extensions': ['Single-Arm Dumbbell Overhead Extension', 'Seated Dumbbell Overhead Extension', 'Incline Dumbbell Kickback', 'Tricep Extension (Optional)', 'Single Arm Tricep Extension (Optional)', 'Close-Grip Dumbbell Press', 'Towel Tricep Extension', 'Close-Grip Push-Ups', 'Tricep Extension'],
     'Zone 4 Workout': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Sprint 10s/Jog 20s/Walk 40s'],
     'Hip Flexor Length Under Load': ['Half-Kneeling Hip Flexor Stretch', 'Optional Static Stretch'],
     'Lateral Lunge Length Under Load': ['Optional Adductor Stretch Progressions', 'Wide Stance Length Under Load'],
