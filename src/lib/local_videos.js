@@ -44,7 +44,7 @@ function index(sources) {
     for (const o of Object.values(videos)) {
       if (!o?.name || _byName.has(vkey(o.name))) continue;
       _byName.set(vkey(o.name), {
-        v: o.v || null, url: o.url || null, yt: o.yt || null, source: src, name: o.name,
+        v: o.v || null, url: o.url || null, yt: o.yt || null, yt_backup: o.yt_backup || null, source: src, name: o.name,
         notes: o.notes || [],
         alts: (o.alts || []).map(s => videos[s]?.name).filter(Boolean),
         tags: o.tags || null,

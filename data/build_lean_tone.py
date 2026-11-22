@@ -86,24 +86,35 @@ for n, (yt, t) in HOME_ALTS.items():
     e['video_url'] = f'https://youtu.be/{yt}'
 KNOWN |= {n.lower() for n in HOME_ALTS}
 
+# v219: Built With Science's chest-supported dumbbell kickback (their "dumbbell only" triceps video, from 2:58), a
+# home option for the triceps slot.
+_kb = lib.ensure_exercise('Incline Dumbbell Kickback', 'lean', tags={'primary_muscle': 'triceps', 'muscles': ['triceps'],
+    'pattern': 'isolation_upper', 'role': 'accessory', 'equipment': ['dumbbell', 'bench'], 'level': 1, 'unilateral': False,
+    'plane': 'sagittal', 'hip_focus': False})
+_kb['video_url'] = 'https://youtu.be/WOW6zPhqKKI?t=178'
+_kb['cues'] = ['Chest on a bench set at 45-60°, a dumbbell in each hand, upper arms pinned by your sides.',
+               'Straighten the elbows until the arms point back, squeeze 1 s, lower slowly. Only the forearms move.',
+               'Built With Science: start lighter than you think; the stretched long head does the work.']
+KNOWN.add('incline dumbbell kickback')
+
 ALTS = {
-    'Dumbbell Goblet Squat': ['Heel Elevated Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
+    'Dumbbell Goblet Squat': ['Banded March With Goblet Squat', 'Heel Elevated Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
     'Heel Elevated Goblet Squat': ['Dumbbell Goblet Squat', 'Dumbbell Sumo Squat', '1¼ Goblet Squat'],
-    'Dumbbell Bench Press': ['Incline Alternating Arms Dumbbell Press', 'Low Incline Dumbbell Press', 'Neutral Grip DB Press', 'Push Ups', 'Band Resisted Push Up'],
+    'Dumbbell Bench Press': ['Incline Dumbbell Chest Press', 'Incline Alternating Arms Dumbbell Press', 'Low Incline Dumbbell Press', 'Neutral Grip DB Press', 'Push Ups', 'Band Resisted Push Up'],
     'Dumbbell Romanian Deadlift': ['Single-Leg RDL with Kettlebell', 'Staggered Stance RDL w/ Same Side Load', 'B-Stance RDL', 'Kickstand RDL'],
     'Chest Supported DB Row (lat focus)': ['Birddog Dumbbell Row', '3 Point Dumbbell Row', 'DB Chest Supported Row (mid/upper back)', 'Bent Over 1 Arm Row'],
-    'Reverse Lunges': ['Reverse Step Back Lunge', 'Slider Lunge', 'Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
+    'Reverse Lunges': ['Lunge To Step Up', 'Reverse Step Back Lunge', 'Slider Lunge', 'Curtsy Lunge', 'Deficit Reverse Lunge', 'Front Foot Elevated Reverse Lunge', 'Walking Lunges (quad focus)'],
     'Curtsy Lunge': ['Reverse Lunges', 'Deficit Reverse Lunge', 'Dumbbell Lateral Lunge'],
     'Standing Dumbbell Shoulder Press': ['Arnold Press', 'Seated Dumbbell Shoulder Press', 'Shoulder Press'],
-    'Palloff Press': ['Kneeling Dumbbell Diagonal Chop', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press', 'Anti Rotation ABC\'s'],
+    'Palloff Press': ['Suitcase Carry', 'Kneeling Dumbbell Diagonal Chop', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press', "Anti Rotation ABC\\'s"],
     'Copenhagen Side Plank (Knee)': ['Copenhagen Side Plank (Long Lever)', 'Side Plank with Top-Leg Raise'],
     'Copenhagen Side Plank (Long Lever)': ['Copenhagen Side Plank (Knee)', 'Side Plank with Top-Leg Raise'],
     'Sprint 10s/Jog 20s/Walk 40s': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Zone 4 Workout'],
-    'Weighted Step-Ups': ['Weighted Step Up with Leg Raise', 'Weighted Side Step-Ups', 'High Box Step Up', 'Lateral Step-Down'],
+    'Weighted Step-Ups': ['Lunge To Step Up', 'Weighted Step Up with Leg Raise', 'Weighted Side Step-Ups', 'High Box Step Up', 'Lateral Step-Down'],
     '3 Point Dumbbell Row': ['Birddog Dumbbell Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)', 'DB Split Stance Row', 'Bent Over 1 Arm Row'],
     'Single-Leg RDL with Kettlebell': ['Single-Leg RDL to Knee Drive', 'Kickstand RDL', 'Dumbbell Romanian Deadlift'],
     'Single-Leg RDL to Knee Drive': ['Single-Leg RDL with Kettlebell', 'Kickstand RDL', 'Dumbbell Romanian Deadlift'],
-    'Low Incline Dumbbell Press': ['Incline Alternating Arms Dumbbell Press', 'Dumbbell Bench Press', 'Neutral Grip DB Press', 'Push Ups'],
+    'Low Incline Dumbbell Press': ['Incline Dumbbell Chest Press', 'Incline Alternating Arms Dumbbell Press', 'Dumbbell Bench Press', 'Neutral Grip DB Press', 'Push Ups'],
     'Single-Leg Hip Thrust': ['Dumbbell Hip Thrust', 'Single-Leg Glute Bridge', 'Dumbbell Glute Bridge'],
     'Dumbbell Lateral Raise': ['Lean In Lateral Raise', 'Lateral Raise'],
     'Dead Bug': ['Bird Dog with Ankle Weight or Band', 'RKC Plank'],
@@ -117,7 +128,7 @@ ALTS = {
     'Weighted Hip Airplane': ['Single-Leg Balance on BOSU / Pad + Weight Pass-Arounds', 'Hip Airplane (No Support)'],
     'Arnold Press': ['Standing Dumbbell Shoulder Press', 'Seated Dumbbell Shoulder Press'],
     'Hammer Curls': ['Seated Dumbbell Curls', 'Incline Dumbbell Curls', 'Bicep Curl'],
-    'Incline DB Overhead Extensions': ['Tricep Extension', 'Close-Grip Push-Ups'],
+    'Incline DB Overhead Extensions': ['Incline Dumbbell Kickback', 'Tricep Extension (Optional)', 'Single Arm Tricep Extension (Optional)', 'Close-Grip Dumbbell Press', 'Towel Tricep Extension', 'Close-Grip Push-Ups', 'Tricep Extension'],
     'Zone 4 Workout': ['Outdoor Sprint Intervals', 'Bike Intervals', 'Sprint 10s/Jog 20s/Walk 40s'],
     'Hip Flexor Length Under Load': ['Half-Kneeling Hip Flexor Stretch', 'Optional Static Stretch'],
     'Lateral Lunge Length Under Load': ['Optional Adductor Stretch Progressions', 'Wide Stance Length Under Load'],
@@ -132,7 +143,7 @@ ALTS = {
     'Mini Band Monster Walk': ['Resistance Band Side Steps'],
     'Band Pull-Aparts': ['Bent Over Dumbbell Face Pulls', 'Band Pull Apart'],
     'Dumbbell Sumo Squat': ['Kettlebell Swing', 'Dumbbell Goblet Squat', '1¼ Goblet Squat'],
-    'Band Pullover': ['Banded Lat Pulldown', 'Single-Arm Banded Lat Pulldown', 'Bent Over 1 Arm Row'],
+    'Band Pullover': ['Birddog Dumbbell Row', 'Banded Lat Pulldown', 'Single-Arm Banded Lat Pulldown', 'Bent Over 1 Arm Row'],
     'Banded Lat Pulldown': ['Single-Arm Banded Lat Pulldown', 'Band Pullover'],
     'Single-Arm Banded Lat Pulldown': ['Banded Lat Pulldown', 'Band Pullover'],
     'Lateral Bounds': ['Lateral Hops', 'Double Lateral Extensive Hops', 'Mutli-direction Bounds'],
@@ -145,8 +156,8 @@ ALTS = {
     'Banded Bridge Hold Abductions': ['Glute Bridge Hold', 'Banded Glute Bridge'],
     'Single-Leg Hip Thrust Hold': ['Glute Bridge Hold', 'Single-Leg Hip Thrust'],
     'Squat Hold': ['Dumbbell Sumo Squat', 'Dumbbell Goblet Squat'],
-    'Slider Hamstring Curl': ['Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
-    'Single-Leg Slider Hamstring Curl': ['Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
+    'Slider Hamstring Curl': ['Dumbbell Hamstring Curl', 'Single-Leg Slider Hamstring Curl', 'Dumbbell Lying Leg Curls', 'Single-Leg Hip Thrust'],
+    'Single-Leg Slider Hamstring Curl': ['Dumbbell Hamstring Curl', 'Slider Hamstring Curl', 'Dumbbell Lying Leg Curls'],
     'Kettlebell Swing': ['Med Ball Slam', 'Penultimate Box Jumps (Optional)', 'KB Swing + Box Jump Contrast', 'Single-Leg RDL with Kettlebell'],
     'Med Ball Slam': ['Kettlebell Swing', 'Penultimate Box Jumps (Optional)', 'MB Rapid Lateral Toss'],
     'MB Rapid Lateral Toss': ['Med Ball Slam'],
@@ -163,8 +174,8 @@ ALTS = {
     'Single Leg Kettlebell Swing': ['Kettlebell Swing', 'Explosive Step Up', 'Med Ball Slam'],
     'Kettlebell Loaded Hip Flexor Lift': ['Banded Hip Flexion Using A Medicine Ball', 'Standing Hip Flexion Supported With ISO Hold'],
     'Banded Hip Flexion Using A Medicine Ball': ['Kettlebell Loaded Hip Flexor Lift', 'Standing Hip Flexion Supported With ISO Hold'],
-    'Dumbbell Row From Single Leg': ['Contralateral Single Leg Row', 'Birddog Dumbbell Row', '3 Point Dumbbell Row'],
-    'Contralateral Single Leg Row': ['Dumbbell Row From Single Leg', 'Birddog Dumbbell Row', 'DB Split Stance Row'],
+    'Dumbbell Row From Single Leg': ['Single Leg Hinge To Row Combo', 'Contralateral Single Leg Row', 'Birddog Dumbbell Row', '3 Point Dumbbell Row'],
+    'Contralateral Single Leg Row': ['Single Leg Hinge To Row Combo', 'Dumbbell Row From Single Leg', 'Birddog Dumbbell Row', 'DB Split Stance Row'],
     'Birddog Dumbbell Row': ['3 Point Dumbbell Row', 'Contralateral Single Leg Row', 'Dumbbell Row From Single Leg', 'Chest Supported DB Row (lat focus)'],
     'Incline Alternating Arms Dumbbell Press': ['Low Incline Dumbbell Press', 'Dumbbell Bench Press', 'Push Up To Shoulder Airplane'],
     'Kneeling Dumbbell Diagonal Chop': ['Palloff Press', 'Half Kneeling Lateral Bend', 'Core Rotation Pallof Press'],

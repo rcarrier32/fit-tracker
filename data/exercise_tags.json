@@ -6497,6 +6497,24 @@
    "plane": "transverse",
    "hip_focus": true
   },
+  "hiprx-pf-biased-ir-split-squat": {
+   "name": "Biased IR Split Squat",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "quads",
+    "adductors"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
   "hiprx-pm-backward-walk": {
    "name": "Backward Walk",
    "primary_muscle": "full_body",
@@ -8685,6 +8703,23 @@
    "level": 2,
    "unilateral": false,
    "plane": "frontal",
+   "hip_focus": false
+  },
+  "lean-incline-dumbbell-kickback": {
+   "name": "Incline Dumbbell Kickback",
+   "primary_muscle": "triceps",
+   "muscles": [
+    "triceps"
+   ],
+   "pattern": "isolation_upper",
+   "role": "accessory",
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "unilateral": false,
+   "plane": "sagittal",
    "hip_focus": false
   },
   "lean-kettlebell-swing": {
@@ -12146,24 +12181,6 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false
-  },
-  "hiprx-pf-biased-ir-split-squat": {
-   "name": "Biased IR Split Squat",
-   "primary_muscle": "glutes",
-   "muscles": [
-    "glutes",
-    "quads",
-    "adductors"
-   ],
-   "pattern": "lunge_single_leg",
-   "role": "secondary",
-   "equipment": [
-    "dumbbell"
-   ],
-   "level": 2,
-   "unilateral": true,
-   "plane": "transverse",
-   "hip_focus": true
   }
  }
 }

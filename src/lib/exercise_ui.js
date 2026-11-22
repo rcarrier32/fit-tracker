@@ -190,7 +190,7 @@ const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart
 /** The video the sheet plays for ex: { l (provider entry), vid (YouTube id), src (clip key) }. */
 function sheetVideo(ex) {
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
-  if (l?.v || l?.url) return { l, src: videoSrcKey(l), ytBackup: videoOf(ex) };   // YouTube copy for when the stream fails
+  if (l?.v || l?.url) return { l, src: videoSrcKey(l), ytBackup: videoOf(ex) || l.yt_backup || null };   // YouTube copy for when the stream fails
   const vid = l?.yt || videoOf(ex);
   return vid ? { l, vid, src: videoSrcKey({ yt: vid }) } : { l };
 }

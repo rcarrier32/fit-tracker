@@ -475,6 +475,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
   // Hip plan in use: its warm-up IS the workout's warm-up (the plan says to do it before any lift).
   // It replaces the generic warm-up; a program's own warm-up follows it. Checking a move here checks
   // it on the Hip tab too (hip_logs), and the other way round.
+  _homeKit = new Set(['bodyweight', ...((await pref('equipment')) || ['dumbbell', 'bench', 'band', 'mini_band', 'foam_roller'])]);
   const hipLogsAll = (await pref('hip_logs')) || {};
   _hipDone = hipLogsAll[today()] || {};
   // Warm-up ticks belong to this workout. Ticks made elsewhere today (Hip tab, another workout) only
@@ -1324,6 +1325,7 @@ function dayInfoHtml(program, dayData) {
  * then one card per move with its target, ▶ Video and a check-off (no weights to log).
  */
 // Hip warm-up check-offs for today (hip_logs), shared with the Hip tab.
+let _homeKit = null;   // v219: the user's home equipment (Plans → Generate); swap lists show what it covers unless it's a gym day
 let _hipDone = {};
 let _reopenWu = null;   // a warm-up swap's original name: reopen that step after the redraw
 let _wuTag = '';        // which workout the warm-up ticks belong to (program:week:day:index)
@@ -1625,9 +1627,14 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
       close(false);
       openSheet((s2, close2) => {
         // Same movement pattern first, then same main muscle (data/exercise_tags.json).
-        const similarExercises = lookup?.pattern
+        // At home, the lists show what your equipment covers; gym-only moves come back on a gym day (🏋 toggle).
+        const fits = (e) => !!session.gym_day || !_homeKit || (e?.equipment || ['bodyweight']).every(q => _homeKit.has(q));
+        const similarAll = lookup?.pattern
           ? rankSimilar(lookup, allExercises)
           : primaryMuscle ? allExercises.filter(e => e.primary_muscle === primaryMuscle && e.name !== ex.name) : [];
+        const similarExercises = similarAll.filter(fits);
+        const bwsFit = bwsAlts.filter(n => fits(exMap[n.toLowerCase()]));
+        const hiddenGym = (bwsAlts.length - bwsFit.length) + (similarAll.length - similarExercises.length);
         const planSection = planAlts.length ? `
           <div class="group-label" style="margin:0 0 6px">Plan alternatives</div>
           ${planAlts.map(name => {
@@ -1639,9 +1646,9 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
               </div>
             </div>`;
           }).join('')}` : '';
-        const bwsSection = bwsAlts.length ? `
+        const bwsSection = bwsFit.length ? `
           <div class="group-label" style="margin:0 0 6px">BWS alternates</div>
-          ${bwsAlts.map(name => {
+          ${bwsFit.map(name => {
             const alt = exMap[name.toLowerCase()];
             const muscle = alt?.primary_muscle?.replace(/_/g, ' ') || '';
             return `<div class="list-item" data-name="${name.replace(/"/g, '&quot;')}" style="cursor:pointer">
@@ -1663,7 +1670,8 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
           ).join('')}` : '';
         // Moves that progress by variation (Griffith's way) offer the same movement one level easier / harder.
         const lv = (e) => (e?.level ? ` · ${LEVEL_LABEL[e.level]}` : '');
-        const nb = progressesBy(lookup) === 'variation' ? levelNeighbors(lookup, allExercises) : { easier: [], harder: [] };
+        const nb0 = progressesBy(lookup) === 'variation' ? levelNeighbors(lookup, allExercises) : { easier: [], harder: [] };
+        const nb = { easier: nb0.easier.filter(fits), harder: nb0.harder.filter(fits) };
         const stepRow = (e) => `<div class="list-item" data-name="${e.name.replace(/"/g, '&quot;')}" style="cursor:pointer">
               <div style="flex:1">
                 <div class="list-item-title">${e.name}</div>
@@ -1680,6 +1688,7 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
           ${levelSection}
           ${bwsSection}
           ${similarSection}
+          ${hiddenGym ? `<div class="muted" style="font-size:12px;margin:8px 0">${hiddenGym} gym-only option${hiddenGym === 1 ? '' : 's'} hidden at home: tap "🏋 Going to the gym today?" to see them.</div>` : ''}
           <div class="group-label" style="margin:12px 0 6px">Any exercise</div>
           <input type="text" id="ex-filter" placeholder="Search all exercises…" autocomplete="off">
           <div id="ex-filter-results"></div>
