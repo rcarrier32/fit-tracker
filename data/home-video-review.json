@@ -347,7 +347,7 @@
     {
       "id": "home-dumbbell-sumo-squat",
       "name": "Dumbbell Sumo Squat",
-      "approved": "Zt4WwH1Rx_E",
+      "approved": "7BqURseCGSU",
       "candidates": [
         {
           "videoId": "Zt4WwH1Rx_E",
@@ -376,7 +376,8 @@
           "url": "https://youtu.be/7BqURseCGSU",
           "score": 2.39
         }
-      ]
+      ],
+      "note": "2026-11-22: replaced the 11 s leg close-up with Elite Performance's full-body front-on demo (user asked for a better one)."
     },
     {
       "id": "home-dumbbell-glute-bridge",
