@@ -80,7 +80,7 @@ through with the user before building anything: what they'd want from it and whe
 
 Done 2026-11-12: every branch except `main` is deleted (the user OK'd the two unmerged ones).
 
-## 7. Plan builder: still to do *(decide with the user)*
+## 7. Plan builder: nothing left (other sports not needed)
 
 - **Other sports: not needed.** The user only plays basketball (2026-11-21: "basketball and agility or strength in
   addition to my core stuff"). `sport: { name, days }` stays ready if that changes.
