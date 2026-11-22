@@ -99,3 +99,28 @@ export function behindThisWeek(slots, trainId, sessions, today) {
     .reduce((n, s) => n + (s.merged_day ? 2 : 1), 0);
   return Math.max(0, planned - done);
 }
+
+/**
+ * v213: the last two days were light: no finished workout of the plan yesterday, and the one the day before was
+ * under 70% done (or there wasn't one). A rest day then isn't needed for recovery, so Home offers the next workout
+ * (rest stays the default). PJF and BWS keep a rest day as rest after training; this is the case where there
+ * wasn't any. Returns { light: true, done, of } (the day before's sets) or { light: false }.
+ */
+export function lightLately(trainId, sessions, today) {
+  const t = new Date(today + 'T12:00:00');
+  const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const back = (k) => { const d = new Date(t); d.setDate(d.getDate() - k); return ymd(d); };
+  const mine = (date) => (sessions || []).filter(s => s.program_id === trainId && s.date === date && s.done && !s.skipped);
+  if (mine(back(1)).length) return { light: false };
+  const before = mine(back(2));
+  if (!before.length) return { light: true, done: 0, of: 0 };
+  let done = 0, of = 0;
+  for (const s of before) for (const x of s.exercises || []) {
+    if (/cooldown/i.test(x.round_group || '')) continue;
+    const sets = Array.isArray(x.sets) ? x.sets : [];
+    of += Math.max(sets.length, +x.target_sets || 0);
+    done += sets.filter(st => st?.done).length;
+  }
+  return of && done / of < 0.7 ? { light: true, done, of } : { light: false };
+}
+

@@ -13,7 +13,7 @@
  * 'fixed'  mode: always loads the same (week, day) — useful for dedicated mobility/zone-2 days.
  */
 import { pref, getByIndex, getAll } from '../db.js';
-import { flowProgram, flowOf, behindThisWeek } from '../lib/week_flow.js';
+import { flowProgram, flowOf, behindThisWeek, lightLately } from '../lib/week_flow.js';
 import { openSheet, toast } from '../app.js';
 import { loadCatalogs, getAllPrograms, isHeaderRow } from '../lib/static_data.js';
 import { localDateStr } from '../lib/date.js';
@@ -610,21 +610,27 @@ export async function dailyWorkout(id = DAILY_ID) {
  * was missed: the week's training program and its next day, so it can be done today. { programId, name, title } or null.
  * `anyway`: offer it even when not behind (a game day you didn't play is a free day for the next workout).
  */
-export async function catchUpOffer({ anyway = false } = {}) {
+export async function catchUpOffer({ anyway = false, label = null } = {}) {
   const sched = await pref('schedule');
   if (sched?.type !== 'weekly') return null;
   const ids = sched.slots.filter(sl => sl?.program_id && sl.mode === 'follow').map(sl => sl.program_id);
   const id = flowOf(sched.slots)?.train || ids.find(i => i !== DAILY_ID && !/recovery|mobility/i.test(i)) || null;
   const program = await findProgram(id);
   if (!program) return null;
-  // Only when a training day earlier this week was missed: not for working ahead.
-  if (!anyway && !behindThisWeek(sched.slots, program.id, await getAll('sessions'), localDateStr())) return null;
+  // When a training day earlier this week was missed, or (on a rest day, not a game day) the last two days were
+  // light: a half-done workout and nothing since doesn't need a rest day. Not for working ahead otherwise.
+  const all = await getAll('sessions');
+  const behind = behindThisWeek(sched.slots, program.id, all, localDateStr());
+  const lately = !anyway && !behind && label && !/basketball|pickup|game|soccer|tennis|pickleball/i.test(label)
+    ? lightLately(program.id, all, localDateStr()) : { light: false };
+  if (!anyway && !behind && !lately.light) return null;
   const pos = await followPosition(program);
   if (pos.completedAt || pos.doneToday) return null;
   const day = pos.day_index != null ? program.days?.[pos.day_index]
     : program.weeks?.find(w => w.week_num === pos.week)?.days?.find(d => d.day_num === pos.day);
   const title = String(day?.day_name || day?.focus || `Week ${pos.week}, Day ${pos.day}`).split(' · ')[0];
-  return { programId: program.id, name: program.program_name || program.name || program.id, title };
+  return { programId: program.id, name: program.program_name || program.name || program.id, title,
+    ...(lately.light ? { reason: 'light', done: lately.done, of: lately.of } : {}) };
 }
 /** Turn catch-up on (programId) or off (null) for today. */
 export const setCatchUp = (programId) => pref('catch_up', programId ? { date: localDateStr(), program_id: programId } : null);

@@ -1,5 +1,5 @@
 /** Checks src/lib/week_flow.js. `node data/check_week_flow.mjs` */
-import { flowOf, flowProgram, behindThisWeek } from '../src/lib/week_flow.js';
+import { flowOf, flowProgram, behindThisWeek, lightLately } from '../src/lib/week_flow.js';
 let fail = 0;
 const ok = (n, c, x = '') => { if (!c) { fail++; console.log(`✗ ${n} ${x}`); } else console.log(`✓ ${n}`); };
 const P = 'lean_tone_home_6wk', R = 'move30_recovery_mobility';
@@ -69,5 +69,14 @@ ok('Sun: Sat missed → behind', behindThisWeek(bw, P, [L('2026-11-10', 1), L('2
 ok('merged day counts twice', behindThisWeek([REST, B, T, T, T, B, T], P, [L('2026-11-10', 1), L('2026-11-11', 2, 1, )].map((x, i) => i ? { ...x, merged_day: 3 } : x), '2026-11-13') === 0);
 ok('skipped doesn\'t count', behindThisWeek(bw, P, [L('2026-11-10', 1), S('2026-11-11', P, { skipped: true })], '2026-11-13') === 1);
 ok('last week\'s sessions don\'t count', behindThisWeek(bw, P, [L('2026-11-03', 1), L('2026-11-04', 2)], '2026-11-13') === 2);
+// Light lately (v213): a half-done workout Friday, nothing Saturday → Sunday's rest day offers the next workout.
+const half = (date) => ({ ...L(date, 4), exercises: [{ name: 'a', sets: [{ done: true }, { done: true }, { done: false }] }, { name: 'b', sets: [{ done: true }, { done: false }, { done: false }] }] });
+const full = (date) => ({ ...L(date, 4), exercises: [{ name: 'a', sets: [{ done: true }, { done: true }, { done: true }] }] });
+ok('half-done Friday, nothing Saturday → light on Sunday', lightLately(P, [half('2026-11-20')], '2026-11-22').light === true);
+ok('reports the sets', lightLately(P, [half('2026-11-20')], '2026-11-22').done === 3 && lightLately(P, [half('2026-11-20')], '2026-11-22').of === 6);
+ok('full Friday, nothing Saturday → not light', lightLately(P, [full('2026-11-20')], '2026-11-22').light === false);
+ok('trained yesterday → not light', lightLately(P, [half('2026-11-21')], '2026-11-22').light === false);
+ok('nothing for two days → light', lightLately(P, [full('2026-11-19')], '2026-11-22').light === true);
+ok('cool-down rows don\'t count against you', lightLately(P, [{ ...full('2026-11-20'), exercises: [{ name: 'a', sets: [{ done: true }, { done: true }, { done: true }] }, { name: 'c', round_group: 'Cooldown', sets: [{ done: false }, { done: false }] }] }], '2026-11-22').light === false);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

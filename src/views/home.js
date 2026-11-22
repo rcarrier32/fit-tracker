@@ -399,7 +399,7 @@ export async function renderHome(app) {
   const trainStreak = activeStreak(await getAll('sessions'), today());
   const game = today_w.type === 'tag' && today_w.tag === 'Basketball' ? await gameOn() : null;   // the workout starts with the hip warm-up
   // Didn't play: the free day can be the next workout, whether or not a day was missed this week.
-  const catchUp = today_w.type === 'tag' ? await catchUpOffer({ anyway: game?.played === false }) : null;
+  const catchUp = today_w.type === 'tag' ? await catchUpOffer({ anyway: game?.played === false, label: today_w.tag }) : null;
   const wuDone = todaysSessions.some(x => x.program_id === 'basketball_warmup' && x.done && !x.skipped);   // a missed workout can be done today
   // Back after a week or more off: say so, and ease in (adapt.js drops weights to ~90% at 14+ days).
   if (today_w.type === 'program' && !today_w.doneToday) {
@@ -752,6 +752,9 @@ function catchUpRow(c, primary = false) {
   if (primary) return `<button class="btn" data-catch-up="${escH(c.programId)}" style="margin-top:10px">
     ▶ Work out instead: ${escH(c.title)}</button>
     <div class="muted" style="font-size:12px;margin-top:4px;text-align:center">${escH(c.name)} · the next workout in your week</div>`;
+  if (c.reason === 'light') return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" style="margin-top:10px;font-size:13px;text-align:left">
+    ↺ Light couple of days: train instead · ${escH(c.title)}</button>
+    <div class="muted" style="font-size:12px;margin-top:4px">${c.of ? `Last workout ${c.done} of ${c.of} sets, nothing since` : 'No workout the last two days'}: you don't need the rest day. ${escH(c.name)}'s next workout; resting is fine too.</div>`;
   return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" style="margin-top:10px;font-size:13px;text-align:left">
     ↺ Catch up instead: ${escH(c.name)} · ${escH(c.title)}</button>`;
 }
