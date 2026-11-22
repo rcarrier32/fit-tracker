@@ -136,7 +136,7 @@ days = [
         r('Double Leg Functional Calf Raise (Optional)', '15', group='Standing', alts=['Bent Knee Calf Raise (Optional)']),
         r('Resisted Ankle Circles', '10 each way', group='Standing', notes='Each foot. No band needed.'),
         r('Dead Bug', '10', group='Floor', notes='5 slow breaths first, then 10 alternating.'),
-        r('90/90 Hip Opener', time='1:00', group='Floor', notes='5 s hold each way, then 5 slow transitions.', alts=['90/90 Knee Roll']),
+        r('90/90 Hip Opener', time='1:00', group='Floor', notes='5 s hold each way, then 5 slow transitions.', alts=['90/90 Knee Roll', '90/90 Switch (Controlled)', '90/90 Heel Clicks', '90/90 Switch + Hip Thrust', '90/90 Shin Box Get-Up']),
         r('Glute Bridge', '10', sets=2, group='Floor', rest='15s', notes='3 s squeeze at the top.', alts=['Glute Bridge Hold']),
         r("World's Greatest Stretch", '5 each side', group='Lunge & squat', alts=['Half Kneeling Thoracic Rotations']),
         r('Hip Flexor/Quad Bridge', time='45s', sets=2, group='Lunge & squat', notes='Each side. PJF\'s couch stretch.', alts=['Half Kneeling Hip Flexor Stretch']),
@@ -158,7 +158,7 @@ days = [
         r('Posterior Pelvic Tilt Breathing', '10 breaths', sets=2, group='Floor', rest='15s',
           notes='HoopStudy recovery\'s "90/90 lift": lying down, feet on a wall with hips and knees at 90°, slight tuck, slow breaths.',
           alts=['Rock Back Breathing']),
-        r('90/90 Hip Opener', time='1:00', group='Floor', notes='5 s hold each way, then 5 slow transitions.', alts=['90/90 Knee Roll']),
+        r('90/90 Hip Opener', time='1:00', group='Floor', notes='5 s hold each way, then 5 slow transitions.', alts=['90/90 Knee Roll', '90/90 Switch (Controlled)', '90/90 Heel Clicks', '90/90 Switch + Hip Thrust', '90/90 Shin Box Get-Up']),
         r('Glute Bridge Hold', time='25s', sets=2, group='Floor', rest='15s', notes='One leg if you can (Menner\'s single-leg heel bridge hold): each side.', alts=['Glute Bridge']),
         r('Half Kneeling Thoracic Rotations', '5 each side', group='Lunge & squat', alts=["World's Greatest Stretch"]),
         r('Half Kneeling Hip Flexor Stretch', time='45s', sets=2, group='Lunge & squat', notes='Each side, reach the same-side arm overhead.', alts=['Hip Flexor/Quad Bridge']),
@@ -170,8 +170,8 @@ days = [
     day('Daily C · Hips', [
         'About 13 minutes. Your low-back reset, then the hip moves that earn a daily slot (docs/research/notes-daily-mobility/move_review.md): rotation, extension for all the sitting, adductors, hamstrings, balance.',
         'Holds here are for daily range, not before lifting: long holds (60 s+) right before training cost a little power.'], [
-        r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener. Hip rotation is the range most tied to hip and groin trouble.',
-          alts=['90/90 Knee Roll', 'Knee Circles', 'Standing Hip Internal/External Lifts', 'Quadruped Swing Throughs', 'Side Lying Hip Opener']),
+        r('90/90 Hip Opener', time='1:30', group='Rotation', notes='Your 90/90 series: holds and slow transitions; the rotations, swing-through, lift-back, heel clicks and shin-box get-up are under Swap. Hip rotation is the range most tied to hip and groin trouble.',
+          alts=['90/90 Switch (Controlled)', '90/90 Heel Clicks', '90/90 Switch + Hip Thrust', '90/90 Shin Box Get-Up', '90/90 Knee Roll', 'Knee Circles', 'Standing Hip Internal/External Lifts', 'Quadruped Swing Throughs', 'Side Lying Hip Opener']),
         r('Bench Pigeon Rotation', '6 each side', group='Rotation', notes='Your #1 "rotating pigeon" and Proformance\'s bench pigeon: knee out, then up and down-and-in. Turning the hip in is the range that\'s usually short after FAI surgery.',
           alts=['Bench IR Knee Taps', 'Optional Pigeon Length Under Load', 'Banded Incline Pigeon Rotation', 'Standing Bench Hip Rotations with Med Ball', 'Prone Banded Hip IR', 'Hip Flexor + IR Combo']),
         r('Knee Pull Heel Bridge', '5 breaths', sets=2, group='Extension', rest='10s', alts=['Posterior Pelvic Tilt Breathing', 'Banded Hip Distraction Pulling Into Hip Flexion'],

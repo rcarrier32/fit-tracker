@@ -15983,6 +15983,135 @@
       "unilateral": false,
       "plane": "sagittal",
       "hip_focus": false
+    },
+    {
+      "id": "proformance-90-90-switch-controlled",
+      "name": "90/90 Switch (Controlled)",
+      "video_url": "https://youtu.be/x8oCRELbUdg",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Switch+(Controlled)+form",
+      "video_own": true,
+      "cues": [
+        "Sit in 90/90, hands behind you to take pressure off. Turn the front hip to start the switch; the back leg follows.",
+        "Slow, both knees over to the other side, keep the hips down. Her tutorial: feel the hips working, not momentum.",
+        "Your \"90/90 rotations / swing-through\". 5 each way."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors",
+        "abductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-90-90-switch-hip-thrust",
+      "name": "90/90 Switch + Hip Thrust",
+      "video_url": "https://youtu.be/CD6oMwgpR14?t=13",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Switch+++Hip+Thrust+form",
+      "video_own": true,
+      "cues": [
+        "From 90/90, swing both knees through to the other side, then lift the hips up and forward off the floor, squeezing the back glute.",
+        "Lower, switch back, thrust again. Third of her four 90/90 progressions (from 13 s).",
+        "Your \"90/90 lift back\". 5 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors",
+        "adductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-90-90-shin-box-get-up",
+      "name": "90/90 Shin Box Get-Up",
+      "video_url": "https://youtu.be/CD6oMwgpR14?t=17",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Shin+Box+Get-Up+form",
+      "video_own": true,
+      "cues": [
+        "From 90/90, drive up onto both knees to tall kneeling without using your hands, then sit back down to the other side.",
+        "Hands at the chest, hips lead. Last of her four 90/90 progressions (from 17 s). 4-5 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "quads",
+        "hip_flexors",
+        "adductors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "coach-90-90-heel-clicks",
+      "name": "90/90 Heel Clicks",
+      "video_url": "https://youtu.be/TATEBVUe4ts",
+      "sources": [
+        "coach"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=90/90+Heel+Clicks+form",
+      "video_own": true,
+      "cues": [
+        "Sit in 90/90, hands on the floor behind you.",
+        "Lift the back foot off the floor (the back hip turns in) and tap that heel toward the front foot, then lower it. Keep both sit bones down.",
+        "Active hip internal rotation. 8 each side, then switch the 90/90."
+      ],
+      "credit": "Driven with Morgan",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "abductors",
+        "hip_flexors"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
     }
   ],
   "programs": {
@@ -64061,7 +64190,11 @@
                 "rest": null,
                 "notes": "5 s hold each way, then 5 slow transitions.",
                 "alternates": [
-                  "90/90 Knee Roll"
+                  "90/90 Knee Roll",
+                  "90/90 Switch (Controlled)",
+                  "90/90 Heel Clicks",
+                  "90/90 Switch + Hip Thrust",
+                  "90/90 Shin Box Get-Up"
                 ]
               },
               {
@@ -64334,7 +64467,11 @@
                 "rest": null,
                 "notes": "5 s hold each way, then 5 slow transitions.",
                 "alternates": [
-                  "90/90 Knee Roll"
+                  "90/90 Knee Roll",
+                  "90/90 Switch (Controlled)",
+                  "90/90 Heel Clicks",
+                  "90/90 Switch + Hip Thrust",
+                  "90/90 Shin Box Get-Up"
                 ]
               },
               {
@@ -64521,8 +64658,12 @@
                 "distance": null,
                 "time": "1:30",
                 "rest": null,
-                "notes": "Your 90/90 series: holds, 30% rotations, swing-throughs, lean back, backside opener. Hip rotation is the range most tied to hip and groin trouble.",
+                "notes": "Your 90/90 series: holds and slow transitions; the rotations, swing-through, lift-back, heel clicks and shin-box get-up are under Swap. Hip rotation is the range most tied to hip and groin trouble.",
                 "alternates": [
+                  "90/90 Switch (Controlled)",
+                  "90/90 Heel Clicks",
+                  "90/90 Switch + Hip Thrust",
+                  "90/90 Shin Box Get-Up",
                   "90/90 Knee Roll",
                   "Knee Circles",
                   "Standing Hip Internal/External Lifts",

@@ -18,8 +18,8 @@ Hamstring Stretch are screen recordings, not links: send those links to replace 
 **Uncle Shen reel (saved 2026-11-20, read 2026-11-21):** one move, the same as Half Kneeling Thoracic Rotations.
 Done (v203): it's in Daily Mobility and, at the user's call, the Basketball Warm-up.
 
-Undecided *(decide with the user)*: heel clicks, hip opener into knee lean back, and whether the 90/90 variants get their
-own rows (no reel showed them clearly).
+Done (v215): heel clicks and the 90/90 variants are swaps on the 90/90 rows (see the reels table). "Hip opener into knee
+lean back" isn't added: no video matched it; it needs the user's reel.
 
 ## 2. Stand-in videos → real demos (needs YouTube, or the reels)
 

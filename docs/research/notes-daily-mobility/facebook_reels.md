@@ -95,7 +95,12 @@ mapping if it's the wrong move.
 | #3 Sit back ankle tuck/untuck | Hip Flexor Rock Back (existing, Griffith) | Griffith's own | guess | — |
 | #5/#6 Frog leg cobra lean, ½ frog into cobra | Optional Downward Frog (existing, PJF) | PJF's own | guess | — |
 | #12, #14, #15, #16, #17 (90/90 45 push, backside opener, 30% rotations, swing-through single leg, lift back/lean) | folded into 90/90 Hip Opener (existing, PJF), 1:30 | PJF's own | placeholder | likely Griffith's full hip session |
-| #7 Hip opener into knee lean back, #11 Heel clicks | not in Daily C yet | — | not found | — |
+| #11 Heel clicks | **90/90 Heel Clicks** (v215, swap on the 90/90 rows) | Driven with Morgan (YouTube TATEBVUe4ts) | likely | — |
+| #13/#15/#16 90/90 rotations, swing-through | **90/90 Switch (Controlled)** (v215, swap) | Proformance tutorial x8oCRELbUdg | likely | — |
+| #17 90/90 lift back | **90/90 Switch + Hip Thrust** (v215, swap) | Proformance CD6oMwgpR14 from 13 s | likely | — |
+| (Proformance's 4th 90/90 progression) | **90/90 Shin Box Get-Up** (v215, swap) | Proformance CD6oMwgpR14 from 17 s | — | — |
+| #7 Hip opener into knee lean back | not added: no video matched it (checked Proformance and Katharine's shorts) | — | not found | send the reel to add it |
+| #12 90/90 45 push, #14 backside opener | still folded into 90/90 Hip Opener (forward lean / back-hip turn) | — | — | — |
 
 ## Links (all 29 read 2026-11-11, logged-in local session)
 

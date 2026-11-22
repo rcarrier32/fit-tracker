@@ -216,11 +216,33 @@ MOVES = {
         'Hinge forward over the shin with a long back, then stand tall. The front hip turns out under load.',
         '8 each side.'],
         T('glutes', ['glutes', 'hip_flexors', 'hamstrings'], 'mobility', 'accessory', ['bench', 'kettlebell'], 2, plane='transverse')),
+    # The user's old "Hip Mobility" list, 90/90 series (#13-#17), v215: her progressions short (CD6oMwgpR14) and her
+    # "Fix your 90/90" tutorial, read frame by frame 2026-11-22. Swaps on the 90/90 rows, not extra rows.
+    '90/90 Switch (Controlled)': ('proformance', PF('x8oCRELbUdg', 0), PROFORMANCE, [
+        'Sit in 90/90, hands behind you to take pressure off. Turn the front hip to start the switch; the back leg follows.',
+        'Slow, both knees over to the other side, keep the hips down. Her tutorial: feel the hips working, not momentum.',
+        'Your "90/90 rotations / swing-through". 5 each way.'],
+        T('glutes', ['glutes', 'hip_flexors', 'adductors', 'abductors'], 'mobility', 'warmup', ['bodyweight'], 1, plane='transverse')),
+    '90/90 Switch + Hip Thrust': ('proformance', PF('CD6oMwgpR14', 13), PROFORMANCE, [
+        'From 90/90, swing both knees through to the other side, then lift the hips up and forward off the floor, squeezing the back glute.',
+        'Lower, switch back, thrust again. Third of her four 90/90 progressions (from 13 s).',
+        'Your "90/90 lift back". 5 each side.'],
+        T('glutes', ['glutes', 'hip_flexors', 'adductors'], 'mobility', 'warmup', ['bodyweight'], 2, plane='transverse')),
+    '90/90 Shin Box Get-Up': ('proformance', PF('CD6oMwgpR14', 17), PROFORMANCE, [
+        'From 90/90, drive up onto both knees to tall kneeling without using your hands, then sit back down to the other side.',
+        'Hands at the chest, hips lead. Last of her four 90/90 progressions (from 17 s). 4-5 each side.'],
+        T('glutes', ['glutes', 'quads', 'hip_flexors', 'adductors'], 'mobility', 'warmup', ['bodyweight'], 2, plane='transverse')),
     'Isometric Wall Sit': ('proformance', PF('xNHQup7c2x8', 12), PROFORMANCE, [
         'Back flat on a wall, slide down until the knees are at about 90°, feet hip-width.',
         'Hold, weight through the whole foot. Knees over the middle toes.',
         'For the knees: 3-5 holds of 30-45 s.'],
         T('quads', ['quads', 'glutes'], 'isometric', 'accessory', ['bodyweight'], 1, unilateral=False, hip_focus=False)),
+    # The user's old list #11 "Heel clicks" (v215): no saved reel showed it; demo by Driven with Morgan (YouTube).
+    '90/90 Heel Clicks': ('coach', 'https://youtu.be/TATEBVUe4ts', 'Driven with Morgan', [
+        'Sit in 90/90, hands on the floor behind you.',
+        'Lift the back foot off the floor (the back hip turns in) and tap that heel toward the front foot, then lower it. Keep both sit bones down.',
+        'Active hip internal rotation. 8 each side, then switch the 90/90.'],
+        T('glutes', ['glutes', 'abductors', 'hip_flexors'], 'mobility', 'warmup', ['bodyweight'], 2, plane='transverse')),
 }
 
 for name, (src, video, credit, cues, tags) in MOVES.items():
