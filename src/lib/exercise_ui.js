@@ -190,7 +190,7 @@ const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart
 /** The video the sheet plays for ex: { l (provider entry), vid (YouTube id), src (clip key) }. */
 function sheetVideo(ex) {
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
-  if (l?.v || l?.url) return { l, src: videoSrcKey(l) };
+  if (l?.v || l?.url) return { l, src: videoSrcKey(l), ytBackup: videoOf(ex) };   // YouTube copy for when the stream fails
   const vid = l?.yt || videoOf(ex);
   return vid ? { l, vid, src: videoSrcKey({ yt: vid }) } : { l };
 }
@@ -201,7 +201,7 @@ function sheetVideo(ex) {
  * that part, looping; `full` ignores it.
  */
 function videoBlockHTML(ex, { full = false } = {}) {
-  const { l, vid, src } = sheetVideo(ex);
+  const { l, vid, src, ytBackup } = sheetVideo(ex);
   const clip = full ? null : clipFor(ex.name, src);
   const label = l?.source === 'pjf' ? 'PJF Performance demo' : l?.source === 'trainheroic' ? 'TrainHeroic demo' : l?.source === 'hoopstudy' ? 'HoopStudy demo' : l ? 'Your program\'s demo' : '';
   const clipAttrs = clip ? `data-start="${clip.start}" data-end="${clip.end}"` : '';
@@ -211,7 +211,7 @@ function videoBlockHTML(ex, { full = false } = {}) {
   let body;
   if (l?.v) {
     body = `<div class="ex-video">
-        <video data-mux="${esc(l.v)}" ${clipAttrs} controls playsinline preload="metadata" poster="${muxThumb(l.v)}"
+        <video data-mux="${esc(l.v)}" ${ytBackup ? `data-yt="${esc(ytBackup)}" data-yt-start="${ytStart(ex) || 0}"` : ''} ${clipAttrs} controls playsinline preload="metadata" poster="${muxThumb(l.v)}"
           style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>
       </div>${note(label)}`;
   } else if (l?.url) {
@@ -482,8 +482,17 @@ export function openExerciseDetail(ex, o = {}) {
 
     attachMuxVideos(sheet);
     // A demo that won't load (bad gym signal, expired link): offer a YouTube search instead of a black box.
+    // A provider stream that won't play (the video host down, as with Mux's CDN on 2026-11-22) falls back to the
+    // exercise's YouTube demo when the catalog has one; only then to a search link.
     sheet.querySelectorAll('.ex-video video').forEach((v) => v.addEventListener('error', () => {
       const name = v.closest('.ex-also')?.querySelector('h2')?.textContent || ex.name;
+      if (v.dataset.yt) {
+        const st = +v.dataset.ytStart || 0;
+        v.closest('.ex-video').innerHTML = `<iframe src="https://www.youtube.com/embed/${esc(v.dataset.yt)}?playsinline=1&rel=0&modestbranding=1&enablejsapi=1${st ? `&start=${st}` : ''}"
+          title="${esc(name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen
+          style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>`;
+        return;
+      }
       v.closest('.ex-video').outerHTML = `<a href="https://www.youtube.com/results?search_query=${encodeURIComponent(name + ' exercise')}" target="_blank" rel="noopener noreferrer"
         style="display:flex;align-items:center;justify-content:center;gap:8px;height:96px;width:100%;border-radius:10px;background:#0f172a;
         border:1px dashed rgba(255,255,255,0.15);color:#94a3b8;text-decoration:none;font-size:12px">Video won't load here · ▶ Search YouTube</a>`;
