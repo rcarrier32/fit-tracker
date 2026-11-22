@@ -145,14 +145,22 @@ export function applyHomeKit(rows, lookup, catalog, opts = {}) {
     const e = lookup(x.name);
     if (!e || fitsKit(e, kit) || /cooldown/i.test(x.round_group || '')) continue;
     const named = [...(x.alternates || []), ...(e.bws_alternates || []), ...((opts.providerAlts && opts.providerAlts(x.name)) || [])];
-    let best = named.map(n => lookup(n)).find(c => c && c.name !== x.name && !used.has(c.name) && fitsKit(c, kit) && (c.video_url || c.video));
-    if (!best) {
-      best = catalog.filter(c => c.name !== e.name && !used.has(c.name) && (c.video_url || c.video) && !c.video_standin
+    // Among the named alternates, the same movement and muscle win (BWS lists a mobility drill first for face pulls);
+    // list order only breaks ties.
+    const cands = named.map(n => lookup(n)).filter((c, i, a) => c && a.indexOf(c) === i && c.name !== x.name && !used.has(c.name)
+      && fitsKit(c, kit) && (c.video_url || c.video));
+    let best = cands.map((c, i) => [(c.pattern === e.pattern ? 3 : 0) + (c.primary_muscle === e.primary_muscle ? 2 : 0)
+        + 1.5 * shared(e.name, c.name) + (c.role === e.role ? 0.5 : 0) - 0.05 * i, c])
+      .sort((a, b) => b[0] - a[0])[0]?.[1];
+    // A named alternate that changes the movement (Lat Pulldown → a row) gives way to a catalog move that keeps it.
+    if (!best || best.pattern !== e.pattern) {
+      const same = catalog.filter(c => c.name !== e.name && !used.has(c.name) && (c.video_url || c.video) && !c.video_standin
           && c.pattern === e.pattern && c.primary_muscle === e.primary_muscle && fitsKit(c, kit)
           && (c.level || 2) <= (e.level || 2) + 1 && !/last resort/i.test(c.name))
         .map(c => [coachShare(opts.learned, c.name) * 3 + (favs.has(c.name) ? 2 : 0) + ((c.equipment || []).includes('dumbbell') ? 2 : 0)
           + (!!c.unilateral === !!e.unilateral ? 0.5 : 0) + (c.role === e.role ? 0.5 : 0) + 1.5 * shared(e.name, c.name) - (COMBO.test(c.name) ? 2 : 0), c])
         .sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name))[0]?.[1];
+      if (same) best = same;
     }
     if (!best) continue;
     const need = (e.equipment || []).filter(q => q !== 'bodyweight' && !kit.has(q)).map(q => KIT_WORD[q] || q.replace(/_/g, ' '));
