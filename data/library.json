@@ -16112,6 +16112,292 @@
       "unilateral": true,
       "plane": "transverse",
       "hip_focus": true
+    },
+    {
+      "id": "proformance-supine-banded-hip-ir-90-90",
+      "name": "Supine Banded Hip IR (90/90)",
+      "video_url": "https://youtu.be/C2pgSLZmEDM?t=13",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Supine+Banded+Hip+IR+(90/90)+form",
+      "video_own": true,
+      "cues": [
+        "On your back, hips and knees bent to 90°, a mini band around both feet, feet apart.",
+        "Turn one foot out against the band (that hip turns in), back to the middle, then the other. Knees stay level.",
+        "Hip internal rotation with nothing pressing on the hip. From 13 s in the clip. 10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "glutes",
+      "muscles": [
+        "glutes",
+        "hip_flexors"
+      ],
+      "pattern": "isolation_lower",
+      "role": "warmup",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "transverse",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-two-bench-clamshell-dips",
+      "name": "Two-Bench Clamshell Dips",
+      "video_url": "https://youtu.be/Fq1WQYAmGNE?t=6",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Two-Bench+Clamshell+Dips+form",
+      "video_own": true,
+      "cues": [
+        "Side plank between two benches: forearm on one, the bottom knee on the other, knees bent.",
+        "Open the top knee like a clamshell while the hips dip down and lift back up. The bottom side holds you up.",
+        "The knee takes the weight, not the bony point of the hip. From 6 s. 8-10 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "abductors",
+      "muscles": [
+        "abductors",
+        "glutes",
+        "obliques"
+      ],
+      "pattern": "lateral_flexion",
+      "role": "accessory",
+      "equipment": [
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-horse-stance-pulses",
+      "name": "Horse Stance Pulses",
+      "video_url": "https://youtu.be/nVK39r4Rejo?t=6",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Horse+Stance+Pulses+form",
+      "video_own": true,
+      "cues": [
+        "Wide stance, toes out, sit down into a low horse stance, chest up.",
+        "Small pulses at the bottom, knees pushing out over the toes. Hold a light weight at the chest to progress.",
+        "From 6 s. 3 × 20-30 s."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "glutes",
+        "quads"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 1,
+      "unilateral": false,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-hamstring-side-bends",
+      "name": "Hamstring Side Bends",
+      "video_url": "https://youtu.be/9sb-0IyzKto?t=9",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Hamstring+Side+Bends+form",
+      "video_own": true,
+      "cues": [
+        "Heel up on a bench, box or rack, leg straight, standing leg soft.",
+        "Reach the opposite arm over and side-bend toward the raised leg, then back up. Long spine, slow.",
+        "Hamstrings and inner thigh. From 9 s. 6-8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "hamstrings",
+      "muscles": [
+        "hamstrings",
+        "adductors",
+        "obliques"
+      ],
+      "pattern": "mobility",
+      "role": "cooldown",
+      "equipment": [
+        "bench"
+      ],
+      "level": 1,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-adduction-rdl",
+      "name": "Adduction + RDL",
+      "video_url": "https://youtu.be/9sb-0IyzKto?t=6",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Adduction+++RDL+form",
+      "video_own": true,
+      "cues": [
+        "Stand beside a bench or rack with the outside leg straight out to the side, foot up on it.",
+        "Hinge forward on the standing leg with a long back, then stand tall. The inner thigh of the raised leg works and stretches.",
+        "From 6 s. 8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "adductors",
+      "muscles": [
+        "adductors",
+        "hamstrings",
+        "glutes"
+      ],
+      "pattern": "hinge",
+      "role": "accessory",
+      "equipment": [
+        "bench"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "frontal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-staggered-stance-squat",
+      "name": "Staggered-Stance Squat",
+      "video_url": "https://youtu.be/M2yjiZgUxqw?t=7",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Staggered-Stance+Squat+form",
+      "video_own": true,
+      "cues": [
+        "One foot slightly ahead of the other, most of your weight on the front leg; the back foot just helps balance.",
+        "Squat down and up through the front leg, knee over the middle toes. The step before a single-leg squat. From 7 s. 8 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "adductors"
+      ],
+      "pattern": "squat",
+      "role": "secondary",
+      "equipment": [
+        "bodyweight"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-single-leg-box-squat",
+      "name": "Single-Leg Box Squat",
+      "video_url": "https://youtu.be/M2yjiZgUxqw?t=9",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Single-Leg+Box+Squat+form",
+      "video_own": true,
+      "cues": [
+        "Stand on one leg in front of a bench, the other leg forward and off the floor.",
+        "Sit back to touch the bench under control and stand back up on the same leg, knee over the middle toes, pelvis level.",
+        "Lower box = harder. From 9 s. 5-6 each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "quads",
+      "muscles": [
+        "quads",
+        "glutes",
+        "abductors"
+      ],
+      "pattern": "lunge_single_leg",
+      "role": "secondary",
+      "equipment": [
+        "bench"
+      ],
+      "level": 3,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-banded-seated-hip-flexor-circles",
+      "name": "Banded Seated Hip-Flexor Circles",
+      "video_url": "https://youtu.be/nVK39r4Rejo",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Banded+Seated+Hip-Flexor+Circles+form",
+      "video_own": true,
+      "cues": [
+        "Sit tall with legs long, a mini band around both feet, hands beside the hips.",
+        "Lift one straight leg against the band and draw small circles, then the other way. Don't lean back.",
+        "Hip-flexor strength at short range. From 0 s. 5 each way, each side."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "hip_flexors",
+      "muscles": [
+        "hip_flexors",
+        "quads",
+        "abs"
+      ],
+      "pattern": "isolation_lower",
+      "role": "accessory",
+      "equipment": [
+        "mini_band"
+      ],
+      "level": 2,
+      "unilateral": true,
+      "plane": "sagittal",
+      "hip_focus": true
+    },
+    {
+      "id": "proformance-jefferson-curl-light",
+      "name": "Jefferson Curl (Light)",
+      "video_url": "https://youtu.be/Ydfbb5IDDlQ?t=3",
+      "sources": [
+        "proformance"
+      ],
+      "aliases": [],
+      "fallback_search": "https://www.youtube.com/results?search_query=Jefferson+Curl+(Light)+form",
+      "video_own": true,
+      "cues": [
+        "Stand on a box with a light dumbbell, knees straight but not locked.",
+        "Roll down one segment at a time, chin first, letting the weight hang toward your feet; roll back up from the bottom.",
+        "Slow, light (5-15 lb), stop where the hamstrings or back say so. From 3 s. 5-8 reps."
+      ],
+      "credit": "Proformance",
+      "primary_muscle": "lower_back",
+      "muscles": [
+        "lower_back",
+        "hamstrings"
+      ],
+      "pattern": "mobility",
+      "role": "warmup",
+      "equipment": [
+        "dumbbell",
+        "box"
+      ],
+      "level": 2,
+      "unilateral": false,
+      "plane": "sagittal",
+      "hip_focus": false
     }
   ],
   "programs": {
@@ -52948,6 +53234,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -53022,6 +53309,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -53152,6 +53440,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -53287,6 +53576,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Adductor Slider Lunge",
@@ -53370,6 +53660,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -53444,6 +53735,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -53579,6 +53871,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -53714,6 +54007,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Adductor Slider Lunge",
@@ -53797,6 +54091,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -53871,6 +54166,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -54001,6 +54297,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -54136,6 +54433,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Adductor Slider Lunge",
@@ -54224,6 +54522,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -54298,6 +54597,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -54428,6 +54728,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -54563,6 +54864,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -54646,6 +54948,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -54720,6 +55023,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -54855,6 +55159,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -54990,6 +55295,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -55073,6 +55379,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -55147,6 +55454,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -55277,6 +55585,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -55412,6 +55721,7 @@
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -55500,6 +55810,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -55574,6 +55885,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -55704,6 +56016,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -55826,19 +56139,20 @@
                     "alternates": [
                       "Side Step-Ups"
                     ],
-                    "name": "Box Squat",
+                    "name": "Staggered-Stance Squat",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                    "notes": "One foot slightly ahead, most of the weight on the front leg."
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -55922,6 +56236,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -55996,6 +56311,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -56131,6 +56447,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -56253,19 +56570,20 @@
                     "alternates": [
                       "Side Step-Ups"
                     ],
-                    "name": "Box Squat",
+                    "name": "Staggered-Stance Squat",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                    "notes": "One foot slightly ahead, most of the weight on the front leg."
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -56349,6 +56667,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -56423,6 +56742,7 @@
                   },
                   {
                     "alternates": [
+                      "Two-Bench Clamshell Dips",
                       "Mini Band Monster Walk",
                       "Standing Fire Hydrant"
                     ],
@@ -56553,6 +56873,7 @@
                     "time": null,
                     "notes": "Seated, rotate the shin outward against a band",
                     "alternates": [
+                      "Supine Banded Hip IR (90/90)",
                       "Prone Banded Hip IR",
                       "TFL / Hip IR Stretch"
                     ]
@@ -56675,19 +56996,20 @@
                     "alternates": [
                       "Side Step-Ups"
                     ],
-                    "name": "Box Squat",
+                    "name": "Staggered-Stance Squat",
                     "round_group": null,
                     "is_alternate": false,
                     "sets": 3,
-                    "reps": "8",
+                    "reps": "8 per side",
                     "weight": null,
                     "distance": null,
                     "time": null,
                     "rest": "60s",
-                    "notes": "Sit back to a box at knee height, touch lightly, stand up evenly on both feet."
+                    "notes": "One foot slightly ahead, most of the weight on the front leg."
                   },
                   {
                     "alternates": [
+                      "Adduction + RDL",
                       "Side Step-Ups"
                     ],
                     "name": "Cossack Squat",
@@ -64076,7 +64398,8 @@
                 "alternates": [
                   "Cat Cow",
                   "SI-Joint Band-Traction Side-Lying Rotations",
-                  "Weighted Standing Side Bend"
+                  "Weighted Standing Side Bend",
+                  "Jefferson Curl (Light)"
                 ]
               },
               {
@@ -64350,7 +64673,8 @@
                 "alternates": [
                   "Cat Cow",
                   "SI-Joint Band-Traction Side-Lying Rotations",
-                  "Weighted Standing Side Bend"
+                  "Weighted Standing Side Bend",
+                  "Jefferson Curl (Light)"
                 ]
               },
               {
@@ -64612,7 +64936,8 @@
                 "alternates": [
                   "Cat Cow",
                   "SI-Joint Band-Traction Side-Lying Rotations",
-                  "Weighted Standing Side Bend"
+                  "Weighted Standing Side Bend",
+                  "Jefferson Curl (Light)"
                 ]
               },
               {
@@ -64737,6 +65062,7 @@
                 "alternates": [
                   "Optional Downward Frog",
                   "Adductor Rock Back",
+                  "Horse Stance Pulses",
                   "Cossack Squat",
                   "Hip Pry to Lateral Stretch"
                 ]
@@ -64753,7 +65079,8 @@
                 "rest": null,
                 "notes": "Your #18 \"lunge to hamstring\": tuck, then push the glute back.",
                 "alternates": [
-                  "Squat to Hamstring Stretch"
+                  "Squat to Hamstring Stretch",
+                  "Hamstring Side Bends"
                 ]
               },
               {
@@ -64769,6 +65096,7 @@
                 "notes": "Each side (Proformance): toes out, then toes in. Hip-flexor strength at short range.",
                 "alternates": [
                   "Seated Leg Hurdle Lift-Overs",
+                  "Banded Seated Hip-Flexor Circles",
                   "Straight Leg Raise"
                 ]
               },

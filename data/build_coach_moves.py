@@ -237,6 +237,51 @@ MOVES = {
         'Hold, weight through the whole foot. Knees over the middle toes.',
         'For the knees: 3-5 holds of 30-45 s.'],
         T('quads', ['quads', 'glutes'], 'isometric', 'accessory', ['bodyweight'], 1, unilateral=False, hip_focus=False)),
+    # Proformance round 2 (docs/research/proformance.md "Round 2", frame-checked 2026-11-22), v216: swaps and ladder steps.
+    'Supine Banded Hip IR (90/90)': ('proformance', PF('C2pgSLZmEDM', 13), PROFORMANCE, [
+        'On your back, hips and knees bent to 90°, a mini band around both feet, feet apart.',
+        'Turn one foot out against the band (that hip turns in), back to the middle, then the other. Knees stay level.',
+        'Hip internal rotation with nothing pressing on the hip. From 13 s in the clip. 10 each side.'],
+        T('glutes', ['glutes', 'hip_flexors'], 'isolation_lower', 'warmup', ['mini_band'], 1, plane='transverse')),
+    'Two-Bench Clamshell Dips': ('proformance', PF('Fq1WQYAmGNE', 6), PROFORMANCE, [
+        'Side plank between two benches: forearm on one, the bottom knee on the other, knees bent.',
+        'Open the top knee like a clamshell while the hips dip down and lift back up. The bottom side holds you up.',
+        'The knee takes the weight, not the bony point of the hip. From 6 s. 8-10 each side.'],
+        T('abductors', ['abductors', 'glutes', 'obliques'], 'lateral_flexion', 'accessory', ['bench'], 2, plane='frontal')),
+    'Horse Stance Pulses': ('proformance', PF('nVK39r4Rejo', 6), PROFORMANCE, [
+        'Wide stance, toes out, sit down into a low horse stance, chest up.',
+        'Small pulses at the bottom, knees pushing out over the toes. Hold a light weight at the chest to progress.',
+        'From 6 s. 3 × 20-30 s.'],
+        T('adductors', ['adductors', 'glutes', 'quads'], 'mobility', 'warmup', ['bodyweight'], 1, unilateral=False, plane='frontal')),
+    'Hamstring Side Bends': ('proformance', PF('9sb-0IyzKto', 9), PROFORMANCE, [
+        'Heel up on a bench, box or rack, leg straight, standing leg soft.',
+        'Reach the opposite arm over and side-bend toward the raised leg, then back up. Long spine, slow.',
+        'Hamstrings and inner thigh. From 9 s. 6-8 each side.'],
+        T('hamstrings', ['hamstrings', 'adductors', 'obliques'], 'mobility', 'cooldown', ['bench'], 1, plane='frontal')),
+    'Adduction + RDL': ('proformance', PF('9sb-0IyzKto', 6), PROFORMANCE, [
+        'Stand beside a bench or rack with the outside leg straight out to the side, foot up on it.',
+        'Hinge forward on the standing leg with a long back, then stand tall. The inner thigh of the raised leg works and stretches.',
+        'From 6 s. 8 each side.'],
+        T('adductors', ['adductors', 'hamstrings', 'glutes'], 'hinge', 'accessory', ['bench'], 2, plane='frontal')),
+    'Staggered-Stance Squat': ('proformance', PF('M2yjiZgUxqw', 7), PROFORMANCE, [
+        'One foot slightly ahead of the other, most of your weight on the front leg; the back foot just helps balance.',
+        'Squat down and up through the front leg, knee over the middle toes. The step before a single-leg squat. From 7 s. 8 each side.'],
+        T('quads', ['quads', 'glutes', 'adductors'], 'squat', 'secondary', ['bodyweight'], 2, plane='sagittal')),
+    'Single-Leg Box Squat': ('proformance', PF('M2yjiZgUxqw', 9), PROFORMANCE, [
+        'Stand on one leg in front of a bench, the other leg forward and off the floor.',
+        'Sit back to touch the bench under control and stand back up on the same leg, knee over the middle toes, pelvis level.',
+        'Lower box = harder. From 9 s. 5-6 each side.'],
+        T('quads', ['quads', 'glutes', 'abductors'], 'lunge_single_leg', 'secondary', ['bench'], 3, plane='sagittal')),
+    'Banded Seated Hip-Flexor Circles': ('proformance', PF('nVK39r4Rejo', 0), PROFORMANCE, [
+        'Sit tall with legs long, a mini band around both feet, hands beside the hips.',
+        'Lift one straight leg against the band and draw small circles, then the other way. Don\'t lean back.',
+        'Hip-flexor strength at short range. From 0 s. 5 each way, each side.'],
+        T('hip_flexors', ['hip_flexors', 'quads', 'abs'], 'isolation_lower', 'accessory', ['mini_band'], 2, plane='sagittal')),
+    'Jefferson Curl (Light)': ('proformance', PF('Ydfbb5IDDlQ', 3), PROFORMANCE, [
+        'Stand on a box with a light dumbbell, knees straight but not locked.',
+        'Roll down one segment at a time, chin first, letting the weight hang toward your feet; roll back up from the bottom.',
+        'Slow, light (5-15 lb), stop where the hamstrings or back say so. From 3 s. 5-8 reps.'],
+        T('lower_back', ['lower_back', 'hamstrings'], 'mobility', 'warmup', ['dumbbell', 'box'], 2, unilateral=False, plane='sagittal', hip_focus=False)),
     # The user's old list #11 "Heel clicks" (v215): no saved reel showed it; demo by Driven with Morgan (YouTube).
     '90/90 Heel Clicks': ('coach', 'https://youtu.be/TATEBVUe4ts', 'Driven with Morgan', [
         'Sit in 90/90, hands on the floor behind you.',

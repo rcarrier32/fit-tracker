@@ -1203,6 +1203,82 @@ const SOURCE_SECTIONS = [
         channel: "PT Solutions Physical Therapy",
         search: 'sit to stand exercise physical therapy hip',
       },
+      // Proformance round 2 (v216): swaps and later ladder steps, not extra rows.
+      {
+        id: 'pf-supine-band-ir',
+        name: 'Supine Banded Hip IR (90/90)',
+        subtitle: 'Hip internal rotation with nothing pressing on the hip',
+        sets: '2 × 10 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'On your back, hips and knees at 90°, a mini band around both feet, feet apart.',
+          'Turn one foot out against the band (that hip turns in), back to the middle, then the other.',
+        ],
+        video_url: 'https://youtu.be/C2pgSLZmEDM?t=13',
+        videoTitle: 'Fix Your Tight Hips',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'supine banded hip internal rotation 90 90',
+      },
+      {
+        id: 'pf-clamshell-dips',
+        name: 'Two-Bench Clamshell Dips',
+        subtitle: 'Both side hips at once: bottom side holds, top knee opens',
+        sets: '2 × 8 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'Side plank between two benches: forearm on one, the bottom knee on the other.',
+          'Open the top knee while the hips dip and lift. The knee takes the weight, not the bony point of the hip.',
+        ],
+        video_url: 'https://youtu.be/Fq1WQYAmGNE?t=6',
+        videoTitle: 'Mobility Cheat sheet',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'two bench side plank clamshell dips',
+      },
+      {
+        id: 'pf-adduction-rdl',
+        name: 'Adduction + RDL',
+        subtitle: 'Hinge with the other leg out to the side: inner thigh works and stretches',
+        sets: '2 × 8 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'Outside leg straight out to the side, foot up on a bench or rack.',
+          'Hinge forward on the standing leg with a long back, then stand tall.',
+        ],
+        video_url: 'https://youtu.be/9sb-0IyzKto?t=6',
+        videoTitle: 'Hip Mobility Cheat Sheet',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'adductor RDL leg on bench',
+      },
+      {
+        id: 'pf-staggered-squat',
+        name: 'Staggered-Stance Squat',
+        subtitle: 'Most of the weight on the front leg: the step before single-leg',
+        sets: '3 × 8 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'One foot slightly ahead, most of the weight on the front leg.',
+          'Squat down and up through the front leg, knee over the middle toes, pelvis level.',
+        ],
+        video_url: 'https://youtu.be/M2yjiZgUxqw?t=7',
+        videoTitle: 'Unlock your first pistol squat',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'staggered stance squat',
+      },
+      {
+        id: 'pf-sl-box-squat',
+        name: 'Single-Leg Box Squat',
+        subtitle: 'Sit to the bench and stand on one leg',
+        sets: '3 × 5 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'Stand on one leg in front of a bench, the other leg off the floor.',
+          'Sit back to touch the bench under control and stand back up on the same leg, pelvis level.',
+        ],
+        video_url: 'https://youtu.be/M2yjiZgUxqw?t=9',
+        videoTitle: 'Unlock your first pistol squat',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'single leg box squat',
+      },
       // Out of the warm-up since v204 (figure-4 presses on the outer-hip tendons); kept here, unpicked,
       // so old Hip-tab logs keep its name. Still a catalog move and a swap option.
       {
@@ -1939,10 +2015,10 @@ export const SESSION_PREP_IDS = ['mrc-distraction-ir', 'mrc-seated-banded-ir', '
  */
 export const HIP_SWAPS = {
   'mrc-distraction-ir':       ['mrc-distraction-er', 'pf-bench-ir-taps'],
-  'mrc-seated-banded-ir':     ['pf-prone-banded-ir', 'mrc-tfl-ir-stretch'],
+  'mrc-seated-banded-ir':     ['pf-supine-band-ir', 'pf-prone-banded-ir', 'mrc-tfl-ir-stretch'],
   'mrc-quadruped-hip-hike':   ['pt-bird-dog'],
   'mrc-elevated-ham-bridge':  ['lh-bridge-band-abd', 'pt-prone-ext'],
-  'mrc-side-plank-clamshell': ['mrc-monster-walk', 'pt-fire-hydrant'],
+  'mrc-side-plank-clamshell': ['pf-clamshell-dips', 'mrc-monster-walk', 'pt-fire-hydrant'],
   'pt-sl-rdl':                ['pf-bench-pigeon-hinge'],
   'mrc-hip-flexor-march':     ['pf-hip-flexor-ir', 'pt-slr'],
   'pt-step-ups':              ['pt-posterior-lunge'],
@@ -1951,7 +2027,7 @@ export const HIP_SWAPS = {
   'mrc-standing-hip-hike':    ['pt-fire-hydrant'],
   'pf-side-lying-ir-lift':    ['pf-prone-banded-ir'],
   'lh-sit-to-stand':          ['pt-lateral-step-ups'],
-  'mrc-adductor-slider-lunge': ['pt-lateral-step-ups'],
+  'mrc-adductor-slider-lunge': ['pf-adduction-rdl', 'pt-lateral-step-ups'],
 };
 
 /** Pool work isn't happening right now — kept at the end, marked optional. */
@@ -2252,7 +2328,7 @@ export const HIP_LADDERS = {
   'pt-posterior-lunge':       { name: 'Lunge → deficit → split squat', steps: ['pt-posterior-lunge', 'lv-deficit-reverse-lunge', 'lv-bulgarian-split-squat'] },
   'pt-bird-dog':              { name: 'Bird dog → loaded', steps: ['pt-bird-dog', 'lv-bird-dog-loaded'] },
   'lh-weight-shift':          { name: 'Weight shift → step and stick → lateral', steps: ['lh-weight-shift', 'lv-step-stick', 'lv-lateral-step-stick'] },
-  'lh-sit-to-stand':          { name: 'Sit-to-stand → box squat', steps: ['lh-sit-to-stand', 'lv-box-squat'] },
+  'lh-sit-to-stand':          { name: 'Sit-to-stand → box squat → staggered → single leg', steps: ['lh-sit-to-stand', 'lv-box-squat', 'pf-staggered-squat', 'pf-sl-box-squat'] },
   'lh-bridge-band-abd':       { name: 'Banded bridge → march → single leg', steps: ['lh-bridge-band-abd', 'lv-bridge-march', 'lv-sl-bridge'] },
   // v206: Proformance's harder moves come in as later steps rather than extra rows.
   'pt-side-lying-abduction':  { name: 'Side-lying → lift-overs → two-bench side plank', steps: ['pt-side-lying-abduction', 'pf-abduction-lift-overs', 'pf-two-bench-side-plank'] },
