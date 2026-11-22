@@ -603,7 +603,8 @@ export async function renderHome(app) {
     });
   });
   app.querySelectorAll('[data-catch-up]').forEach(b => b.onclick = async () => {
-    await setCatchUp(b.dataset.catchUp || null);
+    let mk = null; try { mk = b.dataset.makeup ? JSON.parse(b.dataset.makeup) : null; } catch { mk = null; }
+    await setCatchUp(b.dataset.catchUp || null, mk);
     renderHome(app);
   });
   const hoopsBtn = app.querySelector('#hoops-open');
@@ -752,6 +753,9 @@ function catchUpRow(c, primary = false) {
   if (primary) return `<button class="btn" data-catch-up="${escH(c.programId)}" style="margin-top:10px">
     ▶ Work out instead: ${escH(c.title)}</button>
     <div class="muted" style="font-size:12px;margin-top:4px;text-align:center">${escH(c.name)} · the next workout in your week</div>`;
+  if (c.reason === 'makeup') return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" data-makeup='${escH(JSON.stringify(c.makeup))}' style="margin-top:10px;font-size:13px;text-align:left">
+    ↺ Finish ${escH(c.weekday)}'s workout (+ hip and core) · ${escH(c.title)}</button>
+    <div class="muted" style="font-size:12px;margin-top:4px">You did ${c.done} of ${c.of} sets, nothing since: today can be the ${c.left} move${c.left === 1 ? '' : 's'} you didn't get to, topped up with hip and core work that leaves tomorrow's legs fresh. Your place in the plan doesn't move. Resting is fine too.</div>`;
   if (c.reason === 'light') return `<button class="btn ghost" data-catch-up="${escH(c.programId)}" style="margin-top:10px;font-size:13px;text-align:left">
     ↺ Light couple of days: train instead · ${escH(c.title)}</button>
     <div class="muted" style="font-size:12px;margin-top:4px">${c.of ? `Last workout ${c.done} of ${c.of} sets, nothing since` : 'No workout the last two days'}: you don't need the rest day. ${escH(c.name)}'s next workout; resting is fine too.</div>`;

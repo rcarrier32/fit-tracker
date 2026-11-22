@@ -629,11 +629,23 @@ export async function catchUpOffer({ anyway = false, label = null } = {}) {
   const day = pos.day_index != null ? program.days?.[pos.day_index]
     : program.weeks?.find(w => w.week_num === pos.week)?.days?.find(d => d.day_num === pos.day);
   const title = String(day?.day_name || day?.focus || `Week ${pos.week}, Day ${pos.day}`).split(' · ')[0];
+  // v214: the last workout was half done → finish it (the rest of that day + hip and core top-ups), not the next day.
+  const ms = lately.light && lately.session && lately.of ? lately.session : null;
+  if (ms) {
+    const mday = ms.day_index != null && !program.weeks ? program.days?.[ms.day_index]
+      : program.weeks?.find(w => w.week_num === ms.week)?.days?.find(d => d.day_num === ms.day);
+    const left = (ms.exercises || []).filter(x => !/cooldown/i.test(x.round_group || '')
+      && (x.sets || []).filter(st => st?.done).length < Math.max((x.sets || []).length, +x.target_sets || 0)).length;
+    return { programId: program.id, name: program.program_name || program.name || program.id,
+      title: String(mday?.day_name || mday?.focus || `Day ${ms.day}`).split(' · ')[0], reason: 'makeup',
+      done: lately.done, of: lately.of, left, weekday: new Date(ms.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long' }),
+      makeup: { session_id: ms.id, week: ms.week, day: ms.day, day_index: ms.day_index ?? null } };
+  }
   return { programId: program.id, name: program.program_name || program.name || program.id, title,
     ...(lately.light ? { reason: 'light', done: lately.done, of: lately.of } : {}) };
 }
 /** Turn catch-up on (programId) or off (null) for today. */
-export const setCatchUp = (programId) => pref('catch_up', programId ? { date: localDateStr(), program_id: programId } : null);
+export const setCatchUp = (programId, makeup = null) => pref('catch_up', programId ? { date: localDateStr(), program_id: programId, ...(makeup ? { makeup } : {}) } : null);
 
 /** Used by Home + Workout views to figure out today's prescription. */
 export async function todaysWorkout() {
@@ -649,6 +661,11 @@ export async function todaysWorkout() {
       // "Catch up" tapped on Home: today runs the training program's next day instead of the label.
       const cu = await pref('catch_up');
       const program = cu?.date === localDateStr() ? await findProgram(cu.program_id) : null;
+      if (program && cu.makeup) {   // finish a half-done workout: its day, but your place in the plan doesn't move
+        const m = cu.makeup;
+        return { type: 'program', program, week: m.week, day: m.day, day_index: program.weeks ? null : (m.day_index ?? 0),
+          mode: 'makeup', makeupOf: m.session_id, catchUp: slot.label };
+      }
       if (program) {
         const pos = await followPosition(program);
         if (!pos.completedAt) return { type: 'program', program, ...pos, mode: 'follow', catchUp: slot.label };

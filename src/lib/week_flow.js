@@ -54,7 +54,8 @@ export function flowProgram(slots, dow, sessions, today) {
   const f = flowOf(slots);
   const slot = slots?.[dow];
   if (!f || !slot?.program_id || ![f.train, f.companion].includes(slot.program_id)) return null;
-  const fin = (sessions || []).filter(s => s.done && !s.skipped && (s.program_id === f.train || s.program_id === f.companion));
+  // A make-up (the rest of a half-done day, v214) isn't a new day of the plan: it doesn't move the week.
+  const fin = (sessions || []).filter(s => s.done && !s.skipped && !s.makeup_of && (s.program_id === f.train || s.program_id === f.companion));
   // Already finished one today: today stays that one.
   const todays = fin.filter(s => s.date === today).sort((a, b) => (b.id || 0) - (a.id || 0))[0];
   if (todays) return todays.program_id;
@@ -95,7 +96,7 @@ export function behindThisWeek(slots, trainId, sessions, today) {
     if (slots?.[d.getDay()]?.program_id === trainId) planned++;
   }
   const mon = new Date(t); mon.setDate(mon.getDate() - sinceMon);
-  const done = (sessions || []).filter(s => s.program_id === trainId && s.done && !s.skipped && s.date >= ymd(mon) && s.date < today)
+  const done = (sessions || []).filter(s => s.program_id === trainId && s.done && !s.skipped && !s.makeup_of && s.date >= ymd(mon) && s.date < today)
     .reduce((n, s) => n + (s.merged_day ? 2 : 1), 0);
   return Math.max(0, planned - done);
 }
@@ -121,6 +122,6 @@ export function lightLately(trainId, sessions, today) {
     of += Math.max(sets.length, +x.target_sets || 0);
     done += sets.filter(st => st?.done).length;
   }
-  return of && done / of < 0.7 ? { light: true, done, of } : { light: false };
+  return of && done / of < 0.7 ? { light: true, done, of, session: before[before.length - 1] } : { light: false };
 }
 

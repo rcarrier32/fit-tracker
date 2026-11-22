@@ -78,5 +78,12 @@ ok('full Friday, nothing Saturday → not light', lightLately(P, [full('2026-11-
 ok('trained yesterday → not light', lightLately(P, [half('2026-11-21')], '2026-11-22').light === false);
 ok('nothing for two days → light', lightLately(P, [full('2026-11-19')], '2026-11-22').light === true);
 ok('cool-down rows don\'t count against you', lightLately(P, [{ ...full('2026-11-20'), exercises: [{ name: 'a', sets: [{ done: true }, { done: true }, { done: true }] }, { name: 'c', round_group: 'Cooldown', sets: [{ done: false }, { done: false }] }] }], '2026-11-22').light === false);
+// Make-up day (v214): Sunday finishes Friday's Day 4; Monday is still a training day, not recovery.
+const slotsLT = [REST, T, T, REC, T, T, REC];
+const wkLT = [L('2026-11-16', 1), L('2026-11-17', 2), L('2026-11-19', 3), half('2026-11-20')];
+ok('Sunday make-up of Day 4 → Monday still trains', flowProgram(slotsLT, 1, [...wkLT, { ...L('2026-11-22', 4), makeup_of: 99 }], '2026-11-23') === P,
+  String(flowProgram(slotsLT, 1, [...wkLT, { ...L('2026-11-22', 4), makeup_of: 99 }], '2026-11-23')));
+ok('a make-up doesn\'t count as an extra workout this week', behindThisWeek(bw, P, [L('2026-11-10', 1), { ...L('2026-11-11', 1), makeup_of: 1 }], '2026-11-13') === 1);
+ok('light offer carries the half-done session', lightLately(P, [{ ...half('2026-11-20'), id: 7 }], '2026-11-22').session?.id === 7);
 console.log(fail ? `${fail} failed` : 'all passed');
 process.exit(fail ? 1 : 0);

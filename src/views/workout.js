@@ -351,10 +351,41 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
         }
       }
     }
+    // Make-up day (v214): the rest of a half-done workout, then hip and core top-ups that leave tomorrow's legs fresh.
+    if (today_w.mode === 'makeup' && today_w.makeupOf) {
+      const orig = (await getAll('sessions')).find(x => x.id === today_w.makeupOf);
+      const logged = {};
+      for (const x of orig?.exercises || []) logged[String(x.orig_name || x.name).toLowerCase()] = (x.sets || []).filter(st => st?.done).length;
+      rawExercises = rawExercises.map(x => {
+        const did = logged[String(x.orig_name || x.name).toLowerCase()] || 0;
+        const left = (parseInt(x.target_sets) || 3) - did;
+        return left > 0 ? { ...x, target_sets: left } : null;
+      }).filter(Boolean);
+      const { exerciseByName: byN } = await loadCatalogs();
+      const TOP_UPS = [
+        ['Standing Wall Hip-Abduction Isometric', { target_sets: 2, time: '30s', notes: 'Each side, knee into the wall.' }],
+        ['Side-Lying Hip IR Lift with Roller', { target_sets: 2, target_reps: '10 each side' }],
+        ['Side Plank with Top-Leg Raise', { target_sets: 2, target_reps: '8 each side' }],
+        ['Dead Bug', { target_sets: 2, target_reps: '10 each side' }],
+        ['Palloff Press', { target_sets: 2, target_reps: '12 each side' }],
+      ];
+      const working = () => rawExercises.filter(x => !/cooldown/i.test(x.round_group || '')).length;
+      const at = () => { const i = rawExercises.findIndex(x => /cooldown/i.test(x.round_group || '')); return i < 0 ? rawExercises.length : i; };
+      const added = [];
+      for (const [name, rx] of TOP_UPS) {
+        if (working() >= 8 || added.length >= 4) break;     // about a normal session's length, no more
+        if (!byN.get(name.toLowerCase()) || rawExercises.some(x => x.name === name)) continue;
+        rawExercises.splice(at(), 0, { name, orig_name: name, target_reps: '', time: null, rest: '30s', round_group: 'Hip + core top-up',
+          notes: null, video_url: null, alternates: null, sets: [], ...rx });
+        added.push(name);
+      }
+      gameNotes.push(`Finishing ${orig ? new Date(orig.date + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long' }) + "'s" : 'your last'} workout: only what you didn't get to${added.length ? `, plus ${added.length} hip and core move${added.length > 1 ? 's' : ''} that leave tomorrow's legs fresh` : ''}. Your place in the plan doesn't move.`);
+    }
     session = {
       date: today(),
       program_id: programId,
       week, day, day_index,
+      ...(today_w.mode === 'makeup' ? { makeup_of: today_w.makeupOf } : {}),
       focus: dayData.focus || dayData.day_name,
       exercises: dayKey ? _applySwaps(rawExercises, programId, dayKey, allSwaps, { week, day }) : rawExercises,
       done: false,
