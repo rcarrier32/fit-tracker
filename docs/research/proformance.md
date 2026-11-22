@@ -273,3 +273,21 @@ Side Bends / Banded Seated Hip-Flexor Circles (Daily C swaps), Jefferson Curl (L
 Cat Camel). Not added: the Internal-Rotation Lunge (same move as Griffith's Biased IR Split Squat, already in the app)
 and the Banded Kneeling Hip Rotation + Extension (its exact motion wasn't verified).
 
+### Round 2 follow-up (2026-11-22, v217): the two first skipped
+
+**Internal-Rotation Lunge (Proformance KnSrR6yT_f4) vs Biased IR Split Squat (Griffith nWAodrlhTlM).** Same goal,
+different tools. Griffith (from his coaching audio): floor split squat with dumbbells, torso pre-turned ~45° toward the
+front leg, front hip driven "pocket to opposite pocket", **held 2 s at the bottom**: loaded end-range IR as an
+isometric squeeze, stable, both feet down, easy to load. Proformance (frames): **rear foot up on a bench**, weight at
+the chest, the pelvis turns toward the front leg as she stands: more load on the front leg, internal rotation moved
+through every rep, a hip-flexor stretch on the back leg, harder balance, and deeper front-hip flexion (cue: only as deep
+as the front of the hip stays pinch-free, since flexion + IR is the FAI position). So: Griffith's first, hers next.
+**Used:** both as later steps on the Hip Plan's internal-rotation ladder (side-lying IR → hip flexor + IR → Biased IR
+Split Squat in phase 3 → Bulgarian IR Lunge, unlocked from the Hip tab), and as Lean & Tone swaps on the IR row.
+
+**Banded Kneeling Hip Rotation + Extension (C2pgSLZmEDM 8-12 s, her dose 6-8 per leg).** Frames: kneeling on one knee
+beside a bench, hand on it, mini band above both knees; the free knee comes forward, sweeps out to the side, turns and
+pushes back into a long leg behind, then returns. A banded kneeling hip sweep (rotation into extension): glute med/max
+through range with nothing pressing on the side of the hip. **Used:** swap for the Hip Plan's Quadruped Hip Hikes prep
+and Daily C's Abduction Lift-Overs.
+

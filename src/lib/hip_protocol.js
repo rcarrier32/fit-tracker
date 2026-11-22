@@ -1279,6 +1279,52 @@ const SOURCE_SECTIONS = [
         channel: 'Dr. Alyssa Lu (Proformance)',
         search: 'single leg box squat',
       },
+      // v217: loaded standing internal rotation (Griffith, then Proformance) and a kneeling banded hip sweep.
+      {
+        id: 'pf-biased-ir-split-squat',
+        name: 'Biased IR Split Squat',
+        subtitle: 'Loaded internal rotation, held at the bottom (Griffith)',
+        sets: '3 × 6 per side, 2 s hold',
+        freq: 'Swap / later step',
+        cues: [
+          'Split stance, dumbbells in hand, torso turned about 45° toward the front leg.',
+          'Lower and drive the front hip "pocket to opposite pocket"; squeeze that angle for 2 s at the bottom, then stand.',
+        ],
+        video_url: 'https://youtu.be/nWAodrlhTlM',
+        videoTitle: 'Biased IR Split Squat',
+        channel: 'Vernon Griffith',
+        search: 'biased internal rotation split squat',
+      },
+      {
+        id: 'pf-bulgarian-ir-lunge',
+        name: 'Bulgarian IR Lunge',
+        subtitle: 'Rear foot up: front-leg strength plus internal rotation every rep (Proformance)',
+        sets: '3 × 8 per side',
+        freq: 'Swap / later step',
+        cues: [
+          'Rear foot on a bench, weight at the chest. Lower straight down.',
+          'As you stand, turn the pelvis toward the front leg (front hip turns in), then back. Only as deep as the front of the hip stays pinch-free.',
+        ],
+        video_url: 'https://youtu.be/KnSrR6yT_f4',
+        videoTitle: 'Your Hips Need This!',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'bulgarian split squat internal rotation',
+      },
+      {
+        id: 'pf-kneel-band-rot-ext',
+        name: 'Banded Kneeling Hip Rotation + Extension',
+        subtitle: 'Hip sweep through rotation into extension, kneeling (nothing pressing on the side of the hip)',
+        sets: '2 × 6–8 per side',
+        freq: 'Swap',
+        cues: [
+          'Kneel on one knee beside a bench, hand on it, mini band above both knees.',
+          'Free knee forward, sweep the leg out, turn it and push it back into a long leg behind you; back the same way. Slow, hips square.',
+        ],
+        video_url: 'https://youtu.be/C2pgSLZmEDM?t=8',
+        videoTitle: 'Fix Your Tight Hips',
+        channel: 'Dr. Alyssa Lu (Proformance)',
+        search: 'banded kneeling hip rotation extension',
+      },
       // Out of the warm-up since v204 (figure-4 presses on the outer-hip tendons); kept here, unpicked,
       // so old Hip-tab logs keep its name. Still a catalog move and a swap option.
       {
@@ -2016,7 +2062,7 @@ export const SESSION_PREP_IDS = ['mrc-distraction-ir', 'mrc-seated-banded-ir', '
 export const HIP_SWAPS = {
   'mrc-distraction-ir':       ['mrc-distraction-er', 'pf-bench-ir-taps'],
   'mrc-seated-banded-ir':     ['pf-supine-band-ir', 'pf-prone-banded-ir', 'mrc-tfl-ir-stretch'],
-  'mrc-quadruped-hip-hike':   ['pt-bird-dog'],
+  'mrc-quadruped-hip-hike':   ['pf-kneel-band-rot-ext', 'pt-bird-dog'],
   'mrc-elevated-ham-bridge':  ['lh-bridge-band-abd', 'pt-prone-ext'],
   'mrc-side-plank-clamshell': ['pf-clamshell-dips', 'mrc-monster-walk', 'pt-fire-hydrant'],
   'pt-sl-rdl':                ['pf-bench-pigeon-hinge'],
@@ -2332,7 +2378,7 @@ export const HIP_LADDERS = {
   'lh-bridge-band-abd':       { name: 'Banded bridge → march → single leg', steps: ['lh-bridge-band-abd', 'lv-bridge-march', 'lv-sl-bridge'] },
   // v206: Proformance's harder moves come in as later steps rather than extra rows.
   'pt-side-lying-abduction':  { name: 'Side-lying → lift-overs → two-bench side plank', steps: ['pt-side-lying-abduction', 'pf-abduction-lift-overs', 'pf-two-bench-side-plank'] },
-  'pf-side-lying-ir-lift':    { name: 'Side-lying IR → hip flexor + IR', steps: ['pf-side-lying-ir-lift', 'pf-hip-flexor-ir'] },
+  'pf-side-lying-ir-lift':    { name: 'Side-lying IR → hip flexor + IR → loaded split squat → Bulgarian', steps: ['pf-side-lying-ir-lift', 'pf-hip-flexor-ir', 'pf-biased-ir-split-squat', 'pf-bulgarian-ir-lunge'] },
   'mrc-adductor-slider-lunge': { name: 'Slider lunge → Cossack', steps: ['mrc-adductor-slider-lunge', 'pf-cossack'] },
 };
 export const LADDER_UNLOCK_SESSIONS = 4;

@@ -282,6 +282,17 @@ MOVES = {
         'Roll down one segment at a time, chin first, letting the weight hang toward your feet; roll back up from the bottom.',
         'Slow, light (5-15 lb), stop where the hamstrings or back say so. From 3 s. 5-8 reps.'],
         T('lower_back', ['lower_back', 'hamstrings'], 'mobility', 'warmup', ['dumbbell', 'box'], 2, unilateral=False, plane='sagittal', hip_focus=False)),
+    # v217: the two round-2 moves first skipped, compared frame by frame (docs/research/proformance.md "Round 2 follow-up").
+    'Bulgarian IR Lunge': ('proformance', PF('KnSrR6yT_f4', 0), PROFORMANCE, [
+        'Rear foot up on a bench (Bulgarian split squat), a weight hugged at the chest.',
+        'Lower straight down, then as you stand turn your pelvis toward the front leg (the front hip turns in) and back.',
+        'Front-leg strength plus internal rotation through the whole rep. Only as deep as the front of the hip stays pinch-free. 8-10 each side.'],
+        T('glutes', ['glutes', 'quads', 'adductors', 'hip_flexors'], 'lunge_single_leg', 'secondary', ['bench'], 3, plane='transverse')),
+    'Banded Kneeling Hip Rotation + Extension': ('proformance', PF('C2pgSLZmEDM', 8), PROFORMANCE, [
+        'Kneel on one knee beside a bench, one hand on it, a mini band around both legs above the knees.',
+        'Bring the free knee forward, then sweep the leg out to the side, turn it and push it back into a long leg behind you; bring it back the same way.',
+        'Slow, hips square, no leaning. Her dose: 6-8 each leg. From 8 s.'],
+        T('glutes', ['glutes', 'abductors', 'hip_flexors'], 'mobility', 'warmup', ['mini_band', 'bench'], 2, plane='transverse')),
     # The user's old list #11 "Heel clicks" (v215): no saved reel showed it; demo by Driven with Morgan (YouTube).
     '90/90 Heel Clicks': ('coach', 'https://youtu.be/TATEBVUe4ts', 'Driven with Morgan', [
         'Sit in 90/90, hands on the floor behind you.',

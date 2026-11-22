@@ -9561,6 +9561,25 @@
    "plane": "frontal",
    "hip_focus": true
   },
+  "proformance-banded-kneeling-hip-rotation-extension": {
+   "name": "Banded Kneeling Hip Rotation + Extension",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "abductors",
+    "hip_flexors"
+   ],
+   "pattern": "mobility",
+   "role": "warmup",
+   "equipment": [
+    "mini_band",
+    "bench"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
   "proformance-banded-seated-hip-flexor-circles": {
    "name": "Banded Seated Hip-Flexor Circles",
    "primary_muscle": "hip_flexors",
@@ -9612,6 +9631,25 @@
     "bench"
    ],
    "level": 1,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
+  },
+  "proformance-bulgarian-ir-lunge": {
+   "name": "Bulgarian IR Lunge",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "quads",
+    "adductors",
+    "hip_flexors"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "bench"
+   ],
+   "level": 3,
    "unilateral": true,
    "plane": "transverse",
    "hip_focus": true
@@ -12108,6 +12146,24 @@
    "unilateral": false,
    "plane": "sagittal",
    "hip_focus": false
+  },
+  "hiprx-pf-biased-ir-split-squat": {
+   "name": "Biased IR Split Squat",
+   "primary_muscle": "glutes",
+   "muscles": [
+    "glutes",
+    "quads",
+    "adductors"
+   ],
+   "pattern": "lunge_single_leg",
+   "role": "secondary",
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "unilateral": true,
+   "plane": "transverse",
+   "hip_focus": true
   }
  }
 }

@@ -187,7 +187,7 @@ days = [
           alts=['Seated Leg Hurdle Lift-Overs', 'Banded Seated Hip-Flexor Circles', 'Straight Leg Raise']),
         r('Quadruped Abduction Lift-Overs', '6 each side', group='Side hip',
           notes='Proformance: knee out and over a standing foam roller, hips level.',
-          alts=['Fire Hydrants', 'Side Plank with Top-Leg Raise']),
+          alts=['Banded Kneeling Hip Rotation + Extension', 'Fire Hydrants', 'Side Plank with Top-Leg Raise']),
         r('Single-Leg Balance', time='30s', sets=2, group='Finish', notes='Each side. Balance work has the strongest injury-prevention evidence of anything here.',
           alts=['Single Leg Stance']),
     ]),
