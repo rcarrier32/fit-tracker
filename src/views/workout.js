@@ -22,6 +22,8 @@ import { GAME_ID } from '../lib/game.js';
 import { ENERGY, EFFORT, energyOf, effortOf, effortWord, readNote, noteSummary } from '../lib/feel.js';
 import { SECTIONS as HIP_SECTIONS } from '../lib/hip_protocol.js';
 import { movesToday } from '../lib/moves_today.js';
+// A row saved before v223 may carry a Facebook post link (share/v) that can't embed: use the catalog's clip instead.
+const STALE_VIDEO = /facebook\.com\/share\/v\//;
 
 const today = () => localDateStr();
 let _restInterval = null;
@@ -1051,7 +1053,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     const idx = []; for (let j = a; j <= b; j++) idx.push(steps[j].i);
     const exs = idx.map(i => session.exercises[i]);
     const cards = [];
-    const vid = (ex) => { const rv = !ex.swapped && ex.video_url ? ex.video_url : null;
+    const vid = (ex) => { const rv = !ex.swapped && ex.video_url && !STALE_VIDEO.test(ex.video_url) ? ex.video_url : null;
       return { video_url: rv || exMap[ex.name.toLowerCase()]?.video_url, rowVideo: !!rv }; };
     const mount = (n) => (el, changed) => {
       const card = exerciseCard(exs[n], idx[n], exMap, prevRef, allTimeBestE1RM);
@@ -1177,7 +1179,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     }
     const ex = session.exercises[i];
     const lookup = exMap[ex.name.toLowerCase()];
-    const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+    const rowVideo = !ex.swapped && ex.video_url && !STALE_VIDEO.test(ex.video_url) ? ex.video_url : null;
     const grp = ex.round_group ? ` · ${prettyGroup(ex.round_group)}` : '';
     let card = null;
     openExerciseDetail({ name: ex.name, video_url: rowVideo || lookup?.video_url, rowVideo: !!rowVideo,
@@ -1559,7 +1561,7 @@ function openExerciseMenu(session, i, allExercises, exMap, { swapNow = false } =
   const muscleLabel = primaryMuscle ? primaryMuscle.replace(/_/g, ' ') : null;
   const bwsAlts = lookup?.bws_alternates || [];
   // The plan's own alternatives for this slot (plus the original, once swapped away from it).
-  const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+  const rowVideo = !ex.swapped && ex.video_url && !STALE_VIDEO.test(ex.video_url) ? ex.video_url : null;
   const clipVideo = rowVideo || hasVideo(lookup) ? { url: rowVideo || lookup?.video_url || null, row: !!rowVideo } : null;
   const planAlts = [...new Set([...(ex.swapped && ex.orig_name ? [ex.orig_name] : []), ...(ex.alternates || [])])]
     .filter(n => n !== ex.name && exMap[n.toLowerCase()]);
@@ -2218,7 +2220,7 @@ function exerciseCard(ex, i, exMap, prevRef = {}, allTimeBestE1RM = {}) {
   const lookup = exMap[ex.name.toLowerCase()];
   const ytSearch = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.name);
   // A row's own video (e.g. the follow-along it comes from) wins, unless the exercise was swapped.
-  const rowVideo = !ex.swapped && ex.video_url ? ex.video_url : null;
+  const rowVideo = !ex.swapped && ex.video_url && !STALE_VIDEO.test(ex.video_url) ? ex.video_url : null;
   const _ytId = ytVideoId(rowVideo || lookup?.video_url);
   const _start = (String(rowVideo || '').match(/[?&](?:t|start)=(\d+)/) || [])[1] || '';
   const videoLink = (rowVideo && _ytId) ? `<button class="video-link has-video" data-row="1" data-ytid="${_ytId}" data-start="${_start}" data-ytname="${ex.name.replace(/"/g, '&quot;')}"

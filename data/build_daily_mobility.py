@@ -46,18 +46,22 @@ for name, (borrow, tags) in NEW.items():
 # docs/research/notes-daily-mobility/facebook_reels.md). A reel link opens in the browser (no embed).
 REEL = {
     'igor_hips': 'https://www.facebook.com/reel/1838906024154994',        # Igor system: pigeon rotation, 90/90 swing-through, quadruped swing-through
-    'griffith_lotion': 'https://www.facebook.com/share/v/1FLcHuHnk8/',     # Vernon Griffith, "Motion is lotion" hip routine
+    # Vernon Griffith, "Motion is lotion" hip routine (facebook.com/share/v/1FLcHuHnk8, a post of 5 clips). Each move links
+    # its own clip so Facebook's player embeds it (a share/v post link can't embed); matched by caption order + length.
+    'griffith_hip_pry': 'https://www.facebook.com/100083535604286/videos/1378443070108692',      # 0:21, clip 1
+    'griffith_side_lying': 'https://www.facebook.com/100083535604286/videos/1335301421629678',   # 0:12, clip 4
+    'griffith_rock_back': 'https://www.facebook.com/100083535604286/videos/1239518037819664',    # 0:16, clip 5
     'jtm_ladder': 'https://www.facebook.com/reel/776388821846395',         # Jtm_fit, 5 ladder drills
 }
 # Moves from the reels the app had no exercise for: options (warm-ups the plan builder can pick), not a checklist.
 REEL_NEW = {
     # Griffith's routine: "1-2 sets ... to work on your hip mobility, restore range of motion, explore tension and tightness".
     # Dynamic Groin Drift and Figure 4 Flow from the same routine already play his TrainHeroic demos.
-    'Hip Pry to Lateral Stretch': ('griffith_lotion', dict(primary_muscle='adductors', muscles=['adductors', 'glutes', 'hip_flexors'],
+    'Hip Pry to Lateral Stretch': ('griffith_hip_pry', dict(primary_muscle='adductors', muscles=['adductors', 'glutes', 'hip_flexors'],
                                    pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='frontal', hip_focus=True)),
-    'Side Lying Hip Opener': ('griffith_lotion', dict(primary_muscle='glutes', muscles=['glutes', 'abductors', 'hip_flexors'],
+    'Side Lying Hip Opener': ('griffith_side_lying', dict(primary_muscle='glutes', muscles=['glutes', 'abductors', 'hip_flexors'],
                               pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='transverse', hip_focus=True)),
-    'Adductor Rock Back': ('griffith_lotion', dict(primary_muscle='adductors', muscles=['adductors', 'hamstrings', 'glutes'],
+    'Adductor Rock Back': ('griffith_rock_back', dict(primary_muscle='adductors', muscles=['adductors', 'hamstrings', 'glutes'],
                            pattern='mobility', role='warmup', equipment=['bodyweight'], level=1, unilateral=True, plane='frontal', hip_focus=True)),
     # Jtm_fit's ladder drills (all five in one reel), for the agility ladder in Plans → Generate a plan.
     'Ladder Twist Hops': ('jtm_ladder', dict(primary_muscle='calves', muscles=['calves', 'obliques', 'hip_flexors'], pattern='agility_cod',

@@ -347,6 +347,8 @@ label { display: block; font-size: 13px; color: var(--fg-dim); margin-bottom: 4p
   border-radius: 10px;
   overflow: hidden;
 }
+/* Facebook reels are portrait: a taller box, capped so the sets stay on screen. */
+.ex-video.tall { aspect-ratio: 4 / 5; max-height: 52vh; margin: 0 auto; }
 /* Phone on its side but the app stayed portrait: turn the video to fill the screen. */
 .sheet .ex-video.sideways {
   position: fixed;

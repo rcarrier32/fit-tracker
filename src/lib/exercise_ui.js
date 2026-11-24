@@ -188,6 +188,12 @@ function ladderHTML(l, accent) {
 const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 
 /** The video the sheet plays for ex: { l (provider entry), vid (YouTube id), src (clip key) }. */
+/** Facebook's embed player for a public reel or video link (facebook.com/reel/…, …/videos/…, watch?v=), or null. */
+export function fbEmbed(url) {
+  if (!/^https:\/\/(www\.|m\.)?facebook\.com\/(reel\/\d+|[^/]+\/videos\/\d+|watch\/?\?v=\d+)/.test(url || '')) return null;
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=false`;
+}
+
 function sheetVideo(ex) {
   const l = ex.rowVideo ? null : localFor(ex.name);   // a plan row's own video wins
   if (l?.v || l?.url) return { l, src: videoSrcKey(l), ytBackup: videoOf(ex) || l.yt_backup || null };   // YouTube copy for when the stream fails
@@ -227,6 +233,14 @@ function videoBlockHTML(ex, { full = false } = {}) {
           title="${esc(ex.videoTitle || ex.name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
       </div>${note(ex.videoTitle ? esc(ex.videoTitle) : '')}`;
+  } else if (fbEmbed(ex.link || ex.video_url)) {
+    // A public Facebook reel or video: Facebook's own player, inline. (A share/v link can't embed: it
+    // names a post, not a video, so it stays a link.)
+    const href = ex.link || ex.video_url;
+    body = `<div class="ex-video tall">
+        <iframe src="${esc(fbEmbed(href))}" title="${esc(ex.name)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowfullscreen scrolling="no" style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
+      </div>${note(`Facebook demo · <a href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="color:#7dd3fc">open on Facebook</a>`)}`;
   } else {
     const href = ex.link || ex.video_url
       || `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.search || ex.name)}`;

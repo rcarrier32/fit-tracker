@@ -315,7 +315,8 @@ const WU_COVER = [
   [/cat.?cow/i, /cat.?(cow|camel)/i],
   [/90.?90/i, /90.?90|pigeon|shin box/i],
   [/adductor rock|frog/i, /adductor|groin|lateral squat|lateral lunge|cossack|frog/i],
-  [/hamstring/i, /hamstring/i],
+  // A dynamic hinge loads the hamstrings through range: it does the static hold's job before lifting (v223).
+  [/hamstring/i, /hamstring|single.?leg hinge|hinge to|inchworm|leg swing/i],
   [/half.?kneeling hip flexor/i, /hip flexor stretch|couch stretch/i],
 ];
 const CD_COVER = [
@@ -337,6 +338,13 @@ export function mergeHipWarmup(hipRows, planRows = [], cooldown = []) {
     head.push(/half.?kneeling hip flexor/i.test(h.name) && (h.sets || 1) > 1
       ? { ...h, sets: 1, notes: [h.notes, 'One round before lifting; the cool-down holds it again.'].filter(Boolean).join(' ') }
       : { ...h });
+  }
+  // Over 10 drills (8-10 is the target): the Thomas stretch rides on the half-kneeling hip-flexor stretch,
+  // the same muscle and job (v223).
+  const half = head.find(r => /half.?kneeling hip flexor/i.test(r.name));
+  const ti = head.findIndex(r => /thomas/i.test(r.name));
+  if (head.length + plan.length > 10 && half && ti >= 0) {
+    (half.covers_hip ||= []).push(head[ti].hip_id); dropped.push(head[ti].name); head.splice(ti, 1);
   }
   return { rows: [...head, ...plan], cooldownCovers, dropped };
 }

@@ -134,7 +134,7 @@ const SOURCE_SECTIONS = [
           'On hands and knees, knees as wide as is comfortable, feet out behind.',
           'Rock the hips back toward the heels and forward again, back flat. Go only as deep as the inner thigh allows.',
         ],
-        video_url: 'https://www.facebook.com/share/v/1FLcHuHnk8/',   // the catalog's demo (the user's saved video)
+        video_url: 'https://www.facebook.com/100083535604286/videos/1239518037819664',   // Griffith's clip (embeds)
         search: 'adductor rock back quadruped frog',
       },
       {

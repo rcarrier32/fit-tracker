@@ -11,7 +11,7 @@ Before pushing, as always: `./scripts/bump-version.sh <n>` then `./scripts/bump-
 
 Done 2026-11-11 (v147): all 29 links read; the table in
 [`research/notes-daily-mobility/facebook_reels.md`](research/notes-daily-mobility/facebook_reels.md) says what each one is
-and what the app uses. Quadruped Swing Throughs plays its reel; Griffith's "Motion is lotion" moves and Jtm_fit's 5 ladder
+and what the app uses. Quadruped Swing Throughs plays its reel inline (Facebook player, v223); Griffith's "Motion is lotion" moves and Jtm_fit's 5 ladder
 drills were added. The reels that match Knee Circles, Standing Hip IR/ER Lifts, Knee Pull Heel Bridge and Squat to
 Hamstring Stretch are screen recordings, not links: send those links to replace the stand-ins.
 

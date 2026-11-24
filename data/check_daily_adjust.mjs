@@ -1,5 +1,6 @@
 /** Checks src/lib/daily_adjust.js against the real catalog and the Daily Mobility program. `node data/check_daily_adjust.mjs` */
 import { readFileSync } from 'fs';
+import { SECTIONS as HIP_SECTIONS } from '../src/lib/hip_protocol.js';
 import { yesterdayLoad, adjustDaily, soreFromNotes, helpedMoves, prepForTomorrow, foldHipWarmup, mergeHipWarmup } from '../src/lib/daily_adjust.js';
 
 let fail = 0;
@@ -118,6 +119,12 @@ for (const [i, d] of lib.programs.lean_tone[0].weeks[0].days.entries()) {
   const ids = new Set([...m.rows.flatMap(x => [x.hip_id, ...(x.covers_hip || [])]), ...Object.values(m.cooldownCovers).flat()].filter(Boolean));
   ok(`Lean & Tone day ${i + 1}: merged warm-up is shorter, no duplicate names`, m.rows.length < HIPW.length + (d.warmup || []).length && names.length === new Set(names).size, m.rows.map(x => x.name).join(', '));
   ok(`Lean & Tone day ${i + 1}: every hip warm-up move is still done or covered`, HIPW.every(h => ids.has(h.hip_id)), [...ids].join(','));
+}
+// The real hip warm-up merged into every Lean & Tone day stays at 10 drills or fewer (8-10 is the target; 13 was too many).
+const REAL = HIP_SECTIONS.find(x => x.id === 'warmup').exercises.map(e => ({ name: e.name, hip_id: e.id }));
+for (const [w, wk] of lib.programs.lean_tone[0].weeks.entries()) for (const [i, d] of wk.days.entries()) {
+  const m = mergeHipWarmup(REAL, d.warmup || [], d.exercises.filter(x => /cooldown/i.test(x.round_group || '')));
+  ok(`Lean & Tone week ${w + 1} day ${i + 1}: merged warm-up is 10 drills or fewer`, m.rows.length <= 10, `${m.rows.length}: ${m.rows.map(x => x.name).join(', ')}`);
 }
 const mh = mergeHipWarmup(HIPW, [], []);
 ok('no plan prep, no cool-down: only Pelvic Tilts rides on Cat-Cow; hip-flexor hold is one round', mh.rows.length === HIPW.length - 1 && mh.rows.find(x => /half/i.test(x.name)).sets === 1);
