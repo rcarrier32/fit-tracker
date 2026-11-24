@@ -150,8 +150,16 @@ function runWorkTimer(btn, { secs, unit = null, intervals = null, idle, onDone }
     else timerAlert('switch', switchSpeech(unit));
     tick();
   };
-  _setTimer = { btn, idle, interval: setInterval(tick, 250) };
+  // Tap while switching sides = ready: the next side starts now (the set still logs itself at the end).
+  const ready = () => { if (phases[p]?.work) return false; p++; started = Date.now(); last = null; timerAlert('begin'); tick(); return true; };
+  _setTimer = { btn, idle, ready, interval: setInterval(tick, 250) };
   tick();
+}
+/** A tap on the running timer's own button: during a side switch it means "ready" (start the next side);
+ * otherwise it stops the timer. */
+function tapRunningTimer() {
+  if (_setTimer?.ready?.()) return;
+  stopSetTimer();
 }
 function beep() {
   try {
@@ -891,7 +899,7 @@ export async function renderWorkout(app, { keepRest = false } = {}) {
     if (e.target.matches('.timer-btn')) {
       const btn = e.target;
       const row = btn.closest('.set-row');
-      if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
+      if (_setTimer?.btn === btn) { tapRunningTimer(); return; }   // tap again = stop (while switching sides: ready, go)
       stopRestTimer();
       const ex = session.exercises[+btn.closest('.exercise').dataset.i];
       runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: ex.intervals ? null : sidesOf(ex), intervals: ex.intervals,
@@ -2385,7 +2393,7 @@ function renderBandList($ex, session, exMap) {
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.hold-timer');
   if (!btn) return;
-  if (_setTimer?.btn === btn) { stopSetTimer(); return; }   // tap again = stop
+  if (_setTimer?.btn === btn) { tapRunningTimer(); return; }   // tap again = stop (while switching sides: ready, go)
   btn.dataset.idle ??= btn.textContent;
   runWorkTimer(btn, { secs: +btn.dataset.secs || 0, unit: btn.dataset.sides || null, idle: btn.dataset.idle,
     onDone: () => { btn.textContent = '✓ Done · ▶ again'; } });
